@@ -192,7 +192,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                         decoration: BoxDecoration(
                           color: context.appColor.primaryWhite,
                           border: Border.all(
-                            // color: context.appColor.primaryGray100,
+                            color: context.appColor.primaryGray100,
                           ),
                           borderRadius: BorderRadius.circular(9.r),
                           boxShadow: [
