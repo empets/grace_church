@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/style/app_theme.dart';
-import 'package:grace_church/home/overview.dart';
+import 'package:grace_church/feature/home/overview.dart';
 
 void main() {
   runApp(const MyApp());

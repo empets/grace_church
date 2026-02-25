@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/page/personne_information.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
 
 class OverviewScreen extends StatefulWidget {
@@ -35,10 +36,24 @@ class _OverviewScreenState extends State<OverviewScreen> {
     super.dispose();
   }
 
+  final List<Map<String, dynamic>> quickActionSectionItem = [
+    {
+      'icon': Icons.groups_rounded,
+      'title': 'My House Cell',
+      'decription': 'The Grace Center',
+    },
+
+    {
+      'icon': Icons.volunteer_activism_rounded,
+      'title': 'My Department',
+      'decription': 'Worship Team',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.appColor.primaryWhite,
+      backgroundColor: Colors.grey.shade50,
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 13.w),
         child: Column(
@@ -54,16 +69,28 @@ class _OverviewScreenState extends State<OverviewScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(1.r),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: context.appColor.primaryBlue),
-                        shape: BoxShape.circle,
-                      ),
-                      child: ClipOval(
-                        child: Image.network(
-                          "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
-                          height: 0.07.sh,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PersonneInformationScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(1.r),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: context.appColor.primaryBlue,
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                        child: ClipOval(
+                          child: Image.network(
+                            "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                            height: 0.07.sh,
+                          ),
                         ),
                       ),
                     ),
@@ -89,7 +116,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           ),
                         ],
                       ),
-                    //sdlf
+                      //sdlf
                     ),
                   ],
                 ),
@@ -251,44 +278,92 @@ class _OverviewScreenState extends State<OverviewScreen> {
               ),
             ),
 
-            Container(
-              padding: EdgeInsets.all(15.r),
-              decoration: BoxDecoration(
-                color: context.appColor.primaryWhite,
-                border: Border.all(color: context.appColor.primaryGray100),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(12.r),
-                    decoration: BoxDecoration(
-                      color: context.appColor.primaryLightBlue,
-                      borderRadius: BorderRadius.circular(6.r),
-                    ),
-                    child: Icon(
-                      Icons.people_sharp,
-                      color: context.appColor.primaryBlue,
-                    ),
-                  ),
-                  SizedBox(height: 9.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(quickActionSectionItem.length, (index) {
+                final items = quickActionSectionItem[index];
+                return Container(
+                  padding: EdgeInsets.all(15.r),
 
-                  CustomeText(
-                    text: 'My House Cell',
-                    style: context.appTypographie.body.copyWith(
-                      color: Colors.black,
+                  decoration: BoxDecoration(
+                    color: context.appColor.primaryWhite,
+                    border: Border.all(color: context.appColor.primaryGray100),
+                    borderRadius: BorderRadius.circular(8.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        offset: Offset(0, 1),
+                        blurRadius: 0.2,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(12.r),
+                        decoration: BoxDecoration(
+                          color: context.appColor.primaryLightBlue,
+                          borderRadius: BorderRadius.circular(6.r),
+                        ),
+                        child: Icon(
+                          items['icon'],
+                          color: context.appColor.primaryBlue,
+                        ),
+                      ),
+                      SizedBox(height: 9.h),
 
-                      fontWeight: FontWeight.w700,
+                      CustomeText(
+                        text: items['title'],
+                        style: context.appTypographie.body.copyWith(
+                          color: Colors.black,
+
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+
+                      CustomeText(
+                        text: items['decription'],
+                        style: context.appTypographie.small.copyWith(
+                          color: context.appColor.primaryGray500,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
+
+            Column(
+              children: [
+                SizedBox(height: 0.03.sh),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomeText(
+                      text: 'Upcoming Programs',
+                      style: context.appTypographie.subtitle.copyWith(
+                        color: context.appColor.primaryGrayDark,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
+                    CustomeText(
+                      text: 'View All',
+                      style: context.appTypographie.small.copyWith(
+                        color: context.appColor.primaryBlue,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(5.r),
+                  child: Image.network(
+                    "https://media.istockphoto.com/id/2094337676/photo/diverse-team-working-together-in-modern-co-working-space.jpg?s=612x612&w=is&k=20&c=8Yn-zi9320e0INMImBvZgTlv-hKzSRLl5RD9N_E45Jw=",
+                    height: 0.2.sh,
                   ),
-
-                  CustomeText(
-                    text: 'My House Cell',
-                    style: context.appTypographie.small,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
@@ -296,59 +371,3 @@ class _OverviewScreenState extends State<OverviewScreen> {
     );
   }
 }
-
-
-
-                  // Positioned(
-                  //   bottom: 10.h,
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       SizedBox(height: 26.h),
-                        // CustomeText(
-                        //   text: "Culte de Dimanche",
-                        //   style: context.appTypographie.body.copyWith(
-                        //     color: context.appColor.primaryWarning,
-                        //     fontWeight: FontWeight.w600,
-                        //   ),
-                        // ),
-                  //       SizedBox(height: 7.h),
-
-                        // Row(
-                        //   children: [
-                        //     CustomeText(
-                        //       text: "Morning Worship Service ",
-                        //       style: context.appTypographie.small.copyWith(
-                        //         fontSize: 11.sp,
-                        //         color: Colors.grey,
-                        //         fontWeight: FontWeight.w700,
-                        //       ),
-                        //     ),
-                        //     Icon(
-                        //       Icons.circle,
-                        //       color: Colors.white,
-                        //       size: 3.h,
-                        //       fontWeight: FontWeight.w700,
-                        //     ),
-                        //     SizedBox(width: 3.w),
-                        //     CustomeText(
-                        //       text: "1.2k watching",
-                        //       style: context.appTypographie.small.copyWith(
-                        //         fontSize: 11.sp,
-                        //         color: Colors.grey,
-                        //         fontWeight: FontWeight.w700,
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
-                        // PrimaryButton(
-                        //   label: "Watch Live",
-                        //   colorText: context.appColor.primaryBlue,
-                        //   backgroundColor: context.appColor.primaryBlue,
-                        //   icon: Icons.play_circle_rounded,
-                        // ),
-                  //     ],
-                  //   ),
-                  // ),
-                
-                

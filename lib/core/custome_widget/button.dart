@@ -32,13 +32,13 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: context.appColor.primaryBlue,
+          backgroundColor: backgroundColor ?? context.appColor.primaryBlue,
           foregroundColor: context.appColor.primaryBlue,
           shape: RoundedRectangleBorder(
             side: BorderSide(color: borderSideColor ?? Colors.transparent),
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(6.r),
           ),
-          elevation: 0,
+          elevation: 3,
         ),
         child: isLoading
             ? SizedBox(
@@ -49,6 +49,23 @@ class PrimaryButton extends StatelessWidget {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 9.h),
+                    child: Row(
+                      children: [
+                        Text(
+                          label,
+                          style: context.appTypographie.small.copyWith(
+                            color: colorText,
+                            fontSize: fontSize ?? 16.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                        SizedBox(width: 4.w),
+                      ],
+                    ),
+                  ),
                   if (icon != null) ...[
                     Icon(
                       icon,
@@ -57,15 +74,6 @@ class PrimaryButton extends StatelessWidget {
                     ),
                     SizedBox(width: 7.w),
                   ],
-                  Text(
-                    label,
-                    style: context.appTypographie.small.copyWith(
-                      color: colorText,
-                      fontSize: fontSize ?? 16.sp,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
                 ],
               ),
       ),
