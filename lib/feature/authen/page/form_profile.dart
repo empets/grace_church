@@ -3,17 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
 
-class PersonneInformationScreen extends StatefulWidget {
-  const PersonneInformationScreen({super.key});
+class FormProfile extends StatefulWidget {
+  const FormProfile({super.key});
 
   @override
-  State<PersonneInformationScreen> createState() =>
-      _PersonneInformationScreenState();
+  State<FormProfile> createState() => _FormProfileState();
 }
 
-class _PersonneInformationScreenState extends State<PersonneInformationScreen> {
+class _FormProfileState extends State<FormProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,6 @@ class _PersonneInformationScreenState extends State<PersonneInformationScreen> {
             padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
             child: Column(
               children: [
-                // SizedBox(height: .h),
                 Stack(
                   children: [
                     Align(
@@ -67,12 +67,12 @@ class _PersonneInformationScreenState extends State<PersonneInformationScreen> {
                         onTap: () {},
                         child: Container(
                           margin: EdgeInsets.only(top: 4.h),
-                          padding: const EdgeInsets.all(2.0),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: context.appColor.primaryLightBlue,
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(Icons.edit, size: 10,),
+                          child: Icon(Icons.edit, size: 13.h),
                         ),
                       ),
                     ),
@@ -125,7 +125,7 @@ class _PersonneInformationScreenState extends State<PersonneInformationScreen> {
                   sufixIcon: IconButton(
                     onPressed: () {},
                     icon: Icon(
-                      Icons.date_range_rounded,
+                      Icons.calendar_month_sharp,
                       color: context.appColor.primaryBlue,
                     ),
                   ),
@@ -190,7 +190,11 @@ class _PersonneInformationScreenState extends State<PersonneInformationScreen> {
                     icon: Icons.arrow_forward_rounded,
                     backgroundColor: context.appColor.primaryBlue,
                     colorText: context.appColor.primaryWhite,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(
+                        context,
+                      ).push(fadeRoute(const FormSocialProfessionnal()));
+                    },
                   ),
                 ),
               ],

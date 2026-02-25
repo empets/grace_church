@@ -163,6 +163,7 @@ dependencies:
   flutter_doc_scanner: ^0.0.17
   scanner_document: any
   youtube_player_flutter: ^9.1.1
+  flutter_animation_progress_bar: ^2.3.1
  # gscankit: ^1.0.3
 
   

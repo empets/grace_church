@@ -38,7 +38,7 @@ class PrimaryButton extends StatelessWidget {
             side: BorderSide(color: borderSideColor ?? Colors.transparent),
             borderRadius: BorderRadius.circular(6.r),
           ),
-          elevation: 3,
+          elevation: 0,
         ),
         child: isLoading
             ? SizedBox(
@@ -48,6 +48,7 @@ class PrimaryButton extends StatelessWidget {
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 9.h),
@@ -62,14 +63,14 @@ class PrimaryButton extends StatelessWidget {
                             letterSpacing: 0.5,
                           ),
                         ),
-                        SizedBox(width: 4.w),
+                        SizedBox(width: 8.w),
                       ],
                     ),
                   ),
                   if (icon != null) ...[
                     Icon(
                       icon,
-                      size: 20.h,
+                      size: 13.h,
                       color: context.appColor.primaryWhite,
                     ),
                     SizedBox(width: 7.w),

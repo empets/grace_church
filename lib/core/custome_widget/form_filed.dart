@@ -23,6 +23,8 @@ class ProductionFormCustomer extends StatelessWidget {
     required this.inputLabel,
     this.inputStyle,
     this.sufixIcon,
+    this.isColorBlue = false,
+    this.inputLabelSize,
   });
 
   final void Function(String)? onChanged;
@@ -41,6 +43,8 @@ class ProductionFormCustomer extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? sufixIcon;
   final List<TextInputFormatter>? letSpace;
+  final bool isColorBlue;
+  final double? inputLabelSize;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +57,7 @@ class ProductionFormCustomer extends StatelessWidget {
               inputStyle ??
               context.appTypographie.small.copyWith(
                 color: Colors.grey.shade700,
+                fontSize: inputLabelSize ?? 14.sp,
                 fontWeight: FontWeight.bold,
               ),
         ),
@@ -85,7 +90,11 @@ class ProductionFormCustomer extends StatelessWidget {
             //'hintText: textLabel,'
             errorText: errorText,
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.withOpacity(.5)),
+              borderSide: BorderSide(
+                color: isColorBlue
+                    ? context.appColor.primaryLightBlue
+                    : Colors.grey.withOpacity(.5),
+              ),
               borderRadius: BorderRadius.circular(7.r),
             ),
             errorBorder: OutlineInputBorder(
@@ -97,7 +106,11 @@ class ProductionFormCustomer extends StatelessWidget {
               borderRadius: BorderRadius.circular(7.r),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.withOpacity(.5)),
+              borderSide: BorderSide(
+                color: isColorBlue
+                    ? context.appColor.primaryLightBlue
+                    : Colors.grey.withOpacity(.5),
+              ),
               gapPadding: 2,
               borderRadius: BorderRadius.circular(7.r),
             ),
@@ -121,6 +134,96 @@ class ProductionFormCustomer extends StatelessWidget {
           onChanged: onChanged,
         ),
       ],
+    );
+  }
+}
+
+
+
+
+class CustomSelectableTile extends StatelessWidget {
+  final String title;
+  final bool isChecked;
+  final ValueChanged<bool> onChanged;
+
+  const CustomSelectableTile({
+    super.key,
+    required this.title,
+    required this.isChecked,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final appColor = context.appColor;
+
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: isChecked
+              ? appColor.primaryBlue
+              : appColor.primaryLightBlue,
+        ),
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8.h),
+        child: Row(
+          children: [
+            /// Texte
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w700,
+                  color: appColor.primaryGrayDark,
+                ),
+              ),
+            ),
+
+            SizedBox(width: 10.w),
+
+            /// Checkbox custom
+            GestureDetector(
+              onTap: () => onChanged(!isChecked),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                height: 24.h,
+                width: 24.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6.r),
+                  color: isChecked
+                      ? appColor.primaryBlue
+                      : Colors.transparent,
+                  border: Border.all(
+                    color: appColor.primaryBlue,
+                    width: 2,
+                  ),
+                  boxShadow: isChecked
+                      ? [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                        ]
+                      : [],
+                ),
+                child: isChecked
+                    ? const Icon(
+                        Icons.check,
+                        size: 18,
+                        color: Colors.white,
+                      )
+                    : null,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
