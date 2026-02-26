@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
 
@@ -61,9 +62,6 @@ class _OverviewScreenState extends State<OverviewScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // SizedBox(height: 0.06.sh),
-
-                // AppBarCard
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,18 +75,16 @@ class _OverviewScreenState extends State<OverviewScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FormProfile(),
+                                builder: (context) => BlocProvider(
+                                  create: (context) => FormProfileBloc(),
+                                  child: FormProfile(),
+                                ),
                               ),
                             );
                           },
                           child: Container(
                             padding: EdgeInsets.all(1.r),
-                            decoration: BoxDecoration(
-                              // border: Border.all(
-                              //   color: context.appColor.primaryBlue,
-                              // ),
-                              shape: BoxShape.circle,
-                            ),
+                            decoration: BoxDecoration(shape: BoxShape.circle),
                             child: ClipOval(
                               child: Image.network(
                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyX6rjQ2cdCgpDJYXDBP8lNN1vlLlOl1hWLQ&s",
@@ -146,7 +142,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                   child: Stack(
                     children: [
                       SizedBox(
-                        width: 0.9.sw,
+                        width: double.infinity,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(7.r),
                           child: tube.YoutubePlayerBuilder(
@@ -222,7 +218,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                             CustomeText(
                               text: items['title'],
                               style: context.appTypographie.body.copyWith(
-                                fontSize: 14.sp,
+                                fontSize: 13.5.sp,
                                 color: Colors.black,
                                 letterSpacing: 0.sp,
                                 fontWeight: FontWeight.bold,
@@ -232,7 +228,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                             CustomeText(
                               text: items['decription'],
                               style: context.appTypographie.small.copyWith(
-                                fontSize: 11.sp,
+                                fontSize: 10.5.sp,
                                 letterSpacing: 0.sp,
                                 color: context.appColor.primaryGray700,
                               ),
@@ -253,7 +249,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                       children: [
                         CustomeText(
                           text: 'Upcoming Programs',
-                          style: context.appTypographie.subtitle.copyWith(
+                          style: context.appTypographie.body.copyWith(
                             letterSpacing: 0.sp,
                             color: context.appColor.primaryGrayDark,
                             fontWeight: FontWeight.w600,

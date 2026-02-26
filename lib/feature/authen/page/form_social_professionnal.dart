@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
+import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/authen/page/form_holly_living.dart';
@@ -18,6 +19,7 @@ class FormSocialProfessionnal extends StatefulWidget {
 
 class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
   late bool isSignUp = false;
+  late bool isChecking = false;
 
   late String selectedOptions = "";
   String? selectedOption;
@@ -408,9 +410,83 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                     ),
                   ],
                 ),
+                SizedBox(height: 9.h),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Situation",
+                      style: context.appTypographie.small.copyWith(
+                        color: Colors.grey.shade700,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 4.h),
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: context.appColor.primaryLightBlue,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          isExpanded: true,
+                          dropdownColor: context.appColor.primaryWhite,
+                          hint: Text(
+                            "Sélection votre status actuel",
+                            style: GoogleFonts.roboto(
+                              color: Colors.grey,
+                              fontSize: 14.sp,
+                            ),
+                          ),
+                          value: selectedValues,
+                          style: GoogleFonts.roboto(
+                            color: Colors.black,
+                            fontSize: 14.sp,
+                          ),
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: optionss
+                              .map(
+                                (item) => DropdownMenuItem<String>(
+                                  value: item["id"],
+                                  child: Text(item["label"]!),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              selectedValues = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 9.h),
+                CustomSelectableTile(
+                  title: "Veuillez cliquer le button si vous être orphelin",
+                  isChecked: isChecking,
+                  onChanged: (value) {
+                    setState(() {
+                      isChecking = value;
+                    });
+                  },
+                ),
+                SizedBox(height: 15.h),
+
+                FormNextTeps(
+                  icons: Icons.badge_rounded,
+                  title: 'Vie Spirituelle',
+                  description: 'Baptême, Cellule de maison',
+                  isNextForm: false,
+                ),
 
                 Container(
-                  margin: EdgeInsets.only(top: 30.h),
+                  margin: EdgeInsets.only(top: 19.h),
                   child: PrimaryButton(
                     label: 'Continuer',
                     icon: Icons.arrow_forward_rounded,

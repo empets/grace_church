@@ -458,6 +458,13 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                   ),
                 ),
 
+                FormNextTeps(
+                  icons: Icons.badge_rounded,
+                  title: 'Rejoindre un département',
+                  description: 'Choral, Masse média, Evangeliste',
+                  isNextForm: false,
+                ),
+
                 Container(
                   margin: EdgeInsets.only(top: 11.h),
                   child: PrimaryButton(
