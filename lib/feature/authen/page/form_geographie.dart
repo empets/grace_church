@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/geocoding/data/datasources/nominatim_datasource.dart';
 import 'package:grace_church/core/geocoding/data/repositories/geocoding_repository_impl.dart';
@@ -397,7 +398,7 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
                 markers: [
                   MapMarkerData(
                     location: _selectedLocation,
-                    color: Colors.black,
+                    color: context.appColor.primaryBlue,
                     size: 40,
                   ),
                 ],
@@ -422,7 +423,10 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
                   elevation: 4,
                   shape: const CircleBorder(),
                   child: InkWell(
-                    onTap: () => Navigator.maybePop(context),
+                    onTap: () => Navigator.maybePop(
+                      context,
+                      _addressController.text ,
+                    ),
                     borderRadius: BorderRadius.circular(24),
                     child: Container(
                       width: 48,

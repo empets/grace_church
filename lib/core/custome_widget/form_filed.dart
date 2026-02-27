@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 
+// Custome_formField
 class ProductionFormCustomer extends StatelessWidget {
   const ProductionFormCustomer({
     super.key,
@@ -138,9 +139,7 @@ class ProductionFormCustomer extends StatelessWidget {
   }
 }
 
-
-
-
+// Custome_checbox
 class CustomSelectableTile extends StatelessWidget {
   final String title;
   final bool isChecked;
@@ -162,9 +161,7 @@ class CustomSelectableTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12.w),
       decoration: BoxDecoration(
         border: Border.all(
-          color: isChecked
-              ? appColor.primaryBlue
-              : appColor.primaryLightBlue,
+          color: isChecked ? appColor.primaryBlue : Colors.grey.withOpacity(.5),
         ),
         borderRadius: BorderRadius.circular(10.r),
       ),
@@ -195,13 +192,8 @@ class CustomSelectableTile extends StatelessWidget {
                 width: 24.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.r),
-                  color: isChecked
-                      ? appColor.primaryBlue
-                      : Colors.transparent,
-                  border: Border.all(
-                    color: appColor.primaryBlue,
-                    width: 2,
-                  ),
+                  color: isChecked ? appColor.primaryBlue : Colors.transparent,
+                  border: Border.all(color: appColor.primaryBlue, width: 2),
                   boxShadow: isChecked
                       ? [
                           BoxShadow(
@@ -213,16 +205,57 @@ class CustomSelectableTile extends StatelessWidget {
                       : [],
                 ),
                 child: isChecked
-                    ? const Icon(
-                        Icons.check,
-                        size: 18,
-                        color: Colors.white,
-                      )
+                    ? const Icon(Icons.check, size: 18, color: Colors.white)
                     : null,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+//Custome_dropdown
+class CustomDropdown extends StatelessWidget {
+  const CustomDropdown({
+    super.key,
+    required this.hint,
+    required this.value,
+    required this.items,
+    required this.onChanged,
+    this.icons,
+  });
+  final String hint;
+  final String? value;
+  final List<Map<String, dynamic>> items;
+  final ValueChanged<String?> onChanged;
+  final IconData? icons;
+
+  @override
+  Widget build(BuildContext context) {
+    final appColor = context.appColor;
+
+    return DropdownButtonHideUnderline(
+      child: DropdownButton<String>(
+        isExpanded: true,
+        dropdownColor: appColor.primaryWhite,
+        hint: Text(
+          hint,
+          style: GoogleFonts.roboto(color: Colors.grey, fontSize: 14.sp),
+        ),
+        value: value,
+        style: GoogleFonts.roboto(color: Colors.black, fontSize: 14.sp),
+        icon: Icon(icons ?? Icons.keyboard_arrow_down),
+        items: items
+            .map(
+              (item) => DropdownMenuItem<String>(
+                value: item["id"],
+                child: Text(item["label"] ?? ""),
+              ),
+            )
+            .toList(),
+        onChanged: onChanged,
       ),
     );
   }

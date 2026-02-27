@@ -1,9 +1,11 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
@@ -26,8 +28,12 @@ class FormProfile extends StatefulWidget {
 
 class _FormProfileState extends State<FormProfile> {
   DateTime? selectedDate;
+  String? selectedValues;
 
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController textEditingControllerDateNaissance =
+      TextEditingController();
+  TextEditingController textEditingControllerZoneResidence =
+      TextEditingController();
 
   Future<void> _openCalendar() async {
     final DateTime? picked = await showDatePicker(
@@ -59,7 +65,9 @@ class _FormProfileState extends State<FormProfile> {
     if (picked != null) {
       setState(() {
         selectedDate = picked;
-        textEditingController.text = selectedDate.toString().substring(0, 10);
+        textEditingControllerDateNaissance.text = selectedDate
+            .toString()
+            .substring(0, 10);
       });
       context.read<FormProfileBloc>().add(
         EventCreateCompteProfile.changeDateNaissance(selectedDate.toString()),
@@ -117,7 +125,9 @@ class _FormProfileState extends State<FormProfile> {
                             padding: EdgeInsets.all(5.r),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                color: context.appColor.primaryLightBlue,
+                                color: imageFile != null
+                                    ? context.appColor.primaryLightBlue
+                                    : Colors.grey.withOpacity(.5),
                               ),
                               shape: BoxShape.circle,
                             ),
@@ -209,6 +219,7 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          isColorBlue: state.name.isValid ? true : false,
                           letSpace: [],
                           inputLabel: 'Nom Comple',
                           textLabel: 'Ex: jean-Baptise Koffi',
@@ -236,6 +247,7 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          isColorBlue: state.email.isValid ? true : false,
                           inputLabel: 'Email',
                           textLabel: 'Ex: emma@gmail.com',
                           errorText: state.email.isPure || state.email.isValid
@@ -262,6 +274,7 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          isColorBlue: state.contact.isValid ? true : false,
                           textInputType: TextInputType.number,
                           inputLabel: 'Contact ou numéro whatsapp',
                           textLabel: 'Ex: 0788884115',
@@ -290,8 +303,11 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          isColorBlue: state.dateNaissance.isValid
+                              ? true
+                              : false,
                           readOnly: true,
-                          controller: textEditingController,
+                          controller: textEditingControllerDateNaissance,
                           inputLabel: 'Date de naissance',
                           textLabel: "Cliquer sur l'icon juste à droite ",
                           errorText:
@@ -321,28 +337,46 @@ class _FormProfileState extends State<FormProfile> {
                     SizedBox(height: 8.h),
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
-                        return ProductionFormCustomer(
-                          inputLabel: 'Nationalité',
-                          textLabel: 'Ex: Ivoirienne',
-                          errorText:
-                              state.nationalite.isPure ||
-                                  state.nationalite.isValid
-                              ? null
-                              : '',
-                          msgError: 'Veuillez renseigner ce champ',
-                          prefixIcon: Icon(
-                            Icons.flag,
-                            color: context.appColor.primaryGray500.withValues(
-                              alpha: 0.6,
-                            ),
-                          ),
-                          onChanged: (nationnalite) {
-                            context.read<FormProfileBloc>().add(
-                              EventCreateCompteProfile.changeNationalite(
-                                nationnalite,
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 9.h),
+                            Text(
+                              "Nationalité",
+                              style: context.appTypographie.small.copyWith(
+                                color: Colors.grey.shade700,
+                                fontWeight: FontWeight.bold,
                               ),
-                            );
-                          },
+                            ),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 4.h),
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: state.nationalite.isValid
+                                      ? context.appColor.primaryLightBlue
+                                      : Colors.grey.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: CustomDropdown(
+                                hint: "Sélectionez votre nationalité",
+                                value: selectedValues,
+                                items: nationalites,
+                                icons: Icons.flag_outlined,
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    selectedValues = value;
+                                  });
+                                  context.read<FormProfileBloc>().add(
+                                    EventCreateCompteProfile.changeNationalite(
+                                      selectedValues.toString(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
                         );
                       },
                     ),
@@ -351,8 +385,12 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          controller: textEditingControllerZoneResidence,
+                          isColorBlue: state.zoneResidence.isValid
+                              ? true
+                              : false,
                           readOnly: true,
-                          inputLabel: 'Quartier/District',
+                          inputLabel: 'Zonde de résidence (Commune/Quartier)',
                           textLabel:
                               "Cliquer sur l'icon affichier votre position",
                           errorText:
@@ -361,26 +399,41 @@ class _FormProfileState extends State<FormProfile> {
                               ? null
                               : '',
                           msgError: 'Veuillez renseigner ce champ',
-                          sufixIcon: IconButton(
-                            onPressed: () {
-                              Navigator.of(
-                                context,
-                              ).push(fadeRoute(const FormGeographie()));
-                            },
-                            icon: Icon(
-                              Icons.location_on_rounded,
-                              color: context.appColor.primaryGray500.withValues(
-                                alpha: 0.6,
+                          sufixIcon: Container(
+                            margin: EdgeInsets.only(right: 3.w),
+                            decoration: BoxDecoration(
+                              color: context.appColor.primaryLightBlue,
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: IconButton(
+                              onPressed: () async {
+                                final filBack = await Navigator.of(context)
+                                    .push<dynamic>(
+                                      fadeRoute(const FormGeographie()),
+                                    );
+
+                                if (filBack != null &&
+                                    filBack.toString().trim().isNotEmpty) {
+                                  log('File back :: $filBack');
+                                  setState(() {
+                                    textEditingControllerZoneResidence.text =
+                                        filBack.toString();
+                                  });
+                                  context.read<FormProfileBloc>().add(
+                                    EventCreateCompteProfile.changeZoneResidence(
+                                      filBack.toString(),
+                                    ),
+                                  );
+                                }
+                              },
+                              icon: Icon(
+                                Icons.location_on,
+                                color: context.appColor.primaryBlue,
                               ),
                             ),
                           ),
-                          onChanged: (zoneResidence) {
-                            context.read<FormProfileBloc>().add(
-                              EventCreateCompteProfile.changeZoneResidence(
-                                zoneResidence,
-                              ),
-                            );
-                          },
+
+                          onChanged: (zoneResidence) {},
                         );
                       },
                     ),
@@ -400,7 +453,7 @@ class _FormProfileState extends State<FormProfile> {
                                   text: 'Prochaine étape',
                                   style: context.appTypographie.subtitle
                                       .copyWith(
-                                        color: context.appColor.primaryGray500,
+                                        color: context.appColor.primaryGray700,
                                         fontWeight: FontWeight.w600,
                                       ),
                                 ),
@@ -499,7 +552,9 @@ class FormNextTeps extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
                 decoration: BoxDecoration(
-                  color: context.appColor.primaryGray100,
+                  color: isNextForm
+                      ? context.appColor.primaryLightBlue
+                      : context.appColor.primaryGray100,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -544,9 +599,9 @@ class FormNextTeps extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 6.h),
             child: Icon(
-              Icons.lock,
+              isNextForm ? Icons.lock_open_rounded : Icons.lock,
               color: isNextForm
-                  ? context.appColor.primaryGray500.withValues(alpha: 0.5)
+                  ? context.appColor.primaryWhite
                   : context.appColor.primaryGray500.withValues(alpha: 0.1),
             ),
           ),

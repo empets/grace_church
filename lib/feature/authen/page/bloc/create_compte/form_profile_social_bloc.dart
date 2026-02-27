@@ -51,22 +51,10 @@ class CreateCompteProfileSocialBloc
 
       /// 🔥 SUBMIT
       case SubmitEventCreateCompteSocial():
-        if (!state.isValide) return;
-
-        emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-
-        try {
-          // TODO: appel API ici
-
+        if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.success));
-        } catch (e) {
-          emit(
-            state.copyWith(
-              status: FormzSubmissionStatus.failure,
-              errorMessage: e.toString(),
-            ),
-          );
         }
+
         break;
     }
   }
