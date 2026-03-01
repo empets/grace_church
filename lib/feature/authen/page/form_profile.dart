@@ -573,7 +573,7 @@ class FormNextTeps extends StatelessWidget {
                     CustomeText(
                       text: title,
                       style: context.appTypographie.body.copyWith(
-                        fontSize: 14.sp,
+                        fontSize: 13.sp,
                         color: isNextForm
                             ? Colors.grey.shade700
                             : Colors.grey.shade200,
@@ -583,7 +583,7 @@ class FormNextTeps extends StatelessWidget {
                     CustomeText(
                       text: description,
                       style: context.appTypographie.small.copyWith(
-                        fontSize: 12.sp,
+                        fontSize: 11.5.sp,
                         color: isNextForm
                             ? Colors.grey.shade500
                             : Colors.grey.shade200,

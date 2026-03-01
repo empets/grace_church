@@ -298,7 +298,7 @@ as bool,
 /// @nodoc
 mixin _$CreateCompteSocialState {
 
- TextFormz get activity; TextFormz get nivauEtude; TextFormz get matrimonial; TextFormz get orphelin; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get statusSocial; TextFormz get activity; TextFormz get nivauEtude; TextFormz get matrimonial; TextFormz get orphelin; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of CreateCompteSocialState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -309,16 +309,16 @@ $CreateCompteSocialStateCopyWith<CreateCompteSocialState> get copyWith => _$Crea
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCompteSocialState&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCompteSocialState&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,activity,nivauEtude,matrimonial,orphelin,status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,statusSocial,activity,nivauEtude,matrimonial,orphelin,status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'CreateCompteSocialState(activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'CreateCompteSocialState(statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -329,7 +329,7 @@ abstract mixin class $CreateCompteSocialStateCopyWith<$Res>  {
   factory $CreateCompteSocialStateCopyWith(CreateCompteSocialState value, $Res Function(CreateCompteSocialState) _then) = _$CreateCompteSocialStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz activity, TextFormz nivauEtude, TextFormz matrimonial, TextFormz orphelin, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz statusSocial, TextFormz activity, TextFormz nivauEtude, TextFormz matrimonial, TextFormz orphelin, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -346,9 +346,10 @@ class _$CreateCompteSocialStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCompteSocialState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? statusSocial = null,Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_self.copyWith(
-activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
+statusSocial: null == statusSocial ? _self.statusSocial : statusSocial // ignore: cast_nullable_to_non_nullable
+as TextFormz,activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
 as TextFormz,nivauEtude: null == nivauEtude ? _self.nivauEtude : nivauEtude // ignore: cast_nullable_to_non_nullable
 as TextFormz,matrimonial: null == matrimonial ? _self.matrimonial : matrimonial // ignore: cast_nullable_to_non_nullable
 as TextFormz,orphelin: null == orphelin ? _self.orphelin : orphelin // ignore: cast_nullable_to_non_nullable
@@ -440,10 +441,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz activity,  TextFormz nivauEtude,  TextFormz matrimonial,  TextFormz orphelin,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz statusSocial,  TextFormz activity,  TextFormz nivauEtude,  TextFormz matrimonial,  TextFormz orphelin,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateCompteSocialState() when $default != null:
-return $default(_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.status,_that.errorMessage,_that.isValide);case _:
   return orElse();
 
 }
@@ -461,10 +462,10 @@ return $default(_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz activity,  TextFormz nivauEtude,  TextFormz matrimonial,  TextFormz orphelin,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz statusSocial,  TextFormz activity,  TextFormz nivauEtude,  TextFormz matrimonial,  TextFormz orphelin,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _CreateCompteSocialState():
-return $default(_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.status,_that.errorMessage,_that.isValide);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -481,10 +482,10 @@ return $default(_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz activity,  TextFormz nivauEtude,  TextFormz matrimonial,  TextFormz orphelin,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz statusSocial,  TextFormz activity,  TextFormz nivauEtude,  TextFormz matrimonial,  TextFormz orphelin,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateCompteSocialState() when $default != null:
-return $default(_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.status,_that.errorMessage,_that.isValide);case _:
   return null;
 
 }
@@ -496,9 +497,10 @@ return $default(_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin
 
 
 class _CreateCompteSocialState implements CreateCompteSocialState {
-  const _CreateCompteSocialState({required this.activity, required this.nivauEtude, required this.matrimonial, required this.orphelin, required this.status, required this.errorMessage, required this.isValide});
+  const _CreateCompteSocialState({required this.statusSocial, required this.activity, required this.nivauEtude, required this.matrimonial, required this.orphelin, required this.status, required this.errorMessage, required this.isValide});
   
 
+@override final  TextFormz statusSocial;
 @override final  TextFormz activity;
 @override final  TextFormz nivauEtude;
 @override final  TextFormz matrimonial;
@@ -517,16 +519,16 @@ _$CreateCompteSocialStateCopyWith<_CreateCompteSocialState> get copyWith => __$C
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateCompteSocialState&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateCompteSocialState&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,activity,nivauEtude,matrimonial,orphelin,status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,statusSocial,activity,nivauEtude,matrimonial,orphelin,status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'CreateCompteSocialState(activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'CreateCompteSocialState(statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -537,7 +539,7 @@ abstract mixin class _$CreateCompteSocialStateCopyWith<$Res> implements $CreateC
   factory _$CreateCompteSocialStateCopyWith(_CreateCompteSocialState value, $Res Function(_CreateCompteSocialState) _then) = __$CreateCompteSocialStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz activity, TextFormz nivauEtude, TextFormz matrimonial, TextFormz orphelin, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz statusSocial, TextFormz activity, TextFormz nivauEtude, TextFormz matrimonial, TextFormz orphelin, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -554,9 +556,10 @@ class __$CreateCompteSocialStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCompteSocialState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? statusSocial = null,Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_CreateCompteSocialState(
-activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
+statusSocial: null == statusSocial ? _self.statusSocial : statusSocial // ignore: cast_nullable_to_non_nullable
+as TextFormz,activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
 as TextFormz,nivauEtude: null == nivauEtude ? _self.nivauEtude : nivauEtude // ignore: cast_nullable_to_non_nullable
 as TextFormz,matrimonial: null == matrimonial ? _self.matrimonial : matrimonial // ignore: cast_nullable_to_non_nullable
 as TextFormz,orphelin: null == orphelin ? _self.orphelin : orphelin // ignore: cast_nullable_to_non_nullable

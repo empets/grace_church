@@ -193,7 +193,7 @@ class CustomSelectableTile extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.r),
                   color: isChecked ? appColor.primaryBlue : Colors.transparent,
-                  border: Border.all(color: appColor.primaryBlue, width: 2),
+                  border: Border.all(color: isChecked ? appColor.primaryBlue : Colors.grey.withOpacity(.5), width: 2),
                   boxShadow: isChecked
                       ? [
                           BoxShadow(
@@ -251,7 +251,14 @@ class CustomDropdown extends StatelessWidget {
             .map(
               (item) => DropdownMenuItem<String>(
                 value: item["id"],
-                child: Text(item["label"] ?? ""),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item["label"] ?? "", style: GoogleFonts.roboto(color: Colors.black, fontSize: 12.sp)),
+                    if(item["sublabel"] != null && item["sublabel"].toString().trim().isNotEmpty)
+                    Text(item["sublabel"] ?? "", style: GoogleFonts.roboto(color: Colors.grey, fontSize:  11.sp)),
+                  ],
+                ),
               ),
             )
             .toList(),

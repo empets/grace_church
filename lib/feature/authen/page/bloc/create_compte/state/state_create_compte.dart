@@ -40,6 +40,7 @@ abstract class CreateCompteProfileState
 abstract class CreateCompteSocialState
     with _$CreateCompteSocialState {
   const factory CreateCompteSocialState({
+    required TextFormz statusSocial,
     required TextFormz activity,
     required TextFormz nivauEtude,
     required TextFormz matrimonial,
@@ -52,6 +53,7 @@ abstract class CreateCompteSocialState
 
   factory CreateCompteSocialState.initial() =>
       const CreateCompteSocialState(
+        statusSocial: TextFormz.pure(),
         activity: TextFormz.pure(),
         nivauEtude: TextFormz.pure(),
         matrimonial: TextFormz.pure(),

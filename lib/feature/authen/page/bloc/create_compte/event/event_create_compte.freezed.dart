@@ -751,10 +751,11 @@ extension EventCreateCompteSocialSocialPatterns on EventCreateCompteSocialSocial
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeActivityCreateCompteSocial value)?  changeActivity,TResult Function( ChangeNivauEtudeEventCreateCompteSocial value)?  changeNivauEtude,TResult Function( ChangeMatrimonialCreateCompte value)?  changeMatrimonial,TResult Function( ChangeOrphelinCreateCompte value)?  changeOrphelin,TResult Function( SubmitEventCreateCompteSocial value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeStatusSocialCreateCompteSocial value)?  changeStatusSocial,TResult Function( ChangeActivityCreateCompteSocial value)?  changeActivity,TResult Function( ChangeNivauEtudeEventCreateCompteSocial value)?  changeNivauEtude,TResult Function( ChangeMatrimonialCreateCompte value)?  changeMatrimonial,TResult Function( ChangeOrphelinCreateCompte value)?  changeOrphelin,TResult Function( SubmitEventCreateCompteSocial value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case ChangeActivityCreateCompteSocial() when changeActivity != null:
+case ChangeStatusSocialCreateCompteSocial() when changeStatusSocial != null:
+return changeStatusSocial(_that);case ChangeActivityCreateCompteSocial() when changeActivity != null:
 return changeActivity(_that);case ChangeNivauEtudeEventCreateCompteSocial() when changeNivauEtude != null:
 return changeNivauEtude(_that);case ChangeMatrimonialCreateCompte() when changeMatrimonial != null:
 return changeMatrimonial(_that);case ChangeOrphelinCreateCompte() when changeOrphelin != null:
@@ -777,10 +778,11 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeActivityCreateCompteSocial value)  changeActivity,required TResult Function( ChangeNivauEtudeEventCreateCompteSocial value)  changeNivauEtude,required TResult Function( ChangeMatrimonialCreateCompte value)  changeMatrimonial,required TResult Function( ChangeOrphelinCreateCompte value)  changeOrphelin,required TResult Function( SubmitEventCreateCompteSocial value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeStatusSocialCreateCompteSocial value)  changeStatusSocial,required TResult Function( ChangeActivityCreateCompteSocial value)  changeActivity,required TResult Function( ChangeNivauEtudeEventCreateCompteSocial value)  changeNivauEtude,required TResult Function( ChangeMatrimonialCreateCompte value)  changeMatrimonial,required TResult Function( ChangeOrphelinCreateCompte value)  changeOrphelin,required TResult Function( SubmitEventCreateCompteSocial value)  submit,}){
 final _that = this;
 switch (_that) {
-case ChangeActivityCreateCompteSocial():
+case ChangeStatusSocialCreateCompteSocial():
+return changeStatusSocial(_that);case ChangeActivityCreateCompteSocial():
 return changeActivity(_that);case ChangeNivauEtudeEventCreateCompteSocial():
 return changeNivauEtude(_that);case ChangeMatrimonialCreateCompte():
 return changeMatrimonial(_that);case ChangeOrphelinCreateCompte():
@@ -802,10 +804,11 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeActivityCreateCompteSocial value)?  changeActivity,TResult? Function( ChangeNivauEtudeEventCreateCompteSocial value)?  changeNivauEtude,TResult? Function( ChangeMatrimonialCreateCompte value)?  changeMatrimonial,TResult? Function( ChangeOrphelinCreateCompte value)?  changeOrphelin,TResult? Function( SubmitEventCreateCompteSocial value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeStatusSocialCreateCompteSocial value)?  changeStatusSocial,TResult? Function( ChangeActivityCreateCompteSocial value)?  changeActivity,TResult? Function( ChangeNivauEtudeEventCreateCompteSocial value)?  changeNivauEtude,TResult? Function( ChangeMatrimonialCreateCompte value)?  changeMatrimonial,TResult? Function( ChangeOrphelinCreateCompte value)?  changeOrphelin,TResult? Function( SubmitEventCreateCompteSocial value)?  submit,}){
 final _that = this;
 switch (_that) {
-case ChangeActivityCreateCompteSocial() when changeActivity != null:
+case ChangeStatusSocialCreateCompteSocial() when changeStatusSocial != null:
+return changeStatusSocial(_that);case ChangeActivityCreateCompteSocial() when changeActivity != null:
 return changeActivity(_that);case ChangeNivauEtudeEventCreateCompteSocial() when changeNivauEtude != null:
 return changeNivauEtude(_that);case ChangeMatrimonialCreateCompte() when changeMatrimonial != null:
 return changeMatrimonial(_that);case ChangeOrphelinCreateCompte() when changeOrphelin != null:
@@ -827,9 +830,10 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String activity)?  changeActivity,TResult Function( String nivauEtude)?  changeNivauEtude,TResult Function( String matrimonial)?  changeMatrimonial,TResult Function( String orphelin)?  changeOrphelin,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String statusSocial)?  changeStatusSocial,TResult Function( String activity)?  changeActivity,TResult Function( String nivauEtude)?  changeNivauEtude,TResult Function( String matrimonial)?  changeMatrimonial,TResult Function( String orphelin)?  changeOrphelin,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case ChangeActivityCreateCompteSocial() when changeActivity != null:
+case ChangeStatusSocialCreateCompteSocial() when changeStatusSocial != null:
+return changeStatusSocial(_that.statusSocial);case ChangeActivityCreateCompteSocial() when changeActivity != null:
 return changeActivity(_that.activity);case ChangeNivauEtudeEventCreateCompteSocial() when changeNivauEtude != null:
 return changeNivauEtude(_that.nivauEtude);case ChangeMatrimonialCreateCompte() when changeMatrimonial != null:
 return changeMatrimonial(_that.matrimonial);case ChangeOrphelinCreateCompte() when changeOrphelin != null:
@@ -852,9 +856,10 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String activity)  changeActivity,required TResult Function( String nivauEtude)  changeNivauEtude,required TResult Function( String matrimonial)  changeMatrimonial,required TResult Function( String orphelin)  changeOrphelin,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String statusSocial)  changeStatusSocial,required TResult Function( String activity)  changeActivity,required TResult Function( String nivauEtude)  changeNivauEtude,required TResult Function( String matrimonial)  changeMatrimonial,required TResult Function( String orphelin)  changeOrphelin,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
-case ChangeActivityCreateCompteSocial():
+case ChangeStatusSocialCreateCompteSocial():
+return changeStatusSocial(_that.statusSocial);case ChangeActivityCreateCompteSocial():
 return changeActivity(_that.activity);case ChangeNivauEtudeEventCreateCompteSocial():
 return changeNivauEtude(_that.nivauEtude);case ChangeMatrimonialCreateCompte():
 return changeMatrimonial(_that.matrimonial);case ChangeOrphelinCreateCompte():
@@ -876,9 +881,10 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String activity)?  changeActivity,TResult? Function( String nivauEtude)?  changeNivauEtude,TResult? Function( String matrimonial)?  changeMatrimonial,TResult? Function( String orphelin)?  changeOrphelin,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String statusSocial)?  changeStatusSocial,TResult? Function( String activity)?  changeActivity,TResult? Function( String nivauEtude)?  changeNivauEtude,TResult? Function( String matrimonial)?  changeMatrimonial,TResult? Function( String orphelin)?  changeOrphelin,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
-case ChangeActivityCreateCompteSocial() when changeActivity != null:
+case ChangeStatusSocialCreateCompteSocial() when changeStatusSocial != null:
+return changeStatusSocial(_that.statusSocial);case ChangeActivityCreateCompteSocial() when changeActivity != null:
 return changeActivity(_that.activity);case ChangeNivauEtudeEventCreateCompteSocial() when changeNivauEtude != null:
 return changeNivauEtude(_that.nivauEtude);case ChangeMatrimonialCreateCompte() when changeMatrimonial != null:
 return changeMatrimonial(_that.matrimonial);case ChangeOrphelinCreateCompte() when changeOrphelin != null:
@@ -888,6 +894,72 @@ return submit();case _:
 
 }
 }
+
+}
+
+/// @nodoc
+
+
+class ChangeStatusSocialCreateCompteSocial implements EventCreateCompteSocialSocial {
+   ChangeStatusSocialCreateCompteSocial(this.statusSocial);
+  
+
+ final  String statusSocial;
+
+/// Create a copy of EventCreateCompteSocialSocial
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeStatusSocialCreateCompteSocialCopyWith<ChangeStatusSocialCreateCompteSocial> get copyWith => _$ChangeStatusSocialCreateCompteSocialCopyWithImpl<ChangeStatusSocialCreateCompteSocial>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeStatusSocialCreateCompteSocial&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,statusSocial);
+
+@override
+String toString() {
+  return 'EventCreateCompteSocialSocial.changeStatusSocial(statusSocial: $statusSocial)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeStatusSocialCreateCompteSocialCopyWith<$Res> implements $EventCreateCompteSocialSocialCopyWith<$Res> {
+  factory $ChangeStatusSocialCreateCompteSocialCopyWith(ChangeStatusSocialCreateCompteSocial value, $Res Function(ChangeStatusSocialCreateCompteSocial) _then) = _$ChangeStatusSocialCreateCompteSocialCopyWithImpl;
+@useResult
+$Res call({
+ String statusSocial
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeStatusSocialCreateCompteSocialCopyWithImpl<$Res>
+    implements $ChangeStatusSocialCreateCompteSocialCopyWith<$Res> {
+  _$ChangeStatusSocialCreateCompteSocialCopyWithImpl(this._self, this._then);
+
+  final ChangeStatusSocialCreateCompteSocial _self;
+  final $Res Function(ChangeStatusSocialCreateCompteSocial) _then;
+
+/// Create a copy of EventCreateCompteSocialSocial
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? statusSocial = null,}) {
+  return _then(ChangeStatusSocialCreateCompteSocial(
+null == statusSocial ? _self.statusSocial : statusSocial // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
 
 }
 

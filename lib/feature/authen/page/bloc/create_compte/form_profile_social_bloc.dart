@@ -22,6 +22,14 @@ class CreateCompteProfileSocialBloc
         );
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
+        
+      case ChangeStatusSocialCreateCompteSocial(:final statusSocial):
+        final updatedState = state.copyWith(
+          statusSocial: TextFormz.dirty(statusSocial),
+          status: FormzSubmissionStatus.initial,
+        );
+        emit(updatedState.copyWith(isValide: _validate(updatedState)));
+        break;
 
       case ChangeNivauEtudeEventCreateCompteSocial(:final nivauEtude):
         final updatedState = state.copyWith(
@@ -62,6 +70,7 @@ class CreateCompteProfileSocialBloc
   /// 🔍 VALIDATION CENTRALISÉE (propre)
   bool _validate(CreateCompteSocialState s) {
     return Formz.validate([
+      s.statusSocial,
       s.activity,
       s.nivauEtude,
       s.matrimonial,

@@ -24,6 +24,8 @@ class EventCreateCompteProfile with _$EventCreateCompteProfile {
 
 @freezed
 class EventCreateCompteSocialSocial with _$EventCreateCompteSocialSocial {
+    factory EventCreateCompteSocialSocial.changeStatusSocial(String statusSocial) =
+      ChangeStatusSocialCreateCompteSocial;
   factory EventCreateCompteSocialSocial.changeActivity(String activity) =
       ChangeActivityCreateCompteSocial;
   factory EventCreateCompteSocialSocial.changeNivauEtude(String nivauEtude) =

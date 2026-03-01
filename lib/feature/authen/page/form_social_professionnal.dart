@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:formz/formz.dart';
+import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
-import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_holly_living.dart';
@@ -23,77 +23,29 @@ class FormSocialProfessionnal extends StatefulWidget {
 }
 
 class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
-  late bool isSignUp = false;
-  late bool isChecking = false;
+  late bool isChoose = false;
 
-  late String selectedOptions = "";
-  String? selectedOption;
+  late bool isCheckBoxSelected = false;
 
-  final List<Map<String, dynamic>> items = [
-    {
-      'title': 'Actif Service de restauration',
-      'subtitle': 'Service haut débit avec installation rapide',
-      'value': 'oui',
-    },
-    {
-      'title': 'Service de restauration non actif',
-      'subtitle': 'Support disponible 24h/24 et 7j/7',
-      'value': 'non',
-    },
-  ];
 
-  late String selectedOptionss = "";
-  String? selectedOptionsss;
+  String? secteurActiviteValues;
 
-  final List<Map<String, dynamic>> itemss = [
-    {
-      'title': 'Résidence neblé',
-      'subtitle': 'Service haut débit avec installation rapide',
-      'value': 'Hôtel',
-    },
-    {
-      'title': 'Hôtel',
-      'subtitle': 'Support disponible 24h/24 et 7j/7',
-      'value': 'Résidence',
-    },
-  ];
-
-  String? selectedValue;
-
-  final List<Map<String, String>> options = List.generate(
-    500, // 500 valeurs
-    (index) {
-      final int value = (index + 1) * 1000;
-      return {
-        "id": value.toString(),
-        "label":
-            "${value.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')} FCFA",
-      };
-    },
-  );
-
-  String? selectedValues;
-
-  final List<Map<String, String>> optionss = List.generate(
-    500, // 500 valeurs
-    (index) {
-      final int value = (index + 1) * 1000;
-      return {
-        "id": value.toString(),
-        "label":
-            "${value.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')} FCFA",
-      };
-    },
-  );
-
-  late bool isSelectedHotel = false;
+  String? educationLevelsValues;
+  String? situationMatrimonialeValues;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CreateCompteProfileSocialBloc(),
       child: BlocListener<CreateCompteProfileSocialBloc, CreateCompteSocialState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.status.isSuccess) {
+            Navigator.of(
+              context,
+            ).push(fadeRoute(const FormHollyLiving()));
+          }
+          
+        },
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
           body: SafeArea(
@@ -115,7 +67,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.pop(context);
+                                Navigator.of(context).pop();
                               },
                               child: Container(
                                 padding: EdgeInsets.only(
@@ -212,110 +164,142 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                       ),
                     ),
 
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 7.h),
-                      padding: EdgeInsets.symmetric(
-                        vertical: 6.h,
-                        horizontal: 8.w,
-                      ),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryLightBlue,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isSignUp = false;
-                                  });
-                                },
+                    BlocBuilder<
+                      CreateCompteProfileSocialBloc,
+                      CreateCompteSocialState
+                    >(
+                      builder: (context, state) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(vertical: 7.h),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 6.h,
+                            horizontal: 8.w,
+                          ),
+                          decoration: BoxDecoration(
+                            color: context.appColor.primaryLightBlue,
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
                                 child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 11.h,
-                                    horizontal: 9.w,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: !isSignUp
-                                        ? context.appColor.primaryBlue
-                                        : context.appColor.primaryWhite,
-                                    borderRadius: BorderRadius.circular(7.r),
-                                  ),
-                                  child: Text(
-                                    "Etudiant(e)",
-                                    style: context.appTypographie.small
-                                        .copyWith(
-                                          color: !isSignUp
-                                              ? context.appColor.primaryWhite
-                                              : context
-                                                    .appColor
-                                                    .primaryGrayDark,
-                                          fontSize: 12.4.sp,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 0.5,
+                                  decoration: BoxDecoration(),
+                                  child: GestureDetector(
+                                    onTap: () {
+
+                                      setState(() {
+                                        isChoose = false;
+                                      });
+                                      context
+                                          .read<CreateCompteProfileSocialBloc>()
+                                          .add(
+                                            ChangeStatusSocialCreateCompteSocial(
+                                              "Etudiant",
+                                            ),
+                                          );
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 11.h,
+                                        horizontal: 9.w,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: !isChoose
+                                            ? context.appColor.primaryBlue
+                                            : context.appColor.primaryWhite,
+                                        borderRadius: BorderRadius.circular(
+                                          7.r,
                                         ),
+                                      ),
+                                      child: Text(
+                                        "Etudiant(e)",
+                                        style: context.appTypographie.small
+                                            .copyWith(
+                                              color: !isChoose
+                                                  ? context
+                                                        .appColor
+                                                        .primaryWhite
+                                                  : context
+                                                        .appColor
+                                                        .primaryGrayDark,
+                                              fontSize: 12.4.sp,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 0.5,
+                                            ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(width: 20.w),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                boxShadow: isSignUp
-                                    ? [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.25),
-                                          blurRadius: 15,
-                                          spreadRadius: 2,
-                                          offset: const Offset(0, 8),
-                                        ),
-                                      ]
-                                    : null,
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isSignUp = true;
-                                  });
-                                },
+                              SizedBox(width: 20.w),
+                              Expanded(
                                 child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 11.h,
-                                    horizontal: 9.w,
-                                  ),
                                   decoration: BoxDecoration(
-                                    color: isSignUp
-                                        ? context.appColor.primaryBlue
-                                        : context.appColor.primaryWhite,
-                                    borderRadius: BorderRadius.circular(7.r),
+                                    boxShadow: isChoose
+                                        ? [
+                                            BoxShadow(
+                                              color: Colors.black.withOpacity(
+                                                0.25,
+                                              ),
+                                              blurRadius: 15,
+                                              spreadRadius: 2,
+                                              offset: const Offset(0, 8),
+                                            ),
+                                          ]
+                                        : null,
                                   ),
-                                  child: Text(
-                                    "Travailleur",
-                                    style: context.appTypographie.small
-                                        .copyWith(
-                                          color: isSignUp
-                                              ? context.appColor.primaryWhite
-                                              : context
-                                                    .appColor
-                                                    .primaryGrayDark,
-                                          fontSize: 12.4.sp,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 0.5,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isChoose = true;
+                                      });
+                                      context
+                                          .read<CreateCompteProfileSocialBloc>()
+                                          .add(
+                                            ChangeStatusSocialCreateCompteSocial(
+                                              "Professionnel",
+                                            ),
+                                          );
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 11.h,
+                                        horizontal: 9.w,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: isChoose
+                                            ? context.appColor.primaryBlue
+                                            : context.appColor.primaryWhite,
+                                        borderRadius: BorderRadius.circular(
+                                          7.r,
                                         ),
+                                      ),
+                                      child: Text(
+                                        "Travailleur",
+                                        style: context.appTypographie.small
+                                            .copyWith(
+                                              color: isChoose
+                                                  ? context
+                                                        .appColor
+                                                        .primaryWhite
+                                                  : context
+                                                        .appColor
+                                                        .primaryGrayDark,
+                                              fontSize: 12.4.sp,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 0.5,
+                                            ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
                     SizedBox(height: 0.03.sh),
 
@@ -346,16 +330,16 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: CustomDropdown(
-                                hint: "Sélectionnez un domaine",
-                                value: selectedValues,
-                                items: optionss,
+                                hint: "Sélectionnez un domaine ",
+                                value: secteurActiviteValues,
+                                items: secteurActivite,
                                 onChanged: (value) {
                                   setState(() {
-                                    selectedValues = value;
+                                    secteurActiviteValues = value;
                                   });
                                   context.read<CreateCompteProfileSocialBloc>().add(
                                     EventCreateCompteSocialSocial.changeActivity(
-                                      selectedValues.toString(),
+                                      value.toString(),
                                     ),
                                   );
                                 },
@@ -394,15 +378,62 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                               ),
                               child: CustomDropdown(
                                 hint: 'Votre niveau actuel',
-                                value: selectedValues,
-                                items: optionss,
+                                value: educationLevelsValues,
+                                items: educationLevels,
                                 onChanged: (String? value) {
                                   setState(() {
-                                    selectedValues = value;
+                                    educationLevelsValues = value;
                                   });
                                   context.read<CreateCompteProfileSocialBloc>().add(
                                     EventCreateCompteSocialSocial.changeNivauEtude(
-                                      selectedValues.toString(),
+                                      value.toString(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                     SizedBox(height: 9.h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Situation matrimoniale",
+                          style: context.appTypographie.small.copyWith(
+                            color: Colors.grey.shade700,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        BlocBuilder<
+                          CreateCompteProfileSocialBloc,
+                          CreateCompteSocialState
+                        >(
+                          builder: (context, state) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 4.h),
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: state.nivauEtude.isValid
+                                      ? context.appColor.primaryLightBlue
+                                      : Colors.grey.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: CustomDropdown(
+                                hint: 'Votre niveau actuel',
+                                value: situationMatrimonialeValues,
+                                items: situationMatrimoniale,
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    situationMatrimonialeValues = value;
+                                  });
+                                  context.read<CreateCompteProfileSocialBloc>().add(
+                                    EventCreateCompteSocialSocial.changeMatrimonial(
+                                      value.toString(),
                                     ),
                                   );
                                 },
@@ -422,20 +453,22 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                         return CustomSelectableTile(
                           title:
                               "Veuillez cliquer le button si vous être orphelin",
-                          isChecked: isChecking,
+                          isChecked: isCheckBoxSelected,
                           onChanged: (value) {
                             setState(() {
-                              isChecking = value;
+                              isCheckBoxSelected = value;
                             });
                             context.read<CreateCompteProfileSocialBloc>().add(
                               EventCreateCompteSocialSocial.changeOrphelin(
-                                value.toString(),
+                                value ? "Orphelin" : "Non orphelin",
                               ),
                             );
                           },
-                        );
+                        ); 
                       },
                     ),
+                    SizedBox(height: 9.h),
+
                     BlocBuilder<
                       CreateCompteProfileSocialBloc,
                       CreateCompteSocialState
@@ -444,25 +477,38 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                         return FormNextTeps(
                           icons: Icons.badge_rounded,
                           title: 'Vie Spirituelle ',
-                          description: 'Baptême, Cellule de maison',
+                          description: 'Baptême, Cellule de maisons',
                           isNextForm: state.isValide,
                         );
                       },
                     ),
-                    SizedBox(height: 15.h),
 
                     Container(
-                      margin: EdgeInsets.only(top: 19.h),
-                      child: PrimaryButton(
-                        label: 'Continuer',
-                        icon: Icons.arrow_forward_rounded,
-                        backgroundColor: context.appColor.primaryBlue,
-                        colorText: context.appColor.primaryWhite,
-                        onPressed: () {
-                          Navigator.of(
-                            context,
-                          ).push(fadeRoute(const FormHollyLiving()));
+                      margin: EdgeInsets.only(top: 15.h),
+                      child: BlocBuilder< CreateCompteProfileSocialBloc,
+                      CreateCompteSocialState>(
+                        builder: (context, state) {
+                          return PrimaryButton(
+                              isLoading: state.status.isInProgress,
+                                label: 'Continuer',
+                                icon: Icons.arrow_forward_rounded,
+                                backgroundColor:
+                                    state.status.isInProgress || state.isValide
+                                    ? context.appColor.primaryBlue
+                                    : context.appColor.primaryLightBlue,
+                                colorText: context.appColor.primaryWhite,
+                                onPressed: state.status.isInProgress
+                                    ? null
+                                    : () {
+                                        FocusScope.of(context).unfocus();
+                                        context.read<CreateCompteProfileSocialBloc>().add(
+                                          EventCreateCompteSocialSocial.submit(),
+                                        );
+                                      },
+                           
+                          );
                         },
+
                       ),
                     ),
                   ],
