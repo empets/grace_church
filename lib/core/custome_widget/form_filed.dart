@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 
 // Custome_formField
@@ -141,16 +142,17 @@ class ProductionFormCustomer extends StatelessWidget {
 
 // Custome_checbox
 class CustomSelectableTile extends StatelessWidget {
-  final String title;
-  final bool isChecked;
-  final ValueChanged<bool> onChanged;
-
-  const CustomSelectableTile({
+   CustomSelectableTile({
     super.key,
     required this.title,
     required this.isChecked,
     required this.onChanged,
+     this.readOnly = false,
   });
+    final String title;
+  final bool isChecked;
+  final ValueChanged<bool> onChanged;
+  late bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +187,7 @@ class CustomSelectableTile extends StatelessWidget {
 
             /// Checkbox custom
             GestureDetector(
-              onTap: () => onChanged(!isChecked),
+              onTap: readOnly? null:() => onChanged(!isChecked) ,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 250),
                 height: 24.h,
@@ -193,7 +195,12 @@ class CustomSelectableTile extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.r),
                   color: isChecked ? appColor.primaryBlue : Colors.transparent,
-                  border: Border.all(color: isChecked ? appColor.primaryBlue : Colors.grey.withOpacity(.5), width: 2),
+                  border: Border.all(
+                    color: isChecked
+                        ? appColor.primaryBlue
+                        : Colors.grey.withOpacity(.5),
+                    width: 2,
+                  ),
                   boxShadow: isChecked
                       ? [
                           BoxShadow(
@@ -218,19 +225,21 @@ class CustomSelectableTile extends StatelessWidget {
 
 //Custome_dropdown
 class CustomDropdown extends StatelessWidget {
-  const CustomDropdown({
+  CustomDropdown({
     super.key,
     required this.hint,
     required this.value,
     required this.items,
     required this.onChanged,
     this.icons,
+    this.readOnly = false,
   });
   final String hint;
   final String? value;
   final List<Map<String, dynamic>> items;
   final ValueChanged<String?> onChanged;
   final IconData? icons;
+  late bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -254,15 +263,124 @@ class CustomDropdown extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(item["label"] ?? "", style: GoogleFonts.roboto(color: Colors.black, fontSize: 12.sp)),
-                    if(item["sublabel"] != null && item["sublabel"].toString().trim().isNotEmpty)
-                    Text(item["sublabel"] ?? "", style: GoogleFonts.roboto(color: Colors.grey, fontSize:  11.sp)),
+                    SizedBox(height: 9.h),
+                    Text(
+                      item["label"] ?? "",
+                      style: GoogleFonts.roboto(
+                        color: Colors.black,
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                    if (item["sublabel"] != null &&
+                        item["sublabel"].toString().trim().isNotEmpty)
+                      Text(
+                        item["sublabel"] ?? "",
+                        style: GoogleFonts.roboto(
+                          color: Colors.grey,
+                          fontSize: 0.sp,
+                        ),
+                      ),
                   ],
                 ),
               ),
             )
             .toList(),
-        onChanged: onChanged,
+        onChanged: readOnly ? null : onChanged,
+      ),
+    );
+  }
+}
+
+class FormNextTeps extends StatelessWidget {
+  const FormNextTeps({
+    super.key,
+    required this.icons,
+    required this.title,
+    required this.description,
+    required this.isNextForm,
+  });
+
+  final IconData icons;
+  final String title;
+  final String description;
+  final bool isNextForm;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 9.h, horizontal: 10.w),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: context.appColor.primaryGray500.withValues(alpha: 0.2),
+        ),
+        color: context.appColor.primaryWhite,
+        borderRadius: BorderRadius.circular(7.r),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+                decoration: BoxDecoration(
+                  color: isNextForm
+                      ? context.appColor.primaryLightBlue
+                      : context.appColor.primaryGray100,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  icons,
+                  color: isNextForm
+                      ? context.appColor.primaryGray700.withValues(alpha: 0.5)
+                      : context.appColor.primaryGray700.withValues(alpha: 0.1),
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.only(left: 14.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomeText(
+                      text: title,
+                      style: context.appTypographie.body.copyWith(
+                        fontSize: 13.sp,
+                        color: isNextForm
+                            ? Colors.grey.shade700
+                            : Colors.grey.shade200,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    CustomeText(
+                      text: description,
+                      style: context.appTypographie.small.copyWith(
+                        fontSize: 11.5.sp,
+                        color: isNextForm
+                            ? Colors.grey.shade500
+                            : Colors.grey.shade200,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          Container(
+            margin: EdgeInsets.only(top: 6.h),
+            child: Icon(
+              isNextForm ? Icons.lock_open_rounded : Icons.lock,
+              color: isNextForm
+                  ? context.appColor.primaryWhite
+                  : context.appColor.primaryGray500.withValues(alpha: 0.1),
+            ),
+          ),
+        ],
       ),
     );
   }

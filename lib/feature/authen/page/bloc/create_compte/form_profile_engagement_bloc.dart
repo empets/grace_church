@@ -4,9 +4,9 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:bloc/bloc.dart';
 
-class CreateComteProfileSpiritualLifeBloc
+class CreateComteProfileEngagementBloc
     extends Bloc<EventCreateCompteEngagment, CreateCompteEngagementState> {
-  CreateComteProfileSpiritualLifeBloc()
+  CreateComteProfileEngagementBloc()
     : super(CreateCompteEngagementState.initial()) {
     on<EventCreateCompteEngagment>(engagement);
   }
@@ -65,6 +65,9 @@ class CreateComteProfileSpiritualLifeBloc
         break;
 
       case SubmitEventCreateCompteEngagment():
+        if (state.isValide) {
+          emit(state.copyWith(status: FormzSubmissionStatus.success));
+        }
         break;
     }
   }

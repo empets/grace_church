@@ -15,7 +15,8 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_geographie.dart';
-import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
+import 'package:grace_church/feature/authen/page/form_social_professionnal.dart'
+    hide FormNextTeps;
 import 'package:image_picker/image_picker.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -41,6 +42,19 @@ class _FormProfileState extends State<FormProfile> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
+      selectableDayPredicate: (day) {
+        // Bloquer dates futures
+        if (day.isAfter(DateTime.now())) {
+          return false;
+        }
+
+        // Bloquer date spécifique
+        if (day.year == 2024 && day.month == 12 && day.day == 25) {
+          return false;
+        }
+
+        return true;
+      },
 
       /// 🎨 Custom Theme
       builder: (context, child) {
@@ -175,7 +189,9 @@ class _FormProfileState extends State<FormProfile> {
                               >(
                                 builder: (context, state) {
                                   return GestureDetector(
-                                    onTap: pickImage,
+                                    onTap: state.status.isInProgress
+                                        ? () {}
+                                        : pickImage,
                                     child: Container(
                                       margin: EdgeInsets.only(top: 4.h),
                                       padding: const EdgeInsets.all(10),
@@ -220,6 +236,7 @@ class _FormProfileState extends State<FormProfile> {
                       builder: (context, state) {
                         return ProductionFormCustomer(
                           isColorBlue: state.name.isValid ? true : false,
+                          readOnly: state.status.isInProgress,
                           letSpace: [],
                           inputLabel: 'Nom Comple',
                           textLabel: 'Ex: jean-Baptise Koffi',
@@ -247,6 +264,7 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          readOnly: state.status.isInProgress,
                           isColorBlue: state.email.isValid ? true : false,
                           inputLabel: 'Email',
                           textLabel: 'Ex: emma@gmail.com',
@@ -274,6 +292,7 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          readOnly: state.status.isInProgress,
                           isColorBlue: state.contact.isValid ? true : false,
                           textInputType: TextInputType.number,
                           inputLabel: 'Contact ou numéro whatsapp',
@@ -306,7 +325,7 @@ class _FormProfileState extends State<FormProfile> {
                           isColorBlue: state.dateNaissance.isValid
                               ? true
                               : false,
-                          readOnly: true,
+                          readOnly: state.status.isInProgress,
                           controller: textEditingControllerDateNaissance,
                           inputLabel: 'Date de naissance',
                           textLabel: "Cliquer sur l'icon juste à droite ",
@@ -360,6 +379,7 @@ class _FormProfileState extends State<FormProfile> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: CustomDropdown(
+                                readOnly: state.status.isInProgress,
                                 hint: "Sélectionez votre nationalité",
                                 value: selectedValues,
                                 items: nationalites,
@@ -385,11 +405,12 @@ class _FormProfileState extends State<FormProfile> {
                     BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
                       builder: (context, state) {
                         return ProductionFormCustomer(
+                          
                           controller: textEditingControllerZoneResidence,
                           isColorBlue: state.zoneResidence.isValid
                               ? true
                               : false,
-                          readOnly: true,
+                          readOnly: state.status.isInProgress,
                           inputLabel: 'Zonde de résidence (Commune/Quartier)',
                           textLabel:
                               "Cliquer sur l'icon affichier votre position",
@@ -511,101 +532,6 @@ class _FormProfileState extends State<FormProfile> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class FormNextTeps extends StatelessWidget {
-  const FormNextTeps({
-    super.key,
-    required this.icons,
-    required this.title,
-    required this.description,
-    required this.isNextForm,
-  });
-
-  final IconData icons;
-  final String title;
-  final String description;
-  final bool isNextForm;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 9.h, horizontal: 10.w),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: context.appColor.primaryGray500.withValues(alpha: 0.2),
-        ),
-        color: context.appColor.primaryWhite,
-        borderRadius: BorderRadius.circular(7.r),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                decoration: BoxDecoration(
-                  color: isNextForm
-                      ? context.appColor.primaryLightBlue
-                      : context.appColor.primaryGray100,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icons,
-                  color: isNextForm
-                      ? context.appColor.primaryGray700.withValues(alpha: 0.5)
-                      : context.appColor.primaryGray700.withValues(alpha: 0.1),
-                ),
-              ),
-
-              Container(
-                margin: EdgeInsets.only(left: 14.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomeText(
-                      text: title,
-                      style: context.appTypographie.body.copyWith(
-                        fontSize: 13.sp,
-                        color: isNextForm
-                            ? Colors.grey.shade700
-                            : Colors.grey.shade200,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    CustomeText(
-                      text: description,
-                      style: context.appTypographie.small.copyWith(
-                        fontSize: 11.5.sp,
-                        color: isNextForm
-                            ? Colors.grey.shade500
-                            : Colors.grey.shade200,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-          Container(
-            margin: EdgeInsets.only(top: 6.h),
-            child: Icon(
-              isNextForm ? Icons.lock_open_rounded : Icons.lock,
-              color: isNextForm
-                  ? context.appColor.primaryWhite
-                  : context.appColor.primaryGray500.withValues(alpha: 0.1),
-            ),
-          ),
-        ],
       ),
     );
   }

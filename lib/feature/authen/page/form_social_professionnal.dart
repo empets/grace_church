@@ -11,8 +11,10 @@ import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
-import 'package:grace_church/feature/authen/page/form_holly_living.dart';
+import 'package:grace_church/feature/authen/page/form_holly_living.dart'
+    hide FormNextTeps;
 
 class FormSocialProfessionnal extends StatefulWidget {
   const FormSocialProfessionnal({super.key});
@@ -27,7 +29,6 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
 
   late bool isCheckBoxSelected = false;
 
-
   String? secteurActiviteValues;
 
   String? educationLevelsValues;
@@ -40,11 +41,15 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
       child: BlocListener<CreateCompteProfileSocialBloc, CreateCompteSocialState>(
         listener: (context, state) {
           if (state.status.isSuccess) {
-            Navigator.of(
-              context,
-            ).push(fadeRoute(const FormHollyLiving()));
+            Navigator.of(context).push(
+              fadeRoute(
+                BlocProvider(
+                  create: (context) => CreateComteProfileSpiritualLifeBloc(),
+                  child: FormHollyLiving(),
+                ),
+              ),
+            );
           }
-          
         },
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
@@ -149,7 +154,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                       style: context.appTypographie.small.copyWith(
                         fontSize: 12.sp,
                         color: context.appColor.primaryGray500,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     SizedBox(height: 0.01.sh),
@@ -186,7 +191,6 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                                   decoration: BoxDecoration(),
                                   child: GestureDetector(
                                     onTap: () {
-
                                       setState(() {
                                         isChoose = false;
                                       });
@@ -330,6 +334,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: CustomDropdown(
+                                readOnly: state.status.isInProgress,
                                 hint: "Sélectionnez un domaine ",
                                 value: secteurActiviteValues,
                                 items: secteurActivite,
@@ -377,6 +382,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: CustomDropdown(
+                                readOnly: state.status.isInProgress,
                                 hint: 'Votre niveau actuel',
                                 value: educationLevelsValues,
                                 items: educationLevels,
@@ -396,7 +402,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                         ),
                       ],
                     ),
-                     SizedBox(height: 9.h),
+                    SizedBox(height: 9.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -424,6 +430,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: CustomDropdown(
+                                readOnly: state.status.isInProgress,
                                 hint: 'Votre niveau actuel',
                                 value: situationMatrimonialeValues,
                                 items: situationMatrimoniale,
@@ -451,6 +458,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                     >(
                       builder: (context, state) {
                         return CustomSelectableTile(
+                          readOnly: state.status.isInProgress,
                           title:
                               "Veuillez cliquer le button si vous être orphelin",
                           isChecked: isCheckBoxSelected,
@@ -464,7 +472,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                               ),
                             );
                           },
-                        ); 
+                        );
                       },
                     ),
                     SizedBox(height: 9.h),
@@ -485,11 +493,14 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
 
                     Container(
                       margin: EdgeInsets.only(top: 15.h),
-                      child: BlocBuilder< CreateCompteProfileSocialBloc,
-                      CreateCompteSocialState>(
-                        builder: (context, state) {
-                          return PrimaryButton(
-                              isLoading: state.status.isInProgress,
+                      child:
+                          BlocBuilder<
+                            CreateCompteProfileSocialBloc,
+                            CreateCompteSocialState
+                          >(
+                            builder: (context, state) {
+                              return PrimaryButton(
+                                isLoading: state.status.isInProgress,
                                 label: 'Continuer',
                                 icon: Icons.arrow_forward_rounded,
                                 backgroundColor:
@@ -501,15 +512,17 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                                     ? null
                                     : () {
                                         FocusScope.of(context).unfocus();
-                                        context.read<CreateCompteProfileSocialBloc>().add(
-                                          EventCreateCompteSocialSocial.submit(),
-                                        );
+                                        context
+                                            .read<
+                                              CreateCompteProfileSocialBloc
+                                            >()
+                                            .add(
+                                              EventCreateCompteSocialSocial.submit(),
+                                            );
                                       },
-                           
-                          );
-                        },
-
-                      ),
+                              );
+                            },
+                          ),
                     ),
                   ],
                 ),
@@ -517,99 +530,6 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class FormNextTeps extends StatelessWidget {
-  const FormNextTeps({
-    super.key,
-    required this.icons,
-    required this.title,
-    required this.description,
-    required this.isNextForm,
-  });
-
-  final IconData icons;
-  final String title;
-  final String description;
-  final bool isNextForm;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 9.h, horizontal: 10.w),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: context.appColor.primaryGray500.withValues(alpha: 0.2),
-        ),
-        color: context.appColor.primaryWhite,
-        borderRadius: BorderRadius.circular(7.r),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                decoration: BoxDecoration(
-                  color: context.appColor.primaryGray100,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icons,
-                  color: isNextForm
-                      ? context.appColor.primaryGray700.withValues(alpha: 0.5)
-                      : context.appColor.primaryGray700.withValues(alpha: 0.1),
-                ),
-              ),
-
-              Container(
-                margin: EdgeInsets.only(left: 14.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomeText(
-                      text: title,
-                      style: context.appTypographie.body.copyWith(
-                        fontSize: 14.sp,
-                        color: isNextForm
-                            ? Colors.grey.shade700
-                            : Colors.grey.shade200,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    CustomeText(
-                      text: description,
-                      style: context.appTypographie.small.copyWith(
-                        fontSize: 12.sp,
-                        color: isNextForm
-                            ? Colors.grey.shade500
-                            : Colors.grey.shade200,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-          Container(
-            margin: EdgeInsets.only(top: 6.h),
-            child: Icon(
-              Icons.lock,
-              color: isNextForm
-                  ? context.appColor.primaryGray500.withValues(alpha: 0.5)
-                  : context.appColor.primaryGray500.withValues(alpha: 0.1),
-            ),
-          ),
-        ],
       ),
     );
   }
