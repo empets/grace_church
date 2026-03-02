@@ -186,6 +186,32 @@ dev_dependencies:
   smooth_page_indicator: ^1.2.1
   icons_launcher: ^3.0.3
 
+
+
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon_launcher/icon.png"
+  remove_alpha_ios: true  # recommandé pour éviter le rejet App Store
+
+# to rebuild assets : flutter packages pub run build_runner build
+flutter_gen:
+  # output: lib/gen/ # Optional (default: lib/gen/)
+  line_length: 80 # Optional (default: 80)
+
+  integrations:
+    flutter_svg: true
+    lottie: true
+
+  assets:
+    enabled: true
+
+    outputs:
+      package_parameter_enabled: true
+      class_name: assets
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -207,7 +233,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/icons/
+    - assets/icon_launcher/
     - assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see

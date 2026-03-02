@@ -26,3 +26,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Cette CMd permet de lancer l'application en mode release
 -  flutter run --release
+
+## Cette CMd permet de generer une nouvelle icone launcher pour l'application
+-  flutter pub run flutter_launcher_icons
