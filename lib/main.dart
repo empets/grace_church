@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/global_params/global_params.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/core/observer/observer.dart';
 import 'package:grace_church/core/style/app_theme.dart';
 import 'package:grace_church/feature/home/overview.dart';
@@ -8,20 +11,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: FirebaseOptions(
-  //     apiKey: GlobalParams.apiKey,
-  //     appId: GlobalParams.appId,
-  //     messagingSenderId: GlobalParams.messagingSenderId,
-  //     projectId: GlobalParams.projectId,
-  //     storageBucket: GlobalParams.storageBucket,
-  //   ),
-  // );
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: GlobalParams.apiKey,
+      appId: GlobalParams.appId,
+      messagingSenderId: GlobalParams.messagingSenderId,
+      projectId: GlobalParams.projectId,
+      storageBucket: GlobalParams.storageBucket,
+    ),
+  );
   Bloc.observer = SimpleBlocObserver();
-  // await configureDependencies();
-  // await FirebaseAppCheck.instance.activate(
-  //   androidProvider: AndroidProvider.debug,
-  // );
+  Bloc.observer = SimpleBlocObserver();
+   await configureDependencies();
+
 
   runApp(const MyApp());
 }
