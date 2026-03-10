@@ -1,14 +1,19 @@
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:bloc/bloc.dart';
 
 class FormProfileBloc
     extends Bloc<EventCreateCompteProfile, CreateCompteProfileState> {
-  FormProfileBloc() : super(CreateCompteProfileState.initial()) {
+  FormProfileBloc({required this.createProfileUsercase})
+    : super(CreateCompteProfileState.initial()) {
     on<EventCreateCompteProfile>(createProfile);
   }
+
+  final CreateProfileUsercase createProfileUsercase;
 
   Future<void> createProfile(
     EventCreateCompteProfile event,
@@ -157,7 +162,29 @@ class FormProfileBloc
 
       case ChangeSubmitCreateCompte():
         if (state.isValide) {
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+          final response = await createProfileUsercase.call(
+            RequestAuthenProfile(
+              name: state.name.value,
+              dateNaissance: state.dateNaissance.value,
+              zoneResidence: state.zoneResidence.value,
+              profileImage: state.profileImage.value,
+              contact: state.contact.value,
+              email: state.email.value,
+              nationalite: state.nationalite.value,
+              dateInscription: DateTime.now().toString(),
+            ),
+          );
+
+          emit(
+            response.fold(
+              (failure) =>
+                  state.copyWith(status: FormzSubmissionStatus.failure),
+              (success) =>
+                  state.copyWith(status: FormzSubmissionStatus.success),
+            ),
+          );
         }
         break;
     }

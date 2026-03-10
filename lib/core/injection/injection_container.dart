@@ -1,0 +1,103 @@
+
+import 'package:firebase_database/firebase_database.dart' as databaseReference;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get_it/get_it.dart';
+import 'package:grace_church/core/injection/injection_container.config.dart';
+import 'package:http/http.dart' as http;
+import 'package:http_interceptor/http/intercepted_client.dart';
+import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart' as shareData;
+//import 'injection.config.dart'; // généré
+
+final GetIt getIt = GetIt.instance;
+
+@InjectableInit(
+  initializerName: 'init', // default
+  preferRelativeImports: true, // default
+  asExtension: true, // default
+)
+Future<void> configureDependencies() => getIt.init();
+Future<void> configureDependenciesTest() async {}
+
+@module
+abstract class InjectableModule {
+  @lazySingleton
+  databaseReference.DatabaseReference get userDb =>
+      databaseReference.FirebaseDatabase.instance.ref();
+  @preResolve
+  @lazySingleton
+  Future<shareData.SharedPreferences> locaDataShared() async {
+    final sharePreference = await shareData.SharedPreferences.getInstance();
+    return sharePreference;
+  }
+
+  // final sharedPreferences = await SharedPreferences.getInstance();
+
+  @lazySingleton
+  http.Client get httpClient => InterceptedClient.build(
+    interceptors: [
+      // AuthInterceptor(getIt(), getIt()),
+      // LoggingInterceptor(),
+    ],
+    client: http.Client(),
+    // retryPolicy: ExpiredTokenRetryPolicy(getIt(), getIt()),
+  );
+
+  // @lazySingleton
+  // Future<shareData.SharedPreferences> get sharedPreferences =>
+  //     shareData.SharedPreferences.getInstance();
+
+  // @injectable
+  // Future<AppRoute> appRoute() async => AppRoute(
+  //   sharedPreferences: getIt<shareData.SharedPreferences>(),
+  //   appRouteBloc: getIt<AppRouteBloc>(),
+  // );
+
+  // @lazySingleton
+  // FirebaseService get firebaseService => FirebaseService();
+
+  @lazySingleton
+  FlutterSecureStorage get prefs => const FlutterSecureStorage();
+
+  // @lazySingleton
+  // InternetConnectionChecker get network => InternetConnectionChecker.instance;
+
+  // @lazySingleton
+  // NetworkInfo get networkInfo => NetworkInfo();
+
+  // //MapController
+
+  // @lazySingleton
+  // MapController get mapController => MapController();
+
+  // @lazySingleton
+  // Connectivity get connectivity => Connectivity();
+
+  // @lazySingleton
+  // Location get location => Location();
+
+  // @lazySingleton
+  // GoogleSignIn get googleSignIn => GoogleSignIn();
+
+  // @lazySingleton
+  // FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
+  // @lazySingleton
+  // FirebaseMessagingService get firebaseMessagingService =>
+  //     FirebaseMessagingService.instance;
+
+  // @lazySingleton
+  // DeviceInfoPlugin get deviceInfoPlugin => DeviceInfoPlugin();
+
+  // @lazySingleton
+  // FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
+
+  // @lazySingleton
+  // ImagePicker get picker => ImagePicker();
+}
+
+// abstract class Env {
+//   static const test = 'test';
+//   static const dev = 'dev';
+//   static const prod = 'prod';
+// }

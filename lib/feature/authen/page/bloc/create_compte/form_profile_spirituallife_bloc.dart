@@ -1,5 +1,7 @@
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:bloc/bloc.dart';
@@ -7,15 +9,18 @@ import 'package:bloc/bloc.dart';
 class CreateComteProfileSpiritualLifeBloc
     extends
         Bloc<EventCreateCompteSpiritualLife, CreateCompteSpiritualLifeState> {
-  CreateComteProfileSpiritualLifeBloc()
-    : super(CreateCompteSpiritualLifeState.initial()) {
+  CreateComteProfileSpiritualLifeBloc({
+    required this.createSpiritualProfileUsercase,
+  }) : super(CreateCompteSpiritualLifeState.initial()) {
     on<EventCreateCompteSpiritualLife>(_onEvent);
   }
+
+  final CreateSpiritualProfileUsercase createSpiritualProfileUsercase;
 
   void _onEvent(
     EventCreateCompteSpiritualLife event,
     Emitter<CreateCompteSpiritualLifeState> emit,
-  ) {
+  ) async {
     switch (event) {
       case ChangeStatusSpirituelCreateCompteSocial(:final statusSpirituel):
         final statusInput = TextFormz.dirty(statusSpirituel);
@@ -88,27 +93,31 @@ class CreateComteProfileSpiritualLifeBloc
         break;
 
       case SubmitEventCreateCompteSpiritualLife():
-        if (!state.isValide) return;
+        if (state.isValide)
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-        emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+        final response = await createSpiritualProfileUsercase.call(
+          RequestAuthenSpiritualLife(
+            statusSpirituel: state.statusSpirituel.value,
+            dateBaptme: state.dateBaptme.value,
+            cellulePriere: state.cellulePriere.value,
+            encadreur: state.encadreur.value,
+          ),
+        );
 
-        try {
-          // TODO: appel API
-
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
-        } catch (e) {
-          emit(
-            state.copyWith(
+        emit(
+          response.fold(
+            (failure) => state.copyWith(
+              errorMessage: failure.toString(),
               status: FormzSubmissionStatus.failure,
-              errorMessage: e.toString(),
             ),
-          );
-        }
+            (success) => state.copyWith(status: FormzSubmissionStatus.success),
+          ),
+        );
+
         break;
 
       default:
     }
   }
-
- 
 }

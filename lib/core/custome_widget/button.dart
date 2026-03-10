@@ -44,7 +44,10 @@ class PrimaryButton extends StatelessWidget {
             ? SizedBox(
                 width: 24,
                 height: 24,
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: context.appColor.primaryBlue,
+                  backgroundColor: context.appColor.primaryWhite,
+                ),
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,

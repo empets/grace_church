@@ -1,9 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -11,7 +12,6 @@ import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
-import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_engagement_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_engagement.dart'
@@ -327,13 +327,26 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                 setState(() {
                                   statutMenberValue = value;
                                 });
+                                log('statutMenberValue: $value');
                                 context
                                     .read<CreateComteProfileSpiritualLifeBloc>()
                                     .add(
                                       EventCreateCompteSpiritualLife.changeStatusSpirituel(
-                                        statutMenberValue.toString(),
+                                        value.toString(),
                                       ),
                                     );
+                                if (state.statusSpirituel.value.toLowerCase() !=
+                                    "baptiser") {
+                                  context
+                                      .read<
+                                        CreateComteProfileSpiritualLifeBloc
+                                      >()
+                                      .add(
+                                        EventCreateCompteSpiritualLife.changeDateBaptme(
+                                          "NA",
+                                        ),
+                                      );
+                                }
                               },
                             ),
                           );
@@ -373,7 +386,7 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                       >(
                         builder: (context, state) {
                           return ProductionFormCustomer(
-                            readOnly: state.status.isInProgress,
+                            readOnly: true,
                             inputLabelSize: 0.sp,
                             isColorBlue: state.dateBaptme.isValid
                                 ? true
@@ -394,9 +407,24 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                 borderRadius: BorderRadius.circular(8.r),
                               ),
                               child: IconButton(
-                                onPressed: _openCalendar,
+                                onPressed:
+                                    state.status.isInProgress ||
+                                        state.statusSpirituel.value
+                                                .toLowerCase() !=
+                                            "baptiser"
+                                    ? null
+                                    : () {
+                                        if (state.statusSpirituel.value
+                                                .toLowerCase() ==
+                                            "baptiser") {
+                                          _openCalendar();
+                                        }
+                                      },
                                 icon: Icon(
-                                  Icons.calendar_month_sharp,
+                                  state.statusSpirituel.value.toLowerCase() ==
+                                          "baptiser"
+                                      ? Icons.calendar_month_sharp
+                                      : Icons.lock,
                                   color: context.appColor.primaryBlue,
                                 ),
                               ),

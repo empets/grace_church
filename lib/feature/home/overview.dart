@@ -1,11 +1,16 @@
+import 'dart:math' as math;
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
+import 'package:badges/badges.dart' as badges;
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({super.key});
@@ -76,7 +81,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => BlocProvider(
-                                  create: (context) => FormProfileBloc(),
+                                  create: (context) => FormProfileBloc(createProfileUsercase: getIt<CreateProfileUsercase>()),
                                   child: FormProfile(),
                                 ),
                               ),
@@ -453,3 +458,4 @@ class _OverviewScreenState extends State<OverviewScreen> {
     );
   }
 }
+

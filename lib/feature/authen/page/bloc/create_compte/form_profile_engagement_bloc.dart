@@ -1,15 +1,20 @@
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_profile_engagement.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:bloc/bloc.dart';
 
 class CreateComteProfileEngagementBloc
     extends Bloc<EventCreateCompteEngagment, CreateCompteEngagementState> {
-  CreateComteProfileEngagementBloc()
-    : super(CreateCompteEngagementState.initial()) {
+  CreateComteProfileEngagementBloc({
+    required this.createEngagementProfileUsercase,
+  }) : super(CreateCompteEngagementState.initial()) {
     on<EventCreateCompteEngagment>(engagement);
   }
+
+  final CreateEngagementProfileUsercase createEngagementProfileUsercase;
 
   Future<void> engagement(
     EventCreateCompteEngagment event,
@@ -66,7 +71,21 @@ class CreateComteProfileEngagementBloc
 
       case SubmitEventCreateCompteEngagment():
         if (state.isValide) {
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+          final response = await createEngagementProfileUsercase.call(
+            RequestAuthenEngagement(
+              departement: state.departement.value,
+              competence: state.competence.value,
+              disponibiliry: state.disponibiliry.value,
+            ),
+          );
+
+          emit(
+            response.fold(
+              (l) => state.copyWith(status: FormzSubmissionStatus.failure),
+              (r) => state.copyWith(status: FormzSubmissionStatus.success),
+            ),
+          );
         }
         break;
     }

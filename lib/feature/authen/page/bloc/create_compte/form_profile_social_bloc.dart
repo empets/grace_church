@@ -1,19 +1,24 @@
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:bloc/bloc.dart';
 
 class CreateCompteProfileSocialBloc
     extends Bloc<EventCreateCompteSocialSocial, CreateCompteSocialState> {
-  CreateCompteProfileSocialBloc() : super(CreateCompteSocialState.initial()) {
+  CreateCompteProfileSocialBloc({required this.createSocialProfileUsercase})
+    : super(CreateCompteSocialState.initial()) {
     on<EventCreateCompteSocialSocial>(_onEvent);
   }
+
+  final CreateSocialProfileUsercase createSocialProfileUsercase;
 
   void _onEvent(
     EventCreateCompteSocialSocial event,
     Emitter<CreateCompteSocialState> emit,
-  ) {
+  ) async {
     switch (event) {
       case ChangeActivityCreateCompteSocial(:final activity):
         final updatedState = state.copyWith(
@@ -22,7 +27,7 @@ class CreateCompteProfileSocialBloc
         );
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
-        
+
       case ChangeStatusSocialCreateCompteSocial(:final statusSocial):
         final updatedState = state.copyWith(
           statusSocial: TextFormz.dirty(statusSocial),
@@ -60,7 +65,26 @@ class CreateCompteProfileSocialBloc
       /// 🔥 SUBMIT
       case SubmitEventCreateCompteSocial():
         if (state.isValide) {
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+          final response = await createSocialProfileUsercase.call(
+            RequestAuthenSocial(
+              statusSocial: state.statusSocial.value,
+              activity: state.activity.value,
+              nivauEtude: state.nivauEtude.value,
+              matrimonial: state.matrimonial.value,
+              orphelin: state.orphelin.value,
+            ),
+          );
+
+          emit(
+            response.fold(
+              (failure) =>
+                  state.copyWith(status: FormzSubmissionStatus.failure),
+              (success) =>
+                  state.copyWith(status: FormzSubmissionStatus.success),
+            ),
+          );
         }
 
         break;

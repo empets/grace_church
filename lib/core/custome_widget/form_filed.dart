@@ -142,14 +142,14 @@ class ProductionFormCustomer extends StatelessWidget {
 
 // Custome_checbox
 class CustomSelectableTile extends StatelessWidget {
-   CustomSelectableTile({
+  CustomSelectableTile({
     super.key,
     required this.title,
     required this.isChecked,
     required this.onChanged,
-     this.readOnly = false,
+    this.readOnly = false,
   });
-    final String title;
+  final String title;
   final bool isChecked;
   final ValueChanged<bool> onChanged;
   late bool readOnly;
@@ -187,7 +187,7 @@ class CustomSelectableTile extends StatelessWidget {
 
             /// Checkbox custom
             GestureDetector(
-              onTap: readOnly? null:() => onChanged(!isChecked) ,
+              onTap: readOnly ? null : () => onChanged(!isChecked),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 250),
                 height: 24.h,
@@ -259,7 +259,7 @@ class CustomDropdown extends StatelessWidget {
         items: items
             .map(
               (item) => DropdownMenuItem<String>(
-                value: item["id"],
+                value: item["label"],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
