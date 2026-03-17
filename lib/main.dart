@@ -5,6 +5,7 @@ import 'package:grace_church/core/constante/params.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/core/observer/observer.dart';
 import 'package:grace_church/core/style/app_theme.dart';
+import 'package:grace_church/feature/home/onboarding_view.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -64,7 +65,8 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: OverviewScreen(),
+      child: OnboardingScreen(),
+      // OverviewScreen(),
     );
   }
 }

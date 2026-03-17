@@ -165,6 +165,9 @@ dependencies:
   youtube_player_flutter: ^9.1.1
   flutter_animation_progress_bar: ^2.3.1
   badges: ^3.1.2
+  smooth_page_indicator: ^1.2.1
+  # icons_launcher: ^3.0.3
+  # badges: ^3.1.2
  # gscankit: ^1.0.3
 
   
@@ -183,7 +186,7 @@ dev_dependencies:
   mocktail: ^1.0.1
   uuid: ^4.2.1
   very_good_analysis: ^7.0.0
-  smooth_page_indicator: ^1.2.1
+  # smooth_page_indicator: ^1.2.1
   icons_launcher: ^3.0.3
   # badges: ^3.1.2
 

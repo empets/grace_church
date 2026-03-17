@@ -28,6 +28,12 @@ class $AssetsIconLauncherGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/03.jpg
+  AssetGenImage get a03 => const AssetGenImage('assets/images/03.jpg');
+
+  /// File path: assets/images/04.jpg
+  AssetGenImage get a04 => const AssetGenImage('assets/images/04.jpg');
+
   /// File path: assets/images/Frame 2087324050.svg
   SvgGenImage get frame2087324050 =>
       const SvgGenImage('assets/images/Frame 2087324050.svg');
@@ -43,6 +49,12 @@ class $AssetsImagesGen {
   SvgGenImage get atomPrimaryiconPhoneOutlined =>
       const SvgGenImage('assets/images/atom_primaryicon_phone_outlined.svg');
 
+  /// File path: assets/images/o1.jpg
+  AssetGenImage get o1 => const AssetGenImage('assets/images/o1.jpg');
+
+  /// File path: assets/images/o2.jpg
+  AssetGenImage get o2 => const AssetGenImage('assets/images/o2.jpg');
+
   /// File path: assets/images/oo.png
   AssetGenImage get oo => const AssetGenImage('assets/images/oo.png');
 
@@ -51,10 +63,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    a03,
+    a04,
     frame2087324050,
     frame2087324052,
     globe,
     atomPrimaryiconPhoneOutlined,
+    o1,
+    o2,
     oo,
     pic,
   ];

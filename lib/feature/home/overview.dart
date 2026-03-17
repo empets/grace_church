@@ -1,16 +1,9 @@
-import 'dart:math' as math;
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/core/injection/injection_container.dart';
-import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
-import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
-import 'package:grace_church/feature/authen/page/form_profile.dart';
+import 'package:grace_church/feature/home/menu_view.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
-import 'package:badges/badges.dart' as badges;
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({super.key});
@@ -60,6 +53,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
+      appBar: AppBar(title: Text('Overview')),
+
+      drawer: MenuView(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -67,77 +63,80 @@ class _OverviewScreenState extends State<OverviewScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BlocProvider(
-                                  create: (context) => FormProfileBloc(createProfileUsercase: getIt<CreateProfileUsercase>()),
-                                  child: FormProfile(),
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(1.r),
-                            decoration: BoxDecoration(shape: BoxShape.circle),
-                            child: ClipOval(
-                              child: Image.network(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyX6rjQ2cdCgpDJYXDBP8lNN1vlLlOl1hWLQ&s",
-                                height: 0.08.sh,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: [
+                //     Row(
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //         GestureDetector(
+                //           onTap: () {
+                //             Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                 builder: (context) => BlocProvider(
+                //                   create: (context) => FormProfileBloc(
+                //                     createProfileUsercase:
+                //                         getIt<CreateProfileUsercase>(),
+                //                   ),
+                //                   child: FormProfile(),
+                //                 ),
+                //               ),
+                //             );
+                //           },
+                //           child: Container(
+                //             padding: EdgeInsets.all(1.r),
+                //             decoration: BoxDecoration(shape: BoxShape.circle),
+                //             child: ClipOval(
+                //               child: Image.network(
+                //                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyX6rjQ2cdCgpDJYXDBP8lNN1vlLlOl1hWLQ&s",
+                //                 height: 0.08.sh,
+                //                 fit: BoxFit.cover,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
 
-                        Container(
-                          margin: EdgeInsets.only(left: 14.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomeText(
-                                text: 'Welcome back',
-                                style: context.appTypographie.small.copyWith(
-                                  color: context.appColor.primaryGray500,
-                                  letterSpacing: 0.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              CustomeText(
-                                text: 'Sara Williams',
-                                style: context.appTypographie.body.copyWith(
-                                  height: 0.sp,
-                                  letterSpacing: 0.sp,
-                                  color: context.appColor.primaryGray700,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                          //sdlf
-                        ),
-                      ],
-                    ),
+                //         Container(
+                //           margin: EdgeInsets.only(left: 14.w),
+                //           child: Column(
+                //             crossAxisAlignment: CrossAxisAlignment.start,
+                //             children: [
+                //               CustomeText(
+                //                 text: 'Welcome back',
+                //                 style: context.appTypographie.small.copyWith(
+                //                   color: context.appColor.primaryGray500,
+                //                   letterSpacing: 0.sp,
+                //                   fontWeight: FontWeight.w600,
+                //                 ),
+                //               ),
+                //               CustomeText(
+                //                 text: 'Sara Williams',
+                //                 style: context.appTypographie.body.copyWith(
+                //                   height: 0.sp,
+                //                   letterSpacing: 0.sp,
+                //                   color: context.appColor.primaryGray700,
+                //                   fontWeight: FontWeight.w600,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //           //sdlf
+                //         ),
+                //       ],
+                //     ),
 
-                    Container(
-                      margin: EdgeInsets.only(bottom: 6.h),
-                      child: Icon(
-                        Icons.notification_add_rounded,
-                        color: context.appColor.primaryGray500,
-                      ),
-                    ),
-                  ],
-                ),
+                //     Container(
+                //       margin: EdgeInsets.only(bottom: 6.h),
+                //       child: Icon(
+                //         Icons.notification_add_rounded,
+                //         color: context.appColor.primaryGray500,
+                //       ),
+                //     ),
+                //   ],
+                // ),
 
                 //Cardre
                 Container(
@@ -458,4 +457,3 @@ class _OverviewScreenState extends State<OverviewScreen> {
     );
   }
 }
-
