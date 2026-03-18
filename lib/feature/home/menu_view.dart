@@ -1,6 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
+import 'package:grace_church/feature/authen/page/form_profile.dart';
+import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
+import 'package:grace_church/feature/home/cellule_view.dart';
+import 'package:grace_church/feature/home/notification_view.dart';
+import 'package:grace_church/feature/home/profile_view.dart';
 
 class MenuView extends StatelessWidget {
   MenuView({super.key});
@@ -77,11 +89,32 @@ class MenuView extends StatelessWidget {
                       ),
                       title: Text(item["title"]),
                       onTap: () {
-                        Navigator.pop(context);
+                        log('item: ${item}');
+                        if (item["title"] == "Mon Profil") {
+                          Navigator.of(context).push(
+                            fadeRoute(
+                              BlocProvider(
+                                create: (context) => FormProfileBloc(
+                                  createProfileUsercase:
+                                      getIt<CreateProfileUsercase>(),
+                                ),
+                                child: ProfileView()
+                                // FormProfile(),
+                              ),
+                            ),
+                          );
+                        }
+                        if (item["title"] == "Ma Cellule de Maison") {
+                          Navigator.of(context).push(fadeRoute(CelluleView()));
+                        }
+                        if (item["title"] == "Annonces de l'Église") {
+                          Navigator.of(
+                            context,
+                          ).push(fadeRoute(NotificationView()));
+                        }
                       },
                     );
                   }),
-                 
                 ],
               ),
             ),

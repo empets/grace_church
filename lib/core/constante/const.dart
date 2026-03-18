@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 final List<Map<String, String>> nationalites = [
   {"id": "AF", "sublabel": "", "label": "🇦🇫 Afghane"},
   {"id": "ZA", "sublabel": "", "label": "🇿🇦 Sud-africaine"},
@@ -501,3 +503,18 @@ final List<Map<String, String>> joursSemaine = [
   {"id": "samedi", "label": "🎉 Samedi"},
   {"id": "dimanche", "label": "🙏 Dimanche"},
 ];
+
+
+class MenuItem {
+  final IconData icon;
+  final String title;
+  final String route;
+  final Widget? page;
+
+  MenuItem({
+    required this.icon,
+    required this.title,
+    required this.route,
+    this.page,
+  });
+}

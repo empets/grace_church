@@ -16,13 +16,10 @@ import 'package:grace_church/feature/authen/domaine/usercase/create_social_profi
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
-import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_geographie.dart';
-import 'package:grace_church/feature/authen/page/form_holly_living.dart';
 import 'package:grace_church/feature/authen/page/form_social_professionnal.dart'
     hide FormNextTeps;
-import 'package:http_interceptor/http_interceptor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -139,6 +136,7 @@ class _FormProfileState extends State<FormProfile> {
         },
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
+          appBar: AppBar(backgroundColor: Colors.grey.shade50),
           body: SafeArea(
             child: SingleChildScrollView(
               child: Container(

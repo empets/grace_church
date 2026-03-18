@@ -12,8 +12,11 @@ class PrimaryButton extends StatelessWidget {
     this.backgroundColor,
     this.colorText,
     this.borderSideColor,
-
+    this.iconColor = Colors.white,
     this.fontSize,
+    this.iconLeading = false,
+    this.leadingIcon,
+    this.borderRadius = 6,
   });
   final String label;
   final VoidCallback? onPressed;
@@ -23,6 +26,10 @@ class PrimaryButton extends StatelessWidget {
   final Color? colorText;
   final Color? borderSideColor;
   final double? fontSize;
+  final Color? iconColor;
+  final bool iconLeading;
+  final IconData? leadingIcon;
+  final double? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,7 @@ class PrimaryButton extends StatelessWidget {
           foregroundColor: context.appColor.primaryBlue,
           shape: RoundedRectangleBorder(
             side: BorderSide(color: borderSideColor ?? Colors.transparent),
-            borderRadius: BorderRadius.circular(6.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 6.r),
           ),
           elevation: 0,
         ),
@@ -53,6 +60,11 @@ class PrimaryButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
 
                 children: [
+                  if (iconLeading && leadingIcon != null) ...[
+                    Icon(leadingIcon, size: 13.h, color: iconColor),
+                    SizedBox(width: 3.w),
+                  ],
+
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 9.h),
                     child: Row(
@@ -66,16 +78,12 @@ class PrimaryButton extends StatelessWidget {
                             letterSpacing: 0.5,
                           ),
                         ),
-                        SizedBox(width: 8.w),
+                        // SizedBox(width: 8.w),
                       ],
                     ),
                   ),
                   if (icon != null) ...[
-                    Icon(
-                      icon,
-                      size: 13.h,
-                      color: context.appColor.primaryWhite,
-                    ),
+                    Icon(icon, size: 13.h, color: iconColor),
                     SizedBox(width: 7.w),
                   ],
                 ],

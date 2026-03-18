@@ -49,6 +49,9 @@ class $AssetsImagesGen {
   SvgGenImage get atomPrimaryiconPhoneOutlined =>
       const SvgGenImage('assets/images/atom_primaryicon_phone_outlined.svg');
 
+  /// File path: assets/images/image.png
+  AssetGenImage get image => const AssetGenImage('assets/images/image.png');
+
   /// File path: assets/images/o1.jpg
   AssetGenImage get o1 => const AssetGenImage('assets/images/o1.jpg');
 
@@ -69,6 +72,7 @@ class $AssetsImagesGen {
     frame2087324052,
     globe,
     atomPrimaryiconPhoneOutlined,
+    image,
     o1,
     o2,
     oo,
