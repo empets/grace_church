@@ -1378,7 +1378,7 @@ as String,
 /// @nodoc
 mixin _$RequestAuthenProfileUpdateImage {
 
- String get profileImage; String get menberId;
+ String get profileImage; String get menberId; String get createAt;
 /// Create a copy of RequestAuthenProfileUpdateImage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1391,16 +1391,16 @@ $RequestAuthenProfileUpdateImageCopyWith<RequestAuthenProfileUpdateImage> get co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateImage&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.menberId, menberId) || other.menberId == menberId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateImage&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.createAt, createAt) || other.createAt == createAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,profileImage,menberId);
+int get hashCode => Object.hash(runtimeType,profileImage,menberId,createAt);
 
 @override
 String toString() {
-  return 'RequestAuthenProfileUpdateImage(profileImage: $profileImage, menberId: $menberId)';
+  return 'RequestAuthenProfileUpdateImage(profileImage: $profileImage, menberId: $menberId, createAt: $createAt)';
 }
 
 
@@ -1411,7 +1411,7 @@ abstract mixin class $RequestAuthenProfileUpdateImageCopyWith<$Res>  {
   factory $RequestAuthenProfileUpdateImageCopyWith(RequestAuthenProfileUpdateImage value, $Res Function(RequestAuthenProfileUpdateImage) _then) = _$RequestAuthenProfileUpdateImageCopyWithImpl;
 @useResult
 $Res call({
- String profileImage, String menberId
+ String profileImage, String menberId, String createAt
 });
 
 
@@ -1428,10 +1428,11 @@ class _$RequestAuthenProfileUpdateImageCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfileUpdateImage
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? profileImage = null,Object? menberId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? profileImage = null,Object? menberId = null,Object? createAt = null,}) {
   return _then(_self.copyWith(
 profileImage: null == profileImage ? _self.profileImage : profileImage // ignore: cast_nullable_to_non_nullable
 as String,menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,createAt: null == createAt ? _self.createAt : createAt // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1517,10 +1518,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String profileImage,  String menberId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String profileImage,  String menberId,  String createAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateImage() when $default != null:
-return $default(_that.profileImage,_that.menberId);case _:
+return $default(_that.profileImage,_that.menberId,_that.createAt);case _:
   return orElse();
 
 }
@@ -1538,10 +1539,10 @@ return $default(_that.profileImage,_that.menberId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String profileImage,  String menberId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String profileImage,  String menberId,  String createAt)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateImage():
-return $default(_that.profileImage,_that.menberId);case _:
+return $default(_that.profileImage,_that.menberId,_that.createAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1558,10 +1559,10 @@ return $default(_that.profileImage,_that.menberId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String profileImage,  String menberId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String profileImage,  String menberId,  String createAt)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateImage() when $default != null:
-return $default(_that.profileImage,_that.menberId);case _:
+return $default(_that.profileImage,_that.menberId,_that.createAt);case _:
   return null;
 
 }
@@ -1573,11 +1574,12 @@ return $default(_that.profileImage,_that.menberId);case _:
 @JsonSerializable()
 
 class _RequestAuthenProfileUpdateImage implements RequestAuthenProfileUpdateImage {
-   _RequestAuthenProfileUpdateImage({required this.profileImage, required this.menberId});
+   _RequestAuthenProfileUpdateImage({required this.profileImage, required this.menberId, required this.createAt});
   factory _RequestAuthenProfileUpdateImage.fromJson(Map<String, dynamic> json) => _$RequestAuthenProfileUpdateImageFromJson(json);
 
 @override final  String profileImage;
 @override final  String menberId;
+@override final  String createAt;
 
 /// Create a copy of RequestAuthenProfileUpdateImage
 /// with the given fields replaced by the non-null parameter values.
@@ -1592,16 +1594,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateImage&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.menberId, menberId) || other.menberId == menberId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateImage&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.createAt, createAt) || other.createAt == createAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,profileImage,menberId);
+int get hashCode => Object.hash(runtimeType,profileImage,menberId,createAt);
 
 @override
 String toString() {
-  return 'RequestAuthenProfileUpdateImage(profileImage: $profileImage, menberId: $menberId)';
+  return 'RequestAuthenProfileUpdateImage(profileImage: $profileImage, menberId: $menberId, createAt: $createAt)';
 }
 
 
@@ -1612,7 +1614,7 @@ abstract mixin class _$RequestAuthenProfileUpdateImageCopyWith<$Res> implements 
   factory _$RequestAuthenProfileUpdateImageCopyWith(_RequestAuthenProfileUpdateImage value, $Res Function(_RequestAuthenProfileUpdateImage) _then) = __$RequestAuthenProfileUpdateImageCopyWithImpl;
 @override @useResult
 $Res call({
- String profileImage, String menberId
+ String profileImage, String menberId, String createAt
 });
 
 
@@ -1629,10 +1631,11 @@ class __$RequestAuthenProfileUpdateImageCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfileUpdateImage
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? profileImage = null,Object? menberId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? profileImage = null,Object? menberId = null,Object? createAt = null,}) {
   return _then(_RequestAuthenProfileUpdateImage(
 profileImage: null == profileImage ? _self.profileImage : profileImage // ignore: cast_nullable_to_non_nullable
 as String,menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,createAt: null == createAt ? _self.createAt : createAt // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

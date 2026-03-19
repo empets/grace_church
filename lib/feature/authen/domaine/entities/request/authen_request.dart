@@ -74,6 +74,7 @@ abstract class RequestAuthenProfileUpdateImage
   factory RequestAuthenProfileUpdateImage({
     required String profileImage,
     required String menberId,
+    required String createAt,
   }) = _RequestAuthenProfileUpdateImage;
 
   factory RequestAuthenProfileUpdateImage.fromJson(Map<String, dynamic> json) =>

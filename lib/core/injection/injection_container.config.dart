@@ -30,6 +30,14 @@ import '../../feature/authen/domaine/usercase/create_social_profile_usercase.dar
     as _i561;
 import '../../feature/authen/domaine/usercase/create_spiritual_profile.dart'
     as _i127;
+import '../../feature/home/data/repositories/home_data_repositories.dart'
+    as _i486;
+import '../../feature/home/data/service/remot_service.dart' as _i127;
+import '../../feature/home/data/service/repository_remote_service.dart' as _i61;
+import '../../feature/home/domaine/repository/home_domain_repository.dart'
+    as _i962;
+import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
+import '../../feature/home/page/bloc/get_profile/get_profile_bloc.dart' as _i37;
 import 'injection_container.dart' as _i809;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -50,23 +58,40 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i259.AuthenRemoteService>(
       () => _i166.ImplRemoteService(db: gh<_i345.DatabaseReference>()),
     );
+    gh.lazySingleton<_i61.DomaineServiceRepository>(
+      () =>
+          _i127.ImpDomaineServiceRepository(db: gh<_i345.DatabaseReference>()),
+    );
+    gh.lazySingleton<_i962.HomeDomaineRepository>(
+      () => _i486.ImpleHomeDataRepositories(
+        domaineServiceRepository: gh<_i61.DomaineServiceRepository>(),
+      ),
+    );
     gh.lazySingleton<_i653.AuthenRepository>(
       () => _i598.ImpleAuthenRepository(
         authenRemoteService: gh<_i259.AuthenRemoteService>(),
       ),
     );
-    gh.lazySingleton<_i855.CreateProfileUsercase>(
-      () => _i855.CreateProfileUsercase(gh<_i653.AuthenRepository>()),
-    );
-    gh.lazySingleton<_i561.CreateSocialProfileUsercase>(
-      () => _i561.CreateSocialProfileUsercase(gh<_i653.AuthenRepository>()),
-    );
-    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
-      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
+    gh.lazySingleton<_i562.GetProfileUsercase>(
+      () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
     );
     gh.lazySingleton<_i1031.CreateEngagementProfileUsercase>(
       () =>
           _i1031.CreateEngagementProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i855.CreateProfileUsercase>(
+      () => _i855.CreateProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
+      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i561.CreateSocialProfileUsercase>(
+      () => _i561.CreateSocialProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i37.GetProfileBloc>(
+      () => _i37.GetProfileBloc(
+        getProfileUsercase: gh<_i562.GetProfileUsercase>(),
+      ),
     );
     return this;
   }

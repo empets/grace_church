@@ -3,26 +3,49 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
-import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
 import 'package:grace_church/feature/home/cellule_view.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/notification_view.dart';
+import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 
 class MenuView extends StatelessWidget {
   MenuView({super.key});
 
   final List<Map<String, dynamic>> menuItems = [
-    {"title": "Mon Profil", "icon": Icons.person},
-    {"title": "Ma Cellule de Maison", "icon": Icons.groups},
-    {"title": "Mon Département", "icon": Icons.apartment_rounded},
-    {"title": "Annonces de l'Église", "icon": Icons.campaign},
-    {"title": "Paramètres", "icon": Icons.settings},
+    {
+      "title": "Mon Profil",
+      "icon": Icons.person,
+      "visible": true,
+      "value": "profile",
+    },
+    {
+      "title": "Ma Cellule de Maison",
+      "icon": Icons.groups,
+      "visible": true,
+      "value": "cellule",
+    },
+    {
+      "title": "Mon Département",
+      "icon": Icons.apartment_rounded,
+      "visible": false,
+      "value": "department",
+    },
+    {
+      "title": "Annonces de l'Église",
+      "icon": Icons.campaign,
+      "visible": true,
+      "value": "announcements",
+    },
+    // {"title": "Paramètres", "icon": Icons.settings},
   ];
 
   @override
@@ -34,89 +57,257 @@ class MenuView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Header
-            Container(
-              margin: EdgeInsets.only(top: 30.h),
-              padding: EdgeInsets.all(16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
+            BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
+              builder: (context, profileState) {
+                if (profileState is SuccessState<ProfileResponse>) {
+                  return Container(
+                    margin: EdgeInsets.only(top: 30.h),
                     padding: EdgeInsets.all(16.w),
-                    decoration: BoxDecoration(
-                      color: context.appColor.primaryBlue.withValues(
-                        alpha: 0.1,
-                      ),
-                      borderRadius: BorderRadius.circular(50.r),
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      color: context.appColor.primaryBlue,
-                      size: 40.sp,
-                    ),
-                  ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(5.r),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: context.appColor.primaryLightBlue,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: ClipOval(
+                            child: Image.network(
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                    return child;
+                                  },
+                              errorBuilder: (_, __, ___) => ClipOval(
+                                child: Image.network(
+                                  "yAssets.icons.profileAvatarPlaceholderLarge .path",
+                                  fit: BoxFit.contain,
+                                  height: 0.08.sh,
+                                  width: 0.08.sh,
+                                ),
+                              ),
+                              profileState.data.profileImage,
 
-                  SizedBox(width: 12.w),
-                  Text(
-                    'John Doe',
-                    style: context.appTypographie.body.copyWith(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: context.appColor.primaryGrayDark,
+                              fit: BoxFit.cover,
+                              height: 0.1.sh,
+                              width: 0.1.sh,
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(width: 12.w),
+                        Text(
+                          profileState.data.name,
+                          style: context.appTypographie.body.copyWith(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                            color: context.appColor.primaryGrayDark,
+                          ),
+                        ),
+                        Text(
+                          profileState.data.email,
+                          style: context.appTypographie.body.copyWith(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ],
                     ),
+                  );
+                }
+
+                return Container(
+                  margin: EdgeInsets.only(top: 30.h),
+                  padding: EdgeInsets.all(16.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(16.w),
+                        decoration: BoxDecoration(
+                          color: context.appColor.primaryBlue.withValues(
+                            alpha: 0.1,
+                          ),
+                          borderRadius: BorderRadius.circular(50.r),
+                        ),
+                        child: Icon(
+                          Icons.person,
+                          color: context.appColor.primaryBlue,
+                          size: 40.sp,
+                        ),
+                      ),
+
+                      SizedBox(width: 12.w),
+                      Text(
+                        'John Do',
+                        style: context.appTypographie.body.copyWith(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          color: context.appColor.primaryGrayDark,
+                        ),
+                      ),
+                      Text(
+                        'Member since 202',
+                        style: context.appTypographie.body.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'Member since 2023',
-                    style: context.appTypographie.body.copyWith(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
             Divider(color: Colors.grey.shade300),
 
             // Menu items
-            Expanded(
-              child: ListView(
-                children: [
-                  ...menuItems.map((item) {
-                    return ListTile(
-                      leading: Icon(
-                        item["icon"],
-                        color: context.appColor.primaryBlue,
-                      ),
-                      title: Text(item["title"]),
-                      onTap: () {
-                        log('item: ${item}');
-                        if (item["title"] == "Mon Profil") {
-                          Navigator.of(context).push(
-                            fadeRoute(
-                              BlocProvider(
-                                create: (context) => FormProfileBloc(
-                                  createProfileUsercase:
-                                      getIt<CreateProfileUsercase>(),
-                                ),
-                                child: ProfileView()
-                                // FormProfile(),
+            BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
+              builder: (context, state) {
+                if (state is SuccessState<ProfileResponse>) {
+                  return Expanded(
+                    child: ListView(
+                      children: [
+                        ...menuItems.map((item) {
+                          return ListTile(
+                            leading: Icon(
+                              item["icon"],
+                              color: (item["value"] == "department")
+                                  ? context.appColor.primaryBlue.withValues(
+                                      alpha: 0.5,
+                                    )
+                                  : context.appColor.primaryBlue,
+                            ),
+                            title: Text(
+                              item["title"],
+                              style: context.appTypographie.body.copyWith(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w600,
+                                color: (item["value"] == "department")
+                                    ? context.appColor.primaryGrayDark
+                                          .withValues(alpha: 0.5)
+                                    : context.appColor.primaryGrayDark,
                               ),
                             ),
+                            trailing: (item["value"] != "department")
+                                ? Icon(
+                                    Icons.chevron_right,
+                                    color: context.appColor.primaryBlue,
+                                  )
+                                : SizedBox(),
+                            onTap: () {
+                              log('item: ${item}');
+                              if (item["value"] == "profile") {
+                                Navigator.of(context).push(
+                                  fadeRoute(
+                                    MultiBlocProvider(
+                                      providers: [
+                                        BlocProvider(
+                                          create: (context) => FormProfileBloc(
+                                            createProfileUsercase:
+                                                getIt<CreateProfileUsercase>(),
+                                          ),
+                                        ),
+                                      ],
+                                      child: ProfileView(profile: state.data),
+                                      // ProfileView(),
+                                      // FormProfile(),
+                                    ),
+                                  ),
+                                );
+                              }
+                              if (item["value"] == "cellule") {
+                                Navigator.of(
+                                  context,
+                                ).push(fadeRoute(CelluleView()));
+                              }
+                              if (item["value"] == "announcements") {
+                                Navigator.of(
+                                  context,
+                                ).push(fadeRoute(NotificationView()));
+                              }
+                            },
                           );
-                        }
-                        if (item["title"] == "Ma Cellule de Maison") {
-                          Navigator.of(context).push(fadeRoute(CelluleView()));
-                        }
-                        if (item["title"] == "Annonces de l'Église") {
-                          Navigator.of(
-                            context,
-                          ).push(fadeRoute(NotificationView()));
-                        }
-                      },
-                    );
-                  }),
-                ],
-              ),
+                        }),
+                      ],
+                    ),
+                  );
+                }
+                return Expanded(
+                  child: ListView(
+                    children: [
+                      ...menuItems.map((item) {
+                        return ListTile(
+                          leading: Icon(
+                            item["icon"],
+                            color: (item["value"] == "department")
+                                ? context.appColor.primaryBlue.withValues(
+                                    alpha: 0.5,
+                                  )
+                                : context.appColor.primaryBlue,
+                          ),
+                          title: Text(
+                            item["title"],
+                            style: context.appTypographie.body.copyWith(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                              color: (item["value"] == "department")
+                                  ? context.appColor.primaryGrayDark.withValues(
+                                      alpha: 0.5,
+                                    )
+                                  : context.appColor.primaryGrayDark,
+                            ),
+                          ),
+                          trailing: (item["value"] != "department")
+                              ? Icon(
+                                  Icons.chevron_right,
+                                  color: context.appColor.primaryBlue,
+                                )
+                              : SizedBox(),
+                          onTap: () {
+                            log('item: ${item}');
+                            if (item["value"] == "profile") {
+                              Navigator.of(context).push(
+                                fadeRoute(
+                                  MultiBlocProvider(
+                                    providers: [
+                                      BlocProvider(
+                                        create: (context) => FormProfileBloc(
+                                          createProfileUsercase:
+                                              getIt<CreateProfileUsercase>(),
+                                        ),
+                                      ),
+                                      BlocProvider.value(
+                                        value: getIt<GetProfileBloc>(),
+                                      ),
+                                    ],
+                                    child: FormProfile(),
+                                    // ProfileView(),
+                                    // FormProfile(),
+                                  ),
+                                ),
+                              );
+                            }
+                            if (item["value"] == "cellule") {
+                              Navigator.of(
+                                context,
+                              ).push(fadeRoute(CelluleView()));
+                            }
+                            if (item["value"] == "announcements") {
+                              Navigator.of(
+                                context,
+                              ).push(fadeRoute(NotificationView()));
+                            }
+                          },
+                        );
+                      }),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),

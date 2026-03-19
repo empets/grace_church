@@ -98,6 +98,7 @@ _RequestAuthenProfileUpdateImage _$RequestAuthenProfileUpdateImageFromJson(
 ) => _RequestAuthenProfileUpdateImage(
   profileImage: json['profileImage'] as String,
   menberId: json['menberId'] as String,
+  createAt: json['createAt'] as String,
 );
 
 Map<String, dynamic> _$RequestAuthenProfileUpdateImageToJson(
@@ -105,4 +106,5 @@ Map<String, dynamic> _$RequestAuthenProfileUpdateImageToJson(
 ) => <String, dynamic>{
   'profileImage': instance.profileImage,
   'menberId': instance.menberId,
+  'createAt': instance.createAt,
 };

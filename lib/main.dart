@@ -8,9 +8,11 @@ import 'package:grace_church/core/style/app_theme.dart';
 import 'package:grace_church/feature/home/onboarding_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: GlobalParams.apiKey,
@@ -19,6 +21,11 @@ void main() async {
       projectId: GlobalParams.projectId,
       storageBucket: GlobalParams.storageBucket,
     ),
+  );
+
+   await Supabase.initialize(
+    url: GlobalParams.supabaseUrl,
+    anonKey: GlobalParams.supabaseAnonKey,
   );
 
   await Firebase.initializeApp(

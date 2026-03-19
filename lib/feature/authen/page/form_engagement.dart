@@ -455,7 +455,7 @@ class _FormEngagementState extends State<FormEngagement> {
                           SizedBox(width: 8.w),
                           Flexible(
                             child: Text(
-                              "En cliquant sur Terminer, vous confirmez vouloir vous"
+                              "En cliquant sur Terminer, vous confirmez vouloir vous "
                               "engager dans la vie de la communauté. Un responsable de"
                               "département vous contactera prochainement.",
                               style: context.appTypographie.small.copyWith(

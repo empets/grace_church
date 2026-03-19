@@ -1,20 +1,20 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/data/service/impl_remote_service.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 @LazySingleton(as: AuthenRemoteService)
 class ImplRemoteService implements AuthenRemoteService {
   ImplRemoteService({required this.db});
   final databaseReference.DatabaseReference db;
+  final supabase = Supabase.instance.client;
 
   @override
   Future<FirebaseResult<String?>> createProfile(
@@ -51,8 +51,10 @@ class ImplRemoteService implements AuthenRemoteService {
           params: RequestAuthenProfileUpdateImage(
             profileImage: params.profileImage,
             menberId: ref.key.toString(),
+            createAt: DateTime.now().toIso8601String(),
           ),
         );
+
         if (result is FirebaseSuccess<String?>) {
           log("-----------_>>1 ${result.data}");
           final Map<String, dynamic> updates = {
@@ -224,39 +226,84 @@ class ImplRemoteService implements AuthenRemoteService {
     required RequestAuthenProfileUpdateImage params,
   }) async {
     try {
-      final ref =
-          FirebaseStorage.instanceFor(app: Firebase.app("authenfication"))
-              .ref("menber")
-              .child("profile_images")
-              .child(
-                "${params.menberId}_${DateTime.now().millisecondsSinceEpoch}.jpg",
-              );
+      // await supabase.storage
+      //     .from('profiles')
+      //     .upload(
+      //       '${params.profileImage}/${params.menberId}.jpg',
+      //       File(params.profileImage),
+      //     );
 
-      await ref.putFile(File(params.profileImage));
+      // final imageUrl = supabase.storage
+      //     .from('profiles')
+      //     .getPublicUrl('${params.profileImage}/${params.menberId}.jpg');
 
-      final response = await ref.getDownloadURL();
+      // log("--->>Image URL : $imageUrl");
+      final pathInBucket = 'upload/${params.profileImage}.jpg';
 
-      log("Image URL : $response");
+      await supabase.storage
+          .from('menberProfile')
+          .upload(
+            pathInBucket,
+            File(params.profileImage), // ici File du fichier local
+          );
 
-      return FirebaseSuccess(response);
+      final imageUrl = supabase.storage
+          .from('menberProfile')
+          .getPublicUrl(pathInBucket);
+
+      log("--->>Image URL : $imageUrl");
+
+      return FirebaseSuccess(imageUrl);
     } catch (e) {
-      log("Upload Error : $e");
+      log("0-==============Upload Error : $e");
       return FirebaseError(e.toString());
     }
   }
 
   //generic methode
-  Future<void> saveImageUrl<T extends Object>(
-    T params, {
-    required RequestAuthenProfileUpdateImage imageParams,
-  }) async {
-    // CreatCompteImage
-    final Map<String, dynamic> updates = {
-      ...imageParams.toJson(), // nouveaux champs simples
-    };
+  // Future<void> saveImageUrl<T extends Object>(
+  //   T params, {
+  //   required RequestAuthenProfileUpdateImage imageParams,
+  // }) async {
+  //   // CreatCompteImage
+  //   final Map<String, dynamic> updates = {
+  //     ...imageParams.toJson(), // nouveaux champs simples
+  //   };
 
-    await db
-        .child('${imageParams.profileImage}/${imageParams.menberId}')
-        .update(updates);
-  }
+  //   await supabase.storage
+  //       .from('menberProfile')
+  //       .upload(
+  //         'uploads/${imageParams.profileImage}/${imageParams.menberId}.jpg',
+  //         File(imageParams.profileImage),
+  //       );
+
+  //   final imageUrl = supabase.storage
+  //       .from('menberProfile')
+  //       .getPublicUrl(
+  //         'uploads/${imageParams.profileImage}/${imageParams.menberId}.jpg',
+  //       );
+
+  //   await db
+  //       .child('${imageParams.profileImage}/${imageParams.menberId}')
+  //       .update(updates);
+  // }
+
+  // Future<String?> uploadImage(File file) async {
+  //   try {
+  //     final fileName = DateTime.now().millisecondsSinceEpoch.toString();
+
+  //     await supabase.storage
+  //         .from('images')
+  //         .upload('uploads/$fileName.jpg', file);
+
+  //     final imageUrl = supabase.storage
+  //         .from('images')
+  //         .getPublicUrl('uploads/$fileName.jpg');
+
+  //     return imageUrl;
+  //   } catch (e) {
+  //     print('Erreur: $e');
+  //     return null;
+  //   }
+  // }
 }

@@ -3,17 +3,105 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 class ProfileView extends StatefulWidget {
-  const ProfileView({super.key});
+  const ProfileView({super.key, required this.profile});
+  final ProfileResponse profile;
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  String extractTwoElements(String input) {
+    final parts = input.split(',').map((e) => e.trim()).toList();
+    if (parts.length >= 3) {
+      // On récupère les deux éléments après la première virgule
+      return '${parts[1]}, ${parts[2]}';
+    } else if (parts.length >= 2) {
+      // S'il y a au moins deux éléments, on prend le deuxième
+      return parts[1];
+    } else {
+      // S'il n'y a qu'un élément, on le prend
+      return parts[0];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> getPersonalInformation({
+      required ProfileResponse profile,
+    }) {
+      final deviceInfos = <Map<String, dynamic>>[
+        {
+          'icon': Icons.email_outlined,
+          'title': 'Email',
+          'value': profile.email,
+        },
+        {
+          'title': 'Téléphone',
+          'icon': Icons.phone_outlined,
+          'value': profile.contact,
+        },
+        {
+          'title': 'Adresse & Quartier',
+          'icon': Icons.location_on_outlined,
+          'value': profile.zoneResidence,
+        },
+      ];
+      return deviceInfos;
+    }
+
+    List<Map<String, dynamic>> getProfessionalInformation({
+      required ProfileResponse profile,
+    }) {
+      final deviceInfos = <Map<String, dynamic>>[
+        {
+          'icon': Icons.school_outlined,
+          'title': 'Métier / Études',
+          'value': profile.nivauEtude,
+        },
+        {
+          'title': 'Organisation',
+          'icon': Icons.business_outlined,
+          'value': profile.activity,
+        },
+      ];
+      return deviceInfos;
+    }
+
+    List<Map<String, dynamic>> getSpiritualInformation({
+      required ProfileResponse profile,
+    }) {
+      final deviceInfos = <Map<String, dynamic>>[
+        {
+          'icon': Icons.format_color_fill_sharp,
+          'title': 'Date de baptême',
+          'value': profile.dateBaptme,
+        },
+        {
+          'title': 'Cellule de maison',
+          'icon': Icons.home_work,
+          'value': profile.cellulePriere,
+        },
+      ];
+      return deviceInfos;
+    }
+
+    List<Map<String, dynamic>> getEngagement({
+      required ProfileResponse profile,
+    }) {
+      final deviceInfos = <Map<String, dynamic>>[
+        {
+          'icon': Icons.volunteer_activism_outlined,
+          'title': 'Département',
+          'value': profile.departement,
+        },
+      ];
+      return deviceInfos;
+    }
+
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(backgroundColor: Colors.grey.shade50),
@@ -45,7 +133,7 @@ class _ProfileViewState extends State<ProfileView> {
                           width: 0.08.sh,
                         ),
                       ),
-                      "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                      widget.profile.profileImage,
 
                       fit: BoxFit.cover,
                       height: 0.1.sh,
@@ -54,7 +142,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
                 CustomeText(
-                  text: "Jean Dupont",
+                  text: widget.profile.name,
                   style: context.appTypographie.button.copyWith(
                     color: context.appColor.primaryGrayDark,
                     fontSize: 16.sp,
@@ -62,7 +150,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
                 CustomeText(
-                  text: "jean.dupont@gmail.com",
+                  text: widget.profile.email,
                   style: context.appTypographie.button.copyWith(
                     color: context.appColor.primaryGray700,
                     fontSize: 14.sp,
@@ -91,7 +179,7 @@ class _ProfileViewState extends State<ProfileView> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.phone, color: context.appColor.primaryBlue),
+                        Icon(Icons.person, color: context.appColor.primaryBlue),
                         SizedBox(width: 8.w),
                         CustomeText(
                           text: "Informations Personnelles",
@@ -104,9 +192,9 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ],
                     ),
-
+                    SizedBox(height: 7.h),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 9.h),
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
                       padding: EdgeInsets.symmetric(
                         horizontal: 8.w,
                         vertical: 8.h,
@@ -117,69 +205,131 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                       child: Column(
                         children: [
-                          ...List.generate(3, (index) {
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 9.h),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(8.w),
-                                    decoration: BoxDecoration(
-                                      color: context.appColor.primaryBlue
-                                          .withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(8.r),
-                                    ),
-                                    child: Icon(
-                                      Icons.phone,
-                                      color: context.appColor.primaryBlue,
-                                    ),
+                          Column(
+                            children: [
+                              ...getPersonalInformation(
+                                profile: widget.profile,
+                              ).map(
+                                (items) => Container(
+                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10.w,
+                                    vertical: 8.h,
                                   ),
-                                  SizedBox(width: 8.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: items['title'] != 'Téléphone'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                      top: items['title'] != 'Téléphone'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                    ),
+                                    color: context.appColor.primaryWhite,
+                                    borderRadius: items['title'] == 'Email'
+                                        ? BorderRadius.only(
+                                            topLeft: Radius.circular(12.r),
+                                            topRight: Radius.circular(12.r),
+                                          )
+                                        : items['title'] == 'Adresse & Quartier'
+                                        ? BorderRadius.only(
+                                            bottomLeft: Radius.circular(12.r),
+                                            bottomRight: Radius.circular(12.r),
+                                          )
+                                        : null,
+                                  ),
+                                  child: Column(
                                     children: [
-                                      CustomeText(
-                                        text: "Email",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray500,
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w400,
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 4.h),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(8.w),
+                                              decoration: BoxDecoration(
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                              ),
+                                              child: Icon(
+                                                items['icon'],
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue,
+                                              ),
                                             ),
-                                      ),
-                                      SizedBox(width: 8.w),
-                                      CustomeText(
-                                        text: "email@example.com",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray700,
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w800,
+                                            SizedBox(width: 8.w),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomeText(
+                                                  text: items['title'],
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray500,
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                ),
+                                                SizedBox(width: 8.w),
+                                                CustomeText(
+                                                  text: extractTwoElements(
+                                                    items['value'],
+                                                  ),
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray700,
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            );
-                          }),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
-
+                SizedBox(height: 16.h),
                 Column(
                   children: [
                     Row(
                       children: [
                         Icon(
-                          Icons.badge_rounded,
+                          Icons.work_outline,
                           color: context.appColor.primaryBlue,
                         ),
                         SizedBox(width: 8.w),
@@ -196,7 +346,7 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
 
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 9.h),
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
                       padding: EdgeInsets.symmetric(
                         horizontal: 8.w,
                         vertical: 8.h,
@@ -207,63 +357,126 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                       child: Column(
                         children: [
-                          ...List.generate(2, (index) {
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 9.h),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(8.w),
-                                    decoration: BoxDecoration(
-                                      color: context.appColor.primaryBlue
-                                          .withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(8.r),
-                                    ),
-                                    child: Icon(
-                                      Icons.phone,
-                                      color: context.appColor.primaryBlue,
-                                    ),
+                          SizedBox(height: 7.h),
+                          Column(
+                            children: [
+                              ...getProfessionalInformation(
+                                profile: widget.profile,
+                              ).map(
+                                (items) => Container(
+                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.w,
+                                    vertical: 8.h,
                                   ),
-                                  SizedBox(width: 8.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom:
+                                          items['title'] != 'Métier / Études'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                      top: items['title'] != 'Téléphone'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                    ),
+                                    color: context.appColor.primaryWhite,
+                                    borderRadius: items['title'] == 'Email'
+                                        ? BorderRadius.only(
+                                            topLeft: Radius.circular(12.r),
+                                            topRight: Radius.circular(12.r),
+                                          )
+                                        : items['title'] == 'Adresse & Quartier'
+                                        ? BorderRadius.only(
+                                            bottomLeft: Radius.circular(12.r),
+                                            bottomRight: Radius.circular(12.r),
+                                          )
+                                        : null,
+                                  ),
+                                  child: Column(
                                     children: [
-                                      CustomeText(
-                                        text: "Email",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray500,
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w400,
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 4.h),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(8.w),
+                                              decoration: BoxDecoration(
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                              ),
+                                              child: Icon(
+                                                items['icon'],
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue,
+                                              ),
                                             ),
-                                      ),
-                                      SizedBox(width: 8.w),
-                                      CustomeText(
-                                        text: "john.doe@example.com",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray700,
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w800,
+                                            SizedBox(width: 8.w),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomeText(
+                                                  text: items['title'],
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray500,
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                ),
+                                                SizedBox(width: 8.w),
+                                                CustomeText(
+                                                  text: items['value'],
+
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray700,
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            );
-                          }),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
-
+                SizedBox(height: 10.h),
                 //---------------------------------------
                 // Spiritual Life
                 //--------------------------------------
@@ -300,57 +513,120 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                       child: Column(
                         children: [
-                          ...List.generate(2, (index) {
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 9.h),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(8.w),
-                                    decoration: BoxDecoration(
-                                      color: context.appColor.primaryBlue
-                                          .withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(8.r),
-                                    ),
-                                    child: Icon(
-                                      Icons.phone,
-                                      color: context.appColor.primaryBlue,
-                                    ),
+                          SizedBox(height: 7.h),
+                          Column(
+                            children: [
+                              ...getSpiritualInformation(
+                                profile: widget.profile,
+                              ).map(
+                                (items) => Container(
+                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.w,
+                                    vertical: 8.h,
                                   ),
-                                  SizedBox(width: 8.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom:
+                                          items['title'] != 'Date de baptême'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                      top: items['title'] != 'Téléphone'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                    ),
+                                    color: context.appColor.primaryWhite,
+                                    borderRadius: items['title'] == 'Email'
+                                        ? BorderRadius.only(
+                                            topLeft: Radius.circular(12.r),
+                                            topRight: Radius.circular(12.r),
+                                          )
+                                        : items['title'] == 'Adresse & Quartier'
+                                        ? BorderRadius.only(
+                                            bottomLeft: Radius.circular(12.r),
+                                            bottomRight: Radius.circular(12.r),
+                                          )
+                                        : null,
+                                  ),
+                                  child: Column(
                                     children: [
-                                      CustomeText(
-                                        text: "Email",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray500,
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w400,
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 4.h),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(8.w),
+                                              decoration: BoxDecoration(
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                              ),
+                                              child: Icon(
+                                                items['icon'],
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue,
+                                              ),
                                             ),
-                                      ),
-                                      SizedBox(width: 8.w),
-                                      CustomeText(
-                                        text: "john.doe@example.com",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray700,
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w800,
+                                            SizedBox(width: 8.w),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomeText(
+                                                  text: items['title'],
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray500,
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                ),
+                                                SizedBox(width: 8.w),
+                                                CustomeText(
+                                                  text: items['value'],
+
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray700,
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            );
-                          }),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -390,57 +666,117 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                       child: Column(
                         children: [
-                          ...List.generate(1, (index) {
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 9.h),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(8.w),
-                                    decoration: BoxDecoration(
-                                      color: context.appColor.primaryBlue
-                                          .withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(8.r),
-                                    ),
-                                    child: Icon(
-                                      Icons.phone,
-                                      color: context.appColor.primaryBlue,
-                                    ),
+                          Column(
+                            children: [
+                              ...getEngagement(profile: widget.profile).map(
+                                (items) => Container(
+                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.w,
+                                    vertical: 8.h,
                                   ),
-                                  SizedBox(width: 8.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom:
+                                          items['title'] != 'Métier / Études'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                      top: items['title'] != 'Téléphone'
+                                          ? BorderSide.none
+                                          : BorderSide(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray100,
+                                              width: 1.w,
+                                            ),
+                                    ),
+                                    color: context.appColor.primaryWhite,
+                                    borderRadius: items['title'] == 'Email'
+                                        ? BorderRadius.only(
+                                            topLeft: Radius.circular(12.r),
+                                            topRight: Radius.circular(12.r),
+                                          )
+                                        : items['title'] == 'Adresse & Quartier'
+                                        ? BorderRadius.only(
+                                            bottomLeft: Radius.circular(12.r),
+                                            bottomRight: Radius.circular(12.r),
+                                          )
+                                        : null,
+                                  ),
+                                  child: Column(
                                     children: [
-                                      CustomeText(
-                                        text: "Email",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray500,
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w400,
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 4.h),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(8.w),
+                                              decoration: BoxDecoration(
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue
+                                                    .withOpacity(0.1),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                              ),
+                                              child: Icon(
+                                                items['icon'],
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue,
+                                              ),
                                             ),
-                                      ),
-                                      SizedBox(width: 8.w),
-                                      CustomeText(
-                                        text: "john.doe@example.com",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray700,
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w800,
+                                            SizedBox(width: 8.w),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomeText(
+                                                  text: items['title'],
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray500,
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                ),
+                                                SizedBox(width: 8.w),
+                                                CustomeText(
+                                                  text: items['value'],
+
+                                                  style: context
+                                                      .appTypographie
+                                                      .button
+                                                      .copyWith(
+                                                        color: context
+                                                            .appColor
+                                                            .primaryGray700,
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            );
-                          }),
+                            ],
+                          ),
                         ],
                       ),
                     ),
