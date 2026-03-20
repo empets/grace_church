@@ -64,6 +64,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/pic.png
   AssetGenImage get pic => const AssetGenImage('assets/images/pic.png');
 
+  /// File path: assets/images/probleme_request.svg
+  SvgGenImage get problemeRequest =>
+      const SvgGenImage('assets/images/probleme_request.svg');
+
   /// List of all assets
   List<dynamic> get values => [
     a03,
@@ -77,6 +81,7 @@ class $AssetsImagesGen {
     o2,
     oo,
     pic,
+    problemeRequest,
   ];
 }
 

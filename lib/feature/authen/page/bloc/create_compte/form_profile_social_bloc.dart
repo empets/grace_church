@@ -74,6 +74,7 @@ class CreateCompteProfileSocialBloc
               nivauEtude: state.nivauEtude.value,
               matrimonial: state.matrimonial.value,
               orphelin: state.orphelin.value,
+              submitSocial: true,
             ),
           );
 

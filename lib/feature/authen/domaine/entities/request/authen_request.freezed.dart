@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RequestAuthenProfile {
 
- String get name; String get dateNaissance; String get zoneResidence; String get profileImage; String get contact; String get email; String get nationalite; String get dateInscription;
+ String get name; String get dateNaissance; String get zoneResidence; String get profileImage; String get contact; String get email; String get nationalite; String get dateInscription; bool get submitProfile;
 /// Create a copy of RequestAuthenProfile
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $RequestAuthenProfileCopyWith<RequestAuthenProfile> get copyWith => _$RequestAut
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfile&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfile&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription)&&(identical(other.submitProfile, submitProfile) || other.submitProfile == submitProfile));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription);
+int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription,submitProfile);
 
 @override
 String toString() {
-  return 'RequestAuthenProfile(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription)';
+  return 'RequestAuthenProfile(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription, submitProfile: $submitProfile)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $RequestAuthenProfileCopyWith<$Res>  {
   factory $RequestAuthenProfileCopyWith(RequestAuthenProfile value, $Res Function(RequestAuthenProfile) _then) = _$RequestAuthenProfileCopyWithImpl;
 @useResult
 $Res call({
- String name, String dateNaissance, String zoneResidence, String profileImage, String contact, String email, String nationalite, String dateInscription
+ String name, String dateNaissance, String zoneResidence, String profileImage, String contact, String email, String nationalite, String dateInscription, bool submitProfile
 });
 
 
@@ -65,7 +65,7 @@ class _$RequestAuthenProfileCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfile
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? dateInscription = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? dateInscription = null,Object? submitProfile = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,dateNaissance: null == dateNaissance ? _self.dateNaissance : dateNaissance // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,8 @@ as String,contact: null == contact ? _self.contact : contact // ignore: cast_nul
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,nationalite: null == nationalite ? _self.nationalite : nationalite // ignore: cast_nullable_to_non_nullable
 as String,dateInscription: null == dateInscription ? _self.dateInscription : dateInscription // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitProfile: null == submitProfile ? _self.submitProfile : submitProfile // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -160,10 +161,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String dateNaissance,  String zoneResidence,  String profileImage,  String contact,  String email,  String nationalite,  String dateInscription)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String dateNaissance,  String zoneResidence,  String profileImage,  String contact,  String email,  String nationalite,  String dateInscription,  bool submitProfile)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfile() when $default != null:
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.submitProfile);case _:
   return orElse();
 
 }
@@ -181,10 +182,10 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String dateNaissance,  String zoneResidence,  String profileImage,  String contact,  String email,  String nationalite,  String dateInscription)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String dateNaissance,  String zoneResidence,  String profileImage,  String contact,  String email,  String nationalite,  String dateInscription,  bool submitProfile)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfile():
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.submitProfile);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -201,10 +202,10 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String dateNaissance,  String zoneResidence,  String profileImage,  String contact,  String email,  String nationalite,  String dateInscription)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String dateNaissance,  String zoneResidence,  String profileImage,  String contact,  String email,  String nationalite,  String dateInscription,  bool submitProfile)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfile() when $default != null:
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.submitProfile);case _:
   return null;
 
 }
@@ -216,7 +217,7 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 @JsonSerializable()
 
 class _RequestAuthenProfile implements RequestAuthenProfile {
-   _RequestAuthenProfile({required this.name, required this.dateNaissance, required this.zoneResidence, required this.profileImage, required this.contact, required this.email, required this.nationalite, required this.dateInscription});
+   _RequestAuthenProfile({required this.name, required this.dateNaissance, required this.zoneResidence, required this.profileImage, required this.contact, required this.email, required this.nationalite, required this.dateInscription, required this.submitProfile});
   factory _RequestAuthenProfile.fromJson(Map<String, dynamic> json) => _$RequestAuthenProfileFromJson(json);
 
 @override final  String name;
@@ -227,6 +228,7 @@ class _RequestAuthenProfile implements RequestAuthenProfile {
 @override final  String email;
 @override final  String nationalite;
 @override final  String dateInscription;
+@override final  bool submitProfile;
 
 /// Create a copy of RequestAuthenProfile
 /// with the given fields replaced by the non-null parameter values.
@@ -241,16 +243,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfile&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfile&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription)&&(identical(other.submitProfile, submitProfile) || other.submitProfile == submitProfile));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription);
+int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription,submitProfile);
 
 @override
 String toString() {
-  return 'RequestAuthenProfile(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription)';
+  return 'RequestAuthenProfile(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription, submitProfile: $submitProfile)';
 }
 
 
@@ -261,7 +263,7 @@ abstract mixin class _$RequestAuthenProfileCopyWith<$Res> implements $RequestAut
   factory _$RequestAuthenProfileCopyWith(_RequestAuthenProfile value, $Res Function(_RequestAuthenProfile) _then) = __$RequestAuthenProfileCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String dateNaissance, String zoneResidence, String profileImage, String contact, String email, String nationalite, String dateInscription
+ String name, String dateNaissance, String zoneResidence, String profileImage, String contact, String email, String nationalite, String dateInscription, bool submitProfile
 });
 
 
@@ -278,7 +280,7 @@ class __$RequestAuthenProfileCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfile
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? dateInscription = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? dateInscription = null,Object? submitProfile = null,}) {
   return _then(_RequestAuthenProfile(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,dateNaissance: null == dateNaissance ? _self.dateNaissance : dateNaissance // ignore: cast_nullable_to_non_nullable
@@ -288,7 +290,8 @@ as String,contact: null == contact ? _self.contact : contact // ignore: cast_nul
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,nationalite: null == nationalite ? _self.nationalite : nationalite // ignore: cast_nullable_to_non_nullable
 as String,dateInscription: null == dateInscription ? _self.dateInscription : dateInscription // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitProfile: null == submitProfile ? _self.submitProfile : submitProfile // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -299,7 +302,7 @@ as String,
 /// @nodoc
 mixin _$RequestAuthenSocial {
 
- String get statusSocial; String get activity; String get nivauEtude; String get matrimonial; String get orphelin;
+ String get statusSocial; String get activity; String get nivauEtude; String get matrimonial; String get orphelin; bool get submitSocial;
 /// Create a copy of RequestAuthenSocial
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -312,16 +315,16 @@ $RequestAuthenSocialCopyWith<RequestAuthenSocial> get copyWith => _$RequestAuthe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenSocial&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenSocial&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.submitSocial, submitSocial) || other.submitSocial == submitSocial));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusSocial,activity,nivauEtude,matrimonial,orphelin);
+int get hashCode => Object.hash(runtimeType,statusSocial,activity,nivauEtude,matrimonial,orphelin,submitSocial);
 
 @override
 String toString() {
-  return 'RequestAuthenSocial(statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin)';
+  return 'RequestAuthenSocial(statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, submitSocial: $submitSocial)';
 }
 
 
@@ -332,7 +335,7 @@ abstract mixin class $RequestAuthenSocialCopyWith<$Res>  {
   factory $RequestAuthenSocialCopyWith(RequestAuthenSocial value, $Res Function(RequestAuthenSocial) _then) = _$RequestAuthenSocialCopyWithImpl;
 @useResult
 $Res call({
- String statusSocial, String activity, String nivauEtude, String matrimonial, String orphelin
+ String statusSocial, String activity, String nivauEtude, String matrimonial, String orphelin, bool submitSocial
 });
 
 
@@ -349,14 +352,15 @@ class _$RequestAuthenSocialCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenSocial
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? statusSocial = null,Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? statusSocial = null,Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,Object? submitSocial = null,}) {
   return _then(_self.copyWith(
 statusSocial: null == statusSocial ? _self.statusSocial : statusSocial // ignore: cast_nullable_to_non_nullable
 as String,activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
 as String,nivauEtude: null == nivauEtude ? _self.nivauEtude : nivauEtude // ignore: cast_nullable_to_non_nullable
 as String,matrimonial: null == matrimonial ? _self.matrimonial : matrimonial // ignore: cast_nullable_to_non_nullable
 as String,orphelin: null == orphelin ? _self.orphelin : orphelin // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitSocial: null == submitSocial ? _self.submitSocial : submitSocial // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -441,10 +445,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String statusSocial,  String activity,  String nivauEtude,  String matrimonial,  String orphelin)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String statusSocial,  String activity,  String nivauEtude,  String matrimonial,  String orphelin,  bool submitSocial)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenSocial() when $default != null:
-return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin);case _:
+return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.submitSocial);case _:
   return orElse();
 
 }
@@ -462,10 +466,10 @@ return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimo
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String statusSocial,  String activity,  String nivauEtude,  String matrimonial,  String orphelin)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String statusSocial,  String activity,  String nivauEtude,  String matrimonial,  String orphelin,  bool submitSocial)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenSocial():
-return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin);case _:
+return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.submitSocial);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -482,10 +486,10 @@ return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimo
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String statusSocial,  String activity,  String nivauEtude,  String matrimonial,  String orphelin)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String statusSocial,  String activity,  String nivauEtude,  String matrimonial,  String orphelin,  bool submitSocial)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenSocial() when $default != null:
-return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin);case _:
+return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.submitSocial);case _:
   return null;
 
 }
@@ -497,7 +501,7 @@ return $default(_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimo
 @JsonSerializable()
 
 class _RequestAuthenSocial implements RequestAuthenSocial {
-   _RequestAuthenSocial({required this.statusSocial, required this.activity, required this.nivauEtude, required this.matrimonial, required this.orphelin});
+   _RequestAuthenSocial({required this.statusSocial, required this.activity, required this.nivauEtude, required this.matrimonial, required this.orphelin, required this.submitSocial});
   factory _RequestAuthenSocial.fromJson(Map<String, dynamic> json) => _$RequestAuthenSocialFromJson(json);
 
 @override final  String statusSocial;
@@ -505,6 +509,7 @@ class _RequestAuthenSocial implements RequestAuthenSocial {
 @override final  String nivauEtude;
 @override final  String matrimonial;
 @override final  String orphelin;
+@override final  bool submitSocial;
 
 /// Create a copy of RequestAuthenSocial
 /// with the given fields replaced by the non-null parameter values.
@@ -519,16 +524,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenSocial&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenSocial&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.submitSocial, submitSocial) || other.submitSocial == submitSocial));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusSocial,activity,nivauEtude,matrimonial,orphelin);
+int get hashCode => Object.hash(runtimeType,statusSocial,activity,nivauEtude,matrimonial,orphelin,submitSocial);
 
 @override
 String toString() {
-  return 'RequestAuthenSocial(statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin)';
+  return 'RequestAuthenSocial(statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, submitSocial: $submitSocial)';
 }
 
 
@@ -539,7 +544,7 @@ abstract mixin class _$RequestAuthenSocialCopyWith<$Res> implements $RequestAuth
   factory _$RequestAuthenSocialCopyWith(_RequestAuthenSocial value, $Res Function(_RequestAuthenSocial) _then) = __$RequestAuthenSocialCopyWithImpl;
 @override @useResult
 $Res call({
- String statusSocial, String activity, String nivauEtude, String matrimonial, String orphelin
+ String statusSocial, String activity, String nivauEtude, String matrimonial, String orphelin, bool submitSocial
 });
 
 
@@ -556,14 +561,15 @@ class __$RequestAuthenSocialCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenSocial
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? statusSocial = null,Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? statusSocial = null,Object? activity = null,Object? nivauEtude = null,Object? matrimonial = null,Object? orphelin = null,Object? submitSocial = null,}) {
   return _then(_RequestAuthenSocial(
 statusSocial: null == statusSocial ? _self.statusSocial : statusSocial // ignore: cast_nullable_to_non_nullable
 as String,activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
 as String,nivauEtude: null == nivauEtude ? _self.nivauEtude : nivauEtude // ignore: cast_nullable_to_non_nullable
 as String,matrimonial: null == matrimonial ? _self.matrimonial : matrimonial // ignore: cast_nullable_to_non_nullable
 as String,orphelin: null == orphelin ? _self.orphelin : orphelin // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitSocial: null == submitSocial ? _self.submitSocial : submitSocial // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -574,7 +580,7 @@ as String,
 /// @nodoc
 mixin _$RequestAuthenSpiritualLife {
 
- String get statusSpirituel; String get dateBaptme; String get cellulePriere; String get encadreur;
+ String get statusSpirituel; String get dateBaptme; String get cellulePriere; String get encadreur; bool get submitSpiritual;
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -587,16 +593,16 @@ $RequestAuthenSpiritualLifeCopyWith<RequestAuthenSpiritualLife> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur);
+int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,submitSpiritual);
 
 @override
 String toString() {
-  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur)';
+  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, submitSpiritual: $submitSpiritual)';
 }
 
 
@@ -607,7 +613,7 @@ abstract mixin class $RequestAuthenSpiritualLifeCopyWith<$Res>  {
   factory $RequestAuthenSpiritualLifeCopyWith(RequestAuthenSpiritualLife value, $Res Function(RequestAuthenSpiritualLife) _then) = _$RequestAuthenSpiritualLifeCopyWithImpl;
 @useResult
 $Res call({
- String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur
+ String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur, bool submitSpiritual
 });
 
 
@@ -624,13 +630,14 @@ class _$RequestAuthenSpiritualLifeCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? submitSpiritual = null,}) {
   return _then(_self.copyWith(
 statusSpirituel: null == statusSpirituel ? _self.statusSpirituel : statusSpirituel // ignore: cast_nullable_to_non_nullable
 as String,dateBaptme: null == dateBaptme ? _self.dateBaptme : dateBaptme // ignore: cast_nullable_to_non_nullable
 as String,cellulePriere: null == cellulePriere ? _self.cellulePriere : cellulePriere // ignore: cast_nullable_to_non_nullable
 as String,encadreur: null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitSpiritual: null == submitSpiritual ? _self.submitSpiritual : submitSpiritual // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -715,10 +722,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenSpiritualLife() when $default != null:
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual);case _:
   return orElse();
 
 }
@@ -736,10 +743,10 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenSpiritualLife():
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -756,10 +763,10 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenSpiritualLife() when $default != null:
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual);case _:
   return null;
 
 }
@@ -771,13 +778,14 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 @JsonSerializable()
 
 class _RequestAuthenSpiritualLife implements RequestAuthenSpiritualLife {
-   _RequestAuthenSpiritualLife({required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur});
+   _RequestAuthenSpiritualLife({required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.submitSpiritual});
   factory _RequestAuthenSpiritualLife.fromJson(Map<String, dynamic> json) => _$RequestAuthenSpiritualLifeFromJson(json);
 
 @override final  String statusSpirituel;
 @override final  String dateBaptme;
 @override final  String cellulePriere;
 @override final  String encadreur;
+@override final  bool submitSpiritual;
 
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
@@ -792,16 +800,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur);
+int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,submitSpiritual);
 
 @override
 String toString() {
-  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur)';
+  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, submitSpiritual: $submitSpiritual)';
 }
 
 
@@ -812,7 +820,7 @@ abstract mixin class _$RequestAuthenSpiritualLifeCopyWith<$Res> implements $Requ
   factory _$RequestAuthenSpiritualLifeCopyWith(_RequestAuthenSpiritualLife value, $Res Function(_RequestAuthenSpiritualLife) _then) = __$RequestAuthenSpiritualLifeCopyWithImpl;
 @override @useResult
 $Res call({
- String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur
+ String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur, bool submitSpiritual
 });
 
 
@@ -829,13 +837,14 @@ class __$RequestAuthenSpiritualLifeCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? submitSpiritual = null,}) {
   return _then(_RequestAuthenSpiritualLife(
 statusSpirituel: null == statusSpirituel ? _self.statusSpirituel : statusSpirituel // ignore: cast_nullable_to_non_nullable
 as String,dateBaptme: null == dateBaptme ? _self.dateBaptme : dateBaptme // ignore: cast_nullable_to_non_nullable
 as String,cellulePriere: null == cellulePriere ? _self.cellulePriere : cellulePriere // ignore: cast_nullable_to_non_nullable
 as String,encadreur: null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitSpiritual: null == submitSpiritual ? _self.submitSpiritual : submitSpiritual // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -846,7 +855,7 @@ as String,
 /// @nodoc
 mixin _$RequestAuthenEngagement {
 
- String get departement; String get competence; String get disponibiliry;
+ String get departement; String get competence; String get disponibiliry; bool get submitEngagement;
 /// Create a copy of RequestAuthenEngagement
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -859,16 +868,16 @@ $RequestAuthenEngagementCopyWith<RequestAuthenEngagement> get copyWith => _$Requ
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenEngagement&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenEngagement&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry)&&(identical(other.submitEngagement, submitEngagement) || other.submitEngagement == submitEngagement));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,departement,competence,disponibiliry);
+int get hashCode => Object.hash(runtimeType,departement,competence,disponibiliry,submitEngagement);
 
 @override
 String toString() {
-  return 'RequestAuthenEngagement(departement: $departement, competence: $competence, disponibiliry: $disponibiliry)';
+  return 'RequestAuthenEngagement(departement: $departement, competence: $competence, disponibiliry: $disponibiliry, submitEngagement: $submitEngagement)';
 }
 
 
@@ -879,7 +888,7 @@ abstract mixin class $RequestAuthenEngagementCopyWith<$Res>  {
   factory $RequestAuthenEngagementCopyWith(RequestAuthenEngagement value, $Res Function(RequestAuthenEngagement) _then) = _$RequestAuthenEngagementCopyWithImpl;
 @useResult
 $Res call({
- String departement, String competence, String disponibiliry
+ String departement, String competence, String disponibiliry, bool submitEngagement
 });
 
 
@@ -896,12 +905,13 @@ class _$RequestAuthenEngagementCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenEngagement
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? departement = null,Object? competence = null,Object? disponibiliry = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? departement = null,Object? competence = null,Object? disponibiliry = null,Object? submitEngagement = null,}) {
   return _then(_self.copyWith(
 departement: null == departement ? _self.departement : departement // ignore: cast_nullable_to_non_nullable
 as String,competence: null == competence ? _self.competence : competence // ignore: cast_nullable_to_non_nullable
 as String,disponibiliry: null == disponibiliry ? _self.disponibiliry : disponibiliry // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitEngagement: null == submitEngagement ? _self.submitEngagement : submitEngagement // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -986,10 +996,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String departement,  String competence,  String disponibiliry)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String departement,  String competence,  String disponibiliry,  bool submitEngagement)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenEngagement() when $default != null:
-return $default(_that.departement,_that.competence,_that.disponibiliry);case _:
+return $default(_that.departement,_that.competence,_that.disponibiliry,_that.submitEngagement);case _:
   return orElse();
 
 }
@@ -1007,10 +1017,10 @@ return $default(_that.departement,_that.competence,_that.disponibiliry);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String departement,  String competence,  String disponibiliry)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String departement,  String competence,  String disponibiliry,  bool submitEngagement)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenEngagement():
-return $default(_that.departement,_that.competence,_that.disponibiliry);case _:
+return $default(_that.departement,_that.competence,_that.disponibiliry,_that.submitEngagement);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1027,10 +1037,10 @@ return $default(_that.departement,_that.competence,_that.disponibiliry);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String departement,  String competence,  String disponibiliry)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String departement,  String competence,  String disponibiliry,  bool submitEngagement)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenEngagement() when $default != null:
-return $default(_that.departement,_that.competence,_that.disponibiliry);case _:
+return $default(_that.departement,_that.competence,_that.disponibiliry,_that.submitEngagement);case _:
   return null;
 
 }
@@ -1042,12 +1052,13 @@ return $default(_that.departement,_that.competence,_that.disponibiliry);case _:
 @JsonSerializable()
 
 class _RequestAuthenEngagement implements RequestAuthenEngagement {
-   _RequestAuthenEngagement({required this.departement, required this.competence, required this.disponibiliry});
+   _RequestAuthenEngagement({required this.departement, required this.competence, required this.disponibiliry, required this.submitEngagement});
   factory _RequestAuthenEngagement.fromJson(Map<String, dynamic> json) => _$RequestAuthenEngagementFromJson(json);
 
 @override final  String departement;
 @override final  String competence;
 @override final  String disponibiliry;
+@override final  bool submitEngagement;
 
 /// Create a copy of RequestAuthenEngagement
 /// with the given fields replaced by the non-null parameter values.
@@ -1062,16 +1073,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenEngagement&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenEngagement&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry)&&(identical(other.submitEngagement, submitEngagement) || other.submitEngagement == submitEngagement));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,departement,competence,disponibiliry);
+int get hashCode => Object.hash(runtimeType,departement,competence,disponibiliry,submitEngagement);
 
 @override
 String toString() {
-  return 'RequestAuthenEngagement(departement: $departement, competence: $competence, disponibiliry: $disponibiliry)';
+  return 'RequestAuthenEngagement(departement: $departement, competence: $competence, disponibiliry: $disponibiliry, submitEngagement: $submitEngagement)';
 }
 
 
@@ -1082,7 +1093,7 @@ abstract mixin class _$RequestAuthenEngagementCopyWith<$Res> implements $Request
   factory _$RequestAuthenEngagementCopyWith(_RequestAuthenEngagement value, $Res Function(_RequestAuthenEngagement) _then) = __$RequestAuthenEngagementCopyWithImpl;
 @override @useResult
 $Res call({
- String departement, String competence, String disponibiliry
+ String departement, String competence, String disponibiliry, bool submitEngagement
 });
 
 
@@ -1099,12 +1110,13 @@ class __$RequestAuthenEngagementCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenEngagement
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? departement = null,Object? competence = null,Object? disponibiliry = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? departement = null,Object? competence = null,Object? disponibiliry = null,Object? submitEngagement = null,}) {
   return _then(_RequestAuthenEngagement(
 departement: null == departement ? _self.departement : departement // ignore: cast_nullable_to_non_nullable
 as String,competence: null == competence ? _self.competence : competence // ignore: cast_nullable_to_non_nullable
 as String,disponibiliry: null == disponibiliry ? _self.disponibiliry : disponibiliry // ignore: cast_nullable_to_non_nullable
-as String,
+as String,submitEngagement: null == submitEngagement ? _self.submitEngagement : submitEngagement // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

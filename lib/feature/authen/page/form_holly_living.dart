@@ -18,7 +18,8 @@ import 'package:grace_church/feature/authen/page/form_engagement.dart'
     hide FormNextTeps;
 
 class FormHollyLiving extends StatefulWidget {
-  const FormHollyLiving({super.key});
+  const FormHollyLiving({super.key, this.profile = false});
+  final bool profile;
 
   @override
   State<FormHollyLiving> createState() => _FormHollyLivingState();
@@ -158,6 +159,13 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
     >(
       listener: (context, state) {
         if (state.status.isSuccess) {
+          // ----------------------------
+          // Handle navigation based on profile flag
+          // ----------------------------
+          if (widget.profile) {
+            Navigator.of(context).pop(true);
+            return;
+          }
           Navigator.of(context).push(fadeRoute(const FormEngagement()));
         }
       },
@@ -577,7 +585,7 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                   >(
                     builder: (context, state) {
                       return FormNextTeps(
-                        icons: Icons.badge_rounded,
+                        icons: Icons.groups_outlined,
                         title: 'Rejoindre un département',
                         description: 'Choral, Masse média, Evangeliste',
                         isNextForm: state.isValide,

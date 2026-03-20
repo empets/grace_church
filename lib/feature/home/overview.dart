@@ -7,6 +7,7 @@ import 'package:grace_church/feature/home/domaine/entities/response/home_respons
 import 'package:grace_church/feature/home/domaine/usercase/get_profile_usercase.dart';
 import 'package:grace_church/feature/home/home_view.dart';
 import 'package:grace_church/feature/home/menu_view.dart';
+import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +29,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
               GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
                 ..add(ProfileEvent.fetch()),
         ),
+        BlocProvider(
+          create: (context) => AppLauncherBloc()
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -46,11 +50,15 @@ class _OverviewScreenState extends State<OverviewScreen> {
             },
           ),
         ],
-        child: Scaffold(
-          backgroundColor: Colors.grey.shade50,
-          appBar: AppBar(backgroundColor: Colors.grey.shade50),
-          drawer: MenuView(),
-          body: HomeView(),
+        child: BlocBuilder<AppLauncherBloc, ApiState<bool>>(
+          builder: (context, state) {
+            return Scaffold(
+              backgroundColor: Colors.grey.shade50,
+              appBar: AppBar(backgroundColor: Colors.grey.shade50),
+              drawer: MenuView(),
+              body: HomeView(),
+            );
+          },
         ),
       ),
     );

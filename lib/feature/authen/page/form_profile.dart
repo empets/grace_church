@@ -24,7 +24,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shimmer/shimmer.dart';
 
 class FormProfile extends StatefulWidget {
-  const FormProfile({super.key});
+  const FormProfile({super.key, this.profile = false});
+  
+  final bool profile;
 
   @override
   State<FormProfile> createState() => _FormProfileState();
@@ -121,6 +123,13 @@ class _FormProfileState extends State<FormProfile> {
       child: BlocListener<FormProfileBloc, CreateCompteProfileState>(
         listener: (context, state) {
           if (state.status.isSuccess) {
+            //----------------------------
+            // Handle navigation based on profile flag
+            //----------------------------
+            if (widget.profile) {
+              Navigator.of(context).pop(widget.profile);
+            }
+            else {
             Navigator.of(context).push(
               fadeRoute(
                 BlocProvider(
@@ -132,6 +141,7 @@ class _FormProfileState extends State<FormProfile> {
                 ),
               ),
             );
+            }
           }
         },
         child: Scaffold(

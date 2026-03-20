@@ -17,6 +17,7 @@ _RequestAuthenProfile _$RequestAuthenProfileFromJson(
   email: json['email'] as String,
   nationalite: json['nationalite'] as String,
   dateInscription: json['dateInscription'] as String,
+  submitProfile: json['submitProfile'] as bool,
 );
 
 Map<String, dynamic> _$RequestAuthenProfileToJson(
@@ -30,6 +31,7 @@ Map<String, dynamic> _$RequestAuthenProfileToJson(
   'email': instance.email,
   'nationalite': instance.nationalite,
   'dateInscription': instance.dateInscription,
+  'submitProfile': instance.submitProfile,
 };
 
 _RequestAuthenSocial _$RequestAuthenSocialFromJson(Map<String, dynamic> json) =>
@@ -39,6 +41,7 @@ _RequestAuthenSocial _$RequestAuthenSocialFromJson(Map<String, dynamic> json) =>
       nivauEtude: json['nivauEtude'] as String,
       matrimonial: json['matrimonial'] as String,
       orphelin: json['orphelin'] as String,
+      submitSocial: json['submitSocial'] as bool,
     );
 
 Map<String, dynamic> _$RequestAuthenSocialToJson(
@@ -49,6 +52,7 @@ Map<String, dynamic> _$RequestAuthenSocialToJson(
   'nivauEtude': instance.nivauEtude,
   'matrimonial': instance.matrimonial,
   'orphelin': instance.orphelin,
+  'submitSocial': instance.submitSocial,
 };
 
 _RequestAuthenSpiritualLife _$RequestAuthenSpiritualLifeFromJson(
@@ -58,6 +62,7 @@ _RequestAuthenSpiritualLife _$RequestAuthenSpiritualLifeFromJson(
   dateBaptme: json['dateBaptme'] as String,
   cellulePriere: json['cellulePriere'] as String,
   encadreur: json['encadreur'] as String,
+  submitSpiritual: json['submitSpiritual'] as bool,
 );
 
 Map<String, dynamic> _$RequestAuthenSpiritualLifeToJson(
@@ -67,6 +72,7 @@ Map<String, dynamic> _$RequestAuthenSpiritualLifeToJson(
   'dateBaptme': instance.dateBaptme,
   'cellulePriere': instance.cellulePriere,
   'encadreur': instance.encadreur,
+  'submitSpiritual': instance.submitSpiritual,
 };
 
 _RequestAuthenEngagement _$RequestAuthenEngagementFromJson(
@@ -75,6 +81,7 @@ _RequestAuthenEngagement _$RequestAuthenEngagementFromJson(
   departement: json['departement'] as String,
   competence: json['competence'] as String,
   disponibiliry: json['disponibiliry'] as String,
+  submitEngagement: json['submitEngagement'] as bool,
 );
 
 Map<String, dynamic> _$RequestAuthenEngagementToJson(
@@ -83,6 +90,7 @@ Map<String, dynamic> _$RequestAuthenEngagementToJson(
   'departement': instance.departement,
   'competence': instance.competence,
   'disponibiliry': instance.disponibiliry,
+  'submitEngagement': instance.submitEngagement,
 };
 
 _RequestAuthenProfileUpdateKey _$RequestAuthenProfileUpdateKeyFromJson(

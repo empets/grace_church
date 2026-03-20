@@ -29,6 +29,10 @@ _ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) =>
       competence: json['competence'] as String,
       disponibiliry: json['disponibiliry'] as String,
       menberId: json['menberId'] as String,
+      submitProfile: json['submitProfile'] as bool,
+      submitSocial: json['submitSocial'] as bool,
+      submitSpiritual: json['submitSpiritual'] as bool,
+      submitEngagement: json['submitEngagement'] as bool,
     );
 
 Map<String, dynamic> _$ProfileResponseToJson(_ProfileResponse instance) =>
@@ -54,4 +58,8 @@ Map<String, dynamic> _$ProfileResponseToJson(_ProfileResponse instance) =>
       'competence': instance.competence,
       'disponibiliry': instance.disponibiliry,
       'menberId': instance.menberId,
+      'submitProfile': instance.submitProfile,
+      'submitSocial': instance.submitSocial,
+      'submitSpiritual': instance.submitSpiritual,
+      'submitEngagement': instance.submitEngagement,
     };

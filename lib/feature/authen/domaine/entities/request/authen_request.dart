@@ -13,6 +13,7 @@ abstract class RequestAuthenProfile with _$RequestAuthenProfile {
     required String email,
     required String nationalite,
     required String dateInscription,
+    required bool submitProfile
   }) = _RequestAuthenProfile;
 
   factory RequestAuthenProfile.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +28,7 @@ abstract class RequestAuthenSocial with _$RequestAuthenSocial {
     required String nivauEtude,
     required String matrimonial,
     required String orphelin,
+    required bool submitSocial
   }) = _RequestAuthenSocial;
 
   factory RequestAuthenSocial.fromJson(Map<String, dynamic> json) =>
@@ -40,6 +42,7 @@ abstract class RequestAuthenSpiritualLife with _$RequestAuthenSpiritualLife {
     required String dateBaptme,
     required String cellulePriere,
     required String encadreur,
+    required bool   submitSpiritual
   }) = _RequestAuthenSpiritualLife;
 
   factory RequestAuthenSpiritualLife.fromJson(Map<String, dynamic> json) =>
@@ -52,6 +55,7 @@ abstract class RequestAuthenEngagement with _$RequestAuthenEngagement {
     required String departement,
     required String competence,
     required String disponibiliry,
+    required bool submitEngagement
   }) = _RequestAuthenEngagement;
 
   factory RequestAuthenEngagement.fromJson(Map<String, dynamic> json) =>

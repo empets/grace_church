@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileResponseModel {
 
- String? get name; String? get dateNaissance; String? get zoneResidence; String? get profileImage; String? get contact; String? get email; String? get nationalite; String? get dateInscription; String? get statusSocial; String? get activity; String? get nivauEtude; String? get matrimonial; String? get orphelin; String? get statusSpirituel; String? get dateBaptme; String? get cellulePriere; String? get encadreur; String? get departement; String? get competence; String? get disponibiliry; String? get menberId;
+ String? get name; String? get dateNaissance; String? get zoneResidence; String? get profileImage; String? get contact; String? get email; String? get nationalite; String? get dateInscription; String? get statusSocial; String? get activity; String? get nivauEtude; String? get matrimonial; String? get orphelin; String? get statusSpirituel; String? get dateBaptme; String? get cellulePriere; String? get encadreur; String? get departement; String? get competence; String? get disponibiliry; String? get menberId; bool? get submitProfile; bool? get submitSocial; bool? get submitSpiritual; bool? get submitEngagement;
 /// Create a copy of ProfileResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ProfileResponseModelCopyWith<ProfileResponseModel> get copyWith => _$ProfileRes
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileResponseModel&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription)&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry)&&(identical(other.menberId, menberId) || other.menberId == menberId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileResponseModel&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription)&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry)&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.submitProfile, submitProfile) || other.submitProfile == submitProfile)&&(identical(other.submitSocial, submitSocial) || other.submitSocial == submitSocial)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual)&&(identical(other.submitEngagement, submitEngagement) || other.submitEngagement == submitEngagement));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription,statusSocial,activity,nivauEtude,matrimonial,orphelin,statusSpirituel,dateBaptme,cellulePriere,encadreur,departement,competence,disponibiliry,menberId]);
+int get hashCode => Object.hashAll([runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription,statusSocial,activity,nivauEtude,matrimonial,orphelin,statusSpirituel,dateBaptme,cellulePriere,encadreur,departement,competence,disponibiliry,menberId,submitProfile,submitSocial,submitSpiritual,submitEngagement]);
 
 @override
 String toString() {
-  return 'ProfileResponseModel(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription, statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, departement: $departement, competence: $competence, disponibiliry: $disponibiliry, menberId: $menberId)';
+  return 'ProfileResponseModel(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription, statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, departement: $departement, competence: $competence, disponibiliry: $disponibiliry, menberId: $menberId, submitProfile: $submitProfile, submitSocial: $submitSocial, submitSpiritual: $submitSpiritual, submitEngagement: $submitEngagement)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ProfileResponseModelCopyWith<$Res>  {
   factory $ProfileResponseModelCopyWith(ProfileResponseModel value, $Res Function(ProfileResponseModel) _then) = _$ProfileResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String? name, String? dateNaissance, String? zoneResidence, String? profileImage, String? contact, String? email, String? nationalite, String? dateInscription, String? statusSocial, String? activity, String? nivauEtude, String? matrimonial, String? orphelin, String? statusSpirituel, String? dateBaptme, String? cellulePriere, String? encadreur, String? departement, String? competence, String? disponibiliry, String? menberId
+ String? name, String? dateNaissance, String? zoneResidence, String? profileImage, String? contact, String? email, String? nationalite, String? dateInscription, String? statusSocial, String? activity, String? nivauEtude, String? matrimonial, String? orphelin, String? statusSpirituel, String? dateBaptme, String? cellulePriere, String? encadreur, String? departement, String? competence, String? disponibiliry, String? menberId, bool? submitProfile, bool? submitSocial, bool? submitSpiritual, bool? submitEngagement
 });
 
 
@@ -65,7 +65,7 @@ class _$ProfileResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of ProfileResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? dateNaissance = freezed,Object? zoneResidence = freezed,Object? profileImage = freezed,Object? contact = freezed,Object? email = freezed,Object? nationalite = freezed,Object? dateInscription = freezed,Object? statusSocial = freezed,Object? activity = freezed,Object? nivauEtude = freezed,Object? matrimonial = freezed,Object? orphelin = freezed,Object? statusSpirituel = freezed,Object? dateBaptme = freezed,Object? cellulePriere = freezed,Object? encadreur = freezed,Object? departement = freezed,Object? competence = freezed,Object? disponibiliry = freezed,Object? menberId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? dateNaissance = freezed,Object? zoneResidence = freezed,Object? profileImage = freezed,Object? contact = freezed,Object? email = freezed,Object? nationalite = freezed,Object? dateInscription = freezed,Object? statusSocial = freezed,Object? activity = freezed,Object? nivauEtude = freezed,Object? matrimonial = freezed,Object? orphelin = freezed,Object? statusSpirituel = freezed,Object? dateBaptme = freezed,Object? cellulePriere = freezed,Object? encadreur = freezed,Object? departement = freezed,Object? competence = freezed,Object? disponibiliry = freezed,Object? menberId = freezed,Object? submitProfile = freezed,Object? submitSocial = freezed,Object? submitSpiritual = freezed,Object? submitEngagement = freezed,}) {
   return _then(_self.copyWith(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,dateNaissance: freezed == dateNaissance ? _self.dateNaissance : dateNaissance // ignore: cast_nullable_to_non_nullable
@@ -88,7 +88,11 @@ as String?,departement: freezed == departement ? _self.departement : departement
 as String?,competence: freezed == competence ? _self.competence : competence // ignore: cast_nullable_to_non_nullable
 as String?,disponibiliry: freezed == disponibiliry ? _self.disponibiliry : disponibiliry // ignore: cast_nullable_to_non_nullable
 as String?,menberId: freezed == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,submitProfile: freezed == submitProfile ? _self.submitProfile : submitProfile // ignore: cast_nullable_to_non_nullable
+as bool?,submitSocial: freezed == submitSocial ? _self.submitSocial : submitSocial // ignore: cast_nullable_to_non_nullable
+as bool?,submitSpiritual: freezed == submitSpiritual ? _self.submitSpiritual : submitSpiritual // ignore: cast_nullable_to_non_nullable
+as bool?,submitEngagement: freezed == submitEngagement ? _self.submitEngagement : submitEngagement // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 
@@ -173,10 +177,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  String? dateNaissance,  String? zoneResidence,  String? profileImage,  String? contact,  String? email,  String? nationalite,  String? dateInscription,  String? statusSocial,  String? activity,  String? nivauEtude,  String? matrimonial,  String? orphelin,  String? statusSpirituel,  String? dateBaptme,  String? cellulePriere,  String? encadreur,  String? departement,  String? competence,  String? disponibiliry,  String? menberId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  String? dateNaissance,  String? zoneResidence,  String? profileImage,  String? contact,  String? email,  String? nationalite,  String? dateInscription,  String? statusSocial,  String? activity,  String? nivauEtude,  String? matrimonial,  String? orphelin,  String? statusSpirituel,  String? dateBaptme,  String? cellulePriere,  String? encadreur,  String? departement,  String? competence,  String? disponibiliry,  String? menberId,  bool? submitProfile,  bool? submitSocial,  bool? submitSpiritual,  bool? submitEngagement)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileResponseModel() when $default != null:
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.departement,_that.competence,_that.disponibiliry,_that.menberId);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.departement,_that.competence,_that.disponibiliry,_that.menberId,_that.submitProfile,_that.submitSocial,_that.submitSpiritual,_that.submitEngagement);case _:
   return orElse();
 
 }
@@ -194,10 +198,10 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  String? dateNaissance,  String? zoneResidence,  String? profileImage,  String? contact,  String? email,  String? nationalite,  String? dateInscription,  String? statusSocial,  String? activity,  String? nivauEtude,  String? matrimonial,  String? orphelin,  String? statusSpirituel,  String? dateBaptme,  String? cellulePriere,  String? encadreur,  String? departement,  String? competence,  String? disponibiliry,  String? menberId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  String? dateNaissance,  String? zoneResidence,  String? profileImage,  String? contact,  String? email,  String? nationalite,  String? dateInscription,  String? statusSocial,  String? activity,  String? nivauEtude,  String? matrimonial,  String? orphelin,  String? statusSpirituel,  String? dateBaptme,  String? cellulePriere,  String? encadreur,  String? departement,  String? competence,  String? disponibiliry,  String? menberId,  bool? submitProfile,  bool? submitSocial,  bool? submitSpiritual,  bool? submitEngagement)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileResponseModel():
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.departement,_that.competence,_that.disponibiliry,_that.menberId);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.departement,_that.competence,_that.disponibiliry,_that.menberId,_that.submitProfile,_that.submitSocial,_that.submitSpiritual,_that.submitEngagement);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -214,10 +218,10 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  String? dateNaissance,  String? zoneResidence,  String? profileImage,  String? contact,  String? email,  String? nationalite,  String? dateInscription,  String? statusSocial,  String? activity,  String? nivauEtude,  String? matrimonial,  String? orphelin,  String? statusSpirituel,  String? dateBaptme,  String? cellulePriere,  String? encadreur,  String? departement,  String? competence,  String? disponibiliry,  String? menberId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  String? dateNaissance,  String? zoneResidence,  String? profileImage,  String? contact,  String? email,  String? nationalite,  String? dateInscription,  String? statusSocial,  String? activity,  String? nivauEtude,  String? matrimonial,  String? orphelin,  String? statusSpirituel,  String? dateBaptme,  String? cellulePriere,  String? encadreur,  String? departement,  String? competence,  String? disponibiliry,  String? menberId,  bool? submitProfile,  bool? submitSocial,  bool? submitSpiritual,  bool? submitEngagement)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileResponseModel() when $default != null:
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.departement,_that.competence,_that.disponibiliry,_that.menberId);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.dateInscription,_that.statusSocial,_that.activity,_that.nivauEtude,_that.matrimonial,_that.orphelin,_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.departement,_that.competence,_that.disponibiliry,_that.menberId,_that.submitProfile,_that.submitSocial,_that.submitSpiritual,_that.submitEngagement);case _:
   return null;
 
 }
@@ -229,7 +233,7 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 @JsonSerializable()
 
 class _ProfileResponseModel implements ProfileResponseModel {
-   _ProfileResponseModel({required this.name, required this.dateNaissance, required this.zoneResidence, required this.profileImage, required this.contact, required this.email, required this.nationalite, required this.dateInscription, required this.statusSocial, required this.activity, required this.nivauEtude, required this.matrimonial, required this.orphelin, required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.departement, required this.competence, required this.disponibiliry, required this.menberId});
+   _ProfileResponseModel({required this.name, required this.dateNaissance, required this.zoneResidence, required this.profileImage, required this.contact, required this.email, required this.nationalite, required this.dateInscription, required this.statusSocial, required this.activity, required this.nivauEtude, required this.matrimonial, required this.orphelin, required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.departement, required this.competence, required this.disponibiliry, required this.menberId, this.submitProfile = false, this.submitSocial = false, this.submitSpiritual = false, this.submitEngagement = false});
   factory _ProfileResponseModel.fromJson(Map<String, dynamic> json) => _$ProfileResponseModelFromJson(json);
 
 @override final  String? name;
@@ -253,6 +257,10 @@ class _ProfileResponseModel implements ProfileResponseModel {
 @override final  String? competence;
 @override final  String? disponibiliry;
 @override final  String? menberId;
+@override@JsonKey() final  bool? submitProfile;
+@override@JsonKey() final  bool? submitSocial;
+@override@JsonKey() final  bool? submitSpiritual;
+@override@JsonKey() final  bool? submitEngagement;
 
 /// Create a copy of ProfileResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -267,16 +275,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileResponseModel&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription)&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry)&&(identical(other.menberId, menberId) || other.menberId == menberId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileResponseModel&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.dateInscription, dateInscription) || other.dateInscription == dateInscription)&&(identical(other.statusSocial, statusSocial) || other.statusSocial == statusSocial)&&(identical(other.activity, activity) || other.activity == activity)&&(identical(other.nivauEtude, nivauEtude) || other.nivauEtude == nivauEtude)&&(identical(other.matrimonial, matrimonial) || other.matrimonial == matrimonial)&&(identical(other.orphelin, orphelin) || other.orphelin == orphelin)&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.departement, departement) || other.departement == departement)&&(identical(other.competence, competence) || other.competence == competence)&&(identical(other.disponibiliry, disponibiliry) || other.disponibiliry == disponibiliry)&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.submitProfile, submitProfile) || other.submitProfile == submitProfile)&&(identical(other.submitSocial, submitSocial) || other.submitSocial == submitSocial)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual)&&(identical(other.submitEngagement, submitEngagement) || other.submitEngagement == submitEngagement));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription,statusSocial,activity,nivauEtude,matrimonial,orphelin,statusSpirituel,dateBaptme,cellulePriere,encadreur,departement,competence,disponibiliry,menberId]);
+int get hashCode => Object.hashAll([runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,dateInscription,statusSocial,activity,nivauEtude,matrimonial,orphelin,statusSpirituel,dateBaptme,cellulePriere,encadreur,departement,competence,disponibiliry,menberId,submitProfile,submitSocial,submitSpiritual,submitEngagement]);
 
 @override
 String toString() {
-  return 'ProfileResponseModel(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription, statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, departement: $departement, competence: $competence, disponibiliry: $disponibiliry, menberId: $menberId)';
+  return 'ProfileResponseModel(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, dateInscription: $dateInscription, statusSocial: $statusSocial, activity: $activity, nivauEtude: $nivauEtude, matrimonial: $matrimonial, orphelin: $orphelin, statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, departement: $departement, competence: $competence, disponibiliry: $disponibiliry, menberId: $menberId, submitProfile: $submitProfile, submitSocial: $submitSocial, submitSpiritual: $submitSpiritual, submitEngagement: $submitEngagement)';
 }
 
 
@@ -287,7 +295,7 @@ abstract mixin class _$ProfileResponseModelCopyWith<$Res> implements $ProfileRes
   factory _$ProfileResponseModelCopyWith(_ProfileResponseModel value, $Res Function(_ProfileResponseModel) _then) = __$ProfileResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? name, String? dateNaissance, String? zoneResidence, String? profileImage, String? contact, String? email, String? nationalite, String? dateInscription, String? statusSocial, String? activity, String? nivauEtude, String? matrimonial, String? orphelin, String? statusSpirituel, String? dateBaptme, String? cellulePriere, String? encadreur, String? departement, String? competence, String? disponibiliry, String? menberId
+ String? name, String? dateNaissance, String? zoneResidence, String? profileImage, String? contact, String? email, String? nationalite, String? dateInscription, String? statusSocial, String? activity, String? nivauEtude, String? matrimonial, String? orphelin, String? statusSpirituel, String? dateBaptme, String? cellulePriere, String? encadreur, String? departement, String? competence, String? disponibiliry, String? menberId, bool? submitProfile, bool? submitSocial, bool? submitSpiritual, bool? submitEngagement
 });
 
 
@@ -304,7 +312,7 @@ class __$ProfileResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of ProfileResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = freezed,Object? dateNaissance = freezed,Object? zoneResidence = freezed,Object? profileImage = freezed,Object? contact = freezed,Object? email = freezed,Object? nationalite = freezed,Object? dateInscription = freezed,Object? statusSocial = freezed,Object? activity = freezed,Object? nivauEtude = freezed,Object? matrimonial = freezed,Object? orphelin = freezed,Object? statusSpirituel = freezed,Object? dateBaptme = freezed,Object? cellulePriere = freezed,Object? encadreur = freezed,Object? departement = freezed,Object? competence = freezed,Object? disponibiliry = freezed,Object? menberId = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = freezed,Object? dateNaissance = freezed,Object? zoneResidence = freezed,Object? profileImage = freezed,Object? contact = freezed,Object? email = freezed,Object? nationalite = freezed,Object? dateInscription = freezed,Object? statusSocial = freezed,Object? activity = freezed,Object? nivauEtude = freezed,Object? matrimonial = freezed,Object? orphelin = freezed,Object? statusSpirituel = freezed,Object? dateBaptme = freezed,Object? cellulePriere = freezed,Object? encadreur = freezed,Object? departement = freezed,Object? competence = freezed,Object? disponibiliry = freezed,Object? menberId = freezed,Object? submitProfile = freezed,Object? submitSocial = freezed,Object? submitSpiritual = freezed,Object? submitEngagement = freezed,}) {
   return _then(_ProfileResponseModel(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,dateNaissance: freezed == dateNaissance ? _self.dateNaissance : dateNaissance // ignore: cast_nullable_to_non_nullable
@@ -327,7 +335,11 @@ as String?,departement: freezed == departement ? _self.departement : departement
 as String?,competence: freezed == competence ? _self.competence : competence // ignore: cast_nullable_to_non_nullable
 as String?,disponibiliry: freezed == disponibiliry ? _self.disponibiliry : disponibiliry // ignore: cast_nullable_to_non_nullable
 as String?,menberId: freezed == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,submitProfile: freezed == submitProfile ? _self.submitProfile : submitProfile // ignore: cast_nullable_to_non_nullable
+as bool?,submitSocial: freezed == submitSocial ? _self.submitSocial : submitSocial // ignore: cast_nullable_to_non_nullable
+as bool?,submitSpiritual: freezed == submitSpiritual ? _self.submitSpiritual : submitSpiritual // ignore: cast_nullable_to_non_nullable
+as bool?,submitEngagement: freezed == submitEngagement ? _self.submitEngagement : submitEngagement // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 

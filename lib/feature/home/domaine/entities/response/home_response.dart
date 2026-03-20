@@ -26,6 +26,10 @@ abstract class ProfileResponse with _$ProfileResponse {
     required String competence,
     required String disponibiliry,
     required String menberId,
+    required bool submitProfile,
+    required bool submitSocial,
+    required bool submitSpiritual,
+    required bool submitEngagement,
   }) = _ProfileResponse;
   factory ProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseFromJson(json);

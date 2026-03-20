@@ -1,9 +1,32 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:formz/formz.dart';
+import 'package:grace_church/core/alert/app_alerte.dart';
+import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
+import 'package:grace_church/feature/authen/page/form_engagement.dart';
+import 'package:grace_church/feature/authen/page/form_holly_living.dart';
+import 'package:grace_church/feature/authen/page/form_profile.dart';
+import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
+import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key, required this.profile});
@@ -102,688 +125,1317 @@ class _ProfileViewState extends State<ProfileView> {
       return deviceInfos;
     }
 
-    return Scaffold(
-      backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(backgroundColor: Colors.grey.shade50),
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          alignment: Alignment.topCenter,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(5.r),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: context.appColor.primaryLightBlue,
-                    ),
-                    shape: BoxShape.circle,
-                  ),
-                  child: ClipOval(
-                    child: Image.network(
-                      loadingBuilder: (context, child, loadingProgress) {
-                        return child;
-                      },
-                      errorBuilder: (_, __, ___) => ClipOval(
-                        child: Image.network(
-                          "yAssets.icons.profileAvatarPlaceholderLarge .path",
-                          fit: BoxFit.contain,
-                          height: 0.08.sh,
-                          width: 0.08.sh,
-                        ),
-                      ),
-                      widget.profile.profileImage,
-
-                      fit: BoxFit.cover,
-                      height: 0.1.sh,
-                      width: 0.1.sh,
-                    ),
-                  ),
-                ),
-                CustomeText(
-                  text: widget.profile.name,
-                  style: context.appTypographie.button.copyWith(
-                    color: context.appColor.primaryGrayDark,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                CustomeText(
-                  text: widget.profile.email,
-                  style: context.appTypographie.button.copyWith(
-                    color: context.appColor.primaryGray700,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 50.w,
-                    vertical: 18.h,
-                  ),
-                  child: PrimaryButton(
-                    label: "Modifier",
-                    colorText: context.appColor.primaryWhite,
-                    leadingIcon: Icons.edit_note_sharp,
-                    iconLeading: true,
-                    iconColor: context.appColor.primaryWhite,
-                    backgroundColor: context.appColor.primaryBlue,
-                    fontSize: 12.sp,
-                    onPressed: () {},
-                  ),
-                ),
-
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.person, color: context.appColor.primaryBlue),
-                        SizedBox(width: 8.w),
-                        CustomeText(
-                          text: "Informations Personnelles",
-                          style: context.appTypographie.button.copyWith(
-                            color: context.appColor.primaryGray700,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 7.h),
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 5.h),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryWhite,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
+    return BlocProvider.value(
+      value: context.read<GetProfileBloc>(),
+      child: BlocListener<GetProfileBloc, ApiState<ProfileResponse>>(
+        listener: (context, profileListenerState) {
+          if (profileListenerState is SuccessState<ProfileResponse>) {
+            AppAlert.showSuccess(context, "Profil mis à jour avec succès");
+          }
+        },
+        child: Scaffold(
+          backgroundColor: Colors.grey.shade50,
+          appBar: AppBar(backgroundColor: Colors.grey.shade50),
+          body: BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
+            builder: (context, profileState) {
+              if (profileState is SuccessState<ProfileResponse>) {
+                return SafeArea(
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    child: SingleChildScrollView(
+                      physics: profileState is LoadState<ProfileResponse>
+                          ? NeverScrollableScrollPhysics()
+                          : const AlwaysScrollableScrollPhysics(),
                       child: Column(
                         children: [
-                          Column(
-                            children: [
-                              ...getPersonalInformation(
-                                profile: widget.profile,
-                              ).map(
-                                (items) => Container(
-                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
+                          Container(
+                            height: 1.5.sh,
+                            child: Stack(
+                              children: [
+                                Container(
                                   padding: EdgeInsets.symmetric(
-                                    horizontal: 10.w,
-                                    vertical: 8.h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: items['title'] != 'Téléphone'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                      top: items['title'] != 'Téléphone'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                    ),
-                                    color: context.appColor.primaryWhite,
-                                    borderRadius: items['title'] == 'Email'
-                                        ? BorderRadius.only(
-                                            topLeft: Radius.circular(12.r),
-                                            topRight: Radius.circular(12.r),
-                                          )
-                                        : items['title'] == 'Adresse & Quartier'
-                                        ? BorderRadius.only(
-                                            bottomLeft: Radius.circular(12.r),
-                                            bottomRight: Radius.circular(12.r),
-                                          )
-                                        : null,
+                                    horizontal: 16.w,
                                   ),
                                   child: Column(
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(bottom: 4.h),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.all(8.w),
-                                              decoration: BoxDecoration(
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue
-                                                    .withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.r),
-                                              ),
-                                              child: Icon(
-                                                items['icon'],
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue,
+                                        padding: EdgeInsets.all(5.r),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: context
+                                                .appColor
+                                                .primaryLightBlue,
+                                          ),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: ClipOval(
+                                          child: Image.network(
+                                            loadingBuilder:
+                                                (
+                                                  context,
+                                                  child,
+                                                  loadingProgress,
+                                                ) {
+                                                  return child;
+                                                },
+                                            errorBuilder: (_, __, ___) => ClipOval(
+                                              child: Image.network(
+                                                "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                                                fit: BoxFit.contain,
+                                                height: 0.08.sh,
+                                                width: 0.08.sh,
                                               ),
                                             ),
-                                            SizedBox(width: 8.w),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                            profileState.data.profileImage,
+
+                                            fit: BoxFit.cover,
+                                            height: 0.1.sh,
+                                            width: 0.1.sh,
+                                          ),
+                                        ),
+                                      ),
+                                      CustomeText(
+                                        text: profileState.data.name,
+                                        style: context.appTypographie.button
+                                            .copyWith(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGrayDark,
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                      ),
+                                      CustomeText(
+                                        text: profileState.data.email,
+                                        style: context.appTypographie.button
+                                            .copyWith(
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray700,
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                      ),
+
+                                      SizedBox(height: 29.h),
+
+                                      Container(
+                                        margin: EdgeInsets.symmetric(
+                                          horizontal: 50.w,
+                                          vertical: 18.h,
+                                        ),
+                                        child: PrimaryButton(
+                                          label: "Modifier",
+                                          colorText:
+                                              context.appColor.primaryWhite,
+                                          leadingIcon: Icons.edit_note_sharp,
+                                          iconLeading: true,
+                                          iconColor:
+                                              context.appColor.primaryWhite,
+                                          backgroundColor:
+                                              context.appColor.primaryBlue,
+                                          fontSize: 12.sp,
+                                          onPressed: () {},
+                                        ),
+                                      ),
+
+                                      //---------------------------------------
+                                      //  Profile
+                                      //--------------------------------------
+                                      Column(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
                                               children: [
-                                                CustomeText(
-                                                  text: items['title'],
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 14.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.person,
+                                                      color: context
+                                                          .appColor
+                                                          .primaryBlue,
+                                                    ),
+                                                    SizedBox(width: 8.w),
+                                                    CustomeText(
+                                                      text:
+                                                          "Informations Personnelles",
+                                                      style: context
+                                                          .appTypographie
+                                                          .button
+                                                          .copyWith(
+                                                            color: context
+                                                                .appColor
+                                                                .primaryGray700,
+                                                            fontSize: 14.sp,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            letterSpacing:
+                                                                0.5.sp,
+                                                          ),
+                                                    ),
+                                                  ],
                                                 ),
+
                                                 SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: extractTwoElements(
-                                                    items['value'],
+                                                BlocBuilder<
+                                                  GetProfileBloc,
+                                                  ApiState<ProfileResponse>
+                                                >(
+                                                  builder: (context, state) {
+                                                    return GestureDetector(
+                                                      onTap: () async {
+                                                        final profile =
+                                                            await Navigator.of(
+                                                              context,
+                                                            ).push(
+                                                              fadeRoute(
+                                                                BlocProvider(
+                                                                  create:
+                                                                      (
+                                                                        context,
+                                                                      ) => FormProfileBloc(
+                                                                        createProfileUsercase:
+                                                                            getIt<
+                                                                              CreateProfileUsercase
+                                                                            >(),
+                                                                      ),
+                                                                  child:
+                                                                      FormProfile(
+                                                                        profile:
+                                                                            true,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                        if (profile as bool) {
+                                                          log(
+                                                            'Profile updated $profile',
+                                                          );
+                                                          context
+                                                              .read<
+                                                                GetProfileBloc
+                                                              >()
+                                                              .add(
+                                                                const ProfileEvent.fetch(),
+                                                              );
+                                                        }
+                                                      },
+                                                      child: Container(
+                                                        padding: EdgeInsets.all(
+                                                          8.r,
+                                                        ),
+                                                        decoration: BoxDecoration(
+                                                          color: context
+                                                              .appColor
+                                                              .primaryBlue,
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                8.r,
+                                                              ),
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.edit_note_sharp,
+                                                          color: context
+                                                              .appColor
+                                                              .primaryWhite,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+
+                                          SizedBox(height: 7.h),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                              vertical: 5.h,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w,
+                                              vertical: 8.h,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  context.appColor.primaryWhite,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    ...getPersonalInformation(
+                                                      profile:
+                                                          profileState.data,
+                                                    ).map(
+                                                      (items) => Container(
+                                                        // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                              horizontal: 10.w,
+                                                              vertical: 8.h,
+                                                            ),
+                                                        decoration: BoxDecoration(
+                                                          border: Border(
+                                                            bottom:
+                                                                items['title'] !=
+                                                                    'Téléphone'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                            top:
+                                                                items['title'] !=
+                                                                    'Téléphone'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                          ),
+                                                          color: context
+                                                              .appColor
+                                                              .primaryWhite,
+                                                          borderRadius:
+                                                              items['title'] ==
+                                                                  'Email'
+                                                              ? BorderRadius.only(
+                                                                  topLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  topRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : items['title'] ==
+                                                                    'Adresse & Quartier'
+                                                              ? BorderRadius.only(
+                                                                  bottomLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  bottomRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : null,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin:
+                                                                  EdgeInsets.only(
+                                                                    bottom: 4.h,
+                                                                  ),
+                                                              child: Row(
+                                                                children: [
+                                                                  Container(
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                          8.w,
+                                                                        ),
+                                                                    decoration: BoxDecoration(
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue
+                                                                          .withOpacity(
+                                                                            0.1,
+                                                                          ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                            8.r,
+                                                                          ),
+                                                                    ),
+                                                                    child: Icon(
+                                                                      items['icon'],
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 8.w,
+                                                                  ),
+                                                                  Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['title'],
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray500,
+                                                                          fontSize:
+                                                                              14.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                            8.w,
+                                                                      ),
+                                                                      CustomeText(
+                                                                        text: extractTwoElements(
+                                                                          items['value'],
+                                                                        ),
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray700,
+                                                                          fontSize:
+                                                                              11.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w800,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+
+                                      SizedBox(height: 16.h),
+                                      //---------------------------------------
+                                      //  Profile Social-Professionnel
+                                      //--------------------------------------
+                                      Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.work_outline,
+                                                    color: context
+                                                        .appColor
+                                                        .primaryBlue,
                                                   ),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray700,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w800,
+                                                  SizedBox(width: 8.w),
+                                                  CustomeText(
+                                                    text:
+                                                        "Profil Social-Professionnel",
+                                                    style: context
+                                                        .appTypographie
+                                                        .button
+                                                        .copyWith(
+                                                          color: context
+                                                              .appColor
+                                                              .primaryGray700,
+                                                          fontSize: 14.sp,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          letterSpacing: 0.5.sp,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(width: 8.w),
+                                              GestureDetector(
+                                                onTap: () async {
+                                                  final result =
+                                                      await Navigator.of(
+                                                        context,
+                                                      ).push(
+                                                        fadeRoute(
+                                                          BlocProvider(
+                                                            create: (context) =>
+                                                                CreateCompteProfileSocialBloc(
+                                                                  createSocialProfileUsercase:
+                                                                      getIt<
+                                                                        CreateSocialProfileUsercase
+                                                                      >(),
+                                                                ),
+                                                            child:
+                                                                FormSocialProfessionnal(
+                                                                  profile: true,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                  if (result as bool) {
+                                                    log(
+                                                      'Profile updated $result',
+                                                    );
+                                                    context
+                                                        .read<GetProfileBloc>()
+                                                        .add(
+                                                          const ProfileEvent.fetch(),
+                                                        );
+                                                  }
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.all(8.r),
+                                                  decoration: BoxDecoration(
+                                                    color: context
+                                                        .appColor
+                                                        .primaryBlue,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          8.r,
+                                                        ),
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.edit_note_sharp,
+                                                    color: context
+                                                        .appColor
+                                                        .primaryWhite,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                              vertical: 5.h,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w,
+                                              vertical: 8.h,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  context.appColor.primaryWhite,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                SizedBox(height: 7.h),
+                                                Column(
+                                                  children: [
+                                                    ...getProfessionalInformation(
+                                                      profile:
+                                                          profileState.data,
+                                                    ).map(
+                                                      (items) => Container(
+                                                        // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                              horizontal: 8.w,
+                                                              vertical: 8.h,
+                                                            ),
+                                                        decoration: BoxDecoration(
+                                                          border: Border(
+                                                            bottom:
+                                                                items['title'] !=
+                                                                    'Métier / Études'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                            top:
+                                                                items['title'] !=
+                                                                    'Téléphone'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                          ),
+                                                          color: context
+                                                              .appColor
+                                                              .primaryWhite,
+                                                          borderRadius:
+                                                              items['title'] ==
+                                                                  'Email'
+                                                              ? BorderRadius.only(
+                                                                  topLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  topRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : items['title'] ==
+                                                                    'Adresse & Quartier'
+                                                              ? BorderRadius.only(
+                                                                  bottomLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  bottomRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : null,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin:
+                                                                  EdgeInsets.only(
+                                                                    bottom: 4.h,
+                                                                  ),
+                                                              child: Row(
+                                                                children: [
+                                                                  Container(
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                          8.w,
+                                                                        ),
+                                                                    decoration: BoxDecoration(
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue
+                                                                          .withOpacity(
+                                                                            0.1,
+                                                                          ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                            8.r,
+                                                                          ),
+                                                                    ),
+                                                                    child: Icon(
+                                                                      items['icon'],
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 8.w,
+                                                                  ),
+                                                                  Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['title'],
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray500,
+                                                                          fontSize:
+                                                                              14.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                            8.w,
+                                                                      ),
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['value'],
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray700,
+                                                                          fontSize:
+                                                                              11.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w800,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      //---------------------------------------
+                                      // Spiritual Life
+                                      //--------------------------------------
+                                      Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 13.w,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.auto_awesome,
+                                                      color: context
+                                                          .appColor
+                                                          .primaryBlue,
+                                                    ),
+                                                    SizedBox(width: 8.w),
+                                                    CustomeText(
+                                                      text: "Vie Spirituelle",
+                                                      style: context
+                                                          .appTypographie
+                                                          .button
+                                                          .copyWith(
+                                                            color: context
+                                                                .appColor
+                                                                .primaryGray700,
+                                                            fontSize: 14.sp,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            letterSpacing:
+                                                                0.5.sp,
+                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(width: 10.w),
+                                                GestureDetector(
+                                                  onTap: () async {
+                                                    final profile =
+                                                        await Navigator.of(
+                                                          context,
+                                                        ).push(
+                                                          fadeRoute(
+                                                            BlocProvider(
+                                                              create: (context) =>
+                                                                  CreateComteProfileSpiritualLifeBloc(
+                                                                    createSpiritualProfileUsercase:
+                                                                        getIt<
+                                                                          CreateSpiritualProfileUsercase
+                                                                        >(),
+                                                                  ),
+                                                              child:
+                                                                  FormHollyLiving(
+                                                                    profile:
+                                                                        true,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                    if (profile as bool) {
+                                                      log(
+                                                        'Profile updated $profile',
+                                                      );
+                                                      context
+                                                          .read<
+                                                            GetProfileBloc
+                                                          >()
+                                                          .add(
+                                                            const ProfileEvent.fetch(),
+                                                          );
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    padding: EdgeInsets.all(
+                                                      8.r,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: context
+                                                          .appColor
+                                                          .primaryBlue,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            8.r,
+                                                          ),
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.edit_note_sharp,
+                                                      color: context
+                                                          .appColor
+                                                          .primaryWhite,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                              vertical: 9.h,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w,
+                                              vertical: 8.h,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  context.appColor.primaryWhite,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                SizedBox(height: 7.h),
+                                                Column(
+                                                  children: [
+                                                    ...getSpiritualInformation(
+                                                      profile:
+                                                          profileState.data,
+                                                    ).map(
+                                                      (items) => Container(
+                                                        // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                              horizontal: 8.w,
+                                                              vertical: 8.h,
+                                                            ),
+                                                        decoration: BoxDecoration(
+                                                          border: Border(
+                                                            bottom:
+                                                                items['title'] !=
+                                                                    'Date de baptême'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                            top:
+                                                                items['title'] !=
+                                                                    'Téléphone'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                          ),
+                                                          color: context
+                                                              .appColor
+                                                              .primaryWhite,
+                                                          borderRadius:
+                                                              items['title'] ==
+                                                                  'Email'
+                                                              ? BorderRadius.only(
+                                                                  topLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  topRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : items['title'] ==
+                                                                    'Adresse & Quartier'
+                                                              ? BorderRadius.only(
+                                                                  bottomLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  bottomRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : null,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin:
+                                                                  EdgeInsets.only(
+                                                                    bottom: 4.h,
+                                                                  ),
+                                                              child: Row(
+                                                                children: [
+                                                                  Container(
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                          8.w,
+                                                                        ),
+                                                                    decoration: BoxDecoration(
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue
+                                                                          .withOpacity(
+                                                                            0.1,
+                                                                          ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                            8.r,
+                                                                          ),
+                                                                    ),
+                                                                    child: Icon(
+                                                                      items['icon'],
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 8.w,
+                                                                  ),
+                                                                  Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['title'],
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray500,
+                                                                          fontSize:
+                                                                              14.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                            8.w,
+                                                                      ),
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['value'],
+
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray700,
+                                                                          fontSize:
+                                                                              11.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w800,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+
+                                      //---------------------------------------
+                                      //  Life Engagement
+                                      //--------------------------------------
+                                      Column(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 13.w,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.group,
+                                                      color: context
+                                                          .appColor
+                                                          .primaryBlue,
+                                                    ),
+                                                    SizedBox(width: 8.w),
+                                                    CustomeText(
+                                                      text: "Engagement",
+                                                      style: context
+                                                          .appTypographie
+                                                          .button
+                                                          .copyWith(
+                                                            color: context
+                                                                .appColor
+                                                                .primaryGray700,
+                                                            fontSize: 14.sp,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            letterSpacing:
+                                                                0.5.sp,
+                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(width: 10.w),
+                                                GestureDetector(
+                                                  onTap: () async {
+                                                    final profile =
+                                                        await Navigator.of(
+                                                          context,
+                                                        ).push(
+                                                          fadeRoute(
+                                                            FormEngagement(
+                                                              profile: true,
+                                                            ),
+                                                          ),
+                                                        );
+                                                    if (profile as bool) {
+                                                      log(
+                                                        'Profile updated $profile',
+                                                      );
+                                                      context
+                                                          .read<
+                                                            GetProfileBloc
+                                                          >()
+                                                          .add(
+                                                            const ProfileEvent.fetch(),
+                                                          );
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    padding: EdgeInsets.all(
+                                                      8.r,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: context
+                                                          .appColor
+                                                          .primaryBlue,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            8.r,
+                                                          ),
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.edit_note_sharp,
+                                                      color: context
+                                                          .appColor
+                                                          .primaryWhite,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                              vertical: 9.h,
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w,
+                                              vertical: 8.h,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  context.appColor.primaryWhite,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Column(
+                                                  children: [
+                                                    ...getEngagement(
+                                                      profile:
+                                                          profileState.data,
+                                                    ).map(
+                                                      (items) => Container(
+                                                        // margin: EdgeInsets.symmetric(vertical: 1.h),
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                              horizontal: 8.w,
+                                                              vertical: 8.h,
+                                                            ),
+                                                        decoration: BoxDecoration(
+                                                          border: Border(
+                                                            bottom:
+                                                                items['title'] !=
+                                                                    'Métier / Études'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                            top:
+                                                                items['title'] !=
+                                                                    'Téléphone'
+                                                                ? BorderSide
+                                                                      .none
+                                                                : BorderSide(
+                                                                    color: context
+                                                                        .appColor
+                                                                        .primaryGray100,
+                                                                    width: 1.w,
+                                                                  ),
+                                                          ),
+                                                          color: context
+                                                              .appColor
+                                                              .primaryWhite,
+                                                          borderRadius:
+                                                              items['title'] ==
+                                                                  'Email'
+                                                              ? BorderRadius.only(
+                                                                  topLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  topRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : items['title'] ==
+                                                                    'Adresse & Quartier'
+                                                              ? BorderRadius.only(
+                                                                  bottomLeft:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                  bottomRight:
+                                                                      Radius.circular(
+                                                                        12.r,
+                                                                      ),
+                                                                )
+                                                              : null,
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin:
+                                                                  EdgeInsets.only(
+                                                                    bottom: 4.h,
+                                                                  ),
+                                                              child: Row(
+                                                                children: [
+                                                                  Container(
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                          8.w,
+                                                                        ),
+                                                                    decoration: BoxDecoration(
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue
+                                                                          .withOpacity(
+                                                                            0.1,
+                                                                          ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                            8.r,
+                                                                          ),
+                                                                    ),
+                                                                    child: Icon(
+                                                                      items['icon'],
+                                                                      color: context
+                                                                          .appColor
+                                                                          .primaryBlue,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 8.w,
+                                                                  ),
+                                                                  Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['title'],
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray500,
+                                                                          fontSize:
+                                                                              14.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width:
+                                                                            8.w,
+                                                                      ),
+                                                                      CustomeText(
+                                                                        text:
+                                                                            items['value'],
+
+                                                                        style: context.appTypographie.button.copyWith(
+                                                                          color: context
+                                                                              .appColor
+                                                                              .primaryGray700,
+                                                                          fontSize:
+                                                                              11.sp,
+                                                                          fontWeight:
+                                                                              FontWeight.w800,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(height: 16.h),
-                Column(
-                  children: [
-                    Row(
+                  ),
+                );
+              }
+              if (profileState is LoadState<ProfileResponse>) {
+                return SafeArea(
+                  child: Container(
+                    height: 1.sh,
+                    color: context.appColor.primaryGray100.withValues(
+                      alpha: 0.6,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.work_outline,
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: CircularProgressIndicator.adaptive(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      context.appColor.primaryBlue,
+                                    ),
+                                    backgroundColor: context
+                                        .appColor
+                                        .primaryGray500
+                                        .withValues(alpha: 0.3),
+                                  ),
+                                ),
+                                SizedBox(height: 19.h),
+                                Text(
+                                  "Recupération des données en cours...",
+                                  style: context.appTypographie.body.copyWith(
+                                    fontSize: 12.sp,
+                                    color: context.appColor.primaryBlue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }
+              return SafeArea(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 25.w),
+                        child: SvgPicture.asset(
+                          assets.images.problemeRequest.path,
+                        ),
+                      ),
+                      Text(
+                        "Une erreur est survenue !",
+                        style: context.appTypographie.body.copyWith(
                           color: context.appColor.primaryBlue,
                         ),
-                        SizedBox(width: 8.w),
-                        CustomeText(
-                          text: "Profil Social-Professionnel",
-                          style: context.appTypographie.button.copyWith(
-                            color: context.appColor.primaryGray700,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 5.h),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 8.h,
                       ),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryWhite,
-                        borderRadius: BorderRadius.circular(8.r),
+                      SizedBox(height: 14.h),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 0.17.sw),
+                        child:
+                            BlocBuilder<
+                              GetProfileBloc,
+                              ApiState<ProfileResponse>
+                            >(
+                              builder: (context, state) {
+                                return PrimaryButton(
+                                  label: "Réessayer",
+                                  colorText: Colors.white,
+                                  fontSize: 13.sp,
+                                  backgroundColor: context.appColor.primaryBlue,
+                                  borderRadius: 14.r,
+                                  onPressed: () {
+                                    context.read<GetProfileBloc>().add(
+                                      const ProfileEvent.fetch(),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                       ),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 7.h),
-                          Column(
-                            children: [
-                              ...getProfessionalInformation(
-                                profile: widget.profile,
-                              ).map(
-                                (items) => Container(
-                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 8.w,
-                                    vertical: 8.h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom:
-                                          items['title'] != 'Métier / Études'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                      top: items['title'] != 'Téléphone'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                    ),
-                                    color: context.appColor.primaryWhite,
-                                    borderRadius: items['title'] == 'Email'
-                                        ? BorderRadius.only(
-                                            topLeft: Radius.circular(12.r),
-                                            topRight: Radius.circular(12.r),
-                                          )
-                                        : items['title'] == 'Adresse & Quartier'
-                                        ? BorderRadius.only(
-                                            bottomLeft: Radius.circular(12.r),
-                                            bottomRight: Radius.circular(12.r),
-                                          )
-                                        : null,
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 4.h),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.all(8.w),
-                                              decoration: BoxDecoration(
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue
-                                                    .withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.r),
-                                              ),
-                                              child: Icon(
-                                                items['icon'],
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue,
-                                              ),
-                                            ),
-                                            SizedBox(width: 8.w),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                CustomeText(
-                                                  text: items['title'],
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 14.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                ),
-                                                SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: items['value'],
-
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray700,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                SizedBox(height: 10.h),
-                //---------------------------------------
-                // Spiritual Life
-                //--------------------------------------
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.auto_awesome,
-                          color: context.appColor.primaryBlue,
-                        ),
-                        SizedBox(width: 8.w),
-                        CustomeText(
-                          text: "Vie Spirituelle",
-                          style: context.appTypographie.button.copyWith(
-                            color: context.appColor.primaryGray700,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 9.h),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryWhite,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 7.h),
-                          Column(
-                            children: [
-                              ...getSpiritualInformation(
-                                profile: widget.profile,
-                              ).map(
-                                (items) => Container(
-                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 8.w,
-                                    vertical: 8.h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom:
-                                          items['title'] != 'Date de baptême'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                      top: items['title'] != 'Téléphone'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                    ),
-                                    color: context.appColor.primaryWhite,
-                                    borderRadius: items['title'] == 'Email'
-                                        ? BorderRadius.only(
-                                            topLeft: Radius.circular(12.r),
-                                            topRight: Radius.circular(12.r),
-                                          )
-                                        : items['title'] == 'Adresse & Quartier'
-                                        ? BorderRadius.only(
-                                            bottomLeft: Radius.circular(12.r),
-                                            bottomRight: Radius.circular(12.r),
-                                          )
-                                        : null,
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 4.h),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.all(8.w),
-                                              decoration: BoxDecoration(
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue
-                                                    .withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.r),
-                                              ),
-                                              child: Icon(
-                                                items['icon'],
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue,
-                                              ),
-                                            ),
-                                            SizedBox(width: 8.w),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                CustomeText(
-                                                  text: items['title'],
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 14.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                ),
-                                                SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: items['value'],
-
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray700,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-
-                //---------------------------------------
-                //  Life Engagement
-                //--------------------------------------
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.group, color: context.appColor.primaryBlue),
-                        SizedBox(width: 8.w),
-                        CustomeText(
-                          text: "Engagement",
-                          style: context.appTypographie.button.copyWith(
-                            color: context.appColor.primaryGray700,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 9.h),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryWhite,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Column(
-                        children: [
-                          Column(
-                            children: [
-                              ...getEngagement(profile: widget.profile).map(
-                                (items) => Container(
-                                  // margin: EdgeInsets.symmetric(vertical: 1.h),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 8.w,
-                                    vertical: 8.h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom:
-                                          items['title'] != 'Métier / Études'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                      top: items['title'] != 'Téléphone'
-                                          ? BorderSide.none
-                                          : BorderSide(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray100,
-                                              width: 1.w,
-                                            ),
-                                    ),
-                                    color: context.appColor.primaryWhite,
-                                    borderRadius: items['title'] == 'Email'
-                                        ? BorderRadius.only(
-                                            topLeft: Radius.circular(12.r),
-                                            topRight: Radius.circular(12.r),
-                                          )
-                                        : items['title'] == 'Adresse & Quartier'
-                                        ? BorderRadius.only(
-                                            bottomLeft: Radius.circular(12.r),
-                                            bottomRight: Radius.circular(12.r),
-                                          )
-                                        : null,
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 4.h),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.all(8.w),
-                                              decoration: BoxDecoration(
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue
-                                                    .withOpacity(0.1),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.r),
-                                              ),
-                                              child: Icon(
-                                                items['icon'],
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue,
-                                              ),
-                                            ),
-                                            SizedBox(width: 8.w),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                CustomeText(
-                                                  text: items['title'],
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 14.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                ),
-                                                SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: items['value'],
-
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray700,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),

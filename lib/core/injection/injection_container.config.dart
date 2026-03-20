@@ -37,6 +37,8 @@ import '../../feature/home/data/service/repository_remote_service.dart' as _i61;
 import '../../feature/home/domaine/repository/home_domain_repository.dart'
     as _i962;
 import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
+import '../../feature/home/page/bloc/app_launcher/app_launcher_bloc.dart'
+    as _i303;
 import '../../feature/home/page/bloc/get_profile/get_profile_bloc.dart' as _i37;
 import 'injection_container.dart' as _i809;
 
@@ -55,6 +57,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => injectableModule.locaDataShared(),
       preResolve: true,
     );
+    gh.lazySingleton<_i303.AppLauncherBloc>(() => _i303.AppLauncherBloc());
     gh.lazySingleton<_i259.AuthenRemoteService>(
       () => _i166.ImplRemoteService(db: gh<_i345.DatabaseReference>()),
     );
@@ -82,11 +85,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i855.CreateProfileUsercase>(
       () => _i855.CreateProfileUsercase(gh<_i653.AuthenRepository>()),
     );
-    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
-      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
-    );
     gh.lazySingleton<_i561.CreateSocialProfileUsercase>(
       () => _i561.CreateSocialProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
+      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
     );
     gh.lazySingleton<_i37.GetProfileBloc>(
       () => _i37.GetProfileBloc(

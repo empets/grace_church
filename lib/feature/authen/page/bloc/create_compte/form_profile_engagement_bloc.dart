@@ -77,6 +77,7 @@ class CreateComteProfileEngagementBloc
               departement: state.departement.value,
               competence: state.competence.value,
               disponibiliry: state.disponibiliry.value,
+              submitEngagement: true,
             ),
           );
 

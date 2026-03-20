@@ -102,6 +102,7 @@ class CreateComteProfileSpiritualLifeBloc
             dateBaptme: state.dateBaptme.value,
             cellulePriere: state.cellulePriere.value,
             encadreur: state.encadreur.value,
+            submitSpiritual: true,
           ),
         );
 

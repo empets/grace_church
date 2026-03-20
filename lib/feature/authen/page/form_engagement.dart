@@ -17,7 +17,8 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_
 import 'package:grace_church/feature/home/overview.dart';
 
 class FormEngagement extends StatefulWidget {
-  const FormEngagement({super.key});
+  const FormEngagement({super.key, this.profile = false});
+  final bool profile;
 
   @override
   State<FormEngagement> createState() => _FormEngagementState();
@@ -102,6 +103,13 @@ class _FormEngagementState extends State<FormEngagement> {
       child: BlocListener<CreateComteProfileEngagementBloc, CreateCompteEngagementState>(
         listener: (context, state) {
           if (state.status.isSuccess) {
+            // ----------------------------
+            // Handle navigation based on profile flag
+            // ----------------------------
+            if (widget.profile) {
+              Navigator.of(context).pop(true);
+              return;
+            }
             Navigator.of(context).push(fadeRoute(const OverviewScreen()));
           }
         },

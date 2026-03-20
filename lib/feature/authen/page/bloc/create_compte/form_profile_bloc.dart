@@ -174,6 +174,8 @@ class FormProfileBloc
               email: state.email.value,
               nationalite: state.nationalite.value,
               dateInscription: DateTime.now().toString(),
+              submitProfile: true,
+             
             ),
           );
 

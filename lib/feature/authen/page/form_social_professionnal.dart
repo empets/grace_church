@@ -19,7 +19,8 @@ import 'package:grace_church/feature/authen/page/form_holly_living.dart'
     hide FormNextTeps;
 
 class FormSocialProfessionnal extends StatefulWidget {
-  const FormSocialProfessionnal({super.key});
+  const FormSocialProfessionnal({super.key, this.profile = false});
+  final bool profile;
 
   @override
   State<FormSocialProfessionnal> createState() =>
@@ -52,6 +53,13 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
     return BlocListener<CreateCompteProfileSocialBloc, CreateCompteSocialState>(
       listener: (context, state) {
         if (state.status.isSuccess) {
+           //----------------------------
+            // Handle navigation based on profile flag
+            //----------------------------
+          if (widget.profile) {
+            Navigator.of(context).pop(true);
+            return;
+          }
           Navigator.of(context).push(
             fadeRoute(
               BlocProvider(
@@ -489,7 +497,7 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                   >(
                     builder: (context, state) {
                       return FormNextTeps(
-                        icons: Icons.badge_rounded,
+                        icons: Icons.auto_awesome,
                         title: 'Vie Spirituelle ',
                         description: 'Baptême, Cellule de maisons',
                         isNextForm: state.isValide,

@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class GetProfileBloc extends Bloc<ProfileEvent, ApiState<ProfileResponse>> {
   GetProfileBloc({required this.getProfileUsercase})
-    : super(ApiState.initial()) {
+    : super(ApiState<ProfileResponse>.initial()) {
     on<ProfileEvent>(getProfile);
   }
 
@@ -22,6 +22,7 @@ class GetProfileBloc extends Bloc<ProfileEvent, ApiState<ProfileResponse>> {
     switch (event) {
       case ProfileEvent():
         emit(ApiState<ProfileResponse>.load());
+        await Future.delayed(Duration(seconds: 4));
 
         final response = await getProfileUsercase.call(NoParams());
 

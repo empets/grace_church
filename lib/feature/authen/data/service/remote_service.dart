@@ -20,6 +20,9 @@ class ImplRemoteService implements AuthenRemoteService {
   Future<FirebaseResult<String?>> createProfile(
     RequestAuthenProfile params,
   ) async {
+    final shared = await shareData.SharedPreferences.getInstance();
+    final localUserSection = shared.getString('menberkey');
+
     try {
       final snapShot = await db
           .child('menber')
@@ -29,6 +32,17 @@ class ImplRemoteService implements AuthenRemoteService {
 
       if (snapShot.exists) {
         return FirebaseError("Cet utilisateur existe deja");
+      } else if (localUserSection != null && localUserSection.isNotEmpty) {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+          'serviceLibelle': '',
+          'userId': localUserSection.toString(),
+        };
+        // 2) Créer une nouvelle entrée
+        await db.child('menber/$localUserSection').update(updates);
+
+        // 4) Retourner le key généré
+        return FirebaseSuccess(localUserSection);
       } else {
         // 1) Construire l'objet Request
         final request = Request<RequestAuthenProfile>(

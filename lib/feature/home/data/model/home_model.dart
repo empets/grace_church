@@ -28,6 +28,10 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
     required String? competence,
     required String? disponibiliry,
     required String? menberId,
+    @Default(false) bool? submitProfile,
+    @Default(false) bool? submitSocial,
+    @Default(false) bool? submitSpiritual,
+    @Default(false) bool? submitEngagement,
   }) = _ProfileResponseModel;
   factory ProfileResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseModelFromJson(json);
@@ -55,6 +59,10 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
       competence: model.competence.getOrEmpty(),
       disponibiliry: model.disponibiliry.getOrEmpty(),
       menberId: model.menberId.getOrEmpty(),
+      submitProfile: model.submitProfile.getOrEmpty(),
+      submitSocial: model.submitSocial.getOrEmpty(),
+      submitSpiritual: model.submitSpiritual.getOrEmpty(),
+      submitEngagement: model.submitEngagement.getOrEmpty(),
     );
   }
 }

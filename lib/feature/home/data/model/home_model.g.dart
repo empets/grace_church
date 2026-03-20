@@ -30,6 +30,10 @@ _ProfileResponseModel _$ProfileResponseModelFromJson(
   competence: json['competence'] as String?,
   disponibiliry: json['disponibiliry'] as String?,
   menberId: json['menberId'] as String?,
+  submitProfile: json['submitProfile'] as bool? ?? false,
+  submitSocial: json['submitSocial'] as bool? ?? false,
+  submitSpiritual: json['submitSpiritual'] as bool? ?? false,
+  submitEngagement: json['submitEngagement'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$ProfileResponseModelToJson(
@@ -56,4 +60,8 @@ Map<String, dynamic> _$ProfileResponseModelToJson(
   'competence': instance.competence,
   'disponibiliry': instance.disponibiliry,
   'menberId': instance.menberId,
+  'submitProfile': instance.submitProfile,
+  'submitSocial': instance.submitSocial,
+  'submitSpiritual': instance.submitSpiritual,
+  'submitEngagement': instance.submitEngagement,
 };
