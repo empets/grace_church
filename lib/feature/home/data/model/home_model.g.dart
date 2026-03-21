@@ -65,3 +65,21 @@ Map<String, dynamic> _$ProfileResponseModelToJson(
   'submitSpiritual': instance.submitSpiritual,
   'submitEngagement': instance.submitEngagement,
 };
+
+_NotificationResponseModel _$NotificationResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _NotificationResponseModel(
+  title: json['title'] as String?,
+  description: json['description'] as String?,
+  tag: json['tag'] as String?,
+  date: json['date'] as String?,
+);
+
+Map<String, dynamic> _$NotificationResponseModelToJson(
+  _NotificationResponseModel instance,
+) => <String, dynamic>{
+  'title': instance.title,
+  'description': instance.description,
+  'tag': instance.tag,
+  'date': instance.date,
+};

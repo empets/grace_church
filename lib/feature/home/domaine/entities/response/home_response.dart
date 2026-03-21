@@ -34,3 +34,17 @@ abstract class ProfileResponse with _$ProfileResponse {
   factory ProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseFromJson(json);
 }
+
+
+
+@freezed
+abstract class NotificationResponse with _$NotificationResponse {
+  factory NotificationResponse({
+    required String title,
+    required String  description,
+    required String  tag,
+    required String  date,
+  }) = _NotificationResponse;
+  factory NotificationResponse.fromJson(Map<String, dynamic> json) =>
+      _$NotificationResponseFromJson(json);
+}

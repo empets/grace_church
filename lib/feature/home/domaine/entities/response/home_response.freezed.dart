@@ -346,4 +346,276 @@ as bool,
 
 }
 
+
+/// @nodoc
+mixin _$NotificationResponse {
+
+ String get title; String get description; String get tag; String get date;
+/// Create a copy of NotificationResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NotificationResponseCopyWith<NotificationResponse> get copyWith => _$NotificationResponseCopyWithImpl<NotificationResponse>(this as NotificationResponse, _$identity);
+
+  /// Serializes this NotificationResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationResponse&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,description,tag,date);
+
+@override
+String toString() {
+  return 'NotificationResponse(title: $title, description: $description, tag: $tag, date: $date)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NotificationResponseCopyWith<$Res>  {
+  factory $NotificationResponseCopyWith(NotificationResponse value, $Res Function(NotificationResponse) _then) = _$NotificationResponseCopyWithImpl;
+@useResult
+$Res call({
+ String title, String description, String tag, String date
+});
+
+
+
+
+}
+/// @nodoc
+class _$NotificationResponseCopyWithImpl<$Res>
+    implements $NotificationResponseCopyWith<$Res> {
+  _$NotificationResponseCopyWithImpl(this._self, this._then);
+
+  final NotificationResponse _self;
+  final $Res Function(NotificationResponse) _then;
+
+/// Create a copy of NotificationResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? description = null,Object? tag = null,Object? date = null,}) {
+  return _then(_self.copyWith(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [NotificationResponse].
+extension NotificationResponsePatterns on NotificationResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _NotificationResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _NotificationResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _NotificationResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _NotificationResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _NotificationResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _NotificationResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _NotificationResponse() when $default != null:
+return $default(_that.title,_that.description,_that.tag,_that.date);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date)  $default,) {final _that = this;
+switch (_that) {
+case _NotificationResponse():
+return $default(_that.title,_that.description,_that.tag,_that.date);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String description,  String tag,  String date)?  $default,) {final _that = this;
+switch (_that) {
+case _NotificationResponse() when $default != null:
+return $default(_that.title,_that.description,_that.tag,_that.date);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _NotificationResponse implements NotificationResponse {
+   _NotificationResponse({required this.title, required this.description, required this.tag, required this.date});
+  factory _NotificationResponse.fromJson(Map<String, dynamic> json) => _$NotificationResponseFromJson(json);
+
+@override final  String title;
+@override final  String description;
+@override final  String tag;
+@override final  String date;
+
+/// Create a copy of NotificationResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$NotificationResponseCopyWith<_NotificationResponse> get copyWith => __$NotificationResponseCopyWithImpl<_NotificationResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$NotificationResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationResponse&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,description,tag,date);
+
+@override
+String toString() {
+  return 'NotificationResponse(title: $title, description: $description, tag: $tag, date: $date)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$NotificationResponseCopyWith<$Res> implements $NotificationResponseCopyWith<$Res> {
+  factory _$NotificationResponseCopyWith(_NotificationResponse value, $Res Function(_NotificationResponse) _then) = __$NotificationResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String title, String description, String tag, String date
+});
+
+
+
+
+}
+/// @nodoc
+class __$NotificationResponseCopyWithImpl<$Res>
+    implements _$NotificationResponseCopyWith<$Res> {
+  __$NotificationResponseCopyWithImpl(this._self, this._then);
+
+  final _NotificationResponse _self;
+  final $Res Function(_NotificationResponse) _then;
+
+/// Create a copy of NotificationResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? description = null,Object? tag = null,Object? date = null,}) {
+  return _then(_NotificationResponse(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

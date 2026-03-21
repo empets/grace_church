@@ -4,6 +4,8 @@ import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/repository_remote_service.dart';
+import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
+    hide EmptyRequest;
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
@@ -16,7 +18,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
   @override
   Future<FirebaseResult<ProfileResponseModel>> getProfile(
-    NoParams notParms,
+    EmptyRequest notParms,
   ) async {
     final shared = await shareData.SharedPreferences.getInstance();
     final menberkey = shared.getString('menberkey');
@@ -37,6 +39,190 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     } catch (e) {
       log('🔥Error getting profile: $e');
       return FirebaseError('${e.toString()}');
+    }
+  }
+
+  @override
+  Stream<FirebaseResult<ProfileResponseModel>> getProfileStream() async* {
+    final shared = await shareData.SharedPreferences.getInstance();
+    final menberkey = shared.getString('menberkey');
+
+    if (menberkey == null) {
+      yield FirebaseError("Menberkey not found");
+      return;
+    }
+
+    databaseReference.FirebaseDatabase.instance
+        .ref('users')
+        .child(menberkey)
+        .onValue
+        .map((event) {
+          final data = event.snapshot.value;
+
+          if (data == null) {
+            // Si l'utilisateur n'existe pas encore
+            return FirebaseError("L'utilisateur n'existe pas");
+          }
+          // Conversion sécurisée en Map<String, dynamic>
+          return FirebaseSuccess(
+            ProfileResponseModel.fromJson(
+              Map<String, dynamic>.from(data as Map),
+            ),
+          );
+        });
+  }
+
+  // @override
+  // Future<FirebaseResult<String>> sendNotifications(
+  //   RequestNotification params,
+  // ) async {
+  //   try {
+  //     // 1) Construire l'objet Request
+  //     final request = Request<RequestNotification>(
+  //       data: params.toJson(),
+  //       user: "",
+  //       serviceLibelle: 'serviceLibelle',
+  //     );
+  //     // 2) Créer une nouvelle entré ou table
+  //     final ref = db.child('menber').push();
+  //     // 3) Sauvegarder dans Firebase (en convertissant en Map)
+  //     await ref.set(request.data);
+  //     // 4) Mettre à jour la clé
+  //     return FirebaseSuccess(ref.key.toString());
+  //   } catch (e) {
+  //     log("🔥 Firebase Notification →→→→→→→→→ $e");
+  //     return FirebaseError(e.toString());
+  //   }
+  // }
+
+  @override
+  Future<FirebaseResult<List<NotificationResponseModel>>> getListNotifications(
+    EmptyRequest notParms,
+  ) async {
+    try {
+      final snapshot = await db.child('notfications').get();
+      if (snapshot.exists) {
+        final data = snapshot.value as Map<dynamic, dynamic>;
+        final notifications = data.values
+            .map(
+              (e) {
+              
+                 final notificationItem = Map<String, dynamic>.from(e);
+            
+
+                return NotificationResponseModel.fromJson(notificationItem);
+              },
+            )
+            .toList();
+        return FirebaseSuccess(
+          notifications
+              .map((e) => NotificationResponseModel.fromJson(e.toJson()))
+              .toList(),
+        );
+      }
+      return FirebaseError("Aucune notification trouvée");
+    } catch (e) {
+      log("🔥 Firebase Notification →→→→→→→→→ ${e}");
+      return FirebaseError(e.toString());
+    }
+  }
+
+  @override
+  Future<FirebaseResult<List<NotificationResponseModel>>>
+  getListNotificationsByCriteria(RequestNotification params) async {
+    try {
+      switch (params) {
+        case RequestNotification(title: final title) when title.isNotEmpty:
+          final snapshot = await db.child('notfications').get();
+          if (snapshot.exists) {
+            final data = snapshot.value as Map<dynamic, dynamic>;
+            final notifications = data.values
+                .map(
+                  (e) {
+                    final notificationItem = Map<String, dynamic>.from(e);
+                    return NotificationResponseModel.fromJson(notificationItem);
+                  },
+                ).where((e) => e.title?.contains(params.title) ?? false).toList();
+                // .toList();
+            return FirebaseSuccess(
+              notifications
+                  .map((e) => NotificationResponseModel.fromJson(e.toJson()))
+                  .toList(),
+            );
+          }
+
+        case RequestNotification(tag: final tag) when tag.isNotEmpty:
+          final snapshot = await db
+              .child('notfications')
+              .orderByChild('tag')
+              .equalTo(params.tag)
+              .get();
+          if (snapshot.exists) {
+            final data = snapshot.value as Map<dynamic, dynamic>;
+            final notifications = data.values
+                .map(
+                  (e) {
+                    final notificationItem = Map<String, dynamic>.from(e);
+                    return NotificationResponseModel.fromJson(notificationItem);
+                  },
+                )
+                .toList();
+            return FirebaseSuccess(
+              notifications
+                  .map((e) {
+                    return NotificationResponseModel.fromJson(e.toJson());
+                  })
+                  .toList(),
+            );
+          }
+          return FirebaseError("Aucune notification trouvée");
+
+        case RequestNotification(date: final date) when date.isNotEmpty:
+             final snapshot = await db.child('notfications').get();
+
+              if (snapshot.exists) {
+            final data = snapshot.value as Map<dynamic, dynamic>;
+            final notifications = data.values
+                .map(
+                  (e) {
+                    final notificationItem = Map<String, dynamic>.from(e);
+                    return NotificationResponseModel.fromJson(notificationItem);
+                  },
+                ).where((e) => e.date?.contains(params.date) ?? false).toList();
+                // .toList();
+            return FirebaseSuccess(
+              notifications
+                  .map((e) => NotificationResponseModel.fromJson(e.toJson()))
+                  .toList(),
+            );
+          }
+          return FirebaseError("Aucune notification trouvée");
+
+        default:
+          final snapshot = await db.child('notfications').get();
+          if (snapshot.exists) {
+            final data = snapshot.value as Map<dynamic, dynamic>;
+            log("🔥 Firebase Notification N →→→→→→→→→ $data");
+            final notifications = data.values
+                .map(
+                  (e) {
+                    final notificationItem =  Map<String, dynamic>.from(e);
+                    return NotificationResponseModel.fromJson(notificationItem);
+                  },
+                )
+                .toList();
+            return FirebaseSuccess(
+              notifications
+                  .map((e) => NotificationResponseModel.fromJson(e.toJson()))
+                  .toList(),
+            );
+          }
+          return FirebaseError("Aucune notification trouvée");
+      }
+      return FirebaseError("Aucune notification trouvée");
+    } catch (e) {
+      log("🔥 Firebase Notification n →→→→→→→→→ ${e}");
+      return FirebaseError(e.toString());
     }
   }
 }

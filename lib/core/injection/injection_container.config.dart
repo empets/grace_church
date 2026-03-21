@@ -34,8 +34,11 @@ import '../../feature/home/data/repositories/home_data_repositories.dart'
     as _i486;
 import '../../feature/home/data/service/remot_service.dart' as _i127;
 import '../../feature/home/data/service/repository_remote_service.dart' as _i61;
+import '../../feature/home/data/service/steam_remote_service.dart' as _i366;
 import '../../feature/home/domaine/repository/home_domain_repository.dart'
     as _i962;
+import '../../feature/home/domaine/usercase/get_list_notification_usercase.dart'
+    as _i15;
 import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
 import '../../feature/home/page/bloc/app_launcher/app_launcher_bloc.dart'
     as _i303;
@@ -58,6 +61,9 @@ extension GetItInjectableX on _i174.GetIt {
       preResolve: true,
     );
     gh.lazySingleton<_i303.AppLauncherBloc>(() => _i303.AppLauncherBloc());
+    gh.lazySingleton<_i366.ImpleSteamRemoteService>(
+      () => _i366.ImpleSteamRemoteService(),
+    );
     gh.lazySingleton<_i259.AuthenRemoteService>(
       () => _i166.ImplRemoteService(db: gh<_i345.DatabaseReference>()),
     );
@@ -77,6 +83,17 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i562.GetProfileUsercase>(
       () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i562.GetProfileStreamUsercase>(
+      () => _i562.GetProfileStreamUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i15.GetListNotificationUsercase>(
+      () => _i15.GetListNotificationUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i15.GetListNotificationByCriteriaUsercase>(
+      () => _i15.GetListNotificationByCriteriaUsercase(
+        gh<_i962.HomeDomaineRepository>(),
+      ),
     );
     gh.lazySingleton<_i1031.CreateEngagementProfileUsercase>(
       () =>

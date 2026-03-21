@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/core/extension/custome_extension.dart';
 
 class CustomeText extends StatelessWidget {
   const CustomeText({
@@ -15,5 +17,52 @@ class CustomeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text, style: style, textAlign: textAlign);
+  }
+}
+
+class ExpandableText extends StatefulWidget {
+  final String text;
+
+  const ExpandableText({super.key, required this.text});
+
+  @override
+  State<ExpandableText> createState() => _ExpandableTextState();
+}
+
+class _ExpandableTextState extends State<ExpandableText> {
+  bool expanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.text,
+          maxLines: expanded ? null : 2,
+          overflow: expanded ? TextOverflow.visible : TextOverflow.ellipsis,
+          style: context.appTypographie.body.copyWith(
+            color: context.appColor.primaryGrayDark,
+            fontSize: 14.sp,
+          ),
+        ),
+
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              expanded = !expanded;
+            });
+          },
+          child: Text(
+            expanded ? "Réduire" : "Lire la suite",
+            style: context.appTypographie.body.copyWith(
+              color: context.appColor.primaryBlue,
+              fontWeight: FontWeight.w700,
+              fontSize: 13.sp,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

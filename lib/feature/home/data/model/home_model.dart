@@ -66,3 +66,26 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
     );
   }
 }
+
+
+
+@freezed
+abstract class NotificationResponseModel with _$NotificationResponseModel {
+  factory NotificationResponseModel({
+    required String? title,
+    required String?  description,
+    required String?  tag,
+    required String?  date,
+  }) = _NotificationResponseModel;
+  factory NotificationResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$NotificationResponseModelFromJson(json);
+
+  static   NotificationResponse toDomaine(NotificationResponseModel model) {
+    return NotificationResponse(
+      title: model.title.getOrEmpty(),
+      description: model.description.getOrEmpty(),
+      tag: model.tag.getOrEmpty(),
+      date: model.date.getOrEmpty(),
+    );
+  }
+}

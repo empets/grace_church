@@ -24,7 +24,7 @@ class GetProfileBloc extends Bloc<ProfileEvent, ApiState<ProfileResponse>> {
         emit(ApiState<ProfileResponse>.load());
         await Future.delayed(Duration(seconds: 4));
 
-        final response = await getProfileUsercase.call(NoParams());
+        final response = await getProfileUsercase.call(EmptyRequest());
 
         emit(
           response.fold(

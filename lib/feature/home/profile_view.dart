@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:formz/formz.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -18,11 +17,12 @@ import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_pr
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
-import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_engagement.dart';
 import 'package:grace_church/feature/authen/page/form_holly_living.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
+import 'package:grace_church/feature/home/data/model/home_model.dart';
+import 'package:grace_church/feature/home/data/service/steam_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
@@ -30,7 +30,7 @@ import 'package:grace_church/gen/assets.gen.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key, required this.profile});
-  final ProfileResponse profile;
+  final ProfileResponseModel? profile;
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
@@ -54,72 +54,72 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> getPersonalInformation({
-      required ProfileResponse profile,
+      required ProfileResponseModel? profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
           'icon': Icons.email_outlined,
           'title': 'Email',
-          'value': profile.email,
+          'value': profile?.email ?? "",
         },
         {
           'title': 'Téléphone',
           'icon': Icons.phone_outlined,
-          'value': profile.contact,
+          'value': profile?.contact ?? "",
         },
         {
           'title': 'Adresse & Quartier',
           'icon': Icons.location_on_outlined,
-          'value': profile.zoneResidence,
+          'value': profile?.zoneResidence ?? "",
         },
       ];
       return deviceInfos;
     }
 
     List<Map<String, dynamic>> getProfessionalInformation({
-      required ProfileResponse profile,
+      required ProfileResponseModel? profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
           'icon': Icons.school_outlined,
           'title': 'Métier / Études',
-          'value': profile.nivauEtude,
+          'value': profile?.nivauEtude?? ""
         },
         {
           'title': 'Organisation',
           'icon': Icons.business_outlined,
-          'value': profile.activity,
+          'value': profile?.activity ?? ""
         },
       ];
       return deviceInfos;
     }
 
     List<Map<String, dynamic>> getSpiritualInformation({
-      required ProfileResponse profile,
+      required ProfileResponseModel? profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
           'icon': Icons.format_color_fill_sharp,
           'title': 'Date de baptême',
-          'value': profile.dateBaptme,
+          'value': profile?.dateBaptme ?? ""
         },
         {
           'title': 'Cellule de maison',
           'icon': Icons.home_work,
-          'value': profile.cellulePriere,
+          'value': profile?.cellulePriere ?? ""
         },
       ];
       return deviceInfos;
     }
 
     List<Map<String, dynamic>> getEngagement({
-      required ProfileResponse profile,
+      required ProfileResponseModel? profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
           'icon': Icons.volunteer_activism_outlined,
           'title': 'Département',
-          'value': profile.departement,
+          'value': profile?.departement ?? ""
         },
       ];
       return deviceInfos;
@@ -136,16 +136,15 @@ class _ProfileViewState extends State<ProfileView> {
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
           appBar: AppBar(backgroundColor: Colors.grey.shade50),
-          body: BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
-            builder: (context, profileState) {
-              if (profileState is SuccessState<ProfileResponse>) {
+          body: StreamBuilder(
+            stream: getIt<ImpleSteamRemoteService>().getProfileStream(),
+            builder: (context, profileStream) {
+              if (profileStream.hasData && profileStream.data != null) {
+
                 return SafeArea(
                   child: Container(
                     alignment: Alignment.topCenter,
                     child: SingleChildScrollView(
-                      physics: profileState is LoadState<ProfileResponse>
-                          ? NeverScrollableScrollPhysics()
-                          : const AlwaysScrollableScrollPhysics(),
                       child: Column(
                         children: [
                           Container(
@@ -186,7 +185,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                 width: 0.08.sh,
                                               ),
                                             ),
-                                            profileState.data.profileImage,
+                                            profileStream.data?.profileImage ?? "",
 
                                             fit: BoxFit.cover,
                                             height: 0.1.sh,
@@ -195,7 +194,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         ),
                                       ),
                                       CustomeText(
-                                        text: profileState.data.name,
+                                        text: profileStream.data?.name ?? "",
                                         style: context.appTypographie.button
                                             .copyWith(
                                               color: context
@@ -206,7 +205,7 @@ class _ProfileViewState extends State<ProfileView> {
                                             ),
                                       ),
                                       CustomeText(
-                                        text: profileState.data.email,
+                                        text: profileStream.data?.email ?? "",
                                         style: context.appTypographie.button
                                             .copyWith(
                                               color: context
@@ -371,7 +370,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                   children: [
                                                     ...getPersonalInformation(
                                                       profile:
-                                                          profileState.data,
+                                                          profileStream.data
                                                     ).map(
                                                       (items) => Container(
                                                         // margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -638,7 +637,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                   children: [
                                                     ...getProfessionalInformation(
                                                       profile:
-                                                          profileState.data,
+                                                          profileStream.data
                                                     ).map(
                                                       (items) => Container(
                                                         // margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -914,7 +913,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                   children: [
                                                     ...getSpiritualInformation(
                                                       profile:
-                                                          profileState.data,
+                                                          profileStream.data,
                                                     ).map(
                                                       (items) => Container(
                                                         // margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -1179,7 +1178,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                   children: [
                                                     ...getEngagement(
                                                       profile:
-                                                          profileState.data,
+                                                          profileStream.data,
                                                     ).map(
                                                       (items) => Container(
                                                         // margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -1342,9 +1341,10 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                 );
+             
               }
-              if (profileState is LoadState<ProfileResponse>) {
-                return SafeArea(
+             if(profileStream.connectionState == ConnectionState.waiting) {
+              return SafeArea(
                   child: Container(
                     height: 1.sh,
                     color: context.appColor.primaryGray100.withValues(
@@ -1388,7 +1388,8 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                 );
-              }
+             }
+             else{
               return SafeArea(
                 child: Container(
                   alignment: Alignment.center,
@@ -1435,8 +1436,22 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
               );
+
+             }
             },
           ),
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+         
         ),
       ),
     );
