@@ -5,17 +5,26 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/alert/app_alerte.dart';
+import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_engagement.dart'
     hide FormNextTeps;
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
+import 'package:grace_church/feature/home/page/bloc/cellule/cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/cellule/event/cellule_event.dart';
 
 class FormHollyLiving extends StatefulWidget {
   const FormHollyLiving({super.key, this.profile = false});
@@ -91,6 +100,7 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
   late bool isSelectedHotel = false;
   String? statutMenberValue;
   String? statutCellule;
+  CelluleResponse? selectedCellule;
 
   DateTime? selectedDate;
 
@@ -153,480 +163,591 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<
-      CreateComteProfileSpiritualLifeBloc,
-      CreateCompteSpiritualLifeState
-    >(
-      listener: (context, state) {
-        if (state.status.isSuccess) {
-          // ----------------------------
-          // Handle navigation based on profile flag
-          // ----------------------------
-          if (widget.profile) {
-            Navigator.of(context).pop(true);
-            return;
-          }
-          Navigator.of(context).push(fadeRoute(const FormEngagement()));
-        }
-      },
-      child: Scaffold(
-        backgroundColor: Colors.grey.shade50,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // SizedBox(height: .h),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 4.h),
+    return BlocProvider(
+      create: (context) =>
+          CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
+            ..add(CelluleEvent.fetch()),
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<
+            CreateComteProfileSpiritualLifeBloc,
+            CreateCompteSpiritualLifeState
+          >(
+            listener: (context, state) {
+              if (state.status.isSuccess) {
+                // ----------------------------
+                // Handle navigation based on profile flag
+                // ----------------------------
+                if (widget.profile) {
+                  Navigator.of(context).pop(true);
+                  return;
+                }
+                Navigator.of(context).push(fadeRoute(const FormEngagement()));
+              }
+            },
+          ),
+          BlocListener<CelluleBloc, ApiState<List<CelluleResponse>>>(
+            listener: (context, state) {
+              if (state is FailedState<List<CelluleResponse>>) {
+                return AppAlert.showError(
+                  context,
+                  state.message.getOrEmpty(),
+                  showOnTop: true,
+                );
+              }
+            },
+          ),
+        ],
+        child: Scaffold(
+          backgroundColor: Colors.grey.shade50,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // SizedBox(height: .h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 4.h),
 
-                      Row(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                  right: 10.w,
+                                  top: 4.h,
+                                  bottom: 5.h,
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: context.appColor.primaryGrayDark,
+                                ),
+                              ),
+                            ),
+                            CustomeText(
+                              text: 'Inscription Member ',
+                              style: context.appTypographie.subtitle.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                            SizedBox(width: 0),
+                          ],
+                        ),
+
+                        SizedBox(height: 30.h),
+                      ],
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                right: 10.w,
-                                top: 4.h,
-                                bottom: 5.h,
-                              ),
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: context.appColor.primaryGrayDark,
-                              ),
-                            ),
-                          ),
                           CustomeText(
-                            text: 'Inscription Member ',
-                            style: context.appTypographie.subtitle.copyWith(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                          SizedBox(width: 0),
-                        ],
-                      ),
-
-                      SizedBox(height: 30.h),
-                    ],
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomeText(
-                          text: 'Etape 3 sur 4',
-                          style: context.appTypographie.small.copyWith(
-                            color: context.appColor.primaryBlue,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.sp,
-                          ),
-                        ),
-
-                        CustomeText(
-                          text: '75% Complété',
-                          style: context.appTypographie.small.copyWith(
-                            color: context.appColor.primaryGray500,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 4.h, bottom: 18.h),
-                    child: FAProgressBar(
-                      size: 6.h,
-                      currentValue: 70,
-                      displayTextStyle: context.appTypographie.small.copyWith(
-                        fontSize: 0.h,
-                      ),
-                      displayText: '%',
-                      progressColor: context.appColor.primaryBlue,
-                      backgroundColor: context.appColor.primaryLightBlue,
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(bottom: 19.h),
-                    child: Divider(
-                      height: 2.h,
-                      color: context.appColor.primaryLightBlue,
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(bottom: 9.h),
-                    padding: EdgeInsets.all(9.r),
-                    decoration: BoxDecoration(
-                      color: context.appColor.primaryLightBlue,
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    child: Icon(
-                      Icons.auto_awesome,
-                      color: context.appColor.primaryBlue,
-                    ),
-                  ),
-
-                  CustomeText(
-                    text: 'Vie Spirituelle',
-                    style: context.appTypographie.subtitle.copyWith(
-                      fontSize: 18.h,
-                      color: context.appColor.primaryGrayDark,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  CustomeText(
-                    text:
-                        'Veuillez renseigner vos informations spirituelles pour finaliser votre profil de membre.',
-                    style: context.appTypographie.small.copyWith(
-                      fontSize: 12.sp,
-                      color: context.appColor.primaryGray500,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(height: 0.04.sh),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Statut Spirituel",
-                        style: context.appTypographie.small.copyWith(
-                          color: Colors.grey.shade700,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      BlocBuilder<
-                        CreateComteProfileSpiritualLifeBloc,
-                        CreateCompteSpiritualLifeState
-                      >(
-                        builder: (context, state) {
-                          return Container(
-                            margin: EdgeInsets.symmetric(vertical: 4.h),
-                            padding: EdgeInsets.symmetric(horizontal: 12),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: state.statusSpirituel.isValid
-                                    ? context.appColor.primaryLightBlue
-                                    : Colors.grey.withOpacity(.5),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            // statutMenber
-                            child: CustomDropdown(
-                              readOnly: state.status.isInProgress,
-                              hint: "Choisir un statut",
-                              value: statutMenberValue,
-                              items: statutMenber,
-                              onChanged: (value) {
-                                setState(() {
-                                  statutMenberValue = value;
-                                });
-                                log('statutMenberValue: $value');
-                                context
-                                    .read<CreateComteProfileSpiritualLifeBloc>()
-                                    .add(
-                                      EventCreateCompteSpiritualLife.changeStatusSpirituel(
-                                        value.toString(),
-                                      ),
-                                    );
-                                if (state.statusSpirituel.value.toLowerCase() !=
-                                    "baptiser") {
-                                  context
-                                      .read<
-                                        CreateComteProfileSpiritualLifeBloc
-                                      >()
-                                      .add(
-                                        EventCreateCompteSpiritualLife.changeDateBaptme(
-                                          "NA",
-                                        ),
-                                      );
-                                }
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 9.h),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Date de Baptême",
+                            text: 'Etape 3 sur 4',
                             style: context.appTypographie.small.copyWith(
-                              color: Colors.grey.shade700,
-                              fontWeight: FontWeight.bold,
+                              color: context.appColor.primaryBlue,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
                             ),
                           ),
-                          SizedBox(width: 3.w),
-                          Text(
-                            "(Si applicable)",
+
+                          CustomeText(
+                            text: '75% Complété',
                             style: context.appTypographie.small.copyWith(
-                              fontSize: 11.sp,
-                              color: context.appColor.primaryGray500.withValues(
-                                alpha: 0.3,
-                              ),
-                              fontWeight: FontWeight.bold,
+                              color: context.appColor.primaryGray500,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
                             ),
                           ),
                         ],
                       ),
-                      BlocBuilder<
-                        CreateComteProfileSpiritualLifeBloc,
-                        CreateCompteSpiritualLifeState
-                      >(
-                        builder: (context, state) {
-                          return ProductionFormCustomer(
-                            readOnly: true,
-                            inputLabelSize: 0.sp,
-                            isColorBlue: state.dateBaptme.isValid
-                                ? true
-                                : false,
-                            controller: textEditingControllerDateBapteme,
-                            inputLabel: '',
-                            textLabel: "Cliquer sur l'icon juste à droite ",
-                            errorText:
-                                state.dateBaptme.isPure ||
-                                    state.dateBaptme.isValid
-                                ? null
-                                : '',
-                            msgError: 'Veuillez renseigner ce champ',
-                            sufixIcon: Container(
-                              margin: EdgeInsets.only(right: 3.w),
-                              decoration: BoxDecoration(
-                                color: context.appColor.primaryLightBlue,
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
-                              child: IconButton(
-                                onPressed:
-                                    state.status.isInProgress ||
-                                        state.statusSpirituel.value
-                                                .toLowerCase() !=
-                                            "baptiser"
-                                    ? null
-                                    : () {
-                                        if (state.statusSpirituel.value
-                                                .toLowerCase() ==
-                                            "baptiser") {
-                                          _openCalendar();
-                                        }
-                                      },
-                                icon: Icon(
-                                  state.statusSpirituel.value.toLowerCase() ==
-                                          "baptiser"
-                                      ? Icons.calendar_month_sharp
-                                      : Icons.lock,
-                                  color: context.appColor.primaryBlue,
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 9.h),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Cellule de Maison assignée",
-                        style: context.appTypographie.small.copyWith(
-                          color: Colors.grey.shade700,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      BlocBuilder<
-                        CreateComteProfileSpiritualLifeBloc,
-                        CreateCompteSpiritualLifeState
-                      >(
-                        builder: (context, state) {
-                          return Container(
-                            margin: EdgeInsets.symmetric(vertical: 4.h),
-                            padding: EdgeInsets.symmetric(horizontal: 12),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: state.statusSpirituel.isValid
-                                    ? context.appColor.primaryLightBlue
-                                    : Colors.grey.withOpacity(.5),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            // statutMenber
-                            child: CustomDropdown(
-                              readOnly: state.status.isInProgress,
-                              hint: "Selectionner une cellule",
-                              value: statutCellule,
-                              items: cellulePriere,
-                              onChanged: (value) {
-                                setState(() {
-                                  statutCellule = value;
-                                });
-                                context
-                                    .read<CreateComteProfileSpiritualLifeBloc>()
-                                    .add(
-                                      EventCreateCompteSpiritualLife.changeCellulePriere(
-                                        value.toString(),
-                                      ),
-                                    );
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                      Text(
-                        "Cellule de Maison de mainson est votre groupe de proximité hebdomadaire",
-                        style: context.appTypographie.small.copyWith(
-                          color: Colors.grey.shade700,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 11.sp,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 12.h),
-                  BlocBuilder<
-                    CreateComteProfileSpiritualLifeBloc,
-                    CreateCompteSpiritualLifeState
-                  >(
-                    builder: (context, state) {
-                      return ProductionFormCustomer(
-                        readOnly: state.status.isInProgress,
-                        letSpace: [],
-                        isColorBlue: state.encadreur.isValid ? true : false,
-                        errorText:
-                            state.encadreur.isPure || state.encadreur.isValid
-                            ? null
-                            : '',
-                        inputLabel: 'Mentor Spirituel / Pasteur',
-                        textLabel: 'Nom de votre mentor ou pasteur',
-                        msgError: '',
-                        prefixIcon: Icon(
-                          Icons.person,
-                          color: context.appColor.primaryGray500.withValues(
-                            alpha: 0.6,
-                          ),
-                        ),
-                        onChanged: (value) {
-                          context
-                              .read<CreateComteProfileSpiritualLifeBloc>()
-                              .add(
-                                EventCreateCompteSpiritualLife.changeEncadreur(
-                                  value,
-                                ),
-                              );
-                        },
-                      );
-                    },
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 25.h),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 6.w,
-                      vertical: 10.h,
                     ),
-                    decoration: BoxDecoration(
-                      border: BoxBorder.all(
-                        color: context.appColor.primaryBlue.withValues(
-                          alpha: 0.1,
+
+                    Container(
+                      margin: EdgeInsets.only(top: 4.h, bottom: 18.h),
+                      child: FAProgressBar(
+                        size: 6.h,
+                        currentValue: 70,
+                        displayTextStyle: context.appTypographie.small.copyWith(
+                          fontSize: 0.h,
                         ),
+                        displayText: '%',
+                        progressColor: context.appColor.primaryBlue,
+                        backgroundColor: context.appColor.primaryLightBlue,
                       ),
-                      color: context.appColor.primaryLightBlue,
-                      borderRadius: BorderRadius.circular(7.r),
                     ),
-                    child: Row(
+
+                    Container(
+                      margin: EdgeInsets.only(bottom: 19.h),
+                      child: Divider(
+                        height: 2.h,
+                        color: context.appColor.primaryLightBlue,
+                      ),
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.only(bottom: 9.h),
+                      padding: EdgeInsets.all(9.r),
+                      decoration: BoxDecoration(
+                        color: context.appColor.primaryLightBlue,
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Icon(
+                        Icons.auto_awesome,
+                        color: context.appColor.primaryBlue,
+                      ),
+                    ),
+
+                    CustomeText(
+                      text: 'Vie Spirituelle',
+                      style: context.appTypographie.subtitle.copyWith(
+                        fontSize: 18.h,
+                        color: context.appColor.primaryGrayDark,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    CustomeText(
+                      text:
+                          'Veuillez renseigner vos informations spirituelles pour finaliser votre profil de membre.',
+                      style: context.appTypographie.small.copyWith(
+                        fontSize: 12.sp,
+                        color: context.appColor.primaryGray500,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(height: 0.04.sh),
+
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
-                          Icons.error_outline,
-                          color: context.appColor.primaryBlue,
-                        ),
-                        SizedBox(width: 8.w),
-                        Flexible(
-                          child: Text(
-                            "Ces informations nous aident à mieux vous "
-                            "accompagner dans votre croissance spirituelle"
-                            "et à vous intégrer dans la vie de l'église.",
-                            style: context.appTypographie.small.copyWith(
-                              fontSize: 11.sp,
-                              color: context.appColor.primaryGray500.withValues(
-                                alpha: 0.8,
-                              ),
-                              fontWeight: FontWeight.bold,
-                            ),
+                        Text(
+                          "Statut Spirituel",
+                          style: context.appTypographie.small.copyWith(
+                            color: Colors.grey.shade700,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  BlocBuilder<
-                    CreateComteProfileSpiritualLifeBloc,
-                    CreateCompteSpiritualLifeState
-                  >(
-                    builder: (context, state) {
-                      return FormNextTeps(
-                        icons: Icons.groups_outlined,
-                        title: 'Rejoindre un département',
-                        description: 'Choral, Masse média, Evangeliste',
-                        isNextForm: state.isValide,
-                      );
-                    },
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 15.h),
-                    child:
                         BlocBuilder<
                           CreateComteProfileSpiritualLifeBloc,
                           CreateCompteSpiritualLifeState
                         >(
                           builder: (context, state) {
-                            return PrimaryButton(
-                              isLoading: state.status.isInProgress,
-                              label: 'Continuer',
-                              icon: Icons.arrow_forward_rounded,
-                              backgroundColor:
-                                  state.status.isInProgress || state.isValide
-                                  ? context.appColor.primaryBlue
-                                  : context.appColor.primaryLightBlue,
-                              colorText: context.appColor.primaryWhite,
-                              onPressed: state.status.isInProgress
-                                  ? null
-                                  : () {
-                                      FocusScope.of(context).unfocus();
-                                      context
-                                          .read<
-                                            CreateComteProfileSpiritualLifeBloc
-                                          >()
-                                          .add(
-                                            EventCreateCompteSpiritualLife.submit(),
-                                          );
-                                    },
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 4.h),
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: state.statusSpirituel.isValid
+                                      ? context.appColor.primaryLightBlue
+                                      : Colors.grey.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              // statutMenber
+                              child: CustomDropdown(
+                                readOnly: state.status.isInProgress,
+                                hint: "Choisir un statut",
+                                value: statutMenberValue,
+                                items: statutMenber,
+                                onChanged: (value) {
+                                  setState(() {
+                                    statutMenberValue = value;
+                                  });
+                                  log('statutMenberValue: //');
+                                  context
+                                      .read<
+                                        CreateComteProfileSpiritualLifeBloc
+                                      >()
+                                      .add(
+                                        EventCreateCompteSpiritualLife.changeStatusSpirituel(
+                                          value.toString(),
+                                        ),
+                                      );
+                                  if (state.statusSpirituel.value
+                                          .toLowerCase() !=
+                                      "baptiser") {
+                                    context
+                                        .read<
+                                          CreateComteProfileSpiritualLifeBloc
+                                        >()
+                                        .add(
+                                          EventCreateCompteSpiritualLife.changeDateBaptme(
+                                            "NA",
+                                          ),
+                                        );
+                                  }
+                                },
+                              ),
                             );
                           },
                         ),
-                  ),
-                ],
+                      ],
+                    ),
+                    SizedBox(height: 9.h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Date de Baptême",
+                              style: context.appTypographie.small.copyWith(
+                                color: Colors.grey.shade700,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 3.w),
+                            Text(
+                              "(Si applicable)",
+                              style: context.appTypographie.small.copyWith(
+                                fontSize: 11.sp,
+                                color: context.appColor.primaryGray500
+                                    .withValues(alpha: 0.3),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        BlocBuilder<
+                          CreateComteProfileSpiritualLifeBloc,
+                          CreateCompteSpiritualLifeState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              readOnly: true,
+                              inputLabelSize: 0.sp,
+                              isColorBlue: state.dateBaptme.isValid
+                                  ? true
+                                  : false,
+                              controller: textEditingControllerDateBapteme,
+                              inputLabel: '',
+                              textLabel: "Cliquer sur l'icon juste à droite ",
+                              errorText:
+                                  state.dateBaptme.isPure ||
+                                      state.dateBaptme.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              sufixIcon: Container(
+                                margin: EdgeInsets.only(right: 3.w),
+                                decoration: BoxDecoration(
+                                  color: context.appColor.primaryLightBlue,
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                                child: IconButton(
+                                  onPressed:
+                                      state.status.isInProgress ||
+                                          state.statusSpirituel.value
+                                                  .toLowerCase() !=
+                                              "baptiser"
+                                      ? null
+                                      : () {
+                                          if (state.statusSpirituel.value
+                                                  .toLowerCase() ==
+                                              "baptiser") {
+                                            _openCalendar();
+                                          }
+                                        },
+                                  icon: Icon(
+                                    state.statusSpirituel.value.toLowerCase() ==
+                                            "baptiser"
+                                        ? Icons.calendar_month_sharp
+                                        : Icons.lock,
+                                    color: context.appColor.primaryBlue,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 9.h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Cellule de Maison assignée",
+                          style: context.appTypographie.small.copyWith(
+                            color: Colors.grey.shade700,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        BlocBuilder<
+                          CreateComteProfileSpiritualLifeBloc,
+                          CreateCompteSpiritualLifeState
+                        >(
+                          builder: (context, state) {
+                            return BlocBuilder<
+                              CelluleBloc,
+                              ApiState<List<CelluleResponse>>
+                            >(
+                              builder: (context, cellueState) {
+                                if (cellueState
+                                    is SuccessState<List<CelluleResponse>>) {
+                                  return Container(
+                                    margin: EdgeInsets.symmetric(vertical: 4.h),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: state.statusSpirituel.isValid
+                                            ? context.appColor.primaryLightBlue
+                                            : Colors.grey.withOpacity(.5),
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    // statutMenber
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton<CelluleResponse>(
+                                        isExpanded: true,
+                                        dropdownColor:
+                                            context.appColor.primaryWhite,
+                                        hint: Text(
+                                          "Selectionner une cellule",
+                                          style: GoogleFonts.roboto(
+                                            color: Colors.grey,
+                                            fontSize: 14.sp,
+                                          ),
+                                        ),
+                                        value: selectedCellule,
+                                        style: GoogleFonts.roboto(
+                                          color: Colors.black,
+                                          fontSize: 14.sp,
+                                        ),
+                                        icon: Icon(Icons.keyboard_arrow_down),
+                                        items: cellueState.data
+                                            .map(
+                                              (item) =>
+                                                  DropdownMenuItem<
+                                                    CelluleResponse
+                                                  >(
+                                                    value: item,
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        SizedBox(height: 9.h),
+                                                        Text(
+                                                          item.nom,
+                                                          style:
+                                                              GoogleFonts.roboto(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 12.sp,
+                                                              ),
+                                                        ),
+
+                                                        Text(
+                                                          item.adresse,
+                                                          style:
+                                                              GoogleFonts.roboto(
+                                                                color:
+                                                                    Colors.grey,
+                                                                fontSize: 0.sp,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                            )
+                                            .toList(),
+                                        onChanged: state.status.isInProgress
+                                            ? null
+                                            : (value) {
+                                                setState(() {
+                                                  selectedCellule = value;
+                                                });
+                                                context
+                                                    .read<
+                                                      CreateComteProfileSpiritualLifeBloc
+                                                    >()
+                                                    .add(
+                                                      EventCreateCompteSpiritualLife.changeCellulePriere(
+                                                        value?.nom ?? '',
+                                                      ),
+                                                    );
+
+                                                context
+                                                    .read<
+                                                      CreateComteProfileSpiritualLifeBloc
+                                                    >()
+                                                    .add(
+                                                      EventCreateCompteSpiritualLife.changeCelluleCode(
+                                                        value?.celluleCode ??
+                                                            '',
+                                                      ),
+                                                    );
+
+                                                context
+                                                    .read<
+                                                      CreateComteProfileSpiritualLifeBloc
+                                                    >()
+                                                    .add(
+                                                      EventCreateCompteSpiritualLife.changeCelluleId(
+                                                        value?.celluleId ?? '',
+                                                      ),
+                                                    );
+                                              },
+                                      ),
+                                    ),
+                                  );
+                                }
+
+                                return SizedBox();
+                              },
+                            );
+                          },
+                        ),
+                        Text(
+                          "Cellule de Maison de mainson est votre groupe de proximité hebdomadaire",
+                          style: context.appTypographie.small.copyWith(
+                            color: Colors.grey.shade700,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11.sp,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 12.h),
+                    BlocBuilder<
+                      CreateComteProfileSpiritualLifeBloc,
+                      CreateCompteSpiritualLifeState
+                    >(
+                      builder: (context, state) {
+                        return ProductionFormCustomer(
+                          readOnly: state.status.isInProgress,
+                          letSpace: [],
+                          isColorBlue: state.encadreur.isValid ? true : false,
+                          errorText:
+                              state.encadreur.isPure || state.encadreur.isValid
+                              ? null
+                              : '',
+                          inputLabel: 'Mentor Spirituel / Pasteur',
+                          textLabel: 'Nom de votre mentor ou pasteur',
+                          msgError: '',
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: context.appColor.primaryGray500.withValues(
+                              alpha: 0.6,
+                            ),
+                          ),
+                          onChanged: (value) {
+                            context
+                                .read<CreateComteProfileSpiritualLifeBloc>()
+                                .add(
+                                  EventCreateCompteSpiritualLife.changeEncadreur(
+                                    value,
+                                  ),
+                                );
+                          },
+                        );
+                      },
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 25.h),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 6.w,
+                        vertical: 10.h,
+                      ),
+                      decoration: BoxDecoration(
+                        border: BoxBorder.all(
+                          color: context.appColor.primaryBlue.withValues(
+                            alpha: 0.1,
+                          ),
+                        ),
+                        color: context.appColor.primaryLightBlue,
+                        borderRadius: BorderRadius.circular(7.r),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.error_outline,
+                            color: context.appColor.primaryBlue,
+                          ),
+                          SizedBox(width: 8.w),
+                          Flexible(
+                            child: Text(
+                              "Ces informations nous aident à mieux vous "
+                              "accompagner dans votre croissance spirituelle"
+                              "et à vous intégrer dans la vie de l'église.",
+                              style: context.appTypographie.small.copyWith(
+                                fontSize: 11.sp,
+                                color: context.appColor.primaryGray500
+                                    .withValues(alpha: 0.8),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    BlocBuilder<
+                      CreateComteProfileSpiritualLifeBloc,
+                      CreateCompteSpiritualLifeState
+                    >(
+                      builder: (context, state) {
+                        return FormNextTeps(
+                          icons: Icons.groups_outlined,
+                          title: 'Rejoindre un département',
+                          description: 'Choral, Masse média, Evangeliste',
+                          isNextForm: state.isValide,
+                        );
+                      },
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.only(top: 15.h),
+                      child:
+                          BlocBuilder<
+                            CreateComteProfileSpiritualLifeBloc,
+                            CreateCompteSpiritualLifeState
+                          >(
+                            builder: (context, state) {
+                              return PrimaryButton(
+                                isLoading: state.status.isInProgress,
+                                label: 'Continuer',
+                                icon: Icons.arrow_forward_rounded,
+                                backgroundColor:
+                                    state.status.isInProgress || state.isValide
+                                    ? context.appColor.primaryBlue
+                                    : context.appColor.primaryLightBlue,
+                                colorText: context.appColor.primaryWhite,
+                                onPressed: state.status.isInProgress
+                                    ? null
+                                    : () {
+                                        FocusScope.of(context).unfocus();
+                                        context
+                                            .read<
+                                              CreateComteProfileSpiritualLifeBloc
+                                            >()
+                                            .add(
+                                              EventCreateCompteSpiritualLife.submit(),
+                                            );
+                                      },
+                              );
+                            },
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

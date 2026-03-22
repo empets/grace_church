@@ -31,11 +31,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestNotification params,
+    RequestCellule params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestNotification>(
+      final request = Request<RequestCellule>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -43,14 +43,14 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('notfications')
+          .child('cellule')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
 
       // 4) Mettre à jour la clé
       await updateProfileKey(
-        RequestAuthenProfileUpdateKey(menberId: ref.key.toString()),
+        RequestAuthenProfileUpdateCellule(celluleId: ref.key.toString()),
       );
 
       return FirebaseSuccess(ref.key.toString());
@@ -61,19 +61,17 @@ class _NotificationViewState extends State<NotificationView> {
   }
 
   Future<FirebaseResult<String?>> updateProfileKey(
-    RequestAuthenProfileUpdateKey params,
+    RequestAuthenProfileUpdateCellule params,
   ) async {
     try {
-      final Map<String, dynamic> updates = {
-        ...params.toJson(), // nouveaux champs simples
-      };
+      final Map<String, dynamic> updates = {...params.toJson()};
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('notfications/${params.menberId}')
+          .child('cellule/${params.celluleId}')
           .update(updates);
       // 4) Retourner le key généré
-      return FirebaseSuccess(params.menberId);
+      return FirebaseSuccess(params.celluleId);
     } catch (e) {
       log("🔥 Firebase Notification →→→→→→→→→ $e");
       return FirebaseError(e.toString());
@@ -156,28 +154,31 @@ class _NotificationViewState extends State<NotificationView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // GestureDetector(
-                  //   onTap: () async{
-                  //     // TODO: Handle notification tap
-                  //    await sendNotifications(RequestNotification(
-                  //       title: "📖 Étude biblique",
-                  //       description: "Ce jeudi, nous aurons notre séance d’étude biblique. Un moment d’enseignement et de partage pour approfondir la parole de Dieu et grandir dans la foi.",
-                  //       tag: "RAPPEL",
-                  //       date: DateTime.now().toString(),
-                  //     ));
-                  //     log("Notification sent");
-                  //   },
-                  //   child: Container(child: Text("Notifications")),
-                  // ),
+                  //                   GestureDetector(
+                  //                     onTap: () async{
+                  //                       // TODO: Handle notification tap
+                  //                      await sendNotifications(RequestCellule(
+                  //               celluleCode: "CELL005",
+                  // date: DateTime.now().toString(),
+                  // responsable: "Aminata Traoré",
+                  // description: "Partage et louange",
+                  // nom: "Cellule Lumière",
+                  // adresse: "Cocody Angré 8ème tranche",
+                  // latitude: 5.365100,
+                  // longitude: -3.957700,
 
-                  
-
-
-                  BlocBuilder< NotificationBloc,
-                              ApiState<List<NotificationResponse>>>(
+                  //                       ));
+                  //                       log("Notification sent");
+                  //                     },
+                  //                     child: Container(child: Text("Notifications")),
+                  //                   ),
+                  BlocBuilder<
+                    NotificationBloc,
+                    ApiState<List<NotificationResponse>>
+                  >(
                     builder: (context, state) {
                       return ProductionFormCustomer(
-                         letSpace: [],
+                        letSpace: [],
                         textLabel: "Rechercher une annonce",
                         errorText: null,
                         prefixIcon: Icon(
@@ -189,9 +190,7 @@ class _NotificationViewState extends State<NotificationView> {
 
                         onChanged: (value) {
                           context.read<NotificationBloc>().add(
-                            NotificationEvent.fetchByTag(
-                              title: value,
-                            ),
+                            NotificationEvent.fetchByTag(title: value),
                           );
                         },
                       );
@@ -200,8 +199,7 @@ class _NotificationViewState extends State<NotificationView> {
                   SizedBox(height: 16.h),
                   Row(
                     children: [
-
-                       Expanded(
+                      Expanded(
                         child:
                             BlocBuilder<
                               NotificationBloc,
@@ -219,7 +217,7 @@ class _NotificationViewState extends State<NotificationView> {
                                   fontSize: 12.sp,
                                   onPressed: () {
                                     context.read<NotificationBloc>().add(
-                                      NotificationEvent.fetch()
+                                      NotificationEvent.fetch(),
                                     );
                                   },
                                 );
@@ -572,8 +570,3 @@ class _NotificationViewState extends State<NotificationView> {
     );
   }
 }
-
-
-
-
-

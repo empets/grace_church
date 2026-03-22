@@ -103,17 +103,11 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       final snapshot = await db.child('notfications').get();
       if (snapshot.exists) {
         final data = snapshot.value as Map<dynamic, dynamic>;
-        final notifications = data.values
-            .map(
-              (e) {
-              
-                 final notificationItem = Map<String, dynamic>.from(e);
-            
+        final notifications = data.values.map((e) {
+          final notificationItem = Map<String, dynamic>.from(e);
 
-                return NotificationResponseModel.fromJson(notificationItem);
-              },
-            )
-            .toList();
+          return NotificationResponseModel.fromJson(notificationItem);
+        }).toList();
         return FirebaseSuccess(
           notifications
               .map((e) => NotificationResponseModel.fromJson(e.toJson()))
@@ -137,13 +131,13 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
             final notifications = data.values
-                .map(
-                  (e) {
-                    final notificationItem = Map<String, dynamic>.from(e);
-                    return NotificationResponseModel.fromJson(notificationItem);
-                  },
-                ).where((e) => e.title?.contains(params.title) ?? false).toList();
-                // .toList();
+                .map((e) {
+                  final notificationItem = Map<String, dynamic>.from(e);
+                  return NotificationResponseModel.fromJson(notificationItem);
+                })
+                .where((e) => e.title?.contains(params.title) ?? false)
+                .toList();
+            // .toList();
             return FirebaseSuccess(
               notifications
                   .map((e) => NotificationResponseModel.fromJson(e.toJson()))
@@ -159,37 +153,31 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
               .get();
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
-            final notifications = data.values
-                .map(
-                  (e) {
-                    final notificationItem = Map<String, dynamic>.from(e);
-                    return NotificationResponseModel.fromJson(notificationItem);
-                  },
-                )
-                .toList();
+            final notifications = data.values.map((e) {
+              final notificationItem = Map<String, dynamic>.from(e);
+              return NotificationResponseModel.fromJson(notificationItem);
+            }).toList();
             return FirebaseSuccess(
-              notifications
-                  .map((e) {
-                    return NotificationResponseModel.fromJson(e.toJson());
-                  })
-                  .toList(),
+              notifications.map((e) {
+                return NotificationResponseModel.fromJson(e.toJson());
+              }).toList(),
             );
           }
           return FirebaseError("Aucune notification trouvée");
 
         case RequestNotification(date: final date) when date.isNotEmpty:
-             final snapshot = await db.child('notfications').get();
+          final snapshot = await db.child('notfications').get();
 
-              if (snapshot.exists) {
+          if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
             final notifications = data.values
-                .map(
-                  (e) {
-                    final notificationItem = Map<String, dynamic>.from(e);
-                    return NotificationResponseModel.fromJson(notificationItem);
-                  },
-                ).where((e) => e.date?.contains(params.date) ?? false).toList();
-                // .toList();
+                .map((e) {
+                  final notificationItem = Map<String, dynamic>.from(e);
+                  return NotificationResponseModel.fromJson(notificationItem);
+                })
+                .where((e) => e.date?.contains(params.date) ?? false)
+                .toList();
+            // .toList();
             return FirebaseSuccess(
               notifications
                   .map((e) => NotificationResponseModel.fromJson(e.toJson()))
@@ -203,14 +191,10 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
             log("🔥 Firebase Notification N →→→→→→→→→ $data");
-            final notifications = data.values
-                .map(
-                  (e) {
-                    final notificationItem =  Map<String, dynamic>.from(e);
-                    return NotificationResponseModel.fromJson(notificationItem);
-                  },
-                )
-                .toList();
+            final notifications = data.values.map((e) {
+              final notificationItem = Map<String, dynamic>.from(e);
+              return NotificationResponseModel.fromJson(notificationItem);
+            }).toList();
             return FirebaseSuccess(
               notifications
                   .map((e) => NotificationResponseModel.fromJson(e.toJson()))
@@ -222,6 +206,60 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError("Aucune notification trouvée");
     } catch (e) {
       log("🔥 Firebase Notification n →→→→→→→→→ ${e}");
+      return FirebaseError(e.toString());
+    }
+  }
+
+  @override
+  Future<FirebaseResult<List<CelluleResponseModel>>> getListCellules(
+    RequestCellule params,
+  ) async {
+    try {
+      switch (params) {
+        case RequestCellule(
+              celluleId: final celluleId,
+              celluleCode: final celluleCode,
+            )
+            when celluleId != null && celluleId.isNotEmpty :  
+          final snapshot = await db
+              .child('cellule')
+              .orderByChild('celluleId')
+              .equalTo(params.celluleId)
+              .get();
+          if (snapshot.exists) {
+            final data = snapshot.value as Map<dynamic, dynamic>;
+            final notifications = data.values.map((e) {
+              final notificationItem = Map<String, dynamic>.from(e);
+
+              return CelluleResponseModel.fromJson(notificationItem);
+            }).toList();
+            return FirebaseSuccess(
+              notifications
+                  .map((e) => CelluleResponseModel.fromJson(e.toJson()))
+                  .toList(),
+            );
+          }
+          return FirebaseError("Aucune notification trouvée");
+
+        default:
+          final snapshot = await db.child('cellule').get();
+          if (snapshot.exists) {
+            final data = snapshot.value as Map<dynamic, dynamic>;
+            log("🔥 Firebase Notification N →→→→→→→→→ $data");
+            final notifications = data.values.map((e) {
+              final notificationItem = Map<String, dynamic>.from(e);
+              return CelluleResponseModel.fromJson(notificationItem);
+            }).toList();
+              return FirebaseSuccess(
+                notifications
+                  .map((e) => CelluleResponseModel.fromJson(e.toJson()))
+                  .toList(),
+            );
+          }
+          return FirebaseError("Aucune notification trouvée");
+      }
+    } catch (e) {
+      log("🔥 Firebase Notification →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }

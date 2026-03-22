@@ -245,7 +245,13 @@ class MenuView extends StatelessWidget {
                                         if (item["value"] == "cellule") {
                                           Navigator.of(
                                             context,
-                                          ).push(fadeRoute(CelluleView()));
+                                          ).push(
+                                            fadeRoute(
+                                              CelluleView(
+                                                cellueId: profileStream.data?.celluleId ?? "",
+                                              ),
+                                            ),
+                                          );
                                         }
                                         if (item["value"] == "announcements") {
                                           Navigator.of(
@@ -338,11 +344,11 @@ class MenuView extends StatelessWidget {
                               return ListTile(
                                 leading: Icon(
                                   item["icon"],
-                                  color: (item["value"] == "department")
-                                      ? context.appColor.primaryBlue.withValues(
+                                  color: (item["value"] == "profile")
+                                      ? context.appColor.primaryBlue
+                                      : context.appColor.primaryBlue.withValues(
                                           alpha: 0.5,
                                         )
-                                      : context.appColor.primaryBlue,
                                 ),
                                 title: Text(
                                   item["value"] != "profile"
@@ -351,13 +357,13 @@ class MenuView extends StatelessWidget {
                                   style: context.appTypographie.body.copyWith(
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.w600,
-                                    color: (item["value"] == "department")
+                                    color: (item["value"] != "profile")
                                         ? context.appColor.primaryGrayDark
                                               .withValues(alpha: 0.5)
                                         : context.appColor.primaryGrayDark,
                                   ),
                                 ),
-                                trailing: (item["value"] != "department")
+                                trailing: (item["value"] != "profile")
                                     ? Icon(
                                         Icons.chevron_right,
                                         color: context.appColor.primaryBlue,
@@ -406,14 +412,14 @@ class MenuView extends StatelessWidget {
                                     );
                                   }
                                   if (item["value"] == "cellule") {
-                                    Navigator.of(
-                                      context,
-                                    ).push(fadeRoute(CelluleView()));
+                                    // Navigator.of(
+                                    //   context,
+                                    // ).push(fadeRoute(CelluleView()));
                                   }
                                   if (item["value"] == "announcements") {
-                                    Navigator.of(
-                                      context,
-                                    ).push(fadeRoute(NotificationView()));
+                                    // Navigator.of(
+                                    //   context,
+                                    // ).push(fadeRoute(NotificationView()));
                                   }
                                 },
                               );

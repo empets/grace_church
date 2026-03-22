@@ -576,7 +576,7 @@ as bool,
 /// @nodoc
 mixin _$CreateCompteSpiritualLifeState {
 
- TextFormz get statusSpirituel; TextFormz get dateBaptme; TextFormz get cellulePriere; TextFormz get encadreur; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get statusSpirituel; TextFormz get dateBaptme; TextFormz get cellulePriere; TextFormz get encadreur; TextFormz get celluleCode; TextFormz get celluleId; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of CreateCompteSpiritualLifeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -587,16 +587,16 @@ $CreateCompteSpiritualLifeStateCopyWith<CreateCompteSpiritualLifeState> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCompteSpiritualLifeState&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCompteSpiritualLifeState&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,celluleCode,celluleId,status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'CreateCompteSpiritualLifeState(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'CreateCompteSpiritualLifeState(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, celluleCode: $celluleCode, celluleId: $celluleId, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -607,7 +607,7 @@ abstract mixin class $CreateCompteSpiritualLifeStateCopyWith<$Res>  {
   factory $CreateCompteSpiritualLifeStateCopyWith(CreateCompteSpiritualLifeState value, $Res Function(CreateCompteSpiritualLifeState) _then) = _$CreateCompteSpiritualLifeStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz statusSpirituel, TextFormz dateBaptme, TextFormz cellulePriere, TextFormz encadreur, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz statusSpirituel, TextFormz dateBaptme, TextFormz cellulePriere, TextFormz encadreur, TextFormz celluleCode, TextFormz celluleId, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -624,12 +624,14 @@ class _$CreateCompteSpiritualLifeStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCompteSpiritualLifeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? celluleCode = null,Object? celluleId = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_self.copyWith(
 statusSpirituel: null == statusSpirituel ? _self.statusSpirituel : statusSpirituel // ignore: cast_nullable_to_non_nullable
 as TextFormz,dateBaptme: null == dateBaptme ? _self.dateBaptme : dateBaptme // ignore: cast_nullable_to_non_nullable
 as TextFormz,cellulePriere: null == cellulePriere ? _self.cellulePriere : cellulePriere // ignore: cast_nullable_to_non_nullable
 as TextFormz,encadreur: null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
+as TextFormz,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as TextFormz,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as TextFormz,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
@@ -718,10 +720,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz statusSpirituel,  TextFormz dateBaptme,  TextFormz cellulePriere,  TextFormz encadreur,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz statusSpirituel,  TextFormz dateBaptme,  TextFormz cellulePriere,  TextFormz encadreur,  TextFormz celluleCode,  TextFormz celluleId,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateCompteSpiritualLifeState() when $default != null:
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.celluleCode,_that.celluleId,_that.status,_that.errorMessage,_that.isValide);case _:
   return orElse();
 
 }
@@ -739,10 +741,10 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz statusSpirituel,  TextFormz dateBaptme,  TextFormz cellulePriere,  TextFormz encadreur,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz statusSpirituel,  TextFormz dateBaptme,  TextFormz cellulePriere,  TextFormz encadreur,  TextFormz celluleCode,  TextFormz celluleId,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _CreateCompteSpiritualLifeState():
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.celluleCode,_that.celluleId,_that.status,_that.errorMessage,_that.isValide);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -759,10 +761,10 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz statusSpirituel,  TextFormz dateBaptme,  TextFormz cellulePriere,  TextFormz encadreur,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz statusSpirituel,  TextFormz dateBaptme,  TextFormz cellulePriere,  TextFormz encadreur,  TextFormz celluleCode,  TextFormz celluleId,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateCompteSpiritualLifeState() when $default != null:
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.celluleCode,_that.celluleId,_that.status,_that.errorMessage,_that.isValide);case _:
   return null;
 
 }
@@ -774,13 +776,15 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 
 
 class _CreateCompteSpiritualLifeState implements CreateCompteSpiritualLifeState {
-  const _CreateCompteSpiritualLifeState({required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.status, required this.errorMessage, required this.isValide});
+  const _CreateCompteSpiritualLifeState({required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.celluleCode, required this.celluleId, required this.status, required this.errorMessage, required this.isValide});
   
 
 @override final  TextFormz statusSpirituel;
 @override final  TextFormz dateBaptme;
 @override final  TextFormz cellulePriere;
 @override final  TextFormz encadreur;
+@override final  TextFormz celluleCode;
+@override final  TextFormz celluleId;
 @override final  FormzSubmissionStatus status;
 @override final  String errorMessage;
 @override final  bool isValide;
@@ -795,16 +799,16 @@ _$CreateCompteSpiritualLifeStateCopyWith<_CreateCompteSpiritualLifeState> get co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateCompteSpiritualLifeState&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateCompteSpiritualLifeState&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,celluleCode,celluleId,status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'CreateCompteSpiritualLifeState(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'CreateCompteSpiritualLifeState(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, celluleCode: $celluleCode, celluleId: $celluleId, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -815,7 +819,7 @@ abstract mixin class _$CreateCompteSpiritualLifeStateCopyWith<$Res> implements $
   factory _$CreateCompteSpiritualLifeStateCopyWith(_CreateCompteSpiritualLifeState value, $Res Function(_CreateCompteSpiritualLifeState) _then) = __$CreateCompteSpiritualLifeStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz statusSpirituel, TextFormz dateBaptme, TextFormz cellulePriere, TextFormz encadreur, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz statusSpirituel, TextFormz dateBaptme, TextFormz cellulePriere, TextFormz encadreur, TextFormz celluleCode, TextFormz celluleId, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -832,12 +836,14 @@ class __$CreateCompteSpiritualLifeStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCompteSpiritualLifeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? celluleCode = null,Object? celluleId = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_CreateCompteSpiritualLifeState(
 statusSpirituel: null == statusSpirituel ? _self.statusSpirituel : statusSpirituel // ignore: cast_nullable_to_non_nullable
 as TextFormz,dateBaptme: null == dateBaptme ? _self.dateBaptme : dateBaptme // ignore: cast_nullable_to_non_nullable
 as TextFormz,cellulePriere: null == cellulePriere ? _self.cellulePriere : cellulePriere // ignore: cast_nullable_to_non_nullable
 as TextFormz,encadreur: null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
+as TextFormz,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as TextFormz,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as TextFormz,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable

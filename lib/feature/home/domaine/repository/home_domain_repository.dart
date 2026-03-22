@@ -10,6 +10,8 @@ abstract class HomeDomaineRepository {
    Future<Either<Failure, String>> sendNotifications(RequestNotification params);
    Future<Either<Failure, List<NotificationResponse>>> getListNotifications(EmptyRequest notParms);
    Future<Either<Failure, List<NotificationResponse>>> getListNotificationsByCriteria(RequestNotification params);
+   Future<Either<Failure, List<CelluleResponse>>> getListCellules(RequestCellule params);
+
 
 
 }

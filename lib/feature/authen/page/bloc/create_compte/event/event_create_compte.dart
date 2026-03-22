@@ -50,6 +50,10 @@ class EventCreateCompteSpiritualLife with _$EventCreateCompteSpiritualLife {
   ) = CellulePriereEventCreateCompteSpiritualLife;
   factory EventCreateCompteSpiritualLife.changeEncadreur(String encadreur) =
       EncadreurEventCreateCompteSpiritualLife;
+  factory EventCreateCompteSpiritualLife.changeCelluleCode(String celluleCode) =
+      CelluleCodeEventCreateCompteSpiritualLife;
+  factory EventCreateCompteSpiritualLife.changeCelluleId(String celluleId) =
+      CelluleIdEventCreateCompteSpiritualLife;
 
   factory EventCreateCompteSpiritualLife.submit() =
       SubmitEventCreateCompteSpiritualLife;

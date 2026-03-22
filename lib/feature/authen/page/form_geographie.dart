@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
@@ -28,7 +30,10 @@ enum PermissionState { notAsked, granted, denied }
 enum SheetView { form, locationSearch }
 
 class FormGeographie extends StatelessWidget {
-  const FormGeographie({super.key});
+   FormGeographie({super.key,  this.lat = '',  this.lng = ''});
+
+  final String lat;
+  final String lng;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +64,16 @@ class FormGeographie extends StatelessWidget {
         //       RequestManagementInjection.createEligibilityCubit(),
         // ),
       ],
-      child: const _EligibilityTestPageContent(),
+      child: _EligibilityTestPageContent(lat: lat, lng: lng),
     );
   }
 }
 
 class _EligibilityTestPageContent extends StatefulWidget {
-  const _EligibilityTestPageContent();
+  const _EligibilityTestPageContent({this.lat = '', this.lng = ''});
+
+  final String lat;
+  final String lng;
 
   @override
   State<_EligibilityTestPageContent> createState() =>
@@ -82,6 +90,8 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
   final TextEditingController _addressController = TextEditingController();
   final PermissionPreferencesService _permissionService =
       PermissionPreferencesService();
+
+     
 
   // Map control callbacks
   VoidCallback? _mapZoomIn;
@@ -119,6 +129,8 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
         });
       }
     });
+   log('Location: ${widget.lat}, ${widget.lng}');
+
   }
 
   Future<void> _checkPermissionAndInitialize() async {
@@ -311,6 +323,8 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
       }
     });
   }
+   
+
 
   void _handleLocationSelected(LocationSuggestion suggestion) {
     // Update address via Cubit
@@ -394,10 +408,25 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
             // Map or denied message
             if (_permissionState == PermissionState.granted)
               InteractiveMap(
-                initialLocation: _selectedLocation,
+                initialLocation: (widget.lat == '' && widget.lng == '')? _selectedLocation : MapLocation(
+                      latitude: double.parse(widget.lat),
+                      longitude: double.parse(widget.lng),
+                    ),
                 markers: [
+                  if(widget.lat == '' && widget.lng == '')
                   MapMarkerData(
                     location: _selectedLocation,
+                    color: context.appColor.primaryBlue,
+                    size: 40,
+                  ),
+
+
+                  if(widget.lat.trim().isNotEmpty && widget.lng.trim().isNotEmpty)
+                  MapMarkerData(
+                    location: MapLocation(
+                      latitude: double.parse(widget.lat),
+                      longitude: double.parse(widget.lng),
+                    ),
                     color: context.appColor.primaryBlue,
                     size: 40,
                   ),
@@ -461,6 +490,7 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
               ),
 
             // DraggableScrollableSheet with NotificationListener
+            if(widget.lat == '' && widget.lng == "")
             NotificationListener<DraggableScrollableNotification>(
               onNotification: (notification) {
                 setState(() {

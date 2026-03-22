@@ -33,6 +33,8 @@ _ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) =>
       submitSocial: json['submitSocial'] as bool,
       submitSpiritual: json['submitSpiritual'] as bool,
       submitEngagement: json['submitEngagement'] as bool,
+      celluleCode: json['celluleCode'] as String,
+      celluleId: json['celluleId'] as String,
     );
 
 Map<String, dynamic> _$ProfileResponseToJson(_ProfileResponse instance) =>
@@ -62,6 +64,8 @@ Map<String, dynamic> _$ProfileResponseToJson(_ProfileResponse instance) =>
       'submitSocial': instance.submitSocial,
       'submitSpiritual': instance.submitSpiritual,
       'submitEngagement': instance.submitEngagement,
+      'celluleCode': instance.celluleCode,
+      'celluleId': instance.celluleId,
     };
 
 _NotificationResponse _$NotificationResponseFromJson(
@@ -81,3 +85,29 @@ Map<String, dynamic> _$NotificationResponseToJson(
   'tag': instance.tag,
   'date': instance.date,
 };
+
+_CelluleResponse _$CelluleResponseFromJson(Map<String, dynamic> json) =>
+    _CelluleResponse(
+      responsable: json['responsable'] as String,
+      celluleCode: json['celluleCode'] as String,
+      date: json['date'] as String,
+      nom: json['nom'] as String,
+      description: json['description'] as String,
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
+      adresse: json['adresse'] as String,
+      celluleId: json['celluleId'] as String,
+    );
+
+Map<String, dynamic> _$CelluleResponseToJson(_CelluleResponse instance) =>
+    <String, dynamic>{
+      'responsable': instance.responsable,
+      'celluleCode': instance.celluleCode,
+      'date': instance.date,
+      'nom': instance.nom,
+      'description': instance.description,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'adresse': instance.adresse,
+      'celluleId': instance.celluleId,
+    };

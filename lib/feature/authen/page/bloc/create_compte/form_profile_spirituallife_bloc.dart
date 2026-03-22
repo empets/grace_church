@@ -91,6 +91,45 @@ class CreateComteProfileSpiritualLifeBloc
           ),
         );
         break;
+        
+      case CelluleCodeEventCreateCompteSpiritualLife(:final celluleCode):
+        final celluleCodeInput = TextFormz.dirty(celluleCode);
+
+        emit(
+          state.copyWith(
+            celluleCode: celluleCodeInput,
+            status: FormzSubmissionStatus.initial,
+            isValide: Formz.validate([
+              state.statusSpirituel,
+              state.dateBaptme,
+              state.cellulePriere,
+              state.encadreur,
+              celluleCodeInput,
+            ]),
+          ),
+        );
+        break;
+
+      case CelluleIdEventCreateCompteSpiritualLife(:final celluleId):
+        final celluleIdInput = TextFormz.dirty(celluleId);
+
+        emit(
+          state.copyWith(
+            celluleId: celluleIdInput,
+            status: FormzSubmissionStatus.initial,
+            isValide: Formz.validate([
+              state.statusSpirituel,
+              state.dateBaptme,
+              state.cellulePriere,
+              state.encadreur,
+              celluleIdInput,
+            ]),
+          ),
+        );
+        break;
+
+
+
 
       case SubmitEventCreateCompteSpiritualLife():
         if (state.isValide)
@@ -102,6 +141,8 @@ class CreateComteProfileSpiritualLifeBloc
             dateBaptme: state.dateBaptme.value,
             cellulePriere: state.cellulePriere.value,
             encadreur: state.encadreur.value,
+            celluleCode: state.celluleCode.value,
+            celluleId: state.celluleId.value,
             submitSpiritual: true,
           ),
         );

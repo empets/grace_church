@@ -37,11 +37,13 @@ import '../../feature/home/data/service/repository_remote_service.dart' as _i61;
 import '../../feature/home/data/service/steam_remote_service.dart' as _i366;
 import '../../feature/home/domaine/repository/home_domain_repository.dart'
     as _i962;
+import '../../feature/home/domaine/usercase/get_cellule_usercase.dart' as _i625;
 import '../../feature/home/domaine/usercase/get_list_notification_usercase.dart'
     as _i15;
 import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
 import '../../feature/home/page/bloc/app_launcher/app_launcher_bloc.dart'
     as _i303;
+import '../../feature/home/page/bloc/cellule/cellule_bloc.dart' as _i485;
 import '../../feature/home/page/bloc/get_profile/get_profile_bloc.dart' as _i37;
 import 'injection_container.dart' as _i809;
 
@@ -94,6 +96,13 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i15.GetListNotificationByCriteriaUsercase(
         gh<_i962.HomeDomaineRepository>(),
       ),
+    );
+    gh.lazySingleton<_i625.GetCelluleUsercase>(
+      () => _i625.GetCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i485.CelluleBloc>(
+      () =>
+          _i485.CelluleBloc(getCelluleUsercase: gh<_i625.GetCelluleUsercase>()),
     );
     gh.lazySingleton<_i1031.CreateEngagementProfileUsercase>(
       () =>

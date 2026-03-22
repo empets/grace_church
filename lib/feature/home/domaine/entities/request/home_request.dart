@@ -24,3 +24,22 @@ abstract class RequestNotification with _$RequestNotification {
 }
 
 
+@freezed
+abstract class RequestCellule with _$RequestCellule {
+  factory RequestCellule({
+     String? responsable,
+     String? celluleCode,
+     String? date,
+     String? nom,
+     String? description,
+     double? latitude,
+     double? longitude,
+     String? adresse,
+     String? celluleId,
+  }) = _RequestCellule;
+  factory RequestCellule.fromJson(Map<String, dynamic> json) =>
+      _$RequestCelluleFromJson(json);
+}
+
+
+

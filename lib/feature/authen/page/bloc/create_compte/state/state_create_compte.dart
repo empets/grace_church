@@ -73,6 +73,8 @@ abstract class CreateCompteSpiritualLifeState
     required TextFormz dateBaptme,
     required TextFormz cellulePriere,
     required TextFormz encadreur,
+    required TextFormz celluleCode,
+    required TextFormz celluleId,
 
     required FormzSubmissionStatus status,
     required String errorMessage,
@@ -85,6 +87,8 @@ abstract class CreateCompteSpiritualLifeState
         dateBaptme: TextFormz.pure(),
         cellulePriere: TextFormz.pure(),
         encadreur: TextFormz.pure(),
+        celluleCode: TextFormz.pure(),
+        celluleId: TextFormz.pure(),
         status: FormzSubmissionStatus.initial,
         errorMessage: '',
         isValide: false,

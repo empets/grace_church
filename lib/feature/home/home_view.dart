@@ -106,7 +106,7 @@ class _HomeViewState extends State<HomeView> {
                     child: GestureDetector(
                       onTap: () {
                         if (items["value"] == "cellule") {
-                          Navigator.of(context).push(fadeRoute(CelluleView()));
+                          // Navigator.of(context).push(fadeRoute(CelluleView()));
                         }
                       },
                       child: Container(

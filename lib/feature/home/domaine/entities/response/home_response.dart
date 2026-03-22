@@ -30,6 +30,8 @@ abstract class ProfileResponse with _$ProfileResponse {
     required bool submitSocial,
     required bool submitSpiritual,
     required bool submitEngagement,
+    required String celluleCode,
+    required String celluleId,
   }) = _ProfileResponse;
   factory ProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseFromJson(json);
@@ -47,4 +49,24 @@ abstract class NotificationResponse with _$NotificationResponse {
   }) = _NotificationResponse;
   factory NotificationResponse.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseFromJson(json);
+}
+
+
+
+
+@freezed
+abstract class CelluleResponse with _$CelluleResponse {
+  factory CelluleResponse({
+    required String responsable,
+    required String celluleCode,
+    required String date,
+    required String nom,
+    required String description,
+    required double latitude,
+    required double longitude,
+    required String adresse,
+    required String celluleId,
+  }) = _CelluleResponse;
+  factory CelluleResponse.fromJson(Map<String, dynamic> json) =>
+      _$CelluleResponseFromJson(json);
 }

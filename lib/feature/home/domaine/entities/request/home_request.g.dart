@@ -28,3 +28,29 @@ Map<String, dynamic> _$RequestNotificationToJson(
   'date': instance.date,
   'description': instance.description,
 };
+
+_RequestCellule _$RequestCelluleFromJson(Map<String, dynamic> json) =>
+    _RequestCellule(
+      responsable: json['responsable'] as String?,
+      celluleCode: json['celluleCode'] as String?,
+      date: json['date'] as String?,
+      nom: json['nom'] as String?,
+      description: json['description'] as String?,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      adresse: json['adresse'] as String?,
+      celluleId: json['celluleId'] as String?,
+    );
+
+Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
+    <String, dynamic>{
+      'responsable': instance.responsable,
+      'celluleCode': instance.celluleCode,
+      'date': instance.date,
+      'nom': instance.nom,
+      'description': instance.description,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'adresse': instance.adresse,
+      'celluleId': instance.celluleId,
+    };

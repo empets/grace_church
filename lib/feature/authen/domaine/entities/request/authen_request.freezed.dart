@@ -580,7 +580,7 @@ as bool,
 /// @nodoc
 mixin _$RequestAuthenSpiritualLife {
 
- String get statusSpirituel; String get dateBaptme; String get cellulePriere; String get encadreur; bool get submitSpiritual;
+ String get statusSpirituel; String get dateBaptme; String get cellulePriere; String get encadreur; bool get submitSpiritual; String get celluleCode; String get celluleId;
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -593,16 +593,16 @@ $RequestAuthenSpiritualLifeCopyWith<RequestAuthenSpiritualLife> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,submitSpiritual);
+int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,submitSpiritual,celluleCode,celluleId);
 
 @override
 String toString() {
-  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, submitSpiritual: $submitSpiritual)';
+  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, submitSpiritual: $submitSpiritual, celluleCode: $celluleCode, celluleId: $celluleId)';
 }
 
 
@@ -613,7 +613,7 @@ abstract mixin class $RequestAuthenSpiritualLifeCopyWith<$Res>  {
   factory $RequestAuthenSpiritualLifeCopyWith(RequestAuthenSpiritualLife value, $Res Function(RequestAuthenSpiritualLife) _then) = _$RequestAuthenSpiritualLifeCopyWithImpl;
 @useResult
 $Res call({
- String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur, bool submitSpiritual
+ String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur, bool submitSpiritual, String celluleCode, String celluleId
 });
 
 
@@ -630,14 +630,16 @@ class _$RequestAuthenSpiritualLifeCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? submitSpiritual = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? submitSpiritual = null,Object? celluleCode = null,Object? celluleId = null,}) {
   return _then(_self.copyWith(
 statusSpirituel: null == statusSpirituel ? _self.statusSpirituel : statusSpirituel // ignore: cast_nullable_to_non_nullable
 as String,dateBaptme: null == dateBaptme ? _self.dateBaptme : dateBaptme // ignore: cast_nullable_to_non_nullable
 as String,cellulePriere: null == cellulePriere ? _self.cellulePriere : cellulePriere // ignore: cast_nullable_to_non_nullable
 as String,encadreur: null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
 as String,submitSpiritual: null == submitSpiritual ? _self.submitSpiritual : submitSpiritual // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -722,10 +724,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual,  String celluleCode,  String celluleId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenSpiritualLife() when $default != null:
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual,_that.celluleCode,_that.celluleId);case _:
   return orElse();
 
 }
@@ -743,10 +745,10 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual,  String celluleCode,  String celluleId)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenSpiritualLife():
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual,_that.celluleCode,_that.celluleId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -763,10 +765,10 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String statusSpirituel,  String dateBaptme,  String cellulePriere,  String encadreur,  bool submitSpiritual,  String celluleCode,  String celluleId)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenSpiritualLife() when $default != null:
-return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual);case _:
+return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that.encadreur,_that.submitSpiritual,_that.celluleCode,_that.celluleId);case _:
   return null;
 
 }
@@ -778,7 +780,7 @@ return $default(_that.statusSpirituel,_that.dateBaptme,_that.cellulePriere,_that
 @JsonSerializable()
 
 class _RequestAuthenSpiritualLife implements RequestAuthenSpiritualLife {
-   _RequestAuthenSpiritualLife({required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.submitSpiritual});
+   _RequestAuthenSpiritualLife({required this.statusSpirituel, required this.dateBaptme, required this.cellulePriere, required this.encadreur, required this.submitSpiritual, required this.celluleCode, required this.celluleId});
   factory _RequestAuthenSpiritualLife.fromJson(Map<String, dynamic> json) => _$RequestAuthenSpiritualLifeFromJson(json);
 
 @override final  String statusSpirituel;
@@ -786,6 +788,8 @@ class _RequestAuthenSpiritualLife implements RequestAuthenSpiritualLife {
 @override final  String cellulePriere;
 @override final  String encadreur;
 @override final  bool submitSpiritual;
+@override final  String celluleCode;
+@override final  String celluleId;
 
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
@@ -800,16 +804,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenSpiritualLife&&(identical(other.statusSpirituel, statusSpirituel) || other.statusSpirituel == statusSpirituel)&&(identical(other.dateBaptme, dateBaptme) || other.dateBaptme == dateBaptme)&&(identical(other.cellulePriere, cellulePriere) || other.cellulePriere == cellulePriere)&&(identical(other.encadreur, encadreur) || other.encadreur == encadreur)&&(identical(other.submitSpiritual, submitSpiritual) || other.submitSpiritual == submitSpiritual)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,submitSpiritual);
+int get hashCode => Object.hash(runtimeType,statusSpirituel,dateBaptme,cellulePriere,encadreur,submitSpiritual,celluleCode,celluleId);
 
 @override
 String toString() {
-  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, submitSpiritual: $submitSpiritual)';
+  return 'RequestAuthenSpiritualLife(statusSpirituel: $statusSpirituel, dateBaptme: $dateBaptme, cellulePriere: $cellulePriere, encadreur: $encadreur, submitSpiritual: $submitSpiritual, celluleCode: $celluleCode, celluleId: $celluleId)';
 }
 
 
@@ -820,7 +824,7 @@ abstract mixin class _$RequestAuthenSpiritualLifeCopyWith<$Res> implements $Requ
   factory _$RequestAuthenSpiritualLifeCopyWith(_RequestAuthenSpiritualLife value, $Res Function(_RequestAuthenSpiritualLife) _then) = __$RequestAuthenSpiritualLifeCopyWithImpl;
 @override @useResult
 $Res call({
- String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur, bool submitSpiritual
+ String statusSpirituel, String dateBaptme, String cellulePriere, String encadreur, bool submitSpiritual, String celluleCode, String celluleId
 });
 
 
@@ -837,14 +841,16 @@ class __$RequestAuthenSpiritualLifeCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenSpiritualLife
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? submitSpiritual = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? statusSpirituel = null,Object? dateBaptme = null,Object? cellulePriere = null,Object? encadreur = null,Object? submitSpiritual = null,Object? celluleCode = null,Object? celluleId = null,}) {
   return _then(_RequestAuthenSpiritualLife(
 statusSpirituel: null == statusSpirituel ? _self.statusSpirituel : statusSpirituel // ignore: cast_nullable_to_non_nullable
 as String,dateBaptme: null == dateBaptme ? _self.dateBaptme : dateBaptme // ignore: cast_nullable_to_non_nullable
 as String,cellulePriere: null == cellulePriere ? _self.cellulePriere : cellulePriere // ignore: cast_nullable_to_non_nullable
 as String,encadreur: null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
 as String,submitSpiritual: null == submitSpiritual ? _self.submitSpiritual : submitSpiritual // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -1379,6 +1385,269 @@ class __$RequestAuthenProfileUpdateKeyCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? menberId = null,}) {
   return _then(_RequestAuthenProfileUpdateKey(
 menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestAuthenProfileUpdateCellule {
+
+ String get celluleId;
+/// Create a copy of RequestAuthenProfileUpdateCellule
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestAuthenProfileUpdateCelluleCopyWith<RequestAuthenProfileUpdateCellule> get copyWith => _$RequestAuthenProfileUpdateCelluleCopyWithImpl<RequestAuthenProfileUpdateCellule>(this as RequestAuthenProfileUpdateCellule, _$identity);
+
+  /// Serializes this RequestAuthenProfileUpdateCellule to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateCellule&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,celluleId);
+
+@override
+String toString() {
+  return 'RequestAuthenProfileUpdateCellule(celluleId: $celluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestAuthenProfileUpdateCelluleCopyWith<$Res>  {
+  factory $RequestAuthenProfileUpdateCelluleCopyWith(RequestAuthenProfileUpdateCellule value, $Res Function(RequestAuthenProfileUpdateCellule) _then) = _$RequestAuthenProfileUpdateCelluleCopyWithImpl;
+@useResult
+$Res call({
+ String celluleId
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestAuthenProfileUpdateCelluleCopyWithImpl<$Res>
+    implements $RequestAuthenProfileUpdateCelluleCopyWith<$Res> {
+  _$RequestAuthenProfileUpdateCelluleCopyWithImpl(this._self, this._then);
+
+  final RequestAuthenProfileUpdateCellule _self;
+  final $Res Function(RequestAuthenProfileUpdateCellule) _then;
+
+/// Create a copy of RequestAuthenProfileUpdateCellule
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? celluleId = null,}) {
+  return _then(_self.copyWith(
+celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestAuthenProfileUpdateCellule].
+extension RequestAuthenProfileUpdateCellulePatterns on RequestAuthenProfileUpdateCellule {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestAuthenProfileUpdateCellule value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestAuthenProfileUpdateCellule() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestAuthenProfileUpdateCellule value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuthenProfileUpdateCellule():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestAuthenProfileUpdateCellule value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuthenProfileUpdateCellule() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String celluleId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestAuthenProfileUpdateCellule() when $default != null:
+return $default(_that.celluleId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String celluleId)  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuthenProfileUpdateCellule():
+return $default(_that.celluleId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String celluleId)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuthenProfileUpdateCellule() when $default != null:
+return $default(_that.celluleId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestAuthenProfileUpdateCellule implements RequestAuthenProfileUpdateCellule {
+   _RequestAuthenProfileUpdateCellule({required this.celluleId});
+  factory _RequestAuthenProfileUpdateCellule.fromJson(Map<String, dynamic> json) => _$RequestAuthenProfileUpdateCelluleFromJson(json);
+
+@override final  String celluleId;
+
+/// Create a copy of RequestAuthenProfileUpdateCellule
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestAuthenProfileUpdateCelluleCopyWith<_RequestAuthenProfileUpdateCellule> get copyWith => __$RequestAuthenProfileUpdateCelluleCopyWithImpl<_RequestAuthenProfileUpdateCellule>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestAuthenProfileUpdateCelluleToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateCellule&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,celluleId);
+
+@override
+String toString() {
+  return 'RequestAuthenProfileUpdateCellule(celluleId: $celluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestAuthenProfileUpdateCelluleCopyWith<$Res> implements $RequestAuthenProfileUpdateCelluleCopyWith<$Res> {
+  factory _$RequestAuthenProfileUpdateCelluleCopyWith(_RequestAuthenProfileUpdateCellule value, $Res Function(_RequestAuthenProfileUpdateCellule) _then) = __$RequestAuthenProfileUpdateCelluleCopyWithImpl;
+@override @useResult
+$Res call({
+ String celluleId
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestAuthenProfileUpdateCelluleCopyWithImpl<$Res>
+    implements _$RequestAuthenProfileUpdateCelluleCopyWith<$Res> {
+  __$RequestAuthenProfileUpdateCelluleCopyWithImpl(this._self, this._then);
+
+  final _RequestAuthenProfileUpdateCellule _self;
+  final $Res Function(_RequestAuthenProfileUpdateCellule) _then;
+
+/// Create a copy of RequestAuthenProfileUpdateCellule
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? celluleId = null,}) {
+  return _then(_RequestAuthenProfileUpdateCellule(
+celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

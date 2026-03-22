@@ -32,6 +32,8 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
     @Default(false) bool? submitSocial,
     @Default(false) bool? submitSpiritual,
     @Default(false) bool? submitEngagement,
+    required String? celluleCode,
+    required String? celluleId,
   }) = _ProfileResponseModel;
   factory ProfileResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseModelFromJson(json);
@@ -63,6 +65,8 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
       submitSocial: model.submitSocial.getOrEmpty(),
       submitSpiritual: model.submitSpiritual.getOrEmpty(),
       submitEngagement: model.submitEngagement.getOrEmpty(),
+      celluleCode: model.celluleCode.getOrEmpty(),
+      celluleId: model.celluleId.getOrEmpty(),
     );
   }
 }
@@ -88,4 +92,38 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
       date: model.date.getOrEmpty(),
     );
   }
+}
+
+
+
+@freezed
+abstract class CelluleResponseModel with _$CelluleResponseModel {
+  factory CelluleResponseModel({
+    required String? responsable,
+    required String? celluleCode,
+    required String? date,
+    required String? nom,
+    required String? description,
+    required double? latitude,
+    required double? longitude,
+    required String? adresse,
+    required String? celluleId,
+
+  }) = _CelluleResponseModel;
+  factory CelluleResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$CelluleResponseModelFromJson(json);
+
+      static CelluleResponse domaine(CelluleResponseModel model){
+        return CelluleResponse(
+          adresse: model.adresse.getOrEmpty(),    
+          latitude: model.latitude.getOrEmpty(),
+          longitude: model.longitude.getOrEmpty(),
+          responsable: model.responsable.getOrEmpty(),
+          celluleCode: model.celluleCode.getOrEmpty(),
+          date: model.date.getOrEmpty(),
+          nom: model.nom.getOrEmpty(),
+          description: model.description.getOrEmpty(),
+          celluleId: model.celluleId.getOrEmpty(),
+        );
+      }
 }

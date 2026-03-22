@@ -9,4 +9,6 @@ abstract class DomaineServiceRepository {
   // Future<FirebaseResult<String>> sendNotifications(RequestNotification params);
   Future<FirebaseResult<List<NotificationResponseModel>>> getListNotifications(EmptyRequest notParms);
   Future<FirebaseResult<List<NotificationResponseModel>>> getListNotificationsByCriteria(RequestNotification params);
+   Future<FirebaseResult<List<CelluleResponseModel>>> getListCellules(RequestCellule params );
+
 }

@@ -42,7 +42,9 @@ abstract class RequestAuthenSpiritualLife with _$RequestAuthenSpiritualLife {
     required String dateBaptme,
     required String cellulePriere,
     required String encadreur,
-    required bool   submitSpiritual
+    required bool submitSpiritual,
+    required String celluleCode,
+    required String celluleId,
   }) = _RequestAuthenSpiritualLife;
 
   factory RequestAuthenSpiritualLife.fromJson(Map<String, dynamic> json) =>
@@ -66,10 +68,23 @@ abstract class RequestAuthenEngagement with _$RequestAuthenEngagement {
 abstract class RequestAuthenProfileUpdateKey
     with _$RequestAuthenProfileUpdateKey {
   factory RequestAuthenProfileUpdateKey({required String menberId}) =
+  // menberId
       _RequestAuthenProfileUpdateKey;
 
   factory RequestAuthenProfileUpdateKey.fromJson(Map<String, dynamic> json) =>
       _$RequestAuthenProfileUpdateKeyFromJson(json);
+}
+
+
+@freezed
+abstract class RequestAuthenProfileUpdateCellule
+    with _$RequestAuthenProfileUpdateCellule {
+  factory RequestAuthenProfileUpdateCellule({required String celluleId}) =
+  // celluleId
+      _RequestAuthenProfileUpdateCellule;
+
+  factory RequestAuthenProfileUpdateCellule.fromJson(Map<String, dynamic> json) =>
+      _$RequestAuthenProfileUpdateCelluleFromJson(json);
 }
 
 @freezed

@@ -63,6 +63,8 @@ _RequestAuthenSpiritualLife _$RequestAuthenSpiritualLifeFromJson(
   cellulePriere: json['cellulePriere'] as String,
   encadreur: json['encadreur'] as String,
   submitSpiritual: json['submitSpiritual'] as bool,
+  celluleCode: json['celluleCode'] as String,
+  celluleId: json['celluleId'] as String,
 );
 
 Map<String, dynamic> _$RequestAuthenSpiritualLifeToJson(
@@ -73,6 +75,8 @@ Map<String, dynamic> _$RequestAuthenSpiritualLifeToJson(
   'cellulePriere': instance.cellulePriere,
   'encadreur': instance.encadreur,
   'submitSpiritual': instance.submitSpiritual,
+  'celluleCode': instance.celluleCode,
+  'celluleId': instance.celluleId,
 };
 
 _RequestAuthenEngagement _$RequestAuthenEngagementFromJson(
@@ -100,6 +104,14 @@ _RequestAuthenProfileUpdateKey _$RequestAuthenProfileUpdateKeyFromJson(
 Map<String, dynamic> _$RequestAuthenProfileUpdateKeyToJson(
   _RequestAuthenProfileUpdateKey instance,
 ) => <String, dynamic>{'menberId': instance.menberId};
+
+_RequestAuthenProfileUpdateCellule _$RequestAuthenProfileUpdateCelluleFromJson(
+  Map<String, dynamic> json,
+) => _RequestAuthenProfileUpdateCellule(celluleId: json['celluleId'] as String);
+
+Map<String, dynamic> _$RequestAuthenProfileUpdateCelluleToJson(
+  _RequestAuthenProfileUpdateCellule instance,
+) => <String, dynamic>{'celluleId': instance.celluleId};
 
 _RequestAuthenProfileUpdateImage _$RequestAuthenProfileUpdateImageFromJson(
   Map<String, dynamic> json,

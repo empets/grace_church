@@ -1303,14 +1303,16 @@ extension EventCreateCompteSpiritualLifePatterns on EventCreateCompteSpiritualLi
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeStatusSpirituelCreateCompteSocial value)?  changeStatusSpirituel,TResult Function( ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife value)?  changeDateBaptme,TResult Function( CellulePriereEventCreateCompteSpiritualLife value)?  changeCellulePriere,TResult Function( EncadreurEventCreateCompteSpiritualLife value)?  changeEncadreur,TResult Function( SubmitEventCreateCompteSpiritualLife value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeStatusSpirituelCreateCompteSocial value)?  changeStatusSpirituel,TResult Function( ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife value)?  changeDateBaptme,TResult Function( CellulePriereEventCreateCompteSpiritualLife value)?  changeCellulePriere,TResult Function( EncadreurEventCreateCompteSpiritualLife value)?  changeEncadreur,TResult Function( CelluleCodeEventCreateCompteSpiritualLife value)?  changeCelluleCode,TResult Function( CelluleIdEventCreateCompteSpiritualLife value)?  changeCelluleId,TResult Function( SubmitEventCreateCompteSpiritualLife value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeStatusSpirituelCreateCompteSocial() when changeStatusSpirituel != null:
 return changeStatusSpirituel(_that);case ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife() when changeDateBaptme != null:
 return changeDateBaptme(_that);case CellulePriereEventCreateCompteSpiritualLife() when changeCellulePriere != null:
 return changeCellulePriere(_that);case EncadreurEventCreateCompteSpiritualLife() when changeEncadreur != null:
-return changeEncadreur(_that);case SubmitEventCreateCompteSpiritualLife() when submit != null:
+return changeEncadreur(_that);case CelluleCodeEventCreateCompteSpiritualLife() when changeCelluleCode != null:
+return changeCelluleCode(_that);case CelluleIdEventCreateCompteSpiritualLife() when changeCelluleId != null:
+return changeCelluleId(_that);case SubmitEventCreateCompteSpiritualLife() when submit != null:
 return submit(_that);case _:
   return orElse();
 
@@ -1329,14 +1331,16 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeStatusSpirituelCreateCompteSocial value)  changeStatusSpirituel,required TResult Function( ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife value)  changeDateBaptme,required TResult Function( CellulePriereEventCreateCompteSpiritualLife value)  changeCellulePriere,required TResult Function( EncadreurEventCreateCompteSpiritualLife value)  changeEncadreur,required TResult Function( SubmitEventCreateCompteSpiritualLife value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeStatusSpirituelCreateCompteSocial value)  changeStatusSpirituel,required TResult Function( ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife value)  changeDateBaptme,required TResult Function( CellulePriereEventCreateCompteSpiritualLife value)  changeCellulePriere,required TResult Function( EncadreurEventCreateCompteSpiritualLife value)  changeEncadreur,required TResult Function( CelluleCodeEventCreateCompteSpiritualLife value)  changeCelluleCode,required TResult Function( CelluleIdEventCreateCompteSpiritualLife value)  changeCelluleId,required TResult Function( SubmitEventCreateCompteSpiritualLife value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeStatusSpirituelCreateCompteSocial():
 return changeStatusSpirituel(_that);case ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife():
 return changeDateBaptme(_that);case CellulePriereEventCreateCompteSpiritualLife():
 return changeCellulePriere(_that);case EncadreurEventCreateCompteSpiritualLife():
-return changeEncadreur(_that);case SubmitEventCreateCompteSpiritualLife():
+return changeEncadreur(_that);case CelluleCodeEventCreateCompteSpiritualLife():
+return changeCelluleCode(_that);case CelluleIdEventCreateCompteSpiritualLife():
+return changeCelluleId(_that);case SubmitEventCreateCompteSpiritualLife():
 return submit(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -1354,14 +1358,16 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeStatusSpirituelCreateCompteSocial value)?  changeStatusSpirituel,TResult? Function( ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife value)?  changeDateBaptme,TResult? Function( CellulePriereEventCreateCompteSpiritualLife value)?  changeCellulePriere,TResult? Function( EncadreurEventCreateCompteSpiritualLife value)?  changeEncadreur,TResult? Function( SubmitEventCreateCompteSpiritualLife value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeStatusSpirituelCreateCompteSocial value)?  changeStatusSpirituel,TResult? Function( ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife value)?  changeDateBaptme,TResult? Function( CellulePriereEventCreateCompteSpiritualLife value)?  changeCellulePriere,TResult? Function( EncadreurEventCreateCompteSpiritualLife value)?  changeEncadreur,TResult? Function( CelluleCodeEventCreateCompteSpiritualLife value)?  changeCelluleCode,TResult? Function( CelluleIdEventCreateCompteSpiritualLife value)?  changeCelluleId,TResult? Function( SubmitEventCreateCompteSpiritualLife value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeStatusSpirituelCreateCompteSocial() when changeStatusSpirituel != null:
 return changeStatusSpirituel(_that);case ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife() when changeDateBaptme != null:
 return changeDateBaptme(_that);case CellulePriereEventCreateCompteSpiritualLife() when changeCellulePriere != null:
 return changeCellulePriere(_that);case EncadreurEventCreateCompteSpiritualLife() when changeEncadreur != null:
-return changeEncadreur(_that);case SubmitEventCreateCompteSpiritualLife() when submit != null:
+return changeEncadreur(_that);case CelluleCodeEventCreateCompteSpiritualLife() when changeCelluleCode != null:
+return changeCelluleCode(_that);case CelluleIdEventCreateCompteSpiritualLife() when changeCelluleId != null:
+return changeCelluleId(_that);case SubmitEventCreateCompteSpiritualLife() when submit != null:
 return submit(_that);case _:
   return null;
 
@@ -1379,13 +1385,15 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String statusSpirituel)?  changeStatusSpirituel,TResult Function( String dateBaptme)?  changeDateBaptme,TResult Function( String cellulePriere)?  changeCellulePriere,TResult Function( String encadreur)?  changeEncadreur,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String statusSpirituel)?  changeStatusSpirituel,TResult Function( String dateBaptme)?  changeDateBaptme,TResult Function( String cellulePriere)?  changeCellulePriere,TResult Function( String encadreur)?  changeEncadreur,TResult Function( String celluleCode)?  changeCelluleCode,TResult Function( String celluleId)?  changeCelluleId,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeStatusSpirituelCreateCompteSocial() when changeStatusSpirituel != null:
 return changeStatusSpirituel(_that.statusSpirituel);case ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife() when changeDateBaptme != null:
 return changeDateBaptme(_that.dateBaptme);case CellulePriereEventCreateCompteSpiritualLife() when changeCellulePriere != null:
 return changeCellulePriere(_that.cellulePriere);case EncadreurEventCreateCompteSpiritualLife() when changeEncadreur != null:
-return changeEncadreur(_that.encadreur);case SubmitEventCreateCompteSpiritualLife() when submit != null:
+return changeEncadreur(_that.encadreur);case CelluleCodeEventCreateCompteSpiritualLife() when changeCelluleCode != null:
+return changeCelluleCode(_that.celluleCode);case CelluleIdEventCreateCompteSpiritualLife() when changeCelluleId != null:
+return changeCelluleId(_that.celluleId);case SubmitEventCreateCompteSpiritualLife() when submit != null:
 return submit();case _:
   return orElse();
 
@@ -1404,13 +1412,15 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String statusSpirituel)  changeStatusSpirituel,required TResult Function( String dateBaptme)  changeDateBaptme,required TResult Function( String cellulePriere)  changeCellulePriere,required TResult Function( String encadreur)  changeEncadreur,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String statusSpirituel)  changeStatusSpirituel,required TResult Function( String dateBaptme)  changeDateBaptme,required TResult Function( String cellulePriere)  changeCellulePriere,required TResult Function( String encadreur)  changeEncadreur,required TResult Function( String celluleCode)  changeCelluleCode,required TResult Function( String celluleId)  changeCelluleId,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeStatusSpirituelCreateCompteSocial():
 return changeStatusSpirituel(_that.statusSpirituel);case ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife():
 return changeDateBaptme(_that.dateBaptme);case CellulePriereEventCreateCompteSpiritualLife():
 return changeCellulePriere(_that.cellulePriere);case EncadreurEventCreateCompteSpiritualLife():
-return changeEncadreur(_that.encadreur);case SubmitEventCreateCompteSpiritualLife():
+return changeEncadreur(_that.encadreur);case CelluleCodeEventCreateCompteSpiritualLife():
+return changeCelluleCode(_that.celluleCode);case CelluleIdEventCreateCompteSpiritualLife():
+return changeCelluleId(_that.celluleId);case SubmitEventCreateCompteSpiritualLife():
 return submit();case _:
   throw StateError('Unexpected subclass');
 
@@ -1428,13 +1438,15 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String statusSpirituel)?  changeStatusSpirituel,TResult? Function( String dateBaptme)?  changeDateBaptme,TResult? Function( String cellulePriere)?  changeCellulePriere,TResult? Function( String encadreur)?  changeEncadreur,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String statusSpirituel)?  changeStatusSpirituel,TResult? Function( String dateBaptme)?  changeDateBaptme,TResult? Function( String cellulePriere)?  changeCellulePriere,TResult? Function( String encadreur)?  changeEncadreur,TResult? Function( String celluleCode)?  changeCelluleCode,TResult? Function( String celluleId)?  changeCelluleId,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeStatusSpirituelCreateCompteSocial() when changeStatusSpirituel != null:
 return changeStatusSpirituel(_that.statusSpirituel);case ChangeDateBaptmeEtudeEventCreateCompteSpiritualLife() when changeDateBaptme != null:
 return changeDateBaptme(_that.dateBaptme);case CellulePriereEventCreateCompteSpiritualLife() when changeCellulePriere != null:
 return changeCellulePriere(_that.cellulePriere);case EncadreurEventCreateCompteSpiritualLife() when changeEncadreur != null:
-return changeEncadreur(_that.encadreur);case SubmitEventCreateCompteSpiritualLife() when submit != null:
+return changeEncadreur(_that.encadreur);case CelluleCodeEventCreateCompteSpiritualLife() when changeCelluleCode != null:
+return changeCelluleCode(_that.celluleCode);case CelluleIdEventCreateCompteSpiritualLife() when changeCelluleId != null:
+return changeCelluleId(_that.celluleId);case SubmitEventCreateCompteSpiritualLife() when submit != null:
 return submit();case _:
   return null;
 
@@ -1700,6 +1712,138 @@ class _$EncadreurEventCreateCompteSpiritualLifeCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? encadreur = null,}) {
   return _then(EncadreurEventCreateCompteSpiritualLife(
 null == encadreur ? _self.encadreur : encadreur // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CelluleCodeEventCreateCompteSpiritualLife implements EventCreateCompteSpiritualLife {
+   CelluleCodeEventCreateCompteSpiritualLife(this.celluleCode);
+  
+
+ final  String celluleCode;
+
+/// Create a copy of EventCreateCompteSpiritualLife
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CelluleCodeEventCreateCompteSpiritualLifeCopyWith<CelluleCodeEventCreateCompteSpiritualLife> get copyWith => _$CelluleCodeEventCreateCompteSpiritualLifeCopyWithImpl<CelluleCodeEventCreateCompteSpiritualLife>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CelluleCodeEventCreateCompteSpiritualLife&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,celluleCode);
+
+@override
+String toString() {
+  return 'EventCreateCompteSpiritualLife.changeCelluleCode(celluleCode: $celluleCode)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CelluleCodeEventCreateCompteSpiritualLifeCopyWith<$Res> implements $EventCreateCompteSpiritualLifeCopyWith<$Res> {
+  factory $CelluleCodeEventCreateCompteSpiritualLifeCopyWith(CelluleCodeEventCreateCompteSpiritualLife value, $Res Function(CelluleCodeEventCreateCompteSpiritualLife) _then) = _$CelluleCodeEventCreateCompteSpiritualLifeCopyWithImpl;
+@useResult
+$Res call({
+ String celluleCode
+});
+
+
+
+
+}
+/// @nodoc
+class _$CelluleCodeEventCreateCompteSpiritualLifeCopyWithImpl<$Res>
+    implements $CelluleCodeEventCreateCompteSpiritualLifeCopyWith<$Res> {
+  _$CelluleCodeEventCreateCompteSpiritualLifeCopyWithImpl(this._self, this._then);
+
+  final CelluleCodeEventCreateCompteSpiritualLife _self;
+  final $Res Function(CelluleCodeEventCreateCompteSpiritualLife) _then;
+
+/// Create a copy of EventCreateCompteSpiritualLife
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? celluleCode = null,}) {
+  return _then(CelluleCodeEventCreateCompteSpiritualLife(
+null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CelluleIdEventCreateCompteSpiritualLife implements EventCreateCompteSpiritualLife {
+   CelluleIdEventCreateCompteSpiritualLife(this.celluleId);
+  
+
+ final  String celluleId;
+
+/// Create a copy of EventCreateCompteSpiritualLife
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CelluleIdEventCreateCompteSpiritualLifeCopyWith<CelluleIdEventCreateCompteSpiritualLife> get copyWith => _$CelluleIdEventCreateCompteSpiritualLifeCopyWithImpl<CelluleIdEventCreateCompteSpiritualLife>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CelluleIdEventCreateCompteSpiritualLife&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,celluleId);
+
+@override
+String toString() {
+  return 'EventCreateCompteSpiritualLife.changeCelluleId(celluleId: $celluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CelluleIdEventCreateCompteSpiritualLifeCopyWith<$Res> implements $EventCreateCompteSpiritualLifeCopyWith<$Res> {
+  factory $CelluleIdEventCreateCompteSpiritualLifeCopyWith(CelluleIdEventCreateCompteSpiritualLife value, $Res Function(CelluleIdEventCreateCompteSpiritualLife) _then) = _$CelluleIdEventCreateCompteSpiritualLifeCopyWithImpl;
+@useResult
+$Res call({
+ String celluleId
+});
+
+
+
+
+}
+/// @nodoc
+class _$CelluleIdEventCreateCompteSpiritualLifeCopyWithImpl<$Res>
+    implements $CelluleIdEventCreateCompteSpiritualLifeCopyWith<$Res> {
+  _$CelluleIdEventCreateCompteSpiritualLifeCopyWithImpl(this._self, this._then);
+
+  final CelluleIdEventCreateCompteSpiritualLife _self;
+  final $Res Function(CelluleIdEventCreateCompteSpiritualLife) _then;
+
+/// Create a copy of EventCreateCompteSpiritualLife
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? celluleId = null,}) {
+  return _then(CelluleIdEventCreateCompteSpiritualLife(
+null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
