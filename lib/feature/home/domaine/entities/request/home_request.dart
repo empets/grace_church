@@ -9,8 +9,6 @@ abstract class EmptyRequest with _$EmptyRequest {
       _$EmptyRequestFromJson(json);
 }
 
-
-
 @freezed
 abstract class RequestNotification with _$RequestNotification {
   factory RequestNotification({
@@ -23,23 +21,35 @@ abstract class RequestNotification with _$RequestNotification {
       _$RequestNotificationFromJson(json);
 }
 
-
 @freezed
 abstract class RequestCellule with _$RequestCellule {
   factory RequestCellule({
-     String? responsable,
-     String? celluleCode,
-     String? date,
-     String? nom,
-     String? description,
-     double? latitude,
-     double? longitude,
-     String? adresse,
-     String? celluleId,
+    String? responsable,
+    String? celluleCode,
+    String? date,
+    String? nom,
+    String? description,
+    double? latitude,
+    double? longitude,
+    String? adresse,
+    String? celluleId,
   }) = _RequestCellule;
   factory RequestCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestCelluleFromJson(json);
 }
 
-
-
+@freezed
+abstract class RequestReponsableCellule with _$RequestReponsableCellule {
+  factory RequestReponsableCellule({
+    String? responsable,
+    String? celluleCode,
+    String? date,
+    String? celluleName,
+    String? contact,
+    String? email,
+    String? adresse,
+    String? celluleId,
+  }) = _RequestReponsableCellule;
+  factory RequestReponsableCellule.fromJson(Map<String, dynamic> json) =>
+      _$RequestReponsableCelluleFromJson(json);
+}

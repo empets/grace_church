@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
@@ -7,9 +9,11 @@ import 'package:injectable/injectable.dart';
 class ImpleSteamRemoteService {
   Stream<ProfileResponseModel?> getProfileStream() async* {
     final shared = await shareData.SharedPreferences.getInstance();
+    log(
+      "🔥 Firebase getProfileStream → menberkey: ${shared.getString('menberkey')}",
+    );
     final menberkey = shared.getString('menberkey');
     if (menberkey == null || menberkey.isEmpty) {
-
       return;
     }
 

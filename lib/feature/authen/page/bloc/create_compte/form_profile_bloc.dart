@@ -35,6 +35,7 @@ class FormProfileBloc
               state.contact,
               state.email,
               state.nationalite,
+              state.password,
             ]),
           ),
         );
@@ -55,6 +56,7 @@ class FormProfileBloc
               state.contact,
               state.email,
               state.nationalite,
+              state.password,
             ]),
           ),
         );
@@ -75,6 +77,7 @@ class FormProfileBloc
               state.contact,
               state.email,
               state.nationalite,
+              state.password,
             ]),
           ),
         );
@@ -95,6 +98,7 @@ class FormProfileBloc
               state.contact,
               state.email,
               state.nationalite,
+              state.password,
             ]),
           ),
         );
@@ -115,6 +119,7 @@ class FormProfileBloc
               contactInput,
               state.email,
               state.nationalite,
+              state.password,
             ]),
           ),
         );
@@ -135,6 +140,7 @@ class FormProfileBloc
               state.contact,
               emailInput,
               state.nationalite,
+              state.password,
             ]),
           ),
         );
@@ -160,6 +166,27 @@ class FormProfileBloc
         );
         break;
 
+      case ChangePasswordCreateCompteProfile(:final password):
+        final passwordInput = TextFormz.dirty(password);
+
+        emit(
+          state.copyWith(
+            password: passwordInput,
+            status: FormzSubmissionStatus.initial,
+            isValide: Formz.validate([
+              passwordInput,
+              state.name,
+              state.dateNaissance,
+              state.zoneResidence,
+              state.profileImage,
+              state.contact,
+              state.email,
+              state.nationalite,
+            ]),
+          ),
+        );
+        break;
+
       case ChangeSubmitCreateCompte():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
@@ -174,8 +201,8 @@ class FormProfileBloc
               email: state.email.value,
               nationalite: state.nationalite.value,
               dateInscription: DateTime.now().toString(),
+              password: state.password.value,
               submitProfile: true,
-             
             ),
           );
 

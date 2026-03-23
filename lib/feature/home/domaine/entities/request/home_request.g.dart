@@ -54,3 +54,29 @@ Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
       'adresse': instance.adresse,
       'celluleId': instance.celluleId,
     };
+
+_RequestReponsableCellule _$RequestReponsableCelluleFromJson(
+  Map<String, dynamic> json,
+) => _RequestReponsableCellule(
+  responsable: json['responsable'] as String?,
+  celluleCode: json['celluleCode'] as String?,
+  date: json['date'] as String?,
+  celluleName: json['celluleName'] as String?,
+  contact: json['contact'] as String?,
+  email: json['email'] as String?,
+  adresse: json['adresse'] as String?,
+  celluleId: json['celluleId'] as String?,
+);
+
+Map<String, dynamic> _$RequestReponsableCelluleToJson(
+  _RequestReponsableCellule instance,
+) => <String, dynamic>{
+  'responsable': instance.responsable,
+  'celluleCode': instance.celluleCode,
+  'date': instance.date,
+  'celluleName': instance.celluleName,
+  'contact': instance.contact,
+  'email': instance.email,
+  'adresse': instance.adresse,
+  'celluleId': instance.celluleId,
+};

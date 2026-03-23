@@ -15,6 +15,9 @@ class EventCreateCompteProfile with _$EventCreateCompteProfile {
   factory EventCreateCompteProfile.changeContact(String contact) =
       ChangeContactCreateCompteProfile;
 
+  factory EventCreateCompteProfile.changePassword(String password) =
+      ChangePasswordCreateCompteProfile;
+
   factory EventCreateCompteProfile.changeEmail(String email) =
       ChangeEmailCreateCompteProfile;
   factory EventCreateCompteProfile.changeNationalite(String nationalite) =
@@ -24,8 +27,9 @@ class EventCreateCompteProfile with _$EventCreateCompteProfile {
 
 @freezed
 class EventCreateCompteSocialSocial with _$EventCreateCompteSocialSocial {
-    factory EventCreateCompteSocialSocial.changeStatusSocial(String statusSocial) =
-      ChangeStatusSocialCreateCompteSocial;
+  factory EventCreateCompteSocialSocial.changeStatusSocial(
+    String statusSocial,
+  ) = ChangeStatusSocialCreateCompteSocial;
   factory EventCreateCompteSocialSocial.changeActivity(String activity) =
       ChangeActivityCreateCompteSocial;
   factory EventCreateCompteSocialSocial.changeNivauEtude(String nivauEtude) =

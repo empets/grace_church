@@ -1,0 +1,292 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:formz/formz.dart';
+import 'package:grace_church/core/alert/app_alerte.dart';
+import 'package:grace_church/core/custome_widget/button.dart';
+import 'package:grace_church/core/custome_widget/custome_text.dart';
+import 'package:grace_church/core/custome_widget/form_filed.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
+import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/signin_profile.dart';
+import 'package:grace_church/feature/authen/page/bloc/connexion/event/signin_event.dart';
+import 'package:grace_church/feature/authen/page/bloc/connexion/signing_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/connexion/state/signin_state.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
+import 'package:grace_church/feature/authen/page/form_profile.dart';
+import 'package:grace_church/feature/home/overview.dart';
+import 'package:grace_church/gen/assets.gen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SigninView extends StatelessWidget {
+  const SigninView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SigningBloc(
+        createSignInProfileUsercase: getIt<CreateSignInProfileUsercase>(),
+      ),
+      child: BlocListener<SigningBloc, SigninState>(
+        listener: (context, state) async {
+          if (state.status.isSuccess) {
+            // Navigation vers la page suivante
+            final shared = await SharedPreferences.getInstance();
+            await shared.setString('isAppLauncher', 'isAppLauncher');
+            Navigator.of(context).push(fadeRoute(const OverviewScreen()));
+          } else if (state.status.isFailure) {
+            return AppAlert.showError(
+              context,
+              state.errorMessage,
+              showOnTop: true,
+            );
+          }
+        },
+        child: Scaffold(
+          backgroundColor: Colors.grey.shade50,
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 50.h),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      padding: EdgeInsets.all(5.r),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: context.appColor.primaryLightBlue,
+                        ),
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: ClipOval(
+                        child: Image.network(
+                          loadingBuilder: (context, child, loadingProgress) {
+                            return child;
+                          },
+                          errorBuilder: (_, __, ___) => ClipOval(
+                            child: Image.asset(
+                              assets.iconLauncher.icon.path,
+                              fit: BoxFit.contain,
+                              height: 0.08.sh,
+                              width: 0.08.sh,
+                            ),
+                          ),
+                          assets.iconLauncher.icon.path,
+
+                          fit: BoxFit.cover,
+                          height: 0.1.sh,
+                          width: 0.1.sh,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 9.h),
+                  CustomeText(
+                    text: "Rejoindre la Famille",
+                    style: context.appTypographie.h2.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: context.appColor.primaryGray700,
+                    ),
+                  ),
+                  SizedBox(height: 4.h),
+                  CustomeText(
+                    text:
+                        "Créez compte pour rester connecté à votre communauté.",
+                    style: context.appTypographie.h2.copyWith(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                      color: context.appColor.primaryGray500,
+                    ),
+                  ),
+
+                  SizedBox(height: 41.h),
+
+                  BlocBuilder<SigningBloc, SigninState>(
+                    builder: (context, state) {
+                      return ProductionFormCustomer(
+                        readOnly: state.status.isInProgress ? true : false,
+                        isColorBlue: state.status.isInProgress,
+                        inputLabel: '',
+                        textLabel: 'Ex: emma@gmail.com',
+                        errorText: state.email.isPure || state.email.isValid
+                            ? null
+                            : '',
+                        msgError: 'Veuillez renseigner ce champ',
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: context.appColor.primaryGray500.withValues(
+                            alpha: 0.6,
+                          ),
+                        ),
+                        onChanged: (email) {
+                          context.read<SigningBloc>().add(
+                            SigninEvent.changeEmail(email),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  BlocBuilder<SigningBloc, SigninState>(
+                    builder: (context, state) {
+                      return ProductionFormCustomer(
+                        textInputType: TextInputType.number,
+                        readOnly: state.status.isInProgress ? true : false,
+                        isColorBlue: state.status.isInProgress,
+                        inputLabel: '',
+                        textLabel: 'Ex: +225 01 23 45 67 89',
+                        errorText: state.contact.isPure || state.contact.isValid
+                            ? null
+                            : '',
+                        msgError: 'Veuillez renseigner ce champ',
+                        prefixIcon: Icon(
+                          Icons.phone,
+                          color: context.appColor.primaryGray500.withValues(
+                            alpha: 0.6,
+                          ),
+                        ),
+                        onChanged: (contact) {
+                          context.read<SigningBloc>().add(
+                            SigninEvent.changeContact(contact),
+                          );
+                        },
+                      );
+                    },
+                  ),
+
+                  BlocBuilder<SigningBloc, SigninState>(
+                    builder: (context, state) {
+                      return ProductionFormCustomer(
+                        letSpace: [],
+                        readOnly: state.status.isInProgress ? true : false,
+                        isColorBlue: state.status.isInProgress,
+                        inputLabel: '',
+                        textLabel: 'Ex: Mot de passe',
+                        errorText:
+                            state.password.isPure || state.password.isValid
+                            ? null
+                            : '',
+                        msgError: 'Veuillez renseigner ce champ',
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: context.appColor.primaryGray500.withValues(
+                            alpha: 0.6,
+                          ),
+                        ),
+                        onChanged: (password) {
+                          context.read<SigningBloc>().add(
+                            SigninEvent.changePassword(password),
+                          );
+                        },
+                      );
+                    },
+                  ),
+
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+                        Navigator.of(context).push(
+                          fadeRoute(
+                            MultiBlocProvider(
+                              providers: [
+                                BlocProvider(
+                                  create: (context) => FormProfileBloc(
+                                    createProfileUsercase:
+                                        getIt<CreateProfileUsercase>(),
+                                  ),
+                                ),
+                                BlocProvider(
+                                  create: (context) =>
+                                      CreateCompteProfileSocialBloc(
+                                        createSocialProfileUsercase:
+                                            getIt<
+                                              CreateSocialProfileUsercase
+                                            >(),
+                                      ),
+                                ),
+                                BlocProvider(
+                                  create: (context) =>
+                                      CreateComteProfileSpiritualLifeBloc(
+                                        createSpiritualProfileUsercase:
+                                            getIt<
+                                              CreateSpiritualProfileUsercase
+                                            >(),
+                                      ),
+                                ),
+                              ],
+                              child: FormProfile(isFormSignIn: true),
+                            ),
+                          ),
+                        );
+                      },
+                      child: CustomeText(
+                        text: "Créer un compte",
+                        style: context.appTypographie.h2.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                          color: context.appColor.primaryGray500,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 20.h),
+                  BlocBuilder<SigningBloc, SigninState>(
+                    builder: (context, state) {
+                      return PrimaryButton(
+                        label: "Se connecter",
+                        colorText: context.appColor.primaryWhite,
+                        backgroundColor:
+                            state.status.isInProgress || !state.isValid
+                            ? context.appColor.primaryGray500.withValues(
+                                alpha: 0.5,
+                              )
+                            : context.appColor.primaryBlue,
+                        isLoading: state.status.isInProgress,
+                        borderRadius: 8,
+                        onPressed: state.status.isInProgress
+                            ? null
+                            : () {
+                                FocusScope.of(context).unfocus();
+                                context.read<SigningBloc>().add(
+                                  SigninEvent.submit(),
+                                );
+                              },
+                      );
+                    },
+                  ),
+                  SizedBox(height: 12.h),
+                  PrimaryButton(
+                    label: "Continuer sans compte",
+                    colorText: context.appColor.primaryGrayDark,
+                    borderSideColor: context.appColor.primaryGrayDark,
+                    backgroundColor: Colors.transparent,
+                    isLoading: false,
+                    borderRadius: 8,
+                    onPressed: () async {
+                      FocusScope.of(context).unfocus();
+                      final shared = await SharedPreferences.getInstance();
+                      await shared.setString('isAppLauncher', 'isAppLauncher');
+                      // Navigator.of(context).push(fadeRoute(const OverviewScreen()));
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

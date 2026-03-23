@@ -4,9 +4,8 @@ import 'package:grace_church/core/extension/custome_extension.dart';
 part 'state_create_compte.freezed.dart';
 
 @freezed
-abstract class CreateCompteProfileState
-    with _$CreateCompteProfileState {
-   factory CreateCompteProfileState({
+abstract class CreateCompteProfileState with _$CreateCompteProfileState {
+  factory CreateCompteProfileState({
     required TextFormz name,
     required TextFormz dateNaissance,
     required TextFormz zoneResidence,
@@ -14,31 +13,29 @@ abstract class CreateCompteProfileState
     required PhoneFormz contact,
     required TextFormz email,
     required TextFormz nationalite,
-
+    required TextFormz password,
     required FormzSubmissionStatus status,
     required String errorMessage,
     required bool isValide,
   }) = _CreateCompteProfileState;
 
-  factory CreateCompteProfileState.initial() =>
-       CreateCompteProfileState(
-        name: TextFormz.pure(),
-        dateNaissance: TextFormz.pure(),
-        zoneResidence: TextFormz.pure(),
-        profileImage: TextFormz.pure(),
-        contact: PhoneFormz.pure(),
-        email: TextFormz.pure(),
-        nationalite: TextFormz.pure(),
-        status: FormzSubmissionStatus.initial,
-        errorMessage: '',
-        isValide: false,
-      );
+  factory CreateCompteProfileState.initial() => CreateCompteProfileState(
+    name: TextFormz.pure(),
+    dateNaissance: TextFormz.pure(),
+    zoneResidence: TextFormz.pure(),
+    profileImage: TextFormz.pure(),
+    contact: PhoneFormz.pure(),
+    email: TextFormz.pure(),
+    nationalite: TextFormz.pure(),
+    password: TextFormz.pure(),
+    status: FormzSubmissionStatus.initial,
+    errorMessage: '',
+    isValide: false,
+  );
 }
 
-
 @freezed
-abstract class CreateCompteSocialState
-    with _$CreateCompteSocialState {
+abstract class CreateCompteSocialState with _$CreateCompteSocialState {
   const factory CreateCompteSocialState({
     required TextFormz statusSocial,
     required TextFormz activity,
@@ -51,19 +48,17 @@ abstract class CreateCompteSocialState
     required bool isValide,
   }) = _CreateCompteSocialState;
 
-  factory CreateCompteSocialState.initial() =>
-      const CreateCompteSocialState(
-        statusSocial: TextFormz.pure(),
-        activity: TextFormz.pure(),
-        nivauEtude: TextFormz.pure(),
-        matrimonial: TextFormz.pure(),
-        orphelin: TextFormz.pure(),
-        status: FormzSubmissionStatus.initial,
-        errorMessage: '',
-        isValide: false,
-      );
+  factory CreateCompteSocialState.initial() => const CreateCompteSocialState(
+    statusSocial: TextFormz.pure(),
+    activity: TextFormz.pure(),
+    nivauEtude: TextFormz.pure(),
+    matrimonial: TextFormz.pure(),
+    orphelin: TextFormz.pure(),
+    status: FormzSubmissionStatus.initial,
+    errorMessage: '',
+    isValide: false,
+  );
 }
-
 
 @freezed
 abstract class CreateCompteSpiritualLifeState
@@ -95,10 +90,8 @@ abstract class CreateCompteSpiritualLifeState
       );
 }
 
-
 @freezed
-abstract class CreateCompteEngagementState
-    with _$CreateCompteEngagementState {
+abstract class CreateCompteEngagementState with _$CreateCompteEngagementState {
   const factory CreateCompteEngagementState({
     required TextFormz departement,
     required TextFormz competence,

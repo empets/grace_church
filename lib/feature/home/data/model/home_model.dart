@@ -71,20 +71,18 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
   }
 }
 
-
-
 @freezed
 abstract class NotificationResponseModel with _$NotificationResponseModel {
   factory NotificationResponseModel({
     required String? title,
-    required String?  description,
-    required String?  tag,
-    required String?  date,
+    required String? description,
+    required String? tag,
+    required String? date,
   }) = _NotificationResponseModel;
   factory NotificationResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseModelFromJson(json);
 
-  static   NotificationResponse toDomaine(NotificationResponseModel model) {
+  static NotificationResponse toDomaine(NotificationResponseModel model) {
     return NotificationResponse(
       title: model.title.getOrEmpty(),
       description: model.description.getOrEmpty(),
@@ -93,8 +91,6 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
     );
   }
 }
-
-
 
 @freezed
 abstract class CelluleResponseModel with _$CelluleResponseModel {
@@ -108,22 +104,55 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
     required double? longitude,
     required String? adresse,
     required String? celluleId,
-
   }) = _CelluleResponseModel;
   factory CelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CelluleResponseModelFromJson(json);
 
-      static CelluleResponse domaine(CelluleResponseModel model){
-        return CelluleResponse(
-          adresse: model.adresse.getOrEmpty(),    
-          latitude: model.latitude.getOrEmpty(),
-          longitude: model.longitude.getOrEmpty(),
-          responsable: model.responsable.getOrEmpty(),
-          celluleCode: model.celluleCode.getOrEmpty(),
-          date: model.date.getOrEmpty(),
-          nom: model.nom.getOrEmpty(),
-          description: model.description.getOrEmpty(),
-          celluleId: model.celluleId.getOrEmpty(),
-        );
-      }
+  static CelluleResponse domaine(CelluleResponseModel model) {
+    return CelluleResponse(
+      adresse: model.adresse.getOrEmpty(),
+      latitude: model.latitude.getOrEmpty(),
+      longitude: model.longitude.getOrEmpty(),
+      responsable: model.responsable.getOrEmpty(),
+      celluleCode: model.celluleCode.getOrEmpty(),
+      date: model.date.getOrEmpty(),
+      nom: model.nom.getOrEmpty(),
+      description: model.description.getOrEmpty(),
+      celluleId: model.celluleId.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class ReponsableCelluleResponseModel
+    with _$ReponsableCelluleResponseModel {
+  factory ReponsableCelluleResponseModel({
+    required String? responsable,
+    required String? celluleCode,
+    required String? date,
+    required String? nom,
+    required String? prenom,
+    required String? contact,
+    required String? email,
+    required String? adresse,
+    required String? celluleId,
+    required String? celluleName,
+  }) = _ReponsableCelluleResponseModel;
+  factory ReponsableCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$ReponsableCelluleResponseModelFromJson(json);
+
+  static ReponsableCelluleResponse domaine(
+    ReponsableCelluleResponseModel model,
+  ) {
+    return ReponsableCelluleResponse(
+      responsable: model.responsable.getOrEmpty(),
+      celluleCode: model.celluleCode.getOrEmpty(),
+      date: model.date.getOrEmpty(),
+      celluleName: model.celluleName.getOrEmpty(),
+      contact: model.contact.getOrEmpty(),
+      email: model.email.getOrEmpty(),
+      adresse: model.adresse.getOrEmpty(),
+      celluleId: model.celluleId.getOrEmpty(),
+    );
+  }
 }

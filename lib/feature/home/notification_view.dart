@@ -31,11 +31,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestCellule params,
+    RequestReponsableCellule params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestCellule>(
+      final request = Request<RequestReponsableCellule>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -43,7 +43,7 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('cellule')
+          .child('responsablesCellule')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
@@ -68,7 +68,7 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('cellule/${params.celluleId}')
+          .child('responsablesCellule/${params.celluleId}')
           .update(updates);
       // 4) Retourner le key généré
       return FirebaseSuccess(params.celluleId);
@@ -81,11 +81,7 @@ class _NotificationViewState extends State<NotificationView> {
   String formatDate(String date) {
     DateTime dateTime = DateTime.parse(date);
     // String formattedDate = '${dateTime.day}/${dateTime.month}/${dateTime.year}';
-    String formatted = DateFormat(
-      "d MMMM y"
-          'H:mm',
-      'fr',
-    ).format(dateTime);
+    String formatted = DateFormat("d MMMM y 'à' H:mm", 'fr').format(dateTime);
     return formatted;
   }
 
@@ -154,24 +150,25 @@ class _NotificationViewState extends State<NotificationView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //                   GestureDetector(
-                  //                     onTap: () async{
-                  //                       // TODO: Handle notification tap
-                  //                      await sendNotifications(RequestCellule(
-                  //               celluleCode: "CELL005",
-                  // date: DateTime.now().toString(),
-                  // responsable: "Aminata Traoré",
-                  // description: "Partage et louange",
-                  // nom: "Cellule Lumière",
-                  // adresse: "Cocody Angré 8ème tranche",
-                  // latitude: 5.365100,
-                  // longitude: -3.957700,
-
-                  //                       ));
-                  //                       log("Notification sent");
-                  //                     },
-                  //                     child: Container(child: Text("Notifications")),
-                  //                   ),
+                  GestureDetector(
+                    onTap: () async {
+                      // TODO: Handle notification tap
+                      await sendNotifications(
+                        RequestReponsableCellule(
+                          responsable: "Jean Kouassis",
+                          celluleCode: "CELL004",
+                          date: DateTime.now().toIso8601String(),
+                          celluleName: "Cellule Grâce",
+                          contact: "+2250701234567",
+                          email: "mariekoffi@gmail.com",
+                          adresse: "Cocody, Deux-Plateaux, Abidjan",
+                          celluleId: "-OoHqA6Eft2xUEomKGWX",
+                        ),
+                      );
+                      log("Notification sent");
+                    },
+                    child: Container(child: Text("Notifications")),
+                  ),
                   BlocBuilder<
                     NotificationBloc,
                     ApiState<List<NotificationResponse>>

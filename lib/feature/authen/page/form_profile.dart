@@ -21,12 +21,18 @@ import 'package:grace_church/feature/authen/page/form_geographie.dart';
 import 'package:grace_church/feature/authen/page/form_social_professionnal.dart'
     hide FormNextTeps;
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 
 class FormProfile extends StatefulWidget {
-  const FormProfile({super.key, this.profile = false});
-  
+  const FormProfile({
+    super.key,
+    this.profile = false,
+    this.isFormSignIn = false,
+  });
+
   final bool profile;
+  final bool isFormSignIn;
 
   @override
   State<FormProfile> createState() => _FormProfileState();
@@ -121,26 +127,32 @@ class _FormProfileState extends State<FormProfile> {
     return MultiBlocProvider(
       providers: [BlocProvider.value(value: context.read<FormProfileBloc>())],
       child: BlocListener<FormProfileBloc, CreateCompteProfileState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.status.isSuccess) {
+            //----------------------------
+            // Handle sign in flow
+            //----------------------------
+            if (widget.isFormSignIn) {
+              final shared = await SharedPreferences.getInstance();
+              await shared.setString('isAppLauncher', 'isAppLauncher');
+            }
             //----------------------------
             // Handle navigation based on profile flag
             //----------------------------
             if (widget.profile) {
               Navigator.of(context).pop(widget.profile);
-            }
-            else {
-            Navigator.of(context).push(
-              fadeRoute(
-                BlocProvider(
-                  create: (context) => CreateCompteProfileSocialBloc(
-                    createSocialProfileUsercase:
-                        getIt<CreateSocialProfileUsercase>(),
+            } else {
+              Navigator.of(context).push(
+                fadeRoute(
+                  BlocProvider(
+                    create: (context) => CreateCompteProfileSocialBloc(
+                      createSocialProfileUsercase:
+                          getIt<CreateSocialProfileUsercase>(),
+                    ),
+                    child: FormSocialProfessionnal(),
                   ),
-                  child: FormSocialProfessionnal(),
                 ),
-              ),
-            );
+              );
             }
           }
         },
@@ -450,10 +462,9 @@ class _FormProfileState extends State<FormProfile> {
                             ),
                             child: IconButton(
                               onPressed: () async {
-                                final filBack = await Navigator.of(context)
-                                    .push<dynamic>(
-                                      fadeRoute( FormGeographie()),
-                                    );
+                                final filBack = await Navigator.of(
+                                  context,
+                                ).push<dynamic>(fadeRoute(FormGeographie()));
 
                                 if (filBack != null &&
                                     filBack.toString().trim().isNotEmpty) {
@@ -477,6 +488,39 @@ class _FormProfileState extends State<FormProfile> {
                           ),
 
                           onChanged: (zoneResidence) {},
+                        );
+                      },
+                    ),
+
+                    SizedBox(height: 8.h),
+                    BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
+                      builder: (context, state) {
+                        return ProductionFormCustomer(
+                          isColorBlue: state.password.isValid ? true : false,
+                          readOnly: state.status.isInProgress,
+                          inputLabel: 'Mot de passe',
+                          textLabel: "Ex 12Asl@",
+                          errorText:
+                              state.password.isPure || state.password.isValid
+                              ? null
+                              : '',
+                          msgError: 'Veuillez renseigner ce champ',
+                          sufixIcon: Container(
+                            margin: EdgeInsets.only(right: 3.w),
+                            decoration: BoxDecoration(
+                              color: context.appColor.primaryLightBlue,
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Icon(Icons.lock),
+                          ),
+
+                          onChanged: (password) {
+                            context.read<FormProfileBloc>().add(
+                              EventCreateCompteProfile.changePassword(
+                                password.toString(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),

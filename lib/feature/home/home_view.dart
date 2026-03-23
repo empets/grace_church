@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
-import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/feature/home/cellule_view.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
 
 class HomeView extends StatefulWidget {

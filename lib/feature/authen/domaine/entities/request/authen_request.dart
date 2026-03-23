@@ -13,7 +13,8 @@ abstract class RequestAuthenProfile with _$RequestAuthenProfile {
     required String email,
     required String nationalite,
     required String dateInscription,
-    required bool submitProfile
+    required String password,
+    required bool submitProfile,
   }) = _RequestAuthenProfile;
 
   factory RequestAuthenProfile.fromJson(Map<String, dynamic> json) =>
@@ -28,7 +29,7 @@ abstract class RequestAuthenSocial with _$RequestAuthenSocial {
     required String nivauEtude,
     required String matrimonial,
     required String orphelin,
-    required bool submitSocial
+    required bool submitSocial,
   }) = _RequestAuthenSocial;
 
   factory RequestAuthenSocial.fromJson(Map<String, dynamic> json) =>
@@ -57,7 +58,8 @@ abstract class RequestAuthenEngagement with _$RequestAuthenEngagement {
     required String departement,
     required String competence,
     required String disponibiliry,
-    required bool submitEngagement
+    required bool submitEngagement,
+    required String endCreationDate,
   }) = _RequestAuthenEngagement;
 
   factory RequestAuthenEngagement.fromJson(Map<String, dynamic> json) =>
@@ -68,23 +70,23 @@ abstract class RequestAuthenEngagement with _$RequestAuthenEngagement {
 abstract class RequestAuthenProfileUpdateKey
     with _$RequestAuthenProfileUpdateKey {
   factory RequestAuthenProfileUpdateKey({required String menberId}) =
-  // menberId
+      // menberId
       _RequestAuthenProfileUpdateKey;
 
   factory RequestAuthenProfileUpdateKey.fromJson(Map<String, dynamic> json) =>
       _$RequestAuthenProfileUpdateKeyFromJson(json);
 }
 
-
 @freezed
 abstract class RequestAuthenProfileUpdateCellule
     with _$RequestAuthenProfileUpdateCellule {
   factory RequestAuthenProfileUpdateCellule({required String celluleId}) =
-  // celluleId
+      // celluleId
       _RequestAuthenProfileUpdateCellule;
 
-  factory RequestAuthenProfileUpdateCellule.fromJson(Map<String, dynamic> json) =>
-      _$RequestAuthenProfileUpdateCelluleFromJson(json);
+  factory RequestAuthenProfileUpdateCellule.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestAuthenProfileUpdateCelluleFromJson(json);
 }
 
 @freezed
@@ -98,4 +100,16 @@ abstract class RequestAuthenProfileUpdateImage
 
   factory RequestAuthenProfileUpdateImage.fromJson(Map<String, dynamic> json) =>
       _$RequestAuthenProfileUpdateImageFromJson(json);
+}
+
+@freezed
+abstract class RequestAuthenSignIn with _$RequestAuthenSignIn {
+  factory RequestAuthenSignIn({
+    required String contact,
+    required String email,
+    required String password,
+  }) = _RequestAuthenSignIn;
+
+  factory RequestAuthenSignIn.fromJson(Map<String, dynamic> json) =>
+      _$RequestAuthenSignInFromJson(json);
 }

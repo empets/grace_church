@@ -27,6 +27,7 @@ import 'package:grace_church/feature/home/domaine/entities/response/home_respons
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/gen/assets.gen.dart';
+import 'package:intl/intl.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key, required this.profile});
@@ -49,6 +50,17 @@ class _ProfileViewState extends State<ProfileView> {
       // S'il n'y a qu'un élément, on le prend
       return parts[0];
     }
+  }
+
+  String formatDate(String date) {
+    DateTime dateTime = DateTime.parse(date);
+    // String formattedDate = '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+    String formatted = DateFormat(
+      "d MMMM y"
+          'H:mm',
+      'fr',
+    ).format(dateTime);
+    return formatted;
   }
 
   @override
@@ -83,12 +95,12 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.school_outlined,
           'title': 'Métier / Études',
-          'value': profile?.nivauEtude?? ""
+          'value': profile?.nivauEtude ?? "",
         },
         {
           'title': 'Organisation',
           'icon': Icons.business_outlined,
-          'value': profile?.activity ?? ""
+          'value': profile?.activity ?? "",
         },
       ];
       return deviceInfos;
@@ -101,12 +113,12 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.format_color_fill_sharp,
           'title': 'Date de baptême',
-          'value': profile?.dateBaptme ?? ""
+          'value': profile?.dateBaptme ?? "",
         },
         {
           'title': 'Cellule de maison',
           'icon': Icons.home_work,
-          'value': profile?.cellulePriere ?? ""
+          'value': profile?.cellulePriere ?? "",
         },
       ];
       return deviceInfos;
@@ -119,7 +131,7 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.volunteer_activism_outlined,
           'title': 'Département',
-          'value': profile?.departement ?? ""
+          'value': profile?.departement ?? "",
         },
       ];
       return deviceInfos;
@@ -140,7 +152,6 @@ class _ProfileViewState extends State<ProfileView> {
             stream: getIt<ImpleSteamRemoteService>().getProfileStream(),
             builder: (context, profileStream) {
               if (profileStream.hasData && profileStream.data != null) {
-
                 return SafeArea(
                   child: Container(
                     alignment: Alignment.topCenter,
@@ -185,7 +196,8 @@ class _ProfileViewState extends State<ProfileView> {
                                                 width: 0.08.sh,
                                               ),
                                             ),
-                                            profileStream.data?.profileImage ?? "",
+                                            profileStream.data?.profileImage ??
+                                                "",
 
                                             fit: BoxFit.cover,
                                             height: 0.1.sh,
@@ -237,7 +249,6 @@ class _ProfileViewState extends State<ProfileView> {
                                           onPressed: () {},
                                         ),
                                       ),
-
                                       //---------------------------------------
                                       //  Profile
                                       //--------------------------------------
@@ -370,7 +381,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                   children: [
                                                     ...getPersonalInformation(
                                                       profile:
-                                                          profileStream.data
+                                                          profileStream.data,
                                                     ).map(
                                                       (items) => Container(
                                                         // margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -637,7 +648,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                   children: [
                                                     ...getProfessionalInformation(
                                                       profile:
-                                                          profileStream.data
+                                                          profileStream.data,
                                                     ).map(
                                                       (items) => Container(
                                                         // margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -762,6 +773,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                                       CustomeText(
                                                                         text:
                                                                             items['value'],
+
                                                                         style: context.appTypographie.button.copyWith(
                                                                           color: context
                                                                               .appColor
@@ -1341,10 +1353,9 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                 );
-             
               }
-             if(profileStream.connectionState == ConnectionState.waiting) {
-              return SafeArea(
+              if (profileStream.connectionState == ConnectionState.waiting) {
+                return SafeArea(
                   child: Container(
                     height: 1.sh,
                     color: context.appColor.primaryGray100.withValues(
@@ -1388,70 +1399,57 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   ),
                 );
-             }
-             else{
-              return SafeArea(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 25.w),
-                        child: SvgPicture.asset(
-                          assets.images.problemeRequest.path,
+              } else {
+                return SafeArea(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 25.w),
+                          child: SvgPicture.asset(
+                            assets.images.problemeRequest.path,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Une erreur est survenue !",
-                        style: context.appTypographie.body.copyWith(
-                          color: context.appColor.primaryBlue,
+                        Text(
+                          "Une erreur est survenue !",
+                          style: context.appTypographie.body.copyWith(
+                            color: context.appColor.primaryBlue,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 14.h),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 0.17.sw),
-                        child:
-                            BlocBuilder<
-                              GetProfileBloc,
-                              ApiState<ProfileResponse>
-                            >(
-                              builder: (context, state) {
-                                return PrimaryButton(
-                                  label: "Réessayer",
-                                  colorText: Colors.white,
-                                  fontSize: 13.sp,
-                                  backgroundColor: context.appColor.primaryBlue,
-                                  borderRadius: 14.r,
-                                  onPressed: () {
-                                    context.read<GetProfileBloc>().add(
-                                      const ProfileEvent.fetch(),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                      ),
-                    ],
+                        SizedBox(height: 14.h),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 0.17.sw),
+                          child:
+                              BlocBuilder<
+                                GetProfileBloc,
+                                ApiState<ProfileResponse>
+                              >(
+                                builder: (context, state) {
+                                  return PrimaryButton(
+                                    label: "Réessayer",
+                                    colorText: Colors.white,
+                                    fontSize: 13.sp,
+                                    backgroundColor:
+                                        context.appColor.primaryBlue,
+                                    borderRadius: 14.r,
+                                    onPressed: () {
+                                      context.read<GetProfileBloc>().add(
+                                        const ProfileEvent.fetch(),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-
-             }
+                );
+              }
             },
           ),
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-         
         ),
       ),
     );

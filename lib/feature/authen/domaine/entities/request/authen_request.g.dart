@@ -17,6 +17,7 @@ _RequestAuthenProfile _$RequestAuthenProfileFromJson(
   email: json['email'] as String,
   nationalite: json['nationalite'] as String,
   dateInscription: json['dateInscription'] as String,
+  password: json['password'] as String,
   submitProfile: json['submitProfile'] as bool,
 );
 
@@ -31,6 +32,7 @@ Map<String, dynamic> _$RequestAuthenProfileToJson(
   'email': instance.email,
   'nationalite': instance.nationalite,
   'dateInscription': instance.dateInscription,
+  'password': instance.password,
   'submitProfile': instance.submitProfile,
 };
 
@@ -86,6 +88,7 @@ _RequestAuthenEngagement _$RequestAuthenEngagementFromJson(
   competence: json['competence'] as String,
   disponibiliry: json['disponibiliry'] as String,
   submitEngagement: json['submitEngagement'] as bool,
+  endCreationDate: json['endCreationDate'] as String,
 );
 
 Map<String, dynamic> _$RequestAuthenEngagementToJson(
@@ -95,6 +98,7 @@ Map<String, dynamic> _$RequestAuthenEngagementToJson(
   'competence': instance.competence,
   'disponibiliry': instance.disponibiliry,
   'submitEngagement': instance.submitEngagement,
+  'endCreationDate': instance.endCreationDate,
 };
 
 _RequestAuthenProfileUpdateKey _$RequestAuthenProfileUpdateKeyFromJson(
@@ -127,4 +131,19 @@ Map<String, dynamic> _$RequestAuthenProfileUpdateImageToJson(
   'profileImage': instance.profileImage,
   'menberId': instance.menberId,
   'createAt': instance.createAt,
+};
+
+_RequestAuthenSignIn _$RequestAuthenSignInFromJson(Map<String, dynamic> json) =>
+    _RequestAuthenSignIn(
+      contact: json['contact'] as String,
+      email: json['email'] as String,
+      password: json['password'] as String,
+    );
+
+Map<String, dynamic> _$RequestAuthenSignInToJson(
+  _RequestAuthenSignIn instance,
+) => <String, dynamic>{
+  'contact': instance.contact,
+  'email': instance.email,
+  'password': instance.password,
 };

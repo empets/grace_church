@@ -911,4 +911,288 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$ReponsableCelluleResponse {
+
+ String get responsable; String get celluleCode; String get date; String get celluleName; String get contact; String get email; String get adresse; String get celluleId;
+/// Create a copy of ReponsableCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReponsableCelluleResponseCopyWith<ReponsableCelluleResponse> get copyWith => _$ReponsableCelluleResponseCopyWithImpl<ReponsableCelluleResponse>(this as ReponsableCelluleResponse, _$identity);
+
+  /// Serializes this ReponsableCelluleResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableCelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.celluleName, celluleName) || other.celluleName == celluleName)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,celluleName,contact,email,adresse,celluleId);
+
+@override
+String toString() {
+  return 'ReponsableCelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, celluleName: $celluleName, contact: $contact, email: $email, adresse: $adresse, celluleId: $celluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ReponsableCelluleResponseCopyWith<$Res>  {
+  factory $ReponsableCelluleResponseCopyWith(ReponsableCelluleResponse value, $Res Function(ReponsableCelluleResponse) _then) = _$ReponsableCelluleResponseCopyWithImpl;
+@useResult
+$Res call({
+ String responsable, String celluleCode, String date, String celluleName, String contact, String email, String adresse, String celluleId
+});
+
+
+
+
+}
+/// @nodoc
+class _$ReponsableCelluleResponseCopyWithImpl<$Res>
+    implements $ReponsableCelluleResponseCopyWith<$Res> {
+  _$ReponsableCelluleResponseCopyWithImpl(this._self, this._then);
+
+  final ReponsableCelluleResponse _self;
+  final $Res Function(ReponsableCelluleResponse) _then;
+
+/// Create a copy of ReponsableCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? celluleName = null,Object? contact = null,Object? email = null,Object? adresse = null,Object? celluleId = null,}) {
+  return _then(_self.copyWith(
+responsable: null == responsable ? _self.responsable : responsable // ignore: cast_nullable_to_non_nullable
+as String,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,celluleName: null == celluleName ? _self.celluleName : celluleName // ignore: cast_nullable_to_non_nullable
+as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ReponsableCelluleResponse].
+extension ReponsableCelluleResponsePatterns on ReponsableCelluleResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReponsableCelluleResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReponsableCelluleResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReponsableCelluleResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReponsableCelluleResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReponsableCelluleResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReponsableCelluleResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReponsableCelluleResponse() when $default != null:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId)  $default,) {final _that = this;
+switch (_that) {
+case _ReponsableCelluleResponse():
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId)?  $default,) {final _that = this;
+switch (_that) {
+case _ReponsableCelluleResponse() when $default != null:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _ReponsableCelluleResponse implements ReponsableCelluleResponse {
+   _ReponsableCelluleResponse({required this.responsable, required this.celluleCode, required this.date, required this.celluleName, required this.contact, required this.email, required this.adresse, required this.celluleId});
+  factory _ReponsableCelluleResponse.fromJson(Map<String, dynamic> json) => _$ReponsableCelluleResponseFromJson(json);
+
+@override final  String responsable;
+@override final  String celluleCode;
+@override final  String date;
+@override final  String celluleName;
+@override final  String contact;
+@override final  String email;
+@override final  String adresse;
+@override final  String celluleId;
+
+/// Create a copy of ReponsableCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReponsableCelluleResponseCopyWith<_ReponsableCelluleResponse> get copyWith => __$ReponsableCelluleResponseCopyWithImpl<_ReponsableCelluleResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ReponsableCelluleResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableCelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.celluleName, celluleName) || other.celluleName == celluleName)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,celluleName,contact,email,adresse,celluleId);
+
+@override
+String toString() {
+  return 'ReponsableCelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, celluleName: $celluleName, contact: $contact, email: $email, adresse: $adresse, celluleId: $celluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ReponsableCelluleResponseCopyWith<$Res> implements $ReponsableCelluleResponseCopyWith<$Res> {
+  factory _$ReponsableCelluleResponseCopyWith(_ReponsableCelluleResponse value, $Res Function(_ReponsableCelluleResponse) _then) = __$ReponsableCelluleResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String responsable, String celluleCode, String date, String celluleName, String contact, String email, String adresse, String celluleId
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReponsableCelluleResponseCopyWithImpl<$Res>
+    implements _$ReponsableCelluleResponseCopyWith<$Res> {
+  __$ReponsableCelluleResponseCopyWithImpl(this._self, this._then);
+
+  final _ReponsableCelluleResponse _self;
+  final $Res Function(_ReponsableCelluleResponse) _then;
+
+/// Create a copy of ReponsableCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? celluleName = null,Object? contact = null,Object? email = null,Object? adresse = null,Object? celluleId = null,}) {
+  return _then(_ReponsableCelluleResponse(
+responsable: null == responsable ? _self.responsable : responsable // ignore: cast_nullable_to_non_nullable
+as String,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,celluleName: null == celluleName ? _self.celluleName : celluleName // ignore: cast_nullable_to_non_nullable
+as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

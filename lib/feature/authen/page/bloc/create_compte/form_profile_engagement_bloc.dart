@@ -78,6 +78,7 @@ class CreateComteProfileEngagementBloc
               competence: state.competence.value,
               disponibiliry: state.disponibiliry.value,
               submitEngagement: true,
+              endCreationDate: DateTime.now().toIso8601String(),
             ),
           );
 

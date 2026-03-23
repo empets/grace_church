@@ -6,6 +6,7 @@ import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/data/service/impl_remote_service.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -24,13 +25,20 @@ class ImplRemoteService implements AuthenRemoteService {
     final localUserSection = shared.getString('menberkey');
 
     try {
-      final snapShot = await db
-          .child('menber')
-          .orderByChild('name')
-          .equalTo(params.name)
-          .get();
+      final snapShot = await db.child('menber').get();
 
       if (snapShot.exists) {
+        final snapShot = await db
+            .child('menber')
+            .orderByChild('name')
+            .equalTo(params.name)
+            .get();
+
+        if (snapShot.exists) {
+          return FirebaseError("Cet utilisateur existe deja");
+        }
+
+        log("🔥 Firebase ERROR createProfile → Cet utilisateur existe deja");
         return FirebaseError("Cet utilisateur existe deja");
       } else if (localUserSection != null && localUserSection.isNotEmpty) {
         final Map<String, dynamic> updates = {
@@ -207,6 +215,7 @@ class ImplRemoteService implements AuthenRemoteService {
       };
       // 2) Créer une nouvelle entrée
       await db.child('menber/${params.menberId}').update(updates);
+      log("🔥 Firebase updateProfileKey → menberId: ${params.menberId}");
 
       // 4) Retourner le key généré
       return FirebaseSuccess(params.menberId);
@@ -240,17 +249,6 @@ class ImplRemoteService implements AuthenRemoteService {
     required RequestAuthenProfileUpdateImage params,
   }) async {
     try {
-      // await supabase.storage
-      //     .from('profiles')
-      //     .upload(
-      //       '${params.profileImage}/${params.menberId}.jpg',
-      //       File(params.profileImage),
-      //     );
-
-      // final imageUrl = supabase.storage
-      //     .from('profiles')
-      //     .getPublicUrl('${params.profileImage}/${params.menberId}.jpg');
-
       // log("--->>Image URL : $imageUrl");
       final pathInBucket = 'upload/${params.profileImage}.jpg';
 
@@ -274,50 +272,46 @@ class ImplRemoteService implements AuthenRemoteService {
     }
   }
 
-  //generic methode
-  // Future<void> saveImageUrl<T extends Object>(
-  //   T params, {
-  //   required RequestAuthenProfileUpdateImage imageParams,
-  // }) async {
-  //   // CreatCompteImage
-  //   final Map<String, dynamic> updates = {
-  //     ...imageParams.toJson(), // nouveaux champs simples
-  //   };
+  @override
+  Future<FirebaseResult<ProfileResponseModel>> createSignIn(
+    RequestAuthenSignIn params,
+  ) async {
+    final snapshot = await db.child('menber').get();
 
-  //   await supabase.storage
-  //       .from('menberProfile')
-  //       .upload(
-  //         'uploads/${imageParams.profileImage}/${imageParams.menberId}.jpg',
-  //         File(imageParams.profileImage),
-  //       );
+    try {
+      if (snapshot.exists) {
+        final emailSnapshot = await db
+            .child('menber')
+            .orderByChild('email')
+            .equalTo(params.email)
+            .get();
+        final contactSnapshot = await db
+            .child('menber')
+            .orderByChild('contact')
+            .equalTo(params.contact)
+            .get();
 
-  //   final imageUrl = supabase.storage
-  //       .from('menberProfile')
-  //       .getPublicUrl(
-  //         'uploads/${imageParams.profileImage}/${imageParams.menberId}.jpg',
-  //       );
+        final passwordSnapshot = await db
+            .child('menber')
+            .orderByChild('password')
+            .equalTo(params.password)
+            .get();
 
-  //   await db
-  //       .child('${imageParams.profileImage}/${imageParams.menberId}')
-  //       .update(updates);
-  // }
-
-  // Future<String?> uploadImage(File file) async {
-  //   try {
-  //     final fileName = DateTime.now().millisecondsSinceEpoch.toString();
-
-  //     await supabase.storage
-  //         .from('images')
-  //         .upload('uploads/$fileName.jpg', file);
-
-  //     final imageUrl = supabase.storage
-  //         .from('images')
-  //         .getPublicUrl('uploads/$fileName.jpg');
-
-  //     return imageUrl;
-  //   } catch (e) {
-  //     print('Erreur: $e');
-  //     return null;
-  //   }
-  // }
+        if (emailSnapshot.exists &&
+            contactSnapshot.exists &&
+            passwordSnapshot.exists) {
+          final response = await db.child('menber').get();
+          final data = Map<String, dynamic>.from(response.value as Map);
+          final firebaseResult = ProfileResponseModel.fromJson(data);
+          return FirebaseSuccess(firebaseResult);
+        }
+        return FirebaseError("Cet utilisateur existe deja");
+      } else {
+        return FirebaseError("une erreur est survenue");
+      }
+    } catch (e) {
+      log('🔥Error getting profile: $e');
+      return FirebaseError('${e.toString()}');
+    }
+  }
 }

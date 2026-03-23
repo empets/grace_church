@@ -37,22 +37,17 @@ abstract class ProfileResponse with _$ProfileResponse {
       _$ProfileResponseFromJson(json);
 }
 
-
-
 @freezed
 abstract class NotificationResponse with _$NotificationResponse {
   factory NotificationResponse({
     required String title,
-    required String  description,
-    required String  tag,
-    required String  date,
+    required String description,
+    required String tag,
+    required String date,
   }) = _NotificationResponse;
   factory NotificationResponse.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseFromJson(json);
 }
-
-
-
 
 @freezed
 abstract class CelluleResponse with _$CelluleResponse {
@@ -69,4 +64,20 @@ abstract class CelluleResponse with _$CelluleResponse {
   }) = _CelluleResponse;
   factory CelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$CelluleResponseFromJson(json);
+}
+
+@freezed
+abstract class ReponsableCelluleResponse with _$ReponsableCelluleResponse {
+  factory ReponsableCelluleResponse({
+    required String responsable,
+    required String celluleCode,
+    required String date,
+    required String celluleName,
+    required String contact,
+    required String email,
+    required String adresse,
+    required String celluleId,
+  }) = _ReponsableCelluleResponse;
+  factory ReponsableCelluleResponse.fromJson(Map<String, dynamic> json) =>
+      _$ReponsableCelluleResponseFromJson(json);
 }

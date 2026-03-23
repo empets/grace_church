@@ -30,6 +30,7 @@ import '../../feature/authen/domaine/usercase/create_social_profile_usercase.dar
     as _i561;
 import '../../feature/authen/domaine/usercase/create_spiritual_profile.dart'
     as _i127;
+import '../../feature/authen/domaine/usercase/signin_profile.dart' as _i409;
 import '../../feature/home/data/repositories/home_data_repositories.dart'
     as _i486;
 import '../../feature/home/data/service/remot_service.dart' as _i127;
@@ -40,10 +41,14 @@ import '../../feature/home/domaine/repository/home_domain_repository.dart'
 import '../../feature/home/domaine/usercase/get_cellule_usercase.dart' as _i625;
 import '../../feature/home/domaine/usercase/get_list_notification_usercase.dart'
     as _i15;
+import '../../feature/home/domaine/usercase/get_list_responsable_cellule_usercase.dart'
+    as _i47;
 import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
 import '../../feature/home/page/bloc/app_launcher/app_launcher_bloc.dart'
     as _i303;
 import '../../feature/home/page/bloc/cellule/cellule_bloc.dart' as _i485;
+import '../../feature/home/page/bloc/cellule/get_responsable_cellue_bloc.dart'
+    as _i375;
 import '../../feature/home/page/bloc/get_profile/get_profile_bloc.dart' as _i37;
 import 'injection_container.dart' as _i809;
 
@@ -83,12 +88,6 @@ extension GetItInjectableX on _i174.GetIt {
         authenRemoteService: gh<_i259.AuthenRemoteService>(),
       ),
     );
-    gh.lazySingleton<_i562.GetProfileUsercase>(
-      () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
-    );
-    gh.lazySingleton<_i562.GetProfileStreamUsercase>(
-      () => _i562.GetProfileStreamUsercase(gh<_i962.HomeDomaineRepository>()),
-    );
     gh.lazySingleton<_i15.GetListNotificationUsercase>(
       () => _i15.GetListNotificationUsercase(gh<_i962.HomeDomaineRepository>()),
     );
@@ -99,6 +98,17 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i625.GetCelluleUsercase>(
       () => _i625.GetCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i562.GetProfileUsercase>(
+      () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i562.GetProfileStreamUsercase>(
+      () => _i562.GetProfileStreamUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i47.GetListResponsableCelluleUsercase>(
+      () => _i47.GetListResponsableCelluleUsercase(
+        gh<_i962.HomeDomaineRepository>(),
+      ),
     );
     gh.lazySingleton<_i485.CelluleBloc>(
       () =>
@@ -111,11 +121,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i855.CreateProfileUsercase>(
       () => _i855.CreateProfileUsercase(gh<_i653.AuthenRepository>()),
     );
+    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
+      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
     gh.lazySingleton<_i561.CreateSocialProfileUsercase>(
       () => _i561.CreateSocialProfileUsercase(gh<_i653.AuthenRepository>()),
     );
-    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
-      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
+    gh.lazySingleton<_i409.CreateSignInProfileUsercase>(
+      () => _i409.CreateSignInProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i375.GetResponsableCelluleBloc>(
+      () => _i375.GetResponsableCelluleBloc(
+        getListResponsableCelluleUsercase:
+            gh<_i47.GetListResponsableCelluleUsercase>(),
+      ),
     );
     gh.lazySingleton<_i37.GetProfileBloc>(
       () => _i37.GetProfileBloc(
