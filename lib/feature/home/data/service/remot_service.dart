@@ -21,7 +21,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     EmptyRequest notParms,
   ) async {
     final shared = await shareData.SharedPreferences.getInstance();
-    final menberkey = shared.getString('menberkey');
+    final menberkey = await shared.getString('menberkey');
 
     log('🔥Menberkey: $menberkey');
 

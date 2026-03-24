@@ -17,6 +17,7 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_holly_living.dart'
     hide FormNextTeps;
+import 'package:grace_church/feature/home/overview.dart';
 
 class FormSocialProfessionnal extends StatefulWidget {
   const FormSocialProfessionnal({super.key, this.profile = false});
@@ -53,9 +54,9 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
     return BlocListener<CreateCompteProfileSocialBloc, CreateCompteSocialState>(
       listener: (context, state) {
         if (state.status.isSuccess) {
-           //----------------------------
-            // Handle navigation based on profile flag
-            //----------------------------
+          //----------------------------
+          // Handle navigation based on profile flag
+          //----------------------------
           if (widget.profile) {
             Navigator.of(context).pop(true);
             return;
@@ -116,6 +117,21 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                             ),
                           ),
                           SizedBox(width: 0),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: context.appColor.primaryLightBlue,
+                              borderRadius: BorderRadius.circular(50.r),
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                  fadeRoute(OverviewScreen()),
+                                  (route) => false,
+                                );
+                              },
+                              icon: Icon(Icons.home_work_rounded),
+                            ),
+                          ),
                         ],
                       ),
 

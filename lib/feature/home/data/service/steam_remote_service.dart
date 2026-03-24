@@ -10,9 +10,9 @@ class ImpleSteamRemoteService {
   Stream<ProfileResponseModel?> getProfileStream() async* {
     final shared = await shareData.SharedPreferences.getInstance();
     log(
-      "🔥 Firebase getProfileStream → menberkey: ${shared.getString('menberkey')}",
+      "🔥 Firebase getProfileStream → menberkey: ${await shared.getString('menberkey')}",
     );
-    final menberkey = shared.getString('menberkey');
+    final menberkey = await shared.getString('menberkey');
     if (menberkey == null || menberkey.isEmpty) {
       return;
     }

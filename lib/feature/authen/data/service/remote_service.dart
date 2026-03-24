@@ -7,7 +7,6 @@ import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/data/service/impl_remote_service.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
-import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -37,12 +36,10 @@ class ImplRemoteService implements AuthenRemoteService {
         // si le nom existe on retoune une erreur
         if (nameExist.exists) {
           return FirebaseError("Cet utilisateur existe deja");
-        }
-        //***
-        // */ on peut proceder a la creation du profil
-        
-        
-        else {
+        } else {
+          //______>> LA BD EXISTE ET LE USER EXISTE PAS
+          log('------>> LA BD EXISTE ET LE USER EXISTE PAS');
+
           // 1) Construire l'objet Request
           final request = Request<RequestAuthenProfile>(
             data: params.toJson(),
@@ -80,14 +77,16 @@ class ImplRemoteService implements AuthenRemoteService {
             await db.child('menber/${ref.key.toString()}').update(updates);
           }
 
+          final shared = await shareData.SharedPreferences.getInstance();
+          await shared.setString('menberkey', ref.key.toString());
+
           // 4) Retourner le key généré
           return FirebaseSuccess(ref.key);
         }
-      } 
-      
-      
-      
+      }
+      //______>> LE SUSER EXISTE UN UPDATE
       else if (localUserSection != null && localUserSection.isNotEmpty) {
+        log('------>> LE SUSER EXISTE UN UPDATE');
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
           'serviceLibelle': '',
@@ -98,7 +97,10 @@ class ImplRemoteService implements AuthenRemoteService {
 
         // 4) Retourner le key généré
         return FirebaseSuccess(localUserSection);
-      } else {
+      }
+      //______>> LA BD  EXISTE PAS
+      else {
+        log('------>> LA BD  EXISTE PAS');
         // 1) Construire l'objet Request
         final request = Request<RequestAuthenProfile>(
           data: params.toJson(),
@@ -323,42 +325,34 @@ class ImplRemoteService implements AuthenRemoteService {
   }
 
   @override
-  Future<FirebaseResult<ProfileResponseModel>> createSignIn(
+  Future<FirebaseResult<String?>> createSignIn(
     RequestAuthenSignIn params,
   ) async {
-    final snapshot = await db.child('menber').get();
-
     try {
-      if (snapshot.exists) {
-        final emailSnapshot = await db
-            .child('menber')
-            .orderByChild('email')
-            .equalTo(params.email)
-            .get();
-        final contactSnapshot = await db
-            .child('menber')
-            .orderByChild('contact')
-            .equalTo(params.contact)
-            .get();
+      final emailSnapshot = await db
+          .child('menber')
+          .orderByChild('email')
+          .equalTo(params.email)
+          .get();
 
-        final passwordSnapshot = await db
-            .child('menber')
-            .orderByChild('password')
-            .equalTo(params.password)
-            .get();
+      final data = emailSnapshot.value as Map<dynamic, dynamic>;
 
-        if (emailSnapshot.exists &&
-            contactSnapshot.exists &&
-            passwordSnapshot.exists) {
-          final response = await db.child('menber').get();
-          final data = Map<String, dynamic>.from(response.value as Map);
-          final firebaseResult = ProfileResponseModel.fromJson(data);
-          return FirebaseSuccess(firebaseResult);
+      if (data.isNotEmpty) {
+        final user = data.values.firstWhere(
+          (x) =>
+              x['email'] == params.email &&
+              x['password'] == params.password &&
+              x['contact'] == params.contact,
+        );
+        if (user != null) {
+          log("--->>User: ${user['menberId']}");
+          final shared = await shareData.SharedPreferences.getInstance();
+          await shared.setString('menberkey', user['menberId']);
+          return FirebaseSuccess(user['menberId']);
         }
-        return FirebaseError("Cet utilisateur existe deja");
-      } else {
-        return FirebaseError("une erreur est survenue");
       }
+
+      return FirebaseError('Aucun utilisateur trouver');
     } catch (e) {
       log('🔥Error getting profile: $e');
       return FirebaseError('${e.toString()}');

@@ -23,6 +23,7 @@ import 'package:grace_church/feature/authen/page/form_engagement.dart'
     hide FormNextTeps;
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
+import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/cellule/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/cellule/event/cellule_event.dart';
 
@@ -241,6 +242,21 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                               ),
                             ),
                             SizedBox(width: 0),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: context.appColor.primaryLightBlue,
+                                borderRadius: BorderRadius.circular(50.r),
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    fadeRoute(OverviewScreen()),
+                                    (route) => false,
+                                  );
+                                },
+                                icon: Icon(Icons.home_work_rounded),
+                              ),
+                            ),
                           ],
                         ),
 

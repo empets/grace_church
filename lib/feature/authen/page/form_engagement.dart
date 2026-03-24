@@ -156,6 +156,21 @@ class _FormEngagementState extends State<FormEngagement> {
                               ),
                             ),
                             SizedBox(width: 0),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: context.appColor.primaryLightBlue,
+                                borderRadius: BorderRadius.circular(50.r),
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    fadeRoute(OverviewScreen()),
+                                    (route) => false,
+                                  );
+                                },
+                                icon: Icon(Icons.home_work_rounded),
+                              ),
+                            ),
                           ],
                         ),
 

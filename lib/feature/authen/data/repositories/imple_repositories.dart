@@ -78,15 +78,14 @@ class ImpleAuthenRepository implements AuthenRepository {
   }
 
   @override
-  Future<Either<Failure, ProfileResponse>> createSignIn(
+  Future<Either<Failure,String?>> createSignIn(
     RequestAuthenSignIn request,
   ) async {
     final response = await authenRemoteService.createSignIn(request);
-    if (response is FirebaseSuccess<ProfileResponseModel>) {
+    if (response is FirebaseSuccess<String?>) {
       final shared = await SharedPreferences.getInstance();
-      await shared.setString('menberkey', response.data.menberId.toString());
-      log("🔥 Firebase createSignIn → menberkey: ${response.data.menberId}");
-      return Right(ProfileResponseModel.domaine(response.data));
+      await shared.setString('menberkey', response.data ?? '');
+      return Right(response.data);
     } else if (response is FirebaseError) {
       return Left(Failure(message: response.toString()));
     }

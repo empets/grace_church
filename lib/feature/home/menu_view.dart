@@ -762,11 +762,10 @@ class LogOutPope extends StatelessWidget {
         TextButton(
           onPressed: () async {
             final shared = await SharedPreferences.getInstance();
-            final isLaunchApp = shared.getString('isAppLauncher');
-            final menberkey = shared.getString('menberkey');
+            final isLaunchApp = await shared.getString('isAppLauncher');
+            final menberkey = await shared.getString('menberkey');
             if (isLaunchApp != null && isLaunchApp.contains('isAppLauncher')) {
               await shared.remove('isAppLauncher');
-
               if (menberkey != null && menberkey.isNotEmpty) {
                 await shared.remove('menberkey');
               }

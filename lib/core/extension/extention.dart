@@ -314,8 +314,6 @@ extension IntExtensions on int? {
   }
 }
 
-
-
 extension DoubleExtension on double? {
   double getOrEmpty() {
     final self = this;
@@ -400,3 +398,6 @@ String couperAdresse(String adresse, int n) {
   return parties.sublist(0, n).join(', ');
 }
 
+String formatKey(String email) {
+  return email.replaceAll('.', '_').replaceAll('@', '_');
+}

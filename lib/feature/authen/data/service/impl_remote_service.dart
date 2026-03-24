@@ -1,6 +1,5 @@
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
-import 'package:grace_church/feature/home/data/model/home_model.dart';
 
 abstract class AuthenRemoteService {
   Future<FirebaseResult<String?>> createProfile(RequestAuthenProfile params);
@@ -11,7 +10,5 @@ abstract class AuthenRemoteService {
   Future<FirebaseResult<String?>> createEngagement(
     RequestAuthenEngagement params,
   );
-  Future<FirebaseResult<ProfileResponseModel>> createSignIn(
-    RequestAuthenSignIn params,
-  );
+  Future<FirebaseResult<String?>> createSignIn(RequestAuthenSignIn params);
 }
