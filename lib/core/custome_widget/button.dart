@@ -39,6 +39,7 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
+          overlayColor: Colors.transparent,
           backgroundColor: backgroundColor ?? context.appColor.primaryBlue,
           foregroundColor: context.appColor.primaryBlue,
           shape: RoundedRectangleBorder(
@@ -93,8 +94,6 @@ class PrimaryButton extends StatelessWidget {
   }
 }
 
-
-
 class ShareButton extends StatelessWidget {
   const ShareButton({
     super.key,
@@ -110,7 +109,7 @@ class ShareButton extends StatelessWidget {
     this.fontSize,
     this.iconLeading = false,
     this.leadingIcon,
-    this.borderRadius = 6, 
+    this.borderRadius = 6,
     //  required this.onPressed,
   });
 
@@ -130,23 +129,19 @@ class ShareButton extends StatelessWidget {
   // final String? subject;
   final void Function()? onPressed;
 
- 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed ,
+        onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
           backgroundColor: backgroundColor ?? Colors.blue,
           foregroundColor: Colors.blue,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: borderSideColor ?? Colors.transparent,
-            ),
+            side: BorderSide(color: borderSideColor ?? Colors.transparent),
             borderRadius: BorderRadius.circular(borderRadius ?? 6),
           ),
         ),
@@ -160,11 +155,7 @@ class ShareButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (iconLeading && leadingIcon != null) ...[
-                    Icon(
-                      leadingIcon,
-                      size: 10.h,
-                      color: iconColor,
-                    ),
+                    Icon(leadingIcon, size: 10.h, color: iconColor),
                     SizedBox(width: 2.w),
                   ],
 

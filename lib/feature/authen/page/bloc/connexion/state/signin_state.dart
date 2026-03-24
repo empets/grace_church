@@ -8,7 +8,7 @@ abstract class SigninState with _$SigninState {
   factory SigninState({
     required TextFormz email,
     required TextFormz password,
-    required TextFormz contact,
+    required PhoneFormz contact,
     required String errorMessage,
     required FormzSubmissionStatus status,
     required bool isValid,
@@ -18,7 +18,7 @@ abstract class SigninState with _$SigninState {
   factory SigninState.initial() => SigninState(
     email: TextFormz.pure(),
     password: TextFormz.pure(),
-    contact: TextFormz.pure(),
+    contact: PhoneFormz.pure(),
     errorMessage: '',
     status: FormzSubmissionStatus.initial,
     isValid: false,

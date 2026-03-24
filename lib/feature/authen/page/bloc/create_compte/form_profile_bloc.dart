@@ -1,5 +1,6 @@
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
@@ -208,8 +209,10 @@ class FormProfileBloc
 
           emit(
             response.fold(
-              (failure) =>
-                  state.copyWith(status: FormzSubmissionStatus.failure),
+              (failure) => state.copyWith(
+                errorMessage: failure.message.getOrEmpty() ?? "",
+                status: FormzSubmissionStatus.failure,
+              ),
               (success) =>
                   state.copyWith(status: FormzSubmissionStatus.success),
             ),

@@ -39,7 +39,11 @@ class SigninView extends StatelessWidget {
             // Navigation vers la page suivante
             final shared = await SharedPreferences.getInstance();
             await shared.setString('isAppLauncher', 'isAppLauncher');
-            Navigator.of(context).push(fadeRoute(const OverviewScreen()));
+
+            Navigator.of(context).pushAndRemoveUntil(
+              fadeRoute(const OverviewScreen()),
+              (route) => false,
+            );
           } else if (state.status.isFailure) {
             return AppAlert.showError(
               context,
@@ -115,7 +119,7 @@ class SigninView extends StatelessWidget {
                     builder: (context, state) {
                       return ProductionFormCustomer(
                         readOnly: state.status.isInProgress ? true : false,
-                        isColorBlue: state.status.isInProgress,
+                        isColorBlue: state.email.isValid ? true : false,
                         inputLabel: '',
                         textLabel: 'Ex: emma@gmail.com',
                         errorText: state.email.isPure || state.email.isValid
@@ -141,7 +145,7 @@ class SigninView extends StatelessWidget {
                       return ProductionFormCustomer(
                         textInputType: TextInputType.number,
                         readOnly: state.status.isInProgress ? true : false,
-                        isColorBlue: state.status.isInProgress,
+                        isColorBlue: state.contact.isValid ? true : false,
                         inputLabel: '',
                         textLabel: 'Ex: +225 01 23 45 67 89',
                         errorText: state.contact.isPure || state.contact.isValid
@@ -166,15 +170,16 @@ class SigninView extends StatelessWidget {
                   BlocBuilder<SigningBloc, SigninState>(
                     builder: (context, state) {
                       return ProductionFormCustomer(
+                        isCancel: true,
                         letSpace: [],
                         readOnly: state.status.isInProgress ? true : false,
-                        isColorBlue: state.status.isInProgress,
+                        isColorBlue: state.password.isValid ? true : false,
                         inputLabel: '',
                         textLabel: 'Ex: Mot de passe',
                         errorText:
                             state.password.isPure || state.password.isValid
                             ? null
-                            : '',
+                            : 'aucun mot de passe renseigné',
                         msgError: 'Veuillez renseigner ce champ',
                         prefixIcon: Icon(
                           Icons.lock,
@@ -278,7 +283,10 @@ class SigninView extends StatelessWidget {
                       FocusScope.of(context).unfocus();
                       final shared = await SharedPreferences.getInstance();
                       await shared.setString('isAppLauncher', 'isAppLauncher');
-                      // Navigator.of(context).push(fadeRoute(const OverviewScreen()));
+                      Navigator.of(context).pushAndRemoveUntil(
+                        fadeRoute(const OverviewScreen()),
+                        (route) => false,
+                      );
                     },
                   ),
                 ],

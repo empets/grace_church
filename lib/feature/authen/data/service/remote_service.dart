@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
@@ -28,19 +29,65 @@ class ImplRemoteService implements AuthenRemoteService {
       final snapShot = await db.child('menber').get();
 
       if (snapShot.exists) {
-        final snapShot = await db
+        final nameExist = await db
             .child('menber')
             .orderByChild('name')
             .equalTo(params.name)
             .get();
-
-        if (snapShot.exists) {
+        // si le nom existe on retoune une erreur
+        if (nameExist.exists) {
           return FirebaseError("Cet utilisateur existe deja");
         }
+        //***
+        // */ on peut proceder a la creation du profil
+        
+        
+        else {
+          // 1) Construire l'objet Request
+          final request = Request<RequestAuthenProfile>(
+            data: params.toJson(),
+            user: "",
+            serviceLibelle: 'serviceLibelle',
+          );
+          // 2) Créer une nouvelle entré ou table
+          final ref = db.child('menber').push();
+          // 3) Sauvegarder dans Firebase (en convertissant en Map)
+          await ref.set(request.data);
 
-        log("🔥 Firebase ERROR createProfile → Cet utilisateur existe deja");
-        return FirebaseError("Cet utilisateur existe deja");
-      } else if (localUserSection != null && localUserSection.isNotEmpty) {
+          // 4) Mettre à jour la clé
+          await updateProfileKey(
+            RequestAuthenProfileUpdateKey(menberId: ref.key.toString()),
+          );
+
+          // 5) Télécharger l'image
+          final result = await uploadprofileImage(
+            params: RequestAuthenProfileUpdateImage(
+              profileImage: params.profileImage,
+              menberId: ref.key.toString(),
+              createAt: DateTime.now().toIso8601String(),
+            ),
+          );
+
+          if (result is FirebaseSuccess<String?>) {
+            log("-----------_>>1 ${result.data}");
+            final Map<String, dynamic> updates = {
+              ...params
+                  .copyWith(profileImage: result.data.toString())
+                  .toJson(), // nouveaux champs simples
+              'serviceLibelle': '',
+            };
+            // 2) Créer une nouvelle entrée
+            await db.child('menber/${ref.key.toString()}').update(updates);
+          }
+
+          // 4) Retourner le key généré
+          return FirebaseSuccess(ref.key);
+        }
+      } 
+      
+      
+      
+      else if (localUserSection != null && localUserSection.isNotEmpty) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
           'serviceLibelle': '',
@@ -93,6 +140,9 @@ class ImplRemoteService implements AuthenRemoteService {
         return FirebaseSuccess(ref.key);
       }
     } catch (e) {
+      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
+      ;
+
       log("🔥 Firebase ERROR createProfile → $e");
       return FirebaseError(e.toString());
     }

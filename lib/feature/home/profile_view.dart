@@ -113,7 +113,9 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.format_color_fill_sharp,
           'title': 'Date de baptême',
-          'value': profile?.dateBaptme ?? "",
+          'value': profile?.dateBaptme?.contains('NA') == true
+              ? ""
+              : profile?.dateBaptme,
         },
         {
           'title': 'Cellule de maison',

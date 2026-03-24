@@ -34,7 +34,7 @@ class SigningBloc extends Bloc<SigninEvent, SigninState> {
 
       case ChangeContactSigninEvent(:final contact):
         final updatedState = state.copyWith(
-          contact: TextFormz.dirty(contact),
+          contact: PhoneFormz.dirty(contact),
           status: FormzSubmissionStatus.initial,
         );
         emit(updatedState.copyWith(isValid: _validate(updatedState)));

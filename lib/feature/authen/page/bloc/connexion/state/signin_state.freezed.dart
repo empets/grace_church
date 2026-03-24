@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SigninState {
 
- TextFormz get email; TextFormz get password; TextFormz get contact; String get errorMessage; FormzSubmissionStatus get status; bool get isValid; bool get isSubmitting;
+ TextFormz get email; TextFormz get password; PhoneFormz get contact; String get errorMessage; FormzSubmissionStatus get status; bool get isValid; bool get isSubmitting;
 /// Create a copy of SigninState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $SigninStateCopyWith<$Res>  {
   factory $SigninStateCopyWith(SigninState value, $Res Function(SigninState) _then) = _$SigninStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz email, TextFormz password, TextFormz contact, String errorMessage, FormzSubmissionStatus status, bool isValid, bool isSubmitting
+ TextFormz email, TextFormz password, PhoneFormz contact, String errorMessage, FormzSubmissionStatus status, bool isValid, bool isSubmitting
 });
 
 
@@ -67,7 +67,7 @@ class _$SigninStateCopyWithImpl<$Res>
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as TextFormz,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as TextFormz,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
-as TextFormz,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as PhoneFormz,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,isSubmitting: null == isSubmitting ? _self.isSubmitting : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz email,  TextFormz password,  TextFormz contact,  String errorMessage,  FormzSubmissionStatus status,  bool isValid,  bool isSubmitting)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz email,  TextFormz password,  PhoneFormz contact,  String errorMessage,  FormzSubmissionStatus status,  bool isValid,  bool isSubmitting)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SigninState() when $default != null:
 return $default(_that.email,_that.password,_that.contact,_that.errorMessage,_that.status,_that.isValid,_that.isSubmitting);case _:
@@ -177,7 +177,7 @@ return $default(_that.email,_that.password,_that.contact,_that.errorMessage,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz email,  TextFormz password,  TextFormz contact,  String errorMessage,  FormzSubmissionStatus status,  bool isValid,  bool isSubmitting)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz email,  TextFormz password,  PhoneFormz contact,  String errorMessage,  FormzSubmissionStatus status,  bool isValid,  bool isSubmitting)  $default,) {final _that = this;
 switch (_that) {
 case _SigninState():
 return $default(_that.email,_that.password,_that.contact,_that.errorMessage,_that.status,_that.isValid,_that.isSubmitting);case _:
@@ -197,7 +197,7 @@ return $default(_that.email,_that.password,_that.contact,_that.errorMessage,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz email,  TextFormz password,  TextFormz contact,  String errorMessage,  FormzSubmissionStatus status,  bool isValid,  bool isSubmitting)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz email,  TextFormz password,  PhoneFormz contact,  String errorMessage,  FormzSubmissionStatus status,  bool isValid,  bool isSubmitting)?  $default,) {final _that = this;
 switch (_that) {
 case _SigninState() when $default != null:
 return $default(_that.email,_that.password,_that.contact,_that.errorMessage,_that.status,_that.isValid,_that.isSubmitting);case _:
@@ -217,7 +217,7 @@ class _SigninState implements SigninState {
 
 @override final  TextFormz email;
 @override final  TextFormz password;
-@override final  TextFormz contact;
+@override final  PhoneFormz contact;
 @override final  String errorMessage;
 @override final  FormzSubmissionStatus status;
 @override final  bool isValid;
@@ -253,7 +253,7 @@ abstract mixin class _$SigninStateCopyWith<$Res> implements $SigninStateCopyWith
   factory _$SigninStateCopyWith(_SigninState value, $Res Function(_SigninState) _then) = __$SigninStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz email, TextFormz password, TextFormz contact, String errorMessage, FormzSubmissionStatus status, bool isValid, bool isSubmitting
+ TextFormz email, TextFormz password, PhoneFormz contact, String errorMessage, FormzSubmissionStatus status, bool isValid, bool isSubmitting
 });
 
 
@@ -275,7 +275,7 @@ class __$SigninStateCopyWithImpl<$Res>
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as TextFormz,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as TextFormz,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
-as TextFormz,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as PhoneFormz,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,isSubmitting: null == isSubmitting ? _self.isSubmitting : isSubmitting // ignore: cast_nullable_to_non_nullable
