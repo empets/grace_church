@@ -18,6 +18,9 @@ class EventCreateCompteProfile with _$EventCreateCompteProfile {
   factory EventCreateCompteProfile.changePassword(String password) =
       ChangePasswordCreateCompteProfile;
 
+  factory EventCreateCompteProfile.changeIsUpdate(bool isUpdate) =
+      ChangeIsUpdateCreateCompteProfile;
+
   factory EventCreateCompteProfile.changeEmail(String email) =
       ChangeEmailCreateCompteProfile;
   factory EventCreateCompteProfile.changeNationalite(String nationalite) =

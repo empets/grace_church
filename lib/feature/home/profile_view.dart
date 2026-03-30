@@ -31,7 +31,7 @@ import 'package:intl/intl.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key, required this.profile});
-  final ProfileResponseModel? profile;
+  final ProfileResponse profile;
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
@@ -66,7 +66,7 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> getPersonalInformation({
-      required ProfileResponseModel? profile,
+      required ProfileResponse profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
@@ -89,7 +89,7 @@ class _ProfileViewState extends State<ProfileView> {
     }
 
     List<Map<String, dynamic>> getProfessionalInformation({
-      required ProfileResponseModel? profile,
+      required ProfileResponse profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
@@ -107,7 +107,7 @@ class _ProfileViewState extends State<ProfileView> {
     }
 
     List<Map<String, dynamic>> getSpiritualInformation({
-      required ProfileResponseModel? profile,
+      required ProfileResponse profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
@@ -127,7 +127,7 @@ class _ProfileViewState extends State<ProfileView> {
     }
 
     List<Map<String, dynamic>> getEngagement({
-      required ProfileResponseModel? profile,
+      required ProfileResponse profile,
     }) {
       final deviceInfos = <Map<String, dynamic>>[
         {
@@ -141,19 +141,30 @@ class _ProfileViewState extends State<ProfileView> {
 
     return BlocProvider.value(
       value: context.read<GetProfileBloc>(),
-      child: BlocListener<GetProfileBloc, ApiState<ProfileResponse>>(
-        listener: (context, profileListenerState) {
-          if (profileListenerState is SuccessState<ProfileResponse>) {
-            AppAlert.showSuccess(context, "Profil mis à jour avec succès");
-          }
-        },
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<GetProfileBloc, ApiState<ProfileResponse>>(
+            listener: (context, profileListenerState) {
+              if (profileListenerState is SuccessState<ProfileResponse>) {
+                AppAlert.showSuccess(context, "Profil mis à jour avec succès");
+              }
+            },
+          ),
+          // BlocListener<SubjectBloc, SubjectState>(
+          //   listener: (context, state) {
+          //     // TODO: implement listener
+          //   },
+          // ),
+        ],
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
           appBar: AppBar(backgroundColor: Colors.grey.shade50),
-          body: StreamBuilder(
-            stream: getIt<ImpleSteamRemoteService>().getProfileStream(),
+          body: BlocBuilder<
+            GetProfileBloc,
+            ApiState<ProfileResponse>
+          >(
             builder: (context, profileStream) {
-              if (profileStream.hasData && profileStream.data != null) {
+              if (profileStream is SuccessState<ProfileResponse>) {
                 return SafeArea(
                   child: Container(
                     alignment: Alignment.topCenter,
@@ -324,7 +335,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                             );
                                                         if (profile as bool) {
                                                           log(
-                                                            'Profile updated $profile',
+                                                            'Profile updated //',
                                                           );
                                                           context
                                                               .read<
@@ -597,9 +608,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                         ),
                                                       );
                                                   if (result as bool) {
-                                                    log(
-                                                      'Profile updated $result',
-                                                    );
+                                                    log('Profile updated ');
                                                     context
                                                         .read<GetProfileBloc>()
                                                         .add(
@@ -869,9 +878,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                           ),
                                                         );
                                                     if (profile as bool) {
-                                                      log(
-                                                        'Profile updated $profile',
-                                                      );
+                                                      log('Profile updated ');
                                                       context
                                                           .read<
                                                             GetProfileBloc
@@ -1135,9 +1142,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                           ),
                                                         );
                                                     if (profile as bool) {
-                                                      log(
-                                                        'Profile updated $profile',
-                                                      );
+                                                      log('Profile updated ');
                                                       context
                                                           .read<
                                                             GetProfileBloc
@@ -1356,7 +1361,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 );
               }
-              if (profileStream.connectionState == ConnectionState.waiting) {
+              if (profileStream is LoadState<ProfileResponse>) {
                 return SafeArea(
                   child: Container(
                     height: 1.sh,

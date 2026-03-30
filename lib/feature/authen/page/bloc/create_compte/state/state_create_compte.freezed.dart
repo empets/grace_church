@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateCompteProfileState {
 
- TextFormz get name; TextFormz get dateNaissance; TextFormz get zoneResidence; TextFormz get profileImage; PhoneFormz get contact; TextFormz get email; TextFormz get nationalite; TextFormz get password; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get name; TextFormz get dateNaissance; TextFormz get zoneResidence; TextFormz get profileImage; PhoneFormz get contact; TextFormz get email; TextFormz get nationalite; TextFormz get password; TextFormz get isUpdate; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of CreateCompteProfileState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CreateCompteProfileStateCopyWith<CreateCompteProfileState> get copyWith => _$Cr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCompteProfileState&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.password, password) || other.password == password)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCompteProfileState&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.password, password) || other.password == password)&&(identical(other.isUpdate, isUpdate) || other.isUpdate == isUpdate)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,password,status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,password,isUpdate,status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'CreateCompteProfileState(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, password: $password, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'CreateCompteProfileState(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, password: $password, isUpdate: $isUpdate, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $CreateCompteProfileStateCopyWith<$Res>  {
   factory $CreateCompteProfileStateCopyWith(CreateCompteProfileState value, $Res Function(CreateCompteProfileState) _then) = _$CreateCompteProfileStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz name, TextFormz dateNaissance, TextFormz zoneResidence, TextFormz profileImage, PhoneFormz contact, TextFormz email, TextFormz nationalite, TextFormz password, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz name, TextFormz dateNaissance, TextFormz zoneResidence, TextFormz profileImage, PhoneFormz contact, TextFormz email, TextFormz nationalite, TextFormz password, TextFormz isUpdate, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -62,7 +62,7 @@ class _$CreateCompteProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCompteProfileState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? password = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? password = null,Object? isUpdate = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as TextFormz,dateNaissance: null == dateNaissance ? _self.dateNaissance : dateNaissance // ignore: cast_nullable_to_non_nullable
@@ -72,6 +72,7 @@ as TextFormz,contact: null == contact ? _self.contact : contact // ignore: cast_
 as PhoneFormz,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as TextFormz,nationalite: null == nationalite ? _self.nationalite : nationalite // ignore: cast_nullable_to_non_nullable
 as TextFormz,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as TextFormz,isUpdate: null == isUpdate ? _self.isUpdate : isUpdate // ignore: cast_nullable_to_non_nullable
 as TextFormz,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
@@ -160,10 +161,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz name,  TextFormz dateNaissance,  TextFormz zoneResidence,  TextFormz profileImage,  PhoneFormz contact,  TextFormz email,  TextFormz nationalite,  TextFormz password,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz name,  TextFormz dateNaissance,  TextFormz zoneResidence,  TextFormz profileImage,  PhoneFormz contact,  TextFormz email,  TextFormz nationalite,  TextFormz password,  TextFormz isUpdate,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateCompteProfileState() when $default != null:
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.password,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.password,_that.isUpdate,_that.status,_that.errorMessage,_that.isValide);case _:
   return orElse();
 
 }
@@ -181,10 +182,10 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz name,  TextFormz dateNaissance,  TextFormz zoneResidence,  TextFormz profileImage,  PhoneFormz contact,  TextFormz email,  TextFormz nationalite,  TextFormz password,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz name,  TextFormz dateNaissance,  TextFormz zoneResidence,  TextFormz profileImage,  PhoneFormz contact,  TextFormz email,  TextFormz nationalite,  TextFormz password,  TextFormz isUpdate,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _CreateCompteProfileState():
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.password,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.password,_that.isUpdate,_that.status,_that.errorMessage,_that.isValide);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -201,10 +202,10 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz name,  TextFormz dateNaissance,  TextFormz zoneResidence,  TextFormz profileImage,  PhoneFormz contact,  TextFormz email,  TextFormz nationalite,  TextFormz password,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz name,  TextFormz dateNaissance,  TextFormz zoneResidence,  TextFormz profileImage,  PhoneFormz contact,  TextFormz email,  TextFormz nationalite,  TextFormz password,  TextFormz isUpdate,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateCompteProfileState() when $default != null:
-return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.password,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profileImage,_that.contact,_that.email,_that.nationalite,_that.password,_that.isUpdate,_that.status,_that.errorMessage,_that.isValide);case _:
   return null;
 
 }
@@ -216,7 +217,7 @@ return $default(_that.name,_that.dateNaissance,_that.zoneResidence,_that.profile
 
 
 class _CreateCompteProfileState implements CreateCompteProfileState {
-   _CreateCompteProfileState({required this.name, required this.dateNaissance, required this.zoneResidence, required this.profileImage, required this.contact, required this.email, required this.nationalite, required this.password, required this.status, required this.errorMessage, required this.isValide});
+   _CreateCompteProfileState({required this.name, required this.dateNaissance, required this.zoneResidence, required this.profileImage, required this.contact, required this.email, required this.nationalite, required this.password, required this.isUpdate, required this.status, required this.errorMessage, required this.isValide});
   
 
 @override final  TextFormz name;
@@ -227,6 +228,7 @@ class _CreateCompteProfileState implements CreateCompteProfileState {
 @override final  TextFormz email;
 @override final  TextFormz nationalite;
 @override final  TextFormz password;
+@override final  TextFormz isUpdate;
 @override final  FormzSubmissionStatus status;
 @override final  String errorMessage;
 @override final  bool isValide;
@@ -241,16 +243,16 @@ _$CreateCompteProfileStateCopyWith<_CreateCompteProfileState> get copyWith => __
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateCompteProfileState&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.password, password) || other.password == password)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateCompteProfileState&&(identical(other.name, name) || other.name == name)&&(identical(other.dateNaissance, dateNaissance) || other.dateNaissance == dateNaissance)&&(identical(other.zoneResidence, zoneResidence) || other.zoneResidence == zoneResidence)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.nationalite, nationalite) || other.nationalite == nationalite)&&(identical(other.password, password) || other.password == password)&&(identical(other.isUpdate, isUpdate) || other.isUpdate == isUpdate)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,password,status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,name,dateNaissance,zoneResidence,profileImage,contact,email,nationalite,password,isUpdate,status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'CreateCompteProfileState(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, password: $password, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'CreateCompteProfileState(name: $name, dateNaissance: $dateNaissance, zoneResidence: $zoneResidence, profileImage: $profileImage, contact: $contact, email: $email, nationalite: $nationalite, password: $password, isUpdate: $isUpdate, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -261,7 +263,7 @@ abstract mixin class _$CreateCompteProfileStateCopyWith<$Res> implements $Create
   factory _$CreateCompteProfileStateCopyWith(_CreateCompteProfileState value, $Res Function(_CreateCompteProfileState) _then) = __$CreateCompteProfileStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz name, TextFormz dateNaissance, TextFormz zoneResidence, TextFormz profileImage, PhoneFormz contact, TextFormz email, TextFormz nationalite, TextFormz password, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz name, TextFormz dateNaissance, TextFormz zoneResidence, TextFormz profileImage, PhoneFormz contact, TextFormz email, TextFormz nationalite, TextFormz password, TextFormz isUpdate, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -278,7 +280,7 @@ class __$CreateCompteProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCompteProfileState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? password = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? dateNaissance = null,Object? zoneResidence = null,Object? profileImage = null,Object? contact = null,Object? email = null,Object? nationalite = null,Object? password = null,Object? isUpdate = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_CreateCompteProfileState(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as TextFormz,dateNaissance: null == dateNaissance ? _self.dateNaissance : dateNaissance // ignore: cast_nullable_to_non_nullable
@@ -288,6 +290,7 @@ as TextFormz,contact: null == contact ? _self.contact : contact // ignore: cast_
 as PhoneFormz,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as TextFormz,nationalite: null == nationalite ? _self.nationalite : nationalite // ignore: cast_nullable_to_non_nullable
 as TextFormz,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as TextFormz,isUpdate: null == isUpdate ? _self.isUpdate : isUpdate // ignore: cast_nullable_to_non_nullable
 as TextFormz,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable

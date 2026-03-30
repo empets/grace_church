@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
@@ -187,10 +189,32 @@ class FormProfileBloc
           ),
         );
         break;
+      case ChangeIsUpdateCreateCompteProfile(:final isUpdate):
+        final isUpdateInput = TextFormz.dirty(isUpdate.toString());
+
+        emit(
+          state.copyWith(
+            isUpdate: isUpdateInput,
+            status: FormzSubmissionStatus.initial,
+            isValide: Formz.validate([
+              isUpdateInput,
+              state.name,
+              state.dateNaissance,
+              state.zoneResidence,
+              state.profileImage,
+              state.contact,
+              state.email,
+              state.nationalite,
+            ]),
+          ),
+        );
+        break;
 
       case ChangeSubmitCreateCompte():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+          log('message-_______>> ${state.isUpdate.value}');
 
           final response = await createProfileUsercase.call(
             RequestAuthenProfile(
@@ -204,6 +228,7 @@ class FormProfileBloc
               dateInscription: DateTime.now().toString(),
               password: state.password.value,
               submitProfile: true,
+              isUpdate: bool.parse(state.isUpdate.value) ? true : false,
             ),
           );
 

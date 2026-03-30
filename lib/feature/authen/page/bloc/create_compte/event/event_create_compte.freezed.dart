@@ -55,7 +55,7 @@ extension EventCreateCompteProfilePatterns on EventCreateCompteProfile {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult Function( ChangeSubmitCreateCompte value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult Function( ChangeIsUpdateCreateCompteProfile value)?  changeIsUpdate,TResult Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult Function( ChangeSubmitCreateCompte value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
@@ -64,7 +64,8 @@ return changeDateNaissance(_that);case ChangeZoneResidenceCreateCompteProfile() 
 return changeZoneResidence(_that);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
 return changeProfileImage(_that);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that);case ChangePasswordCreateCompteProfile() when changePassword != null:
-return changePassword(_that);case ChangeEmailCreateCompteProfile() when changeEmail != null:
+return changePassword(_that);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
+return changeIsUpdate(_that);case ChangeEmailCreateCompteProfile() when changeEmail != null:
 return changeEmail(_that);case ChangeNationaliteCreateCompteProfile() when changeNationalite != null:
 return changeNationalite(_that);case ChangeSubmitCreateCompte() when submit != null:
 return submit(_that);case _:
@@ -85,7 +86,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNameEventCreateCompteProfile value)  changeName,required TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)  changeDateNaissance,required TResult Function( ChangeZoneResidenceCreateCompteProfile value)  changeZoneResidence,required TResult Function( ChangeProfileImageCreateCompteProfile value)  changeProfileImage,required TResult Function( ChangeContactCreateCompteProfile value)  changeContact,required TResult Function( ChangePasswordCreateCompteProfile value)  changePassword,required TResult Function( ChangeEmailCreateCompteProfile value)  changeEmail,required TResult Function( ChangeNationaliteCreateCompteProfile value)  changeNationalite,required TResult Function( ChangeSubmitCreateCompte value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNameEventCreateCompteProfile value)  changeName,required TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)  changeDateNaissance,required TResult Function( ChangeZoneResidenceCreateCompteProfile value)  changeZoneResidence,required TResult Function( ChangeProfileImageCreateCompteProfile value)  changeProfileImage,required TResult Function( ChangeContactCreateCompteProfile value)  changeContact,required TResult Function( ChangePasswordCreateCompteProfile value)  changePassword,required TResult Function( ChangeIsUpdateCreateCompteProfile value)  changeIsUpdate,required TResult Function( ChangeEmailCreateCompteProfile value)  changeEmail,required TResult Function( ChangeNationaliteCreateCompteProfile value)  changeNationalite,required TResult Function( ChangeSubmitCreateCompte value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile():
@@ -94,7 +95,8 @@ return changeDateNaissance(_that);case ChangeZoneResidenceCreateCompteProfile():
 return changeZoneResidence(_that);case ChangeProfileImageCreateCompteProfile():
 return changeProfileImage(_that);case ChangeContactCreateCompteProfile():
 return changeContact(_that);case ChangePasswordCreateCompteProfile():
-return changePassword(_that);case ChangeEmailCreateCompteProfile():
+return changePassword(_that);case ChangeIsUpdateCreateCompteProfile():
+return changeIsUpdate(_that);case ChangeEmailCreateCompteProfile():
 return changeEmail(_that);case ChangeNationaliteCreateCompteProfile():
 return changeNationalite(_that);case ChangeSubmitCreateCompte():
 return submit(_that);case _:
@@ -114,7 +116,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult? Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult? Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult? Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult? Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult? Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult? Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult? Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult? Function( ChangeSubmitCreateCompte value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult? Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult? Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult? Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult? Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult? Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult? Function( ChangeIsUpdateCreateCompteProfile value)?  changeIsUpdate,TResult? Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult? Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult? Function( ChangeSubmitCreateCompte value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
@@ -123,7 +125,8 @@ return changeDateNaissance(_that);case ChangeZoneResidenceCreateCompteProfile() 
 return changeZoneResidence(_that);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
 return changeProfileImage(_that);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that);case ChangePasswordCreateCompteProfile() when changePassword != null:
-return changePassword(_that);case ChangeEmailCreateCompteProfile() when changeEmail != null:
+return changePassword(_that);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
+return changeIsUpdate(_that);case ChangeEmailCreateCompteProfile() when changeEmail != null:
 return changeEmail(_that);case ChangeNationaliteCreateCompteProfile() when changeNationalite != null:
 return changeNationalite(_that);case ChangeSubmitCreateCompte() when submit != null:
 return submit(_that);case _:
@@ -143,7 +146,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String name)?  changeName,TResult Function( String dateNaissance)?  changeDateNaissance,TResult Function( String zoneResidence)?  changeZoneResidence,TResult Function( String profileImage)?  changeProfileImage,TResult Function( String contact)?  changeContact,TResult Function( String password)?  changePassword,TResult Function( String email)?  changeEmail,TResult Function( String nationalite)?  changeNationalite,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String name)?  changeName,TResult Function( String dateNaissance)?  changeDateNaissance,TResult Function( String zoneResidence)?  changeZoneResidence,TResult Function( String profileImage)?  changeProfileImage,TResult Function( String contact)?  changeContact,TResult Function( String password)?  changePassword,TResult Function( bool isUpdate)?  changeIsUpdate,TResult Function( String email)?  changeEmail,TResult Function( String nationalite)?  changeNationalite,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
 return changeName(_that.name);case ChangeDateNaissanceEventCreateCompteProfile() when changeDateNaissance != null:
@@ -151,7 +154,8 @@ return changeDateNaissance(_that.dateNaissance);case ChangeZoneResidenceCreateCo
 return changeZoneResidence(_that.zoneResidence);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
 return changeProfileImage(_that.profileImage);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that.contact);case ChangePasswordCreateCompteProfile() when changePassword != null:
-return changePassword(_that.password);case ChangeEmailCreateCompteProfile() when changeEmail != null:
+return changePassword(_that.password);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
+return changeIsUpdate(_that.isUpdate);case ChangeEmailCreateCompteProfile() when changeEmail != null:
 return changeEmail(_that.email);case ChangeNationaliteCreateCompteProfile() when changeNationalite != null:
 return changeNationalite(_that.nationalite);case ChangeSubmitCreateCompte() when submit != null:
 return submit();case _:
@@ -172,7 +176,7 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String name)  changeName,required TResult Function( String dateNaissance)  changeDateNaissance,required TResult Function( String zoneResidence)  changeZoneResidence,required TResult Function( String profileImage)  changeProfileImage,required TResult Function( String contact)  changeContact,required TResult Function( String password)  changePassword,required TResult Function( String email)  changeEmail,required TResult Function( String nationalite)  changeNationalite,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String name)  changeName,required TResult Function( String dateNaissance)  changeDateNaissance,required TResult Function( String zoneResidence)  changeZoneResidence,required TResult Function( String profileImage)  changeProfileImage,required TResult Function( String contact)  changeContact,required TResult Function( String password)  changePassword,required TResult Function( bool isUpdate)  changeIsUpdate,required TResult Function( String email)  changeEmail,required TResult Function( String nationalite)  changeNationalite,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile():
 return changeName(_that.name);case ChangeDateNaissanceEventCreateCompteProfile():
@@ -180,7 +184,8 @@ return changeDateNaissance(_that.dateNaissance);case ChangeZoneResidenceCreateCo
 return changeZoneResidence(_that.zoneResidence);case ChangeProfileImageCreateCompteProfile():
 return changeProfileImage(_that.profileImage);case ChangeContactCreateCompteProfile():
 return changeContact(_that.contact);case ChangePasswordCreateCompteProfile():
-return changePassword(_that.password);case ChangeEmailCreateCompteProfile():
+return changePassword(_that.password);case ChangeIsUpdateCreateCompteProfile():
+return changeIsUpdate(_that.isUpdate);case ChangeEmailCreateCompteProfile():
 return changeEmail(_that.email);case ChangeNationaliteCreateCompteProfile():
 return changeNationalite(_that.nationalite);case ChangeSubmitCreateCompte():
 return submit();case _:
@@ -200,7 +205,7 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String name)?  changeName,TResult? Function( String dateNaissance)?  changeDateNaissance,TResult? Function( String zoneResidence)?  changeZoneResidence,TResult? Function( String profileImage)?  changeProfileImage,TResult? Function( String contact)?  changeContact,TResult? Function( String password)?  changePassword,TResult? Function( String email)?  changeEmail,TResult? Function( String nationalite)?  changeNationalite,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String name)?  changeName,TResult? Function( String dateNaissance)?  changeDateNaissance,TResult? Function( String zoneResidence)?  changeZoneResidence,TResult? Function( String profileImage)?  changeProfileImage,TResult? Function( String contact)?  changeContact,TResult? Function( String password)?  changePassword,TResult? Function( bool isUpdate)?  changeIsUpdate,TResult? Function( String email)?  changeEmail,TResult? Function( String nationalite)?  changeNationalite,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
 return changeName(_that.name);case ChangeDateNaissanceEventCreateCompteProfile() when changeDateNaissance != null:
@@ -208,7 +213,8 @@ return changeDateNaissance(_that.dateNaissance);case ChangeZoneResidenceCreateCo
 return changeZoneResidence(_that.zoneResidence);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
 return changeProfileImage(_that.profileImage);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that.contact);case ChangePasswordCreateCompteProfile() when changePassword != null:
-return changePassword(_that.password);case ChangeEmailCreateCompteProfile() when changeEmail != null:
+return changePassword(_that.password);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
+return changeIsUpdate(_that.isUpdate);case ChangeEmailCreateCompteProfile() when changeEmail != null:
 return changeEmail(_that.email);case ChangeNationaliteCreateCompteProfile() when changeNationalite != null:
 return changeNationalite(_that.nationalite);case ChangeSubmitCreateCompte() when submit != null:
 return submit();case _:
@@ -609,6 +615,72 @@ class _$ChangePasswordCreateCompteProfileCopyWithImpl<$Res>
   return _then(ChangePasswordCreateCompteProfile(
 null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChangeIsUpdateCreateCompteProfile implements EventCreateCompteProfile {
+   ChangeIsUpdateCreateCompteProfile(this.isUpdate);
+  
+
+ final  bool isUpdate;
+
+/// Create a copy of EventCreateCompteProfile
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeIsUpdateCreateCompteProfileCopyWith<ChangeIsUpdateCreateCompteProfile> get copyWith => _$ChangeIsUpdateCreateCompteProfileCopyWithImpl<ChangeIsUpdateCreateCompteProfile>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeIsUpdateCreateCompteProfile&&(identical(other.isUpdate, isUpdate) || other.isUpdate == isUpdate));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isUpdate);
+
+@override
+String toString() {
+  return 'EventCreateCompteProfile.changeIsUpdate(isUpdate: $isUpdate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeIsUpdateCreateCompteProfileCopyWith<$Res> implements $EventCreateCompteProfileCopyWith<$Res> {
+  factory $ChangeIsUpdateCreateCompteProfileCopyWith(ChangeIsUpdateCreateCompteProfile value, $Res Function(ChangeIsUpdateCreateCompteProfile) _then) = _$ChangeIsUpdateCreateCompteProfileCopyWithImpl;
+@useResult
+$Res call({
+ bool isUpdate
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeIsUpdateCreateCompteProfileCopyWithImpl<$Res>
+    implements $ChangeIsUpdateCreateCompteProfileCopyWith<$Res> {
+  _$ChangeIsUpdateCreateCompteProfileCopyWithImpl(this._self, this._then);
+
+  final ChangeIsUpdateCreateCompteProfile _self;
+  final $Res Function(ChangeIsUpdateCreateCompteProfile) _then;
+
+/// Create a copy of EventCreateCompteProfile
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? isUpdate = null,}) {
+  return _then(ChangeIsUpdateCreateCompteProfile(
+null == isUpdate ? _self.isUpdate : isUpdate // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

@@ -19,6 +19,7 @@ _RequestAuthenProfile _$RequestAuthenProfileFromJson(
   dateInscription: json['dateInscription'] as String,
   password: json['password'] as String,
   submitProfile: json['submitProfile'] as bool,
+  isUpdate: json['isUpdate'] as bool,
 );
 
 Map<String, dynamic> _$RequestAuthenProfileToJson(
@@ -34,6 +35,7 @@ Map<String, dynamic> _$RequestAuthenProfileToJson(
   'dateInscription': instance.dateInscription,
   'password': instance.password,
   'submitProfile': instance.submitProfile,
+  'isUpdate': instance.isUpdate,
 };
 
 _RequestAuthenSocial _$RequestAuthenSocialFromJson(Map<String, dynamic> json) =>

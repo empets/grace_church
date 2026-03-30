@@ -15,6 +15,7 @@ abstract class RequestAuthenProfile with _$RequestAuthenProfile {
     required String dateInscription,
     required String password,
     required bool submitProfile,
+    required bool isUpdate,
   }) = _RequestAuthenProfile;
 
   factory RequestAuthenProfile.fromJson(Map<String, dynamic> json) =>

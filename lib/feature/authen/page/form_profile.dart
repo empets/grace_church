@@ -572,32 +572,41 @@ class _FormProfileState extends State<FormProfile> {
 
                     Container(
                       margin: EdgeInsets.only(top: 18.h),
-                      child:
-                          BlocBuilder<
-                            FormProfileBloc,
-                            CreateCompteProfileState
-                          >(
-                            builder: (context, state) {
-                              return PrimaryButton(
-                                isLoading: state.status.isInProgress,
-                                label: 'Continuer',
-                                icon: Icons.arrow_forward_rounded,
-                                backgroundColor:
-                                    state.status.isInProgress || state.isValide
-                                    ? context.appColor.primaryBlue
-                                    : context.appColor.primaryLightBlue,
-                                colorText: context.appColor.primaryWhite,
-                                onPressed: state.status.isInProgress
-                                    ? null
-                                    : () {
-                                        FocusScope.of(context).unfocus();
-                                        context.read<FormProfileBloc>().add(
-                                          EventCreateCompteProfile.submit(),
-                                        );
-                                      },
-                              );
-                            },
-                          ),
+                      child: BlocBuilder<FormProfileBloc, CreateCompteProfileState>(
+                        builder: (context, state) {
+                          return PrimaryButton(
+                            isLoading: state.status.isInProgress,
+                            label: 'Continuer',
+                            icon: Icons.arrow_forward_rounded,
+                            backgroundColor:
+                                state.status.isInProgress || state.isValide
+                                ? context.appColor.primaryBlue
+                                : context.appColor.primaryLightBlue,
+                            colorText: context.appColor.primaryWhite,
+                            onPressed: state.status.isInProgress
+                                ? null
+                                : () {
+                                    FocusScope.of(context).unfocus();
+                                    if (widget.isFormSignIn) {
+                                      context.read<FormProfileBloc>().add(
+                                        EventCreateCompteProfile.changeIsUpdate(
+                                          false,
+                                        ),
+                                      );
+                                    } else {
+                                      context.read<FormProfileBloc>().add(
+                                        EventCreateCompteProfile.changeIsUpdate(
+                                          true,
+                                        ),
+                                      );
+                                    }
+                                    context.read<FormProfileBloc>().add(
+                                      EventCreateCompteProfile.submit(),
+                                    );
+                                  },
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

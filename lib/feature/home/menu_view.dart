@@ -28,19 +28,20 @@ import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/signin_view.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
+import 'package:grace_church/feature/home/rapport_cellule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuView extends StatelessWidget {
   MenuView({super.key});
 
-  Widget buildForm({required ProfileResponseModel? state}) {
-    if (state?.submitProfile == false) {
+  Widget buildForm({required ProfileResponse state}) {
+    if (state.submitProfile == false) {
       return FormProfile();
-    } else if (state?.submitSocial == false) {
+    } else if (state.submitSocial == false) {
       return FormSocialProfessionnal();
-    } else if (state?.submitSpiritual == false) {
+    } else if (state.submitSpiritual == false) {
       return FormHollyLiving();
-    } else if (state?.submitEngagement == false) {
+    } else if (state.submitEngagement == false) {
       return FormEngagement();
     } else {
       return ProfileView(profile: state);
@@ -133,10 +134,9 @@ class MenuView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                StreamBuilder(
-                  stream: getIt<ImpleSteamRemoteService>().getProfileStream(),
+                BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
                   builder: (context, profileStream) {
-                    if (profileStream.hasData && profileStream.data != null) {
+                    if (profileStream is SuccessState<ProfileResponse>) {
                       return Container(
                         margin: EdgeInsets.only(top: 40.h),
                         padding: EdgeInsets.symmetric(horizontal: 2.w),
@@ -171,7 +171,7 @@ class MenuView extends StatelessWidget {
                                             width: 0.08.sh,
                                           ),
                                         ),
-                                        profileStream.data?.profileImage ?? "",
+                                        profileStream.data.profileImage ?? "",
 
                                         fit: BoxFit.cover,
                                         height: 0.1.sh,
@@ -182,7 +182,7 @@ class MenuView extends StatelessWidget {
 
                                   SizedBox(width: 12.w),
                                   Text(
-                                    profileStream.data?.name ?? "",
+                                    profileStream.data.name ?? "",
                                     style: context.appTypographie.body.copyWith(
                                       fontSize: 20.sp,
                                       fontWeight: FontWeight.bold,
@@ -190,7 +190,7 @@ class MenuView extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    profileStream.data?.email ?? "",
+                                    profileStream.data.email ?? "",
                                     style: context.appTypographie.body.copyWith(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.normal,
@@ -214,17 +214,21 @@ class MenuView extends StatelessWidget {
                                           List<ReponsableCelluleResponse>
                                         >) {
                                       isResponsableCellule =
-                                          listResponsableState.data.any(
-                                            (element) => element.responsable
+                                          listResponsableState.data.any((
+                                            element,
+                                          ) {
+                                            log(
+                                              'isResponsableCellule: ${element.responsable}',
+                                            );
+                                            return !element.responsable
                                                 .trim()
                                                 .toLowerCase()
                                                 .contains(
-                                                  profileStream.data?.name
-                                                          ?.trim()
-                                                          .toLowerCase() ??
-                                                      "",
-                                                ),
-                                          );
+                                                  profileStream.data.name
+                                                      .trim()
+                                                      .toLowerCase(),
+                                                );
+                                          });
                                       log(
                                         'isResponsableCellule: $isResponsableCellule',
                                       );
@@ -258,7 +262,7 @@ class MenuView extends StatelessWidget {
                                                   item["value"] == "profile" &&
                                                           profileStream
                                                                   .data
-                                                                  ?.submitEngagement ==
+                                                                  .submitEngagement ==
                                                               true
                                                       ? 'Mon profile'
                                                       : item["title"],
@@ -346,6 +350,14 @@ class MenuView extends StatelessWidget {
                                                     );
                                                   }
                                                   if (item["value"] ==
+                                                      "cellule_space") {
+                                                    Navigator.of(context).push(
+                                                      fadeRoute(
+                                                        EditingCelluleRaport(),
+                                                      ),
+                                                    );
+                                                  }
+                                                  if (item["value"] ==
                                                       "cellule") {
                                                     Navigator.of(context).push(
                                                       fadeRoute(
@@ -353,7 +365,7 @@ class MenuView extends StatelessWidget {
                                                           cellueId:
                                                               profileStream
                                                                   .data
-                                                                  ?.celluleId ??
+                                                                  .celluleId ??
                                                               "",
                                                         ),
                                                       ),
@@ -392,7 +404,7 @@ class MenuView extends StatelessWidget {
                                                   item["value"] == "profile" &&
                                                           profileStream
                                                                   .data
-                                                                  ?.submitEngagement !=
+                                                                  .submitEngagement !=
                                                               true
                                                       ? 'Mon profile'
                                                       : item["title"],
@@ -486,7 +498,7 @@ class MenuView extends StatelessWidget {
                                                           cellueId:
                                                               profileStream
                                                                   .data
-                                                                  ?.celluleId ??
+                                                                  .celluleId ??
                                                               "",
                                                         ),
                                                       ),
@@ -546,7 +558,7 @@ class MenuView extends StatelessWidget {
                                         width: 0.08.sh,
                                       ),
                                     ),
-                                    profileStream.data?.profileImage ?? "",
+                                    '',
 
                                     fit: BoxFit.cover,
                                     height: 0.1.sh,
@@ -557,7 +569,7 @@ class MenuView extends StatelessWidget {
 
                               SizedBox(width: 12.w),
                               Text(
-                                profileStream.data?.name ?? "Hello",
+                                "Hello",
                                 style: context.appTypographie.body.copyWith(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.bold,
@@ -567,8 +579,7 @@ class MenuView extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                                 child: Text(
-                                  profileStream.data?.email ??
-                                      "vous n'avez pas d'email",
+                                  "" ?? "vous n'avez pas d'email",
                                   style: context.appTypographie.body.copyWith(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.normal,
