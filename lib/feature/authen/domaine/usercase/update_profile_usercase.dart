@@ -6,16 +6,13 @@ import 'package:grace_church/feature/authen/domaine/repository/authen_repository
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class CreateSocialProfileUsercase
-    implements UseCase<String?, RequestAuthenSocial> {
-  CreateSocialProfileUsercase(this.repository);
+class UpdateProfileUsercase implements UseCase<String?, RequestAuthenProfile> {
+  UpdateProfileUsercase(this.repository);
 
   final AuthenRepository repository;
 
   @override
-  Future<Either<Failure, String?>> call(RequestAuthenSocial params) {
-    return repository.createSocial(params);
+  Future<Either<Failure, String?>> call(RequestAuthenProfile params) {
+    return repository.updateProfile(params);
   }
 }
-
-

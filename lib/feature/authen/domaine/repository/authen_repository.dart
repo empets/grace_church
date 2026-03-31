@@ -4,6 +4,7 @@ import 'package:grace_church/feature/authen/domaine/entities/request/authen_requ
 
 abstract class AuthenRepository {
   Future<Either<Failure, String?>> createProfile(RequestAuthenProfile request);
+  Future<Either<Failure, String?>> updateProfile(RequestAuthenProfile request);
   Future<Either<Failure, String?>> createSocial(RequestAuthenSocial request);
   Future<Either<Failure, String?>> createSpiritualLife(
     RequestAuthenSpiritualLife request,

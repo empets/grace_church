@@ -13,6 +13,7 @@ import 'package:grace_church/feature/authen/domaine/usercase/create_profile_user
 import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/signin_profile.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/update_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/event/signin_event.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/signing_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/state/signin_state.dart';
@@ -209,6 +210,8 @@ class SigninView extends StatelessWidget {
                                   create: (context) => FormProfileBloc(
                                     createProfileUsercase:
                                         getIt<CreateProfileUsercase>(),
+                                    updateProfileUsercase:
+                                        getIt<UpdateProfileUsercase>(),
                                   ),
                                 ),
                                 BlocProvider(

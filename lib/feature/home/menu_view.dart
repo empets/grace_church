@@ -10,6 +10,7 @@ import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/update_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
 import 'package:grace_church/feature/authen/page/form_engagement.dart';
@@ -313,6 +314,10 @@ class MenuView extends StatelessWidget {
                                                                         getIt<
                                                                           CreateProfileUsercase
                                                                         >(),
+                                                                    updateProfileUsercase:
+                                                                        getIt<
+                                                                          UpdateProfileUsercase
+                                                                        >(),
                                                                   ),
                                                             ),
                                                             BlocProvider(
@@ -453,6 +458,10 @@ class MenuView extends StatelessWidget {
                                                                     createProfileUsercase:
                                                                         getIt<
                                                                           CreateProfileUsercase
+                                                                        >(),
+                                                                    updateProfileUsercase:
+                                                                        getIt<
+                                                                          UpdateProfileUsercase
                                                                         >(),
                                                                   ),
                                                             ),
@@ -642,6 +651,10 @@ class MenuView extends StatelessWidget {
                                                         createProfileUsercase:
                                                             getIt<
                                                               CreateProfileUsercase
+                                                            >(),
+                                                        updateProfileUsercase:
+                                                            getIt<
+                                                              UpdateProfileUsercase
                                                             >(),
                                                       ),
                                                 ),

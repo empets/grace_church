@@ -33,6 +33,21 @@ class ImpleAuthenRepository implements AuthenRepository {
   }
 
   @override
+  Future<Either<Failure, String?>> updateProfile(
+    RequestAuthenProfile request,
+  ) async {
+    final response = await authenRemoteService.updateProfile(request);
+    if (response is FirebaseSuccess<String?>) {
+      final shared = await SharedPreferences.getInstance();
+      await shared.setString('menberkey', response.data ?? '');
+      return Right(response.data);
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
+
+  @override
   Future<Either<Failure, String?>> createSocial(
     RequestAuthenSocial params,
   ) async {
@@ -91,4 +106,5 @@ class ImpleAuthenRepository implements AuthenRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+
 }

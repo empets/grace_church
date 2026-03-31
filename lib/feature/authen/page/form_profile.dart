@@ -51,22 +51,21 @@ class _FormProfileState extends State<FormProfile> {
   Future<void> _openCalendar() async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-      selectableDayPredicate: (day) {
-        // Bloquer dates futures
-        if (day.isAfter(DateTime.now())) {
-          return false;
-        }
+     initialDate: DateTime(2012),
+  firstDate: DateTime(1900),
+  lastDate: DateTime.now(), // pas de futur
+  selectableDayPredicate: (day) {
+    final now = DateTime.now();
 
-        // Bloquer date spécifique
-        if (day.year == 2024 && day.month == 12 && day.day == 25) {
-          return false;
-        }
+    // 🔥 âge minimum 14 ans
+    final maxDate = DateTime(now.year - 14, now.month, now.day);
 
-        return true;
-      },
+    if (day.isAfter(maxDate)) {
+      return false;
+    }
+
+    return true;
+  },
 
       /// 🎨 Custom Theme
       builder: (context, child) {
@@ -366,7 +365,7 @@ class _FormProfileState extends State<FormProfile> {
                           isColorBlue: state.dateNaissance.isValid
                               ? true
                               : false,
-                          readOnly: state.status.isInProgress,
+                          readOnly: true,
                           controller: textEditingControllerDateNaissance,
                           inputLabel: 'Date de naissance',
                           textLabel: "Cliquer sur l'icon juste à droite ",

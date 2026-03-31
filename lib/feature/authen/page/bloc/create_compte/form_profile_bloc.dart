@@ -5,18 +5,20 @@ import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/update_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:bloc/bloc.dart';
 
 class FormProfileBloc
     extends Bloc<EventCreateCompteProfile, CreateCompteProfileState> {
-  FormProfileBloc({required this.createProfileUsercase})
+  FormProfileBloc({required this.createProfileUsercase, required this.updateProfileUsercase})
     : super(CreateCompteProfileState.initial()) {
     on<EventCreateCompteProfile>(createProfile);
   }
 
   final CreateProfileUsercase createProfileUsercase;
+  final UpdateProfileUsercase updateProfileUsercase;
 
   Future<void> createProfile(
     EventCreateCompteProfile event,
@@ -214,9 +216,9 @@ class FormProfileBloc
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-          log('message-_______>> ${state.isUpdate.value}');
-
-          final response = await createProfileUsercase.call(
+          
+           if(bool.parse(state.isUpdate.value) == true){
+             final response = await createProfileUsercase.call(
             RequestAuthenProfile(
               name: state.name.value,
               dateNaissance: state.dateNaissance.value,
@@ -228,7 +230,7 @@ class FormProfileBloc
               dateInscription: DateTime.now().toString(),
               password: state.password.value,
               submitProfile: true,
-              isUpdate: bool.parse(state.isUpdate.value) ? true : false,
+              isUpdate: true,
             ),
           );
 
@@ -242,6 +244,42 @@ class FormProfileBloc
                   state.copyWith(status: FormzSubmissionStatus.success),
             ),
           );
+           
+           }
+
+           if(bool.parse(state.isUpdate.value) == false){
+             final response = await createProfileUsercase.call(
+            RequestAuthenProfile(
+              name: state.name.value,
+              dateNaissance: state.dateNaissance.value,
+              zoneResidence: state.zoneResidence.value,
+              profileImage: state.profileImage.value,
+              contact: state.contact.value,
+              email: state.email.value,
+              nationalite: state.nationalite.value,
+              dateInscription: DateTime.now().toString(),
+              password: state.password.value,
+              submitProfile: true,
+              isUpdate: false,
+            ),
+          );
+
+          emit(
+            response.fold(
+              (failure) => state.copyWith(
+                errorMessage: failure.message.getOrEmpty() ?? "",
+                status: FormzSubmissionStatus.failure,
+              ),
+              (success) =>
+                  state.copyWith(status: FormzSubmissionStatus.success),
+            ),
+          );
+            
+           }
+
+
+
+         
         }
         break;
     }

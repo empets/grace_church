@@ -21,42 +21,25 @@ class ImplRemoteService implements AuthenRemoteService {
   Future<FirebaseResult<String?>> createProfile(
     RequestAuthenProfile params,
   ) async {
-    final shared = await shareData.SharedPreferences.getInstance();
-    final localUserSection = shared.getString('menberkey');
+    // final shared = await shareData.SharedPreferences.getInstance();
+    // final localUserSection = shared.getString('menberkey');
 
     try {
       final nameExist = await db
           .child('menber')
-          .orderByChild('userId')
-          .equalTo(localUserSection)
+          .orderByChild('name')
+          .equalTo(params.name)
+          .get();
+          final emailExist = await db
+          .child('menber')
+          .orderByChild('email')
+          .equalTo(params.email)
           .get();
 
-      if (params.isUpdate &&
-          nameExist.exists &&
-          localUserSection != null &&
-          localUserSection.isNotEmpty) {
-        log('------>> LE SUSER EXISTE UN UPDATE');
-        final Map<String, dynamic> updates = {
-          ...params.toJson(), // nouveaux champs simples
-          'serviceLibelle': '',
-          'userId': localUserSection.toString(),
-        };
-        // 2) Créer une nouvelle entrée
-        await db.child('menber/$localUserSection').update(updates);
-
-        // 4) Retourner le key généré
-        return FirebaseSuccess(localUserSection);
-      }
-      //--------------------------------
-      // CREATION DE COMPTE
-      //--------------------------------
-      else {
-        if (nameExist.exists) {
-          log('------>> LA BD  EXISTE PAS');
-          // si le nom existe on retoune une erreur
-          return FirebaseError("Cet utilisateur existe deja");
-        }
-         else {
+          if(nameExist.exists || emailExist.exists){
+              return FirebaseError("Name or email already exists");
+          }
+          else {
           log('------>> LA BD  EXISTE PAS');
           // 1) Construire l'objet Request
           final request = Request<RequestAuthenProfile>(
@@ -84,7 +67,7 @@ class ImplRemoteService implements AuthenRemoteService {
           );
 
           if (result is FirebaseSuccess<String?>) {
-            log("-----------_>>1 ${result.data}");
+           
             final Map<String, dynamic> updates = {
               ...params
                   .copyWith(profileImage: result.data.toString())
@@ -98,116 +81,12 @@ class ImplRemoteService implements AuthenRemoteService {
           // 4) Retourner le key généré
           return FirebaseSuccess(ref.key);
         }
-      }
 
-      // final nameExist = await db
-      //     .child('menber')
-      //     .orderByChild('name')
-      //     .equalTo(params.name)
-      //     .get();
 
-      // if (nameExist.exists) {
-      //   log('------>> LA BD EXISTE ET LE USER EXISTE PAS');
-      //   return FirebaseError("Cet utilisateur existe deja");
-      // }
-      // // else {
-      // //   //______>> LA BD EXISTE ET LE USER EXISTE PAS
-      // //   log('------>> LA BD EXISTE ET LE USER EXISTE PAS');
-      // //   // 1) Construire l'objet Request
-      // //   final request = Request<RequestAuthenProfile>(
-      // //     data: params.toJson(),
-      // //     user: "",
-      // //     serviceLibelle: 'serviceLibelle',
-      // //   );
-      // //   // 2) Créer une nouvelle entré ou table
-      // //   final ref = db.child('menber').push();
-      // //   // 3) Sauvegarder dans Firebase (en convertissant en Map)
-      // //   await ref.set(request.data);
-      // //   // 4) Mettre à jour la clé
-      // //   await updateProfileKey(
-      // //     RequestAuthenProfileUpdateKey(menberId: ref.key.toString()),
-      // //   );
-      // //   // 5) Télécharger l'image
-      // //   final result = await uploadprofileImage(
-      // //     params: RequestAuthenProfileUpdateImage(
-      // //       profileImage: params.profileImage,
-      // //       menberId: ref.key.toString(),
-      // //       createAt: DateTime.now().toIso8601String(),
-      // //     ),
-      // //   );
-      // //   if (result is FirebaseSuccess<String?>) {
-      // //     log("-----------_>>1 ${result.data}");
-      // //     final Map<String, dynamic> updates = {
-      // //       ...params
-      // //           .copyWith(profileImage: result.data.toString())
-      // //           .toJson(), // nouveaux champs simples
-      // //       'serviceLibelle': '',
-      // //     };
-      // //     // 2) Créer une nouvelle entrée
-      // //     await db.child('menber/${ref.key.toString()}').update(updates);
-      // //   }
-      // //   final shared = await shareData.SharedPreferences.getInstance();
-      // //   await shared.setString('menberkey', ref.key.toString());
-      // //   // 4) Retourner le key généré
-      // //   return FirebaseSuccess(ref.key);
-      // // }
-      // //______>> LE SUSER EXISTE UN UPDATE
-      // else if (localUserSection != null && localUserSection.isNotEmpty) {
-      //   log('------>> LE SUSER EXISTE UN UPDATE');
-      //   final Map<String, dynamic> updates = {
-      //     ...params.toJson(), // nouveaux champs simples
-      //     'serviceLibelle': '',
-      //     'userId': localUserSection.toString(),
-      //   };
-      //   // 2) Créer une nouvelle entrée
-      //   await db.child('menber/$localUserSection').update(updates);
+          
 
-      //   // 4) Retourner le key généré
-      //   return FirebaseSuccess(localUserSection);
-      // }
-      // //______>> LA BD  EXISTE PAS
-      // else {
-      //   log('------>> LA BD  EXISTE PAS');
-      //   // 1) Construire l'objet Request
-      //   final request = Request<RequestAuthenProfile>(
-      //     data: params.toJson(),
-      //     user: "",
-      //     serviceLibelle: 'serviceLibelle',
-      //   );
-      //   // 2) Créer une nouvelle entré ou table
-      //   final ref = db.child('menber').push();
-      //   // 3) Sauvegarder dans Firebase (en convertissant en Map)
-      //   await ref.set(request.data);
 
-      //   // 4) Mettre à jour la clé
-      //   await updateProfileKey(
-      //     RequestAuthenProfileUpdateKey(menberId: ref.key.toString()),
-      //   );
-
-      //   // 5) Télécharger l'image
-      //   final result = await uploadprofileImage(
-      //     params: RequestAuthenProfileUpdateImage(
-      //       profileImage: params.profileImage,
-      //       menberId: ref.key.toString(),
-      //       createAt: DateTime.now().toIso8601String(),
-      //     ),
-      //   );
-
-      //   if (result is FirebaseSuccess<String?>) {
-      //     log("-----------_>>1 ${result.data}");
-      //     final Map<String, dynamic> updates = {
-      //       ...params
-      //           .copyWith(profileImage: result.data.toString())
-      //           .toJson(), // nouveaux champs simples
-      //       'serviceLibelle': '',
-      //     };
-      //     // 2) Créer une nouvelle entrée
-      //     await db.child('menber/${ref.key.toString()}').update(updates);
-      //   }
-
-      //   // 4) Retourner le key généré
-      //   return FirebaseSuccess(ref.key);
-      // }
+  
     } catch (e) {
       log("${FirebaseException(message: e.toString(), plugin: "authen")}");
       ;
@@ -216,6 +95,49 @@ class ImplRemoteService implements AuthenRemoteService {
       return FirebaseError(e.toString());
     }
   }
+  
+    @override
+  Future<FirebaseResult<String?>> updateProfile(
+    RequestAuthenProfile params,
+  ) async {
+    final shared = await shareData.SharedPreferences.getInstance();
+    final localUserSection = shared.getString('menberkey');
+
+    try {
+      final userIdExist = await db
+          .child('menber')
+          .orderByChild('userId')
+          .equalTo(localUserSection)
+          .get();
+          
+
+      if (params.isUpdate == true &&
+          userIdExist.exists &&
+          localUserSection != null &&
+          localUserSection.isNotEmpty) {
+      
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+          'serviceLibelle': '',
+          'userId': localUserSection.toString(),
+        };
+        // 2) Créer une nouvelle entrée
+        await db.child('menber/$localUserSection').update(updates);
+
+        // 4) Retourner le key généré
+        return FirebaseSuccess(localUserSection);
+      }
+      return FirebaseError('User not found');
+
+    } catch (e) {
+      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
+    
+
+      log("🔥 Firebase ERROR updateProfile → $e");
+      return FirebaseError(e.toString());
+    }
+  }
+
 
   @override
   Future<FirebaseResult<String?>> createSocial(
