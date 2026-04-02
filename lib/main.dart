@@ -12,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
+import 'package:grace_church/feature/mabox_view.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -83,7 +84,9 @@ class MyApp extends StatelessWidget {
         },
         child: BlocBuilder<AppLauncherBloc, ApiState<bool>>(
           builder: (context, state) {
-            return state is SuccessState<bool> ? const OverviewScreen() : OnboardingScreen();
+            return MaboxView();
+            
+            // state is SuccessState<bool> ? const OverviewScreen() : OnboardingScreen();
           },
         ),
         // OverviewScreen(),

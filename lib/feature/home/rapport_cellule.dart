@@ -466,13 +466,140 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                 backgroundColorFeft: Colors.red.shade100,
               ),
 
-               SizedBox(height: 16.h),
+              SizedBox(height: 16.h),
 
               AddcelluleMenber(
                 title: "Nombre de nouvelle personne a la cellule",
                 subtitle: "Ayant rejoindre la cellule",
                 icon: Icons.group_add,
                 backgroundColorFeft: context.appColor.primarySuccess,
+              ),
+              SizedBox(height: 16.h),
+              Column(
+                children: [
+                  CustomeText(
+                    text: "Total Décisionnnaire",
+                    style: context.appTypographie.body.copyWith(
+                      fontSize: 13.sp,
+                      color: context.appColor.primaryGrayDark,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 14.h),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.group_add_outlined,
+                        color: context.appColor.primaryBlue,
+                        size: 20.sp,
+                      ),
+                      SizedBox(width: 5.w),
+                      Text(
+                        "Liste des disciples du noyau",
+                        style: context.appTypographie.small.copyWith(
+                          color: Colors.grey.shade700,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 3.w),
+                    ],
+                  ),
+                  ProductionFormCustomer(
+                    readOnly: true,
+                    inputLabelSize: 0.sp,
+                    isColorBlue: false,
+
+                    inputLabel: '',
+                    textLabel: "Cliquer sur l'icon juste à droite ",
+                    errorText: null,
+                    msgError: 'Veuillez renseigner ce champ',
+                    sufixIcon: Container(
+                      margin: EdgeInsets.only(right: 3.w),
+                      decoration: BoxDecoration(
+                        color: context.appColor.primaryLightBlue,
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: IconButton(
+                        onPressed:
+                            // state.status.isInProgress ||
+                            //     state.statusSpirituel.value
+                            //             .toLowerCase() !=
+                            //         "baptiser"
+                            // ? null
+                            // :
+                            () {
+                              // if (state.statusSpirituel.value
+                              //         .toLowerCase() ==
+                              //     "baptiser") {
+                              //   _openCalendar();
+                              // }
+                            },
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                          // state.statusSpirituel.value.toLowerCase() ==
+                          //         "baptiser"
+                          //     ? Icons.calendar_month_sharp
+                          //     : Icons.lock,
+                          color: context.appColor.primaryBlue,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 9.h),
+                ],
+              ),
+              Column(
+                children: [
+                  ...List.generate(
+                    2,
+                    (index) => ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: CircleAvatar(
+                        radius: 20.r,
+                        backgroundColor: context.appColor.primaryGray700,
+                        child: ClipOval(
+                          child: Image.network(
+                            loadingBuilder: (context, child, loadingProgress) {
+                              return child;
+                            },
+                            errorBuilder: (_, __, ___) => ClipOval(
+                              child: Image.network(
+                                "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                                fit: BoxFit.contain,
+                                height: 0.08.sh,
+                                width: 0.08.sh,
+                              ),
+                            ),
+                            "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
+                            // profileStream.data.profileImage ?? "",
+                            fit: BoxFit.cover,
+                            height: 0.08.sh,
+                            width: 0.08.sh,
+                          ),
+                        ),
+                      ),
+                      title: Text(
+                        "Nom du disciple",
+                        style: context.appTypographie.subtitle.copyWith(
+                          fontSize: 13.sp,
+                          color: context.appColor.primaryGray700,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "Role du disciple",
+                        style: context.appTypographie.subtitle.copyWith(
+                          fontSize: 12.sp,
+                          color: context.appColor.primaryGray500,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -489,13 +616,15 @@ class AddcelluleMenber extends StatelessWidget {
     required this.subtitle,
     required this.icon,
     required this.backgroundColorFeft,
+    this.isShowIcon = true,
+    this.leftBorderColor = Colors.transparent,
   });
   final String title;
   final String subtitle;
   final IconData icon;
   final Color backgroundColorFeft;
-  
-
+  final bool isShowIcon;
+  final Color leftBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -503,10 +632,7 @@ class AddcelluleMenber extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       decoration: BoxDecoration(
         border: Border(
-          left: BorderSide(
-            color: backgroundColorFeft,
-            width: 4.w,
-          ),
+          left: BorderSide(color: backgroundColorFeft, width: 4.w),
         ),
         color: context.appColor.primaryWhite,
         borderRadius: BorderRadius.circular(12.r),
@@ -527,7 +653,7 @@ class AddcelluleMenber extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  CustomeText(    
+                  CustomeText(
                     text: subtitle,
                     style: context.appTypographie.body.copyWith(
                       fontSize: 11.sp,
@@ -538,13 +664,11 @@ class AddcelluleMenber extends StatelessWidget {
                   ),
                 ],
               ),
-              Icon(
-                icon,
-                color: context.appColor.primaryDarkBlue,
-              ),
+              if (isShowIcon)
+                Icon(icon, color: context.appColor.primaryDarkBlue),
             ],
           ),
-    
+
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -552,7 +676,9 @@ class AddcelluleMenber extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(17.w),
                   decoration: BoxDecoration(
-                    color: context.appColor.primaryGray500.withValues(alpha: 0.7),
+                    color: context.appColor.primaryGray500.withValues(
+                      alpha: 0.7,
+                    ),
                     shape: BoxShape.circle,
                   ),
                   child: CustomeText(
@@ -566,16 +692,16 @@ class AddcelluleMenber extends StatelessWidget {
                 ),
                 SizedBox(width: 15.w),
                 CustomeText(
-                    text: "0",
-                    style: context.appTypographie.body.copyWith(
-                      fontSize: 29.sp,
-                      color: context.appColor.primaryGrayDark,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  text: "0",
+                  style: context.appTypographie.body.copyWith(
+                    fontSize: 29.sp,
+                    color: context.appColor.primaryGrayDark,
+                    fontWeight: FontWeight.w600,
                   ),
+                ),
                 SizedBox(width: 15.w),
-    
-                   Container(
+
+                Container(
                   padding: EdgeInsets.all(17.w),
                   decoration: BoxDecoration(
                     color: backgroundColorFeft,
@@ -592,7 +718,7 @@ class AddcelluleMenber extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
