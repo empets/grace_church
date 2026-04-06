@@ -29,7 +29,7 @@ import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/signin_view.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
-import 'package:grace_church/feature/home/rapport_cellule.dart';
+import 'package:grace_church/feature/home/page/bloc/cellule_form/rapport_cellule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuView extends StatelessWidget {

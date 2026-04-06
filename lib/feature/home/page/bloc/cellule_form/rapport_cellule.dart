@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/home/overview.dart';
+import 'package:grace_church/feature/home/page/bloc/cellule_form/form_statistic.dart';
 
 class EditingCelluleRaport extends StatefulWidget {
   const EditingCelluleRaport({super.key});
@@ -75,8 +79,56 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 17.h),
+                    Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                  right: 10.w,
+                                  top: 4.h,
+                                  bottom: 5.h,
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: context.appColor.primaryGrayDark,
+                                ),
+                              ),
+                            ),
+                            CustomeText(
+                              text: 'Rapport Cellule ',
+                              style: context.appTypographie.subtitle.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                            SizedBox(width: 0),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: context.appColor.primaryLightBlue,
+                                borderRadius: BorderRadius.circular(50.r),
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    fadeRoute(OverviewScreen()),
+                                    (route) => false,
+                                  );
+                                },
+                                icon: Icon(Icons.home_work_rounded),
+                              ),
+                            ),
+                          ],
+                        ),
+
+
+
               Container(
-                margin: EdgeInsets.only(top: 20.h),
+                margin: EdgeInsets.only(top: 15.h),
                 child: Column(
                   children: [
                     Stack(
@@ -185,66 +237,6 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
               ),
               SizedBox(height: 16.h),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Zone",
-                        style: context.appTypographie.small.copyWith(
-                          color: Colors.grey.shade700,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 3.w),
-                    ],
-                  ),
-                  ProductionFormCustomer(
-                    readOnly: true,
-                    inputLabelSize: 0.sp,
-                    isColorBlue: false,
-
-                    inputLabel: '',
-                    textLabel: "Cliquer sur l'icon juste à droite ",
-                    errorText: null,
-                    msgError: 'Veuillez renseigner ce champ',
-                    sufixIcon: Container(
-                      margin: EdgeInsets.only(right: 3.w),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryLightBlue,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: IconButton(
-                        onPressed:
-                            // state.status.isInProgress ||
-                            //     state.statusSpirituel.value
-                            //             .toLowerCase() !=
-                            //         "baptiser"
-                            // ? null
-                            // :
-                            () {
-                              // if (state.statusSpirituel.value
-                              //         .toLowerCase() ==
-                              //     "baptiser") {
-                              //   _openCalendar();
-                              // }
-                            },
-                        icon: Icon(
-                          Icons.arrow_drop_down,
-                          // state.statusSpirituel.value.toLowerCase() ==
-                          //         "baptiser"
-                          //     ? Icons.calendar_month_sharp
-                          //     : Icons.lock,
-                          color: context.appColor.primaryBlue,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 9.h),
-                ],
-              ),
-
               // SizedBox(height: 12.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -305,68 +297,30 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                   SizedBox(height: 9.h),
                 ],
               ),
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Eglise de maison",
-                        style: context.appTypographie.small.copyWith(
-                          color: Colors.grey.shade700,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(width: 3.w),
-                    ],
-                  ),
-                  ProductionFormCustomer(
-                    readOnly: true,
-                    inputLabelSize: 0.sp,
-                    isColorBlue: false,
-
-                    inputLabel: '',
-                    textLabel: "Cliquer sur l'icon juste à droite ",
-                    errorText: null,
-                    msgError: 'Veuillez renseigner ce champ',
-                    sufixIcon: Container(
-                      margin: EdgeInsets.only(right: 3.w),
-                      decoration: BoxDecoration(
-                        color: context.appColor.primaryLightBlue,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: IconButton(
-                        onPressed:
-                            // state.status.isInProgress ||
-                            //     state.statusSpirituel.value
-                            //             .toLowerCase() !=
-                            //         "baptiser"
-                            // ? null
-                            // :
-                            () {
-                              // if (state.statusSpirituel.value
-                              //         .toLowerCase() ==
-                              //     "baptiser") {
-                              //   _openCalendar();
-                              // }
-                            },
-                        icon: Icon(
-                          Icons.arrow_drop_down,
-                          // state.statusSpirituel.value.toLowerCase() ==
-                          //         "baptiser"
-                          //     ? Icons.calendar_month_sharp
-                          //     : Icons.lock,
-                          color: context.appColor.primaryBlue,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 9.h),
-                ],
+                  
+               ProductionFormCustomer(
+                isColorBlue: false,
+                // state.dateNaissance.isValid
+                //     ? true
+                //     : false,
+                readOnly: true,
+                // controller:
+                // textEditingControllerDateNaissance,
+                inputLabel: "Nom complet de l'ouvrier",
+                textLabel: "Renseigner le nom complet de l'ouvrier",
+                errorText: null,
+                // state.dateNaissance.isPure ||
+                //     state.dateNaissance.isValid
+                // ? null
+                // : '',
+                msgError: 'Veuillez renseigner ce champ',
+                sufixIcon: Icon(
+                  Icons.person,
+                  color: context.appColor.primaryBlue,
+                ),
               ),
-
-              ProductionFormCustomer(
+               SizedBox(height: 5.h),
+               ProductionFormCustomer(
                 isColorBlue: false,
                 // state.dateNaissance.isValid
                 //     ? true
@@ -425,7 +379,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
               Row(
                 children: [
                   Icon(
-                    Icons.insert_chart_outlined_outlined,
+                    Icons.trending_up_outlined,
                     color: context.appColor.primaryDarkBlue,
                   ),
                   SizedBox(width: 8.w),
@@ -465,29 +419,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                 icon: Icons.sentiment_satisfied_alt_sharp,
                 backgroundColorFeft: Colors.red.shade100,
               ),
-
-              SizedBox(height: 16.h),
-
-              AddcelluleMenber(
-                title: "Nombre de nouvelle personne a la cellule",
-                subtitle: "Ayant rejoindre la cellule",
-                icon: Icons.group_add,
-                backgroundColorFeft: context.appColor.primarySuccess,
-              ),
-              SizedBox(height: 16.h),
-              Column(
-                children: [
-                  CustomeText(
-                    text: "Total Décisionnnaire",
-                    style: context.appTypographie.body.copyWith(
-                      fontSize: 13.sp,
-                      color: context.appColor.primaryGrayDark,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 14.h),
+              
+                 SizedBox(height: 14.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -556,7 +489,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
               Column(
                 children: [
                   ...List.generate(
-                    2,
+                    3,
                     (index) => ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: CircleAvatar(
@@ -601,6 +534,31 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                   ),
                 ],
               ),
+              SizedBox(height: 9.h,),
+
+                  FormNextTeps(
+                          icons: Icons.trending_up_sharp,
+                          title: 'Assistance ',
+                          description: 'Personne présente a la cellule',
+                          isNextForm: false,
+                        ),
+              
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20.h),
+                child: PrimaryButton(
+                  label: 'Suivant',
+                  colorText: context.appColor.primaryWhite,
+                  onPressed: () {
+                    Navigator.push(
+                      context,fadeRoute(FormStatistic()),
+                    );
+                  },
+                ),
+              )
+          
+            
+          
+          
             ],
           ),
         ),
