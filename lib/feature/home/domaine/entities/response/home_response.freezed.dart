@@ -628,7 +628,7 @@ as String,
 /// @nodoc
 mixin _$CelluleResponse {
 
- String get responsable; String get celluleCode; String get date; String get nom; String get description; double get latitude; double get longitude; String get adresse; String get celluleId;
+ String get responsable; String get celluleCode; String get date; String get nom; String get description; double get latitude; double get longitude; String get adresse; String get celluleId; String get secteurId; String get secteurCode;
 /// Create a copy of CelluleResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -641,16 +641,16 @@ $CelluleResponseCopyWith<CelluleResponse> get copyWith => _$CelluleResponseCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,nom,description,latitude,longitude,adresse,celluleId);
+int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,nom,description,latitude,longitude,adresse,celluleId,secteurId,secteurCode);
 
 @override
 String toString() {
-  return 'CelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, nom: $nom, description: $description, latitude: $latitude, longitude: $longitude, adresse: $adresse, celluleId: $celluleId)';
+  return 'CelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, nom: $nom, description: $description, latitude: $latitude, longitude: $longitude, adresse: $adresse, celluleId: $celluleId, secteurId: $secteurId, secteurCode: $secteurCode)';
 }
 
 
@@ -661,7 +661,7 @@ abstract mixin class $CelluleResponseCopyWith<$Res>  {
   factory $CelluleResponseCopyWith(CelluleResponse value, $Res Function(CelluleResponse) _then) = _$CelluleResponseCopyWithImpl;
 @useResult
 $Res call({
- String responsable, String celluleCode, String date, String nom, String description, double latitude, double longitude, String adresse, String celluleId
+ String responsable, String celluleCode, String date, String nom, String description, double latitude, double longitude, String adresse, String celluleId, String secteurId, String secteurCode
 });
 
 
@@ -678,7 +678,7 @@ class _$CelluleResponseCopyWithImpl<$Res>
 
 /// Create a copy of CelluleResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? nom = null,Object? description = null,Object? latitude = null,Object? longitude = null,Object? adresse = null,Object? celluleId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? nom = null,Object? description = null,Object? latitude = null,Object? longitude = null,Object? adresse = null,Object? celluleId = null,Object? secteurId = null,Object? secteurCode = null,}) {
   return _then(_self.copyWith(
 responsable: null == responsable ? _self.responsable : responsable // ignore: cast_nullable_to_non_nullable
 as String,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -689,6 +689,8 @@ as String,latitude: null == latitude ? _self.latitude : latitude // ignore: cast
 as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
 as double,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
 as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -774,10 +776,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String nom,  String description,  double latitude,  double longitude,  String adresse,  String celluleId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String nom,  String description,  double latitude,  double longitude,  String adresse,  String celluleId,  String secteurId,  String secteurCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CelluleResponse() when $default != null:
-return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.description,_that.latitude,_that.longitude,_that.adresse,_that.celluleId);case _:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.description,_that.latitude,_that.longitude,_that.adresse,_that.celluleId,_that.secteurId,_that.secteurCode);case _:
   return orElse();
 
 }
@@ -795,10 +797,10 @@ return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.d
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String nom,  String description,  double latitude,  double longitude,  String adresse,  String celluleId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String nom,  String description,  double latitude,  double longitude,  String adresse,  String celluleId,  String secteurId,  String secteurCode)  $default,) {final _that = this;
 switch (_that) {
 case _CelluleResponse():
-return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.description,_that.latitude,_that.longitude,_that.adresse,_that.celluleId);case _:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.description,_that.latitude,_that.longitude,_that.adresse,_that.celluleId,_that.secteurId,_that.secteurCode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -815,10 +817,10 @@ return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.d
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String responsable,  String celluleCode,  String date,  String nom,  String description,  double latitude,  double longitude,  String adresse,  String celluleId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String responsable,  String celluleCode,  String date,  String nom,  String description,  double latitude,  double longitude,  String adresse,  String celluleId,  String secteurId,  String secteurCode)?  $default,) {final _that = this;
 switch (_that) {
 case _CelluleResponse() when $default != null:
-return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.description,_that.latitude,_that.longitude,_that.adresse,_that.celluleId);case _:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.description,_that.latitude,_that.longitude,_that.adresse,_that.celluleId,_that.secteurId,_that.secteurCode);case _:
   return null;
 
 }
@@ -830,7 +832,7 @@ return $default(_that.responsable,_that.celluleCode,_that.date,_that.nom,_that.d
 @JsonSerializable()
 
 class _CelluleResponse implements CelluleResponse {
-   _CelluleResponse({required this.responsable, required this.celluleCode, required this.date, required this.nom, required this.description, required this.latitude, required this.longitude, required this.adresse, required this.celluleId});
+   _CelluleResponse({required this.responsable, required this.celluleCode, required this.date, required this.nom, required this.description, required this.latitude, required this.longitude, required this.adresse, required this.celluleId, required this.secteurId, required this.secteurCode});
   factory _CelluleResponse.fromJson(Map<String, dynamic> json) => _$CelluleResponseFromJson(json);
 
 @override final  String responsable;
@@ -842,6 +844,8 @@ class _CelluleResponse implements CelluleResponse {
 @override final  double longitude;
 @override final  String adresse;
 @override final  String celluleId;
+@override final  String secteurId;
+@override final  String secteurCode;
 
 /// Create a copy of CelluleResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -856,16 +860,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,nom,description,latitude,longitude,adresse,celluleId);
+int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,nom,description,latitude,longitude,adresse,celluleId,secteurId,secteurCode);
 
 @override
 String toString() {
-  return 'CelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, nom: $nom, description: $description, latitude: $latitude, longitude: $longitude, adresse: $adresse, celluleId: $celluleId)';
+  return 'CelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, nom: $nom, description: $description, latitude: $latitude, longitude: $longitude, adresse: $adresse, celluleId: $celluleId, secteurId: $secteurId, secteurCode: $secteurCode)';
 }
 
 
@@ -876,7 +880,7 @@ abstract mixin class _$CelluleResponseCopyWith<$Res> implements $CelluleResponse
   factory _$CelluleResponseCopyWith(_CelluleResponse value, $Res Function(_CelluleResponse) _then) = __$CelluleResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String responsable, String celluleCode, String date, String nom, String description, double latitude, double longitude, String adresse, String celluleId
+ String responsable, String celluleCode, String date, String nom, String description, double latitude, double longitude, String adresse, String celluleId, String secteurId, String secteurCode
 });
 
 
@@ -893,7 +897,7 @@ class __$CelluleResponseCopyWithImpl<$Res>
 
 /// Create a copy of CelluleResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? nom = null,Object? description = null,Object? latitude = null,Object? longitude = null,Object? adresse = null,Object? celluleId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? nom = null,Object? description = null,Object? latitude = null,Object? longitude = null,Object? adresse = null,Object? celluleId = null,Object? secteurId = null,Object? secteurCode = null,}) {
   return _then(_CelluleResponse(
 responsable: null == responsable ? _self.responsable : responsable // ignore: cast_nullable_to_non_nullable
 as String,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -904,6 +908,8 @@ as String,latitude: null == latitude ? _self.latitude : latitude // ignore: cast
 as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
 as double,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
 as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -915,7 +921,7 @@ as String,
 /// @nodoc
 mixin _$ReponsableCelluleResponse {
 
- String get responsable; String get celluleCode; String get date; String get celluleName; String get contact; String get email; String get adresse; String get celluleId;
+ String get responsable; String get celluleCode; String get date; String get celluleName; String get contact; String get email; String get adresse; String get celluleId; String get secteurId; String get secteurCode;
 /// Create a copy of ReponsableCelluleResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -928,16 +934,16 @@ $ReponsableCelluleResponseCopyWith<ReponsableCelluleResponse> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableCelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.celluleName, celluleName) || other.celluleName == celluleName)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableCelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.celluleName, celluleName) || other.celluleName == celluleName)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,celluleName,contact,email,adresse,celluleId);
+int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,celluleName,contact,email,adresse,celluleId,secteurId,secteurCode);
 
 @override
 String toString() {
-  return 'ReponsableCelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, celluleName: $celluleName, contact: $contact, email: $email, adresse: $adresse, celluleId: $celluleId)';
+  return 'ReponsableCelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, celluleName: $celluleName, contact: $contact, email: $email, adresse: $adresse, celluleId: $celluleId, secteurId: $secteurId, secteurCode: $secteurCode)';
 }
 
 
@@ -948,7 +954,7 @@ abstract mixin class $ReponsableCelluleResponseCopyWith<$Res>  {
   factory $ReponsableCelluleResponseCopyWith(ReponsableCelluleResponse value, $Res Function(ReponsableCelluleResponse) _then) = _$ReponsableCelluleResponseCopyWithImpl;
 @useResult
 $Res call({
- String responsable, String celluleCode, String date, String celluleName, String contact, String email, String adresse, String celluleId
+ String responsable, String celluleCode, String date, String celluleName, String contact, String email, String adresse, String celluleId, String secteurId, String secteurCode
 });
 
 
@@ -965,7 +971,7 @@ class _$ReponsableCelluleResponseCopyWithImpl<$Res>
 
 /// Create a copy of ReponsableCelluleResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? celluleName = null,Object? contact = null,Object? email = null,Object? adresse = null,Object? celluleId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? celluleName = null,Object? contact = null,Object? email = null,Object? adresse = null,Object? celluleId = null,Object? secteurId = null,Object? secteurCode = null,}) {
   return _then(_self.copyWith(
 responsable: null == responsable ? _self.responsable : responsable // ignore: cast_nullable_to_non_nullable
 as String,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -975,6 +981,8 @@ as String,contact: null == contact ? _self.contact : contact // ignore: cast_nul
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
 as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1060,10 +1068,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId,  String secteurId,  String secteurCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ReponsableCelluleResponse() when $default != null:
-return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId);case _:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId,_that.secteurId,_that.secteurCode);case _:
   return orElse();
 
 }
@@ -1081,10 +1089,10 @@ return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId,  String secteurId,  String secteurCode)  $default,) {final _that = this;
 switch (_that) {
 case _ReponsableCelluleResponse():
-return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId);case _:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId,_that.secteurId,_that.secteurCode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1101,10 +1109,10 @@ return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String responsable,  String celluleCode,  String date,  String celluleName,  String contact,  String email,  String adresse,  String celluleId,  String secteurId,  String secteurCode)?  $default,) {final _that = this;
 switch (_that) {
 case _ReponsableCelluleResponse() when $default != null:
-return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId);case _:
+return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName,_that.contact,_that.email,_that.adresse,_that.celluleId,_that.secteurId,_that.secteurCode);case _:
   return null;
 
 }
@@ -1116,7 +1124,7 @@ return $default(_that.responsable,_that.celluleCode,_that.date,_that.celluleName
 @JsonSerializable()
 
 class _ReponsableCelluleResponse implements ReponsableCelluleResponse {
-   _ReponsableCelluleResponse({required this.responsable, required this.celluleCode, required this.date, required this.celluleName, required this.contact, required this.email, required this.adresse, required this.celluleId});
+   _ReponsableCelluleResponse({required this.responsable, required this.celluleCode, required this.date, required this.celluleName, required this.contact, required this.email, required this.adresse, required this.celluleId, required this.secteurId, required this.secteurCode});
   factory _ReponsableCelluleResponse.fromJson(Map<String, dynamic> json) => _$ReponsableCelluleResponseFromJson(json);
 
 @override final  String responsable;
@@ -1127,6 +1135,8 @@ class _ReponsableCelluleResponse implements ReponsableCelluleResponse {
 @override final  String email;
 @override final  String adresse;
 @override final  String celluleId;
+@override final  String secteurId;
+@override final  String secteurCode;
 
 /// Create a copy of ReponsableCelluleResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -1141,16 +1151,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableCelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.celluleName, celluleName) || other.celluleName == celluleName)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableCelluleResponse&&(identical(other.responsable, responsable) || other.responsable == responsable)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.date, date) || other.date == date)&&(identical(other.celluleName, celluleName) || other.celluleName == celluleName)&&(identical(other.contact, contact) || other.contact == contact)&&(identical(other.email, email) || other.email == email)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,celluleName,contact,email,adresse,celluleId);
+int get hashCode => Object.hash(runtimeType,responsable,celluleCode,date,celluleName,contact,email,adresse,celluleId,secteurId,secteurCode);
 
 @override
 String toString() {
-  return 'ReponsableCelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, celluleName: $celluleName, contact: $contact, email: $email, adresse: $adresse, celluleId: $celluleId)';
+  return 'ReponsableCelluleResponse(responsable: $responsable, celluleCode: $celluleCode, date: $date, celluleName: $celluleName, contact: $contact, email: $email, adresse: $adresse, celluleId: $celluleId, secteurId: $secteurId, secteurCode: $secteurCode)';
 }
 
 
@@ -1161,7 +1171,7 @@ abstract mixin class _$ReponsableCelluleResponseCopyWith<$Res> implements $Repon
   factory _$ReponsableCelluleResponseCopyWith(_ReponsableCelluleResponse value, $Res Function(_ReponsableCelluleResponse) _then) = __$ReponsableCelluleResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String responsable, String celluleCode, String date, String celluleName, String contact, String email, String adresse, String celluleId
+ String responsable, String celluleCode, String date, String celluleName, String contact, String email, String adresse, String celluleId, String secteurId, String secteurCode
 });
 
 
@@ -1178,7 +1188,7 @@ class __$ReponsableCelluleResponseCopyWithImpl<$Res>
 
 /// Create a copy of ReponsableCelluleResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? celluleName = null,Object? contact = null,Object? email = null,Object? adresse = null,Object? celluleId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? responsable = null,Object? celluleCode = null,Object? date = null,Object? celluleName = null,Object? contact = null,Object? email = null,Object? adresse = null,Object? celluleId = null,Object? secteurId = null,Object? secteurCode = null,}) {
   return _then(_ReponsableCelluleResponse(
 responsable: null == responsable ? _self.responsable : responsable // ignore: cast_nullable_to_non_nullable
 as String,celluleCode: null == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -1188,6 +1198,8 @@ as String,contact: null == contact ? _self.contact : contact // ignore: cast_nul
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
 as String,celluleId: null == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
+as String,secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1454,6 +1466,580 @@ class __$DiscipleCelluleCopyWithImpl<$Res>
   return _then(_DiscipleCellule(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
 as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReponsableSecteurResponse {
+
+ String get secteurResponsableName; String get secteurCode; String get dateCreated; String get secteurName; String get contactResponsable; String get emailResponsable; String get adresse; String get secteurId; String get zoneId; String get zoneCode;
+/// Create a copy of ReponsableSecteurResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReponsableSecteurResponseCopyWith<ReponsableSecteurResponse> get copyWith => _$ReponsableSecteurResponseCopyWithImpl<ReponsableSecteurResponse>(this as ReponsableSecteurResponse, _$identity);
+
+  /// Serializes this ReponsableSecteurResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableSecteurResponse&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,secteurResponsableName,secteurCode,dateCreated,secteurName,contactResponsable,emailResponsable,adresse,secteurId,zoneId,zoneCode);
+
+@override
+String toString() {
+  return 'ReponsableSecteurResponse(secteurResponsableName: $secteurResponsableName, secteurCode: $secteurCode, dateCreated: $dateCreated, secteurName: $secteurName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, secteurId: $secteurId, zoneId: $zoneId, zoneCode: $zoneCode)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ReponsableSecteurResponseCopyWith<$Res>  {
+  factory $ReponsableSecteurResponseCopyWith(ReponsableSecteurResponse value, $Res Function(ReponsableSecteurResponse) _then) = _$ReponsableSecteurResponseCopyWithImpl;
+@useResult
+$Res call({
+ String secteurResponsableName, String secteurCode, String dateCreated, String secteurName, String contactResponsable, String emailResponsable, String adresse, String secteurId, String zoneId, String zoneCode
+});
+
+
+
+
+}
+/// @nodoc
+class _$ReponsableSecteurResponseCopyWithImpl<$Res>
+    implements $ReponsableSecteurResponseCopyWith<$Res> {
+  _$ReponsableSecteurResponseCopyWithImpl(this._self, this._then);
+
+  final ReponsableSecteurResponse _self;
+  final $Res Function(ReponsableSecteurResponse) _then;
+
+/// Create a copy of ReponsableSecteurResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? secteurResponsableName = null,Object? secteurCode = null,Object? dateCreated = null,Object? secteurName = null,Object? contactResponsable = null,Object? emailResponsable = null,Object? adresse = null,Object? secteurId = null,Object? zoneId = null,Object? zoneCode = null,}) {
+  return _then(_self.copyWith(
+secteurResponsableName: null == secteurResponsableName ? _self.secteurResponsableName : secteurResponsableName // ignore: cast_nullable_to_non_nullable
+as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
+as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String,secteurName: null == secteurName ? _self.secteurName : secteurName // ignore: cast_nullable_to_non_nullable
+as String,contactResponsable: null == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
+as String,emailResponsable: null == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
+as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String,secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+as String,zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String,zoneCode: null == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ReponsableSecteurResponse].
+extension ReponsableSecteurResponsePatterns on ReponsableSecteurResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReponsableSecteurResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReponsableSecteurResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReponsableSecteurResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReponsableSecteurResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReponsableSecteurResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReponsableSecteurResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String secteurResponsableName,  String secteurCode,  String dateCreated,  String secteurName,  String contactResponsable,  String emailResponsable,  String adresse,  String secteurId,  String zoneId,  String zoneCode)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReponsableSecteurResponse() when $default != null:
+return $default(_that.secteurResponsableName,_that.secteurCode,_that.dateCreated,_that.secteurName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.secteurId,_that.zoneId,_that.zoneCode);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String secteurResponsableName,  String secteurCode,  String dateCreated,  String secteurName,  String contactResponsable,  String emailResponsable,  String adresse,  String secteurId,  String zoneId,  String zoneCode)  $default,) {final _that = this;
+switch (_that) {
+case _ReponsableSecteurResponse():
+return $default(_that.secteurResponsableName,_that.secteurCode,_that.dateCreated,_that.secteurName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.secteurId,_that.zoneId,_that.zoneCode);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String secteurResponsableName,  String secteurCode,  String dateCreated,  String secteurName,  String contactResponsable,  String emailResponsable,  String adresse,  String secteurId,  String zoneId,  String zoneCode)?  $default,) {final _that = this;
+switch (_that) {
+case _ReponsableSecteurResponse() when $default != null:
+return $default(_that.secteurResponsableName,_that.secteurCode,_that.dateCreated,_that.secteurName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.secteurId,_that.zoneId,_that.zoneCode);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _ReponsableSecteurResponse implements ReponsableSecteurResponse {
+   _ReponsableSecteurResponse({required this.secteurResponsableName, required this.secteurCode, required this.dateCreated, required this.secteurName, required this.contactResponsable, required this.emailResponsable, required this.adresse, required this.secteurId, required this.zoneId, required this.zoneCode});
+  factory _ReponsableSecteurResponse.fromJson(Map<String, dynamic> json) => _$ReponsableSecteurResponseFromJson(json);
+
+@override final  String secteurResponsableName;
+@override final  String secteurCode;
+@override final  String dateCreated;
+@override final  String secteurName;
+@override final  String contactResponsable;
+@override final  String emailResponsable;
+@override final  String adresse;
+@override final  String secteurId;
+@override final  String zoneId;
+@override final  String zoneCode;
+
+/// Create a copy of ReponsableSecteurResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReponsableSecteurResponseCopyWith<_ReponsableSecteurResponse> get copyWith => __$ReponsableSecteurResponseCopyWithImpl<_ReponsableSecteurResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ReponsableSecteurResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableSecteurResponse&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,secteurResponsableName,secteurCode,dateCreated,secteurName,contactResponsable,emailResponsable,adresse,secteurId,zoneId,zoneCode);
+
+@override
+String toString() {
+  return 'ReponsableSecteurResponse(secteurResponsableName: $secteurResponsableName, secteurCode: $secteurCode, dateCreated: $dateCreated, secteurName: $secteurName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, secteurId: $secteurId, zoneId: $zoneId, zoneCode: $zoneCode)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ReponsableSecteurResponseCopyWith<$Res> implements $ReponsableSecteurResponseCopyWith<$Res> {
+  factory _$ReponsableSecteurResponseCopyWith(_ReponsableSecteurResponse value, $Res Function(_ReponsableSecteurResponse) _then) = __$ReponsableSecteurResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String secteurResponsableName, String secteurCode, String dateCreated, String secteurName, String contactResponsable, String emailResponsable, String adresse, String secteurId, String zoneId, String zoneCode
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReponsableSecteurResponseCopyWithImpl<$Res>
+    implements _$ReponsableSecteurResponseCopyWith<$Res> {
+  __$ReponsableSecteurResponseCopyWithImpl(this._self, this._then);
+
+  final _ReponsableSecteurResponse _self;
+  final $Res Function(_ReponsableSecteurResponse) _then;
+
+/// Create a copy of ReponsableSecteurResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? secteurResponsableName = null,Object? secteurCode = null,Object? dateCreated = null,Object? secteurName = null,Object? contactResponsable = null,Object? emailResponsable = null,Object? adresse = null,Object? secteurId = null,Object? zoneId = null,Object? zoneCode = null,}) {
+  return _then(_ReponsableSecteurResponse(
+secteurResponsableName: null == secteurResponsableName ? _self.secteurResponsableName : secteurResponsableName // ignore: cast_nullable_to_non_nullable
+as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
+as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String,secteurName: null == secteurName ? _self.secteurName : secteurName // ignore: cast_nullable_to_non_nullable
+as String,contactResponsable: null == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
+as String,emailResponsable: null == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
+as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String,secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+as String,zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String,zoneCode: null == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ReponsableZoneResponse {
+
+ String get zoneResponsableName; String get zoneCode; String get dateCreated; String get zoneName; String get contactResponsable; String get emailResponsable; String get adresse; String get zoneId;
+/// Create a copy of ReponsableZoneResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReponsableZoneResponseCopyWith<ReponsableZoneResponse> get copyWith => _$ReponsableZoneResponseCopyWithImpl<ReponsableZoneResponse>(this as ReponsableZoneResponse, _$identity);
+
+  /// Serializes this ReponsableZoneResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableZoneResponse&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,zoneResponsableName,zoneCode,dateCreated,zoneName,contactResponsable,emailResponsable,adresse,zoneId);
+
+@override
+String toString() {
+  return 'ReponsableZoneResponse(zoneResponsableName: $zoneResponsableName, zoneCode: $zoneCode, dateCreated: $dateCreated, zoneName: $zoneName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, zoneId: $zoneId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ReponsableZoneResponseCopyWith<$Res>  {
+  factory $ReponsableZoneResponseCopyWith(ReponsableZoneResponse value, $Res Function(ReponsableZoneResponse) _then) = _$ReponsableZoneResponseCopyWithImpl;
+@useResult
+$Res call({
+ String zoneResponsableName, String zoneCode, String dateCreated, String zoneName, String contactResponsable, String emailResponsable, String adresse, String zoneId
+});
+
+
+
+
+}
+/// @nodoc
+class _$ReponsableZoneResponseCopyWithImpl<$Res>
+    implements $ReponsableZoneResponseCopyWith<$Res> {
+  _$ReponsableZoneResponseCopyWithImpl(this._self, this._then);
+
+  final ReponsableZoneResponse _self;
+  final $Res Function(ReponsableZoneResponse) _then;
+
+/// Create a copy of ReponsableZoneResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? zoneResponsableName = null,Object? zoneCode = null,Object? dateCreated = null,Object? zoneName = null,Object? contactResponsable = null,Object? emailResponsable = null,Object? adresse = null,Object? zoneId = null,}) {
+  return _then(_self.copyWith(
+zoneResponsableName: null == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
+as String,zoneCode: null == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
+as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String,zoneName: null == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
+as String,contactResponsable: null == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
+as String,emailResponsable: null == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
+as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String,zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ReponsableZoneResponse].
+extension ReponsableZoneResponsePatterns on ReponsableZoneResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReponsableZoneResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ReponsableZoneResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReponsableZoneResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _ReponsableZoneResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReponsableZoneResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ReponsableZoneResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String zoneResponsableName,  String zoneCode,  String dateCreated,  String zoneName,  String contactResponsable,  String emailResponsable,  String adresse,  String zoneId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ReponsableZoneResponse() when $default != null:
+return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String zoneResponsableName,  String zoneCode,  String dateCreated,  String zoneName,  String contactResponsable,  String emailResponsable,  String adresse,  String zoneId)  $default,) {final _that = this;
+switch (_that) {
+case _ReponsableZoneResponse():
+return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String zoneResponsableName,  String zoneCode,  String dateCreated,  String zoneName,  String contactResponsable,  String emailResponsable,  String adresse,  String zoneId)?  $default,) {final _that = this;
+switch (_that) {
+case _ReponsableZoneResponse() when $default != null:
+return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _ReponsableZoneResponse implements ReponsableZoneResponse {
+   _ReponsableZoneResponse({required this.zoneResponsableName, required this.zoneCode, required this.dateCreated, required this.zoneName, required this.contactResponsable, required this.emailResponsable, required this.adresse, required this.zoneId});
+  factory _ReponsableZoneResponse.fromJson(Map<String, dynamic> json) => _$ReponsableZoneResponseFromJson(json);
+
+@override final  String zoneResponsableName;
+@override final  String zoneCode;
+@override final  String dateCreated;
+@override final  String zoneName;
+@override final  String contactResponsable;
+@override final  String emailResponsable;
+@override final  String adresse;
+@override final  String zoneId;
+
+/// Create a copy of ReponsableZoneResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReponsableZoneResponseCopyWith<_ReponsableZoneResponse> get copyWith => __$ReponsableZoneResponseCopyWithImpl<_ReponsableZoneResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ReponsableZoneResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableZoneResponse&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,zoneResponsableName,zoneCode,dateCreated,zoneName,contactResponsable,emailResponsable,adresse,zoneId);
+
+@override
+String toString() {
+  return 'ReponsableZoneResponse(zoneResponsableName: $zoneResponsableName, zoneCode: $zoneCode, dateCreated: $dateCreated, zoneName: $zoneName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, zoneId: $zoneId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ReponsableZoneResponseCopyWith<$Res> implements $ReponsableZoneResponseCopyWith<$Res> {
+  factory _$ReponsableZoneResponseCopyWith(_ReponsableZoneResponse value, $Res Function(_ReponsableZoneResponse) _then) = __$ReponsableZoneResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String zoneResponsableName, String zoneCode, String dateCreated, String zoneName, String contactResponsable, String emailResponsable, String adresse, String zoneId
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReponsableZoneResponseCopyWithImpl<$Res>
+    implements _$ReponsableZoneResponseCopyWith<$Res> {
+  __$ReponsableZoneResponseCopyWithImpl(this._self, this._then);
+
+  final _ReponsableZoneResponse _self;
+  final $Res Function(_ReponsableZoneResponse) _then;
+
+/// Create a copy of ReponsableZoneResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? zoneResponsableName = null,Object? zoneCode = null,Object? dateCreated = null,Object? zoneName = null,Object? contactResponsable = null,Object? emailResponsable = null,Object? adresse = null,Object? zoneId = null,}) {
+  return _then(_ReponsableZoneResponse(
+zoneResponsableName: null == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
+as String,zoneCode: null == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
+as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String,zoneName: null == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
+as String,contactResponsable: null == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
+as String,emailResponsable: null == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
+as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String,zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

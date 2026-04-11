@@ -17,7 +17,6 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
     RapportCelluleSectionAdministrationEvent event,
     Emitter<RapportCelluleSectionAdministrationState> emit,
   ) async {
-
     switch (event) {
 
       // -------------------------

@@ -221,7 +221,7 @@ class _FormStatisticState extends State<FormStatistic> {
                         elevation: 0.5.h,
                         borderOnForeground: true,
                         child: ExpansionTile(
-                          splashColor: Colors.transparent,
+                          // splashColor: Colors.transparent,
                           tilePadding: EdgeInsets.symmetric(
                             horizontal: 16.w,
                             vertical: 8.h,
@@ -331,7 +331,7 @@ class _FormStatisticState extends State<FormStatistic> {
                           elevation: 0.5.h,
                           borderOnForeground: true,
                           child: ExpansionTile(
-                            splashColor: Colors.transparent,
+                            // splashColor: Colors.transparent,
                             tilePadding: EdgeInsets.symmetric(
                               horizontal: 16.w,
                               vertical: 8.h,

@@ -41,7 +41,7 @@ abstract class RequestCellule with _$RequestCellule {
 @freezed
 abstract class RequestReponsableCellule with _$RequestReponsableCellule {
   factory RequestReponsableCellule({
-    String? responsable,
+    String? celluleResponsableName,
     String? celluleCode,
     String? date,
     String? celluleName,
@@ -49,12 +49,57 @@ abstract class RequestReponsableCellule with _$RequestReponsableCellule {
     String? email,
     String? adresse,
     String? celluleId,
+    String? secteurId,
+    String? secteurCode,
   }) = _RequestReponsableCellule;
   factory RequestReponsableCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestReponsableCelluleFromJson(json);
 }
 
+@freezed
+abstract class RequestReponsableSecteur with _$RequestReponsableSecteur {
+  factory RequestReponsableSecteur({
+    String? secteurResponsableName,
+    String? secteurCode,
+    String? dateCreated,
+    String? secteurName,
+    String? contactResponsable,
+    String? emailResponsable,
+    String? adresse,
+    String? secteurId,
+    String? zoneId,
+    String? zoneCode,
+  }) = _RequestReponsableSecteur;
+  factory RequestReponsableSecteur.fromJson(Map<String, dynamic> json) =>
+      _$RequestReponsableSecteurFromJson(json);
+}
 
+@freezed
+abstract class RequestReponsableZone with _$RequestReponsableZone {
+  factory RequestReponsableZone({
+    String? zoneResponsableName,
+    String? zoneCode,
+    String? dateCreated,
+    String? zoneName,
+    String? contactResponsable,
+    String? emailResponsable,
+    String? adresse,
+    String? zoneId,
+  }) = _RequestReponsableZone;
+  factory RequestReponsableZone.fromJson(Map<String, dynamic> json) =>
+      _$RequestReponsableZoneFromJson(json);
+}
+
+@freezed
+abstract class RequestAuthenProfileUpdateZone
+    with _$RequestAuthenProfileUpdateZone {
+  factory RequestAuthenProfileUpdateZone({required String secteurId}) =
+      // secteurId
+      _RequestAuthenProfileUpdateZone;
+
+  factory RequestAuthenProfileUpdateZone.fromJson(Map<String, dynamic> json) =>
+      _$RequestAuthenProfileUpdateZoneFromJson(json);
+}
 
 @freezed
 abstract class RequestRapportCellule with _$RequestRapportCellule {

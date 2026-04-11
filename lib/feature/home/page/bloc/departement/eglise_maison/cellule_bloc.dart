@@ -5,7 +5,7 @@ import 'package:grace_church/feature/home/domaine/entities/request/home_request.
     hide EmptyRequest;
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule/event/cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton

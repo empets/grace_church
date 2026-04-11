@@ -31,11 +31,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestReponsableCellule params,
+    RequestReponsableSecteur params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestReponsableCellule>(
+      final request = Request<RequestReponsableSecteur>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -43,14 +43,14 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('responsablesCellule')
+          .child('emsecteur')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
 
       // 4) Mettre à jour la clé
       await updateProfileKey(
-        RequestAuthenProfileUpdateCellule(celluleId: ref.key.toString()),
+        RequestAuthenProfileUpdateZone(secteurId: ref.key.toString()),
       );
 
       return FirebaseSuccess(ref.key.toString());
@@ -61,17 +61,17 @@ class _NotificationViewState extends State<NotificationView> {
   }
 
   Future<FirebaseResult<String?>> updateProfileKey(
-    RequestAuthenProfileUpdateCellule params,
+    RequestAuthenProfileUpdateZone params,
   ) async {
     try {
       final Map<String, dynamic> updates = {...params.toJson()};
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('responsablesCellule/${params.celluleId}')
+          .child('responsablesSecteur/${params.secteurId}')
           .update(updates);
       // 4) Retourner le key généré
-      return FirebaseSuccess(params.celluleId);
+      return FirebaseSuccess(params.secteurId);
     } catch (e) {
       log("🔥 Firebase Notification →→→→→→→→→ $e");
       return FirebaseError(e.toString());
@@ -154,15 +154,17 @@ class _NotificationViewState extends State<NotificationView> {
                     onTap: () async {
                       // TODO: Handle notification tap
                       await sendNotifications(
-                        RequestReponsableCellule(
-                          responsable: "Jean Kouassis",
-                          celluleCode: "CELL004",
-                          date: DateTime.now().toIso8601String(),
-                          celluleName: "Cellule Grâce",
-                          contact: "+2250701234567",
-                          email: "mariekoffi@gmail.com",
-                          adresse: "Cocody, Deux-Plateaux, Abidjan",
-                          celluleId: "-OoHqA6Eft2xUEomKGWX",
+                        RequestReponsableSecteur(
+                          secteurResponsableName: "Touré Fatou",
+                          secteurCode: "SEC-ABJ-04",
+                          dateCreated: "2026-04-08",
+                          secteurName: "Secteur Abobo PK18",
+                          contactResponsable: "+2250104445566",
+                          emailResponsable: "fatou.toure@gmail.com",
+                          adresse: "Abobo PK18, Abidjan",
+                          secteurId: "secteur_004",
+                          zoneId: "zone_456789",
+                          zoneCode: "ZONE-ABJ-04",
                         ),
                       );
                       log("Notification sent");

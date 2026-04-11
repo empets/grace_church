@@ -104,6 +104,8 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
     required double? longitude,
     required String? adresse,
     required String? celluleId,
+    required String? secteurId,
+    required String? secteurCode,
   }) = _CelluleResponseModel;
   factory CelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CelluleResponseModelFromJson(json);
@@ -119,6 +121,8 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
       nom: model.nom.getOrEmpty(),
       description: model.description.getOrEmpty(),
       celluleId: model.celluleId.getOrEmpty(),
+      secteurId: model.secteurId.getOrEmpty(),
+      secteurCode: model.secteurCode.getOrEmpty(),
     );
   }
 }
@@ -137,6 +141,8 @@ abstract class ReponsableCelluleResponseModel
     required String? adresse,
     required String? celluleId,
     required String? celluleName,
+    required String? secteurId,
+    required String? secteurCode,
   }) = _ReponsableCelluleResponseModel;
   factory ReponsableCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ReponsableCelluleResponseModelFromJson(json);
@@ -153,6 +159,70 @@ abstract class ReponsableCelluleResponseModel
       email: model.email.getOrEmpty(),
       adresse: model.adresse.getOrEmpty(),
       celluleId: model.celluleId.getOrEmpty(),
+      secteurId: model.secteurId.getOrEmpty(),
+      secteurCode: model.secteurCode.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class ReponsableResponseSecteurModel with _$ReponsableResponseSecteurModel {
+  factory ReponsableResponseSecteurModel({
+    required String? secteurResponsableName,
+    required String? secteurCode,
+    required String? dateCreated,
+    required String? secteurName,
+    required String? contactResponsable,
+    required String? emailResponsable,
+    required String? adresse,
+    required String? secteurId,
+    required String? zoneId,
+    required String? zoneCode,
+  }) = _ReponsableResponseSecteurModel;
+  factory ReponsableResponseSecteurModel.fromJson(Map<String, dynamic> json) =>
+      _$ReponsableResponseSecteurModelFromJson(json);
+
+  static ReponsableSecteurResponse toDomain(ReponsableResponseSecteurModel model) {
+    return ReponsableSecteurResponse(
+      secteurResponsableName: model.secteurResponsableName.getOrEmpty(),
+      secteurCode: model.secteurCode.getOrEmpty(),
+      dateCreated: model.dateCreated.getOrEmpty(),
+      secteurName: model.secteurName.getOrEmpty(),
+      contactResponsable: model.contactResponsable.getOrEmpty(),
+      emailResponsable: model.emailResponsable.getOrEmpty(),
+      adresse: model.adresse.getOrEmpty(),
+      secteurId: model.secteurId.getOrEmpty(),
+      zoneId: model.zoneId.getOrEmpty(),
+      zoneCode: model.zoneCode.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class ReponsableZoneResponseModel with _$ReponsableZoneResponseModel {
+  factory ReponsableZoneResponseModel({
+    required String? zoneResponsableName,
+    required String? zoneCode,
+    required String? dateCreated,
+    required String? zoneName,
+    required String? contactResponsable,
+    required String? emailResponsable,
+    required String? adresse,
+    required String? zoneId,
+  }) = _ReponsableZoneResponseModel;
+  factory ReponsableZoneResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$ReponsableZoneResponseModelFromJson(json);
+
+  static ReponsableZoneResponse toDomain(ReponsableZoneResponseModel model) {
+    return ReponsableZoneResponse(
+      zoneResponsableName: model.zoneResponsableName.getOrEmpty(),
+      zoneCode: model.zoneCode.getOrEmpty(),
+      dateCreated: model.dateCreated.getOrEmpty(),
+      zoneName: model.zoneName.getOrEmpty(),
+      contactResponsable: model.contactResponsable.getOrEmpty(),
+      emailResponsable: model.emailResponsable.getOrEmpty(),
+      adresse: model.adresse.getOrEmpty(),
+      zoneId: model.zoneId.getOrEmpty(),
     );
   }
 }

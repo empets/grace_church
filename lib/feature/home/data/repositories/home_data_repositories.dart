@@ -118,4 +118,36 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+
+  @override
+  Future<Either<Failure, List<ReponsableSecteurResponse>>>
+  getListResponsablesSecteurs(RequestReponsableSecteur params) async {
+    final response = await domaineServiceRepository.getListResponsablesSecteurs(
+      params,
+    );
+    if (response is FirebaseSuccess<List<ReponsableResponseSecteurModel>>) {
+      return Right(
+        response.data.map(ReponsableResponseSecteurModel.toDomain).toList(),
+      );
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
+
+  @override
+  Future<Either<Failure, List<ReponsableZoneResponse>>>
+  getListResponsablesZones(RequestReponsableZone params) async {
+    final response = await domaineServiceRepository.getListResponsablesZones(
+      params,
+    );
+    if (response is FirebaseSuccess<List<ReponsableZoneResponseModel>>) {
+      return Right(
+        response.data.map(ReponsableZoneResponseModel.toDomain).toList(),
+      );
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
 }

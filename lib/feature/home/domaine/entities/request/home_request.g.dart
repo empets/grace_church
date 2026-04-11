@@ -58,7 +58,7 @@ Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
 _RequestReponsableCellule _$RequestReponsableCelluleFromJson(
   Map<String, dynamic> json,
 ) => _RequestReponsableCellule(
-  responsable: json['responsable'] as String?,
+  celluleResponsableName: json['celluleResponsableName'] as String?,
   celluleCode: json['celluleCode'] as String?,
   date: json['date'] as String?,
   celluleName: json['celluleName'] as String?,
@@ -66,12 +66,14 @@ _RequestReponsableCellule _$RequestReponsableCelluleFromJson(
   email: json['email'] as String?,
   adresse: json['adresse'] as String?,
   celluleId: json['celluleId'] as String?,
+  secteurId: json['secteurId'] as String?,
+  secteurCode: json['secteurCode'] as String?,
 );
 
 Map<String, dynamic> _$RequestReponsableCelluleToJson(
   _RequestReponsableCellule instance,
 ) => <String, dynamic>{
-  'responsable': instance.responsable,
+  'celluleResponsableName': instance.celluleResponsableName,
   'celluleCode': instance.celluleCode,
   'date': instance.date,
   'celluleName': instance.celluleName,
@@ -79,7 +81,73 @@ Map<String, dynamic> _$RequestReponsableCelluleToJson(
   'email': instance.email,
   'adresse': instance.adresse,
   'celluleId': instance.celluleId,
+  'secteurId': instance.secteurId,
+  'secteurCode': instance.secteurCode,
 };
+
+_RequestReponsableSecteur _$RequestReponsableSecteurFromJson(
+  Map<String, dynamic> json,
+) => _RequestReponsableSecteur(
+  secteurResponsableName: json['secteurResponsableName'] as String?,
+  secteurCode: json['secteurCode'] as String?,
+  dateCreated: json['dateCreated'] as String?,
+  secteurName: json['secteurName'] as String?,
+  contactResponsable: json['contactResponsable'] as String?,
+  emailResponsable: json['emailResponsable'] as String?,
+  adresse: json['adresse'] as String?,
+  secteurId: json['secteurId'] as String?,
+  zoneId: json['zoneId'] as String?,
+  zoneCode: json['zoneCode'] as String?,
+);
+
+Map<String, dynamic> _$RequestReponsableSecteurToJson(
+  _RequestReponsableSecteur instance,
+) => <String, dynamic>{
+  'secteurResponsableName': instance.secteurResponsableName,
+  'secteurCode': instance.secteurCode,
+  'dateCreated': instance.dateCreated,
+  'secteurName': instance.secteurName,
+  'contactResponsable': instance.contactResponsable,
+  'emailResponsable': instance.emailResponsable,
+  'adresse': instance.adresse,
+  'secteurId': instance.secteurId,
+  'zoneId': instance.zoneId,
+  'zoneCode': instance.zoneCode,
+};
+
+_RequestReponsableZone _$RequestReponsableZoneFromJson(
+  Map<String, dynamic> json,
+) => _RequestReponsableZone(
+  zoneResponsableName: json['zoneResponsableName'] as String?,
+  zoneCode: json['zoneCode'] as String?,
+  dateCreated: json['dateCreated'] as String?,
+  zoneName: json['zoneName'] as String?,
+  contactResponsable: json['contactResponsable'] as String?,
+  emailResponsable: json['emailResponsable'] as String?,
+  adresse: json['adresse'] as String?,
+  zoneId: json['zoneId'] as String?,
+);
+
+Map<String, dynamic> _$RequestReponsableZoneToJson(
+  _RequestReponsableZone instance,
+) => <String, dynamic>{
+  'zoneResponsableName': instance.zoneResponsableName,
+  'zoneCode': instance.zoneCode,
+  'dateCreated': instance.dateCreated,
+  'zoneName': instance.zoneName,
+  'contactResponsable': instance.contactResponsable,
+  'emailResponsable': instance.emailResponsable,
+  'adresse': instance.adresse,
+  'zoneId': instance.zoneId,
+};
+
+_RequestAuthenProfileUpdateZone _$RequestAuthenProfileUpdateZoneFromJson(
+  Map<String, dynamic> json,
+) => _RequestAuthenProfileUpdateZone(secteurId: json['secteurId'] as String);
+
+Map<String, dynamic> _$RequestAuthenProfileUpdateZoneToJson(
+  _RequestAuthenProfileUpdateZone instance,
+) => <String, dynamic>{'secteurId': instance.secteurId};
 
 _RequestRapportCellule _$RequestRapportCelluleFromJson(
   Map<String, dynamic> json,

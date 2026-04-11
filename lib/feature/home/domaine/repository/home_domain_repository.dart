@@ -19,4 +19,10 @@ abstract class HomeDomaineRepository {
   );
   Future<Either<Failure, List<ReponsableCelluleResponse>>>
   getListResponsablesCellules(RequestReponsableCellule params);
+
+  Future<Either<Failure, List<ReponsableSecteurResponse>>>
+  getListResponsablesSecteurs(RequestReponsableSecteur params);
+
+  Future<Either<Failure, List<ReponsableZoneResponse>>>
+  getListResponsablesZones(RequestReponsableZone params);
 }

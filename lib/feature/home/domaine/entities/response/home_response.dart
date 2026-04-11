@@ -61,6 +61,8 @@ abstract class CelluleResponse with _$CelluleResponse {
     required double longitude,
     required String adresse,
     required String celluleId,
+    required String secteurId,
+    required String secteurCode,
   }) = _CelluleResponse;
   factory CelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$CelluleResponseFromJson(json);
@@ -77,25 +79,51 @@ abstract class ReponsableCelluleResponse with _$ReponsableCelluleResponse {
     required String email,
     required String adresse,
     required String celluleId,
+    required String secteurId,
+    required String secteurCode,
   }) = _ReponsableCelluleResponse;
   factory ReponsableCelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$ReponsableCelluleResponseFromJson(json);
 }
 
-
 @freezed
 abstract class DiscipleCellule with _$DiscipleCellule {
-  factory DiscipleCellule({
-    required String fullName,
-    required String contact,
-  }) = _DiscipleCellule;
+  factory DiscipleCellule({required String fullName, required String contact}) =
+      _DiscipleCellule;
   factory DiscipleCellule.fromJson(Map<String, dynamic> json) =>
       _$DiscipleCelluleFromJson(json);
 }
 
+@freezed
+abstract class ReponsableSecteurResponse with _$ReponsableSecteurResponse {
+  factory ReponsableSecteurResponse({
+    required String secteurResponsableName,
+    required String secteurCode,
+    required String dateCreated,
+    required String secteurName,
+    required String contactResponsable,
+    required String emailResponsable,
+    required String adresse,
+    required String secteurId,
+    required String zoneId,
+    required String zoneCode,
+  }) = _ReponsableSecteurResponse;
+  factory ReponsableSecteurResponse.fromJson(Map<String, dynamic> json) =>
+      _$ReponsableSecteurResponseFromJson(json);
+}
 
-
-
-
-
-
+@freezed
+abstract class ReponsableZoneResponse with _$ReponsableZoneResponse {
+  factory ReponsableZoneResponse({
+    required String zoneResponsableName,
+    required String zoneCode,
+    required String dateCreated,
+    required String zoneName,
+    required String contactResponsable,
+    required String emailResponsable,
+    required String adresse,
+    required String zoneId,
+  }) = _ReponsableZoneResponse;
+  factory ReponsableZoneResponse.fromJson(Map<String, dynamic> json) =>
+      _$ReponsableZoneResponseFromJson(json);
+}

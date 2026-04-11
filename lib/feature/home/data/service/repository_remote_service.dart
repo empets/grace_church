@@ -20,4 +20,10 @@ abstract class DomaineServiceRepository {
   );
   Future<FirebaseResult<List<ReponsableCelluleResponseModel>>>
   getListResponsablesCellules(RequestReponsableCellule params);
+  
+  Future<FirebaseResult<List<ReponsableResponseSecteurModel>>>
+  getListResponsablesSecteurs(RequestReponsableSecteur params);
+  
+  Future<FirebaseResult<List<ReponsableZoneResponseModel>>>
+  getListResponsablesZones(RequestReponsableZone params);
 }

@@ -22,9 +22,13 @@ import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/steam_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_responsable_cellule_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
 import 'package:grace_church/feature/home/notification_view.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule/event/cellule_event.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule/get_responsable_cellue_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_cellue_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/signin_view.dart';
@@ -339,7 +343,6 @@ class MenuView extends StatelessWidget {
                                                                   ),
                                                             ),
 
-                                                          
                                                             BlocProvider.value(
                                                               value: context
                                                                   .read<
@@ -359,12 +362,41 @@ class MenuView extends StatelessWidget {
                                                       "cellule_space") {
                                                     Navigator.of(context).push(
                                                       fadeRoute(
-                                                        BlocProvider(
-                                                          create: (context) => RapportCelluleSectionAdministrationBloc(),
-                                                          child: EditingCelluleRaport(
-                                                            profile: profileStream
-                                                                .data,
-                                                          ),
+                                                        MultiBlocProvider(
+                                                          providers: [
+                                                            BlocProvider(
+                                                              create: (context) =>
+                                                                  RapportCelluleSectionAdministrationBloc(),
+                                                            ),
+                                                            BlocProvider(
+                                                              create: (context) =>
+                                                                  GetResponsableSecteurBloc(
+                                                                    getListSecteurUsercase:
+                                                                        getIt<
+                                                                          GetListSecteurUsercase
+                                                                        >(),
+                                                                  )..add(
+                                                                    CelluleEvent.fetch(),
+                                                                  ),
+                                                            ),
+                                                            BlocProvider(
+                                                              create: (context) =>
+                                                                  GetResponsableZoneBloc(
+                                                                    getListZoneUsercase:
+                                                                        getIt<
+                                                                          GetListZoneUsercase
+                                                                        >(),
+                                                                  )..add(
+                                                                    CelluleEvent.fetch(),
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                          child:
+                                                              EditingCelluleRaport(
+                                                                profile:
+                                                                    profileStream
+                                                                        .data,
+                                                              ),
                                                         ),
                                                       ),
                                                     );

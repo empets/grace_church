@@ -100,6 +100,8 @@ _CelluleResponseModel _$CelluleResponseModelFromJson(
   longitude: (json['longitude'] as num?)?.toDouble(),
   adresse: json['adresse'] as String?,
   celluleId: json['celluleId'] as String?,
+  secteurId: json['secteurId'] as String?,
+  secteurCode: json['secteurCode'] as String?,
 );
 
 Map<String, dynamic> _$CelluleResponseModelToJson(
@@ -114,6 +116,8 @@ Map<String, dynamic> _$CelluleResponseModelToJson(
   'longitude': instance.longitude,
   'adresse': instance.adresse,
   'celluleId': instance.celluleId,
+  'secteurId': instance.secteurId,
+  'secteurCode': instance.secteurCode,
 };
 
 _ReponsableCelluleResponseModel _$ReponsableCelluleResponseModelFromJson(
@@ -129,6 +133,8 @@ _ReponsableCelluleResponseModel _$ReponsableCelluleResponseModelFromJson(
   adresse: json['adresse'] as String?,
   celluleId: json['celluleId'] as String?,
   celluleName: json['celluleName'] as String?,
+  secteurId: json['secteurId'] as String?,
+  secteurCode: json['secteurCode'] as String?,
 );
 
 Map<String, dynamic> _$ReponsableCelluleResponseModelToJson(
@@ -144,4 +150,62 @@ Map<String, dynamic> _$ReponsableCelluleResponseModelToJson(
   'adresse': instance.adresse,
   'celluleId': instance.celluleId,
   'celluleName': instance.celluleName,
+  'secteurId': instance.secteurId,
+  'secteurCode': instance.secteurCode,
+};
+
+_ReponsableResponseSecteurModel _$ReponsableResponseSecteurModelFromJson(
+  Map<String, dynamic> json,
+) => _ReponsableResponseSecteurModel(
+  secteurResponsableName: json['secteurResponsableName'] as String?,
+  secteurCode: json['secteurCode'] as String?,
+  dateCreated: json['dateCreated'] as String?,
+  secteurName: json['secteurName'] as String?,
+  contactResponsable: json['contactResponsable'] as String?,
+  emailResponsable: json['emailResponsable'] as String?,
+  adresse: json['adresse'] as String?,
+  secteurId: json['secteurId'] as String?,
+  zoneId: json['zoneId'] as String?,
+  zoneCode: json['zoneCode'] as String?,
+);
+
+Map<String, dynamic> _$ReponsableResponseSecteurModelToJson(
+  _ReponsableResponseSecteurModel instance,
+) => <String, dynamic>{
+  'secteurResponsableName': instance.secteurResponsableName,
+  'secteurCode': instance.secteurCode,
+  'dateCreated': instance.dateCreated,
+  'secteurName': instance.secteurName,
+  'contactResponsable': instance.contactResponsable,
+  'emailResponsable': instance.emailResponsable,
+  'adresse': instance.adresse,
+  'secteurId': instance.secteurId,
+  'zoneId': instance.zoneId,
+  'zoneCode': instance.zoneCode,
+};
+
+_ReponsableZoneResponseModel _$ReponsableZoneResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _ReponsableZoneResponseModel(
+  zoneResponsableName: json['zoneResponsableName'] as String?,
+  zoneCode: json['zoneCode'] as String?,
+  dateCreated: json['dateCreated'] as String?,
+  zoneName: json['zoneName'] as String?,
+  contactResponsable: json['contactResponsable'] as String?,
+  emailResponsable: json['emailResponsable'] as String?,
+  adresse: json['adresse'] as String?,
+  zoneId: json['zoneId'] as String?,
+);
+
+Map<String, dynamic> _$ReponsableZoneResponseModelToJson(
+  _ReponsableZoneResponseModel instance,
+) => <String, dynamic>{
+  'zoneResponsableName': instance.zoneResponsableName,
+  'zoneCode': instance.zoneCode,
+  'dateCreated': instance.dateCreated,
+  'zoneName': instance.zoneName,
+  'contactResponsable': instance.contactResponsable,
+  'emailResponsable': instance.emailResponsable,
+  'adresse': instance.adresse,
+  'zoneId': instance.zoneId,
 };

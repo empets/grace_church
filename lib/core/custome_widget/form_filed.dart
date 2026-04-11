@@ -385,3 +385,132 @@ class FormNextTeps extends StatelessWidget {
     );
   }
 }
+
+class CustomeTextFormFieldWithoutBorder extends StatelessWidget {
+  const CustomeTextFormFieldWithoutBorder({
+    super.key,
+    this.onChanged,
+    required this.textLabel,
+    this.isCancel,
+    required this.errorText,
+    required this.msgError,
+    this.textInputType,
+    this.controller,
+    this.maxLines,
+    this.minLines,
+    this.hintStyle,
+    this.readOnly,
+    this.prefixIcon,
+    this.letSpace,
+    required this.inputLabel,
+    this.inputStyle,
+    this.sufixIcon,
+    this.isColorBlue = false,
+    this.inputLabelSize,
+  });
+
+  final void Function(String)? onChanged;
+  final String textLabel;
+  final String inputLabel;
+  final bool? isCancel;
+  final String? errorText;
+  final String msgError;
+  final TextInputType? textInputType;
+  final TextEditingController? controller;
+  final int? maxLines;
+  final int? minLines;
+  final TextStyle? hintStyle;
+  final TextStyle? inputStyle;
+  final bool? readOnly;
+  final Widget? prefixIcon;
+  final Widget? sufixIcon;
+  final List<TextInputFormatter>? letSpace;
+  final bool isColorBlue;
+  final double? inputLabelSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          inputLabel,
+          style:
+              inputStyle ??
+              context.appTypographie.small.copyWith(
+                color: Colors.grey.shade700,
+                fontSize: inputLabelSize ?? 14.sp,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        SizedBox(height: 3.h),
+        TextFormField(
+          readOnly: readOnly ?? false,
+          controller: controller,
+          minLines: minLines ?? 1,
+          maxLines: maxLines ?? 1,
+          inputFormatters:
+              letSpace ?? [FilteringTextInputFormatter.deny(RegExp(r'\s'))],
+          keyboardType: textInputType,
+          style: GoogleFonts.roboto(color: context.appColor.primaryGrayDark),
+          decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            suffixIcon: sufixIcon,
+            hint: Text(
+              textLabel,
+              style:
+                  hintStyle ??
+                  GoogleFonts.roboto(
+                    color: const Color(0xFF888888),
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+            ),
+
+            isDense: true,
+            contentPadding: EdgeInsets.symmetric(vertical: 12.sp),
+
+            filled: false, // ❗ important pour enlever le fond
+
+            errorText: errorText,
+
+            // ✅ Bordure normale
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.3)),
+            ),
+
+            // ✅ Bordure focus
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: isColorBlue
+                    ? context.appColor.primaryLightBlue
+                    : Colors.grey.withValues(alpha: 0.5),
+                width: 2,
+              ),
+            ),
+
+            // ✅ Bordure erreur
+            errorBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
+
+            focusedErrorBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.red, width: 2),
+            ),
+
+            // ❌ supprimer les autres borders
+            border: UnderlineInputBorder(),
+
+            errorStyle: GoogleFonts.roboto(
+              color: (isCancel != null)
+                  ? context.appColor.primaryError
+                  : Colors.red.withValues(alpha: 0.2),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          onChanged: onChanged,
+        ),
+      ],
+    );
+  }
+}

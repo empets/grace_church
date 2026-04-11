@@ -13,8 +13,8 @@ import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/page/form_geographie.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule/cellule_bloc.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule/event/cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class CelluleView extends StatefulWidget {

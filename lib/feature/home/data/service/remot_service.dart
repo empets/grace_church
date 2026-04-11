@@ -271,4 +271,50 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError(e.toString());
     }
   }
+  
+  @override
+  Future<FirebaseResult<List<ReponsableResponseSecteurModel>>> getListResponsablesSecteurs(RequestReponsableSecteur params) async {
+    try {
+      final snapshot = await db.child('emsecteur').get();
+      if (snapshot.exists) {
+        final data = snapshot.value as Map<dynamic, dynamic>;
+        final notifications = data.values.map((e) {
+          final notificationItem = Map<String, dynamic>.from(e);
+          return ReponsableResponseSecteurModel.fromJson(notificationItem);
+        }).toList();
+        return FirebaseSuccess(
+          notifications
+              .map((e) => ReponsableResponseSecteurModel.fromJson(e.toJson()))
+              .toList(),
+        );
+      }
+      return FirebaseError("Aucune responsables de secteur trouvés");
+    } catch (e) {
+      log("🔥 Firebase Responsable Secteur →→→→→→→→→ ${e}");
+      return FirebaseError(e.toString());
+    }
+  }
+  
+  @override
+  Future<FirebaseResult<List<ReponsableZoneResponseModel>>> getListResponsablesZones(RequestReponsableZone params) async {
+    try {
+      final snapshot = await db.child('emzone').get();
+      if (snapshot.exists) {
+        final data = snapshot.value as Map<dynamic, dynamic>;
+        final notifications = data.values.map((e) {
+          final notificationItem = Map<String, dynamic>.from(e);
+          return ReponsableZoneResponseModel.fromJson(notificationItem);
+        }).toList();
+        return FirebaseSuccess(
+          notifications
+              .map((e) => ReponsableZoneResponseModel.fromJson(e.toJson()))
+              .toList(),
+        );
+      }
+      return FirebaseError("Aucune responsables de zone trouvés");
+    } catch (e) {
+      log("🔥 Firebase Responsable Zone →→→→→→→→→ ${e}");
+      return FirebaseError(e.toString());
+    }
+  }
 }

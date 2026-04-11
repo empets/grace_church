@@ -1,16 +1,23 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/overview.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
@@ -31,6 +38,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
       TextEditingController();
   final TextEditingController textEditingControllerNomResponsableCellule =
       TextEditingController();
+
+  ReponsableSecteurResponse? selectSecteur;
 
   Future<void> _openCalendar() async {
     final DateTime? picked = await showDatePicker(
@@ -331,46 +340,187 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                       RapportCelluleSectionAdministrationState
                     >(
                       builder: (context, state) {
-                        return ProductionFormCustomer(
-                          readOnly: true,
-                          inputLabelSize: 0.sp,
-                          isColorBlue: false,
+                        return BlocBuilder<
+                          GetResponsableZoneBloc,
+                          ApiState<List<ReponsableZoneResponse>>
+                        >(
+                          builder: (context, zoneState) {
+                            return BlocBuilder<
+                              GetResponsableSecteurBloc,
+                              ApiState<List<ReponsableSecteurResponse>>
+                            >(
+                              builder: (context, secteurState) {
+                                if (secteurState
+                                    is SuccessState<
+                                      List<ReponsableSecteurResponse>
+                                    >) {
+                                  return Container(
+                                    margin: EdgeInsets.symmetric(vertical: 4.h),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: state.codeSecteur.isValid
+                                            ? context.appColor.primaryLightBlue
+                                            : Colors.grey.withOpacity(.5),
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    // statutMenber
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton<ReponsableSecteurResponse>(
+                                        isExpanded: true,
+                                        dropdownColor:
+                                            context.appColor.primaryWhite,
+                                        hint: Text(
+                                          "Selectionner une cellule",
+                                          style: GoogleFonts.roboto(
+                                            color: Colors.grey,
+                                            fontSize: 14.sp,
+                                          ),
+                                        ),
+                                        value: selectSecteur,
+                                        style: GoogleFonts.roboto(
+                                          color: Colors.black,
+                                          fontSize: 14.sp,
+                                        ),
+                                        icon: Icon(Icons.keyboard_arrow_down),
+                                        items: secteurState.data
+                                            .map(
+                                              (item) =>
+                                                  DropdownMenuItem<
+                                                    ReponsableSecteurResponse
+                                                  >(
+                                                    value: item,
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        SizedBox(height: 9.h),
+                                                        Text(
+                                                          item.secteurResponsableName,
+                                                          style:
+                                                              GoogleFonts.roboto(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 12.sp,
+                                                              ),
+                                                        ),
 
-                          inputLabel: '',
-                          textLabel: "Cliquer sur l'icon juste à droite ",
-                          errorText: null,
-                          msgError: 'Veuillez renseigner ce champ',
-                          sufixIcon: Container(
-                            margin: EdgeInsets.only(right: 3.w),
-                            decoration: BoxDecoration(
-                              color: context.appColor.primaryLightBlue,
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: IconButton(
-                              onPressed:
-                                  // state.status.isInProgress ||
-                                  //     state.statusSpirituel.value
-                                  //             .toLowerCase() !=
-                                  //         "baptiser"
-                                  // ? null
-                                  // :
-                                  () {
-                                    // if (state.statusSpirituel.value
-                                    //         .toLowerCase() ==
-                                    //     "baptiser") {
-                                    //   _openCalendar();
-                                    // }
-                                  },
-                              icon: Icon(
-                                Icons.arrow_drop_down,
-                                // state.statusSpirituel.value.toLowerCase() ==
-                                //         "baptiser"
-                                //     ? Icons.calendar_month_sharp
-                                //     : Icons.lock,
-                                color: context.appColor.primaryBlue,
-                              ),
-                            ),
-                          ),
+                                                        Text(
+                                                          item.adresse,
+                                                          style:
+                                                              GoogleFonts.roboto(
+                                                                color:
+                                                                    Colors.grey,
+                                                                fontSize: 0.sp,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                            )
+                                            .toList(),
+                                        onChanged: state.status.isInProgress
+                                            ? null
+                                            : (value) {
+                                                setState(() {
+                                                  selectSecteur = value;
+                                                });
+
+                                                if (zoneState
+                                                    is SuccessState<
+                                                      List<
+                                                        ReponsableZoneResponse
+                                                      >
+                                                    >) {
+                                                  final secteur = zoneState.data
+                                                      .where(
+                                                        (element) =>
+                                                            element.zoneCode
+                                                                .toLowerCase() ==
+                                                            value?.zoneCode
+                                                                .toLowerCase(),
+                                                      )
+                                                      .firstOrNull;
+
+                                                  context
+                                                      .read<
+                                                        RapportCelluleSectionAdministrationBloc
+                                                      >()
+                                                      .add(
+                                                        RapportCelluleSectionAdministrationEvent.changeCodeZone(
+                                                          secteur?.zoneCode ??
+                                                              '',
+                                                        ),
+                                                      );
+                                                  context
+                                                      .read<
+                                                        RapportCelluleSectionAdministrationBloc
+                                                      >()
+                                                      .add(
+                                                        RapportCelluleSectionAdministrationEvent.changeFullNameRespoZone(
+                                                          secteur?.zoneResponsableName ??
+                                                              '',
+                                                        ),
+                                                      );
+
+                                                  context
+                                                      .read<
+                                                        RapportCelluleSectionAdministrationBloc
+                                                      >()
+                                                      .add(
+                                                        RapportCelluleSectionAdministrationEvent.changeContactRespoZone(
+                                                          secteur?.contactResponsable ??
+                                                              '',
+                                                        ),
+                                                      );
+                                                }
+
+                                                context
+                                                    .read<
+                                                      RapportCelluleSectionAdministrationBloc
+                                                    >()
+                                                    .add(
+                                                      RapportCelluleSectionAdministrationEvent.changeCodeSecteur(
+                                                        value?.secteurCode ??
+                                                            '',
+                                                      ),
+                                                    );
+
+                                                context
+                                                    .read<
+                                                      RapportCelluleSectionAdministrationBloc
+                                                    >()
+                                                    .add(
+                                                      RapportCelluleSectionAdministrationEvent.changeFullNameRespoSecteur(
+                                                        value?.secteurResponsableName ??
+                                                            '',
+                                                      ),
+                                                    );
+
+                                                context
+                                                    .read<
+                                                      RapportCelluleSectionAdministrationBloc
+                                                    >()
+                                                    .add(
+                                                      RapportCelluleSectionAdministrationEvent.changeContactRespoSecteur(
+                                                        value?.contactResponsable ??
+                                                            '',
+                                                      ),
+                                                    );
+                                              },
+                                      ),
+                                    ),
+                                  );
+                                }
+
+                                return SizedBox();
+                              },
+                            );
+                          },
                         );
                       },
                     ),
@@ -511,7 +661,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                 elevation: 0.5.h,
                                 borderOnForeground: true,
                                 child: ExpansionTile(
-                                  splashColor: Colors.transparent,
+                                  // splashColor: Colors.transparent,
+                                  initiallyExpanded: true,
                                   tilePadding: EdgeInsets.symmetric(
                                     horizontal: 16.w,
                                     vertical: 8.h,
@@ -614,27 +765,29 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                 ),
                 Column(
                   children: [
-                    ProductionFormCustomer(
-                      textLabel: "Nombre de disciple",
+                    CustomeTextFormFieldWithoutBorder(
+                      textInputType: TextInputType.number,
+                      textLabel: "Exemple : 3",
+                      errorText: null,
                       msgError: "Veuillez entrer le nombre de disciple",
                       inputLabel: "Nombre de disciple",
-                      errorText: "",
-                      textInputType: TextInputType.phone,
                       onChanged: (value) {
                         // TODO: Handle the value change
                         final number = int.tryParse(value) ?? 1;
                         updateNombre2(section2, number);
                       },
                     ),
-                    BlocBuilder<RapportCelluleSectionAdministrationBloc, RapportCelluleSectionAdministrationState>(
+
+                    BlocBuilder<
+                      RapportCelluleSectionAdministrationBloc,
+                      RapportCelluleSectionAdministrationState
+                    >(
                       builder: (context, state) {
                         return Column(
                           children: List.generate(section2.rows.length, (
                             index,
                           ) {
                             final row = section2.rows[index];
-                           
-                            
 
                             return Container(
                               margin: EdgeInsets.only(bottom: 16.h),
@@ -647,65 +800,98 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                   ),
                                   child: Column(
                                     children: [
-                                      //  Icon(Icons.file_open_rounded),:
                                       Text(
-                                        " Membre visité ${index + 1}",
+                                        " Disciple ${index + 1}",
                                         style: context.appTypographie.body
                                             .copyWith(
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
 
-                                      TextField(
-                                        decoration: InputDecoration(
-                                          labelText: "Nom",
-                                        ),
-                                      onChanged: (val) {
-                                        final bloc = context.read<RapportCelluleSectionAdministrationBloc>();
-                                        final list = List<DiscipleCellule>.from(
-                                          bloc.state.discipleCelluleList,
-                                        );
-                                        // sécurité si liste vide
-                                        if (list.length <= index) {
-                                          list.addAll(
-                                            List.generate(
-                                              index - list.length + 1,
-                                              (_) => DiscipleCellule(fullName: '', contact: ''),
+                                      CustomeTextFormFieldWithoutBorder(
+                                        textLabel:
+                                            "Veuillez entrer le nom complet",
+                                        errorText: null,
+                                        msgError: "Veuillez entrer le contact",
+                                        inputLabel: "Nom",
+                                        onChanged: (val) {
+                                          final bloc = context
+                                              .read<
+                                                RapportCelluleSectionAdministrationBloc
+                                              >();
+
+                                          final list =
+                                              List<DiscipleCellule>.from(
+                                                bloc.state.discipleCelluleList,
+                                              );
+
+                                          if (list.length <= index) {
+                                            list.addAll(
+                                              List.generate(
+                                                index - list.length + 1,
+                                                (_) => DiscipleCellule(
+                                                  fullName: '',
+                                                  contact: '',
+                                                ),
+                                              ),
+                                            );
+                                          }
+
+                                          list[index] = list[index].copyWith(
+                                            fullName: val, // ✅ uniquement nom
+                                          );
+
+                                          bloc.add(
+                                            RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule(
+                                              list,
                                             ),
                                           );
-                                        }
-                                        list[index] = list[index].copyWith(fullName: val);
-
-                                        bloc.add(
-                                          RapportCelluleSectionAdministrationEvent
-                                              .changeNombreListDicipleCellule(list),
-                                        );
-                                      },
-                                      ),
-
-                                      TextField(
-                                        decoration: InputDecoration(
-                                          labelText: "Problème",
-                                        ),
-                                        onChanged: (val) {
-                                          row.probleme = val;
-                                          log('Problème: $val');
-                                           context.read<RapportCelluleSectionAdministrationBloc>().add(RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule(List.generate( section2.rows.length, (index) => DiscipleCellule(fullName: val, contact: ""))));
-                                          //  context.read<RapportCelluleSectionAdministrationBloc>().add(RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule([DiscipleCellule(fullName: val, contact: '000' )]));
-
                                         },
                                       ),
 
-                                      TextField(
-                                        decoration: InputDecoration(
-                                          labelText: "Recommandation",
-                                        ),
+                                      SizedBox(height: 9.h),
+
+                                      CustomeTextFormFieldWithoutBorder(
+                                        textLabel: "Veuillez entrer le contact",
+                                        errorText: null,
+                                        msgError: "Veuillez entrer le contact",
+                                        inputLabel: "Contact",
+                                        textInputType: TextInputType.phone,
                                         onChanged: (val) {
-                                          row.recommandation = val;
-                                          log('Recommandation: $val');
+                                          final bloc = context
+                                              .read<
+                                                RapportCelluleSectionAdministrationBloc
+                                              >();
+
+                                          final list =
+                                              List<DiscipleCellule>.from(
+                                                bloc.state.discipleCelluleList,
+                                              );
+
+                                          if (list.length <= index) {
+                                            list.addAll(
+                                              List.generate(
+                                                index - list.length + 1,
+                                                (_) => DiscipleCellule(
+                                                  fullName: '',
+                                                  contact: '',
+                                                ),
+                                              ),
+                                            );
+                                          }
+
+                                          list[index] = list[index].copyWith(
+                                            contact:
+                                                val, // ✅ uniquement contact
+                                          );
+
+                                          bloc.add(
+                                            RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule(
+                                              list,
+                                            ),
+                                          );
                                         },
                                       ),
-
                                       SizedBox(height: 16),
                                     ],
                                   ),
