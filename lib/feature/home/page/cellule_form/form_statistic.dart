@@ -8,7 +8,7 @@ import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/overview.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule_form/form_activite.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
 
 class FormStatistic extends StatefulWidget {
   const FormStatistic({super.key});

@@ -28,8 +28,9 @@ import 'package:grace_church/feature/home/page/bloc/cellule/get_responsable_cell
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/signin_view.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule_form/rapport_cellule.dart';
+import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuView extends StatelessWidget {
@@ -308,17 +309,16 @@ class MenuView extends StatelessWidget {
                                                         MultiBlocProvider(
                                                           providers: [
                                                             BlocProvider(
-                                                              create: (context) =>
-                                                                  FormProfileBloc(
-                                                                    createProfileUsercase:
-                                                                        getIt<
-                                                                          CreateProfileUsercase
-                                                                        >(),
-                                                                    updateProfileUsercase:
-                                                                        getIt<
-                                                                          UpdateProfileUsercase
-                                                                        >(),
-                                                                  ),
+                                                              create: (context) => FormProfileBloc(
+                                                                createProfileUsercase:
+                                                                    getIt<
+                                                                      CreateProfileUsercase
+                                                                    >(),
+                                                                updateProfileUsercase:
+                                                                    getIt<
+                                                                      UpdateProfileUsercase
+                                                                    >(),
+                                                              ),
                                                             ),
                                                             BlocProvider(
                                                               create: (context) =>
@@ -339,6 +339,7 @@ class MenuView extends StatelessWidget {
                                                                   ),
                                                             ),
 
+                                                          
                                                             BlocProvider.value(
                                                               value: context
                                                                   .read<
@@ -358,7 +359,13 @@ class MenuView extends StatelessWidget {
                                                       "cellule_space") {
                                                     Navigator.of(context).push(
                                                       fadeRoute(
-                                                        EditingCelluleRaport(),
+                                                        BlocProvider(
+                                                          create: (context) => RapportCelluleSectionAdministrationBloc(),
+                                                          child: EditingCelluleRaport(
+                                                            profile: profileStream
+                                                                .data,
+                                                          ),
+                                                        ),
                                                       ),
                                                     );
                                                   }
@@ -453,17 +460,16 @@ class MenuView extends StatelessWidget {
                                                         MultiBlocProvider(
                                                           providers: [
                                                             BlocProvider(
-                                                              create: (context) =>
-                                                                  FormProfileBloc(
-                                                                    createProfileUsercase:
-                                                                        getIt<
-                                                                          CreateProfileUsercase
-                                                                        >(),
-                                                                    updateProfileUsercase:
-                                                                        getIt<
-                                                                          UpdateProfileUsercase
-                                                                        >(),
-                                                                  ),
+                                                              create: (context) => FormProfileBloc(
+                                                                createProfileUsercase:
+                                                                    getIt<
+                                                                      CreateProfileUsercase
+                                                                    >(),
+                                                                updateProfileUsercase:
+                                                                    getIt<
+                                                                      UpdateProfileUsercase
+                                                                    >(),
+                                                              ),
                                                             ),
                                                             BlocProvider(
                                                               create: (context) =>
@@ -484,6 +490,10 @@ class MenuView extends StatelessWidget {
                                                                   ),
                                                             ),
 
+                                                            // BlocProvider(
+                                                            //   create: (context) =>
+                                                            //       RapportCelluleSectionAdministrationBloc(),
+                                                            // ),
                                                             BlocProvider.value(
                                                               value: context
                                                                   .read<

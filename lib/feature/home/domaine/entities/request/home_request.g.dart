@@ -80,3 +80,39 @@ Map<String, dynamic> _$RequestReponsableCelluleToJson(
   'adresse': instance.adresse,
   'celluleId': instance.celluleId,
 };
+
+_RequestRapportCellule _$RequestRapportCelluleFromJson(
+  Map<String, dynamic> json,
+) => _RequestRapportCellule(
+  codeZone: json['codeZone'] as String,
+  fullNameRespoZone: json['fullNameRespoZone'] as String,
+  contactRespoZone: json['contactRespoZone'] as String,
+  codeSecteur: json['codeSecteur'] as String,
+  fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
+  contactRespoSecteur: json['contactRespoSecteur'] as String,
+  codeCellule: json['codeCellule'] as String,
+  fullNameRespoCellule: json['fullNameRespoCellule'] as String,
+  contactRespoCellule: json['contactRespoCellule'] as String,
+  jourCellule: json['jourCellule'] as String,
+  offrande: json['offrande'] as String,
+  nombreBaptiser: json['nombreBaptiser'] as String,
+  nombreNonBaptiser: json['nombreNonBaptiser'] as String,
+);
+
+Map<String, dynamic> _$RequestRapportCelluleToJson(
+  _RequestRapportCellule instance,
+) => <String, dynamic>{
+  'codeZone': instance.codeZone,
+  'fullNameRespoZone': instance.fullNameRespoZone,
+  'contactRespoZone': instance.contactRespoZone,
+  'codeSecteur': instance.codeSecteur,
+  'fullNameRespoSecteur': instance.fullNameRespoSecteur,
+  'contactRespoSecteur': instance.contactRespoSecteur,
+  'codeCellule': instance.codeCellule,
+  'fullNameRespoCellule': instance.fullNameRespoCellule,
+  'contactRespoCellule': instance.contactRespoCellule,
+  'jourCellule': instance.jourCellule,
+  'offrande': instance.offrande,
+  'nombreBaptiser': instance.nombreBaptiser,
+  'nombreNonBaptiser': instance.nombreNonBaptiser,
+};

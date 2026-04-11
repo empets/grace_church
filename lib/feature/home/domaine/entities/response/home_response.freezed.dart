@@ -1195,4 +1195,270 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$DiscipleCellule {
+
+ String get fullName; String get contact;
+/// Create a copy of DiscipleCellule
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DiscipleCelluleCopyWith<DiscipleCellule> get copyWith => _$DiscipleCelluleCopyWithImpl<DiscipleCellule>(this as DiscipleCellule, _$identity);
+
+  /// Serializes this DiscipleCellule to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DiscipleCellule&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.contact, contact) || other.contact == contact));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fullName,contact);
+
+@override
+String toString() {
+  return 'DiscipleCellule(fullName: $fullName, contact: $contact)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $DiscipleCelluleCopyWith<$Res>  {
+  factory $DiscipleCelluleCopyWith(DiscipleCellule value, $Res Function(DiscipleCellule) _then) = _$DiscipleCelluleCopyWithImpl;
+@useResult
+$Res call({
+ String fullName, String contact
+});
+
+
+
+
+}
+/// @nodoc
+class _$DiscipleCelluleCopyWithImpl<$Res>
+    implements $DiscipleCelluleCopyWith<$Res> {
+  _$DiscipleCelluleCopyWithImpl(this._self, this._then);
+
+  final DiscipleCellule _self;
+  final $Res Function(DiscipleCellule) _then;
+
+/// Create a copy of DiscipleCellule
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? contact = null,}) {
+  return _then(_self.copyWith(
+fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [DiscipleCellule].
+extension DiscipleCellulePatterns on DiscipleCellule {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DiscipleCellule value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _DiscipleCellule() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DiscipleCellule value)  $default,){
+final _that = this;
+switch (_that) {
+case _DiscipleCellule():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DiscipleCellule value)?  $default,){
+final _that = this;
+switch (_that) {
+case _DiscipleCellule() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String contact)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _DiscipleCellule() when $default != null:
+return $default(_that.fullName,_that.contact);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String contact)  $default,) {final _that = this;
+switch (_that) {
+case _DiscipleCellule():
+return $default(_that.fullName,_that.contact);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String contact)?  $default,) {final _that = this;
+switch (_that) {
+case _DiscipleCellule() when $default != null:
+return $default(_that.fullName,_that.contact);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _DiscipleCellule implements DiscipleCellule {
+   _DiscipleCellule({required this.fullName, required this.contact});
+  factory _DiscipleCellule.fromJson(Map<String, dynamic> json) => _$DiscipleCelluleFromJson(json);
+
+@override final  String fullName;
+@override final  String contact;
+
+/// Create a copy of DiscipleCellule
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DiscipleCelluleCopyWith<_DiscipleCellule> get copyWith => __$DiscipleCelluleCopyWithImpl<_DiscipleCellule>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$DiscipleCelluleToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DiscipleCellule&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.contact, contact) || other.contact == contact));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fullName,contact);
+
+@override
+String toString() {
+  return 'DiscipleCellule(fullName: $fullName, contact: $contact)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DiscipleCelluleCopyWith<$Res> implements $DiscipleCelluleCopyWith<$Res> {
+  factory _$DiscipleCelluleCopyWith(_DiscipleCellule value, $Res Function(_DiscipleCellule) _then) = __$DiscipleCelluleCopyWithImpl;
+@override @useResult
+$Res call({
+ String fullName, String contact
+});
+
+
+
+
+}
+/// @nodoc
+class __$DiscipleCelluleCopyWithImpl<$Res>
+    implements _$DiscipleCelluleCopyWith<$Res> {
+  __$DiscipleCelluleCopyWithImpl(this._self, this._then);
+
+  final _DiscipleCellule _self;
+  final $Res Function(_DiscipleCellule) _then;
+
+/// Create a copy of DiscipleCellule
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? contact = null,}) {
+  return _then(_DiscipleCellule(
+fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
+as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

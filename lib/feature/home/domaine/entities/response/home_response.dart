@@ -81,3 +81,21 @@ abstract class ReponsableCelluleResponse with _$ReponsableCelluleResponse {
   factory ReponsableCelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$ReponsableCelluleResponseFromJson(json);
 }
+
+
+@freezed
+abstract class DiscipleCellule with _$DiscipleCellule {
+  factory DiscipleCellule({
+    required String fullName,
+    required String contact,
+  }) = _DiscipleCellule;
+  factory DiscipleCellule.fromJson(Map<String, dynamic> json) =>
+      _$DiscipleCelluleFromJson(json);
+}
+
+
+
+
+
+
+

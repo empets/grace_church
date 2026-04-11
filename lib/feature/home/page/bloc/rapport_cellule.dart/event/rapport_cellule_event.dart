@@ -1,0 +1,39 @@
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+
+part 'rapport_cellule_event.freezed.dart';
+
+@freezed
+class RapportCelluleSectionAdministrationEvent with _$RapportCelluleSectionAdministrationEvent {
+   factory RapportCelluleSectionAdministrationEvent.changeCodeZone(String codeZone ) = ChangeCodeZoneRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeFullNameRespoZone(String fullNameRespoZone ) = ChangeFullNameRespoZoneRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeContactRespoZone(String contactRespoZone ) = ChangeContactRespoZoneRapportCelluleSectionAdministrationEvent;
+
+   factory RapportCelluleSectionAdministrationEvent.changeCodeSecteur(String codeSecteur ) = ChangeCodeSecteurRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeFullNameRespoSecteur(String fullNameRespoSecteur ) = ChangeFullNameRespoSecteurRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeContactRespoSecteur(String contactRespoSecteur ) = ChangeContactRespoSecteurRapportCelluleSectionAdministrationEvent;
+
+   factory RapportCelluleSectionAdministrationEvent.changeCodeCellule(String codeCellule ) = ChangeCodeCelluleRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeFullNameRespoCellule(String fullNameRespoCellule ) = ChangeFullNameRespoCelluleRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeContactRespoCellule(String contactRespoCellule ) = ChangeContactRespoCelluleRapportCelluleSectionAdministrationEvent;
+
+   factory RapportCelluleSectionAdministrationEvent.changeJourCellule(String jourCellule ) = ChangeJourCelluleRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeOffrande(String offrande ) = ChangeOffrandeRapportCelluleSectionAdministrationEvent;
+
+   factory RapportCelluleSectionAdministrationEvent.changeNombreBaptiser(String nombreBaptiser ) = ChangeNombreBaptiserRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeNombreNonBaptiser(String nombreNonBaptiser ) = ChangeNombreNonBaptiserRapportCelluleSectionAdministrationEvent;
+   factory RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule(List<DiscipleCellule> discipleCelluleResponse ) = ChangeNombreListDicipleCelluleRapportCelluleSectionAdministrationEvent;
+
+   factory RapportCelluleSectionAdministrationEvent.submit() = SubmitRapportCelluleSectionAdministrationEvent;
+
+
+
+
+
+
+
+
+
+
+}

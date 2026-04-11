@@ -137,3 +137,15 @@ Map<String, dynamic> _$ReponsableCelluleResponseToJson(
   'adresse': instance.adresse,
   'celluleId': instance.celluleId,
 };
+
+_DiscipleCellule _$DiscipleCelluleFromJson(Map<String, dynamic> json) =>
+    _DiscipleCellule(
+      fullName: json['fullName'] as String,
+      contact: json['contact'] as String,
+    );
+
+Map<String, dynamic> _$DiscipleCelluleToJson(_DiscipleCellule instance) =>
+    <String, dynamic>{
+      'fullName': instance.fullName,
+      'contact': instance.contact,
+    };

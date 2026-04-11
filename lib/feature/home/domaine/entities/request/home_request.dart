@@ -53,3 +53,26 @@ abstract class RequestReponsableCellule with _$RequestReponsableCellule {
   factory RequestReponsableCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestReponsableCelluleFromJson(json);
 }
+
+
+
+@freezed
+abstract class RequestRapportCellule with _$RequestRapportCellule {
+  factory RequestRapportCellule({
+    required String codeZone,
+    required String fullNameRespoZone,
+    required String contactRespoZone,
+    required String codeSecteur,
+    required String fullNameRespoSecteur,
+    required String contactRespoSecteur,
+    required String codeCellule,
+    required String fullNameRespoCellule,
+    required String contactRespoCellule,
+    required String jourCellule,
+    required String offrande,
+    required String nombreBaptiser,
+    required String nombreNonBaptiser,
+  }) = _RequestRapportCellule;
+  factory RequestRapportCellule.fromJson(Map<String, dynamic> json) =>
+      _$RequestRapportCelluleFromJson(json);
+}

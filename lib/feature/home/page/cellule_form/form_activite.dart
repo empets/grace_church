@@ -7,7 +7,7 @@ import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/overview.dart';
-import 'package:grace_church/feature/home/page/bloc/cellule_form/form_ouvrier_spritual_live.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_ouvrier_spritual_live.dart';
 
 class FormActivite extends StatefulWidget {
   const FormActivite({super.key});
