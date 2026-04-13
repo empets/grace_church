@@ -145,12 +145,32 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // LISTE DISCIPLES
       // -------------------------
-      case ChangeNombreListDicipleCelluleRapportCelluleSectionAdministrationEvent(:final discipleCelluleResponse):
-        final updatedState = state.copyWith(
-          discipleCelluleList: discipleCelluleResponse,
-        );
-        emit(updatedState.copyWith(isValide: _validate(updatedState)));
-        break;
+     case ChangeNombreListDicipleCelluleRapportCelluleSectionAdministrationEvent(
+  :final discipleCelluleResponse
+):
+  final updatedState = state.copyWith(
+    discipleCelluleList: discipleCelluleResponse,
+  );
+
+  // Vérification des erreurs
+  if (discipleCelluleResponse.any((item) => item.fullName.trim().isEmpty)) {
+    emit(
+      updatedState.copyWith(
+        errorMessage: "Nom obligatoire",
+        isValide: false,
+      ),
+    );
+    return;
+  }
+
+  // Si pas d'erreur → validation normale
+  emit(
+    updatedState.copyWith(
+      errorMessage: "",
+      isValide: _validate(updatedState),
+    ),
+  );
+  break;
 
       // -------------------------
       // 🔥 SUBMIT (optionnel)
@@ -158,7 +178,6 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       case SubmitRapportCelluleSectionAdministrationEvent():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-
           final result = await sendRapportCelluleStepAdministrationUsercase.call(RequestRapportCelluleAdministration(
             codeZone: state.codeZone.value,
             fullNameRespoZone: state.fullNameRespoZone.value,
@@ -179,8 +198,9 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
           ));
 
            emit(result.fold((l)=> state.copyWith(status: FormzSubmissionStatus.failure), (r)=> state.copyWith(status: FormzSubmissionStatus.success)));
-
-          
+        }
+        else{
+          emit(state.copyWith(status: FormzSubmissionStatus.failure));
         }
         break;
     }

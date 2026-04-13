@@ -472,7 +472,14 @@ class CustomeTextFormFieldWithoutBorder extends StatelessWidget {
 
             filled: false, // ❗ important pour enlever le fond
 
-            errorText: errorText,
+            // errorText: errorText,
+            error: errorText != null ? Text(errorText! ,style: GoogleFonts.roboto(
+              color: (isCancel != null)
+                  ? context.appColor.primaryError
+                  : Colors.red,
+              fontWeight: FontWeight.bold,
+            ),) : null,
+           
 
             // ✅ Bordure normale
             enabledBorder: UnderlineInputBorder(
@@ -491,22 +498,17 @@ class CustomeTextFormFieldWithoutBorder extends StatelessWidget {
 
             // ✅ Bordure erreur
             errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
+              borderSide: BorderSide(color: Colors.red.withValues(alpha: 0.5)),
             ),
 
             focusedErrorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 2),
+              borderSide: BorderSide(color: Colors.red.withValues(alpha: 0.5), width: 2),
             ),
 
             // ❌ supprimer les autres borders
             border: UnderlineInputBorder(),
 
-            errorStyle: GoogleFonts.roboto(
-              color: (isCancel != null)
-                  ? context.appColor.primaryError
-                  : Colors.red.withValues(alpha: 0.2),
-              fontWeight: FontWeight.bold,
-            ),
+      
           ),
           onChanged: onChanged,
         ),

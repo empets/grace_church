@@ -1,7 +1,11 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
@@ -13,13 +17,13 @@ import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_pr
 import 'package:grace_church/feature/authen/domaine/usercase/update_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/form_engagement.dart';
 import 'package:grace_church/feature/authen/page/form_holly_living.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
+import 'package:grace_church/feature/authen/page/signin_view.dart';
 import 'package:grace_church/feature/home/cellule_view.dart';
-import 'package:grace_church/feature/home/data/model/home_model.dart';
-import 'package:grace_church/feature/home/data/service/steam_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_responsable_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart';
@@ -31,12 +35,9 @@ import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/ge
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
-import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
-import 'package:grace_church/feature/authen/page/signin_view.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
-import 'package:grace_church/feature/home/profile_view.dart';
 import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:grace_church/feature/home/profile_view.dart';
 
 class MenuView extends StatelessWidget {
   MenuView({super.key});
@@ -296,8 +297,8 @@ class MenuView extends StatelessWidget {
                                                       ),
                                                 ),
                                                 trailing:
-                                                    (item["value"] !=
-                                                        "department")
+                                                    ((item["value"] !=
+                                                        "department") )
                                                     ? Icon(
                                                         Icons.chevron_right,
                                                         color: context
@@ -361,7 +362,8 @@ class MenuView extends StatelessWidget {
                                                   }
                                                   if (item["value"] ==
                                                       "cellule_space") {
-                                                    Navigator.of(context).push(
+                                                        if(profileStream.data.submitSpiritual){
+                                                              Navigator.of(context).push(
                                                       fadeRoute(
                                                         MultiBlocProvider(
                                                           providers: [
@@ -406,10 +408,16 @@ class MenuView extends StatelessWidget {
                                                         ),
                                                       ),
                                                     );
-                                                  }
+                                                        }
+                                                        else{
+                                                        AppAlert.showInfo(context, "Veuillez finaliser votre création de compte");
+
+                                                        }
+                                                   }
                                                   if (item["value"] ==
                                                       "cellule") {
-                                                    Navigator.of(context).push(
+                                                      if(profileStream.data.submitSpiritual){
+                                                        Navigator.of(context).push(
                                                       fadeRoute(
                                                         CelluleView(
                                                           cellueId:
@@ -420,6 +428,12 @@ class MenuView extends StatelessWidget {
                                                         ),
                                                       ),
                                                     );
+                                                      }
+
+                                                      else{
+                                                        AppAlert.showInfo(context, "Veuillez finaliser votre création de compte");
+                                                      }
+
                                                   }
                                                   if (item["value"] ==
                                                       "announcements") {

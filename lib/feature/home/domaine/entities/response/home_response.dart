@@ -88,7 +88,7 @@ abstract class ReponsableCelluleResponse with _$ReponsableCelluleResponse {
 
 @freezed
 abstract class DiscipleCellule with _$DiscipleCellule {
-  factory DiscipleCellule({required String fullName, required String contact}) =
+  factory DiscipleCellule({required String fullName, required String isBaptierOrNot}) =
       _DiscipleCellule;
   factory DiscipleCellule.fromJson(Map<String, dynamic> json) =>
       _$DiscipleCelluleFromJson(json);

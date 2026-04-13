@@ -1,5 +1,5 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -78,10 +78,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => injectableModule.locaDataShared(),
       preResolve: true,
     );
-    gh.lazySingleton<_i303.AppLauncherBloc>(() => _i303.AppLauncherBloc());
     gh.lazySingleton<_i366.ImpleSteamRemoteService>(
       () => _i366.ImpleSteamRemoteService(),
     );
+    gh.lazySingleton<_i303.AppLauncherBloc>(() => _i303.AppLauncherBloc());
     gh.lazySingleton<_i259.AuthenRemoteService>(
       () => _i166.ImplRemoteService(db: gh<_i345.DatabaseReference>()),
     );
@@ -99,6 +99,9 @@ extension GetItInjectableX on _i174.GetIt {
         authenRemoteService: gh<_i259.AuthenRemoteService>(),
       ),
     );
+    gh.lazySingleton<_i625.GetCelluleUsercase>(
+      () => _i625.GetCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
     gh.lazySingleton<_i15.GetListNotificationUsercase>(
       () => _i15.GetListNotificationUsercase(gh<_i962.HomeDomaineRepository>()),
     );
@@ -106,15 +109,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i15.GetListNotificationByCriteriaUsercase(
         gh<_i962.HomeDomaineRepository>(),
       ),
-    );
-    gh.lazySingleton<_i625.GetCelluleUsercase>(
-      () => _i625.GetCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
-    );
-    gh.lazySingleton<_i562.GetProfileUsercase>(
-      () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
-    );
-    gh.lazySingleton<_i562.GetProfileStreamUsercase>(
-      () => _i562.GetProfileStreamUsercase(gh<_i962.HomeDomaineRepository>()),
     );
     gh.lazySingleton<_i47.GetListResponsableCelluleUsercase>(
       () => _i47.GetListResponsableCelluleUsercase(
@@ -126,6 +120,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i554.GetListZoneUsercase>(
       () => _i554.GetListZoneUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i562.GetProfileUsercase>(
+      () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i562.GetProfileStreamUsercase>(
+      () => _i562.GetProfileStreamUsercase(gh<_i962.HomeDomaineRepository>()),
     );
     gh.lazySingleton<_i716.SendRapportCelluleStepAdministrationUsercase>(
       () => _i716.SendRapportCelluleStepAdministrationUsercase(
@@ -143,11 +143,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i855.CreateProfileUsercase>(
       () => _i855.CreateProfileUsercase(gh<_i653.AuthenRepository>()),
     );
-    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
-      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
-    );
     gh.lazySingleton<_i561.CreateSocialProfileUsercase>(
       () => _i561.CreateSocialProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i127.CreateSpiritualProfileUsercase>(
+      () => _i127.CreateSpiritualProfileUsercase(gh<_i653.AuthenRepository>()),
     );
     gh.lazySingleton<_i409.CreateSignInProfileUsercase>(
       () => _i409.CreateSignInProfileUsercase(gh<_i653.AuthenRepository>()),

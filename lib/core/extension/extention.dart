@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
-import 'package:intl/intl.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 // Future<bool> isEmulator() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -423,4 +425,7 @@ Future<FirebaseResult<String?>> updateForKey({
     log('************$e');
     return FirebaseError(e.toString());
   }
+}
+bool _validate<T>(List<T> list) {
+  return list.isNotEmpty;
 }

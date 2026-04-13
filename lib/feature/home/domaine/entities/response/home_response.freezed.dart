@@ -1211,7 +1211,7 @@ as String,
 /// @nodoc
 mixin _$DiscipleCellule {
 
- String get fullName; String get contact;
+ String get fullName; String get isBaptierOrNot;
 /// Create a copy of DiscipleCellule
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1224,16 +1224,16 @@ $DiscipleCelluleCopyWith<DiscipleCellule> get copyWith => _$DiscipleCelluleCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DiscipleCellule&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.contact, contact) || other.contact == contact));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DiscipleCellule&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.isBaptierOrNot, isBaptierOrNot) || other.isBaptierOrNot == isBaptierOrNot));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,fullName,contact);
+int get hashCode => Object.hash(runtimeType,fullName,isBaptierOrNot);
 
 @override
 String toString() {
-  return 'DiscipleCellule(fullName: $fullName, contact: $contact)';
+  return 'DiscipleCellule(fullName: $fullName, isBaptierOrNot: $isBaptierOrNot)';
 }
 
 
@@ -1244,7 +1244,7 @@ abstract mixin class $DiscipleCelluleCopyWith<$Res>  {
   factory $DiscipleCelluleCopyWith(DiscipleCellule value, $Res Function(DiscipleCellule) _then) = _$DiscipleCelluleCopyWithImpl;
 @useResult
 $Res call({
- String fullName, String contact
+ String fullName, String isBaptierOrNot
 });
 
 
@@ -1261,10 +1261,10 @@ class _$DiscipleCelluleCopyWithImpl<$Res>
 
 /// Create a copy of DiscipleCellule
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? contact = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? isBaptierOrNot = null,}) {
   return _then(_self.copyWith(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,isBaptierOrNot: null == isBaptierOrNot ? _self.isBaptierOrNot : isBaptierOrNot // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1350,10 +1350,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String contact)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String isBaptierOrNot)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DiscipleCellule() when $default != null:
-return $default(_that.fullName,_that.contact);case _:
+return $default(_that.fullName,_that.isBaptierOrNot);case _:
   return orElse();
 
 }
@@ -1371,10 +1371,10 @@ return $default(_that.fullName,_that.contact);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String contact)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String isBaptierOrNot)  $default,) {final _that = this;
 switch (_that) {
 case _DiscipleCellule():
-return $default(_that.fullName,_that.contact);case _:
+return $default(_that.fullName,_that.isBaptierOrNot);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1391,10 +1391,10 @@ return $default(_that.fullName,_that.contact);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String contact)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String isBaptierOrNot)?  $default,) {final _that = this;
 switch (_that) {
 case _DiscipleCellule() when $default != null:
-return $default(_that.fullName,_that.contact);case _:
+return $default(_that.fullName,_that.isBaptierOrNot);case _:
   return null;
 
 }
@@ -1406,11 +1406,11 @@ return $default(_that.fullName,_that.contact);case _:
 @JsonSerializable()
 
 class _DiscipleCellule implements DiscipleCellule {
-   _DiscipleCellule({required this.fullName, required this.contact});
+   _DiscipleCellule({required this.fullName, required this.isBaptierOrNot});
   factory _DiscipleCellule.fromJson(Map<String, dynamic> json) => _$DiscipleCelluleFromJson(json);
 
 @override final  String fullName;
-@override final  String contact;
+@override final  String isBaptierOrNot;
 
 /// Create a copy of DiscipleCellule
 /// with the given fields replaced by the non-null parameter values.
@@ -1425,16 +1425,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DiscipleCellule&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.contact, contact) || other.contact == contact));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DiscipleCellule&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.isBaptierOrNot, isBaptierOrNot) || other.isBaptierOrNot == isBaptierOrNot));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,fullName,contact);
+int get hashCode => Object.hash(runtimeType,fullName,isBaptierOrNot);
 
 @override
 String toString() {
-  return 'DiscipleCellule(fullName: $fullName, contact: $contact)';
+  return 'DiscipleCellule(fullName: $fullName, isBaptierOrNot: $isBaptierOrNot)';
 }
 
 
@@ -1445,7 +1445,7 @@ abstract mixin class _$DiscipleCelluleCopyWith<$Res> implements $DiscipleCellule
   factory _$DiscipleCelluleCopyWith(_DiscipleCellule value, $Res Function(_DiscipleCellule) _then) = __$DiscipleCelluleCopyWithImpl;
 @override @useResult
 $Res call({
- String fullName, String contact
+ String fullName, String isBaptierOrNot
 });
 
 
@@ -1462,10 +1462,10 @@ class __$DiscipleCelluleCopyWithImpl<$Res>
 
 /// Create a copy of DiscipleCellule
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? contact = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? isBaptierOrNot = null,}) {
   return _then(_DiscipleCellule(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as String,contact: null == contact ? _self.contact : contact // ignore: cast_nullable_to_non_nullable
+as String,isBaptierOrNot: null == isBaptierOrNot ? _self.isBaptierOrNot : isBaptierOrNot // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

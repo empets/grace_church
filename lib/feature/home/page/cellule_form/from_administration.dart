@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -140,6 +142,11 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
         widget.profile?.celluleCode ?? "",
       ),
     );
+     context.read<RapportCelluleSectionAdministrationBloc>().add(
+                          RapportCelluleSectionAdministrationEvent.changeOffrande(
+                            "0",
+                          ),
+                        );
   }
 
   @override
@@ -149,7 +156,12 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
       RapportCelluleSectionAdministrationState
     >(
       listener: (context, state) {
-        // TODO: implement listener
+        if(state.isValide && state.status.isSuccess){
+          log("---------->> GOOOG");
+        }
+         if(state.status.isFailure){
+          log("---------->> NOT GOOOG");
+        }
       },
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
@@ -354,166 +366,173 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                     is SuccessState<
                                       List<ReponsableSecteurResponse>
                                     >) {
-                                  return Container(
-                                    margin: EdgeInsets.symmetric(vertical: 4.h),
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: state.codeSecteur.isValid
-                                            ? context.appColor.primaryLightBlue
-                                            : Colors.grey.withOpacity(.5),
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    // statutMenber
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton<ReponsableSecteurResponse>(
-                                        isExpanded: true,
-                                        dropdownColor:
-                                            context.appColor.primaryWhite,
-                                        hint: Text(
-                                          "Selectionner une cellule",
-                                          style: GoogleFonts.roboto(
-                                            color: Colors.grey,
-                                            fontSize: 14.sp,
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.symmetric(vertical: 4.h),
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: state.codeSecteur.isValid
+                                                ? context.appColor.primaryLightBlue
+                                                : Colors.grey.withOpacity(.5),
+                                          ),
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        // statutMenber
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton<ReponsableSecteurResponse>(
+                                            isExpanded: true,
+                                            dropdownColor:
+                                                context.appColor.primaryWhite,
+                                            hint: Text(
+                                              "Selectionner une cellule",
+                                              style: GoogleFonts.roboto(
+                                                color: Colors.grey,
+                                                fontSize: 14.sp,
+                                              ),
+                                            ),
+                                            value: selectSecteur,
+                                            style: GoogleFonts.roboto(
+                                              color: Colors.black,
+                                              fontSize: 14.sp,
+                                            ),
+                                            icon: Icon(Icons.keyboard_arrow_down),
+                                            items: secteurState.data
+                                                .map(
+                                                  (item) =>
+                                                      DropdownMenuItem<
+                                                        ReponsableSecteurResponse
+                                                      >(
+                                                        value: item,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            SizedBox(height: 9.h),
+                                                            Text(
+                                                              item.secteurResponsableName,
+                                                              style:
+                                                                  GoogleFonts.roboto(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize: 12.sp,
+                                                                  ),
+                                                            ),
+                                      
+                                                            Text(
+                                                              item.adresse,
+                                                              style:
+                                                                  GoogleFonts.roboto(
+                                                                    color:
+                                                                        Colors.grey,
+                                                                    fontSize: 0.sp,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                )
+                                                .toList(),
+                                            onChanged: state.status.isInProgress
+                                                ? null
+                                                : (value) {
+                                                    setState(() {
+                                                      selectSecteur = value;
+                                                    });
+                                      
+                                                    if (zoneState
+                                                        is SuccessState<
+                                                          List<
+                                                            ReponsableZoneResponse
+                                                          >
+                                                        >) {
+                                                      final secteur = zoneState.data
+                                                          .where(
+                                                            (element) =>
+                                                                element.zoneCode
+                                                                    .toLowerCase() ==
+                                                                value?.zoneCode
+                                                                    .toLowerCase(),
+                                                          )
+                                                          .firstOrNull;
+                                      
+                                                      context
+                                                          .read<
+                                                            RapportCelluleSectionAdministrationBloc
+                                                          >()
+                                                          .add(
+                                                            RapportCelluleSectionAdministrationEvent.changeCodeZone(
+                                                              secteur?.zoneCode ??
+                                                                  '',
+                                                            ),
+                                                          );
+                                                      context
+                                                          .read<
+                                                            RapportCelluleSectionAdministrationBloc
+                                                          >()
+                                                          .add(
+                                                            RapportCelluleSectionAdministrationEvent.changeFullNameRespoZone(
+                                                              secteur?.zoneResponsableName ??
+                                                                  '',
+                                                            ),
+                                                          );
+                                      
+                                                      context
+                                                          .read<
+                                                            RapportCelluleSectionAdministrationBloc
+                                                          >()
+                                                          .add(
+                                                            RapportCelluleSectionAdministrationEvent.changeContactRespoZone(
+                                                              secteur?.contactResponsable ??
+                                                                  '',
+                                                            ),
+                                                          );
+                                                    }
+                                      
+                                                    context
+                                                        .read<
+                                                          RapportCelluleSectionAdministrationBloc
+                                                        >()
+                                                        .add(
+                                                          RapportCelluleSectionAdministrationEvent.changeCodeSecteur(
+                                                            value?.secteurCode ??
+                                                                '',
+                                                          ),
+                                                        );
+                                      
+                                                    context
+                                                        .read<
+                                                          RapportCelluleSectionAdministrationBloc
+                                                        >()
+                                                        .add(
+                                                          RapportCelluleSectionAdministrationEvent.changeFullNameRespoSecteur(
+                                                            value?.secteurResponsableName ??
+                                                                '',
+                                                          ),
+                                                        );
+                                      
+                                                    context
+                                                        .read<
+                                                          RapportCelluleSectionAdministrationBloc
+                                                        >()
+                                                        .add(
+                                                          RapportCelluleSectionAdministrationEvent.changeContactRespoSecteur(
+                                                            value?.contactResponsable ??
+                                                                '',
+                                                          ),
+                                                        );
+                                                  },
                                           ),
                                         ),
-                                        value: selectSecteur,
-                                        style: GoogleFonts.roboto(
-                                          color: Colors.black,
-                                          fontSize: 14.sp,
-                                        ),
-                                        icon: Icon(Icons.keyboard_arrow_down),
-                                        items: secteurState.data
-                                            .map(
-                                              (item) =>
-                                                  DropdownMenuItem<
-                                                    ReponsableSecteurResponse
-                                                  >(
-                                                    value: item,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        SizedBox(height: 9.h),
-                                                        Text(
-                                                          item.secteurResponsableName,
-                                                          style:
-                                                              GoogleFonts.roboto(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize: 12.sp,
-                                                              ),
-                                                        ),
-
-                                                        Text(
-                                                          item.adresse,
-                                                          style:
-                                                              GoogleFonts.roboto(
-                                                                color:
-                                                                    Colors.grey,
-                                                                fontSize: 0.sp,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                            )
-                                            .toList(),
-                                        onChanged: state.status.isInProgress
-                                            ? null
-                                            : (value) {
-                                                setState(() {
-                                                  selectSecteur = value;
-                                                });
-
-                                                if (zoneState
-                                                    is SuccessState<
-                                                      List<
-                                                        ReponsableZoneResponse
-                                                      >
-                                                    >) {
-                                                  final secteur = zoneState.data
-                                                      .where(
-                                                        (element) =>
-                                                            element.zoneCode
-                                                                .toLowerCase() ==
-                                                            value?.zoneCode
-                                                                .toLowerCase(),
-                                                      )
-                                                      .firstOrNull;
-
-                                                  context
-                                                      .read<
-                                                        RapportCelluleSectionAdministrationBloc
-                                                      >()
-                                                      .add(
-                                                        RapportCelluleSectionAdministrationEvent.changeCodeZone(
-                                                          secteur?.zoneCode ??
-                                                              '',
-                                                        ),
-                                                      );
-                                                  context
-                                                      .read<
-                                                        RapportCelluleSectionAdministrationBloc
-                                                      >()
-                                                      .add(
-                                                        RapportCelluleSectionAdministrationEvent.changeFullNameRespoZone(
-                                                          secteur?.zoneResponsableName ??
-                                                              '',
-                                                        ),
-                                                      );
-
-                                                  context
-                                                      .read<
-                                                        RapportCelluleSectionAdministrationBloc
-                                                      >()
-                                                      .add(
-                                                        RapportCelluleSectionAdministrationEvent.changeContactRespoZone(
-                                                          secteur?.contactResponsable ??
-                                                              '',
-                                                        ),
-                                                      );
-                                                }
-
-                                                context
-                                                    .read<
-                                                      RapportCelluleSectionAdministrationBloc
-                                                    >()
-                                                    .add(
-                                                      RapportCelluleSectionAdministrationEvent.changeCodeSecteur(
-                                                        value?.secteurCode ??
-                                                            '',
-                                                      ),
-                                                    );
-
-                                                context
-                                                    .read<
-                                                      RapportCelluleSectionAdministrationBloc
-                                                    >()
-                                                    .add(
-                                                      RapportCelluleSectionAdministrationEvent.changeFullNameRespoSecteur(
-                                                        value?.secteurResponsableName ??
-                                                            '',
-                                                      ),
-                                                    );
-
-                                                context
-                                                    .read<
-                                                      RapportCelluleSectionAdministrationBloc
-                                                    >()
-                                                    .add(
-                                                      RapportCelluleSectionAdministrationEvent.changeContactRespoSecteur(
-                                                        value?.contactResponsable ??
-                                                            '',
-                                                      ),
-                                                    );
-                                              },
                                       ),
-                                    ),
+                                     
+                                     
+                                    ],
                                   );
                                 }
 
@@ -523,6 +542,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                           },
                         );
                       },
+                      
                     ),
                     SizedBox(height: 9.h),
                   ],
@@ -808,43 +828,54 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                             ),
                                       ),
 
-                                      CustomeTextFormFieldWithoutBorder(
-                                        textLabel:
-                                            "Veuillez entrer le nom complet",
-                                        errorText: null,
-                                        msgError: "Veuillez entrer le contact",
-                                        inputLabel: "Nom",
-                                        onChanged: (val) {
-                                          final bloc = context
-                                              .read<
-                                                RapportCelluleSectionAdministrationBloc
-                                              >();
+                                      BlocBuilder<
+                                        RapportCelluleSectionAdministrationBloc,
+                                        RapportCelluleSectionAdministrationState
+                                      >(
+                                        builder: (context, state) {
+                                          return CustomeTextFormFieldWithoutBorder(
+                                            textLabel:
+                                                "Veuillez entrer le nom complet",
+                                            errorText: state.discipleCelluleList.any((item) => item.fullName.trim().isNotEmpty) ? (state.discipleCelluleList.isEmpty ? "Veuillez entrer le nom complet" : null) : "Veuillez entrer le nom complet",
+                                            msgError: state.discipleCelluleList.any((item) => item.fullName.trim().isEmpty) ? "Veuillez entrer le nom completss" : "",
+                                            inputLabel: "Nom",
+                                            onChanged: (val) {
+                                              final bloc = context
+                                                  .read<
+                                                    RapportCelluleSectionAdministrationBloc
+                                                  >();
 
-                                          final list =
-                                              List<DiscipleCellule>.from(
-                                                bloc.state.discipleCelluleList,
-                                              );
+                                              final list =
+                                                  List<DiscipleCellule>.from(
+                                                    bloc
+                                                        .state
+                                                        .discipleCelluleList,
+                                                  );
 
-                                          if (list.length <= index) {
-                                            list.addAll(
-                                              List.generate(
-                                                index - list.length + 1,
-                                                (_) => DiscipleCellule(
-                                                  fullName: '',
-                                                  contact: '',
+                                              if (list.length <= index) {
+                                                list.addAll(
+                                                  List.generate(
+                                                    index - list.length + 1,
+                                                    (_) => DiscipleCellule(
+                                                      fullName: '',
+                                                      isBaptierOrNot: '',
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+
+                                              list[index] = list[index]
+                                                  .copyWith(
+                                                    fullName:
+                                                        val, // ✅ uniquement nom
+                                                  );
+
+                                              bloc.add(
+                                                RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule(
+                                                  list,
                                                 ),
-                                              ),
-                                            );
-                                          }
-
-                                          list[index] = list[index].copyWith(
-                                            fullName: val, // ✅ uniquement nom
-                                          );
-
-                                          bloc.add(
-                                            RapportCelluleSectionAdministrationEvent.changeNombreListDicipleCellule(
-                                              list,
-                                            ),
+                                              );
+                                            },
                                           );
                                         },
                                       ),
@@ -852,11 +883,11 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                       SizedBox(height: 9.h),
 
                                       CustomeTextFormFieldWithoutBorder(
-                                        textLabel: "Veuillez entrer le contact",
-                                        errorText: null,
-                                        msgError: "Veuillez entrer le contact",
-                                        inputLabel: "Contact",
-                                        textInputType: TextInputType.phone,
+                                        textLabel: "Veuillez entrer le status",
+                                        errorText: state.discipleCelluleList.any((item) => item.fullName.trim().isNotEmpty) ? (state.discipleCelluleList.isEmpty ? "Veuillez entrer le status complet" : null) : "Veuillez entrer le status complet",
+                                            msgError: state.discipleCelluleList.any((item) => item.fullName.trim().isEmpty) ? "Veuillez entrer le statut completss" : "",
+                                        inputLabel: "Status baptiser (Oui/Non)",
+                                        textInputType: TextInputType.text,
                                         onChanged: (val) {
                                           final bloc = context
                                               .read<
@@ -874,14 +905,14 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                                 index - list.length + 1,
                                                 (_) => DiscipleCellule(
                                                   fullName: '',
-                                                  contact: '',
+                                                  isBaptierOrNot: '',
                                                 ),
                                               ),
                                             );
                                           }
 
                                           list[index] = list[index].copyWith(
-                                            contact:
+                                            isBaptierOrNot:
                                                 val, // ✅ uniquement contact
                                           );
 
@@ -914,16 +945,21 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                   isNextForm: false,
                 ),
 
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 20.h),
-                  child: PrimaryButton(
-                    label: 'Suivant',
-                    colorText: context.appColor.primaryWhite,
-                    onPressed: () {
-                      Navigator.push(context, fadeRoute(FormStatistic()));
-                    },
-                  ),
-                ),
+              BlocBuilder<RapportCelluleSectionAdministrationBloc, RapportCelluleSectionAdministrationState>(
+                  builder: (context, state) {
+                    return Container(
+                    margin: EdgeInsets.symmetric(vertical: 20.h),
+                    child: PrimaryButton(
+                      label: 'Suivant',
+                      colorText: context.appColor.primaryWhite,
+                      onPressed: () {
+                        context.read<RapportCelluleSectionAdministrationBloc>().add( RapportCelluleSectionAdministrationEvent.submit());
+                        // Navigator.push(context, fadeRoute(FormStatistic()));
+                      },
+                    ),
+                  );
+                },
+              ),
               ],
             ),
           ),
