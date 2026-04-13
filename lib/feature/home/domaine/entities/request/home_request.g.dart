@@ -149,26 +149,33 @@ Map<String, dynamic> _$RequestAuthenProfileUpdateZoneToJson(
   _RequestAuthenProfileUpdateZone instance,
 ) => <String, dynamic>{'secteurId': instance.secteurId};
 
-_RequestRapportCellule _$RequestRapportCelluleFromJson(
-  Map<String, dynamic> json,
-) => _RequestRapportCellule(
-  codeZone: json['codeZone'] as String,
-  fullNameRespoZone: json['fullNameRespoZone'] as String,
-  contactRespoZone: json['contactRespoZone'] as String,
-  codeSecteur: json['codeSecteur'] as String,
-  fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
-  contactRespoSecteur: json['contactRespoSecteur'] as String,
-  codeCellule: json['codeCellule'] as String,
-  fullNameRespoCellule: json['fullNameRespoCellule'] as String,
-  contactRespoCellule: json['contactRespoCellule'] as String,
-  jourCellule: json['jourCellule'] as String,
-  offrande: json['offrande'] as String,
-  nombreBaptiser: json['nombreBaptiser'] as String,
-  nombreNonBaptiser: json['nombreNonBaptiser'] as String,
-);
+_RequestRapportCelluleAdministration
+_$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
+    _RequestRapportCelluleAdministration(
+      codeZone: json['codeZone'] as String,
+      fullNameRespoZone: json['fullNameRespoZone'] as String,
+      contactRespoZone: json['contactRespoZone'] as String,
+      codeSecteur: json['codeSecteur'] as String,
+      fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
+      contactRespoSecteur: json['contactRespoSecteur'] as String,
+      codeCellule: json['codeCellule'] as String,
+      fullNameRespoCellule: json['fullNameRespoCellule'] as String,
+      contactRespoCellule: json['contactRespoCellule'] as String,
+      jourCellule: json['jourCellule'] as String,
+      offrande: json['offrande'] as String,
+      nombreBaptiser: json['nombreBaptiser'] as String,
+      nombreNonBaptiser: json['nombreNonBaptiser'] as String,
+      discipleCellule: (json['discipleCellule'] as List<dynamic>)
+          .map((e) => DiscipleCellule.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      id: json['id'] as String,
+      formAdministrationIsSubmit: json['formAdministrationIsSubmit'] as String,
+      formAdministrationSubmitDate:
+          json['formAdministrationSubmitDate'] as String,
+    );
 
-Map<String, dynamic> _$RequestRapportCelluleToJson(
-  _RequestRapportCellule instance,
+Map<String, dynamic> _$RequestRapportCelluleAdministrationToJson(
+  _RequestRapportCelluleAdministration instance,
 ) => <String, dynamic>{
   'codeZone': instance.codeZone,
   'fullNameRespoZone': instance.fullNameRespoZone,
@@ -183,4 +190,18 @@ Map<String, dynamic> _$RequestRapportCelluleToJson(
   'offrande': instance.offrande,
   'nombreBaptiser': instance.nombreBaptiser,
   'nombreNonBaptiser': instance.nombreNonBaptiser,
+  'discipleCellule': instance.discipleCellule,
+  'id': instance.id,
+  'formAdministrationIsSubmit': instance.formAdministrationIsSubmit,
+  'formAdministrationSubmitDate': instance.formAdministrationSubmitDate,
 };
+
+_RequestGeneriqueKey<T> _$RequestGeneriqueKeyFromJson<T>(
+  Map<String, dynamic> json,
+  T Function(Object? json) fromJsonT,
+) => _RequestGeneriqueKey<T>(id: fromJsonT(json['id']));
+
+Map<String, dynamic> _$RequestGeneriqueKeyToJson<T>(
+  _RequestGeneriqueKey<T> instance,
+  Object? Function(T value) toJsonT,
+) => <String, dynamic>{'id': toJsonT(instance.id)};

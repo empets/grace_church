@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/repository_remote_service.dart';
@@ -271,9 +273,10 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError(e.toString());
     }
   }
-  
+
   @override
-  Future<FirebaseResult<List<ReponsableResponseSecteurModel>>> getListResponsablesSecteurs(RequestReponsableSecteur params) async {
+  Future<FirebaseResult<List<ReponsableResponseSecteurModel>>>
+  getListResponsablesSecteurs(RequestReponsableSecteur params) async {
     try {
       final snapshot = await db.child('emsecteur').get();
       if (snapshot.exists) {
@@ -294,9 +297,10 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError(e.toString());
     }
   }
-  
+
   @override
-  Future<FirebaseResult<List<ReponsableZoneResponseModel>>> getListResponsablesZones(RequestReponsableZone params) async {
+  Future<FirebaseResult<List<ReponsableZoneResponseModel>>>
+  getListResponsablesZones(RequestReponsableZone params) async {
     try {
       final snapshot = await db.child('emzone').get();
       if (snapshot.exists) {
@@ -314,6 +318,36 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError("Aucune responsables de zone trouvés");
     } catch (e) {
       log("🔥 Firebase Responsable Zone →→→→→→→→→ ${e}");
+      return FirebaseError(e.toString());
+    }
+  }
+
+  @override
+  Future<FirebaseResult<String>> sendRapportCelluleStepAdministration(
+    RequestRapportCelluleAdministration params,
+  ) async {
+    try {
+      final request = Request<RequestRapportCelluleAdministration>(
+        data: params.toJson(),
+        user: "",
+        serviceLibelle: 'rapport_cellule',
+      );
+      // 2) Créer une nouvelle entré ou table
+      final ref = db.child('rapport_cellule').push();
+      // 3) Sauvegarder dans Firebase (en convertissant en Map)
+      await ref.set(request.data);
+
+      // // 4) Mettre à jour la clé
+      await updateForKey(
+        db: db,
+        path: 'rapport_cellule',
+        params: RequestGeneriqueKey<String>(id: ref.key.toString()),
+      );
+
+      // 4) Retourner le key généré
+      return FirebaseSuccess(ref.key!);
+    } catch (e) {
+      log("🔥 Firebase ERROR sendRapportCelluleStepAdministration → $e");
       return FirebaseError(e.toString());
     }
   }

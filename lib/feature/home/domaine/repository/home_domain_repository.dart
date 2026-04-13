@@ -25,4 +25,6 @@ abstract class HomeDomaineRepository {
 
   Future<Either<Failure, List<ReponsableZoneResponse>>>
   getListResponsablesZones(RequestReponsableZone params);
+  
+  Future<Either<Failure, String>> sendRapportCelluleStepAdministration(RequestRapportCelluleAdministration params);
 }

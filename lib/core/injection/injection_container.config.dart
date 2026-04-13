@@ -48,6 +48,8 @@ import '../../feature/home/domaine/usercase/get_list_responsable_cellule_usercas
 import '../../feature/home/domaine/usercase/get_list_secteur.dart' as _i791;
 import '../../feature/home/domaine/usercase/get_list_zone.dart' as _i554;
 import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
+import '../../feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart'
+    as _i716;
 import '../../feature/home/page/bloc/app_launcher/app_launcher_bloc.dart'
     as _i303;
 import '../../feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart'
@@ -124,6 +126,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i554.GetListZoneUsercase>(
       () => _i554.GetListZoneUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
+    gh.lazySingleton<_i716.SendRapportCelluleStepAdministrationUsercase>(
+      () => _i716.SendRapportCelluleStepAdministrationUsercase(
+        gh<_i962.HomeDomaineRepository>(),
+      ),
     );
     gh.lazySingleton<_i334.CelluleBloc>(
       () =>

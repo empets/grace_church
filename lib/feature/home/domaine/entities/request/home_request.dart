@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 part 'home_request.freezed.dart';
 part 'home_request.g.dart';
 
@@ -102,8 +103,9 @@ abstract class RequestAuthenProfileUpdateZone
 }
 
 @freezed
-abstract class RequestRapportCellule with _$RequestRapportCellule {
-  factory RequestRapportCellule({
+abstract class RequestRapportCelluleAdministration
+    with _$RequestRapportCelluleAdministration {
+  factory RequestRapportCelluleAdministration({
     required String codeZone,
     required String fullNameRespoZone,
     required String contactRespoZone,
@@ -117,7 +119,22 @@ abstract class RequestRapportCellule with _$RequestRapportCellule {
     required String offrande,
     required String nombreBaptiser,
     required String nombreNonBaptiser,
-  }) = _RequestRapportCellule;
-  factory RequestRapportCellule.fromJson(Map<String, dynamic> json) =>
-      _$RequestRapportCelluleFromJson(json);
+    required List<DiscipleCellule> discipleCellule,
+    required String id,
+    required String formAdministrationIsSubmit,
+    required String formAdministrationSubmitDate,
+  }) = _RequestRapportCelluleAdministration;
+  factory RequestRapportCelluleAdministration.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestRapportCelluleAdministrationFromJson(json);
+}
+
+@Freezed(genericArgumentFactories: true)
+abstract class RequestGeneriqueKey<T> with _$RequestGeneriqueKey<T> {
+  const factory RequestGeneriqueKey({required T id}) = _RequestGeneriqueKey<T>;
+
+  factory RequestGeneriqueKey.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) => _$RequestGeneriqueKeyFromJson(json, fromJsonT);
 }

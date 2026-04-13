@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 
@@ -8,10 +10,12 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
     RapportCelluleSectionAdministrationEvent,
     RapportCelluleSectionAdministrationState> {
 
-  RapportCelluleSectionAdministrationBloc()
+  RapportCelluleSectionAdministrationBloc({required this.sendRapportCelluleStepAdministrationUsercase})
       : super(RapportCelluleSectionAdministrationState.initial()) {
     on<RapportCelluleSectionAdministrationEvent>(_onEvent);
   }
+
+  final SendRapportCelluleStepAdministrationUsercase sendRapportCelluleStepAdministrationUsercase;
 
   void _onEvent(
     RapportCelluleSectionAdministrationEvent event,
@@ -155,7 +159,26 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
+          final result = await sendRapportCelluleStepAdministrationUsercase.call(RequestRapportCelluleAdministration(
+            codeZone: state.codeZone.value,
+            fullNameRespoZone: state.fullNameRespoZone.value,
+            contactRespoZone: state.contactRespoZone.value,
+            codeSecteur: state.codeSecteur.value,
+            fullNameRespoSecteur: state.fullNameRespoSecteur.value,
+            contactRespoSecteur: state.contactRespoSecteur.value,
+            codeCellule: state.codeCellule.value,
+            fullNameRespoCellule: state.fullNameRespoCellule.value,
+            contactRespoCellule: state.contactRespoCellule.value,
+            jourCellule: state.jourCellule.value,
+            offrande: state.offrande.value,
+            nombreBaptiser: state.nombreBaptiser.value,
+            nombreNonBaptiser: state.nombreNonBaptiser.value,
+            discipleCellule: List.generate(state.discipleCelluleList.length, (index) => state.discipleCelluleList[index]),
+            id: "",
+          formAdministrationIsSubmit: "Success", formAdministrationSubmitDate: DateTime.now().toIso8601String(),
+          ));
+
+           emit(result.fold((l)=> state.copyWith(status: FormzSubmissionStatus.failure), (r)=> state.copyWith(status: FormzSubmissionStatus.success)));
 
           
         }

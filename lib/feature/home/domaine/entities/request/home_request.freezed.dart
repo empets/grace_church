@@ -1897,42 +1897,42 @@ as String,
 
 
 /// @nodoc
-mixin _$RequestRapportCellule {
+mixin _$RequestRapportCelluleAdministration {
 
- String get codeZone; String get fullNameRespoZone; String get contactRespoZone; String get codeSecteur; String get fullNameRespoSecteur; String get contactRespoSecteur; String get codeCellule; String get fullNameRespoCellule; String get contactRespoCellule; String get jourCellule; String get offrande; String get nombreBaptiser; String get nombreNonBaptiser;
-/// Create a copy of RequestRapportCellule
+ String get codeZone; String get fullNameRespoZone; String get contactRespoZone; String get codeSecteur; String get fullNameRespoSecteur; String get contactRespoSecteur; String get codeCellule; String get fullNameRespoCellule; String get contactRespoCellule; String get jourCellule; String get offrande; String get nombreBaptiser; String get nombreNonBaptiser; List<DiscipleCellule> get discipleCellule; String get id; String get formAdministrationIsSubmit; String get formAdministrationSubmitDate;
+/// Create a copy of RequestRapportCelluleAdministration
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$RequestRapportCelluleCopyWith<RequestRapportCellule> get copyWith => _$RequestRapportCelluleCopyWithImpl<RequestRapportCellule>(this as RequestRapportCellule, _$identity);
+$RequestRapportCelluleAdministrationCopyWith<RequestRapportCelluleAdministration> get copyWith => _$RequestRapportCelluleAdministrationCopyWithImpl<RequestRapportCelluleAdministration>(this as RequestRapportCelluleAdministration, _$identity);
 
-  /// Serializes this RequestRapportCellule to a JSON map.
+  /// Serializes this RequestRapportCelluleAdministration to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCellule&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleAdministration&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other.discipleCellule, discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser);
+int get hashCode => Object.hash(runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate);
 
 @override
 String toString() {
-  return 'RequestRapportCellule(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser)';
+  return 'RequestRapportCelluleAdministration(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $RequestRapportCelluleCopyWith<$Res>  {
-  factory $RequestRapportCelluleCopyWith(RequestRapportCellule value, $Res Function(RequestRapportCellule) _then) = _$RequestRapportCelluleCopyWithImpl;
+abstract mixin class $RequestRapportCelluleAdministrationCopyWith<$Res>  {
+  factory $RequestRapportCelluleAdministrationCopyWith(RequestRapportCelluleAdministration value, $Res Function(RequestRapportCelluleAdministration) _then) = _$RequestRapportCelluleAdministrationCopyWithImpl;
 @useResult
 $Res call({
- String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser
+ String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser, List<DiscipleCellule> discipleCellule, String id, String formAdministrationIsSubmit, String formAdministrationSubmitDate
 });
 
 
@@ -1940,16 +1940,16 @@ $Res call({
 
 }
 /// @nodoc
-class _$RequestRapportCelluleCopyWithImpl<$Res>
-    implements $RequestRapportCelluleCopyWith<$Res> {
-  _$RequestRapportCelluleCopyWithImpl(this._self, this._then);
+class _$RequestRapportCelluleAdministrationCopyWithImpl<$Res>
+    implements $RequestRapportCelluleAdministrationCopyWith<$Res> {
+  _$RequestRapportCelluleAdministrationCopyWithImpl(this._self, this._then);
 
-  final RequestRapportCellule _self;
-  final $Res Function(RequestRapportCellule) _then;
+  final RequestRapportCelluleAdministration _self;
+  final $Res Function(RequestRapportCelluleAdministration) _then;
 
-/// Create a copy of RequestRapportCellule
+/// Create a copy of RequestRapportCelluleAdministration
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCellule = null,Object? id = null,Object? formAdministrationIsSubmit = null,Object? formAdministrationSubmitDate = null,}) {
   return _then(_self.copyWith(
 codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
 as String,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
@@ -1964,6 +1964,10 @@ as String,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule // 
 as String,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
 as String,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
 as String,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as String,discipleCellule: null == discipleCellule ? _self.discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
+as List<DiscipleCellule>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationIsSubmit: null == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationSubmitDate: null == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1971,8 +1975,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [RequestRapportCellule].
-extension RequestRapportCellulePatterns on RequestRapportCellule {
+/// Adds pattern-matching-related methods to [RequestRapportCelluleAdministration].
+extension RequestRapportCelluleAdministrationPatterns on RequestRapportCelluleAdministration {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1985,10 +1989,10 @@ extension RequestRapportCellulePatterns on RequestRapportCellule {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestRapportCellule value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestRapportCelluleAdministration value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _RequestRapportCellule() when $default != null:
+case _RequestRapportCelluleAdministration() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -2007,10 +2011,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestRapportCellule value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestRapportCelluleAdministration value)  $default,){
 final _that = this;
 switch (_that) {
-case _RequestRapportCellule():
+case _RequestRapportCelluleAdministration():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -2028,10 +2032,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestRapportCellule value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestRapportCelluleAdministration value)?  $default,){
 final _that = this;
 switch (_that) {
-case _RequestRapportCellule() when $default != null:
+case _RequestRapportCelluleAdministration() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -2049,10 +2053,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCellule> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _RequestRapportCellule() when $default != null:
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser);case _:
+case _RequestRapportCelluleAdministration() when $default != null:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate);case _:
   return orElse();
 
 }
@@ -2070,10 +2074,10 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCellule> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate)  $default,) {final _that = this;
 switch (_that) {
-case _RequestRapportCellule():
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser);case _:
+case _RequestRapportCelluleAdministration():
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2090,10 +2094,10 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCellule> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate)?  $default,) {final _that = this;
 switch (_that) {
-case _RequestRapportCellule() when $default != null:
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser);case _:
+case _RequestRapportCelluleAdministration() when $default != null:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate);case _:
   return null;
 
 }
@@ -2104,9 +2108,9 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// @nodoc
 @JsonSerializable()
 
-class _RequestRapportCellule implements RequestRapportCellule {
-   _RequestRapportCellule({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser});
-  factory _RequestRapportCellule.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleFromJson(json);
+class _RequestRapportCelluleAdministration implements RequestRapportCelluleAdministration {
+   _RequestRapportCelluleAdministration({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCellule> discipleCellule, required this.id, required this.formAdministrationIsSubmit, required this.formAdministrationSubmitDate}): _discipleCellule = discipleCellule;
+  factory _RequestRapportCelluleAdministration.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleAdministrationFromJson(json);
 
 @override final  String codeZone;
 @override final  String fullNameRespoZone;
@@ -2121,41 +2125,51 @@ class _RequestRapportCellule implements RequestRapportCellule {
 @override final  String offrande;
 @override final  String nombreBaptiser;
 @override final  String nombreNonBaptiser;
+ final  List<DiscipleCellule> _discipleCellule;
+@override List<DiscipleCellule> get discipleCellule {
+  if (_discipleCellule is EqualUnmodifiableListView) return _discipleCellule;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_discipleCellule);
+}
 
-/// Create a copy of RequestRapportCellule
+@override final  String id;
+@override final  String formAdministrationIsSubmit;
+@override final  String formAdministrationSubmitDate;
+
+/// Create a copy of RequestRapportCelluleAdministration
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$RequestRapportCelluleCopyWith<_RequestRapportCellule> get copyWith => __$RequestRapportCelluleCopyWithImpl<_RequestRapportCellule>(this, _$identity);
+_$RequestRapportCelluleAdministrationCopyWith<_RequestRapportCelluleAdministration> get copyWith => __$RequestRapportCelluleAdministrationCopyWithImpl<_RequestRapportCelluleAdministration>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$RequestRapportCelluleToJson(this, );
+  return _$RequestRapportCelluleAdministrationToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCellule&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleAdministration&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other._discipleCellule, _discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser);
+int get hashCode => Object.hash(runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(_discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate);
 
 @override
 String toString() {
-  return 'RequestRapportCellule(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser)';
+  return 'RequestRapportCelluleAdministration(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$RequestRapportCelluleCopyWith<$Res> implements $RequestRapportCelluleCopyWith<$Res> {
-  factory _$RequestRapportCelluleCopyWith(_RequestRapportCellule value, $Res Function(_RequestRapportCellule) _then) = __$RequestRapportCelluleCopyWithImpl;
+abstract mixin class _$RequestRapportCelluleAdministrationCopyWith<$Res> implements $RequestRapportCelluleAdministrationCopyWith<$Res> {
+  factory _$RequestRapportCelluleAdministrationCopyWith(_RequestRapportCelluleAdministration value, $Res Function(_RequestRapportCelluleAdministration) _then) = __$RequestRapportCelluleAdministrationCopyWithImpl;
 @override @useResult
 $Res call({
- String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser
+ String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser, List<DiscipleCellule> discipleCellule, String id, String formAdministrationIsSubmit, String formAdministrationSubmitDate
 });
 
 
@@ -2163,17 +2177,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$RequestRapportCelluleCopyWithImpl<$Res>
-    implements _$RequestRapportCelluleCopyWith<$Res> {
-  __$RequestRapportCelluleCopyWithImpl(this._self, this._then);
+class __$RequestRapportCelluleAdministrationCopyWithImpl<$Res>
+    implements _$RequestRapportCelluleAdministrationCopyWith<$Res> {
+  __$RequestRapportCelluleAdministrationCopyWithImpl(this._self, this._then);
 
-  final _RequestRapportCellule _self;
-  final $Res Function(_RequestRapportCellule) _then;
+  final _RequestRapportCelluleAdministration _self;
+  final $Res Function(_RequestRapportCelluleAdministration) _then;
 
-/// Create a copy of RequestRapportCellule
+/// Create a copy of RequestRapportCelluleAdministration
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,}) {
-  return _then(_RequestRapportCellule(
+@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCellule = null,Object? id = null,Object? formAdministrationIsSubmit = null,Object? formAdministrationSubmitDate = null,}) {
+  return _then(_RequestRapportCelluleAdministration(
 codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
 as String,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
 as String,contactRespoZone: null == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
@@ -2187,7 +2201,274 @@ as String,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule // 
 as String,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
 as String,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
 as String,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as String,discipleCellule: null == discipleCellule ? _self._discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
+as List<DiscipleCellule>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationIsSubmit: null == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationSubmitDate: null == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestGeneriqueKey<T> {
+
+ T get id;
+/// Create a copy of RequestGeneriqueKey
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestGeneriqueKeyCopyWith<T, RequestGeneriqueKey<T>> get copyWith => _$RequestGeneriqueKeyCopyWithImpl<T, RequestGeneriqueKey<T>>(this as RequestGeneriqueKey<T>, _$identity);
+
+  /// Serializes this RequestGeneriqueKey to a JSON map.
+  Map<String, dynamic> toJson(Object? Function(T) toJsonT);
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestGeneriqueKey<T>&&const DeepCollectionEquality().equals(other.id, id));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(id));
+
+@override
+String toString() {
+  return 'RequestGeneriqueKey<$T>(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestGeneriqueKeyCopyWith<T,$Res>  {
+  factory $RequestGeneriqueKeyCopyWith(RequestGeneriqueKey<T> value, $Res Function(RequestGeneriqueKey<T>) _then) = _$RequestGeneriqueKeyCopyWithImpl;
+@useResult
+$Res call({
+ T id
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestGeneriqueKeyCopyWithImpl<T,$Res>
+    implements $RequestGeneriqueKeyCopyWith<T, $Res> {
+  _$RequestGeneriqueKeyCopyWithImpl(this._self, this._then);
+
+  final RequestGeneriqueKey<T> _self;
+  final $Res Function(RequestGeneriqueKey<T>) _then;
+
+/// Create a copy of RequestGeneriqueKey
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as T,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestGeneriqueKey].
+extension RequestGeneriqueKeyPatterns<T> on RequestGeneriqueKey<T> {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestGeneriqueKey<T> value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestGeneriqueKey() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestGeneriqueKey<T> value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestGeneriqueKey():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestGeneriqueKey<T> value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestGeneriqueKey() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( T id)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestGeneriqueKey() when $default != null:
+return $default(_that.id);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( T id)  $default,) {final _that = this;
+switch (_that) {
+case _RequestGeneriqueKey():
+return $default(_that.id);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( T id)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestGeneriqueKey() when $default != null:
+return $default(_that.id);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable(genericArgumentFactories: true)
+
+class _RequestGeneriqueKey<T> implements RequestGeneriqueKey<T> {
+  const _RequestGeneriqueKey({required this.id});
+  factory _RequestGeneriqueKey.fromJson(Map<String, dynamic> json,T Function(Object?) fromJsonT) => _$RequestGeneriqueKeyFromJson(json,fromJsonT);
+
+@override final  T id;
+
+/// Create a copy of RequestGeneriqueKey
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestGeneriqueKeyCopyWith<T, _RequestGeneriqueKey<T>> get copyWith => __$RequestGeneriqueKeyCopyWithImpl<T, _RequestGeneriqueKey<T>>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
+  return _$RequestGeneriqueKeyToJson<T>(this, toJsonT);
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestGeneriqueKey<T>&&const DeepCollectionEquality().equals(other.id, id));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(id));
+
+@override
+String toString() {
+  return 'RequestGeneriqueKey<$T>(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestGeneriqueKeyCopyWith<T,$Res> implements $RequestGeneriqueKeyCopyWith<T, $Res> {
+  factory _$RequestGeneriqueKeyCopyWith(_RequestGeneriqueKey<T> value, $Res Function(_RequestGeneriqueKey<T>) _then) = __$RequestGeneriqueKeyCopyWithImpl;
+@override @useResult
+$Res call({
+ T id
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestGeneriqueKeyCopyWithImpl<T,$Res>
+    implements _$RequestGeneriqueKeyCopyWith<T, $Res> {
+  __$RequestGeneriqueKeyCopyWithImpl(this._self, this._then);
+
+  final _RequestGeneriqueKey<T> _self;
+  final $Res Function(_RequestGeneriqueKey<T>) _then;
+
+/// Create a copy of RequestGeneriqueKey
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,}) {
+  return _then(_RequestGeneriqueKey<T>(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as T,
   ));
 }
 

@@ -1,5 +1,10 @@
+import 'dart:developer';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grace_church/core/data_process/success.dart';
+import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:intl/intl.dart';
 
 // Future<bool> isEmulator() async {
@@ -400,4 +405,22 @@ String couperAdresse(String adresse, int n) {
 
 String formatKey(String email) {
   return email.replaceAll('.', '_').replaceAll('@', '_');
+}
+
+Future<FirebaseResult<String?>> updateForKey({
+  required DatabaseReference db,
+  required String path,
+  required RequestGeneriqueKey<String> params,
+}) async {
+  try {
+    final Map<String, dynamic> updates = {...params.toJson((value) => value)};
+    // 2) Créer une nouvelle entrée
+    await db.child('$path/${params}').update(updates);
+
+    // 4) Retourner le key généré
+    return FirebaseSuccess(params.id);
+  } catch (e) {
+    log('************$e');
+    return FirebaseError(e.toString());
+  }
 }
