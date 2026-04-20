@@ -22,7 +22,7 @@ class ImplRemoteService implements AuthenRemoteService {
     RequestAuthenProfile params,
   ) async {
     // final shared = await shareData.SharedPreferences.getInstance();
-    // final localUserSection = shared.getString('menberkey');
+    // final localUserRequestSection = shared.getString('menberkey');
 
     try {
       final nameExist = await db
@@ -101,31 +101,31 @@ class ImplRemoteService implements AuthenRemoteService {
     RequestAuthenProfile params,
   ) async {
     final shared = await shareData.SharedPreferences.getInstance();
-    final localUserSection = shared.getString('menberkey');
+    final localUserRequestSection = shared.getString('menberkey');
 
     try {
       final userIdExist = await db
           .child('menber')
           .orderByChild('userId')
-          .equalTo(localUserSection)
+          .equalTo(localUserRequestSection)
           .get();
           
 
       if (params.isUpdate == true &&
           userIdExist.exists &&
-          localUserSection != null &&
-          localUserSection.isNotEmpty) {
+          localUserRequestSection != null &&
+          localUserRequestSection.isNotEmpty) {
       
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
           'serviceLibelle': '',
-          'userId': localUserSection.toString(),
+          'userId': localUserRequestSection.toString(),
         };
         // 2) Créer une nouvelle entrée
-        await db.child('menber/$localUserSection').update(updates);
+        await db.child('menber/$localUserRequestSection').update(updates);
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(localUserSection);
+        return FirebaseSuccess(localUserRequestSection);
       }
       return FirebaseError('User not found');
 
@@ -144,32 +144,32 @@ class ImplRemoteService implements AuthenRemoteService {
     RequestAuthenSocial params,
   ) async {
     final shared = await shareData.SharedPreferences.getInstance();
-    final localUserSection = shared.getString('menberkey');
+    final localUserRequestSection = shared.getString('menberkey');
 
     try {
-      if (localUserSection != null && localUserSection.isNotEmpty) {
+      if (localUserRequestSection != null && localUserRequestSection.isNotEmpty) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
           'serviceLibelle': '',
-          'userId': localUserSection.toString(),
+          'userId': localUserRequestSection.toString(),
         };
         // 2) Créer une nouvelle entrée
-        await db.child('menber/$localUserSection').update(updates);
+        await db.child('menber/$localUserRequestSection').update(updates);
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(localUserSection);
+        return FirebaseSuccess(localUserRequestSection);
       }
 
       final Map<String, dynamic> updates = {
         ...params.toJson(), // nouveaux champs simples
         'serviceLibelle': '',
-        '': localUserSection.toString(),
+        '': localUserRequestSection.toString(),
       };
       // 2) Créer une nouvelle entrée
-      await db.child('menber/$localUserSection').update(updates);
+      await db.child('menber/$localUserRequestSection').update(updates);
 
       // 4) Retourner le key généré
-      return FirebaseSuccess(localUserSection);
+      return FirebaseSuccess(localUserRequestSection);
     } catch (e) {
       return FirebaseError(e.toString());
     }
@@ -180,32 +180,32 @@ class ImplRemoteService implements AuthenRemoteService {
     RequestAuthenSpiritualLife params,
   ) async {
     final shared = await shareData.SharedPreferences.getInstance();
-    final localUserSection = shared.getString('menberkey');
+    final localUserRequestSection = shared.getString('menberkey');
 
     try {
-      if (localUserSection != null && localUserSection.isNotEmpty) {
+      if (localUserRequestSection != null && localUserRequestSection.isNotEmpty) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
           'serviceLibelle': '',
-          'userId': localUserSection.toString(),
+          'userId': localUserRequestSection.toString(),
         };
         // 2) Créer une nouvelle entrée
-        await db.child('menber/$localUserSection').update(updates);
+        await db.child('menber/$localUserRequestSection').update(updates);
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(localUserSection);
+        return FirebaseSuccess(localUserRequestSection);
       }
 
       final Map<String, dynamic> updates = {
         ...params.toJson(), // nouveaux champs simples
         'serviceLibelle': '',
-        '': localUserSection.toString(),
+        '': localUserRequestSection.toString(),
       };
       // 2) Créer une nouvelle entrée
-      await db.child('menber/$localUserSection').update(updates);
+      await db.child('menber/$localUserRequestSection').update(updates);
 
       // 4) Retourner le key généré
-      return FirebaseSuccess(localUserSection);
+      return FirebaseSuccess(localUserRequestSection);
     } catch (e) {
       return FirebaseError(e.toString());
     }
@@ -216,32 +216,32 @@ class ImplRemoteService implements AuthenRemoteService {
     RequestAuthenEngagement params,
   ) async {
     final shared = await shareData.SharedPreferences.getInstance();
-    final localUserSection = shared.getString('menberkey');
+    final localUserRequestSection = shared.getString('menberkey');
 
     try {
-      if (localUserSection != null && localUserSection.isNotEmpty) {
+      if (localUserRequestSection != null && localUserRequestSection.isNotEmpty) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
           'serviceLibelle': '',
-          'userId': localUserSection.toString(),
+          'userId': localUserRequestSection.toString(),
         };
         // 2) Créer une nouvelle entrée
-        await db.child('menber/$localUserSection').update(updates);
+        await db.child('menber/$localUserRequestSection').update(updates);
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(localUserSection);
+        return FirebaseSuccess(localUserRequestSection);
       }
 
       final Map<String, dynamic> updates = {
         ...params.toJson(), // nouveaux champs simples
         'serviceLibelle': '',
-        '': localUserSection.toString(),
+        '': localUserRequestSection.toString(),
       };
       // 2) Créer une nouvelle entrée
-      await db.child('menber/$localUserSection').update(updates);
+      await db.child('menber/$localUserRequestSection').update(updates);
 
       // 4) Retourner le key généré
-      return FirebaseSuccess(localUserSection);
+      return FirebaseSuccess(localUserRequestSection);
     } catch (e) {
       return FirebaseError(e.toString());
     }

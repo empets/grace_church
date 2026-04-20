@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +10,7 @@ import 'package:intl/intl.dart';
 
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:crypto/crypto.dart';
 
 // Future<bool> isEmulator() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -412,20 +415,56 @@ String formatKey(String email) {
 Future<FirebaseResult<String?>> updateForKey({
   required DatabaseReference db,
   required String path,
-  required RequestGeneriqueKey<String> params,
+  required String id, // ✅ renommé clairement en id
 }) async {
   try {
-    final Map<String, dynamic> updates = {...params.toJson((value) => value)};
-    // 2) Créer une nouvelle entrée
-    await db.child('$path/${params}').update(updates);
+    final Map<String, dynamic> updates = {
+      'id': id, // ✅ simple Map avec l'id
+    };
 
-    // 4) Retourner le key généré
-    return FirebaseSuccess(params.id);
+    // 2) Mettre à jour le nœud existant
+    await db.child('$path/$id').update(updates);
+
+    // 3) Retourner la clé
+    return FirebaseSuccess(id);
   } catch (e) {
     log('************$e');
     return FirebaseError(e.toString());
   }
 }
-bool _validate<T>(List<T> list) {
-  return list.isNotEmpty;
+
+bool isValidDiscipleStatusBaptiserOrNon(String value) {
+  return RegExp(r'^(Oui|Non)$', caseSensitive: false).hasMatch(value.trim());
+}
+
+
+
+Future<String> getDeviceFingerprint() async {
+  final deviceInfo = DeviceInfoPlugin();
+  String raw = '';
+
+  if (Platform.isAndroid) {
+    final info = await deviceInfo.androidInfo;
+    raw = [
+      info.id,           // ANDROID_ID
+      info.model,        // ex: "Samsung Galaxy S23"
+      info.brand,        // ex: "samsung"
+      info.hardware,     // ex: "qcom"
+      info.fingerprint,  // build fingerprint unique
+    ].join('|');
+
+  } else if (Platform.isIOS) {
+    final info = await deviceInfo.iosInfo;
+    raw = [
+      info.identifierForVendor ?? '',
+      info.model,        // ex: "iPhone14,3"
+      info.systemVersion,
+      info.name,
+    ].join('|');
+  }
+
+  // Hash SHA-256 → token propre pour l'auth
+  final bytes = utf8.encode(raw);
+  final hash = sha256.convert(bytes);
+  return hash.toString(); // ex: "a3f1c8d2..."
 }

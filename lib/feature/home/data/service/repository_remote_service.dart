@@ -28,6 +28,8 @@ abstract class DomaineServiceRepository {
   getListResponsablesZones(RequestReponsableZone params);
 
   Future<FirebaseResult<String>> sendRapportCelluleStepAdministration(RequestRapportCelluleAdministration params);
+  Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(RequestImpliciteConnexion params);
+  Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params);
 
 }
 

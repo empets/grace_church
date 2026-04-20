@@ -82,11 +82,11 @@ class _RelocationPageState extends State<RelocationPage> {
           children: [
             // Titre principal
             // Text('Rechargement', style: AppTextStyles.heading2),
-            _buildAddressDisplaySection(),
+            _buildAddressDisplayRequestSection(),
 
             _buildAddressDetailsField(),
 
-            _buildHousingTypeSection(),
+            _buildHousingTypeRequestSection(),
 
             _buildDateField(),
 
@@ -99,7 +99,7 @@ class _RelocationPageState extends State<RelocationPage> {
     );
   }
 
-  Widget _buildAddressDisplaySection() {
+  Widget _buildAddressDisplayRequestSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -150,7 +150,7 @@ class _RelocationPageState extends State<RelocationPage> {
     );
   }
 
-  Widget _buildHousingTypeSection() {
+  Widget _buildHousingTypeRequestSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

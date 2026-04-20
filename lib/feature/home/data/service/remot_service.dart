@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/extention.dart';
@@ -332,6 +334,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         user: "",
         serviceLibelle: 'rapport_cellule',
       );
+      
       // 2) Créer une nouvelle entré ou table
       final ref = db.child('rapport_cellule').push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
@@ -341,13 +344,66 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       await updateForKey(
         db: db,
         path: 'rapport_cellule',
-        params: RequestGeneriqueKey<String>(id: ref.key.toString()),
+        id: ref.key.toString(),
       );
 
       // 4) Retourner le key généré
       return FirebaseSuccess(ref.key!);
     } catch (e) {
-      log("🔥 Firebase ERROR sendRapportCelluleStepAdministration → $e");
+      log("📦 Data envoyée : ${jsonEncode(params)}");
+      log("🔥 Firebase ERROR sendRapportCelluleStepAdministration →" 
+      "${FirebaseException(plugin: 'request',code:e.toString(),  message: e.toString())}");
+      return FirebaseError(e.toString());
+    }
+  }
+  
+  @override
+  Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(RequestImpliciteConnexion params) async{
+    return FirebaseError("Non implémenté");
+    
+  }
+  
+
+
+
+
+
+  @override
+  Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params) async {
+    //    final shared = await shareData.SharedPreferences.getInstance();
+    // final localUserRequestSection = shared.getString('rapport_cellule_key');
+
+    try {
+      final userIdExist = await db
+          .child('rapport_cellule')
+          .orderByChild('id')
+          .equalTo(params.id)
+          .get();
+          
+
+      if (
+          userIdExist.exists &&
+          params.id != null &&
+          params.id!.isNotEmpty) {
+      
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+          'id': params.id!,
+          'userId': params.id.toString(),
+        };
+        // 2) Créer une nouvelle entrée
+        await db.child('rapport_cellule/${params.id}').update(updates);
+
+        // 4) Retourner le key généré
+        return FirebaseSuccess(params.id!);
+      }
+      return FirebaseError('User not found');
+
+    } catch (e) {
+      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
+    
+
+      log("🔥 Firebase ERROR updateProfile → $e");
       return FirebaseError(e.toString());
     }
   }

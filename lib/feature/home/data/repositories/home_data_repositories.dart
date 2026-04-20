@@ -9,6 +9,7 @@ import 'package:grace_church/feature/home/domaine/entities/request/home_request.
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/repository/home_domain_repository.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @LazySingleton(as: HomeDomaineRepository)
 class ImpleHomeDataRepositories implements HomeDomaineRepository {
@@ -157,6 +158,25 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
   ) async {
     final response = await domaineServiceRepository
         .sendRapportCelluleStepAdministration(params);
+    if (response is FirebaseSuccess<String>) {
+      final shared = await SharedPreferences.getInstance();
+      await shared.setString('rapport_cellule_key', response.data);
+      return Right(response.data);
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
+  
+  @override
+  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) {
+    // TODO: implement sendImpliciteConnexion
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<Either<Failure, String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params) async {
+    final response = await domaineServiceRepository.sendRapportCelluleStepAssistance(params);
     if (response is FirebaseSuccess<String>) {
       return Right(response.data);
     } else if (response is FirebaseError) {

@@ -35,6 +35,7 @@ _ProfileResponse _$ProfileResponseFromJson(Map<String, dynamic> json) =>
       submitEngagement: json['submitEngagement'] as bool,
       celluleCode: json['celluleCode'] as String,
       celluleId: json['celluleId'] as String,
+      deviceId: json['deviceId'] as String,
     );
 
 Map<String, dynamic> _$ProfileResponseToJson(_ProfileResponse instance) =>
@@ -66,6 +67,7 @@ Map<String, dynamic> _$ProfileResponseToJson(_ProfileResponse instance) =>
       'submitEngagement': instance.submitEngagement,
       'celluleCode': instance.celluleCode,
       'celluleId': instance.celluleId,
+      'deviceId': instance.deviceId,
     };
 
 _NotificationResponse _$NotificationResponseFromJson(

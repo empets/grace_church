@@ -32,6 +32,7 @@ abstract class ProfileResponse with _$ProfileResponse {
     required bool submitEngagement,
     required String celluleCode,
     required String celluleId,
+    required String deviceId,
   }) = _ProfileResponse;
   factory ProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseFromJson(json);

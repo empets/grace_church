@@ -17,34 +17,34 @@ class FormActivite extends StatefulWidget {
 }
 
 class _FormActiviteState extends State<FormActivite> {
-  void updateNombre(SectionForm section, int value) {
+  void updateNombre(RequestSectionForm RequestSection, int value) {
     setState(() {
-      section.nombre = value;
+      RequestSection.nombre = value;
 
-      section.rows = List.generate(
+      RequestSection.rows = List.generate(
         value,
         (index) =>
-            section.rows.length > index ? section.rows[index] : FormRow(),
+            RequestSection.rows.length > index ? RequestSection.rows[index] : FormRow(),
       );
     });
   }
 
-   void updateNombre2(SectionForm section, int value) {
+   void updateNombre2(RequestSectionForm RequestSection, int value) {
     setState(() {
-      section.nombre = value;
+      RequestSection.nombre = value;
 
-      section.rows = List.generate(
+      RequestSection.rows = List.generate(
         value,
         (index) =>
-            section.rows.length > index ? section.rows[index] : FormRow(),
+            RequestSection.rows.length > index ? RequestSection.rows[index] : FormRow(),
       );
     });
   }
 
 
-  SectionForm section = SectionForm(nombre: 1, rows: [FormRow()]);
+  RequestSectionForm RequestSection = RequestSectionForm(nombre: 1, rows: [FormRow()]);
 
-  SectionForm section2 = SectionForm(nombre: 1, rows: [FormRow()]);
+  RequestSectionForm RequestSection2 = RequestSectionForm(nombre: 1, rows: [FormRow()]);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,7 +198,7 @@ class _FormActiviteState extends State<FormActivite> {
                   ),
                   SizedBox(width: 8.w),
                   CustomeText(
-                    text: "Section visite",
+                    text: "RequestSection visite",
                     style: context.appTypographie.body.copyWith(
                       fontSize: 13.sp,
                       color: context.appColor.primaryGrayDark,
@@ -218,12 +218,12 @@ class _FormActiviteState extends State<FormActivite> {
                       fontWeight: FontWeight.bold,)),
                     onChanged: (value) {
                       final number = int.tryParse(value) ?? 1;
-                      updateNombre(section, number);
+                      updateNombre(RequestSection, number);
                     },
                   ),
                   Column(
-                    children: List.generate(section.rows.length, (index) {
-                      final row = section.rows[index];
+                    children: List.generate(RequestSection.rows.length, (index) {
+                      final row = RequestSection.rows[index];
                             
                       return Card(
                         color: Colors.white,
@@ -272,12 +272,12 @@ class _FormActiviteState extends State<FormActivite> {
                     )),
                     onChanged: (value) {
                       final number = int.tryParse(value) ?? 1;
-                      updateNombre2(section2, number);
+                      updateNombre2(RequestSection2, number);
                     },
                   ),
                   Column(
-                    children: List.generate(section2.rows.length, (index) {
-                      final row = section2.rows[index];
+                    children: List.generate(RequestSection2.rows.length, (index) {
+                      final row = RequestSection2.rows[index];
                             
                       return Card(
                         color: Colors.white,
@@ -359,9 +359,9 @@ class FormRow {
   FormRow({this.nom = '', this.probleme = '', this.recommandation = ''});
 }
 
-class SectionForm {
+class RequestSectionForm {
   int nombre;
   List<FormRow> rows;
 
-  SectionForm({this.nombre = 1, required this.rows});
+  RequestSectionForm({this.nombre = 1, required this.rows});
 }

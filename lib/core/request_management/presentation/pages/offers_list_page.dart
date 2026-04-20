@@ -189,7 +189,7 @@
 //   }
 
 //   Widget _buildContent(BuildContext context, List<Offer> offers) {
-//     final sectionTitle = widget.eligibilityResult.isFibre
+//     final RequestSectionTitle = widget.eligibilityResult.isFibre
 //         ? 'Offres Fibre disponibles'
 //         : 'Offres 4G disponibles';
 
@@ -217,14 +217,14 @@
 //                       : EligibilityStatus.notEligible,
 //                 ),
 
-//                 // Offers section
+//                 // Offers RequestSection
 //                 Column(
 //                   crossAxisAlignment: CrossAxisAlignment.start,
 //                   spacing: 8,
 //                   children: [
 //                     Padding(
 //                       padding: const EdgeInsets.symmetric(horizontal: 24),
-//                       child: Text(sectionTitle, style: AppTextStyles.heading3),
+//                       child: Text(RequestSectionTitle, style: AppTextStyles.heading3),
 //                     ),
 //                     Padding(
 //                       padding: const EdgeInsets.symmetric(horizontal: 24),

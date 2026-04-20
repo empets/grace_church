@@ -47,7 +47,7 @@
 
 //               const SizedBox(height: 24),
 
-//               // Section: Détails de l'intervention
+//               // RequestSection: Détails de l'intervention
 //               Text(
 //                 "Détails de l'intervention",
 //                 style: AppTextStyles.heading4,

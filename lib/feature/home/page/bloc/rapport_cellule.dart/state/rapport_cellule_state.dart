@@ -1,15 +1,17 @@
 
 
 import 'package:formz/formz.dart';
-import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 part 'rapport_cellule_state.freezed.dart';
 
 @freezed
-abstract class RapportCelluleSectionAdministrationState with _$RapportCelluleSectionAdministrationState {
-  const factory RapportCelluleSectionAdministrationState({
+abstract class RapportCelluleRequestSectionAdministrationState with _$RapportCelluleRequestSectionAdministrationState {
+  const factory RapportCelluleRequestSectionAdministrationState({
     // Zone
     required TextFormz codeZone,
     required TextFormz fullNameRespoZone,
@@ -38,9 +40,9 @@ abstract class RapportCelluleSectionAdministrationState with _$RapportCelluleSec
       required FormzSubmissionStatus status,
     required String errorMessage,
     required bool isValide,
-  }) = _RapportCelluleSectionAdministrationState;
+  }) = _RapportCelluleRequestSectionAdministrationState;
   
-  factory RapportCelluleSectionAdministrationState.initial() => const RapportCelluleSectionAdministrationState(
+  factory RapportCelluleRequestSectionAdministrationState.initial() => const RapportCelluleRequestSectionAdministrationState(
     codeZone: TextFormz.pure(),
     fullNameRespoZone: TextFormz.pure(),
     contactRespoZone: TextFormz.pure(),
@@ -55,6 +57,50 @@ abstract class RapportCelluleSectionAdministrationState with _$RapportCelluleSec
     nombreBaptiser: TextFormz.pure(),
     nombreNonBaptiser: TextFormz.pure(),
     discipleCelluleList: [],
+    status: FormzSubmissionStatus.initial,
+    errorMessage: '',
+    isValide: false,
+  );
+}
+
+
+
+
+@freezed
+abstract class RapportCelluleRequestSectionAssistanceState
+    with _$RapportCelluleRequestSectionAssistanceState {
+  const factory RapportCelluleRequestSectionAssistanceState({
+    required TextFormz nombreBaptiser,
+    required TextFormz id,
+
+    required List<RequestHumaneSectionAssistance> nomBaptiserStatic,
+    required List<RequestHumaneSectionAssistance> nouveauBaptiser,
+    required List<RequestHumaneSectionAssistance> inviter,
+    required List<RequestHumaneSectionAssistance> formation,
+    required List<RequestHumaneSectionAssistance> sectionVisite,
+    required List<RequestHumaneSectionAssistance> sectionActivite,
+   required List<RequestHumaneSectionAssistance> sectionOuvrier,
+   required List<RequestHumaneSectionAssistance> autres,
+
+    required FormzSubmissionStatus status,
+    required String errorMessage,
+    required bool isValide,
+  }) = _RapportCelluleRequestSectionAssistanceState;
+
+
+
+
+  factory RapportCelluleRequestSectionAssistanceState.initial() => RapportCelluleRequestSectionAssistanceState(
+    nombreBaptiser: TextFormz.pure(),
+    id: TextFormz.pure(),
+    nomBaptiserStatic: [],
+    nouveauBaptiser: [],
+    inviter: [],
+    formation: [],
+    sectionVisite: [],
+    sectionActivite: [],
+    sectionOuvrier: [],
+    autres: [],
     status: FormzSubmissionStatus.initial,
     errorMessage: '',
     isValide: false,

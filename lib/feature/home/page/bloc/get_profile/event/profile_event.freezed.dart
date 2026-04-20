@@ -55,11 +55,12 @@ extension ProfileEventPatterns on ProfileEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _ProfileEvent value)?  fetch,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _ProfileEventFetch value)?  fetch,TResult Function( _ProfileEventGetProfileId value)?  getProfileId,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ProfileEvent() when fetch != null:
-return fetch(_that);case _:
+case _ProfileEventFetch() when fetch != null:
+return fetch(_that);case _ProfileEventGetProfileId() when getProfileId != null:
+return getProfileId(_that);case _:
   return orElse();
 
 }
@@ -77,11 +78,12 @@ return fetch(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _ProfileEvent value)  fetch,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _ProfileEventFetch value)  fetch,required TResult Function( _ProfileEventGetProfileId value)  getProfileId,}){
 final _that = this;
 switch (_that) {
-case _ProfileEvent():
-return fetch(_that);case _:
+case _ProfileEventFetch():
+return fetch(_that);case _ProfileEventGetProfileId():
+return getProfileId(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -98,11 +100,12 @@ return fetch(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _ProfileEvent value)?  fetch,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _ProfileEventFetch value)?  fetch,TResult? Function( _ProfileEventGetProfileId value)?  getProfileId,}){
 final _that = this;
 switch (_that) {
-case _ProfileEvent() when fetch != null:
-return fetch(_that);case _:
+case _ProfileEventFetch() when fetch != null:
+return fetch(_that);case _ProfileEventGetProfileId() when getProfileId != null:
+return getProfileId(_that);case _:
   return null;
 
 }
@@ -119,10 +122,11 @@ return fetch(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetch,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetch,TResult Function( String appId)?  getProfileId,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ProfileEvent() when fetch != null:
-return fetch();case _:
+case _ProfileEventFetch() when fetch != null:
+return fetch();case _ProfileEventGetProfileId() when getProfileId != null:
+return getProfileId(_that.appId);case _:
   return orElse();
 
 }
@@ -140,10 +144,11 @@ return fetch();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetch,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetch,required TResult Function( String appId)  getProfileId,}) {final _that = this;
 switch (_that) {
-case _ProfileEvent():
-return fetch();case _:
+case _ProfileEventFetch():
+return fetch();case _ProfileEventGetProfileId():
+return getProfileId(_that.appId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -160,10 +165,11 @@ return fetch();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetch,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetch,TResult? Function( String appId)?  getProfileId,}) {final _that = this;
 switch (_that) {
-case _ProfileEvent() when fetch != null:
-return fetch();case _:
+case _ProfileEventFetch() when fetch != null:
+return fetch();case _ProfileEventGetProfileId() when getProfileId != null:
+return getProfileId(_that.appId);case _:
   return null;
 
 }
@@ -174,8 +180,8 @@ return fetch();case _:
 /// @nodoc
 
 
-class _ProfileEvent implements ProfileEvent {
-  const _ProfileEvent();
+class _ProfileEventFetch implements ProfileEvent {
+  const _ProfileEventFetch();
   
 
 
@@ -185,7 +191,7 @@ class _ProfileEvent implements ProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileEventFetch);
 }
 
 
@@ -202,5 +208,71 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class _ProfileEventGetProfileId implements ProfileEvent {
+  const _ProfileEventGetProfileId(this.appId);
+  
+
+ final  String appId;
+
+/// Create a copy of ProfileEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ProfileEventGetProfileIdCopyWith<_ProfileEventGetProfileId> get copyWith => __$ProfileEventGetProfileIdCopyWithImpl<_ProfileEventGetProfileId>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileEventGetProfileId&&(identical(other.appId, appId) || other.appId == appId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,appId);
+
+@override
+String toString() {
+  return 'ProfileEvent.getProfileId(appId: $appId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ProfileEventGetProfileIdCopyWith<$Res> implements $ProfileEventCopyWith<$Res> {
+  factory _$ProfileEventGetProfileIdCopyWith(_ProfileEventGetProfileId value, $Res Function(_ProfileEventGetProfileId) _then) = __$ProfileEventGetProfileIdCopyWithImpl;
+@useResult
+$Res call({
+ String appId
+});
+
+
+
+
+}
+/// @nodoc
+class __$ProfileEventGetProfileIdCopyWithImpl<$Res>
+    implements _$ProfileEventGetProfileIdCopyWith<$Res> {
+  __$ProfileEventGetProfileIdCopyWithImpl(this._self, this._then);
+
+  final _ProfileEventGetProfileId _self;
+  final $Res Function(_ProfileEventGetProfileId) _then;
+
+/// Create a copy of ProfileEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? appId = null,}) {
+  return _then(_ProfileEventGetProfileId(
+null == appId ? _self.appId : appId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 // dart format on

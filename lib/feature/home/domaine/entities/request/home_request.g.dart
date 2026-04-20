@@ -166,7 +166,7 @@ _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
       nombreBaptiser: json['nombreBaptiser'] as String,
       nombreNonBaptiser: json['nombreNonBaptiser'] as String,
       discipleCellule: (json['discipleCellule'] as List<dynamic>)
-          .map((e) => DiscipleCellule.fromJson(e as Map<String, dynamic>))
+          .map((e) => e as Map<String, dynamic>)
           .toList(),
       id: json['id'] as String,
       formAdministrationIsSubmit: json['formAdministrationIsSubmit'] as String,
@@ -205,3 +205,101 @@ Map<String, dynamic> _$RequestGeneriqueKeyToJson<T>(
   _RequestGeneriqueKey<T> instance,
   Object? Function(T value) toJsonT,
 ) => <String, dynamic>{'id': toJsonT(instance.id)};
+
+_RequestImpliciteConnexion _$RequestImpliciteConnexionFromJson(
+  Map<String, dynamic> json,
+) => _RequestImpliciteConnexion(deviceId: json['deviceId'] as String);
+
+Map<String, dynamic> _$RequestImpliciteConnexionToJson(
+  _RequestImpliciteConnexion instance,
+) => <String, dynamic>{'deviceId': instance.deviceId};
+
+_RequestItemSection _$RequestItemSectionFromJson(Map<String, dynamic> json) =>
+    _RequestItemSection(
+      name: json['name'] as String,
+      count: (json['count'] as num?)?.toInt() ?? 0,
+    );
+
+Map<String, dynamic> _$RequestItemSectionToJson(_RequestItemSection instance) =>
+    <String, dynamic>{'name': instance.name, 'count': instance.count};
+
+_RequestSection _$RequestSectionFromJson(Map<String, dynamic> json) =>
+    _RequestSection(
+      title: json['title'] as String,
+      items:
+          (json['items'] as List<dynamic>?)
+              ?.map(
+                (e) => RequestItemSection.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$RequestSectionToJson(_RequestSection instance) =>
+    <String, dynamic>{'title': instance.title, 'items': instance.items};
+
+_RequestHumaneSectionAssistance _$RequestHumaneSectionAssistanceFromJson(
+  Map<String, dynamic> json,
+) => _RequestHumaneSectionAssistance(
+  title: json['title'] as String? ?? "",
+  name: json['name'] as String? ?? "",
+  cout: (json['cout'] as num?)?.toInt() ?? 0,
+);
+
+Map<String, dynamic> _$RequestHumaneSectionAssistanceToJson(
+  _RequestHumaneSectionAssistance instance,
+) => <String, dynamic>{
+  'title': instance.title,
+  'name': instance.name,
+  'cout': instance.cout,
+};
+
+_RequestRapportCelluleAssistance _$RequestRapportCelluleAssistanceFromJson(
+  Map<String, dynamic> json,
+) => _RequestRapportCelluleAssistance(
+  nombreBaptiser: json['nombreBaptiser'] as String,
+  nomBaptiserStat: (json['nomBaptiserStat'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  nouveauBaptiserStat: (json['nouveauBaptiserStat'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  inviterStat: (json['inviterStat'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  formationStat: (json['formationStat'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  sectionVisite: (json['sectionVisite'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  sectionActivite: (json['sectionActivite'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  sectionOuvrier: (json['sectionOuvrier'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  autres: (json['autres'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  id: json['id'] as String,
+  formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String,
+  formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
+);
+
+Map<String, dynamic> _$RequestRapportCelluleAssistanceToJson(
+  _RequestRapportCelluleAssistance instance,
+) => <String, dynamic>{
+  'nombreBaptiser': instance.nombreBaptiser,
+  'nomBaptiserStat': instance.nomBaptiserStat,
+  'nouveauBaptiserStat': instance.nouveauBaptiserStat,
+  'inviterStat': instance.inviterStat,
+  'formationStat': instance.formationStat,
+  'sectionVisite': instance.sectionVisite,
+  'sectionActivite': instance.sectionActivite,
+  'sectionOuvrier': instance.sectionOuvrier,
+  'autres': instance.autres,
+  'id': instance.id,
+  'formAssistanceIsSubmit': instance.formAssistanceIsSubmit,
+  'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,
+};

@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+
 part 'home_request.freezed.dart';
 part 'home_request.g.dart';
 
@@ -119,7 +122,7 @@ abstract class RequestRapportCelluleAdministration
     required String offrande,
     required String nombreBaptiser,
     required String nombreNonBaptiser,
-    required List<DiscipleCellule> discipleCellule,
+    required List<Map<String, dynamic>> discipleCellule,
     required String id,
     required String formAdministrationIsSubmit,
     required String formAdministrationSubmitDate,
@@ -137,4 +140,75 @@ abstract class RequestGeneriqueKey<T> with _$RequestGeneriqueKey<T> {
     Map<String, dynamic> json,
     T Function(Object?) fromJsonT,
   ) => _$RequestGeneriqueKeyFromJson(json, fromJsonT);
+}
+
+
+
+@freezed
+abstract class RequestImpliciteConnexion with _$RequestImpliciteConnexion {
+  factory RequestImpliciteConnexion({
+    required String deviceId,
+  }) = _RequestImpliciteConnexion;
+  factory RequestImpliciteConnexion.fromJson(Map<String, dynamic> json) =>
+      _$RequestImpliciteConnexionFromJson(json);
+}
+
+
+@freezed
+abstract class RequestItemSection with _$RequestItemSection {
+  factory RequestItemSection({
+     required String name,
+     @Default(0) int count,
+  }) = _RequestItemSection;
+  factory RequestItemSection.fromJson(Map<String, dynamic> json) =>
+      _$RequestItemSectionFromJson(json);
+}
+
+@freezed
+abstract class RequestSection with _$RequestSection {
+  factory RequestSection({
+     required String title,
+     @Default([]) List<RequestItemSection> items,
+  }) = _RequestSection;
+  factory RequestSection.fromJson(Map<String, dynamic> json) =>
+      _$RequestSectionFromJson(json);
+}
+
+
+@freezed
+abstract class RequestHumaneSectionAssistance with _$RequestHumaneSectionAssistance {
+  factory RequestHumaneSectionAssistance({
+    @Default("") String title,
+     @Default("") String name,
+     @Default(0) int cout,
+   
+  }) = _RequestHumaneSectionAssistance;
+  factory RequestHumaneSectionAssistance.fromJson(Map<String, dynamic> json) =>
+      _$RequestHumaneSectionAssistanceFromJson(json);
+}
+
+
+
+
+
+@freezed
+abstract class RequestRapportCelluleAssistance
+    with _$RequestRapportCelluleAssistance {
+  factory RequestRapportCelluleAssistance({
+    required String nombreBaptiser,
+    required List<Map<String, dynamic>> nomBaptiserStat,
+    required List<Map<String, dynamic>> nouveauBaptiserStat,
+    required List<Map<String, dynamic>> inviterStat,
+    required List<Map<String, dynamic>> formationStat,
+    required List<Map<String, dynamic>> sectionVisite,
+    required List<Map<String, dynamic>> sectionActivite,
+    required List<Map<String, dynamic>> sectionOuvrier,
+    required List<Map<String, dynamic>> autres,
+    required String id,
+    required String formAssistanceIsSubmit,
+    required String formAssistanceSubmitDate,
+  }) = _RequestRapportCelluleAssistance;
+  factory RequestRapportCelluleAssistance.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestRapportCelluleAssistanceFromJson(json);
 }

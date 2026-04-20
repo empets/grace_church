@@ -36,6 +36,7 @@ _ProfileResponseModel _$ProfileResponseModelFromJson(
   submitEngagement: json['submitEngagement'] as bool? ?? false,
   celluleCode: json['celluleCode'] as String?,
   celluleId: json['celluleId'] as String?,
+  deviceId: json['deviceId'] as String? ?? '',
 );
 
 Map<String, dynamic> _$ProfileResponseModelToJson(
@@ -68,6 +69,7 @@ Map<String, dynamic> _$ProfileResponseModelToJson(
   'submitEngagement': instance.submitEngagement,
   'celluleCode': instance.celluleCode,
   'celluleId': instance.celluleId,
+  'deviceId': instance.deviceId,
 };
 
 _NotificationResponseModel _$NotificationResponseModelFromJson(

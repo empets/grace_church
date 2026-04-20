@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
@@ -44,7 +46,6 @@ class FormProfileBloc
           ),
         );
         break;
-
       case ChangeDateNaissanceEventCreateCompteProfile(:final dateNaissance):
         final dateInput = TextFormz.dirty(dateNaissance);
 
@@ -215,6 +216,9 @@ class FormProfileBloc
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
+          final deviceId = await getDeviceFingerprint();
+          log("Device ID: $deviceId");
+
           
            if(bool.parse(state.isUpdate.value) == true){
              final response = await createProfileUsercase.call(
@@ -230,6 +234,7 @@ class FormProfileBloc
               password: state.password.value,
               submitProfile: true,
               isUpdate: true,
+              deviceId: deviceId,
             ),
           );
 
@@ -260,6 +265,7 @@ class FormProfileBloc
               password: state.password.value,
               submitProfile: true,
               isUpdate: false,
+              deviceId: deviceId,
             ),
           );
 
@@ -275,8 +281,6 @@ class FormProfileBloc
           );
             
            }
-
-
 
          
         }

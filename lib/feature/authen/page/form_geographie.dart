@@ -377,31 +377,7 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
               }
             },
           ),
-          // BlocListener<EligibilityCubit, EligibilityState>(
-          //   listener: (context, state) {
-          //     if (state is EligibilitySuccess) {
-          //       // Navigation vers OffersListPage
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //           builder: (context) => OffersListPage(
-          //             location: _selectedLocation,
-          //             eligibilityResult: state.result,
-          //             phoneNumber: _phoneController.text.trim(),
-          //             address: _addressController.text.trim(),
-          //           ),
-          //         ),
-          //       );
-          //     } else if (state is EligibilityError) {
-          //       ScaffoldMessenger.of(context).showSnackBar(
-          //         SnackBar(
-          //           content: Text(state.message),
-          //           backgroundColor: AppColors.error,
-          //         ),
-          //       );
-          //     }
-          //   },
-          // ),
+        
         ],
         child: Stack(
           children: [

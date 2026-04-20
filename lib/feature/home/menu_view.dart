@@ -369,7 +369,7 @@ class MenuView extends StatelessWidget {
                                                           providers: [
                                                             BlocProvider(
                                                               create: (context) =>
-                                                                  RapportCelluleSectionAdministrationBloc(
+                                                                  RapportCelluleRequestSectionAdministrationBloc(
                                                                     sendRapportCelluleStepAdministrationUsercase:
                                                                         getIt<
                                                                           SendRapportCelluleStepAdministrationUsercase
@@ -544,7 +544,7 @@ class MenuView extends StatelessWidget {
 
                                                             // BlocProvider(
                                                             //   create: (context) =>
-                                                            //       RapportCelluleSectionAdministrationBloc(),
+                                                            //       RapportCelluleRequestSectionAdministrationBloc(),
                                                             // ),
                                                             BlocProvider.value(
                                                               value: context

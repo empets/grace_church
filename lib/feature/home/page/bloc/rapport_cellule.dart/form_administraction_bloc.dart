@@ -1,32 +1,35 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
+
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 
-class RapportCelluleSectionAdministrationBloc extends Bloc<
-    RapportCelluleSectionAdministrationEvent,
-    RapportCelluleSectionAdministrationState> {
+class RapportCelluleRequestSectionAdministrationBloc extends Bloc<
+    RapportCelluleRequestSectionAdministrationEvent,
+    RapportCelluleRequestSectionAdministrationState> {
 
-  RapportCelluleSectionAdministrationBloc({required this.sendRapportCelluleStepAdministrationUsercase})
-      : super(RapportCelluleSectionAdministrationState.initial()) {
-    on<RapportCelluleSectionAdministrationEvent>(_onEvent);
+  RapportCelluleRequestSectionAdministrationBloc({required this.sendRapportCelluleStepAdministrationUsercase})
+      : super(RapportCelluleRequestSectionAdministrationState.initial()) {
+    on<RapportCelluleRequestSectionAdministrationEvent>(_onEvent);
   }
 
   final SendRapportCelluleStepAdministrationUsercase sendRapportCelluleStepAdministrationUsercase;
 
   void _onEvent(
-    RapportCelluleSectionAdministrationEvent event,
-    Emitter<RapportCelluleSectionAdministrationState> emit,
+    RapportCelluleRequestSectionAdministrationEvent event,
+    Emitter<RapportCelluleRequestSectionAdministrationState> emit,
   ) async {
     switch (event) {
 
       // -------------------------
       // ZONE
       // -------------------------
-      case ChangeCodeZoneRapportCelluleSectionAdministrationEvent(:final codeZone):
+      case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent(:final codeZone):
         final updatedState = state.copyWith(
           codeZone: TextFormz.dirty(codeZone),
           status: FormzSubmissionStatus.initial,
@@ -34,7 +37,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeFullNameRespoZoneRapportCelluleSectionAdministrationEvent(:final fullNameRespoZone):
+      case ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent(:final fullNameRespoZone):
         final updatedState = state.copyWith(
           fullNameRespoZone: TextFormz.dirty(fullNameRespoZone),
           status: FormzSubmissionStatus.initial,
@@ -42,7 +45,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeContactRespoZoneRapportCelluleSectionAdministrationEvent(:final contactRespoZone):
+      case ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent(:final contactRespoZone):
         final updatedState = state.copyWith(
           contactRespoZone: TextFormz.dirty(contactRespoZone),
           status: FormzSubmissionStatus.initial,
@@ -53,7 +56,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // SECTEUR
       // -------------------------
-      case ChangeCodeSecteurRapportCelluleSectionAdministrationEvent(:final codeSecteur):
+      case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent(:final codeSecteur):
         final updatedState = state.copyWith(
           codeSecteur: TextFormz.dirty(codeSecteur),
           status: FormzSubmissionStatus.initial,
@@ -61,7 +64,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeFullNameRespoSecteurRapportCelluleSectionAdministrationEvent(:final fullNameRespoSecteur):
+      case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent(:final fullNameRespoSecteur):
         final updatedState = state.copyWith(
           fullNameRespoSecteur: TextFormz.dirty(fullNameRespoSecteur),
           status: FormzSubmissionStatus.initial,
@@ -69,7 +72,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeContactRespoSecteurRapportCelluleSectionAdministrationEvent(:final contactRespoSecteur):
+      case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent(:final contactRespoSecteur):
         final updatedState = state.copyWith(
           contactRespoSecteur: TextFormz.dirty(contactRespoSecteur),
           status: FormzSubmissionStatus.initial,
@@ -80,7 +83,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // CELLULE
       // -------------------------
-      case ChangeCodeCelluleRapportCelluleSectionAdministrationEvent(:final codeCellule):
+      case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent(:final codeCellule):
         final updatedState = state.copyWith(
           codeCellule: TextFormz.dirty(codeCellule),
           status: FormzSubmissionStatus.initial,
@@ -88,7 +91,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeFullNameRespoCelluleRapportCelluleSectionAdministrationEvent(:final fullNameRespoCellule):
+      case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent(:final fullNameRespoCellule):
         final updatedState = state.copyWith(
           fullNameRespoCellule: TextFormz.dirty(fullNameRespoCellule),
           status: FormzSubmissionStatus.initial,
@@ -96,7 +99,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeContactRespoCelluleRapportCelluleSectionAdministrationEvent(:final contactRespoCellule):
+      case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent(:final contactRespoCellule):
         final updatedState = state.copyWith(
           contactRespoCellule: TextFormz.dirty(contactRespoCellule),
           status: FormzSubmissionStatus.initial,
@@ -107,7 +110,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // INFOS CELLULE
       // -------------------------
-      case ChangeJourCelluleRapportCelluleSectionAdministrationEvent(:final jourCellule):
+      case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent(:final jourCellule):
         final updatedState = state.copyWith(
           jourCellule: TextFormz.dirty(jourCellule),
           status: FormzSubmissionStatus.initial,
@@ -115,7 +118,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeOffrandeRapportCelluleSectionAdministrationEvent(:final offrande):
+      case ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent(:final offrande):
         final updatedState = state.copyWith(
           offrande: TextFormz.dirty(offrande),
           status: FormzSubmissionStatus.initial,
@@ -126,7 +129,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // STATS
       // -------------------------
-      case ChangeNombreBaptiserRapportCelluleSectionAdministrationEvent(:final nombreBaptiser):
+      case ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent(:final nombreBaptiser):
         final updatedState = state.copyWith(
           nombreBaptiser: TextFormz.dirty(nombreBaptiser),
           status: FormzSubmissionStatus.initial,
@@ -134,7 +137,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
-      case ChangeNombreNonBaptiserRapportCelluleSectionAdministrationEvent(:final nombreNonBaptiser):
+      case ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent(:final nombreNonBaptiser):
         final updatedState = state.copyWith(
           nombreNonBaptiser: TextFormz.dirty(nombreNonBaptiser),
           status: FormzSubmissionStatus.initial,
@@ -145,7 +148,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // LISTE DISCIPLES
       // -------------------------
-     case ChangeNombreListDicipleCelluleRapportCelluleSectionAdministrationEvent(
+     case ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent(
   :final discipleCelluleResponse
 ):
   final updatedState = state.copyWith(
@@ -175,7 +178,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       // -------------------------
       // 🔥 SUBMIT (optionnel)
       // -------------------------
-      case SubmitRapportCelluleSectionAdministrationEvent():
+      case SubmitRapportCelluleRequestSectionAdministrationEvent():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final result = await sendRapportCelluleStepAdministrationUsercase.call(RequestRapportCelluleAdministration(
@@ -192,16 +195,23 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
             offrande: state.offrande.value,
             nombreBaptiser: state.nombreBaptiser.value,
             nombreNonBaptiser: state.nombreNonBaptiser.value,
-            discipleCellule: List.generate(state.discipleCelluleList.length, (index) => state.discipleCelluleList[index]),
-            id: "",
-          formAdministrationIsSubmit: "Success", formAdministrationSubmitDate: DateTime.now().toIso8601String(),
-          ));
+            discipleCellule: state.discipleCelluleList
+            .map((e) => e.toJson())
+            .toList(),
+                    id: "",
+                  formAdministrationIsSubmit: "Success", formAdministrationSubmitDate: DateTime.now().toIso8601String(),
+                  ));
 
-           emit(result.fold((l)=> state.copyWith(status: FormzSubmissionStatus.failure), (r)=> state.copyWith(status: FormzSubmissionStatus.success)));
-        }
-        else{
-          emit(state.copyWith(status: FormzSubmissionStatus.failure));
-        }
+                  emit(result.fold((l) {
+                    log("------->>> ERROR: ${l.toString()}");
+                    return state.copyWith(status: FormzSubmissionStatus.failure);
+                  }, 
+                  (r) {
+                    log("------->>> SUCCES");
+                    return state.copyWith(status: FormzSubmissionStatus.success, errorMessage: r);
+                  }));
+                }
+            
         break;
     }
   }
@@ -209,7 +219,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
   // =============================
   // 🔍 VALIDATION CENTRALISÉE
   // =============================
-  bool _validate(RapportCelluleSectionAdministrationState s) {
+  bool _validate(RapportCelluleRequestSectionAdministrationState s) {
     return Formz.validate([
       s.codeZone,
       s.fullNameRespoZone,
@@ -226,4 +236,7 @@ class RapportCelluleSectionAdministrationBloc extends Bloc<
       s.nombreNonBaptiser,
     ]);
   }
+
+
 }
+

@@ -36,7 +36,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> quickActionSectionItem = [
+    final List<Map<String, dynamic>> quickActionRequestSectionItem = [
       {
         'icon': Icons.groups_rounded,
         'title': 'Ma cellule de Maison',
@@ -98,8 +98,8 @@ class _HomeViewState extends State<HomeView> {
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(quickActionSectionItem.length, (index) {
-                  final items = quickActionSectionItem[index];
+                children: List.generate(quickActionRequestSectionItem.length, (index) {
+                  final items = quickActionRequestSectionItem[index];
                   return Expanded(
                     child: GestureDetector(
                       onTap: () {

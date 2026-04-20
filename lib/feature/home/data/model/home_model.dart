@@ -34,6 +34,7 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
     @Default(false) bool? submitEngagement,
     required String? celluleCode,
     required String? celluleId,
+    @Default('') String? deviceId,
   }) = _ProfileResponseModel;
   factory ProfileResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ProfileResponseModelFromJson(json);
@@ -67,6 +68,7 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
       submitEngagement: model.submitEngagement.getOrEmpty(),
       celluleCode: model.celluleCode.getOrEmpty(),
       celluleId: model.celluleId.getOrEmpty(),
+      deviceId: model.deviceId.getOrEmpty(),
     );
   }
 }

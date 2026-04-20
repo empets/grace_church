@@ -68,7 +68,7 @@ class EligibilityFormContent extends StatelessWidget {
 
           // Subtitle
           Text(
-            'Géolocaliser votre zone dans la quelle votre entreprise est.',
+            'Géolocaliser ou vous résider',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade700,

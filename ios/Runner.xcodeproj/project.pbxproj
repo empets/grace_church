@@ -6,7 +6,7 @@
 	objectVersion = 54;
 	objects = {
 
-/* Begin PBXBuildFile section */
+/* Begin PBXBuildFile RequestSection */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -14,9 +14,9 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-/* End PBXBuildFile section */
+/* End PBXBuildFile RequestSection */
 
-/* Begin PBXContainerItemProxy section */
+/* Begin PBXContainerItemProxy RequestSection */
 		331C8085294A63A400263BE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
@@ -24,9 +24,9 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-/* End PBXContainerItemProxy section */
+/* End PBXContainerItemProxy RequestSection */
 
-/* Begin PBXCopyFilesBuildPhase section */
+/* Begin PBXCopyFilesBuildPhase RequestSection */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,9 +37,9 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXCopyFilesBuildPhase section */
+/* End PBXCopyFilesBuildPhase RequestSection */
 
-/* Begin PBXFileReference section */
+/* Begin PBXFileReference RequestSection */
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
@@ -55,9 +55,9 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-/* End PBXFileReference section */
+/* End PBXFileReference RequestSection */
 
-/* Begin PBXFrameworksBuildPhase section */
+/* Begin PBXFrameworksBuildPhase RequestSection */
 		97C146EB1CF9000F007C117D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,9 +65,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXFrameworksBuildPhase section */
+/* End PBXFrameworksBuildPhase RequestSection */
 
-/* Begin PBXGroup section */
+/* Begin PBXGroup RequestSection */
 		331C8082294A63A400263BE5 /* RunnerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,9 +121,9 @@
 			path = Runner;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
+/* End PBXGroup RequestSection */
 
-/* Begin PBXNativeTarget section */
+/* Begin PBXNativeTarget RequestSection */
 		331C8080294A63A400263BE5 /* RunnerTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */;
@@ -161,9 +161,9 @@
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
 		};
-/* End PBXNativeTarget section */
+/* End PBXNativeTarget RequestSection */
 
-/* Begin PBXProject section */
+/* Begin PBXProject RequestSection */
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
@@ -198,9 +198,9 @@
 				331C8080294A63A400263BE5 /* RunnerTests */,
 			);
 		};
-/* End PBXProject section */
+/* End PBXProject RequestSection */
 
-/* Begin PBXResourcesBuildPhase section */
+/* Begin PBXResourcesBuildPhase RequestSection */
 		331C807F294A63A400263BE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,9 +219,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXResourcesBuildPhase RequestSection */
 
-/* Begin PBXShellScriptBuildPhase section */
+/* Begin PBXShellScriptBuildPhase RequestSection */
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -253,9 +253,9 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
 		};
-/* End PBXShellScriptBuildPhase section */
+/* End PBXShellScriptBuildPhase RequestSection */
 
-/* Begin PBXSourcesBuildPhase section */
+/* Begin PBXSourcesBuildPhase RequestSection */
 		331C807D294A63A400263BE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,17 +273,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXSourcesBuildPhase section */
+/* End PBXSourcesBuildPhase RequestSection */
 
-/* Begin PBXTargetDependency section */
+/* Begin PBXTargetDependency RequestSection */
 		331C8086294A63A400263BE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
 		};
-/* End PBXTargetDependency section */
+/* End PBXTargetDependency RequestSection */
 
-/* Begin PBXVariantGroup section */
+/* Begin PBXVariantGroup RequestSection */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -300,9 +300,9 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-/* End PBXVariantGroup section */
+/* End PBXVariantGroup RequestSection */
 
-/* Begin XCBuildConfiguration section */
+/* Begin XCBuildConfiguration RequestSection */
 		249021D3217E4FDB00AE95B9 /* Profile */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -577,9 +577,9 @@
 			};
 			name = Release;
 		};
-/* End XCBuildConfiguration section */
+/* End XCBuildConfiguration RequestSection */
 
-/* Begin XCConfigurationList section */
+/* Begin XCConfigurationList RequestSection */
 		331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -610,7 +610,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-/* End XCConfigurationList section */
+/* End XCConfigurationList RequestSection */
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }

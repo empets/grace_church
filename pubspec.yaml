@@ -42,6 +42,7 @@ dependencies:
   shimmer: ^3.0.0
   font_awesome_flutter: any
   flutter_screenutil: ^5.9.3
+  device_info_plus: ^10.0.0
   # app_links: ^6.4.0
   # avatar_glow: ^3.0.1
   # back_button_interceptor: ^8.0.3
@@ -227,7 +228,7 @@ flutter_gen:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter packages.
+# The following RequestSection is specific to Flutter packages.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -235,7 +236,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+  # To add assets to your application, add an assets RequestSection, like this:
   assets:
     - assets/images/
     - assets/icon_launcher/
@@ -247,8 +248,8 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
+  # To add custom fonts to your application, add a fonts RequestSection here,
+  # in this "flutter" RequestSection. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
