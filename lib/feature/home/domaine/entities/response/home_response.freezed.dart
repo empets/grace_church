@@ -2050,4 +2050,276 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$VisiteDisciple {
+
+ String get fullname; bool get isDisciple; String get probleme; String get recommandation;
+/// Create a copy of VisiteDisciple
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$VisiteDiscipleCopyWith<VisiteDisciple> get copyWith => _$VisiteDiscipleCopyWithImpl<VisiteDisciple>(this as VisiteDisciple, _$identity);
+
+  /// Serializes this VisiteDisciple to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisiteDisciple&&(identical(other.fullname, fullname) || other.fullname == fullname)&&(identical(other.isDisciple, isDisciple) || other.isDisciple == isDisciple)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fullname,isDisciple,probleme,recommandation);
+
+@override
+String toString() {
+  return 'VisiteDisciple(fullname: $fullname, isDisciple: $isDisciple, probleme: $probleme, recommandation: $recommandation)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $VisiteDiscipleCopyWith<$Res>  {
+  factory $VisiteDiscipleCopyWith(VisiteDisciple value, $Res Function(VisiteDisciple) _then) = _$VisiteDiscipleCopyWithImpl;
+@useResult
+$Res call({
+ String fullname, bool isDisciple, String probleme, String recommandation
+});
+
+
+
+
+}
+/// @nodoc
+class _$VisiteDiscipleCopyWithImpl<$Res>
+    implements $VisiteDiscipleCopyWith<$Res> {
+  _$VisiteDiscipleCopyWithImpl(this._self, this._then);
+
+  final VisiteDisciple _self;
+  final $Res Function(VisiteDisciple) _then;
+
+/// Create a copy of VisiteDisciple
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? fullname = null,Object? isDisciple = null,Object? probleme = null,Object? recommandation = null,}) {
+  return _then(_self.copyWith(
+fullname: null == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
+as String,isDisciple: null == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
+as bool,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [VisiteDisciple].
+extension VisiteDisciplePatterns on VisiteDisciple {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _VisiteDisciple value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _VisiteDisciple() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _VisiteDisciple value)  $default,){
+final _that = this;
+switch (_that) {
+case _VisiteDisciple():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _VisiteDisciple value)?  $default,){
+final _that = this;
+switch (_that) {
+case _VisiteDisciple() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullname,  bool isDisciple,  String probleme,  String recommandation)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _VisiteDisciple() when $default != null:
+return $default(_that.fullname,_that.isDisciple,_that.probleme,_that.recommandation);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullname,  bool isDisciple,  String probleme,  String recommandation)  $default,) {final _that = this;
+switch (_that) {
+case _VisiteDisciple():
+return $default(_that.fullname,_that.isDisciple,_that.probleme,_that.recommandation);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullname,  bool isDisciple,  String probleme,  String recommandation)?  $default,) {final _that = this;
+switch (_that) {
+case _VisiteDisciple() when $default != null:
+return $default(_that.fullname,_that.isDisciple,_that.probleme,_that.recommandation);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _VisiteDisciple implements VisiteDisciple {
+   _VisiteDisciple({required this.fullname, required this.isDisciple, required this.probleme, required this.recommandation});
+  factory _VisiteDisciple.fromJson(Map<String, dynamic> json) => _$VisiteDiscipleFromJson(json);
+
+@override final  String fullname;
+@override final  bool isDisciple;
+@override final  String probleme;
+@override final  String recommandation;
+
+/// Create a copy of VisiteDisciple
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$VisiteDiscipleCopyWith<_VisiteDisciple> get copyWith => __$VisiteDiscipleCopyWithImpl<_VisiteDisciple>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$VisiteDiscipleToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VisiteDisciple&&(identical(other.fullname, fullname) || other.fullname == fullname)&&(identical(other.isDisciple, isDisciple) || other.isDisciple == isDisciple)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fullname,isDisciple,probleme,recommandation);
+
+@override
+String toString() {
+  return 'VisiteDisciple(fullname: $fullname, isDisciple: $isDisciple, probleme: $probleme, recommandation: $recommandation)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$VisiteDiscipleCopyWith<$Res> implements $VisiteDiscipleCopyWith<$Res> {
+  factory _$VisiteDiscipleCopyWith(_VisiteDisciple value, $Res Function(_VisiteDisciple) _then) = __$VisiteDiscipleCopyWithImpl;
+@override @useResult
+$Res call({
+ String fullname, bool isDisciple, String probleme, String recommandation
+});
+
+
+
+
+}
+/// @nodoc
+class __$VisiteDiscipleCopyWithImpl<$Res>
+    implements _$VisiteDiscipleCopyWith<$Res> {
+  __$VisiteDiscipleCopyWithImpl(this._self, this._then);
+
+  final _VisiteDisciple _self;
+  final $Res Function(_VisiteDisciple) _then;
+
+/// Create a copy of VisiteDisciple
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? fullname = null,Object? isDisciple = null,Object? probleme = null,Object? recommandation = null,}) {
+  return _then(_VisiteDisciple(
+fullname: null == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
+as String,isDisciple: null == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
+as bool,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

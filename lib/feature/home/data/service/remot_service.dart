@@ -370,32 +370,69 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
   @override
   Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params) async {
-    //    final shared = await shareData.SharedPreferences.getInstance();
-    // final localUserRequestSection = shared.getString('rapport_cellule_key');
+      //    final shared = await shareData.SharedPreferences.getInstance();
+      // final localUserRequestSection = shared.getString('rapport_cellule_key');
+
+      try {
+        final userIdExist = await db
+            .child('rapport_cellule')
+            .orderByChild('id')
+            .equalTo(params.id)
+            .get();
+            
+
+        if (
+            userIdExist.exists &&
+            params.id != null &&
+            params.id!.isNotEmpty) {
+        
+          final Map<String, dynamic> updates = {
+            ...params.toJson(), // nouveaux champs simples
+            'id': params.id!,
+            'userId': params.id.toString(),
+          };
+          // 2) Créer une nouvelle entrée
+          await db.child('rapport_cellule/${params.id}').update(updates);
+
+          // 4) Retourner le key généré
+          return FirebaseSuccess(params.id!);
+        }
+        return FirebaseError('User not found');
+
+      } catch (e) {
+        log("${FirebaseException(message: e.toString(), plugin: "authen")}");
+      
+
+        log("🔥 Firebase ERROR updateProfile → $e");
+        return FirebaseError(e.toString());
+      }
+  }
+  
+  @override
+  Future<FirebaseResult<String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params) async {
+       final shared = await shareData.SharedPreferences.getInstance();
+    final localUserRequestSection = shared.getString('rapport_cellule_key');
 
     try {
       final userIdExist = await db
           .child('rapport_cellule')
           .orderByChild('id')
-          .equalTo(params.id)
+          .equalTo(localUserRequestSection)
           .get();
           
 
       if (
-          userIdExist.exists &&
-          params.id != null &&
-          params.id!.isNotEmpty) {
+          userIdExist.exists ) {
       
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
-          'id': params.id!,
-          'userId': params.id.toString(),
+      
         };
         // 2) Créer une nouvelle entrée
-        await db.child('rapport_cellule/${params.id}').update(updates);
+        await db.child('rapport_cellule/${localUserRequestSection}').update(updates);
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(params.id!);
+        return FirebaseSuccess(localUserRequestSection!);
       }
       return FirebaseError('User not found');
 
@@ -406,5 +443,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       log("🔥 Firebase ERROR updateProfile → $e");
       return FirebaseError(e.toString());
     }
+    
   }
 }

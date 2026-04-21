@@ -14,10 +14,14 @@ import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
+
 enum SectionType { nonBaptise, nouveaux, inviter }
 
 class FormStatistic extends StatefulWidget {
@@ -77,36 +81,35 @@ class _FormStatisticState extends State<FormStatistic> {
   }
 
   List<RequestHumaneSectionAssistance> _getSectionList(
-  RapportCelluleRequestSectionAssistanceState state,
-  String section,
-) {
-  switch (section) {
-    case "Non baptisé":
-      return state.nomBaptiserStatic;
+    RapportCelluleRequestSectionAssistanceState state,
+    String section,
+  ) {
+    switch (section) {
+      case "Non baptisé":
+        return state.nomBaptiserStatic;
 
-    case "Nouveaux":
-      return state.nouveauBaptiser;
+      case "Nouveaux":
+        return state.nouveauBaptiser;
 
-    case "Invités":
-      return state.inviter;
+      case "Invités":
+        return state.inviter;
 
-    case "Formation":
-      return state.formation;
+      case "Formation":
+        return state.formation;
 
-    case "Visite":
-      return state.sectionVisite;
+      case "Visite":
+        return state.sectionVisite;
 
-    case "Activité":
-      return state.sectionActivite;
+      case "Activité":
+        return state.sectionActivite;
 
-    case "Ouvrier":
-      return state.sectionOuvrier;
+      case "Ouvrier":
+        return state.sectionOuvrier;
 
-    default:
-      return state.autres;
+      default:
+        return state.autres;
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -618,7 +621,6 @@ class _FormStatisticState extends State<FormStatistic> {
                                                           item.count++;
                                                       });
 
-                                                      
                                                       if (RequestSection
                                                               .title ==
                                                           "Non baptisé") {
@@ -852,8 +854,6 @@ class _FormStatisticState extends State<FormStatistic> {
                   },
                 ),
 
-   
-               
                 SizedBox(height: 16.h),
 
                 Row(
@@ -1150,25 +1150,32 @@ class _FormStatisticState extends State<FormStatistic> {
                         label: 'Suivant',
                         colorText: context.appColor.primaryWhite,
                         onPressed: () {
-                          context.read<RapportCelluleSectionAssistanceBloc>().add(
-                            RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
-                              widget.id,
+                          // context.read<RapportCelluleSectionAssistanceBloc>().add(
+                          //   RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
+                          //     widget.id,
+                          //   ),
+                          // );
+
+                          // context.read<RapportCelluleSectionAssistanceBloc>().add(
+                          //   RapportCelluleRequestSectionAssistanceEvent.submit(),
+                          // );
+                          Navigator.push(
+                            context,
+                            fadeRoute(
+                              BlocProvider(
+                                create: (context) => FormActiviteBloc(
+                                  getIt<SendRapportCelluleStepAssistantUsercase>(),
+                                ),
+                                child: FormActivite(),
+                              ),
                             ),
                           );
-
-                          context.read<RapportCelluleSectionAssistanceBloc>().add(
-                            RapportCelluleRequestSectionAssistanceEvent.submit(),
-                          );
-                          // Navigator.push(context, fadeRoute(FormActivite()));
                         },
                       ),
                     );
                   },
                 ),
                 SizedBox(height: 20.h),
-             
-             
-             
               ],
             ),
           ),

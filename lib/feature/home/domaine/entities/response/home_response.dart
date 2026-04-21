@@ -95,6 +95,11 @@ abstract class DiscipleCellule with _$DiscipleCellule {
       _$DiscipleCelluleFromJson(json);
 }
 
+
+
+
+
+
 @freezed
 abstract class ReponsableSecteurResponse with _$ReponsableSecteurResponse {
   factory ReponsableSecteurResponse({
@@ -127,4 +132,17 @@ abstract class ReponsableZoneResponse with _$ReponsableZoneResponse {
   }) = _ReponsableZoneResponse;
   factory ReponsableZoneResponse.fromJson(Map<String, dynamic> json) =>
       _$ReponsableZoneResponseFromJson(json);
+}
+
+
+@freezed
+abstract class VisiteDisciple with _$VisiteDisciple{
+  factory VisiteDisciple({
+    required String fullname,
+    required bool isDisciple,
+    required String probleme,
+    required String recommandation,
+  }) = _VisiteDisciple;
+  factory VisiteDisciple.fromJson(Map<String, dynamic> json) =>
+      _$VisiteDiscipleFromJson(json); 
 }

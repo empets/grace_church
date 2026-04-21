@@ -212,3 +212,19 @@ abstract class RequestRapportCelluleAssistance
     Map<String, dynamic> json,
   ) => _$RequestRapportCelluleAssistanceFromJson(json);
 }
+
+
+@freezed
+abstract class RequestRapportCelluleActivity
+    with _$RequestRapportCelluleActivity {
+  factory RequestRapportCelluleActivity({
+    required List<Map<String, dynamic>> visiteMenbre,
+    required List<Map<String, dynamic>> visiteOuvrier,
+    required List<Map<String, dynamic>> dateActivitySubmited,
+    required String formActivityIsSubmit,
+    required String formActivitySubmitDate,
+  }) = _RequestRapportCelluleActivity;
+  factory RequestRapportCelluleActivity.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestRapportCelluleActivityFromJson(json);
+}

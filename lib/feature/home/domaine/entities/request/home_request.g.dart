@@ -303,3 +303,29 @@ Map<String, dynamic> _$RequestRapportCelluleAssistanceToJson(
   'formAssistanceIsSubmit': instance.formAssistanceIsSubmit,
   'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,
 };
+
+_RequestRapportCelluleActivity _$RequestRapportCelluleActivityFromJson(
+  Map<String, dynamic> json,
+) => _RequestRapportCelluleActivity(
+  visiteMenbre: (json['visiteMenbre'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  visiteOuvrier: (json['visiteOuvrier'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  dateActivitySubmited: (json['dateActivitySubmited'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  formActivityIsSubmit: json['formActivityIsSubmit'] as String,
+  formActivitySubmitDate: json['formActivitySubmitDate'] as String,
+);
+
+Map<String, dynamic> _$RequestRapportCelluleActivityToJson(
+  _RequestRapportCelluleActivity instance,
+) => <String, dynamic>{
+  'visiteMenbre': instance.visiteMenbre,
+  'visiteOuvrier': instance.visiteOuvrier,
+  'dateActivitySubmited': instance.dateActivitySubmited,
+  'formActivityIsSubmit': instance.formActivityIsSubmit,
+  'formActivitySubmitDate': instance.formActivitySubmitDate,
+};

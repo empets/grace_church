@@ -184,4 +184,15 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+  
+  @override
+  Future<Either<Failure, String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params) async {
+    final response = await domaineServiceRepository.sendRapportCelluleStepActivity(params);
+    if (response is FirebaseSuccess<String>) {
+      return Right(response.data);
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
 }

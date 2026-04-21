@@ -215,3 +215,19 @@ Map<String, dynamic> _$ReponsableZoneResponseToJson(
   'adresse': instance.adresse,
   'zoneId': instance.zoneId,
 };
+
+_VisiteDisciple _$VisiteDiscipleFromJson(Map<String, dynamic> json) =>
+    _VisiteDisciple(
+      fullname: json['fullname'] as String,
+      isDisciple: json['isDisciple'] as bool,
+      probleme: json['probleme'] as String,
+      recommandation: json['recommandation'] as String,
+    );
+
+Map<String, dynamic> _$VisiteDiscipleToJson(_VisiteDisciple instance) =>
+    <String, dynamic>{
+      'fullname': instance.fullname,
+      'isDisciple': instance.isDisciple,
+      'probleme': instance.probleme,
+      'recommandation': instance.recommandation,
+    };

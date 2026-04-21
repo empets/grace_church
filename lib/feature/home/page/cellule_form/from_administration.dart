@@ -195,20 +195,20 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
     >(
       listener: (context, state) {
         if (state.isValide && state.status.isSuccess) {
-          Navigator.push(context, fadeRoute(
-            BlocProvider(
-              create: (context) => RapportCelluleSectionAssistanceBloc(
-                sendRapportCelluleStepStatUsercase: getIt<SendRapportCelluleStepStatUsercase>(),
+          Navigator.push(
+            context,
+            fadeRoute(
+              BlocProvider(
+                create: (context) => RapportCelluleSectionAssistanceBloc(
+                  sendRapportCelluleStepStatUsercase:
+                      getIt<SendRapportCelluleStepStatUsercase>(),
+                ),
+                child: FormStatistic(id: state.errorMessage ?? ''),
               ),
-              child: FormStatistic(id: state.errorMessage ?? ''),
             ),
-          ));
-
-       
+          );
         }
-        if (state.status.isFailure) {
-         
-        }
+        if (state.status.isFailure) {}
       },
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
@@ -976,11 +976,15 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
 
                 SizedBox(height: 9.h),
 
-                FormNextTeps(
-                  icons: Icons.trending_up_sharp,
-                  title: 'Assistance ',
-                  description: 'Personne présente a la cellule',
-                  isNextForm: false,
+                BlocBuilder<RapportCelluleRequestSectionAdministrationBloc, RapportCelluleRequestSectionAdministrationState>(
+                  builder: (context, state) {
+                    return FormNextTeps(
+                      icons: Icons.trending_up_sharp,
+                      title: 'Assistance ',
+                      description: 'Personne présente a la cellule',
+                      isNextForm: state.isValide,
+                    );
+                  },
                 ),
 
                 BlocBuilder<

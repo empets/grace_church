@@ -4057,4 +4057,309 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$RequestRapportCelluleActivity implements DiagnosticableTreeMixin {
+
+ List<Map<String, dynamic>> get visiteMenbre; List<Map<String, dynamic>> get visiteOuvrier; List<Map<String, dynamic>> get dateActivitySubmited; String get formActivityIsSubmit; String get formActivitySubmitDate;
+/// Create a copy of RequestRapportCelluleActivity
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestRapportCelluleActivityCopyWith<RequestRapportCelluleActivity> get copyWith => _$RequestRapportCelluleActivityCopyWithImpl<RequestRapportCelluleActivity>(this as RequestRapportCelluleActivity, _$identity);
+
+  /// Serializes this RequestRapportCelluleActivity to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestRapportCelluleActivity'))
+    ..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteOuvrier', visiteOuvrier))..add(DiagnosticsProperty('dateActivitySubmited', dateActivitySubmited))..add(DiagnosticsProperty('formActivityIsSubmit', formActivityIsSubmit))..add(DiagnosticsProperty('formActivitySubmitDate', formActivitySubmitDate));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleActivity&&const DeepCollectionEquality().equals(other.visiteMenbre, visiteMenbre)&&const DeepCollectionEquality().equals(other.visiteOuvrier, visiteOuvrier)&&const DeepCollectionEquality().equals(other.dateActivitySubmited, dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(visiteMenbre),const DeepCollectionEquality().hash(visiteOuvrier),const DeepCollectionEquality().hash(dateActivitySubmited),formActivityIsSubmit,formActivitySubmitDate);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestRapportCelluleActivity(visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestRapportCelluleActivityCopyWith<$Res>  {
+  factory $RequestRapportCelluleActivityCopyWith(RequestRapportCelluleActivity value, $Res Function(RequestRapportCelluleActivity) _then) = _$RequestRapportCelluleActivityCopyWithImpl;
+@useResult
+$Res call({
+ List<Map<String, dynamic>> visiteMenbre, List<Map<String, dynamic>> visiteOuvrier, List<Map<String, dynamic>> dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestRapportCelluleActivityCopyWithImpl<$Res>
+    implements $RequestRapportCelluleActivityCopyWith<$Res> {
+  _$RequestRapportCelluleActivityCopyWithImpl(this._self, this._then);
+
+  final RequestRapportCelluleActivity _self;
+  final $Res Function(RequestRapportCelluleActivity) _then;
+
+/// Create a copy of RequestRapportCelluleActivity
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,}) {
+  return _then(_self.copyWith(
+visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,visiteOuvrier: null == visiteOuvrier ? _self.visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,dateActivitySubmited: null == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestRapportCelluleActivity].
+extension RequestRapportCelluleActivityPatterns on RequestRapportCelluleActivity {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestRapportCelluleActivity value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestRapportCelluleActivity() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestRapportCelluleActivity value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestRapportCelluleActivity():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestRapportCelluleActivity value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestRapportCelluleActivity() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestRapportCelluleActivity() when $default != null:
+return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate)  $default,) {final _that = this;
+switch (_that) {
+case _RequestRapportCelluleActivity():
+return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestRapportCelluleActivity() when $default != null:
+return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestRapportCelluleActivity with DiagnosticableTreeMixin implements RequestRapportCelluleActivity {
+   _RequestRapportCelluleActivity({required final  List<Map<String, dynamic>> visiteMenbre, required final  List<Map<String, dynamic>> visiteOuvrier, required final  List<Map<String, dynamic>> dateActivitySubmited, required this.formActivityIsSubmit, required this.formActivitySubmitDate}): _visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_dateActivitySubmited = dateActivitySubmited;
+  factory _RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleActivityFromJson(json);
+
+ final  List<Map<String, dynamic>> _visiteMenbre;
+@override List<Map<String, dynamic>> get visiteMenbre {
+  if (_visiteMenbre is EqualUnmodifiableListView) return _visiteMenbre;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_visiteMenbre);
+}
+
+ final  List<Map<String, dynamic>> _visiteOuvrier;
+@override List<Map<String, dynamic>> get visiteOuvrier {
+  if (_visiteOuvrier is EqualUnmodifiableListView) return _visiteOuvrier;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_visiteOuvrier);
+}
+
+ final  List<Map<String, dynamic>> _dateActivitySubmited;
+@override List<Map<String, dynamic>> get dateActivitySubmited {
+  if (_dateActivitySubmited is EqualUnmodifiableListView) return _dateActivitySubmited;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_dateActivitySubmited);
+}
+
+@override final  String formActivityIsSubmit;
+@override final  String formActivitySubmitDate;
+
+/// Create a copy of RequestRapportCelluleActivity
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestRapportCelluleActivityCopyWith<_RequestRapportCelluleActivity> get copyWith => __$RequestRapportCelluleActivityCopyWithImpl<_RequestRapportCelluleActivity>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestRapportCelluleActivityToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestRapportCelluleActivity'))
+    ..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteOuvrier', visiteOuvrier))..add(DiagnosticsProperty('dateActivitySubmited', dateActivitySubmited))..add(DiagnosticsProperty('formActivityIsSubmit', formActivityIsSubmit))..add(DiagnosticsProperty('formActivitySubmitDate', formActivitySubmitDate));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleActivity&&const DeepCollectionEquality().equals(other._visiteMenbre, _visiteMenbre)&&const DeepCollectionEquality().equals(other._visiteOuvrier, _visiteOuvrier)&&const DeepCollectionEquality().equals(other._dateActivitySubmited, _dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_visiteMenbre),const DeepCollectionEquality().hash(_visiteOuvrier),const DeepCollectionEquality().hash(_dateActivitySubmited),formActivityIsSubmit,formActivitySubmitDate);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestRapportCelluleActivity(visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestRapportCelluleActivityCopyWith<$Res> implements $RequestRapportCelluleActivityCopyWith<$Res> {
+  factory _$RequestRapportCelluleActivityCopyWith(_RequestRapportCelluleActivity value, $Res Function(_RequestRapportCelluleActivity) _then) = __$RequestRapportCelluleActivityCopyWithImpl;
+@override @useResult
+$Res call({
+ List<Map<String, dynamic>> visiteMenbre, List<Map<String, dynamic>> visiteOuvrier, List<Map<String, dynamic>> dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestRapportCelluleActivityCopyWithImpl<$Res>
+    implements _$RequestRapportCelluleActivityCopyWith<$Res> {
+  __$RequestRapportCelluleActivityCopyWithImpl(this._self, this._then);
+
+  final _RequestRapportCelluleActivity _self;
+  final $Res Function(_RequestRapportCelluleActivity) _then;
+
+/// Create a copy of RequestRapportCelluleActivity
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,}) {
+  return _then(_RequestRapportCelluleActivity(
+visiteMenbre: null == visiteMenbre ? _self._visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,visiteOuvrier: null == visiteOuvrier ? _self._visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,dateActivitySubmited: null == dateActivitySubmited ? _self._dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

@@ -2177,4 +2177,424 @@ String toString() {
 
 
 
+/// @nodoc
+mixin _$RapportCelluleRequestActivityEvent {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestActivityEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityEvent()';
+}
+
+
+}
+
+/// @nodoc
+class $RapportCelluleRequestActivityEventCopyWith<$Res>  {
+$RapportCelluleRequestActivityEventCopyWith(RapportCelluleRequestActivityEvent _, $Res Function(RapportCelluleRequestActivityEvent) __);
+}
+
+
+/// Adds pattern-matching-related methods to [RapportCelluleRequestActivityEvent].
+extension RapportCelluleRequestActivityEventPatterns on RapportCelluleRequestActivityEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)?  changeDisciple,TResult Function( ChangeMenbreRapportCelluleRequestActivityEvent value)?  changeMenbre,TResult Function( RapportCelluleRequestActivityEventUpdateSectionId value)?  updateSectionId,TResult Function( SubmitRapportCelluleRequestActivityEvent value)?  submit,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
+return changeDisciple(_that);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
+return changeMenbre(_that);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return updateSectionId(_that);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
+return submit(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)  changeDisciple,required TResult Function( ChangeMenbreRapportCelluleRequestActivityEvent value)  changeMenbre,required TResult Function( RapportCelluleRequestActivityEventUpdateSectionId value)  updateSectionId,required TResult Function( SubmitRapportCelluleRequestActivityEvent value)  submit,}){
+final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestActivityEvent():
+return changeDisciple(_that);case ChangeMenbreRapportCelluleRequestActivityEvent():
+return changeMenbre(_that);case RapportCelluleRequestActivityEventUpdateSectionId():
+return updateSectionId(_that);case SubmitRapportCelluleRequestActivityEvent():
+return submit(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)?  changeDisciple,TResult? Function( ChangeMenbreRapportCelluleRequestActivityEvent value)?  changeMenbre,TResult? Function( RapportCelluleRequestActivityEventUpdateSectionId value)?  updateSectionId,TResult? Function( SubmitRapportCelluleRequestActivityEvent value)?  submit,}){
+final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
+return changeDisciple(_that);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
+return changeMenbre(_that);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return updateSectionId(_that);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
+return submit(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<VisiteDisciple> visiteDisciple)?  changeDisciple,TResult Function( List<VisiteDisciple> visiteMenre)?  changeMenbre,TResult Function( String id)?  updateSectionId,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
+return changeDisciple(_that.visiteDisciple);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
+return changeMenbre(_that.visiteMenre);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return updateSectionId(_that.id);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
+return submit();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<VisiteDisciple> visiteDisciple)  changeDisciple,required TResult Function( List<VisiteDisciple> visiteMenre)  changeMenbre,required TResult Function( String id)  updateSectionId,required TResult Function()  submit,}) {final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestActivityEvent():
+return changeDisciple(_that.visiteDisciple);case ChangeMenbreRapportCelluleRequestActivityEvent():
+return changeMenbre(_that.visiteMenre);case RapportCelluleRequestActivityEventUpdateSectionId():
+return updateSectionId(_that.id);case SubmitRapportCelluleRequestActivityEvent():
+return submit();case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<VisiteDisciple> visiteDisciple)?  changeDisciple,TResult? Function( List<VisiteDisciple> visiteMenre)?  changeMenbre,TResult? Function( String id)?  updateSectionId,TResult? Function()?  submit,}) {final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
+return changeDisciple(_that.visiteDisciple);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
+return changeMenbre(_that.visiteMenre);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return updateSectionId(_that.id);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
+return submit();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ChangeDiscipleRapportCelluleRequestActivityEvent implements RapportCelluleRequestActivityEvent {
+   ChangeDiscipleRapportCelluleRequestActivityEvent(final  List<VisiteDisciple> visiteDisciple): _visiteDisciple = visiteDisciple;
+  
+
+ final  List<VisiteDisciple> _visiteDisciple;
+ List<VisiteDisciple> get visiteDisciple {
+  if (_visiteDisciple is EqualUnmodifiableListView) return _visiteDisciple;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_visiteDisciple);
+}
+
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeDiscipleRapportCelluleRequestActivityEventCopyWith<ChangeDiscipleRapportCelluleRequestActivityEvent> get copyWith => _$ChangeDiscipleRapportCelluleRequestActivityEventCopyWithImpl<ChangeDiscipleRapportCelluleRequestActivityEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeDiscipleRapportCelluleRequestActivityEvent&&const DeepCollectionEquality().equals(other._visiteDisciple, _visiteDisciple));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_visiteDisciple));
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityEvent.changeDisciple(visiteDisciple: $visiteDisciple)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeDiscipleRapportCelluleRequestActivityEventCopyWith<$Res> implements $RapportCelluleRequestActivityEventCopyWith<$Res> {
+  factory $ChangeDiscipleRapportCelluleRequestActivityEventCopyWith(ChangeDiscipleRapportCelluleRequestActivityEvent value, $Res Function(ChangeDiscipleRapportCelluleRequestActivityEvent) _then) = _$ChangeDiscipleRapportCelluleRequestActivityEventCopyWithImpl;
+@useResult
+$Res call({
+ List<VisiteDisciple> visiteDisciple
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeDiscipleRapportCelluleRequestActivityEventCopyWithImpl<$Res>
+    implements $ChangeDiscipleRapportCelluleRequestActivityEventCopyWith<$Res> {
+  _$ChangeDiscipleRapportCelluleRequestActivityEventCopyWithImpl(this._self, this._then);
+
+  final ChangeDiscipleRapportCelluleRequestActivityEvent _self;
+  final $Res Function(ChangeDiscipleRapportCelluleRequestActivityEvent) _then;
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? visiteDisciple = null,}) {
+  return _then(ChangeDiscipleRapportCelluleRequestActivityEvent(
+null == visiteDisciple ? _self._visiteDisciple : visiteDisciple // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChangeMenbreRapportCelluleRequestActivityEvent implements RapportCelluleRequestActivityEvent {
+   ChangeMenbreRapportCelluleRequestActivityEvent(final  List<VisiteDisciple> visiteMenre): _visiteMenre = visiteMenre;
+  
+
+ final  List<VisiteDisciple> _visiteMenre;
+ List<VisiteDisciple> get visiteMenre {
+  if (_visiteMenre is EqualUnmodifiableListView) return _visiteMenre;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_visiteMenre);
+}
+
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeMenbreRapportCelluleRequestActivityEventCopyWith<ChangeMenbreRapportCelluleRequestActivityEvent> get copyWith => _$ChangeMenbreRapportCelluleRequestActivityEventCopyWithImpl<ChangeMenbreRapportCelluleRequestActivityEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeMenbreRapportCelluleRequestActivityEvent&&const DeepCollectionEquality().equals(other._visiteMenre, _visiteMenre));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_visiteMenre));
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityEvent.changeMenbre(visiteMenre: $visiteMenre)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeMenbreRapportCelluleRequestActivityEventCopyWith<$Res> implements $RapportCelluleRequestActivityEventCopyWith<$Res> {
+  factory $ChangeMenbreRapportCelluleRequestActivityEventCopyWith(ChangeMenbreRapportCelluleRequestActivityEvent value, $Res Function(ChangeMenbreRapportCelluleRequestActivityEvent) _then) = _$ChangeMenbreRapportCelluleRequestActivityEventCopyWithImpl;
+@useResult
+$Res call({
+ List<VisiteDisciple> visiteMenre
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeMenbreRapportCelluleRequestActivityEventCopyWithImpl<$Res>
+    implements $ChangeMenbreRapportCelluleRequestActivityEventCopyWith<$Res> {
+  _$ChangeMenbreRapportCelluleRequestActivityEventCopyWithImpl(this._self, this._then);
+
+  final ChangeMenbreRapportCelluleRequestActivityEvent _self;
+  final $Res Function(ChangeMenbreRapportCelluleRequestActivityEvent) _then;
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? visiteMenre = null,}) {
+  return _then(ChangeMenbreRapportCelluleRequestActivityEvent(
+null == visiteMenre ? _self._visiteMenre : visiteMenre // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class RapportCelluleRequestActivityEventUpdateSectionId implements RapportCelluleRequestActivityEvent {
+   RapportCelluleRequestActivityEventUpdateSectionId(this.id);
+  
+
+ final  String id;
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RapportCelluleRequestActivityEventUpdateSectionIdCopyWith<RapportCelluleRequestActivityEventUpdateSectionId> get copyWith => _$RapportCelluleRequestActivityEventUpdateSectionIdCopyWithImpl<RapportCelluleRequestActivityEventUpdateSectionId>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestActivityEventUpdateSectionId&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityEvent.updateSectionId(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RapportCelluleRequestActivityEventUpdateSectionIdCopyWith<$Res> implements $RapportCelluleRequestActivityEventCopyWith<$Res> {
+  factory $RapportCelluleRequestActivityEventUpdateSectionIdCopyWith(RapportCelluleRequestActivityEventUpdateSectionId value, $Res Function(RapportCelluleRequestActivityEventUpdateSectionId) _then) = _$RapportCelluleRequestActivityEventUpdateSectionIdCopyWithImpl;
+@useResult
+$Res call({
+ String id
+});
+
+
+
+
+}
+/// @nodoc
+class _$RapportCelluleRequestActivityEventUpdateSectionIdCopyWithImpl<$Res>
+    implements $RapportCelluleRequestActivityEventUpdateSectionIdCopyWith<$Res> {
+  _$RapportCelluleRequestActivityEventUpdateSectionIdCopyWithImpl(this._self, this._then);
+
+  final RapportCelluleRequestActivityEventUpdateSectionId _self;
+  final $Res Function(RapportCelluleRequestActivityEventUpdateSectionId) _then;
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(RapportCelluleRequestActivityEventUpdateSectionId(
+null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SubmitRapportCelluleRequestActivityEvent implements RapportCelluleRequestActivityEvent {
+   SubmitRapportCelluleRequestActivityEvent();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubmitRapportCelluleRequestActivityEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityEvent.submit()';
+}
+
+
+}
+
+
+
+
 // dart format on

@@ -676,4 +676,288 @@ as bool,
 
 }
 
+/// @nodoc
+mixin _$RapportCelluleRequestActivityState {
+
+ TextFormz get id; List<VisiteDisciple> get discipleVisiteList; List<VisiteDisciple> get discipleMenbreList; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+/// Create a copy of RapportCelluleRequestActivityState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RapportCelluleRequestActivityStateCopyWith<RapportCelluleRequestActivityState> get copyWith => _$RapportCelluleRequestActivityStateCopyWithImpl<RapportCelluleRequestActivityState>(this as RapportCelluleRequestActivityState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestActivityState&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.discipleVisiteList, discipleVisiteList)&&const DeepCollectionEquality().equals(other.discipleMenbreList, discipleMenbreList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(discipleVisiteList),const DeepCollectionEquality().hash(discipleMenbreList),status,errorMessage,isValide);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityState(id: $id, discipleVisiteList: $discipleVisiteList, discipleMenbreList: $discipleMenbreList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RapportCelluleRequestActivityStateCopyWith<$Res>  {
+  factory $RapportCelluleRequestActivityStateCopyWith(RapportCelluleRequestActivityState value, $Res Function(RapportCelluleRequestActivityState) _then) = _$RapportCelluleRequestActivityStateCopyWithImpl;
+@useResult
+$Res call({
+ TextFormz id, List<VisiteDisciple> discipleVisiteList, List<VisiteDisciple> discipleMenbreList, FormzSubmissionStatus status, String errorMessage, bool isValide
+});
+
+
+
+
+}
+/// @nodoc
+class _$RapportCelluleRequestActivityStateCopyWithImpl<$Res>
+    implements $RapportCelluleRequestActivityStateCopyWith<$Res> {
+  _$RapportCelluleRequestActivityStateCopyWithImpl(this._self, this._then);
+
+  final RapportCelluleRequestActivityState _self;
+  final $Res Function(RapportCelluleRequestActivityState) _then;
+
+/// Create a copy of RapportCelluleRequestActivityState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? discipleVisiteList = null,Object? discipleMenbreList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as TextFormz,discipleVisiteList: null == discipleVisiteList ? _self.discipleVisiteList : discipleVisiteList // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,discipleMenbreList: null == discipleMenbreList ? _self.discipleMenbreList : discipleMenbreList // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RapportCelluleRequestActivityState].
+extension RapportCelluleRequestActivityStatePatterns on RapportCelluleRequestActivityState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RapportCelluleRequestActivityState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RapportCelluleRequestActivityState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RapportCelluleRequestActivityState value)  $default,){
+final _that = this;
+switch (_that) {
+case _RapportCelluleRequestActivityState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RapportCelluleRequestActivityState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RapportCelluleRequestActivityState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RapportCelluleRequestActivityState() when $default != null:
+return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.status,_that.errorMessage,_that.isValide);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+switch (_that) {
+case _RapportCelluleRequestActivityState():
+return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.status,_that.errorMessage,_that.isValide);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+switch (_that) {
+case _RapportCelluleRequestActivityState() when $default != null:
+return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.status,_that.errorMessage,_that.isValide);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _RapportCelluleRequestActivityState implements RapportCelluleRequestActivityState {
+  const _RapportCelluleRequestActivityState({required this.id, required final  List<VisiteDisciple> discipleVisiteList, required final  List<VisiteDisciple> discipleMenbreList, required this.status, required this.errorMessage, required this.isValide}): _discipleVisiteList = discipleVisiteList,_discipleMenbreList = discipleMenbreList;
+  
+
+@override final  TextFormz id;
+ final  List<VisiteDisciple> _discipleVisiteList;
+@override List<VisiteDisciple> get discipleVisiteList {
+  if (_discipleVisiteList is EqualUnmodifiableListView) return _discipleVisiteList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_discipleVisiteList);
+}
+
+ final  List<VisiteDisciple> _discipleMenbreList;
+@override List<VisiteDisciple> get discipleMenbreList {
+  if (_discipleMenbreList is EqualUnmodifiableListView) return _discipleMenbreList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_discipleMenbreList);
+}
+
+@override final  FormzSubmissionStatus status;
+@override final  String errorMessage;
+@override final  bool isValide;
+
+/// Create a copy of RapportCelluleRequestActivityState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RapportCelluleRequestActivityStateCopyWith<_RapportCelluleRequestActivityState> get copyWith => __$RapportCelluleRequestActivityStateCopyWithImpl<_RapportCelluleRequestActivityState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestActivityState&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._discipleVisiteList, _discipleVisiteList)&&const DeepCollectionEquality().equals(other._discipleMenbreList, _discipleMenbreList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_discipleVisiteList),const DeepCollectionEquality().hash(_discipleMenbreList),status,errorMessage,isValide);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityState(id: $id, discipleVisiteList: $discipleVisiteList, discipleMenbreList: $discipleMenbreList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RapportCelluleRequestActivityStateCopyWith<$Res> implements $RapportCelluleRequestActivityStateCopyWith<$Res> {
+  factory _$RapportCelluleRequestActivityStateCopyWith(_RapportCelluleRequestActivityState value, $Res Function(_RapportCelluleRequestActivityState) _then) = __$RapportCelluleRequestActivityStateCopyWithImpl;
+@override @useResult
+$Res call({
+ TextFormz id, List<VisiteDisciple> discipleVisiteList, List<VisiteDisciple> discipleMenbreList, FormzSubmissionStatus status, String errorMessage, bool isValide
+});
+
+
+
+
+}
+/// @nodoc
+class __$RapportCelluleRequestActivityStateCopyWithImpl<$Res>
+    implements _$RapportCelluleRequestActivityStateCopyWith<$Res> {
+  __$RapportCelluleRequestActivityStateCopyWithImpl(this._self, this._then);
+
+  final _RapportCelluleRequestActivityState _self;
+  final $Res Function(_RapportCelluleRequestActivityState) _then;
+
+/// Create a copy of RapportCelluleRequestActivityState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? discipleVisiteList = null,Object? discipleMenbreList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+  return _then(_RapportCelluleRequestActivityState(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as TextFormz,discipleVisiteList: null == discipleVisiteList ? _self._discipleVisiteList : discipleVisiteList // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,discipleMenbreList: null == discipleMenbreList ? _self._discipleMenbreList : discipleMenbreList // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
 // dart format on

@@ -106,3 +106,29 @@ abstract class RapportCelluleRequestSectionAssistanceState
     isValide: false,
   );
 }
+
+
+
+
+@freezed
+abstract class RapportCelluleRequestActivityState with _$RapportCelluleRequestActivityState {
+  const factory RapportCelluleRequestActivityState({
+      required TextFormz id,
+     required List<VisiteDisciple> discipleVisiteList,
+     required List<VisiteDisciple> discipleMenbreList,
+      required FormzSubmissionStatus status,
+    required String errorMessage,
+    required bool isValide,
+  }) = _RapportCelluleRequestActivityState;
+  
+  factory RapportCelluleRequestActivityState.initial() => const RapportCelluleRequestActivityState(
+    id: TextFormz.pure(),
+    discipleVisiteList: [],
+    discipleMenbreList: [],
+    status: FormzSubmissionStatus.initial,
+    errorMessage: '',
+    isValide: false,
+  );
+}
+
+

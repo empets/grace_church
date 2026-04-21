@@ -30,7 +30,6 @@ class RapportCelluleRequestSectionAdministrationEvent with _$RapportCelluleReque
 }
 
 
-
 @freezed
 class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSectionAssistanceEvent {
    factory RapportCelluleRequestSectionAssistanceEvent.changeNombreBaptiser(String nombreBaptiser ) = ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent;
@@ -48,4 +47,14 @@ class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSe
 
 }
 
+
+
+
+@freezed
+class RapportCelluleRequestActivityEvent with _$RapportCelluleRequestActivityEvent {
+   factory RapportCelluleRequestActivityEvent.changeDisciple(List<VisiteDisciple> visiteDisciple ) = ChangeDiscipleRapportCelluleRequestActivityEvent;
+   factory RapportCelluleRequestActivityEvent.changeMenbre(List<VisiteDisciple> visiteMenre ) = ChangeMenbreRapportCelluleRequestActivityEvent;
+   factory RapportCelluleRequestActivityEvent.updateSectionId(String id) = RapportCelluleRequestActivityEventUpdateSectionId;
+   factory RapportCelluleRequestActivityEvent.submit() = SubmitRapportCelluleRequestActivityEvent;
+}
 
