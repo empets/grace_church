@@ -98,6 +98,7 @@ class FormActiviteBloc
       case SubmitRapportCelluleRequestActivityEvent():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+          await Future.delayed(const Duration(seconds: 3));
 
           final result = await sendRapportCelluleStepAssistantUsercase.call(
             RequestRapportCelluleActivity(
@@ -108,7 +109,7 @@ class FormActiviteBloc
                   .map((e) => e.toJson())
                   .toList(),
               dateActivitySubmited: [],
-              formActivityIsSubmit: "true",
+              formActivityIsSubmit: "Success",
               formActivitySubmitDate: DateTime.now().toIso8601String(),
             )
           ); 

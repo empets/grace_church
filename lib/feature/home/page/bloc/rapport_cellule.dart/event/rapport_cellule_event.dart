@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_statistic.dart';
 part 'rapport_cellule_event.freezed.dart';
 
 @freezed
@@ -37,11 +38,11 @@ class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSe
    factory RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(List<RequestHumaneSectionAssistance> nomBaptiserStat ) = ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(List<RequestHumaneSectionAssistance> nouveauBaptiserStat ) = ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.changeInviter(List<RequestHumaneSectionAssistance> inviterStat ) = ChangeInviterRapportCelluleRequestSectionAssistanceEvent;
-   factory RapportCelluleRequestSectionAssistanceEvent.changeFormation(List<RequestHumaneSectionAssistance> formationStat ) = ChangeFormationRapportCelluleRequestSectionAssistanceEvent;
-   factory RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(List<RequestHumaneSectionAssistance> sectionVisite ) = ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent;
-   factory RapportCelluleRequestSectionAssistanceEvent.changeSectionActivite(List<RequestHumaneSectionAssistance> sectionActivite ) = ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent;
-   factory RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(List<RequestHumaneSectionAssistance> sectionOuvrier ) = ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent;
-   factory RapportCelluleRequestSectionAssistanceEvent.changeAutres(List<RequestHumaneSectionAssistance> autres ) = ChangeAutresRapportCelluleRequestSectionAssistanceEvent;
+   factory RapportCelluleRequestSectionAssistanceEvent.changeFormation(List<RequestAutherInformationSource> formationStat ) = ChangeFormationRapportCelluleRequestSectionAssistanceEvent;
+   factory RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(List<RequestAutherInformationSource> sectionVisite ) = ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent;
+   factory RapportCelluleRequestSectionAssistanceEvent.changeSectionActivite(List<RequestAutherInformationSource> sectionActivite ) = ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent;
+   factory RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(List<RequestAutherInformationSource> sectionOuvrier ) = ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent;
+   factory RapportCelluleRequestSectionAssistanceEvent.changeAutres(List<RequestAutherInformationSource> autres ) = ChangeAutresRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.submit() = SubmitRapportCelluleRequestSectionAssistanceEvent;
 
 
@@ -56,5 +57,14 @@ class RapportCelluleRequestActivityEvent with _$RapportCelluleRequestActivityEve
    factory RapportCelluleRequestActivityEvent.changeMenbre(List<VisiteDisciple> visiteMenre ) = ChangeMenbreRapportCelluleRequestActivityEvent;
    factory RapportCelluleRequestActivityEvent.updateSectionId(String id) = RapportCelluleRequestActivityEventUpdateSectionId;
    factory RapportCelluleRequestActivityEvent.submit() = SubmitRapportCelluleRequestActivityEvent;
+}
+
+
+@freezed
+class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestionEvent {
+   factory RapportCelluleRequestSuggestionEvent.changeDisciple(List<RapportSuggestion> suggestion ) = ChangeDiscipleRapportCelluleRequestSuggestionEvent;
+   factory RapportCelluleRequestSuggestionEvent.faisAssignaler(String isAssignaler) = FaisAssignalerRapportCelluleRequestSuggestionEvent;
+   factory RapportCelluleRequestSuggestionEvent.etatsSprituelOuvrier(String etatsSprituelOuvrier) = EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent;
+   factory RapportCelluleRequestSuggestionEvent.submit() = SubmitRapportCelluleRequestSuggestionEvent;
 }
 

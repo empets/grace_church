@@ -212,6 +212,7 @@ class RapportCelluleRequestSectionAdministrationBloc
       case SubmitRapportCelluleRequestSectionAdministrationEvent():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+          await Future.delayed(const Duration(seconds: 4));
           final result = await sendRapportCelluleStepAdministrationUsercase
               .call(
                 RequestRapportCelluleAdministration(

@@ -3424,7 +3424,7 @@ as List<RequestItemSection>,
 /// @nodoc
 mixin _$RequestHumaneSectionAssistance implements DiagnosticableTreeMixin {
 
- String get title; String get name; int get cout;
+ String get libelle; String get toutPetit; String get juniors; String get cadets; int get total;
 /// Create a copy of RequestHumaneSectionAssistance
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3438,21 +3438,21 @@ $RequestHumaneSectionAssistanceCopyWith<RequestHumaneSectionAssistance> get copy
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestHumaneSectionAssistance'))
-    ..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('cout', cout));
+    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('toutPetit', toutPetit))..add(DiagnosticsProperty('juniors', juniors))..add(DiagnosticsProperty('cadets', cadets))..add(DiagnosticsProperty('total', total));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionAssistance&&(identical(other.title, title) || other.title == title)&&(identical(other.name, name) || other.name == name)&&(identical(other.cout, cout) || other.cout == cout));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionAssistance&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.toutPetit, toutPetit) || other.toutPetit == toutPetit)&&(identical(other.juniors, juniors) || other.juniors == juniors)&&(identical(other.cadets, cadets) || other.cadets == cadets)&&(identical(other.total, total) || other.total == total));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,name,cout);
+int get hashCode => Object.hash(runtimeType,libelle,toutPetit,juniors,cadets,total);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestHumaneSectionAssistance(title: $title, name: $name, cout: $cout)';
+  return 'RequestHumaneSectionAssistance(libelle: $libelle, toutPetit: $toutPetit, juniors: $juniors, cadets: $cadets, total: $total)';
 }
 
 
@@ -3463,7 +3463,7 @@ abstract mixin class $RequestHumaneSectionAssistanceCopyWith<$Res>  {
   factory $RequestHumaneSectionAssistanceCopyWith(RequestHumaneSectionAssistance value, $Res Function(RequestHumaneSectionAssistance) _then) = _$RequestHumaneSectionAssistanceCopyWithImpl;
 @useResult
 $Res call({
- String title, String name, int cout
+ String libelle, String toutPetit, String juniors, String cadets, int total
 });
 
 
@@ -3480,11 +3480,13 @@ class _$RequestHumaneSectionAssistanceCopyWithImpl<$Res>
 
 /// Create a copy of RequestHumaneSectionAssistance
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? name = null,Object? cout = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? libelle = null,Object? toutPetit = null,Object? juniors = null,Object? cadets = null,Object? total = null,}) {
   return _then(_self.copyWith(
-title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,cout: null == cout ? _self.cout : cout // ignore: cast_nullable_to_non_nullable
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,toutPetit: null == toutPetit ? _self.toutPetit : toutPetit // ignore: cast_nullable_to_non_nullable
+as String,juniors: null == juniors ? _self.juniors : juniors // ignore: cast_nullable_to_non_nullable
+as String,cadets: null == cadets ? _self.cadets : cadets // ignore: cast_nullable_to_non_nullable
+as String,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -3570,10 +3572,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String name,  int cout)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String libelle,  String toutPetit,  String juniors,  String cadets,  int total)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestHumaneSectionAssistance() when $default != null:
-return $default(_that.title,_that.name,_that.cout);case _:
+return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.total);case _:
   return orElse();
 
 }
@@ -3591,10 +3593,10 @@ return $default(_that.title,_that.name,_that.cout);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String name,  int cout)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String libelle,  String toutPetit,  String juniors,  String cadets,  int total)  $default,) {final _that = this;
 switch (_that) {
 case _RequestHumaneSectionAssistance():
-return $default(_that.title,_that.name,_that.cout);case _:
+return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.total);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3611,10 +3613,10 @@ return $default(_that.title,_that.name,_that.cout);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String name,  int cout)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String libelle,  String toutPetit,  String juniors,  String cadets,  int total)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestHumaneSectionAssistance() when $default != null:
-return $default(_that.title,_that.name,_that.cout);case _:
+return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.total);case _:
   return null;
 
 }
@@ -3626,12 +3628,14 @@ return $default(_that.title,_that.name,_that.cout);case _:
 @JsonSerializable()
 
 class _RequestHumaneSectionAssistance with DiagnosticableTreeMixin implements RequestHumaneSectionAssistance {
-   _RequestHumaneSectionAssistance({this.title = "", this.name = "", this.cout = 0});
+   _RequestHumaneSectionAssistance({this.libelle = "", this.toutPetit = "", this.juniors = "", this.cadets = "", this.total = 0});
   factory _RequestHumaneSectionAssistance.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionAssistanceFromJson(json);
 
-@override@JsonKey() final  String title;
-@override@JsonKey() final  String name;
-@override@JsonKey() final  int cout;
+@override@JsonKey() final  String libelle;
+@override@JsonKey() final  String toutPetit;
+@override@JsonKey() final  String juniors;
+@override@JsonKey() final  String cadets;
+@override@JsonKey() final  int total;
 
 /// Create a copy of RequestHumaneSectionAssistance
 /// with the given fields replaced by the non-null parameter values.
@@ -3647,21 +3651,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestHumaneSectionAssistance'))
-    ..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('cout', cout));
+    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('toutPetit', toutPetit))..add(DiagnosticsProperty('juniors', juniors))..add(DiagnosticsProperty('cadets', cadets))..add(DiagnosticsProperty('total', total));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionAssistance&&(identical(other.title, title) || other.title == title)&&(identical(other.name, name) || other.name == name)&&(identical(other.cout, cout) || other.cout == cout));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionAssistance&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.toutPetit, toutPetit) || other.toutPetit == toutPetit)&&(identical(other.juniors, juniors) || other.juniors == juniors)&&(identical(other.cadets, cadets) || other.cadets == cadets)&&(identical(other.total, total) || other.total == total));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,name,cout);
+int get hashCode => Object.hash(runtimeType,libelle,toutPetit,juniors,cadets,total);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestHumaneSectionAssistance(title: $title, name: $name, cout: $cout)';
+  return 'RequestHumaneSectionAssistance(libelle: $libelle, toutPetit: $toutPetit, juniors: $juniors, cadets: $cadets, total: $total)';
 }
 
 
@@ -3672,7 +3676,7 @@ abstract mixin class _$RequestHumaneSectionAssistanceCopyWith<$Res> implements $
   factory _$RequestHumaneSectionAssistanceCopyWith(_RequestHumaneSectionAssistance value, $Res Function(_RequestHumaneSectionAssistance) _then) = __$RequestHumaneSectionAssistanceCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String name, int cout
+ String libelle, String toutPetit, String juniors, String cadets, int total
 });
 
 
@@ -3689,12 +3693,576 @@ class __$RequestHumaneSectionAssistanceCopyWithImpl<$Res>
 
 /// Create a copy of RequestHumaneSectionAssistance
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? name = null,Object? cout = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? libelle = null,Object? toutPetit = null,Object? juniors = null,Object? cadets = null,Object? total = null,}) {
   return _then(_RequestHumaneSectionAssistance(
-title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,cout: null == cout ? _self.cout : cout // ignore: cast_nullable_to_non_nullable
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,toutPetit: null == toutPetit ? _self.toutPetit : toutPetit // ignore: cast_nullable_to_non_nullable
+as String,juniors: null == juniors ? _self.juniors : juniors // ignore: cast_nullable_to_non_nullable
+as String,cadets: null == cadets ? _self.cadets : cadets // ignore: cast_nullable_to_non_nullable
+as String,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
 as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestAuherInformation implements DiagnosticableTreeMixin {
+
+ String get libelle; int get count;
+/// Create a copy of RequestAuherInformation
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestAuherInformationCopyWith<RequestAuherInformation> get copyWith => _$RequestAuherInformationCopyWithImpl<RequestAuherInformation>(this as RequestAuherInformation, _$identity);
+
+  /// Serializes this RequestAuherInformation to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestAuherInformation'))
+    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('count', count));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuherInformation&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.count, count) || other.count == count));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,libelle,count);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestAuherInformation(libelle: $libelle, count: $count)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestAuherInformationCopyWith<$Res>  {
+  factory $RequestAuherInformationCopyWith(RequestAuherInformation value, $Res Function(RequestAuherInformation) _then) = _$RequestAuherInformationCopyWithImpl;
+@useResult
+$Res call({
+ String libelle, int count
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestAuherInformationCopyWithImpl<$Res>
+    implements $RequestAuherInformationCopyWith<$Res> {
+  _$RequestAuherInformationCopyWithImpl(this._self, this._then);
+
+  final RequestAuherInformation _self;
+  final $Res Function(RequestAuherInformation) _then;
+
+/// Create a copy of RequestAuherInformation
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? libelle = null,Object? count = null,}) {
+  return _then(_self.copyWith(
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestAuherInformation].
+extension RequestAuherInformationPatterns on RequestAuherInformation {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestAuherInformation value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestAuherInformation() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestAuherInformation value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuherInformation():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestAuherInformation value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuherInformation() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String libelle,  int count)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestAuherInformation() when $default != null:
+return $default(_that.libelle,_that.count);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String libelle,  int count)  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuherInformation():
+return $default(_that.libelle,_that.count);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String libelle,  int count)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuherInformation() when $default != null:
+return $default(_that.libelle,_that.count);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestAuherInformation with DiagnosticableTreeMixin implements RequestAuherInformation {
+   _RequestAuherInformation({required this.libelle, required this.count});
+  factory _RequestAuherInformation.fromJson(Map<String, dynamic> json) => _$RequestAuherInformationFromJson(json);
+
+@override final  String libelle;
+@override final  int count;
+
+/// Create a copy of RequestAuherInformation
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestAuherInformationCopyWith<_RequestAuherInformation> get copyWith => __$RequestAuherInformationCopyWithImpl<_RequestAuherInformation>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestAuherInformationToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestAuherInformation'))
+    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('count', count));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuherInformation&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.count, count) || other.count == count));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,libelle,count);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestAuherInformation(libelle: $libelle, count: $count)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestAuherInformationCopyWith<$Res> implements $RequestAuherInformationCopyWith<$Res> {
+  factory _$RequestAuherInformationCopyWith(_RequestAuherInformation value, $Res Function(_RequestAuherInformation) _then) = __$RequestAuherInformationCopyWithImpl;
+@override @useResult
+$Res call({
+ String libelle, int count
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestAuherInformationCopyWithImpl<$Res>
+    implements _$RequestAuherInformationCopyWith<$Res> {
+  __$RequestAuherInformationCopyWithImpl(this._self, this._then);
+
+  final _RequestAuherInformation _self;
+  final $Res Function(_RequestAuherInformation) _then;
+
+/// Create a copy of RequestAuherInformation
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? libelle = null,Object? count = null,}) {
+  return _then(_RequestAuherInformation(
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestAutherInformationSource implements DiagnosticableTreeMixin {
+
+ String get title; List<RequestAuherInformation> get sections;
+/// Create a copy of RequestAutherInformationSource
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestAutherInformationSourceCopyWith<RequestAutherInformationSource> get copyWith => _$RequestAutherInformationSourceCopyWithImpl<RequestAutherInformationSource>(this as RequestAutherInformationSource, _$identity);
+
+  /// Serializes this RequestAutherInformationSource to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestAutherInformationSource'))
+    ..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('sections', sections));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAutherInformationSource&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.sections, sections));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,const DeepCollectionEquality().hash(sections));
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestAutherInformationSource(title: $title, sections: $sections)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestAutherInformationSourceCopyWith<$Res>  {
+  factory $RequestAutherInformationSourceCopyWith(RequestAutherInformationSource value, $Res Function(RequestAutherInformationSource) _then) = _$RequestAutherInformationSourceCopyWithImpl;
+@useResult
+$Res call({
+ String title, List<RequestAuherInformation> sections
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestAutherInformationSourceCopyWithImpl<$Res>
+    implements $RequestAutherInformationSourceCopyWith<$Res> {
+  _$RequestAutherInformationSourceCopyWithImpl(this._self, this._then);
+
+  final RequestAutherInformationSource _self;
+  final $Res Function(RequestAutherInformationSource) _then;
+
+/// Create a copy of RequestAutherInformationSource
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? sections = null,}) {
+  return _then(_self.copyWith(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,sections: null == sections ? _self.sections : sections // ignore: cast_nullable_to_non_nullable
+as List<RequestAuherInformation>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestAutherInformationSource].
+extension RequestAutherInformationSourcePatterns on RequestAutherInformationSource {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestAutherInformationSource value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestAutherInformationSource() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestAutherInformationSource value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAutherInformationSource():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestAutherInformationSource value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAutherInformationSource() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  List<RequestAuherInformation> sections)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestAutherInformationSource() when $default != null:
+return $default(_that.title,_that.sections);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  List<RequestAuherInformation> sections)  $default,) {final _that = this;
+switch (_that) {
+case _RequestAutherInformationSource():
+return $default(_that.title,_that.sections);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  List<RequestAuherInformation> sections)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestAutherInformationSource() when $default != null:
+return $default(_that.title,_that.sections);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestAutherInformationSource with DiagnosticableTreeMixin implements RequestAutherInformationSource {
+   _RequestAutherInformationSource({required this.title, required final  List<RequestAuherInformation> sections}): _sections = sections;
+  factory _RequestAutherInformationSource.fromJson(Map<String, dynamic> json) => _$RequestAutherInformationSourceFromJson(json);
+
+@override final  String title;
+ final  List<RequestAuherInformation> _sections;
+@override List<RequestAuherInformation> get sections {
+  if (_sections is EqualUnmodifiableListView) return _sections;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_sections);
+}
+
+
+/// Create a copy of RequestAutherInformationSource
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestAutherInformationSourceCopyWith<_RequestAutherInformationSource> get copyWith => __$RequestAutherInformationSourceCopyWithImpl<_RequestAutherInformationSource>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestAutherInformationSourceToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestAutherInformationSource'))
+    ..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('sections', sections));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAutherInformationSource&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._sections, _sections));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,const DeepCollectionEquality().hash(_sections));
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestAutherInformationSource(title: $title, sections: $sections)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestAutherInformationSourceCopyWith<$Res> implements $RequestAutherInformationSourceCopyWith<$Res> {
+  factory _$RequestAutherInformationSourceCopyWith(_RequestAutherInformationSource value, $Res Function(_RequestAutherInformationSource) _then) = __$RequestAutherInformationSourceCopyWithImpl;
+@override @useResult
+$Res call({
+ String title, List<RequestAuherInformation> sections
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestAutherInformationSourceCopyWithImpl<$Res>
+    implements _$RequestAutherInformationSourceCopyWith<$Res> {
+  __$RequestAutherInformationSourceCopyWithImpl(this._self, this._then);
+
+  final _RequestAutherInformationSource _self;
+  final $Res Function(_RequestAutherInformationSource) _then;
+
+/// Create a copy of RequestAutherInformationSource
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? sections = null,}) {
+  return _then(_RequestAutherInformationSource(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,sections: null == sections ? _self._sections : sections // ignore: cast_nullable_to_non_nullable
+as List<RequestAuherInformation>,
   ));
 }
 
@@ -4355,6 +4923,299 @@ as List<Map<String, dynamic>>,visiteOuvrier: null == visiteOuvrier ? _self._visi
 as List<Map<String, dynamic>>,dateActivitySubmited: null == dateActivitySubmited ? _self._dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
 as List<Map<String, dynamic>>,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
 as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestRapportCelluleSuggestion implements DiagnosticableTreeMixin {
+
+ List<Map<String, dynamic>> get suggestions; String get faisAssignaler; String get ouvrierSpritualLive; String get formSuggestionIsSubmit; String get formSuggestionSubmitDate;
+/// Create a copy of RequestRapportCelluleSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestRapportCelluleSuggestionCopyWith<RequestRapportCelluleSuggestion> get copyWith => _$RequestRapportCelluleSuggestionCopyWithImpl<RequestRapportCelluleSuggestion>(this as RequestRapportCelluleSuggestion, _$identity);
+
+  /// Serializes this RequestRapportCelluleSuggestion to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestRapportCelluleSuggestion'))
+    ..add(DiagnosticsProperty('suggestions', suggestions))..add(DiagnosticsProperty('faisAssignaler', faisAssignaler))..add(DiagnosticsProperty('ouvrierSpritualLive', ouvrierSpritualLive))..add(DiagnosticsProperty('formSuggestionIsSubmit', formSuggestionIsSubmit))..add(DiagnosticsProperty('formSuggestionSubmitDate', formSuggestionSubmitDate));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleSuggestion&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestRapportCelluleSuggestion(suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestRapportCelluleSuggestionCopyWith<$Res>  {
+  factory $RequestRapportCelluleSuggestionCopyWith(RequestRapportCelluleSuggestion value, $Res Function(RequestRapportCelluleSuggestion) _then) = _$RequestRapportCelluleSuggestionCopyWithImpl;
+@useResult
+$Res call({
+ List<Map<String, dynamic>> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestRapportCelluleSuggestionCopyWithImpl<$Res>
+    implements $RequestRapportCelluleSuggestionCopyWith<$Res> {
+  _$RequestRapportCelluleSuggestionCopyWithImpl(this._self, this._then);
+
+  final RequestRapportCelluleSuggestion _self;
+  final $Res Function(RequestRapportCelluleSuggestion) _then;
+
+/// Create a copy of RequestRapportCelluleSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,}) {
+  return _then(_self.copyWith(
+suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as String,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestRapportCelluleSuggestion].
+extension RequestRapportCelluleSuggestionPatterns on RequestRapportCelluleSuggestion {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestRapportCelluleSuggestion value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestRapportCelluleSuggestion() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestRapportCelluleSuggestion value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestRapportCelluleSuggestion():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestRapportCelluleSuggestion value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestRapportCelluleSuggestion() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestRapportCelluleSuggestion() when $default != null:
+return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)  $default,) {final _that = this;
+switch (_that) {
+case _RequestRapportCelluleSuggestion():
+return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestRapportCelluleSuggestion() when $default != null:
+return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestRapportCelluleSuggestion with DiagnosticableTreeMixin implements RequestRapportCelluleSuggestion {
+   _RequestRapportCelluleSuggestion({required final  List<Map<String, dynamic>> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, required this.formSuggestionIsSubmit, required this.formSuggestionSubmitDate}): _suggestions = suggestions;
+  factory _RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleSuggestionFromJson(json);
+
+ final  List<Map<String, dynamic>> _suggestions;
+@override List<Map<String, dynamic>> get suggestions {
+  if (_suggestions is EqualUnmodifiableListView) return _suggestions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_suggestions);
+}
+
+@override final  String faisAssignaler;
+@override final  String ouvrierSpritualLive;
+@override final  String formSuggestionIsSubmit;
+@override final  String formSuggestionSubmitDate;
+
+/// Create a copy of RequestRapportCelluleSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestRapportCelluleSuggestionCopyWith<_RequestRapportCelluleSuggestion> get copyWith => __$RequestRapportCelluleSuggestionCopyWithImpl<_RequestRapportCelluleSuggestion>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestRapportCelluleSuggestionToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestRapportCelluleSuggestion'))
+    ..add(DiagnosticsProperty('suggestions', suggestions))..add(DiagnosticsProperty('faisAssignaler', faisAssignaler))..add(DiagnosticsProperty('ouvrierSpritualLive', ouvrierSpritualLive))..add(DiagnosticsProperty('formSuggestionIsSubmit', formSuggestionIsSubmit))..add(DiagnosticsProperty('formSuggestionSubmitDate', formSuggestionSubmitDate));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleSuggestion&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestRapportCelluleSuggestion(suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestRapportCelluleSuggestionCopyWith<$Res> implements $RequestRapportCelluleSuggestionCopyWith<$Res> {
+  factory _$RequestRapportCelluleSuggestionCopyWith(_RequestRapportCelluleSuggestion value, $Res Function(_RequestRapportCelluleSuggestion) _then) = __$RequestRapportCelluleSuggestionCopyWithImpl;
+@override @useResult
+$Res call({
+ List<Map<String, dynamic>> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestRapportCelluleSuggestionCopyWithImpl<$Res>
+    implements _$RequestRapportCelluleSuggestionCopyWith<$Res> {
+  __$RequestRapportCelluleSuggestionCopyWithImpl(this._self, this._then);
+
+  final _RequestRapportCelluleSuggestion _self;
+  final $Res Function(_RequestRapportCelluleSuggestion) _then;
+
+/// Create a copy of RequestRapportCelluleSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,}) {
+  return _then(_RequestRapportCelluleSuggestion(
+suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as String,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

@@ -231,3 +231,17 @@ Map<String, dynamic> _$VisiteDiscipleToJson(_VisiteDisciple instance) =>
       'probleme': instance.probleme,
       'recommandation': instance.recommandation,
     };
+
+_RapportSuggestion _$RapportSuggestionFromJson(Map<String, dynamic> json) =>
+    _RapportSuggestion(
+      temoignage: json['temoignage'] as String,
+      suggestions: json['suggestions'] as String,
+      probleme: json['probleme'] as String,
+    );
+
+Map<String, dynamic> _$RapportSuggestionToJson(_RapportSuggestion instance) =>
+    <String, dynamic>{
+      'temoignage': instance.temoignage,
+      'suggestions': instance.suggestions,
+      'probleme': instance.probleme,
+    };

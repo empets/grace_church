@@ -178,13 +178,35 @@ abstract class RequestSection with _$RequestSection {
 @freezed
 abstract class RequestHumaneSectionAssistance with _$RequestHumaneSectionAssistance {
   factory RequestHumaneSectionAssistance({
-    @Default("") String title,
-     @Default("") String name,
-     @Default(0) int cout,
+      @Default("") String libelle,
+      @Default("") String toutPetit ,
+     @Default("") String juniors,
+     @Default("") String cadets,
+     @Default(0) int total,
    
   }) = _RequestHumaneSectionAssistance;
   factory RequestHumaneSectionAssistance.fromJson(Map<String, dynamic> json) =>
       _$RequestHumaneSectionAssistanceFromJson(json);
+}
+
+
+
+@freezed
+abstract class RequestAuherInformation with _$RequestAuherInformation {
+   factory RequestAuherInformation({required String libelle, required int  count }) = _RequestAuherInformation;
+   factory RequestAuherInformation.fromJson(Map<String, dynamic> json) =>
+      _$RequestAuherInformationFromJson(json);
+}
+
+@freezed
+abstract class RequestAutherInformationSource with _$RequestAutherInformationSource {
+  factory RequestAutherInformationSource(
+    {
+      required String title,
+      required List<RequestAuherInformation> sections
+    }) = _RequestAutherInformationSource;
+  factory RequestAutherInformationSource.fromJson(Map<String, dynamic> json) =>
+      _$RequestAutherInformationSourceFromJson(json);
 }
 
 
@@ -227,4 +249,20 @@ abstract class RequestRapportCelluleActivity
   factory RequestRapportCelluleActivity.fromJson(
     Map<String, dynamic> json,
   ) => _$RequestRapportCelluleActivityFromJson(json);
+}
+
+
+@freezed
+abstract class RequestRapportCelluleSuggestion
+    with _$RequestRapportCelluleSuggestion {
+  factory RequestRapportCelluleSuggestion({
+    required List<Map<String, dynamic>> suggestions,
+    required String faisAssignaler,
+    required String ouvrierSpritualLive,
+    required String formSuggestionIsSubmit,
+    required String formSuggestionSubmitDate,
+  }) = _RequestRapportCelluleSuggestion;
+  factory RequestRapportCelluleSuggestion.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestRapportCelluleSuggestionFromJson(json);
 }

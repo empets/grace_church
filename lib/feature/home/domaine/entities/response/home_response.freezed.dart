@@ -2322,4 +2322,273 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$RapportSuggestion {
+
+ String get temoignage; String get suggestions; String get probleme;
+/// Create a copy of RapportSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RapportSuggestionCopyWith<RapportSuggestion> get copyWith => _$RapportSuggestionCopyWithImpl<RapportSuggestion>(this as RapportSuggestion, _$identity);
+
+  /// Serializes this RapportSuggestion to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportSuggestion&&(identical(other.temoignage, temoignage) || other.temoignage == temoignage)&&(identical(other.suggestions, suggestions) || other.suggestions == suggestions)&&(identical(other.probleme, probleme) || other.probleme == probleme));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,temoignage,suggestions,probleme);
+
+@override
+String toString() {
+  return 'RapportSuggestion(temoignage: $temoignage, suggestions: $suggestions, probleme: $probleme)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RapportSuggestionCopyWith<$Res>  {
+  factory $RapportSuggestionCopyWith(RapportSuggestion value, $Res Function(RapportSuggestion) _then) = _$RapportSuggestionCopyWithImpl;
+@useResult
+$Res call({
+ String temoignage, String suggestions, String probleme
+});
+
+
+
+
+}
+/// @nodoc
+class _$RapportSuggestionCopyWithImpl<$Res>
+    implements $RapportSuggestionCopyWith<$Res> {
+  _$RapportSuggestionCopyWithImpl(this._self, this._then);
+
+  final RapportSuggestion _self;
+  final $Res Function(RapportSuggestion) _then;
+
+/// Create a copy of RapportSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? temoignage = null,Object? suggestions = null,Object? probleme = null,}) {
+  return _then(_self.copyWith(
+temoignage: null == temoignage ? _self.temoignage : temoignage // ignore: cast_nullable_to_non_nullable
+as String,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RapportSuggestion].
+extension RapportSuggestionPatterns on RapportSuggestion {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RapportSuggestion value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RapportSuggestion() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RapportSuggestion value)  $default,){
+final _that = this;
+switch (_that) {
+case _RapportSuggestion():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RapportSuggestion value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RapportSuggestion() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String temoignage,  String suggestions,  String probleme)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RapportSuggestion() when $default != null:
+return $default(_that.temoignage,_that.suggestions,_that.probleme);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String temoignage,  String suggestions,  String probleme)  $default,) {final _that = this;
+switch (_that) {
+case _RapportSuggestion():
+return $default(_that.temoignage,_that.suggestions,_that.probleme);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String temoignage,  String suggestions,  String probleme)?  $default,) {final _that = this;
+switch (_that) {
+case _RapportSuggestion() when $default != null:
+return $default(_that.temoignage,_that.suggestions,_that.probleme);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RapportSuggestion implements RapportSuggestion {
+   _RapportSuggestion({required this.temoignage, required this.suggestions, required this.probleme});
+  factory _RapportSuggestion.fromJson(Map<String, dynamic> json) => _$RapportSuggestionFromJson(json);
+
+@override final  String temoignage;
+@override final  String suggestions;
+@override final  String probleme;
+
+/// Create a copy of RapportSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RapportSuggestionCopyWith<_RapportSuggestion> get copyWith => __$RapportSuggestionCopyWithImpl<_RapportSuggestion>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RapportSuggestionToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportSuggestion&&(identical(other.temoignage, temoignage) || other.temoignage == temoignage)&&(identical(other.suggestions, suggestions) || other.suggestions == suggestions)&&(identical(other.probleme, probleme) || other.probleme == probleme));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,temoignage,suggestions,probleme);
+
+@override
+String toString() {
+  return 'RapportSuggestion(temoignage: $temoignage, suggestions: $suggestions, probleme: $probleme)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RapportSuggestionCopyWith<$Res> implements $RapportSuggestionCopyWith<$Res> {
+  factory _$RapportSuggestionCopyWith(_RapportSuggestion value, $Res Function(_RapportSuggestion) _then) = __$RapportSuggestionCopyWithImpl;
+@override @useResult
+$Res call({
+ String temoignage, String suggestions, String probleme
+});
+
+
+
+
+}
+/// @nodoc
+class __$RapportSuggestionCopyWithImpl<$Res>
+    implements _$RapportSuggestionCopyWith<$Res> {
+  __$RapportSuggestionCopyWithImpl(this._self, this._then);
+
+  final _RapportSuggestion _self;
+  final $Res Function(_RapportSuggestion) _then;
+
+/// Create a copy of RapportSuggestion
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? temoignage = null,Object? suggestions = null,Object? probleme = null,}) {
+  return _then(_RapportSuggestion(
+temoignage: null == temoignage ? _self.temoignage : temoignage // ignore: cast_nullable_to_non_nullable
+as String,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

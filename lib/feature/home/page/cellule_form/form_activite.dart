@@ -8,16 +8,18 @@ import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 import 'package:grace_church/feature/home/page/cellule_form/form_ouvrier_spritual_live.dart';
 
 class FormActivite extends StatefulWidget {
-  const FormActivite({super.key});
-
+  FormActivite({super.key});
   @override
   State<FormActivite> createState() => _FormActiviteState();
 }
@@ -140,12 +142,18 @@ class _FormActiviteState extends State<FormActivite> {
     return BlocListener<FormActiviteBloc, RapportCelluleRequestActivityState>(
       listener: (context, state) {
         if (state.status.isSuccess) {
-           Navigator.push(
-                            context,
-                            fadeRoute(const FormOuvrierSpritualLive()),
-                          );
+          Navigator.push(
+            context,
+            fadeRoute(
+              BlocProvider(
+                create: (context) => FormSuggestionBloc(
+                  sendRapportCelluleStepSuggestionUsercase: getIt<SendRapportCelluleStepSuggestionUsercase>(),
+                ),
+                child: const FormOuvrierSpritualLive(),
+              ),
+            ),
+          );
         }
-        
       },
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
@@ -156,7 +164,6 @@ class _FormActiviteState extends State<FormActivite> {
             child: Column(
               children: [
                 SizedBox(height: 30.h),
-
                 SizedBox(height: 3.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -307,6 +314,7 @@ class _FormActiviteState extends State<FormActivite> {
                     SizedBox(height: 16.h),
 
                     TextField(
+                      
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         labelText: "Nombre de visite faite aux disciples",
@@ -340,7 +348,6 @@ class _FormActiviteState extends State<FormActivite> {
                                 ),
                                 child: Column(
                                   children: [
-                                    //  Icon(Icons.file_open_rounded),:
                                     Text(
                                       "Disciple visité ${index + 1}",
                                       style: context.appTypographie.body
@@ -350,6 +357,7 @@ class _FormActiviteState extends State<FormActivite> {
                                     ),
 
                                     TextField(
+                                      readOnly: state.status.isInProgress,
                                       decoration: InputDecoration(
                                         labelText: "Nom",
                                       ),
@@ -366,6 +374,7 @@ class _FormActiviteState extends State<FormActivite> {
                                     ),
 
                                     TextField(
+                                      readOnly: state.status.isInProgress,
                                       decoration: InputDecoration(
                                         labelText: "Problème",
                                       ),
@@ -384,6 +393,7 @@ class _FormActiviteState extends State<FormActivite> {
                                     TextField(
                                       minLines: 2,
                                       maxLines: 4,
+                                      readOnly: state.status.isInProgress,
                                       decoration: InputDecoration(
                                         labelText: "Recommandation",
                                       ),
@@ -393,7 +403,7 @@ class _FormActiviteState extends State<FormActivite> {
                                           context: context,
                                           index: index,
                                           state: state,
-                                          recommandation: row.recommandation ,
+                                          recommandation: row.recommandation,
                                           isBaptierOrNot: true,
                                         );
                                       },
@@ -420,6 +430,7 @@ class _FormActiviteState extends State<FormActivite> {
                       children: [
                         SizedBox(height: 16.h),
                         TextField(
+                          readOnly: state.status.isInProgress,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             labelText: "Nombre de visite faite aux membres",
@@ -458,6 +469,7 @@ class _FormActiviteState extends State<FormActivite> {
                                     ),
 
                                     TextField(
+                                      readOnly: state.status.isInProgress,
                                       decoration: InputDecoration(
                                         labelText: "Nom",
                                       ),
@@ -474,6 +486,7 @@ class _FormActiviteState extends State<FormActivite> {
                                     ),
 
                                     TextField(
+                                      readOnly: state.status.isInProgress,
                                       decoration: InputDecoration(
                                         labelText: "Problème",
                                       ),
@@ -492,6 +505,7 @@ class _FormActiviteState extends State<FormActivite> {
                                     TextField(
                                       minLines: 2,
                                       maxLines: 4,
+                                      readOnly: state.status.isInProgress,
                                       decoration: InputDecoration(
                                         labelText: "Recommandation",
                                       ),
@@ -519,8 +533,10 @@ class _FormActiviteState extends State<FormActivite> {
                   },
                 ),
 
-                BlocBuilder<FormActiviteBloc,
-                  RapportCelluleRequestActivityState>(
+                BlocBuilder<
+                  FormActiviteBloc,
+                  RapportCelluleRequestActivityState
+                >(
                   builder: (context, state) {
                     return Container(
                       margin: EdgeInsets.only(top: 20.h, bottom: 17.h),
@@ -544,18 +560,17 @@ class _FormActiviteState extends State<FormActivite> {
                       child: PrimaryButton(
                         label: 'Suivant',
                         colorText: context.appColor.primaryWhite,
+                        isLoading: state.status.isInProgress,
                         onPressed: () {
                           context.read<FormActiviteBloc>().add(
-                            RapportCelluleRequestActivityEvent.updateSectionId("--Oql-yeUaoJFueQkxoxS"),
+                            RapportCelluleRequestActivityEvent.updateSectionId(
+                              "-OqmHAqmgTFtsgDMyH2x",
+                            ),
                           );
-                          
+
                           context.read<FormActiviteBloc>().add(
                             RapportCelluleRequestActivityEvent.submit(),
                           );
-                          // Navigator.push(
-                          //   context,
-                          //   fadeRoute(const FormOuvrierSpritualLive()),
-                          // );
                         },
                       ),
                     );

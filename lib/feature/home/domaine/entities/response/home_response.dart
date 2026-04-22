@@ -146,3 +146,14 @@ abstract class VisiteDisciple with _$VisiteDisciple{
   factory VisiteDisciple.fromJson(Map<String, dynamic> json) =>
       _$VisiteDiscipleFromJson(json); 
 }
+
+@freezed
+abstract class RapportSuggestion with _$RapportSuggestion{
+  factory RapportSuggestion({
+    required String temoignage,
+    required String suggestions,
+    required String probleme,
+  }) = _RapportSuggestion;
+  factory RapportSuggestion.fromJson(Map<String, dynamic> json) =>
+      _$RapportSuggestionFromJson(json); 
+}

@@ -241,18 +241,46 @@ Map<String, dynamic> _$RequestSectionToJson(_RequestSection instance) =>
 _RequestHumaneSectionAssistance _$RequestHumaneSectionAssistanceFromJson(
   Map<String, dynamic> json,
 ) => _RequestHumaneSectionAssistance(
-  title: json['title'] as String? ?? "",
-  name: json['name'] as String? ?? "",
-  cout: (json['cout'] as num?)?.toInt() ?? 0,
+  libelle: json['libelle'] as String? ?? "",
+  toutPetit: json['toutPetit'] as String? ?? "",
+  juniors: json['juniors'] as String? ?? "",
+  cadets: json['cadets'] as String? ?? "",
+  total: (json['total'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$RequestHumaneSectionAssistanceToJson(
   _RequestHumaneSectionAssistance instance,
 ) => <String, dynamic>{
-  'title': instance.title,
-  'name': instance.name,
-  'cout': instance.cout,
+  'libelle': instance.libelle,
+  'toutPetit': instance.toutPetit,
+  'juniors': instance.juniors,
+  'cadets': instance.cadets,
+  'total': instance.total,
 };
+
+_RequestAuherInformation _$RequestAuherInformationFromJson(
+  Map<String, dynamic> json,
+) => _RequestAuherInformation(
+  libelle: json['libelle'] as String,
+  count: (json['count'] as num).toInt(),
+);
+
+Map<String, dynamic> _$RequestAuherInformationToJson(
+  _RequestAuherInformation instance,
+) => <String, dynamic>{'libelle': instance.libelle, 'count': instance.count};
+
+_RequestAutherInformationSource _$RequestAutherInformationSourceFromJson(
+  Map<String, dynamic> json,
+) => _RequestAutherInformationSource(
+  title: json['title'] as String,
+  sections: (json['sections'] as List<dynamic>)
+      .map((e) => RequestAuherInformation.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
+
+Map<String, dynamic> _$RequestAutherInformationSourceToJson(
+  _RequestAutherInformationSource instance,
+) => <String, dynamic>{'title': instance.title, 'sections': instance.sections};
 
 _RequestRapportCelluleAssistance _$RequestRapportCelluleAssistanceFromJson(
   Map<String, dynamic> json,
@@ -328,4 +356,26 @@ Map<String, dynamic> _$RequestRapportCelluleActivityToJson(
   'dateActivitySubmited': instance.dateActivitySubmited,
   'formActivityIsSubmit': instance.formActivityIsSubmit,
   'formActivitySubmitDate': instance.formActivitySubmitDate,
+};
+
+_RequestRapportCelluleSuggestion _$RequestRapportCelluleSuggestionFromJson(
+  Map<String, dynamic> json,
+) => _RequestRapportCelluleSuggestion(
+  suggestions: (json['suggestions'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
+  faisAssignaler: json['faisAssignaler'] as String,
+  ouvrierSpritualLive: json['ouvrierSpritualLive'] as String,
+  formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String,
+  formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
+);
+
+Map<String, dynamic> _$RequestRapportCelluleSuggestionToJson(
+  _RequestRapportCelluleSuggestion instance,
+) => <String, dynamic>{
+  'suggestions': instance.suggestions,
+  'faisAssignaler': instance.faisAssignaler,
+  'ouvrierSpritualLive': instance.ouvrierSpritualLive,
+  'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
+  'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
 };

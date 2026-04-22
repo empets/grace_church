@@ -31,6 +31,7 @@ abstract class DomaineServiceRepository {
   Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(RequestImpliciteConnexion params);
   Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params);
   Future<FirebaseResult<String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params);
+  Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params);
 
 }
 

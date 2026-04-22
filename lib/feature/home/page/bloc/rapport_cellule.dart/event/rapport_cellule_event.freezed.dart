@@ -1355,7 +1355,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String id)?  updateSectionId,TResult Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)?  changeNomBaptiserStatic,TResult Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)?  changeNoveauBaptiser,TResult Function( List<RequestHumaneSectionAssistance> inviterStat)?  changeInviter,TResult Function( List<RequestHumaneSectionAssistance> formationStat)?  changeFormation,TResult Function( List<RequestHumaneSectionAssistance> sectionVisite)?  changeSectionVisite,TResult Function( List<RequestHumaneSectionAssistance> sectionActivite)?  changeSectionActivite,TResult Function( List<RequestHumaneSectionAssistance> sectionOuvrier)?  changeSectionOuvrier,TResult Function( List<RequestHumaneSectionAssistance> autres)?  changeAutres,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String id)?  updateSectionId,TResult Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)?  changeNomBaptiserStatic,TResult Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)?  changeNoveauBaptiser,TResult Function( List<RequestHumaneSectionAssistance> inviterStat)?  changeInviter,TResult Function( List<RequestAutherInformationSource> formationStat)?  changeFormation,TResult Function( List<RequestAutherInformationSource> sectionVisite)?  changeSectionVisite,TResult Function( List<RequestAutherInformationSource> sectionActivite)?  changeSectionActivite,TResult Function( List<RequestAutherInformationSource> sectionOuvrier)?  changeSectionOuvrier,TResult Function( List<RequestAutherInformationSource> autres)?  changeAutres,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
@@ -1386,7 +1386,7 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String id)  updateSectionId,required TResult Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)  changeNomBaptiserStatic,required TResult Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)  changeNoveauBaptiser,required TResult Function( List<RequestHumaneSectionAssistance> inviterStat)  changeInviter,required TResult Function( List<RequestHumaneSectionAssistance> formationStat)  changeFormation,required TResult Function( List<RequestHumaneSectionAssistance> sectionVisite)  changeSectionVisite,required TResult Function( List<RequestHumaneSectionAssistance> sectionActivite)  changeSectionActivite,required TResult Function( List<RequestHumaneSectionAssistance> sectionOuvrier)  changeSectionOuvrier,required TResult Function( List<RequestHumaneSectionAssistance> autres)  changeAutres,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String id)  updateSectionId,required TResult Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)  changeNomBaptiserStatic,required TResult Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)  changeNoveauBaptiser,required TResult Function( List<RequestHumaneSectionAssistance> inviterStat)  changeInviter,required TResult Function( List<RequestAutherInformationSource> formationStat)  changeFormation,required TResult Function( List<RequestAutherInformationSource> sectionVisite)  changeSectionVisite,required TResult Function( List<RequestAutherInformationSource> sectionActivite)  changeSectionActivite,required TResult Function( List<RequestAutherInformationSource> sectionOuvrier)  changeSectionOuvrier,required TResult Function( List<RequestAutherInformationSource> autres)  changeAutres,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent():
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId():
@@ -1416,7 +1416,7 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String id)?  updateSectionId,TResult? Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)?  changeNomBaptiserStatic,TResult? Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)?  changeNoveauBaptiser,TResult? Function( List<RequestHumaneSectionAssistance> inviterStat)?  changeInviter,TResult? Function( List<RequestHumaneSectionAssistance> formationStat)?  changeFormation,TResult? Function( List<RequestHumaneSectionAssistance> sectionVisite)?  changeSectionVisite,TResult? Function( List<RequestHumaneSectionAssistance> sectionActivite)?  changeSectionActivite,TResult? Function( List<RequestHumaneSectionAssistance> sectionOuvrier)?  changeSectionOuvrier,TResult? Function( List<RequestHumaneSectionAssistance> autres)?  changeAutres,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String id)?  updateSectionId,TResult? Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)?  changeNomBaptiserStatic,TResult? Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)?  changeNoveauBaptiser,TResult? Function( List<RequestHumaneSectionAssistance> inviterStat)?  changeInviter,TResult? Function( List<RequestAutherInformationSource> formationStat)?  changeFormation,TResult? Function( List<RequestAutherInformationSource> sectionVisite)?  changeSectionVisite,TResult? Function( List<RequestAutherInformationSource> sectionActivite)?  changeSectionActivite,TResult? Function( List<RequestAutherInformationSource> sectionOuvrier)?  changeSectionOuvrier,TResult? Function( List<RequestAutherInformationSource> autres)?  changeAutres,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
@@ -1789,11 +1789,11 @@ as List<RequestHumaneSectionAssistance>,
 
 
 class ChangeFormationRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeFormationRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> formationStat): _formationStat = formationStat;
+   ChangeFormationRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> formationStat): _formationStat = formationStat;
   
 
- final  List<RequestHumaneSectionAssistance> _formationStat;
- List<RequestHumaneSectionAssistance> get formationStat {
+ final  List<RequestAutherInformationSource> _formationStat;
+ List<RequestAutherInformationSource> get formationStat {
   if (_formationStat is EqualUnmodifiableListView) return _formationStat;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_formationStat);
@@ -1830,7 +1830,7 @@ abstract mixin class $ChangeFormationRapportCelluleRequestSectionAssistanceEvent
   factory $ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeFormationRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeFormationRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> formationStat
+ List<RequestAutherInformationSource> formationStat
 });
 
 
@@ -1850,7 +1850,7 @@ class _$ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$
 @pragma('vm:prefer-inline') $Res call({Object? formationStat = null,}) {
   return _then(ChangeFormationRapportCelluleRequestSectionAssistanceEvent(
 null == formationStat ? _self._formationStat : formationStat // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+as List<RequestAutherInformationSource>,
   ));
 }
 
@@ -1861,11 +1861,11 @@ as List<RequestHumaneSectionAssistance>,
 
 
 class ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> sectionVisite): _sectionVisite = sectionVisite;
+   ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> sectionVisite): _sectionVisite = sectionVisite;
   
 
- final  List<RequestHumaneSectionAssistance> _sectionVisite;
- List<RequestHumaneSectionAssistance> get sectionVisite {
+ final  List<RequestAutherInformationSource> _sectionVisite;
+ List<RequestAutherInformationSource> get sectionVisite {
   if (_sectionVisite is EqualUnmodifiableListView) return _sectionVisite;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_sectionVisite);
@@ -1902,7 +1902,7 @@ abstract mixin class $ChangeSectionVisiteRapportCelluleRequestSectionAssistanceE
   factory $ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> sectionVisite
+ List<RequestAutherInformationSource> sectionVisite
 });
 
 
@@ -1922,7 +1922,7 @@ class _$ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWithIm
 @pragma('vm:prefer-inline') $Res call({Object? sectionVisite = null,}) {
   return _then(ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(
 null == sectionVisite ? _self._sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+as List<RequestAutherInformationSource>,
   ));
 }
 
@@ -1933,11 +1933,11 @@ as List<RequestHumaneSectionAssistance>,
 
 
 class ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> sectionActivite): _sectionActivite = sectionActivite;
+   ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> sectionActivite): _sectionActivite = sectionActivite;
   
 
- final  List<RequestHumaneSectionAssistance> _sectionActivite;
- List<RequestHumaneSectionAssistance> get sectionActivite {
+ final  List<RequestAutherInformationSource> _sectionActivite;
+ List<RequestAutherInformationSource> get sectionActivite {
   if (_sectionActivite is EqualUnmodifiableListView) return _sectionActivite;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_sectionActivite);
@@ -1974,7 +1974,7 @@ abstract mixin class $ChangeSectionActiviteRapportCelluleRequestSectionAssistanc
   factory $ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> sectionActivite
+ List<RequestAutherInformationSource> sectionActivite
 });
 
 
@@ -1994,7 +1994,7 @@ class _$ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWith
 @pragma('vm:prefer-inline') $Res call({Object? sectionActivite = null,}) {
   return _then(ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(
 null == sectionActivite ? _self._sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+as List<RequestAutherInformationSource>,
   ));
 }
 
@@ -2005,11 +2005,11 @@ as List<RequestHumaneSectionAssistance>,
 
 
 class ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> sectionOuvrier): _sectionOuvrier = sectionOuvrier;
+   ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> sectionOuvrier): _sectionOuvrier = sectionOuvrier;
   
 
- final  List<RequestHumaneSectionAssistance> _sectionOuvrier;
- List<RequestHumaneSectionAssistance> get sectionOuvrier {
+ final  List<RequestAutherInformationSource> _sectionOuvrier;
+ List<RequestAutherInformationSource> get sectionOuvrier {
   if (_sectionOuvrier is EqualUnmodifiableListView) return _sectionOuvrier;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_sectionOuvrier);
@@ -2046,7 +2046,7 @@ abstract mixin class $ChangeSectionOuvrierRapportCelluleRequestSectionAssistance
   factory $ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> sectionOuvrier
+ List<RequestAutherInformationSource> sectionOuvrier
 });
 
 
@@ -2066,7 +2066,7 @@ class _$ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWithI
 @pragma('vm:prefer-inline') $Res call({Object? sectionOuvrier = null,}) {
   return _then(ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(
 null == sectionOuvrier ? _self._sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+as List<RequestAutherInformationSource>,
   ));
 }
 
@@ -2077,11 +2077,11 @@ as List<RequestHumaneSectionAssistance>,
 
 
 class ChangeAutresRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeAutresRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> autres): _autres = autres;
+   ChangeAutresRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> autres): _autres = autres;
   
 
- final  List<RequestHumaneSectionAssistance> _autres;
- List<RequestHumaneSectionAssistance> get autres {
+ final  List<RequestAutherInformationSource> _autres;
+ List<RequestAutherInformationSource> get autres {
   if (_autres is EqualUnmodifiableListView) return _autres;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_autres);
@@ -2118,7 +2118,7 @@ abstract mixin class $ChangeAutresRapportCelluleRequestSectionAssistanceEventCop
   factory $ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeAutresRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeAutresRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> autres
+ List<RequestAutherInformationSource> autres
 });
 
 
@@ -2138,7 +2138,7 @@ class _$ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res
 @pragma('vm:prefer-inline') $Res call({Object? autres = null,}) {
   return _then(ChangeAutresRapportCelluleRequestSectionAssistanceEvent(
 null == autres ? _self._autres : autres // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+as List<RequestAutherInformationSource>,
   ));
 }
 
@@ -2589,6 +2589,420 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'RapportCelluleRequestActivityEvent.submit()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+mixin _$RapportCelluleRequestSuggestionEvent {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSuggestionEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionEvent()';
+}
+
+
+}
+
+/// @nodoc
+class $RapportCelluleRequestSuggestionEventCopyWith<$Res>  {
+$RapportCelluleRequestSuggestionEventCopyWith(RapportCelluleRequestSuggestionEvent _, $Res Function(RapportCelluleRequestSuggestionEvent) __);
+}
+
+
+/// Adds pattern-matching-related methods to [RapportCelluleRequestSuggestionEvent].
+extension RapportCelluleRequestSuggestionEventPatterns on RapportCelluleRequestSuggestionEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)?  changeDisciple,TResult Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)?  faisAssignaler,TResult Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)?  etatsSprituelOuvrier,TResult Function( SubmitRapportCelluleRequestSuggestionEvent value)?  submit,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
+return changeDisciple(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
+return etatsSprituelOuvrier(_that);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
+return submit(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)  changeDisciple,required TResult Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)  faisAssignaler,required TResult Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)  etatsSprituelOuvrier,required TResult Function( SubmitRapportCelluleRequestSuggestionEvent value)  submit,}){
+final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestSuggestionEvent():
+return changeDisciple(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent():
+return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent():
+return etatsSprituelOuvrier(_that);case SubmitRapportCelluleRequestSuggestionEvent():
+return submit(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)?  changeDisciple,TResult? Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)?  faisAssignaler,TResult? Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)?  etatsSprituelOuvrier,TResult? Function( SubmitRapportCelluleRequestSuggestionEvent value)?  submit,}){
+final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
+return changeDisciple(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
+return etatsSprituelOuvrier(_that);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
+return submit(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<RapportSuggestion> suggestion)?  changeDisciple,TResult Function( String isAssignaler)?  faisAssignaler,TResult Function( String etatsSprituelOuvrier)?  etatsSprituelOuvrier,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
+return changeDisciple(_that.suggestion);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
+return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
+return submit();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<RapportSuggestion> suggestion)  changeDisciple,required TResult Function( String isAssignaler)  faisAssignaler,required TResult Function( String etatsSprituelOuvrier)  etatsSprituelOuvrier,required TResult Function()  submit,}) {final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestSuggestionEvent():
+return changeDisciple(_that.suggestion);case FaisAssignalerRapportCelluleRequestSuggestionEvent():
+return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent():
+return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case SubmitRapportCelluleRequestSuggestionEvent():
+return submit();case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<RapportSuggestion> suggestion)?  changeDisciple,TResult? Function( String isAssignaler)?  faisAssignaler,TResult? Function( String etatsSprituelOuvrier)?  etatsSprituelOuvrier,TResult? Function()?  submit,}) {final _that = this;
+switch (_that) {
+case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
+return changeDisciple(_that.suggestion);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
+return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
+return submit();case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class ChangeDiscipleRapportCelluleRequestSuggestionEvent implements RapportCelluleRequestSuggestionEvent {
+   ChangeDiscipleRapportCelluleRequestSuggestionEvent(final  List<RapportSuggestion> suggestion): _suggestion = suggestion;
+  
+
+ final  List<RapportSuggestion> _suggestion;
+ List<RapportSuggestion> get suggestion {
+  if (_suggestion is EqualUnmodifiableListView) return _suggestion;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_suggestion);
+}
+
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWith<ChangeDiscipleRapportCelluleRequestSuggestionEvent> get copyWith => _$ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWithImpl<ChangeDiscipleRapportCelluleRequestSuggestionEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeDiscipleRapportCelluleRequestSuggestionEvent&&const DeepCollectionEquality().equals(other._suggestion, _suggestion));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_suggestion));
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionEvent.changeDisciple(suggestion: $suggestion)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWith<$Res> implements $RapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  factory $ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWith(ChangeDiscipleRapportCelluleRequestSuggestionEvent value, $Res Function(ChangeDiscipleRapportCelluleRequestSuggestionEvent) _then) = _$ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWithImpl;
+@useResult
+$Res call({
+ List<RapportSuggestion> suggestion
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWithImpl<$Res>
+    implements $ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  _$ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWithImpl(this._self, this._then);
+
+  final ChangeDiscipleRapportCelluleRequestSuggestionEvent _self;
+  final $Res Function(ChangeDiscipleRapportCelluleRequestSuggestionEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? suggestion = null,}) {
+  return _then(ChangeDiscipleRapportCelluleRequestSuggestionEvent(
+null == suggestion ? _self._suggestion : suggestion // ignore: cast_nullable_to_non_nullable
+as List<RapportSuggestion>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class FaisAssignalerRapportCelluleRequestSuggestionEvent implements RapportCelluleRequestSuggestionEvent {
+   FaisAssignalerRapportCelluleRequestSuggestionEvent(this.isAssignaler);
+  
+
+ final  String isAssignaler;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FaisAssignalerRapportCelluleRequestSuggestionEventCopyWith<FaisAssignalerRapportCelluleRequestSuggestionEvent> get copyWith => _$FaisAssignalerRapportCelluleRequestSuggestionEventCopyWithImpl<FaisAssignalerRapportCelluleRequestSuggestionEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FaisAssignalerRapportCelluleRequestSuggestionEvent&&(identical(other.isAssignaler, isAssignaler) || other.isAssignaler == isAssignaler));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isAssignaler);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionEvent.faisAssignaler(isAssignaler: $isAssignaler)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FaisAssignalerRapportCelluleRequestSuggestionEventCopyWith<$Res> implements $RapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  factory $FaisAssignalerRapportCelluleRequestSuggestionEventCopyWith(FaisAssignalerRapportCelluleRequestSuggestionEvent value, $Res Function(FaisAssignalerRapportCelluleRequestSuggestionEvent) _then) = _$FaisAssignalerRapportCelluleRequestSuggestionEventCopyWithImpl;
+@useResult
+$Res call({
+ String isAssignaler
+});
+
+
+
+
+}
+/// @nodoc
+class _$FaisAssignalerRapportCelluleRequestSuggestionEventCopyWithImpl<$Res>
+    implements $FaisAssignalerRapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  _$FaisAssignalerRapportCelluleRequestSuggestionEventCopyWithImpl(this._self, this._then);
+
+  final FaisAssignalerRapportCelluleRequestSuggestionEvent _self;
+  final $Res Function(FaisAssignalerRapportCelluleRequestSuggestionEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? isAssignaler = null,}) {
+  return _then(FaisAssignalerRapportCelluleRequestSuggestionEvent(
+null == isAssignaler ? _self.isAssignaler : isAssignaler // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent implements RapportCelluleRequestSuggestionEvent {
+   EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent(this.etatsSprituelOuvrier);
+  
+
+ final  String etatsSprituelOuvrier;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWith<EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent> get copyWith => _$EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWithImpl<EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent&&(identical(other.etatsSprituelOuvrier, etatsSprituelOuvrier) || other.etatsSprituelOuvrier == etatsSprituelOuvrier));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,etatsSprituelOuvrier);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionEvent.etatsSprituelOuvrier(etatsSprituelOuvrier: $etatsSprituelOuvrier)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWith<$Res> implements $RapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  factory $EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWith(EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value, $Res Function(EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent) _then) = _$EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWithImpl;
+@useResult
+$Res call({
+ String etatsSprituelOuvrier
+});
+
+
+
+
+}
+/// @nodoc
+class _$EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWithImpl<$Res>
+    implements $EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  _$EtatsSprituelOuvrierRapportCelluleRequestSuggestionEventCopyWithImpl(this._self, this._then);
+
+  final EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent _self;
+  final $Res Function(EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? etatsSprituelOuvrier = null,}) {
+  return _then(EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent(
+null == etatsSprituelOuvrier ? _self.etatsSprituelOuvrier : etatsSprituelOuvrier // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class SubmitRapportCelluleRequestSuggestionEvent implements RapportCelluleRequestSuggestionEvent {
+   SubmitRapportCelluleRequestSuggestionEvent();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubmitRapportCelluleRequestSuggestionEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionEvent.submit()';
 }
 
 

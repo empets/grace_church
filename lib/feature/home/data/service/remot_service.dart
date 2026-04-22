@@ -445,4 +445,38 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     }
     
   }
+  
+  @override
+  Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params) async {
+    
+    final shared = await shareData.SharedPreferences.getInstance();
+    final localUserRequestSection = shared.getString('rapport_cellule_key');
+
+    try {
+      final userIdExist = await db
+          .child('rapport_cellule')
+          .orderByChild('id')
+          .equalTo(localUserRequestSection)
+          .get();
+          
+      if (
+        userIdExist.exists ) {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+        };
+        // 2) Créer une nouvelle entrée
+        await db.child('rapport_cellule/${localUserRequestSection}').update(updates);
+        // 4) Retourner le key généré
+        return FirebaseSuccess(localUserRequestSection!);
+      }
+      return FirebaseError('User not found');
+    } catch (e) {
+      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
+    
+
+      log("🔥 Firebase ERROR updateProfile → $e");
+      return FirebaseError(e.toString());
+    }
+    
+  }
 }

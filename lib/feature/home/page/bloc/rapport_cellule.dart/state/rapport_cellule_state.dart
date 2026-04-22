@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_statistic.dart';
 
 part 'rapport_cellule_state.freezed.dart';
 
@@ -76,10 +77,10 @@ abstract class RapportCelluleRequestSectionAssistanceState
     required List<RequestHumaneSectionAssistance> nomBaptiserStatic,
     required List<RequestHumaneSectionAssistance> nouveauBaptiser,
     required List<RequestHumaneSectionAssistance> inviter,
-    required List<RequestHumaneSectionAssistance> formation,
-    required List<RequestHumaneSectionAssistance> sectionVisite,
-    required List<RequestHumaneSectionAssistance> sectionActivite,
-   required List<RequestHumaneSectionAssistance> sectionOuvrier,
+    required List<RequestAutherInformationSource> formation,
+    required List<RequestAutherInformationSource> sectionVisite,
+    required List<RequestAutherInformationSource> sectionActivite,
+   required List<RequestAutherInformationSource> sectionOuvrier,
    required List<RequestHumaneSectionAssistance> autres,
 
     required FormzSubmissionStatus status,
@@ -132,3 +133,23 @@ abstract class RapportCelluleRequestActivityState with _$RapportCelluleRequestAc
 }
 
 
+@freezed
+abstract class RapportCelluleRequestSuggestionState with _$RapportCelluleRequestSuggestionState {
+  const factory RapportCelluleRequestSuggestionState({
+      required TextFormz faisAssignaler,
+      required TextFormz ouvrierSpritualLive,
+     required List<RapportSuggestion> suggestions,
+      required FormzSubmissionStatus status,
+    required String errorMessage,
+    required bool isValide,
+  }) = _RapportCelluleRequestSuggestionState;
+  
+  factory RapportCelluleRequestSuggestionState.initial() => const RapportCelluleRequestSuggestionState(
+    faisAssignaler: TextFormz.pure(),
+    ouvrierSpritualLive: TextFormz.pure(),
+    suggestions: [],
+    status: FormzSubmissionStatus.initial,
+    errorMessage: '',
+    isValide: false,
+  );
+}

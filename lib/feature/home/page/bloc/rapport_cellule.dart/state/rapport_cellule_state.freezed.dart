@@ -338,7 +338,7 @@ as bool,
 /// @nodoc
 mixin _$RapportCelluleRequestSectionAssistanceState {
 
- TextFormz get nombreBaptiser; TextFormz get id; List<RequestHumaneSectionAssistance> get nomBaptiserStatic; List<RequestHumaneSectionAssistance> get nouveauBaptiser; List<RequestHumaneSectionAssistance> get inviter; List<RequestHumaneSectionAssistance> get formation; List<RequestHumaneSectionAssistance> get sectionVisite; List<RequestHumaneSectionAssistance> get sectionActivite; List<RequestHumaneSectionAssistance> get sectionOuvrier; List<RequestHumaneSectionAssistance> get autres; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get nombreBaptiser; TextFormz get id; List<RequestHumaneSectionAssistance> get nomBaptiserStatic; List<RequestHumaneSectionAssistance> get nouveauBaptiser; List<RequestHumaneSectionAssistance> get inviter; List<RequestAutherInformationSource> get formation; List<RequestAutherInformationSource> get sectionVisite; List<RequestAutherInformationSource> get sectionActivite; List<RequestAutherInformationSource> get sectionOuvrier; List<RequestHumaneSectionAssistance> get autres; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of RapportCelluleRequestSectionAssistanceState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -369,7 +369,7 @@ abstract mixin class $RapportCelluleRequestSectionAssistanceStateCopyWith<$Res> 
   factory $RapportCelluleRequestSectionAssistanceStateCopyWith(RapportCelluleRequestSectionAssistanceState value, $Res Function(RapportCelluleRequestSectionAssistanceState) _then) = _$RapportCelluleRequestSectionAssistanceStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz nombreBaptiser, TextFormz id, List<RequestHumaneSectionAssistance> nomBaptiserStatic, List<RequestHumaneSectionAssistance> nouveauBaptiser, List<RequestHumaneSectionAssistance> inviter, List<RequestHumaneSectionAssistance> formation, List<RequestHumaneSectionAssistance> sectionVisite, List<RequestHumaneSectionAssistance> sectionActivite, List<RequestHumaneSectionAssistance> sectionOuvrier, List<RequestHumaneSectionAssistance> autres, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz nombreBaptiser, TextFormz id, List<RequestHumaneSectionAssistance> nomBaptiserStatic, List<RequestHumaneSectionAssistance> nouveauBaptiser, List<RequestHumaneSectionAssistance> inviter, List<RequestAutherInformationSource> formation, List<RequestAutherInformationSource> sectionVisite, List<RequestAutherInformationSource> sectionActivite, List<RequestAutherInformationSource> sectionOuvrier, List<RequestHumaneSectionAssistance> autres, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -394,10 +394,10 @@ as TextFormz,nomBaptiserStatic: null == nomBaptiserStatic ? _self.nomBaptiserSta
 as List<RequestHumaneSectionAssistance>,nouveauBaptiser: null == nouveauBaptiser ? _self.nouveauBaptiser : nouveauBaptiser // ignore: cast_nullable_to_non_nullable
 as List<RequestHumaneSectionAssistance>,inviter: null == inviter ? _self.inviter : inviter // ignore: cast_nullable_to_non_nullable
 as List<RequestHumaneSectionAssistance>,formation: null == formation ? _self.formation : formation // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,sectionVisite: null == sectionVisite ? _self.sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,sectionActivite: null == sectionActivite ? _self.sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,sectionOuvrier: null == sectionOuvrier ? _self.sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,autres: null == autres ? _self.autres : autres // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,sectionVisite: null == sectionVisite ? _self.sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,sectionActivite: null == sectionActivite ? _self.sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,sectionOuvrier: null == sectionOuvrier ? _self.sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,autres: null == autres ? _self.autres : autres // ignore: cast_nullable_to_non_nullable
 as List<RequestHumaneSectionAssistance>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
@@ -486,7 +486,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz nombreBaptiser,  TextFormz id,  List<RequestHumaneSectionAssistance> nomBaptiserStatic,  List<RequestHumaneSectionAssistance> nouveauBaptiser,  List<RequestHumaneSectionAssistance> inviter,  List<RequestHumaneSectionAssistance> formation,  List<RequestHumaneSectionAssistance> sectionVisite,  List<RequestHumaneSectionAssistance> sectionActivite,  List<RequestHumaneSectionAssistance> sectionOuvrier,  List<RequestHumaneSectionAssistance> autres,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz nombreBaptiser,  TextFormz id,  List<RequestHumaneSectionAssistance> nomBaptiserStatic,  List<RequestHumaneSectionAssistance> nouveauBaptiser,  List<RequestHumaneSectionAssistance> inviter,  List<RequestAutherInformationSource> formation,  List<RequestAutherInformationSource> sectionVisite,  List<RequestAutherInformationSource> sectionActivite,  List<RequestAutherInformationSource> sectionOuvrier,  List<RequestHumaneSectionAssistance> autres,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSectionAssistanceState() when $default != null:
 return $default(_that.nombreBaptiser,_that.id,_that.nomBaptiserStatic,_that.nouveauBaptiser,_that.inviter,_that.formation,_that.sectionVisite,_that.sectionActivite,_that.sectionOuvrier,_that.autres,_that.status,_that.errorMessage,_that.isValide);case _:
@@ -507,7 +507,7 @@ return $default(_that.nombreBaptiser,_that.id,_that.nomBaptiserStatic,_that.nouv
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz nombreBaptiser,  TextFormz id,  List<RequestHumaneSectionAssistance> nomBaptiserStatic,  List<RequestHumaneSectionAssistance> nouveauBaptiser,  List<RequestHumaneSectionAssistance> inviter,  List<RequestHumaneSectionAssistance> formation,  List<RequestHumaneSectionAssistance> sectionVisite,  List<RequestHumaneSectionAssistance> sectionActivite,  List<RequestHumaneSectionAssistance> sectionOuvrier,  List<RequestHumaneSectionAssistance> autres,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz nombreBaptiser,  TextFormz id,  List<RequestHumaneSectionAssistance> nomBaptiserStatic,  List<RequestHumaneSectionAssistance> nouveauBaptiser,  List<RequestHumaneSectionAssistance> inviter,  List<RequestAutherInformationSource> formation,  List<RequestAutherInformationSource> sectionVisite,  List<RequestAutherInformationSource> sectionActivite,  List<RequestAutherInformationSource> sectionOuvrier,  List<RequestHumaneSectionAssistance> autres,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSectionAssistanceState():
 return $default(_that.nombreBaptiser,_that.id,_that.nomBaptiserStatic,_that.nouveauBaptiser,_that.inviter,_that.formation,_that.sectionVisite,_that.sectionActivite,_that.sectionOuvrier,_that.autres,_that.status,_that.errorMessage,_that.isValide);case _:
@@ -527,7 +527,7 @@ return $default(_that.nombreBaptiser,_that.id,_that.nomBaptiserStatic,_that.nouv
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz nombreBaptiser,  TextFormz id,  List<RequestHumaneSectionAssistance> nomBaptiserStatic,  List<RequestHumaneSectionAssistance> nouveauBaptiser,  List<RequestHumaneSectionAssistance> inviter,  List<RequestHumaneSectionAssistance> formation,  List<RequestHumaneSectionAssistance> sectionVisite,  List<RequestHumaneSectionAssistance> sectionActivite,  List<RequestHumaneSectionAssistance> sectionOuvrier,  List<RequestHumaneSectionAssistance> autres,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz nombreBaptiser,  TextFormz id,  List<RequestHumaneSectionAssistance> nomBaptiserStatic,  List<RequestHumaneSectionAssistance> nouveauBaptiser,  List<RequestHumaneSectionAssistance> inviter,  List<RequestAutherInformationSource> formation,  List<RequestAutherInformationSource> sectionVisite,  List<RequestAutherInformationSource> sectionActivite,  List<RequestAutherInformationSource> sectionOuvrier,  List<RequestHumaneSectionAssistance> autres,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSectionAssistanceState() when $default != null:
 return $default(_that.nombreBaptiser,_that.id,_that.nomBaptiserStatic,_that.nouveauBaptiser,_that.inviter,_that.formation,_that.sectionVisite,_that.sectionActivite,_that.sectionOuvrier,_that.autres,_that.status,_that.errorMessage,_that.isValide);case _:
@@ -542,7 +542,7 @@ return $default(_that.nombreBaptiser,_that.id,_that.nomBaptiserStatic,_that.nouv
 
 
 class _RapportCelluleRequestSectionAssistanceState implements RapportCelluleRequestSectionAssistanceState {
-  const _RapportCelluleRequestSectionAssistanceState({required this.nombreBaptiser, required this.id, required final  List<RequestHumaneSectionAssistance> nomBaptiserStatic, required final  List<RequestHumaneSectionAssistance> nouveauBaptiser, required final  List<RequestHumaneSectionAssistance> inviter, required final  List<RequestHumaneSectionAssistance> formation, required final  List<RequestHumaneSectionAssistance> sectionVisite, required final  List<RequestHumaneSectionAssistance> sectionActivite, required final  List<RequestHumaneSectionAssistance> sectionOuvrier, required final  List<RequestHumaneSectionAssistance> autres, required this.status, required this.errorMessage, required this.isValide}): _nomBaptiserStatic = nomBaptiserStatic,_nouveauBaptiser = nouveauBaptiser,_inviter = inviter,_formation = formation,_sectionVisite = sectionVisite,_sectionActivite = sectionActivite,_sectionOuvrier = sectionOuvrier,_autres = autres;
+  const _RapportCelluleRequestSectionAssistanceState({required this.nombreBaptiser, required this.id, required final  List<RequestHumaneSectionAssistance> nomBaptiserStatic, required final  List<RequestHumaneSectionAssistance> nouveauBaptiser, required final  List<RequestHumaneSectionAssistance> inviter, required final  List<RequestAutherInformationSource> formation, required final  List<RequestAutherInformationSource> sectionVisite, required final  List<RequestAutherInformationSource> sectionActivite, required final  List<RequestAutherInformationSource> sectionOuvrier, required final  List<RequestHumaneSectionAssistance> autres, required this.status, required this.errorMessage, required this.isValide}): _nomBaptiserStatic = nomBaptiserStatic,_nouveauBaptiser = nouveauBaptiser,_inviter = inviter,_formation = formation,_sectionVisite = sectionVisite,_sectionActivite = sectionActivite,_sectionOuvrier = sectionOuvrier,_autres = autres;
   
 
 @override final  TextFormz nombreBaptiser;
@@ -568,29 +568,29 @@ class _RapportCelluleRequestSectionAssistanceState implements RapportCelluleRequ
   return EqualUnmodifiableListView(_inviter);
 }
 
- final  List<RequestHumaneSectionAssistance> _formation;
-@override List<RequestHumaneSectionAssistance> get formation {
+ final  List<RequestAutherInformationSource> _formation;
+@override List<RequestAutherInformationSource> get formation {
   if (_formation is EqualUnmodifiableListView) return _formation;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_formation);
 }
 
- final  List<RequestHumaneSectionAssistance> _sectionVisite;
-@override List<RequestHumaneSectionAssistance> get sectionVisite {
+ final  List<RequestAutherInformationSource> _sectionVisite;
+@override List<RequestAutherInformationSource> get sectionVisite {
   if (_sectionVisite is EqualUnmodifiableListView) return _sectionVisite;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_sectionVisite);
 }
 
- final  List<RequestHumaneSectionAssistance> _sectionActivite;
-@override List<RequestHumaneSectionAssistance> get sectionActivite {
+ final  List<RequestAutherInformationSource> _sectionActivite;
+@override List<RequestAutherInformationSource> get sectionActivite {
   if (_sectionActivite is EqualUnmodifiableListView) return _sectionActivite;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_sectionActivite);
 }
 
- final  List<RequestHumaneSectionAssistance> _sectionOuvrier;
-@override List<RequestHumaneSectionAssistance> get sectionOuvrier {
+ final  List<RequestAutherInformationSource> _sectionOuvrier;
+@override List<RequestAutherInformationSource> get sectionOuvrier {
   if (_sectionOuvrier is EqualUnmodifiableListView) return _sectionOuvrier;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_sectionOuvrier);
@@ -637,7 +637,7 @@ abstract mixin class _$RapportCelluleRequestSectionAssistanceStateCopyWith<$Res>
   factory _$RapportCelluleRequestSectionAssistanceStateCopyWith(_RapportCelluleRequestSectionAssistanceState value, $Res Function(_RapportCelluleRequestSectionAssistanceState) _then) = __$RapportCelluleRequestSectionAssistanceStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz nombreBaptiser, TextFormz id, List<RequestHumaneSectionAssistance> nomBaptiserStatic, List<RequestHumaneSectionAssistance> nouveauBaptiser, List<RequestHumaneSectionAssistance> inviter, List<RequestHumaneSectionAssistance> formation, List<RequestHumaneSectionAssistance> sectionVisite, List<RequestHumaneSectionAssistance> sectionActivite, List<RequestHumaneSectionAssistance> sectionOuvrier, List<RequestHumaneSectionAssistance> autres, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz nombreBaptiser, TextFormz id, List<RequestHumaneSectionAssistance> nomBaptiserStatic, List<RequestHumaneSectionAssistance> nouveauBaptiser, List<RequestHumaneSectionAssistance> inviter, List<RequestAutherInformationSource> formation, List<RequestAutherInformationSource> sectionVisite, List<RequestAutherInformationSource> sectionActivite, List<RequestAutherInformationSource> sectionOuvrier, List<RequestHumaneSectionAssistance> autres, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -662,10 +662,10 @@ as TextFormz,nomBaptiserStatic: null == nomBaptiserStatic ? _self._nomBaptiserSt
 as List<RequestHumaneSectionAssistance>,nouveauBaptiser: null == nouveauBaptiser ? _self._nouveauBaptiser : nouveauBaptiser // ignore: cast_nullable_to_non_nullable
 as List<RequestHumaneSectionAssistance>,inviter: null == inviter ? _self._inviter : inviter // ignore: cast_nullable_to_non_nullable
 as List<RequestHumaneSectionAssistance>,formation: null == formation ? _self._formation : formation // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,sectionVisite: null == sectionVisite ? _self._sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,sectionActivite: null == sectionActivite ? _self._sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,sectionOuvrier: null == sectionOuvrier ? _self._sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,autres: null == autres ? _self._autres : autres // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,sectionVisite: null == sectionVisite ? _self._sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,sectionActivite: null == sectionActivite ? _self._sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,sectionOuvrier: null == sectionOuvrier ? _self._sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
+as List<RequestAutherInformationSource>,autres: null == autres ? _self._autres : autres // ignore: cast_nullable_to_non_nullable
 as List<RequestHumaneSectionAssistance>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
@@ -951,6 +951,284 @@ id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as TextFormz,discipleVisiteList: null == discipleVisiteList ? _self._discipleVisiteList : discipleVisiteList // ignore: cast_nullable_to_non_nullable
 as List<VisiteDisciple>,discipleMenbreList: null == discipleMenbreList ? _self._discipleMenbreList : discipleMenbreList // ignore: cast_nullable_to_non_nullable
 as List<VisiteDisciple>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$RapportCelluleRequestSuggestionState {
+
+ TextFormz get faisAssignaler; TextFormz get ouvrierSpritualLive; List<RapportSuggestion> get suggestions; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+/// Create a copy of RapportCelluleRequestSuggestionState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RapportCelluleRequestSuggestionStateCopyWith<RapportCelluleRequestSuggestionState> get copyWith => _$RapportCelluleRequestSuggestionStateCopyWithImpl<RapportCelluleRequestSuggestionState>(this as RapportCelluleRequestSuggestionState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSuggestionState&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,faisAssignaler,ouvrierSpritualLive,const DeepCollectionEquality().hash(suggestions),status,errorMessage,isValide);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionState(faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, suggestions: $suggestions, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RapportCelluleRequestSuggestionStateCopyWith<$Res>  {
+  factory $RapportCelluleRequestSuggestionStateCopyWith(RapportCelluleRequestSuggestionState value, $Res Function(RapportCelluleRequestSuggestionState) _then) = _$RapportCelluleRequestSuggestionStateCopyWithImpl;
+@useResult
+$Res call({
+ TextFormz faisAssignaler, TextFormz ouvrierSpritualLive, List<RapportSuggestion> suggestions, FormzSubmissionStatus status, String errorMessage, bool isValide
+});
+
+
+
+
+}
+/// @nodoc
+class _$RapportCelluleRequestSuggestionStateCopyWithImpl<$Res>
+    implements $RapportCelluleRequestSuggestionStateCopyWith<$Res> {
+  _$RapportCelluleRequestSuggestionStateCopyWithImpl(this._self, this._then);
+
+  final RapportCelluleRequestSuggestionState _self;
+  final $Res Function(RapportCelluleRequestSuggestionState) _then;
+
+/// Create a copy of RapportCelluleRequestSuggestionState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? suggestions = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+  return _then(_self.copyWith(
+faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as TextFormz,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as TextFormz,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<RapportSuggestion>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RapportCelluleRequestSuggestionState].
+extension RapportCelluleRequestSuggestionStatePatterns on RapportCelluleRequestSuggestionState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RapportCelluleRequestSuggestionState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RapportCelluleRequestSuggestionState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RapportCelluleRequestSuggestionState value)  $default,){
+final _that = this;
+switch (_that) {
+case _RapportCelluleRequestSuggestionState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RapportCelluleRequestSuggestionState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RapportCelluleRequestSuggestionState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RapportCelluleRequestSuggestionState() when $default != null:
+return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+switch (_that) {
+case _RapportCelluleRequestSuggestionState():
+return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+switch (_that) {
+case _RapportCelluleRequestSuggestionState() when $default != null:
+return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _RapportCelluleRequestSuggestionState implements RapportCelluleRequestSuggestionState {
+  const _RapportCelluleRequestSuggestionState({required this.faisAssignaler, required this.ouvrierSpritualLive, required final  List<RapportSuggestion> suggestions, required this.status, required this.errorMessage, required this.isValide}): _suggestions = suggestions;
+  
+
+@override final  TextFormz faisAssignaler;
+@override final  TextFormz ouvrierSpritualLive;
+ final  List<RapportSuggestion> _suggestions;
+@override List<RapportSuggestion> get suggestions {
+  if (_suggestions is EqualUnmodifiableListView) return _suggestions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_suggestions);
+}
+
+@override final  FormzSubmissionStatus status;
+@override final  String errorMessage;
+@override final  bool isValide;
+
+/// Create a copy of RapportCelluleRequestSuggestionState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RapportCelluleRequestSuggestionStateCopyWith<_RapportCelluleRequestSuggestionState> get copyWith => __$RapportCelluleRequestSuggestionStateCopyWithImpl<_RapportCelluleRequestSuggestionState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestSuggestionState&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,faisAssignaler,ouvrierSpritualLive,const DeepCollectionEquality().hash(_suggestions),status,errorMessage,isValide);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionState(faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, suggestions: $suggestions, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RapportCelluleRequestSuggestionStateCopyWith<$Res> implements $RapportCelluleRequestSuggestionStateCopyWith<$Res> {
+  factory _$RapportCelluleRequestSuggestionStateCopyWith(_RapportCelluleRequestSuggestionState value, $Res Function(_RapportCelluleRequestSuggestionState) _then) = __$RapportCelluleRequestSuggestionStateCopyWithImpl;
+@override @useResult
+$Res call({
+ TextFormz faisAssignaler, TextFormz ouvrierSpritualLive, List<RapportSuggestion> suggestions, FormzSubmissionStatus status, String errorMessage, bool isValide
+});
+
+
+
+
+}
+/// @nodoc
+class __$RapportCelluleRequestSuggestionStateCopyWithImpl<$Res>
+    implements _$RapportCelluleRequestSuggestionStateCopyWith<$Res> {
+  __$RapportCelluleRequestSuggestionStateCopyWithImpl(this._self, this._then);
+
+  final _RapportCelluleRequestSuggestionState _self;
+  final $Res Function(_RapportCelluleRequestSuggestionState) _then;
+
+/// Create a copy of RapportCelluleRequestSuggestionState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? suggestions = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+  return _then(_RapportCelluleRequestSuggestionState(
+faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as TextFormz,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as TextFormz,suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<RapportSuggestion>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
 as bool,

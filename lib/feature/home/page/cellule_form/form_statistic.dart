@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -22,7 +25,12 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sa
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
 
-enum SectionType { nonBaptise, nouveaux, inviter }
+// enum SectionType { nonBaptise,formation, nouveaux, inviter }
+enum StatisticEvent {
+  ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent,
+  ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent,
+  ChangeInviterRapportCelluleRequestSectionAssistanceEvent,
+}
 
 class FormStatistic extends StatefulWidget {
   final String id;
@@ -33,92 +41,111 @@ class FormStatistic extends StatefulWidget {
 }
 
 class _FormStatisticState extends State<FormStatistic> {
-  // void _updateItem1({
+  // void _updateDisciple2({
+  //   required String requestSection,
   //   required BuildContext context,
   //   required int index,
-  //   required RequestHumaneSectionAssistance state,
-  //   String? title,
-  //   String? name,
-  //   int? count,
-  //   required RapportCelluleRequestSectionAssistanceEvent Function(
-  //     List<RequestHumaneSectionAssistance>,
-  //   )
-  //   event, // ✅ event en paramètre
+  //   required RapportCelluleRequestSectionAssistanceState state,
+  //   String? libelle,
+  //   String? toutPetit,
+  //   String? juniors,
+  //   String? cadets,
+  //   int? total,
   // }) {
   //   final bloc = context.read<RapportCelluleSectionAssistanceBloc>();
 
-  //   final list = List<RequestHumaneSectionAssistance>.from([]);
+  //   List<RequestHumaneSectionAssistance> list;
+  //   // SectionType sectionType;
 
-  //   // Étend la liste si nécessaire
-  //   if (list.length <= index) {
-  //     list.addAll(
-  //       List.generate(
-  //         index - list.length + 1,
-  //         (_) => RequestHumaneSectionAssistance(title: '', name: '', cout: 0),
-  //       ),
-  //     );
+  //   switch (requestSection) {
+  //     case "Formation":
+  //       list = List.from(state.formation);
+  //       // sectionType = SectionType.formation;
+  //       break;
+
+  //     case "Section visite":
+  //       list = List.from(state.sectionVisite);
+  //       // sectionType = SectionType.; // ✅ FIX
+  //       break;
+
+  //     default:
+  //       return;
   //   }
 
+  //   /// 🔥 Assure la taille
+  //   if (list.length <= index) {
+  //     list.addAll(List.generate(
+  //       index - list.length + 1,
+  //       (_) => RequestHumaneSectionAssistance(
+  //         libelle: '',
+  //         toutPetit: '',
+  //         juniors: '',
+  //         cadets: '',
+  //         total: 0,
+  //       ),
+  //     ));
+  //   }
+
+  //   /// 🔥 Update index
   //   list[index] = list[index].copyWith(
-  //     title: title ?? list[index].title,
-  //     name: name ?? list[index].name,
-  //     cout: count ?? list[index].cout,
+  //     libelle: libelle ?? list[index].libelle,
+  //     toutPetit: toutPetit ?? list[index].toutPetit,
+  //     juniors: juniors ?? list[index].juniors,
+  //     cadets: cadets ?? list[index].cadets,
+  //     total: total ?? list[index].total,
   //   );
 
-  //   bloc.add(event(list)); // ✅ appel du callback avec la liste mise à jour
+  //   /// ✅ UTILISE LE BON EVENT
+  //   bloc.add(
+  //     RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
+
+  //       list,
+  //     ),
+  //   );
   // }
 
-  void _updateItem1({
+  void _updateDisciple2({
+    required String requestSection,
     required BuildContext context,
-    required String sectionTitle,
-    required int index,
-    required RapportCelluleRequestSectionAssistanceState state,
-    required RequestHumaneSectionAssistance data,
-    required RapportCelluleRequestSectionAssistanceEvent
-    event, // ✅ event en paramètre
+    required List<RequestAutherInformationSource> items,
   }) {
-    context.read<RapportCelluleSectionAssistanceBloc>().add(event);
-  }
+    final bloc = context.read<RapportCelluleSectionAssistanceBloc>();
 
-  List<RequestHumaneSectionAssistance> _getSectionList(
-    RapportCelluleRequestSectionAssistanceState state,
-    String section,
-  ) {
-    switch (section) {
-      case "Non baptisé":
-        return state.nomBaptiserStatic;
+    final list = items.map((item) {
+      return RequestAutherInformationSource(
+        title: item.title,
+        sections: item.sections,
+      );
+    }).toList();
 
-      case "Nouveaux":
-        return state.nouveauBaptiser;
-
-      case "Invités":
-        return state.inviter;
-
+    switch (requestSection) {
       case "Formation":
-        return state.formation;
+        bloc.add(
+          RapportCelluleRequestSectionAssistanceEvent.changeFormation(
+            // SectionType.formation,
+            list,
+          ),
+        );
+        break;
 
-      case "Visite":
-        return state.sectionVisite;
-
-      case "Activité":
-        return state.sectionActivite;
-
-      case "Ouvrier":
-        return state.sectionOuvrier;
-
-      default:
-        return state.autres;
+      case "Section visite":
+        bloc.add(
+          RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
+            // SectionType.sectionVisite,
+            list,
+          ),
+        );
+        break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RapportCelluleSectionAssistanceBloc(
-        sendRapportCelluleStepStatUsercase:
-            getIt<SendRapportCelluleStepStatUsercase>(),
-      ),
-
+    return BlocListener<
+      RapportCelluleSectionAssistanceBloc,
+      RapportCelluleRequestSectionAssistanceState
+    >(
+      listener: (context, state) {},
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
         body: Container(
@@ -373,227 +400,9 @@ class _FormStatisticState extends State<FormStatistic> {
                                                     color: Color(0xFF888888),
                                                   ),
                                                   onPressed: () {
-                                                    WidgetsBinding.instance.addPostFrameCallback((
-                                                      _,
-                                                    ) {
-                                                      setState(() {
-                                                        if (item.count > 0)
-                                                          item.count--;
-                                                      });
-
-                                                      if (RequestSection
-                                                              .title ==
-                                                          "Non baptisé") {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-
-                                                        //  context
-                                                        //   .read<
-                                                        //     RapportCelluleSectionAssistanceBloc
-                                                        //   >()
-                                                        //   .add(
-                                                        //     RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
-                                                        // RequestHumaneSectionAssistance(
-                                                        //   title: RequestSection.title,
-                                                        //   name: item.name,
-                                                        //   cout: item.count,
-                                                        // ),
-                                                        //     ),
-                                                        //   );
-                                                      }
-                                                      if (RequestSection
-                                                              .title ==
-                                                          "Non baptisé") {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-                                                        // _updateItem1(
-                                                        //   context: context,
-                                                        //   title: RequestSection
-                                                        //       .title,
-                                                        //   index: index,
-                                                        //   state:
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title:
-                                                        //             RequestSection
-                                                        //                 .title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //   event: RapportCelluleRequestSectionAssistanceEvent
-                                                        //       .changeNomBaptiserStatic,
-                                                        // );
-
-                                                        //  context
-                                                        //   .read<
-                                                        //     RapportCelluleSectionAssistanceBloc
-                                                        //   >()
-                                                        //   .add(
-                                                        //     RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title: RequestSection.title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //     ),
-                                                        //   );
-                                                      } else if (RequestSection
-                                                              .title ==
-                                                          "Nouveaux") {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-                                                        // _updateItem1(
-                                                        //   context: context,
-                                                        //   title: RequestSection
-                                                        //       .title,
-                                                        //   index: index,
-                                                        //   state:
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title:
-                                                        //             RequestSection
-                                                        //                 .title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //   event: RapportCelluleRequestSectionAssistanceEvent
-                                                        //       .changeNoveauBaptiser,
-                                                        // );
-
-                                                        // context
-                                                        //   .read<
-                                                        //     RapportCelluleSectionAssistanceBloc
-                                                        //   >()
-                                                        //   .add(
-                                                        //     RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title: RequestSection.title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //     ),
-                                                        //   );
-                                                      } else {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-                                                        // _updateItem1(
-                                                        //   context: context,
-                                                        //   title: RequestSection
-                                                        //       .title,
-                                                        //   index: index,
-                                                        //   state:
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title:
-                                                        //             RequestSection
-                                                        //                 .title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //   event:
-                                                        //       RapportCelluleRequestSectionAssistanceEvent
-                                                        //           .changeInviter,
-                                                        // );
-
-                                                        //   context
-                                                        // .read<
-                                                        //   RapportCelluleSectionAssistanceBloc
-                                                        // >()
-                                                        // .add(
-                                                        //   RapportCelluleRequestSectionAssistanceEvent.changeInviter(
-                                                        //     RequestHumaneSectionAssistance(
-                                                        //       title: RequestSection.title,
-                                                        //       name: item.name,
-                                                        //       cout: item.count,
-                                                        //     ),
-                                                        //   ),
-                                                        // );
-                                                      }
+                                                    setState(() {
+                                                      if (item.count > 0)
+                                                        item.count--;
                                                     });
                                                   },
                                                 );
@@ -613,227 +422,9 @@ class _FormStatisticState extends State<FormStatistic> {
                                                     color: Color(0xFF888888),
                                                   ),
                                                   onPressed: () {
-                                                    WidgetsBinding.instance.addPostFrameCallback((
-                                                      _,
-                                                    ) {
-                                                      setState(() {
-                                                        if (item.count > 0)
-                                                          item.count++;
-                                                      });
-
-                                                      if (RequestSection
-                                                              .title ==
-                                                          "Non baptisé") {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-
-                                                        //  context
-                                                        //   .read<
-                                                        //     RapportCelluleSectionAssistanceBloc
-                                                        //   >()
-                                                        //   .add(
-                                                        //     RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
-                                                        // RequestHumaneSectionAssistance(
-                                                        //   title: RequestSection.title,
-                                                        //   name: item.name,
-                                                        //   cout: item.count,
-                                                        // ),
-                                                        //     ),
-                                                        //   );
-                                                      }
-                                                      if (RequestSection
-                                                              .title ==
-                                                          "Non baptisé") {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-                                                        // _updateItem1(
-                                                        //   context: context,
-                                                        //   title: RequestSection
-                                                        //       .title,
-                                                        //   index: index,
-                                                        //   state:
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title:
-                                                        //             RequestSection
-                                                        //                 .title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //   event: RapportCelluleRequestSectionAssistanceEvent
-                                                        //       .changeNomBaptiserStatic,
-                                                        // );
-
-                                                        //  context
-                                                        //   .read<
-                                                        //     RapportCelluleSectionAssistanceBloc
-                                                        //   >()
-                                                        //   .add(
-                                                        //     RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title: RequestSection.title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //     ),
-                                                        //   );
-                                                      } else if (RequestSection
-                                                              .title ==
-                                                          "Nouveaux") {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-                                                        // _updateItem1(
-                                                        //   context: context,
-                                                        //   title: RequestSection
-                                                        //       .title,
-                                                        //   index: index,
-                                                        //   state:
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title:
-                                                        //             RequestSection
-                                                        //                 .title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //   event: RapportCelluleRequestSectionAssistanceEvent
-                                                        //       .changeNoveauBaptiser,
-                                                        // );
-
-                                                        // context
-                                                        //   .read<
-                                                        //     RapportCelluleSectionAssistanceBloc
-                                                        //   >()
-                                                        //   .add(
-                                                        //     RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title: RequestSection.title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //     ),
-                                                        //   );
-                                                      } else {
-                                                        _updateItem1(
-                                                          context: context,
-                                                          sectionTitle:
-                                                              RequestSection
-                                                                  .title,
-                                                          index: index,
-                                                          state: state,
-                                                          data: RequestHumaneSectionAssistance(
-                                                            title:
-                                                                RequestSection
-                                                                    .title,
-                                                            name: item.name,
-                                                            cout: item.count,
-                                                          ),
-                                                          event: RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic([
-                                                            RequestHumaneSectionAssistance(
-                                                              title:
-                                                                  RequestSection
-                                                                      .title,
-                                                              name: item.name,
-                                                              cout: item.count,
-                                                            ),
-                                                          ]),
-                                                        );
-                                                        // _updateItem1(
-                                                        //   context: context,
-                                                        //   title: RequestSection
-                                                        //       .title,
-                                                        //   index: index,
-                                                        //   state:
-                                                        //       RequestHumaneSectionAssistance(
-                                                        //         title:
-                                                        //             RequestSection
-                                                        //                 .title,
-                                                        //         name: item.name,
-                                                        //         cout: item.count,
-                                                        //       ),
-                                                        //   event:
-                                                        //       RapportCelluleRequestSectionAssistanceEvent
-                                                        //           .changeInviter,
-                                                        // );
-
-                                                        //   context
-                                                        // .read<
-                                                        //   RapportCelluleSectionAssistanceBloc
-                                                        // >()
-                                                        // .add(
-                                                        //   RapportCelluleRequestSectionAssistanceEvent.changeInviter(
-                                                        //     RequestHumaneSectionAssistance(
-                                                        //       title: RequestSection.title,
-                                                        //       name: item.name,
-                                                        //       cout: item.count,
-                                                        //     ),
-                                                        //   ),
-                                                        // );
-                                                      }
+                                                    setState(() {
+                                                      if (item.count > 0)
+                                                        item.count++;
                                                     });
                                                   },
                                                 );
@@ -889,7 +480,7 @@ class _FormStatisticState extends State<FormStatistic> {
                             padding: EdgeInsets.zero,
                             itemCount: RequestSections2.length,
                             itemBuilder: (context, index) {
-                              final RequestSection = RequestSections2[index];
+                              final requestSection = RequestSections2[index];
                               return Card(
                                 color: Colors.white,
                                 elevation: 0.5.h,
@@ -906,14 +497,14 @@ class _FormStatisticState extends State<FormStatistic> {
                                     color: Colors.transparent,
                                   ),
                                   title: Text(
-                                    RequestSection.title,
+                                    requestSection.title,
                                     style: GoogleFonts.roboto(
                                       color: Colors.black,
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
-                                  children: RequestSection.items.map((item) {
+                                  children: requestSection.sections.map((item) {
                                     return Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal: 16.w,
@@ -924,7 +515,7 @@ class _FormStatisticState extends State<FormStatistic> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            item.name,
+                                            item.libelle,
                                             style: GoogleFonts.roboto(
                                               color: Color(0xFF888888),
                                               fontSize: 12.sp,
@@ -941,7 +532,9 @@ class _FormStatisticState extends State<FormStatistic> {
                                                 onPressed: () {
                                                   setState(() {
                                                     if (item.count > 0)
-                                                      item.count--;
+                                                      item = item.copyWith(
+                                                        count: item.count - 1,
+                                                      );
                                                   });
                                                   // if (RequestSection.title == "Formation") {
                                                   //     context
@@ -1026,94 +619,130 @@ class _FormStatisticState extends State<FormStatistic> {
 
                                               Text(item.count.toString()),
 
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.add,
-                                                  color: Color(0xFF888888),
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    item.count++;
-                                                  });
+                                              BlocBuilder<
+                                                RapportCelluleSectionAssistanceBloc,
+                                                RapportCelluleRequestSectionAssistanceState
+                                              >(
+                                                builder: (context, state) {
+                                                  return IconButton(
+                                                    icon: Icon(
+                                                      Icons.add,
+                                                      color: Color(0xFF888888),
+                                                    ),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                    requestSection.sections.map((e) {
+                                                                if (e == item && e.count > 0) {
+                                                                    log('ùùùùùùùùùùùùùùùùùùùùùùùùùùùùù ${e.count}');
+                                                                  return e.copyWith(count: e.count - 1);
+                                                                }
+                                                                return e;
+                                                              }).toList();
+                                                      });
 
-                                                  //  if (RequestSection.title == "Formation") {
-                                                  //     context
-                                                  //   .read<
-                                                  //     RapportCelluleSectionAssistanceBloc
-                                                  //   >()
-                                                  //   .add(
-                                                  //     RapportCelluleRequestSectionAssistanceEvent.changeFormation(
-                                                  //       RequestHumaneSectionAssistance(
-                                                  //         title: RequestSection.title,
-                                                  //         name: item.name,
-                                                  //         cout: item.count,
-                                                  //       ),
-                                                  //     ),
-                                                  //   );
-                                                  // }
+                                                      _updateDisciple2(
+                                                        // bloc: context,
+                                                        requestSection:
+                                                            requestSection
+                                                                .title,
+                                                        context: context,
+                                                        items: [
+                                                          requestSection,
 
-                                                  //   if (RequestSection.title == "Section visite") {
-                                                  //     context
-                                                  //   .read<
-                                                  //     RapportCelluleSectionAssistanceBloc
-                                                  //   >()
-                                                  //   .add(
-                                                  //     RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
-                                                  //       RequestHumaneSectionAssistance(
-                                                  //         title: RequestSection.title,
-                                                  //         name: item.name,
-                                                  //         cout: item.count,
-                                                  //       ),
-                                                  //     ),
-                                                  //   );
-                                                  // }
+                                                          // ...requestSection.items.map((x) {
+                                                          //   if (x.name == item.name) {
+                                                          //     return RequestHumaneSectionAssistance(
+                                                          //       libelle: requestSection.title,
+                                                          //       toutPetit: item.name,
+                                                          //       juniors: item.name,
+                                                          //       cadets: item.name,
+                                                          //     );
+                                                          //   }
+                                                          //   return x;
+                                                          // })
+                                                        ],
+                                                      );
 
-                                                  //   if (RequestSection.title == "Section Activités") {
-                                                  //     context
-                                                  //   .read<
-                                                  //     RapportCelluleSectionAssistanceBloc
-                                                  //   >()
-                                                  //   .add(
-                                                  //     RapportCelluleRequestSectionAssistanceEvent.changeSectionActivite(
-                                                  //       RequestHumaneSectionAssistance(
-                                                  //         title: RequestSection.title,
-                                                  //         name: item.name,
-                                                  //         cout: item.count,
-                                                  //       ),
-                                                  //     ),
-                                                  //   );
-                                                  // }
+                                                      //  if (RequestSection.title == "Formation") {
+                                                      //     context
+                                                      //   .read<
+                                                      //     RapportCelluleSectionAssistanceBloc
+                                                      //   >()
+                                                      //   .add(
+                                                      //     RapportCelluleRequestSectionAssistanceEvent.changeFormation(
+                                                      //       RequestHumaneSectionAssistance(
+                                                      //         title: RequestSection.title,
+                                                      //         name: item.name,
+                                                      //         cout: item.count,
+                                                      //       ),
+                                                      //     ),
+                                                      //   );
+                                                      // }
 
-                                                  // if (RequestSection.title == "Section Ouvriers") {
-                                                  //   context
-                                                  //     .read<
-                                                  //       RapportCelluleSectionAssistanceBloc
-                                                  //     >()
-                                                  //     .add(
-                                                  //       RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(
-                                                  //         RequestHumaneSectionAssistance(
-                                                  //           title: RequestSection.title,
-                                                  //           name: item.name,
-                                                  //           cout: item.count,
-                                                  //         ),
-                                                  //       ),
-                                                  //     );
-                                                  // }
-                                                  // if (RequestSection.title == "Autres") {
-                                                  //   context
-                                                  //     .read<
-                                                  //       RapportCelluleSectionAssistanceBloc
-                                                  //     >()
-                                                  //     .add(
-                                                  //       RapportCelluleRequestSectionAssistanceEvent.changeAutres(
-                                                  //         RequestHumaneSectionAssistance(
-                                                  //           title: RequestSection.title,
-                                                  //           name: item.name,
-                                                  //           cout: item.count,
-                                                  //         ),
-                                                  //       ),
-                                                  //     );
-                                                  // }
+                                                      //   if (RequestSection.title == "Section visite") {
+                                                      //     context
+                                                      //   .read<
+                                                      //     RapportCelluleSectionAssistanceBloc
+                                                      //   >()
+                                                      //   .add(
+                                                      //     RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
+                                                      //       RequestHumaneSectionAssistance(
+                                                      //         title: RequestSection.title,
+                                                      //         name: item.name,
+                                                      //         cout: item.count,
+                                                      //       ),
+                                                      //     ),
+                                                      //   );
+                                                      // }
+
+                                                      //   if (RequestSection.title == "Section Activités") {
+                                                      //     context
+                                                      //   .read<
+                                                      //     RapportCelluleSectionAssistanceBloc
+                                                      //   >()
+                                                      //   .add(
+                                                      //     RapportCelluleRequestSectionAssistanceEvent.changeSectionActivite(
+                                                      //       RequestHumaneSectionAssistance(
+                                                      //         title: RequestSection.title,
+                                                      //         name: item.name,
+                                                      //         cout: item.count,
+                                                      //       ),
+                                                      //     ),
+                                                      //   );
+                                                      // }
+
+                                                      // if (RequestSection.title == "Section Ouvriers") {
+                                                      //   context
+                                                      //     .read<
+                                                      //       RapportCelluleSectionAssistanceBloc
+                                                      //     >()
+                                                      //     .add(
+                                                      //       RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(
+                                                      //         RequestHumaneSectionAssistance(
+                                                      //           title: RequestSection.title,
+                                                      //           name: item.name,
+                                                      //           cout: item.count,
+                                                      //         ),
+                                                      //       ),
+                                                      //     );
+                                                      // }
+                                                      // if (RequestSection.title == "Autres") {
+                                                      //   context
+                                                      //     .read<
+                                                      //       RapportCelluleSectionAssistanceBloc
+                                                      //     >()
+                                                      //     .add(
+                                                      //       RapportCelluleRequestSectionAssistanceEvent.changeAutres(
+                                                      //         RequestHumaneSectionAssistance(
+                                                      //           title: RequestSection.title,
+                                                      //           name: item.name,
+                                                      //           cout: item.count,
+                                                      //         ),
+                                                      //       ),
+                                                      //     );
+                                                      // }
+                                                    },
+                                                  );
                                                 },
                                               ),
                                             ],
@@ -1132,11 +761,18 @@ class _FormStatisticState extends State<FormStatistic> {
                   },
                 ),
                 SizedBox(height: 9.h),
-                FormNextTeps(
-                  icons: Icons.work_outline,
-                  title: 'Activité ',
-                  description: 'Activité de la cellule ',
-                  isNextForm: false,
+                BlocBuilder<
+                  RapportCelluleSectionAssistanceBloc,
+                  RapportCelluleRequestSectionAssistanceState
+                >(
+                  builder: (context, state) {
+                    return FormNextTeps(
+                      icons: Icons.work_outline,
+                      title: 'Activité ',
+                      description: 'Activité de la cellule ',
+                      isNextForm: state.isValide,
+                    );
+                  },
                 ),
 
                 BlocBuilder<
@@ -1149,27 +785,30 @@ class _FormStatisticState extends State<FormStatistic> {
                       child: PrimaryButton(
                         label: 'Suivant',
                         colorText: context.appColor.primaryWhite,
+                        isLoading: state.isValide,
                         onPressed: () {
-                          // context.read<RapportCelluleSectionAssistanceBloc>().add(
-                          //   RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
-                          //     widget.id,
-                          //   ),
-                          // );
-
-                          // context.read<RapportCelluleSectionAssistanceBloc>().add(
-                          //   RapportCelluleRequestSectionAssistanceEvent.submit(),
-                          // );
-                          Navigator.push(
-                            context,
-                            fadeRoute(
-                              BlocProvider(
-                                create: (context) => FormActiviteBloc(
-                                  getIt<SendRapportCelluleStepAssistantUsercase>(),
-                                ),
-                                child: FormActivite(),
-                              ),
+                          context.read<RapportCelluleSectionAssistanceBloc>().add(
+                            RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
+                              widget.id,
                             ),
                           );
+
+                          context.read<RapportCelluleSectionAssistanceBloc>().add(
+                            RapportCelluleRequestSectionAssistanceEvent.submit(),
+                          );
+                          // Navigator.push(
+                          //   context,
+                          //   fadeRoute(
+                          //     BlocProvider(
+                          //       create: (context) => FormActiviteBloc(
+                          //         getIt<
+                          //           SendRapportCelluleStepAssistantUsercase
+                          //         >(),
+                          //       ),
+                          //       child: FormActivite(),
+                          //     ),
+                          //   ),
+                          // );
                         },
                       ),
                     );
@@ -1188,7 +827,6 @@ class _FormStatisticState extends State<FormStatistic> {
 class RequestItemRequestSection {
   final String name;
   int count;
-
   RequestItemRequestSection({required this.name, this.count = 0});
 }
 
@@ -1227,43 +865,60 @@ final RequestSections = [
 ];
 
 final RequestSections2 = [
-  RequestSection(
-    title: "Formation ",
-    items: [
+  RequestAutherInformationSource(
+    title: "Formation",
+    sections: [
       // RequestItemRequestSection(name: "Décisionnaires"),
-      RequestItemRequestSection(name: "Nouv. En Formation DFNC"),
-      RequestItemRequestSection(name: "Nouv. Bapt. En Formation DFD"),
-      RequestItemRequestSection(name: "En formation niveau 2"),
+      RequestAuherInformation(libelle: "Nouv. En Formation DFNC", count: 0),
+      RequestAuherInformation(
+        libelle: "Nouv. Bapt. En Formation DFD",
+        count: 0,
+      ),
+      RequestAuherInformation(libelle: "En formation niveau 2", count: 0),
     ],
   ),
-  RequestSection(
+  RequestAutherInformationSource(
     title: "Section visite",
-    items: [
-      RequestItemRequestSection(name: "Visites faites aux membres"),
-      RequestItemRequestSection(name: "Visites faites aux disciples"),
+    sections: [
+      RequestAuherInformation(libelle: "Visites faites aux membres", count: 0),
+      RequestAuherInformation(
+        libelle: "Visites faites aux disciples",
+        count: 0,
+      ),
     ],
   ),
 
-  RequestSection(
+  RequestAutherInformationSource(
     title: "Section Activités",
-    items: [
-      RequestItemRequestSection(name: "Nbre de travailleurs"),
-      RequestItemRequestSection(name: "Nbre d’élèves et étudiants"),
+    sections: [
+      RequestAuherInformation(libelle: "Nbre de travailleurs", count: 0),
+      RequestAuherInformation(libelle: "Nbre d’élèves et étudiants", count: 0),
     ],
   ),
 
-  RequestSection(
+  RequestAutherInformationSource(
     title: "Section Ouvriers",
-    items: [
-      RequestItemRequestSection(name: "Nbre d’ouvrier E.M"),
-      RequestItemRequestSection(name: "Ouv. Autre dépt dirigeant E.M"),
+    sections: [
+      RequestAuherInformation(libelle: "Nbre d’ouvrier E.M", count: 0),
+      RequestAuherInformation(
+        libelle: "Ouv. Autre dépt dirigeant E.M",
+        count: 0,
+      ),
     ],
   ),
-  RequestSection(
+  RequestAutherInformationSource(
     title: "Autres",
-    items: [
-      RequestItemRequestSection(name: "Agenda de l’EM (Oui ou Non)"),
-      RequestItemRequestSection(name: "Décisionnaires"),
+    sections: [
+      RequestAuherInformation(libelle: "Agenda de l’EM (Oui ou Non)", count: 0),
+      RequestAuherInformation(libelle: "Décisionnaires", count: 0),
     ],
   ),
 ];
+
+
+// final requestSection = [
+//   RequestHumaneSectionAssistance( libelle: "Nouv. En Formation DFNC",),
+//   RequestHumaneSectionAssistance( libelle: "Formation",),
+//   RequestHumaneSectionAssistance( libelle: "Formation",),
+//   RequestHumaneSectionAssistance( libelle: "Formation",),
+// ]

@@ -29,6 +29,7 @@ abstract class HomeDomaineRepository {
   Future<Either<Failure, String>> sendRapportCelluleStepAdministration(RequestRapportCelluleAdministration params);
   Future<Either<Failure, String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params);
   Future<Either<Failure, String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params);
+  Future<Either<Failure, String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params);
 
   Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params);
 }
