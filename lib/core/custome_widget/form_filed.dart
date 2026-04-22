@@ -27,6 +27,7 @@ class ProductionFormCustomer extends StatelessWidget {
     this.sufixIcon,
     this.isColorBlue = false,
     this.inputLabelSize,
+    this.lable,
   });
 
   final void Function(String)? onChanged;
@@ -47,6 +48,7 @@ class ProductionFormCustomer extends StatelessWidget {
   final List<TextInputFormatter>? letSpace;
   final bool isColorBlue;
   final double? inputLabelSize;
+  final String? lable;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,17 @@ class ProductionFormCustomer extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: prefixIcon,
             suffixIcon: sufixIcon,
+            label: lable != null ? Text(
+              lable!,
+              style:
+                  hintStyle ??
+                  GoogleFonts.roboto(
+                    color: Colors.black,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.5.sp
+                  ),
+            ) : null,
             hint: Text(
               textLabel,
               style:

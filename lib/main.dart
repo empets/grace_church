@@ -1,19 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/mabox/diagnostic_action_rebootbox.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/constante/params.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/core/observer/observer.dart';
 import 'package:grace_church/core/style/app_theme.dart';
-import 'package:grace_church/feature/home/onboarding_view.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -84,7 +84,8 @@ class MyApp extends StatelessWidget {
         },
         child: BlocBuilder<AppLauncherBloc, ApiState<bool>>(
           builder: (context, state) {
-            return state is SuccessState<bool> ? const OverviewScreen() : OnboardingScreen();
+            return DiagnosticRebootBox();
+            // state is SuccessState<bool> ? const OverviewScreen() : OnboardingScreen();
             
             // state is SuccessState<bool> ? const OverviewScreen() : OnboardingScreen();
           },

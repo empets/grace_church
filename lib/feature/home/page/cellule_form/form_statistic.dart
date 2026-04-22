@@ -1,36 +1,22 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
-import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
-import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
 
-// enum SectionType { nonBaptise,formation, nouveaux, inviter }
-enum StatisticEvent {
-  ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent,
-  ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent,
-  ChangeInviterRapportCelluleRequestSectionAssistanceEvent,
-}
+
 
 class FormStatistic extends StatefulWidget {
   final String id;
@@ -41,68 +27,7 @@ class FormStatistic extends StatefulWidget {
 }
 
 class _FormStatisticState extends State<FormStatistic> {
-  // void _updateDisciple2({
-  //   required String requestSection,
-  //   required BuildContext context,
-  //   required int index,
-  //   required RapportCelluleRequestSectionAssistanceState state,
-  //   String? libelle,
-  //   String? toutPetit,
-  //   String? juniors,
-  //   String? cadets,
-  //   int? total,
-  // }) {
-  //   final bloc = context.read<RapportCelluleSectionAssistanceBloc>();
 
-  //   List<RequestHumaneSectionAssistance> list;
-  //   // SectionType sectionType;
-
-  //   switch (requestSection) {
-  //     case "Formation":
-  //       list = List.from(state.formation);
-  //       // sectionType = SectionType.formation;
-  //       break;
-
-  //     case "Section visite":
-  //       list = List.from(state.sectionVisite);
-  //       // sectionType = SectionType.; // ✅ FIX
-  //       break;
-
-  //     default:
-  //       return;
-  //   }
-
-  //   /// 🔥 Assure la taille
-  //   if (list.length <= index) {
-  //     list.addAll(List.generate(
-  //       index - list.length + 1,
-  //       (_) => RequestHumaneSectionAssistance(
-  //         libelle: '',
-  //         toutPetit: '',
-  //         juniors: '',
-  //         cadets: '',
-  //         total: 0,
-  //       ),
-  //     ));
-  //   }
-
-  //   /// 🔥 Update index
-  //   list[index] = list[index].copyWith(
-  //     libelle: libelle ?? list[index].libelle,
-  //     toutPetit: toutPetit ?? list[index].toutPetit,
-  //     juniors: juniors ?? list[index].juniors,
-  //     cadets: cadets ?? list[index].cadets,
-  //     total: total ?? list[index].total,
-  //   );
-
-  //   /// ✅ UTILISE LE BON EVENT
-  //   bloc.add(
-  //     RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
-
-  //       list,
-  //     ),
-  //   );
-  // }
 
   void _updateDisciple2({
     required String requestSection,
@@ -122,7 +47,6 @@ class _FormStatisticState extends State<FormStatistic> {
       case "Formation":
         bloc.add(
           RapportCelluleRequestSectionAssistanceEvent.changeFormation(
-            // SectionType.formation,
             list,
           ),
         );
@@ -131,7 +55,6 @@ class _FormStatisticState extends State<FormStatistic> {
       case "Section visite":
         bloc.add(
           RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
-            // SectionType.sectionVisite,
             list,
           ),
         );
@@ -536,84 +459,7 @@ class _FormStatisticState extends State<FormStatistic> {
                                                         count: item.count - 1,
                                                       );
                                                   });
-                                                  // if (RequestSection.title == "Formation") {
-                                                  //     context
-                                                  //   .read<
-                                                  //     RapportCelluleSectionAssistanceBloc
-                                                  //   >()
-                                                  //   .add(
-                                                  //     RapportCelluleRequestSectionAssistanceEvent.changeFormation(
-                                                  //       RequestHumaneSectionAssistance(
-                                                  //         title: RequestSection.title,
-                                                  //         name: item.name,
-                                                  //         cout: item.count,
-                                                  //       ),
-                                                  //     ),
-                                                  //   );
-                                                  // }
-
-                                                  //   if (RequestSection.title == "Section visite") {
-                                                  //     context
-                                                  //   .read<
-                                                  //     RapportCelluleSectionAssistanceBloc
-                                                  //   >()
-                                                  //   .add(
-                                                  //     RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
-                                                  //       RequestHumaneSectionAssistance(
-                                                  //         title: RequestSection.title,
-                                                  //         name: item.name,
-                                                  //         cout: item.count,
-                                                  //       ),
-                                                  //     ),
-                                                  //   );
-                                                  // }
-
-                                                  //   if (RequestSection.title == "Section Activités") {
-                                                  //     context
-                                                  //   .read<
-                                                  //     RapportCelluleSectionAssistanceBloc
-                                                  //   >()
-                                                  //   .add(
-                                                  //     RapportCelluleRequestSectionAssistanceEvent.changeSectionActivite(
-                                                  //       RequestHumaneSectionAssistance(
-                                                  //         title: RequestSection.title,
-                                                  //         name: item.name,
-                                                  //         cout: item.count,
-                                                  //       ),
-                                                  //     ),
-                                                  //   );
-                                                  // }
-
-                                                  // if (RequestSection.title == "Section Ouvriers") {
-                                                  //   context
-                                                  //     .read<
-                                                  //       RapportCelluleSectionAssistanceBloc
-                                                  //     >()
-                                                  //     .add(
-                                                  //       RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(
-                                                  //         RequestHumaneSectionAssistance(
-                                                  //           title: RequestSection.title,
-                                                  //           name: item.name,
-                                                  //           cout: item.count,
-                                                  //         ),
-                                                  //       ),
-                                                  //     );
-                                                  // }
-                                                  // if (RequestSection.title == "Autres") {
-                                                  //   context
-                                                  //     .read<
-                                                  //       RapportCelluleSectionAssistanceBloc
-                                                  //     >()
-                                                  //     .add(
-                                                  //       RapportCelluleRequestSectionAssistanceEvent.changeAutres(
-                                                  //         RequestHumaneSectionAssistance(
-                                                  //           title: RequestSection.title,
-                                                  //           name: item.name,
-                                                  //           cout: item.count,
-                                                  //         ),
-                                                  //       ),
-                                                  //     );
-                                                  // }
+                                              
                                                 },
                                               ),
 
@@ -649,98 +495,11 @@ class _FormStatisticState extends State<FormStatistic> {
                                                         items: [
                                                           requestSection,
 
-                                                          // ...requestSection.items.map((x) {
-                                                          //   if (x.name == item.name) {
-                                                          //     return RequestHumaneSectionAssistance(
-                                                          //       libelle: requestSection.title,
-                                                          //       toutPetit: item.name,
-                                                          //       juniors: item.name,
-                                                          //       cadets: item.name,
-                                                          //     );
-                                                          //   }
-                                                          //   return x;
-                                                          // })
+                                                        
                                                         ],
                                                       );
 
-                                                      //  if (RequestSection.title == "Formation") {
-                                                      //     context
-                                                      //   .read<
-                                                      //     RapportCelluleSectionAssistanceBloc
-                                                      //   >()
-                                                      //   .add(
-                                                      //     RapportCelluleRequestSectionAssistanceEvent.changeFormation(
-                                                      //       RequestHumaneSectionAssistance(
-                                                      //         title: RequestSection.title,
-                                                      //         name: item.name,
-                                                      //         cout: item.count,
-                                                      //       ),
-                                                      //     ),
-                                                      //   );
-                                                      // }
-
-                                                      //   if (RequestSection.title == "Section visite") {
-                                                      //     context
-                                                      //   .read<
-                                                      //     RapportCelluleSectionAssistanceBloc
-                                                      //   >()
-                                                      //   .add(
-                                                      //     RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
-                                                      //       RequestHumaneSectionAssistance(
-                                                      //         title: RequestSection.title,
-                                                      //         name: item.name,
-                                                      //         cout: item.count,
-                                                      //       ),
-                                                      //     ),
-                                                      //   );
-                                                      // }
-
-                                                      //   if (RequestSection.title == "Section Activités") {
-                                                      //     context
-                                                      //   .read<
-                                                      //     RapportCelluleSectionAssistanceBloc
-                                                      //   >()
-                                                      //   .add(
-                                                      //     RapportCelluleRequestSectionAssistanceEvent.changeSectionActivite(
-                                                      //       RequestHumaneSectionAssistance(
-                                                      //         title: RequestSection.title,
-                                                      //         name: item.name,
-                                                      //         cout: item.count,
-                                                      //       ),
-                                                      //     ),
-                                                      //   );
-                                                      // }
-
-                                                      // if (RequestSection.title == "Section Ouvriers") {
-                                                      //   context
-                                                      //     .read<
-                                                      //       RapportCelluleSectionAssistanceBloc
-                                                      //     >()
-                                                      //     .add(
-                                                      //       RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(
-                                                      //         RequestHumaneSectionAssistance(
-                                                      //           title: RequestSection.title,
-                                                      //           name: item.name,
-                                                      //           cout: item.count,
-                                                      //         ),
-                                                      //       ),
-                                                      //     );
-                                                      // }
-                                                      // if (RequestSection.title == "Autres") {
-                                                      //   context
-                                                      //     .read<
-                                                      //       RapportCelluleSectionAssistanceBloc
-                                                      //     >()
-                                                      //     .add(
-                                                      //       RapportCelluleRequestSectionAssistanceEvent.changeAutres(
-                                                      //         RequestHumaneSectionAssistance(
-                                                      //           title: RequestSection.title,
-                                                      //           name: item.name,
-                                                      //           cout: item.count,
-                                                      //         ),
-                                                      //       ),
-                                                      //     );
-                                                      // }
+                                                     
                                                     },
                                                   );
                                                 },
@@ -916,9 +675,3 @@ final RequestSections2 = [
 ];
 
 
-// final requestSection = [
-//   RequestHumaneSectionAssistance( libelle: "Nouv. En Formation DFNC",),
-//   RequestHumaneSectionAssistance( libelle: "Formation",),
-//   RequestHumaneSectionAssistance( libelle: "Formation",),
-//   RequestHumaneSectionAssistance( libelle: "Formation",),
-// ]

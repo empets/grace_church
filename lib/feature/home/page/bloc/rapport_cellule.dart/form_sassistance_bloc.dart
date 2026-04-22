@@ -7,7 +7,6 @@ import 'package:grace_church/feature/home/domaine/entities/request/home_request.
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RapportCelluleSectionAssistanceBloc
     extends
