@@ -37,6 +37,7 @@ abstract class RequestCellule with _$RequestCellule {
     double? longitude,
     String? adresse,
     String? celluleId,
+    String? responsableId,
   }) = _RequestCellule;
   factory RequestCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestCelluleFromJson(json);
@@ -46,6 +47,7 @@ abstract class RequestCellule with _$RequestCellule {
 abstract class RequestReponsableCellule with _$RequestReponsableCellule {
   factory RequestReponsableCellule({
     String? celluleResponsableName,
+    String? reponsableId,
     String? celluleCode,
     String? date,
     String? celluleName,
@@ -97,7 +99,7 @@ abstract class RequestReponsableZone with _$RequestReponsableZone {
 @freezed
 abstract class RequestAuthenProfileUpdateZone
     with _$RequestAuthenProfileUpdateZone {
-  factory RequestAuthenProfileUpdateZone({required String secteurId}) =
+  factory RequestAuthenProfileUpdateZone({required String responsableCelluleId}) =
       // secteurId
       _RequestAuthenProfileUpdateZone;
 
@@ -113,6 +115,7 @@ abstract class RequestRapportCelluleAdministration
     required String fullNameRespoZone,
     required String contactRespoZone,
     required String codeSecteur,
+    required String responsableCelluleId,
     required String fullNameRespoSecteur,
     required String contactRespoSecteur,
     required String codeCellule,

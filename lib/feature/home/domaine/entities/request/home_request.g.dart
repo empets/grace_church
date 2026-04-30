@@ -40,6 +40,7 @@ _RequestCellule _$RequestCelluleFromJson(Map<String, dynamic> json) =>
       longitude: (json['longitude'] as num?)?.toDouble(),
       adresse: json['adresse'] as String?,
       celluleId: json['celluleId'] as String?,
+      responsableId: json['responsableId'] as String?,
     );
 
 Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
@@ -53,12 +54,14 @@ Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
       'longitude': instance.longitude,
       'adresse': instance.adresse,
       'celluleId': instance.celluleId,
+      'responsableId': instance.responsableId,
     };
 
 _RequestReponsableCellule _$RequestReponsableCelluleFromJson(
   Map<String, dynamic> json,
 ) => _RequestReponsableCellule(
   celluleResponsableName: json['celluleResponsableName'] as String?,
+  reponsableId: json['reponsableId'] as String?,
   celluleCode: json['celluleCode'] as String?,
   date: json['date'] as String?,
   celluleName: json['celluleName'] as String?,
@@ -74,6 +77,7 @@ Map<String, dynamic> _$RequestReponsableCelluleToJson(
   _RequestReponsableCellule instance,
 ) => <String, dynamic>{
   'celluleResponsableName': instance.celluleResponsableName,
+  'reponsableId': instance.reponsableId,
   'celluleCode': instance.celluleCode,
   'date': instance.date,
   'celluleName': instance.celluleName,
@@ -143,11 +147,13 @@ Map<String, dynamic> _$RequestReponsableZoneToJson(
 
 _RequestAuthenProfileUpdateZone _$RequestAuthenProfileUpdateZoneFromJson(
   Map<String, dynamic> json,
-) => _RequestAuthenProfileUpdateZone(secteurId: json['secteurId'] as String);
+) => _RequestAuthenProfileUpdateZone(
+  responsableCelluleId: json['responsableCelluleId'] as String,
+);
 
 Map<String, dynamic> _$RequestAuthenProfileUpdateZoneToJson(
   _RequestAuthenProfileUpdateZone instance,
-) => <String, dynamic>{'secteurId': instance.secteurId};
+) => <String, dynamic>{'responsableCelluleId': instance.responsableCelluleId};
 
 _RequestRapportCelluleAdministration
 _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
@@ -156,6 +162,7 @@ _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
       fullNameRespoZone: json['fullNameRespoZone'] as String,
       contactRespoZone: json['contactRespoZone'] as String,
       codeSecteur: json['codeSecteur'] as String,
+      responsableCelluleId: json['responsableCelluleId'] as String,
       fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
       contactRespoSecteur: json['contactRespoSecteur'] as String,
       codeCellule: json['codeCellule'] as String,
@@ -181,6 +188,7 @@ Map<String, dynamic> _$RequestRapportCelluleAdministrationToJson(
   'fullNameRespoZone': instance.fullNameRespoZone,
   'contactRespoZone': instance.contactRespoZone,
   'codeSecteur': instance.codeSecteur,
+  'responsableCelluleId': instance.responsableCelluleId,
   'fullNameRespoSecteur': instance.fullNameRespoSecteur,
   'contactRespoSecteur': instance.contactRespoSecteur,
   'codeCellule': instance.codeCellule,

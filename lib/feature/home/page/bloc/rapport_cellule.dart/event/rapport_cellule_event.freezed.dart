@@ -55,7 +55,7 @@ extension RapportCelluleRequestSectionAdministrationEventPatterns on RapportCell
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeZone,TResult Function( ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoZone,TResult Function( ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoZone,TResult Function( ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeSecteur,TResult Function( ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoSecteur,TResult Function( ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoSecteur,TResult Function( ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeCellule,TResult Function( ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoCellule,TResult Function( ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoCellule,TResult Function( ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeJourCellule,TResult Function( ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent value)?  changeOffrande,TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreBaptiser,TResult Function( ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreNonBaptiser,TResult Function( ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreListDicipleCellule,TResult Function( SubmitRapportCelluleRequestSectionAdministrationEvent value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeZone,TResult Function( ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoZone,TResult Function( ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoZone,TResult Function( ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeSecteur,TResult Function( ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoSecteur,TResult Function( ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoSecteur,TResult Function( ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent value)?  changeReponsableCelluleId,TResult Function( ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeCellule,TResult Function( ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoCellule,TResult Function( ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoCellule,TResult Function( ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeJourCellule,TResult Function( ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent value)?  changeOffrande,TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreBaptiser,TResult Function( ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreNonBaptiser,TResult Function( ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreListDicipleCellule,TResult Function( SubmitRapportCelluleRequestSectionAdministrationEvent value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent() when changeCodeZone != null:
@@ -64,7 +64,8 @@ return changeFullNameRespoZone(_that);case ChangeContactRespoZoneRapportCelluleR
 return changeContactRespoZone(_that);case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent() when changeCodeSecteur != null:
 return changeCodeSecteur(_that);case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoSecteur != null:
 return changeFullNameRespoSecteur(_that);case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoSecteur != null:
-return changeContactRespoSecteur(_that);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
+return changeContactRespoSecteur(_that);case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent() when changeReponsableCelluleId != null:
+return changeReponsableCelluleId(_that);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
 return changeCodeCellule(_that);case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoCellule != null:
 return changeFullNameRespoCellule(_that);case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoCellule != null:
 return changeContactRespoCellule(_that);case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent() when changeJourCellule != null:
@@ -91,7 +92,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent value)  changeCodeZone,required TResult Function( ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent value)  changeFullNameRespoZone,required TResult Function( ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent value)  changeContactRespoZone,required TResult Function( ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent value)  changeCodeSecteur,required TResult Function( ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)  changeFullNameRespoSecteur,required TResult Function( ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)  changeContactRespoSecteur,required TResult Function( ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeCodeCellule,required TResult Function( ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeFullNameRespoCellule,required TResult Function( ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeContactRespoCellule,required TResult Function( ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeJourCellule,required TResult Function( ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent value)  changeOffrande,required TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent value)  changeNombreBaptiser,required TResult Function( ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent value)  changeNombreNonBaptiser,required TResult Function( ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeNombreListDicipleCellule,required TResult Function( SubmitRapportCelluleRequestSectionAdministrationEvent value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent value)  changeCodeZone,required TResult Function( ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent value)  changeFullNameRespoZone,required TResult Function( ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent value)  changeContactRespoZone,required TResult Function( ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent value)  changeCodeSecteur,required TResult Function( ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)  changeFullNameRespoSecteur,required TResult Function( ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)  changeContactRespoSecteur,required TResult Function( ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent value)  changeReponsableCelluleId,required TResult Function( ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeCodeCellule,required TResult Function( ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeFullNameRespoCellule,required TResult Function( ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeContactRespoCellule,required TResult Function( ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeJourCellule,required TResult Function( ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent value)  changeOffrande,required TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent value)  changeNombreBaptiser,required TResult Function( ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent value)  changeNombreNonBaptiser,required TResult Function( ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent value)  changeNombreListDicipleCellule,required TResult Function( SubmitRapportCelluleRequestSectionAdministrationEvent value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent():
@@ -100,7 +101,8 @@ return changeFullNameRespoZone(_that);case ChangeContactRespoZoneRapportCelluleR
 return changeContactRespoZone(_that);case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent():
 return changeCodeSecteur(_that);case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent():
 return changeFullNameRespoSecteur(_that);case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent():
-return changeContactRespoSecteur(_that);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent():
+return changeContactRespoSecteur(_that);case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent():
+return changeReponsableCelluleId(_that);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent():
 return changeCodeCellule(_that);case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent():
 return changeFullNameRespoCellule(_that);case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent():
 return changeContactRespoCellule(_that);case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent():
@@ -126,7 +128,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeZone,TResult? Function( ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoZone,TResult? Function( ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoZone,TResult? Function( ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeSecteur,TResult? Function( ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoSecteur,TResult? Function( ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoSecteur,TResult? Function( ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeCellule,TResult? Function( ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoCellule,TResult? Function( ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoCellule,TResult? Function( ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeJourCellule,TResult? Function( ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent value)?  changeOffrande,TResult? Function( ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreBaptiser,TResult? Function( ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreNonBaptiser,TResult? Function( ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreListDicipleCellule,TResult? Function( SubmitRapportCelluleRequestSectionAdministrationEvent value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeZone,TResult? Function( ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoZone,TResult? Function( ChangeContactRespoZoneRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoZone,TResult? Function( ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeSecteur,TResult? Function( ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoSecteur,TResult? Function( ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoSecteur,TResult? Function( ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent value)?  changeReponsableCelluleId,TResult? Function( ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeCodeCellule,TResult? Function( ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeFullNameRespoCellule,TResult? Function( ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeContactRespoCellule,TResult? Function( ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeJourCellule,TResult? Function( ChangeOffrandeRapportCelluleRequestSectionAdministrationEvent value)?  changeOffrande,TResult? Function( ChangeNombreBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreBaptiser,TResult? Function( ChangeNombreNonBaptiserRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreNonBaptiser,TResult? Function( ChangeNombreListDicipleCelluleRapportCelluleRequestSectionAdministrationEvent value)?  changeNombreListDicipleCellule,TResult? Function( SubmitRapportCelluleRequestSectionAdministrationEvent value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent() when changeCodeZone != null:
@@ -135,7 +137,8 @@ return changeFullNameRespoZone(_that);case ChangeContactRespoZoneRapportCelluleR
 return changeContactRespoZone(_that);case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent() when changeCodeSecteur != null:
 return changeCodeSecteur(_that);case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoSecteur != null:
 return changeFullNameRespoSecteur(_that);case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoSecteur != null:
-return changeContactRespoSecteur(_that);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
+return changeContactRespoSecteur(_that);case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent() when changeReponsableCelluleId != null:
+return changeReponsableCelluleId(_that);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
 return changeCodeCellule(_that);case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoCellule != null:
 return changeFullNameRespoCellule(_that);case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoCellule != null:
 return changeContactRespoCellule(_that);case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent() when changeJourCellule != null:
@@ -161,7 +164,7 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String codeZone)?  changeCodeZone,TResult Function( String fullNameRespoZone)?  changeFullNameRespoZone,TResult Function( String contactRespoZone)?  changeContactRespoZone,TResult Function( String codeSecteur)?  changeCodeSecteur,TResult Function( String fullNameRespoSecteur)?  changeFullNameRespoSecteur,TResult Function( String contactRespoSecteur)?  changeContactRespoSecteur,TResult Function( String codeCellule)?  changeCodeCellule,TResult Function( String fullNameRespoCellule)?  changeFullNameRespoCellule,TResult Function( String contactRespoCellule)?  changeContactRespoCellule,TResult Function( String jourCellule)?  changeJourCellule,TResult Function( String offrande)?  changeOffrande,TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String nombreNonBaptiser)?  changeNombreNonBaptiser,TResult Function( List<DiscipleCellule> discipleCelluleResponse)?  changeNombreListDicipleCellule,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String codeZone)?  changeCodeZone,TResult Function( String fullNameRespoZone)?  changeFullNameRespoZone,TResult Function( String contactRespoZone)?  changeContactRespoZone,TResult Function( String codeSecteur)?  changeCodeSecteur,TResult Function( String fullNameRespoSecteur)?  changeFullNameRespoSecteur,TResult Function( String contactRespoSecteur)?  changeContactRespoSecteur,TResult Function( String reponsableCelluleId)?  changeReponsableCelluleId,TResult Function( String codeCellule)?  changeCodeCellule,TResult Function( String fullNameRespoCellule)?  changeFullNameRespoCellule,TResult Function( String contactRespoCellule)?  changeContactRespoCellule,TResult Function( String jourCellule)?  changeJourCellule,TResult Function( String offrande)?  changeOffrande,TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String nombreNonBaptiser)?  changeNombreNonBaptiser,TResult Function( List<DiscipleCellule> discipleCelluleResponse)?  changeNombreListDicipleCellule,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent() when changeCodeZone != null:
 return changeCodeZone(_that.codeZone);case ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoZone != null:
@@ -169,7 +172,8 @@ return changeFullNameRespoZone(_that.fullNameRespoZone);case ChangeContactRespoZ
 return changeContactRespoZone(_that.contactRespoZone);case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent() when changeCodeSecteur != null:
 return changeCodeSecteur(_that.codeSecteur);case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoSecteur != null:
 return changeFullNameRespoSecteur(_that.fullNameRespoSecteur);case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoSecteur != null:
-return changeContactRespoSecteur(_that.contactRespoSecteur);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
+return changeContactRespoSecteur(_that.contactRespoSecteur);case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent() when changeReponsableCelluleId != null:
+return changeReponsableCelluleId(_that.reponsableCelluleId);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
 return changeCodeCellule(_that.codeCellule);case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoCellule != null:
 return changeFullNameRespoCellule(_that.fullNameRespoCellule);case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoCellule != null:
 return changeContactRespoCellule(_that.contactRespoCellule);case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent() when changeJourCellule != null:
@@ -196,7 +200,7 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String codeZone)  changeCodeZone,required TResult Function( String fullNameRespoZone)  changeFullNameRespoZone,required TResult Function( String contactRespoZone)  changeContactRespoZone,required TResult Function( String codeSecteur)  changeCodeSecteur,required TResult Function( String fullNameRespoSecteur)  changeFullNameRespoSecteur,required TResult Function( String contactRespoSecteur)  changeContactRespoSecteur,required TResult Function( String codeCellule)  changeCodeCellule,required TResult Function( String fullNameRespoCellule)  changeFullNameRespoCellule,required TResult Function( String contactRespoCellule)  changeContactRespoCellule,required TResult Function( String jourCellule)  changeJourCellule,required TResult Function( String offrande)  changeOffrande,required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String nombreNonBaptiser)  changeNombreNonBaptiser,required TResult Function( List<DiscipleCellule> discipleCelluleResponse)  changeNombreListDicipleCellule,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String codeZone)  changeCodeZone,required TResult Function( String fullNameRespoZone)  changeFullNameRespoZone,required TResult Function( String contactRespoZone)  changeContactRespoZone,required TResult Function( String codeSecteur)  changeCodeSecteur,required TResult Function( String fullNameRespoSecteur)  changeFullNameRespoSecteur,required TResult Function( String contactRespoSecteur)  changeContactRespoSecteur,required TResult Function( String reponsableCelluleId)  changeReponsableCelluleId,required TResult Function( String codeCellule)  changeCodeCellule,required TResult Function( String fullNameRespoCellule)  changeFullNameRespoCellule,required TResult Function( String contactRespoCellule)  changeContactRespoCellule,required TResult Function( String jourCellule)  changeJourCellule,required TResult Function( String offrande)  changeOffrande,required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String nombreNonBaptiser)  changeNombreNonBaptiser,required TResult Function( List<DiscipleCellule> discipleCelluleResponse)  changeNombreListDicipleCellule,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent():
 return changeCodeZone(_that.codeZone);case ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent():
@@ -204,7 +208,8 @@ return changeFullNameRespoZone(_that.fullNameRespoZone);case ChangeContactRespoZ
 return changeContactRespoZone(_that.contactRespoZone);case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent():
 return changeCodeSecteur(_that.codeSecteur);case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent():
 return changeFullNameRespoSecteur(_that.fullNameRespoSecteur);case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent():
-return changeContactRespoSecteur(_that.contactRespoSecteur);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent():
+return changeContactRespoSecteur(_that.contactRespoSecteur);case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent():
+return changeReponsableCelluleId(_that.reponsableCelluleId);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent():
 return changeCodeCellule(_that.codeCellule);case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent():
 return changeFullNameRespoCellule(_that.fullNameRespoCellule);case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent():
 return changeContactRespoCellule(_that.contactRespoCellule);case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent():
@@ -230,7 +235,7 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String codeZone)?  changeCodeZone,TResult? Function( String fullNameRespoZone)?  changeFullNameRespoZone,TResult? Function( String contactRespoZone)?  changeContactRespoZone,TResult? Function( String codeSecteur)?  changeCodeSecteur,TResult? Function( String fullNameRespoSecteur)?  changeFullNameRespoSecteur,TResult? Function( String contactRespoSecteur)?  changeContactRespoSecteur,TResult? Function( String codeCellule)?  changeCodeCellule,TResult? Function( String fullNameRespoCellule)?  changeFullNameRespoCellule,TResult? Function( String contactRespoCellule)?  changeContactRespoCellule,TResult? Function( String jourCellule)?  changeJourCellule,TResult? Function( String offrande)?  changeOffrande,TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String nombreNonBaptiser)?  changeNombreNonBaptiser,TResult? Function( List<DiscipleCellule> discipleCelluleResponse)?  changeNombreListDicipleCellule,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String codeZone)?  changeCodeZone,TResult? Function( String fullNameRespoZone)?  changeFullNameRespoZone,TResult? Function( String contactRespoZone)?  changeContactRespoZone,TResult? Function( String codeSecteur)?  changeCodeSecteur,TResult? Function( String fullNameRespoSecteur)?  changeFullNameRespoSecteur,TResult? Function( String contactRespoSecteur)?  changeContactRespoSecteur,TResult? Function( String reponsableCelluleId)?  changeReponsableCelluleId,TResult? Function( String codeCellule)?  changeCodeCellule,TResult? Function( String fullNameRespoCellule)?  changeFullNameRespoCellule,TResult? Function( String contactRespoCellule)?  changeContactRespoCellule,TResult? Function( String jourCellule)?  changeJourCellule,TResult? Function( String offrande)?  changeOffrande,TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String nombreNonBaptiser)?  changeNombreNonBaptiser,TResult? Function( List<DiscipleCellule> discipleCelluleResponse)?  changeNombreListDicipleCellule,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeCodeZoneRapportCelluleRequestSectionAdministrationEvent() when changeCodeZone != null:
 return changeCodeZone(_that.codeZone);case ChangeFullNameRespoZoneRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoZone != null:
@@ -238,7 +243,8 @@ return changeFullNameRespoZone(_that.fullNameRespoZone);case ChangeContactRespoZ
 return changeContactRespoZone(_that.contactRespoZone);case ChangeCodeSecteurRapportCelluleRequestSectionAdministrationEvent() when changeCodeSecteur != null:
 return changeCodeSecteur(_that.codeSecteur);case ChangeFullNameRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoSecteur != null:
 return changeFullNameRespoSecteur(_that.fullNameRespoSecteur);case ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoSecteur != null:
-return changeContactRespoSecteur(_that.contactRespoSecteur);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
+return changeContactRespoSecteur(_that.contactRespoSecteur);case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent() when changeReponsableCelluleId != null:
+return changeReponsableCelluleId(_that.reponsableCelluleId);case ChangeCodeCelluleRapportCelluleRequestSectionAdministrationEvent() when changeCodeCellule != null:
 return changeCodeCellule(_that.codeCellule);case ChangeFullNameRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeFullNameRespoCellule != null:
 return changeFullNameRespoCellule(_that.fullNameRespoCellule);case ChangeContactRespoCelluleRapportCelluleRequestSectionAdministrationEvent() when changeContactRespoCellule != null:
 return changeContactRespoCellule(_that.contactRespoCellule);case ChangeJourCelluleRapportCelluleRequestSectionAdministrationEvent() when changeJourCellule != null:
@@ -644,6 +650,72 @@ class _$ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent
 @pragma('vm:prefer-inline') $Res call({Object? contactRespoSecteur = null,}) {
   return _then(ChangeContactRespoSecteurRapportCelluleRequestSectionAdministrationEvent(
 null == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent implements RapportCelluleRequestSectionAdministrationEvent {
+   ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent(this.reponsableCelluleId);
+  
+
+ final  String reponsableCelluleId;
+
+/// Create a copy of RapportCelluleRequestSectionAdministrationEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWith<ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent> get copyWith => _$ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWithImpl<ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent&&(identical(other.reponsableCelluleId, reponsableCelluleId) || other.reponsableCelluleId == reponsableCelluleId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reponsableCelluleId);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAdministrationEvent.changeReponsableCelluleId(reponsableCelluleId: $reponsableCelluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWith<$Res> implements $RapportCelluleRequestSectionAdministrationEventCopyWith<$Res> {
+  factory $ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWith(ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent value, $Res Function(ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent) _then) = _$ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWithImpl;
+@useResult
+$Res call({
+ String reponsableCelluleId
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWithImpl<$Res>
+    implements $ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWith<$Res> {
+  _$ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEventCopyWithImpl(this._self, this._then);
+
+  final ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent _self;
+  final $Res Function(ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAdministrationEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reponsableCelluleId = null,}) {
+  return _then(ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent(
+null == reponsableCelluleId ? _self.reponsableCelluleId : reponsableCelluleId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

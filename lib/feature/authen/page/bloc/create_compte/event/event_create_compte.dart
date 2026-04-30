@@ -12,6 +12,10 @@ class EventCreateCompteProfile with _$EventCreateCompteProfile {
   factory EventCreateCompteProfile.changeProfileImage(String profileImage) =
       ChangeProfileImageCreateCompteProfile;
 
+  factory EventCreateCompteProfile.changeResponsableCelluleId(
+          {required String responsableCelluleId}) =
+      ChangeResponsableCelluleIdCreateCompteProfile;
+
   factory EventCreateCompteProfile.changeContact(String contact) =
       ChangeContactCreateCompteProfile;
 

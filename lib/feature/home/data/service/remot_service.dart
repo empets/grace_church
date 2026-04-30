@@ -217,11 +217,16 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
               .get();
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
+            log("🔥 Firebase Notification N →→→→→→→→→ $data");
+
+            
             final notifications = data.values.map((e) {
               final notificationItem = Map<String, dynamic>.from(e);
 
               return CelluleResponseModel.fromJson(notificationItem);
             }).toList();
+            log("🔥 Firebase Notification N →→→→→→→→→ $data");
+
             return FirebaseSuccess(
               notifications
                   .map((e) => CelluleResponseModel.fromJson(e.toJson()))
@@ -232,9 +237,11 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
         default:
           final snapshot = await db.child('cellule').get();
+            log("🔥 Firebase Notification →→→→→→→→→ ${snapshot.exists}");
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
-            log("🔥 Firebase Notification N →→→→→→→→→ $data");
+             log("🔥 Firebase Notification →→→→→→→→→ ${data}");
+
             final notifications = data.values.map((e) {
               final notificationItem = Map<String, dynamic>.from(e);
               return CelluleResponseModel.fromJson(notificationItem);

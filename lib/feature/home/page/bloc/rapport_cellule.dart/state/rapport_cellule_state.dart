@@ -17,6 +17,7 @@ abstract class RapportCelluleRequestSectionAdministrationState with _$RapportCel
     required TextFormz codeZone,
     required TextFormz fullNameRespoZone,
     required TextFormz contactRespoZone,
+    required TextFormz reponsableCelluleId,
 
     // Secteur
     required TextFormz codeSecteur,
@@ -47,6 +48,7 @@ abstract class RapportCelluleRequestSectionAdministrationState with _$RapportCel
     codeZone: TextFormz.pure(),
     fullNameRespoZone: TextFormz.pure(),
     contactRespoZone: TextFormz.pure(),
+    reponsableCelluleId: TextFormz.pure(),
     codeSecteur: TextFormz.pure(),
     fullNameRespoSecteur: TextFormz.pure(),
     contactRespoSecteur: TextFormz.pure(),

@@ -82,6 +82,7 @@ abstract class ReponsableCelluleResponse with _$ReponsableCelluleResponse {
     required String celluleId,
     required String secteurId,
     required String secteurCode,
+    required String responsableCelluleId
   }) = _ReponsableCelluleResponse;
   factory ReponsableCelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$ReponsableCelluleResponseFromJson(json);

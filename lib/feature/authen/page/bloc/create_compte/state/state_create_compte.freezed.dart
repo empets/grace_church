@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateCompteProfileState {
 
- TextFormz get name; TextFormz get dateNaissance; TextFormz get zoneResidence; TextFormz get profileImage; PhoneFormz get contact; TextFormz get email; TextFormz get nationalite; TextFormz get password; TextFormz get isUpdate; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get name; TextFormz get dateNaissance; TextFormz get zoneResidence; TextFormz get profileImage; PhoneFormz get contact; TextFormz get email; TextFormz get nationalite; TextFormz get password; TextFormz get isUpdate;// required String responsableCelluleId,
+ FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of CreateCompteProfileState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -229,6 +230,7 @@ class _CreateCompteProfileState implements CreateCompteProfileState {
 @override final  TextFormz nationalite;
 @override final  TextFormz password;
 @override final  TextFormz isUpdate;
+// required String responsableCelluleId,
 @override final  FormzSubmissionStatus status;
 @override final  String errorMessage;
 @override final  bool isValide;

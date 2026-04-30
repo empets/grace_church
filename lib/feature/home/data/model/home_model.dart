@@ -145,6 +145,7 @@ abstract class ReponsableCelluleResponseModel
     required String? celluleName,
     required String? secteurId,
     required String? secteurCode,
+    required String? responsableCelluleId
   }) = _ReponsableCelluleResponseModel;
   factory ReponsableCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ReponsableCelluleResponseModelFromJson(json);
@@ -163,6 +164,7 @@ abstract class ReponsableCelluleResponseModel
       celluleId: model.celluleId.getOrEmpty(),
       secteurId: model.secteurId.getOrEmpty(),
       secteurCode: model.secteurCode.getOrEmpty(),
+      responsableCelluleId: model.responsableCelluleId.getOrEmpty(),
     );
   }
 }

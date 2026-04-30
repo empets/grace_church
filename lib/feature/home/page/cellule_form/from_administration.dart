@@ -152,6 +152,11 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
     context.read<RapportCelluleRequestSectionAdministrationBloc>().add(
       RapportCelluleRequestSectionAdministrationEvent.changeOffrande("0"),
     );
+    context.read<RapportCelluleRequestSectionAdministrationBloc>().add(
+      RapportCelluleRequestSectionAdministrationEvent.changeReponsableCelluleId(
+        widget.profile?.menberId ?? "",
+      ),
+    );
   }
 
   void _updateDisciple({
