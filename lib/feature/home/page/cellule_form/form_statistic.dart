@@ -1,22 +1,23 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
+import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
-
-
+import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
 
 class FormStatistic extends StatefulWidget {
   final String id;
@@ -27,38 +28,178 @@ class FormStatistic extends StatefulWidget {
 }
 
 class _FormStatisticState extends State<FormStatistic> {
-
-
-  void _updateDisciple2({
-    required String requestSection,
-    required BuildContext context,
-    required List<RequestAutherInformationSource> items,
+  void _updateBloc({
+    required RequestItemRequestSection item,
+    required RapportCelluleRequestSectionAssistanceState state,
+    required RequestSection section,
   }) {
-    final bloc = context.read<RapportCelluleSectionAssistanceBloc>();
-
-    final list = items.map((item) {
-      return RequestAutherInformationSource(
-        title: item.title,
-        sections: item.sections,
-      );
-    }).toList();
-
-    switch (requestSection) {
-      case "Formation":
-        bloc.add(
-          RapportCelluleRequestSectionAssistanceEvent.changeFormation(
-            list,
+    if (section.title == "Non baptisé") {
+      if (item.name.contains("Tout-petits")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
+            state.nonBaptiserStatic.copyWith(toutPetit: item.count.toString()),
           ),
         );
-        break;
-
-      case "Section visite":
-        bloc.add(
-          RapportCelluleRequestSectionAssistanceEvent.changeSectionVisite(
-            list,
+      }
+      if (item.name.contains("Juniors")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
+            state.nonBaptiserStatic.copyWith(juniors: item.count.toString()),
           ),
         );
-        break;
+      }
+      if (item.name.contains("Cadets")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(
+            state.nonBaptiserStatic.copyWith(cadets: item.count.toString()),
+          ),
+        );
+      }
+    }
+
+    if (section.title == "Nouveaux") {
+      if (item.name.contains("Tout-petits")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(
+            state.nouveauBaptiser.copyWith(toutPetit: item.count.toString()),
+          ),
+        );
+      }
+      if (item.name.contains("Juniors")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(
+            state.nouveauBaptiser.copyWith(juniors: item.count.toString()),
+          ),
+        );
+      }
+      if (item.name.contains("Cadets")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(
+            state.nouveauBaptiser.copyWith(cadets: item.count.toString()),
+          ),
+        );
+      }
+    }
+    if (section.title == "Invités") {
+      if (item.name.contains("Tout-petits")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeInviter(
+            state.inviter.copyWith(toutPetit: item.count.toString()),
+          ),
+        );
+      }
+      if (item.name.contains("Juniors")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeInviter(
+            state.inviter.copyWith(juniors: item.count.toString()),
+          ),
+        );
+      }
+      if (item.name.contains("Cadets")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.changeInviter(
+            state.inviter.copyWith(cadets: item.count.toString()),
+          ),
+        );
+      }
+    }
+  }
+
+  void _updateDetailBloc({
+    required RequestItemRequestSection item,
+    required RapportCelluleRequestSectionAssistanceState state,
+    required RequestSection section,
+  }) {
+    if (section.title == "Formation") {
+      if (item.name.contains("Nouv. En Formation DFNC")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.formationNewDFB(
+            item.count.toString(),
+          ),
+        );
+      }
+      if (item.name.contains("Nouv. Bapt. En Formation DFD")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.formationNewBaptDFD(
+            item.count.toString(),
+          ),
+        );
+      }
+      if (item.name.contains("En formation niveau 2")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.nbFormationNiveau2(
+            item.count.toString(),
+          ),
+        );
+      }
+    }
+
+    if (section.title == "Section visite") {
+      if (item.name.contains("Visites faites aux membres")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.visiteMenbre(
+            item.count.toString(),
+          ),
+        );
+      }
+      if (item.name.contains("Visites faites aux disciple")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.visiteDisciple(
+            item.count.toString(),
+          ),
+        );
+      }
+    }
+
+    if (section.title == "Section Activités") {
+      if (item.name.contains("Nbre de travailleurs")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.nbTravailleurs(
+            item.count.toString(),
+          ),
+        );
+      }
+      if (item.name.contains("Nbre d’élèves et étudiants")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.nbEleveAndEtudiants(
+            item.count.toString(),
+          ),
+        );
+      }
+    }
+
+    if (section.title == "Section Ouvriers") {
+      if (item.name.contains("Nbre d’ouvrier E.M")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.nbOuvrierEM(
+            item.count.toString(),
+          ),
+        );
+      }
+      if (item.name.contains("Ouv. Autre dépt dirigeant E.M")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.nbOuvrierAutreDepatementDirigeantEM(
+            item.count.toString(),
+          ),
+        );
+      }
+    }
+
+    if (section.title == "Autres") {
+      if (item.name.contains("Agenda de l’EM (Oui ou Non)")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.ngAgendaEM(
+            item.count.toString(),
+          ),
+        );
+      }
+      if (item.name.contains("Décisionnaires")) {
+        context.read<RapportCelluleSectionAssistanceBloc>().add(
+          RapportCelluleRequestSectionAssistanceEvent.nbDecisionnaires(
+            item.count.toString(),
+          ),
+        );
+      }
     }
   }
 
@@ -68,7 +209,21 @@ class _FormStatisticState extends State<FormStatistic> {
       RapportCelluleSectionAssistanceBloc,
       RapportCelluleRequestSectionAssistanceState
     >(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.status.isSuccess) {
+          Navigator.push(
+            context,
+            fadeRoute(
+              BlocProvider(
+                create: (context) => FormActiviteBloc(
+                  sendRapportCelluleStepAssistantUsercase: getIt<SendRapportCelluleStepAssistantUsercase>()
+                ),
+                child: FormActivite(),
+              ),
+            ),
+          );
+        }
+      },
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
         body: Container(
@@ -232,7 +387,7 @@ class _FormStatisticState extends State<FormStatistic> {
                       isColorBlue: state.nombreBaptiser.isValid ? true : false,
                       readOnly: false,
                       inputLabel: '',
-                      textLabel: "Renseigner le nombre de baptisé ",
+                      textLabel: "Chrétiens baptisés",
                       errorText:
                           state.nombreBaptiser.isPure ||
                               state.nombreBaptiser.isValid
@@ -240,7 +395,7 @@ class _FormStatisticState extends State<FormStatistic> {
                           : '',
                       msgError: 'Veuillez renseigner ce champ',
                       sufixIcon: Icon(
-                        Icons.monetization_on_outlined,
+                        Icons.water_drop_outlined,
                         color: context.appColor.primaryBlue,
                       ),
                       onChanged: (value) {
@@ -262,21 +417,20 @@ class _FormStatisticState extends State<FormStatistic> {
                 >(
                   builder: (context, state) {
                     return Container(
-                      height: 0.32.sh,
+                      height: 0.4.sh,
                       child: Scrollbar(
                         radius: Radius.circular(10.r),
                         child: ListView.builder(
-                          padding: EdgeInsets.zero,
-                          itemCount: RequestSections.length,
+                          itemCount: requestSectionNonBaptiser.length,
                           itemBuilder: (context, index) {
-                            final RequestSection = RequestSections[index];
+                            final section = requestSectionNonBaptiser[index];
                             return Card(
                               color: Colors.white,
                               elevation: 0.5.h,
                               borderOnForeground: true,
                               child: ExpansionTile(
                                 tilePadding: EdgeInsets.symmetric(
-                                  horizontal: 16.w,
+                                  horizontal: 9.w,
                                   vertical: 8.h,
                                 ),
                                 iconColor: const Color(0xFF888888),
@@ -285,71 +439,51 @@ class _FormStatisticState extends State<FormStatistic> {
                                   color: Colors.transparent,
                                 ),
                                 title: Text(
-                                  RequestSection.title,
+                                  section.title,
                                   style: GoogleFonts.roboto(
                                     color: Colors.black,
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                children: RequestSection.items.map((item) {
+                                children: section.items.map((item) {
                                   return Padding(
                                     padding: EdgeInsets.symmetric(
-                                      horizontal: 16.w,
+                                      horizontal: 9.w,
                                       vertical: 8.h,
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          item.name,
-                                          style: GoogleFonts.roboto(
-                                            color: Color(0xFF888888),
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
+                                        Text(item.name),
                                         Row(
                                           children: [
-                                            BlocBuilder<
-                                              RapportCelluleSectionAssistanceBloc,
-                                              RapportCelluleRequestSectionAssistanceState
-                                            >(
-                                              builder: (context, state) {
-                                                return IconButton(
-                                                  icon: Icon(
-                                                    Icons.remove,
-                                                    color: Color(0xFF888888),
-                                                  ),
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      if (item.count > 0)
-                                                        item.count--;
-                                                    });
-                                                  },
+                                            IconButton(
+                                              icon: Icon(Icons.remove),
+                                              onPressed: () {
+                                                setState(() {
+                                                  if (item.count > 0)
+                                                    item.count--;
+                                                });
+                                                _updateBloc(
+                                                  item: item,
+                                                  state: state,
+                                                  section: section,
                                                 );
                                               },
                                             ),
-
                                             Text(item.count.toString()),
-
-                                            BlocBuilder<
-                                              RapportCelluleSectionAssistanceBloc,
-                                              RapportCelluleRequestSectionAssistanceState
-                                            >(
-                                              builder: (context, state) {
-                                                return IconButton(
-                                                  icon: Icon(
-                                                    Icons.add,
-                                                    color: Color(0xFF888888),
-                                                  ),
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      if (item.count > 0)
-                                                        item.count++;
-                                                    });
-                                                  },
+                                            IconButton(
+                                              icon: Icon(Icons.add),
+                                              onPressed: () {
+                                                setState(() {
+                                                  item.count++;
+                                                });
+                                                _updateBloc(
+                                                  item: item,
+                                                  state: state,
+                                                  section: section,
                                                 );
                                               },
                                             ),
@@ -398,127 +532,88 @@ class _FormStatisticState extends State<FormStatistic> {
                       height: 0.4.sh,
                       child: Scrollbar(
                         radius: Radius.circular(10.r),
-                        child: Expanded(
-                          child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: RequestSections2.length,
-                            itemBuilder: (context, index) {
-                              final requestSection = RequestSections2[index];
-                              return Card(
-                                color: Colors.white,
-                                elevation: 0.5.h,
-                                borderOnForeground: true,
-                                child: ExpansionTile(
-                                  // splashColor: Colors.transparent,
-                                  tilePadding: EdgeInsets.symmetric(
-                                    horizontal: 16.w,
-                                    vertical: 8.h,
-                                  ),
-                                  iconColor: const Color(0xFF888888),
-                                  shape: Border.all(color: Colors.transparent),
-                                  collapsedShape: Border.all(
-                                    color: Colors.transparent,
-                                  ),
-                                  title: Text(
-                                    requestSection.title,
-                                    style: GoogleFonts.roboto(
-                                      color: Colors.black,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  children: requestSection.sections.map((item) {
-                                    return Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 16.w,
-                                        vertical: 8.h,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            item.libelle,
-                                            style: GoogleFonts.roboto(
-                                              color: Color(0xFF888888),
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.remove,
-                                                  color: Color(0xFF888888),
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    if (item.count > 0)
-                                                      item = item.copyWith(
-                                                        count: item.count - 1,
-                                                      );
-                                                  });
-                                              
-                                                },
-                                              ),
-
-                                              Text(item.count.toString()),
-
-                                              BlocBuilder<
-                                                RapportCelluleSectionAssistanceBloc,
-                                                RapportCelluleRequestSectionAssistanceState
-                                              >(
-                                                builder: (context, state) {
-                                                  return IconButton(
-                                                    icon: Icon(
-                                                      Icons.add,
-                                                      color: Color(0xFF888888),
-                                                    ),
-                                                    onPressed: () {
-                                                      setState(() {
-                                                    requestSection.sections.map((e) {
-                                                                if (e == item && e.count > 0) {
-                                                                    log('ùùùùùùùùùùùùùùùùùùùùùùùùùùùùù ${e.count}');
-                                                                  return e.copyWith(count: e.count - 1);
-                                                                }
-                                                                return e;
-                                                              }).toList();
-                                                      });
-
-                                                      _updateDisciple2(
-                                                        // bloc: context,
-                                                        requestSection:
-                                                            requestSection
-                                                                .title,
-                                                        context: context,
-                                                        items: [
-                                                          requestSection,
-
-                                                        
-                                                        ],
-                                                      );
-
-                                                     
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }).toList(),
+                        child: ListView.builder(
+                          itemCount: requestSectionDetail.length,
+                          itemBuilder: (context, index) {
+                            final section = requestSectionDetail[index];
+                            return Card(
+                              color: Colors.white,
+                              elevation: 0.5.h,
+                              borderOnForeground: true,
+                              child: ExpansionTile(
+                                tilePadding: EdgeInsets.symmetric(
+                                  horizontal: 9.w,
+                                  vertical: 8.h,
                                 ),
-                              );
-                            },
-                          ),
+                                iconColor: const Color(0xFF888888),
+                                shape: Border.all(color: Colors.transparent),
+                                collapsedShape: Border.all(
+                                  color: Colors.transparent,
+                                ),
+                                title: Text(
+                                  section.title,
+                                  style: GoogleFonts.roboto(
+                                    color: Colors.black,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                children: section.items.map((item) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 9.w,
+                                      vertical: 8.h,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(item.name),
+                                        Row(
+                                          children: [
+                                            IconButton(
+                                              icon: Icon(Icons.remove),
+                                              onPressed: () {
+                                                setState(() {
+                                                  if (item.count > 0)
+                                                    item.count--;
+                                                });
+                                                _updateDetailBloc(
+                                                  item: item,
+                                                  state: state,
+                                                  section: section,
+                                                );
+                                              },
+                                            ),
+                                            Text(item.count.toString()),
+                                            IconButton(
+                                              icon: Icon(Icons.add),
+                                              onPressed: () {
+                                                setState(() {
+                                                  item.count++;
+                                                });
+                                                _updateDetailBloc(
+                                                  item: item,
+                                                  state: state,
+                                                  section: section,
+                                                );
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     );
                   },
                 ),
+
                 SizedBox(height: 9.h),
                 BlocBuilder<
                   RapportCelluleSectionAssistanceBloc,
@@ -529,7 +624,7 @@ class _FormStatisticState extends State<FormStatistic> {
                       icons: Icons.work_outline,
                       title: 'Activité ',
                       description: 'Activité de la cellule ',
-                      isNextForm: state.isValide,
+                      isNextForm: state.nombreBaptiser.isValid,
                     );
                   },
                 ),
@@ -544,31 +639,26 @@ class _FormStatisticState extends State<FormStatistic> {
                       child: PrimaryButton(
                         label: 'Suivant',
                         colorText: context.appColor.primaryWhite,
-                        isLoading: state.isValide,
-                        onPressed: () {
-                          context.read<RapportCelluleSectionAssistanceBloc>().add(
-                            RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
-                              widget.id,
-                            ),
-                          );
+                        isLoading: state.status.isInProgress,
+                        onPressed: state.status.isInProgress
+                            ? null
+                            : () {
+                                FocusScope.of(context).unfocus();
 
-                          context.read<RapportCelluleSectionAssistanceBloc>().add(
-                            RapportCelluleRequestSectionAssistanceEvent.submit(),
-                          );
-                          // Navigator.push(
-                          //   context,
-                          //   fadeRoute(
-                          //     BlocProvider(
-                          //       create: (context) => FormActiviteBloc(
-                          //         getIt<
-                          //           SendRapportCelluleStepAssistantUsercase
-                          //         >(),
-                          //       ),
-                          //       child: FormActivite(),
-                          //     ),
-                          //   ),
-                          // );
-                        },
+                                context
+                                    .read<RapportCelluleSectionAssistanceBloc>()
+                                    .add(
+                                      RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
+                                        widget.id,
+                                      ),
+                                    );
+
+                                context
+                                    .read<RapportCelluleSectionAssistanceBloc>()
+                                    .add(
+                                      RapportCelluleRequestSectionAssistanceEvent.submit(),
+                                    );
+                              },
                       ),
                     );
                   },
@@ -596,7 +686,50 @@ class RequestSection {
   RequestSection({required this.title, required this.items});
 }
 
-final RequestSections = [
+final requestSectionDetail = [
+  RequestSection(
+    title: "Formation",
+    items: [
+      // RequestItemRequestSection(name: "Décisionnaires"),
+      RequestItemRequestSection(name: "Nouv. En Formation DFNC"),
+      RequestItemRequestSection(name: "Nouv. Bapt. En Formation DFD"),
+      RequestItemRequestSection(name: "En formation niveau 2"),
+    ],
+  ),
+
+  RequestSection(
+    title: "Section visite",
+    items: [
+      RequestItemRequestSection(name: "Visites faites aux membres"),
+      RequestItemRequestSection(name: "Visites faites aux disciples"),
+    ],
+  ),
+
+  RequestSection(
+    title: "Section Activités",
+    items: [
+      RequestItemRequestSection(name: "Nbre de travailleurs"),
+      RequestItemRequestSection(name: "Nbre d’élèves et étudiants"),
+    ],
+  ),
+
+  RequestSection(
+    title: "Section Ouvriers",
+    items: [
+      RequestItemRequestSection(name: "Nbre d’ouvrier E.M"),
+      RequestItemRequestSection(name: "Ouv. Autre dépt dirigeant E.M"),
+    ],
+  ),
+  RequestSection(
+    title: "Autres",
+    items: [
+      RequestItemRequestSection(name: "Agenda de l’EM (Oui ou Non)"),
+      RequestItemRequestSection(name: "Décisionnaires"),
+    ],
+  ),
+];
+
+final requestSectionNonBaptiser = [
   RequestSection(
     title: "Non baptisé",
     items: [
@@ -622,56 +755,3 @@ final RequestSections = [
     ],
   ),
 ];
-
-final RequestSections2 = [
-  RequestAutherInformationSource(
-    title: "Formation",
-    sections: [
-      // RequestItemRequestSection(name: "Décisionnaires"),
-      RequestAuherInformation(libelle: "Nouv. En Formation DFNC", count: 0),
-      RequestAuherInformation(
-        libelle: "Nouv. Bapt. En Formation DFD",
-        count: 0,
-      ),
-      RequestAuherInformation(libelle: "En formation niveau 2", count: 0),
-    ],
-  ),
-  RequestAutherInformationSource(
-    title: "Section visite",
-    sections: [
-      RequestAuherInformation(libelle: "Visites faites aux membres", count: 0),
-      RequestAuherInformation(
-        libelle: "Visites faites aux disciples",
-        count: 0,
-      ),
-    ],
-  ),
-
-  RequestAutherInformationSource(
-    title: "Section Activités",
-    sections: [
-      RequestAuherInformation(libelle: "Nbre de travailleurs", count: 0),
-      RequestAuherInformation(libelle: "Nbre d’élèves et étudiants", count: 0),
-    ],
-  ),
-
-  RequestAutherInformationSource(
-    title: "Section Ouvriers",
-    sections: [
-      RequestAuherInformation(libelle: "Nbre d’ouvrier E.M", count: 0),
-      RequestAuherInformation(
-        libelle: "Ouv. Autre dépt dirigeant E.M",
-        count: 0,
-      ),
-    ],
-  ),
-  RequestAutherInformationSource(
-    title: "Autres",
-    sections: [
-      RequestAuherInformation(libelle: "Agenda de l’EM (Oui ou Non)", count: 0),
-      RequestAuherInformation(libelle: "Décisionnaires", count: 0),
-    ],
-  ),
-];
-
-

@@ -1261,14 +1261,25 @@ extension RapportCelluleRequestSectionAssistanceEventPatterns on RapportCelluleR
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)?  formationNewDFB,TResult Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)?  formationNewBaptDFD,TResult Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)?  visiteMenbre,TResult Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)?  visiteDisciple,TResult Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)?  nbTravailleurs,TResult Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)?  nbEleveAndEtudiants,TResult Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierEM,TResult Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierAutreDepatementDirigeantEM,TResult Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)?  nbFormationNiveau2,TResult Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)?  ngAgendaEM,TResult Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)?  nbDecisionnaires,TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that);case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent() when changeNomBaptiserStatic != null:
 return changeNomBaptiserStatic(_that);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNoveauBaptiser != null:
-return changeNoveauBaptiser(_that);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
+return changeNoveauBaptiser(_that);case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent() when formationNewDFB != null:
+return formationNewDFB(_that);case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent() when formationNewBaptDFD != null:
+return formationNewBaptDFD(_that);case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent() when visiteMenbre != null:
+return visiteMenbre(_that);case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent() when visiteDisciple != null:
+return visiteDisciple(_that);case NbTravailleursRapportCelluleRequestSectionAssistanceEvent() when nbTravailleurs != null:
+return nbTravailleurs(_that);case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent() when nbEleveAndEtudiants != null:
+return nbEleveAndEtudiants(_that);case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierEM != null:
+return nbOuvrierEM(_that);case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierAutreDepatementDirigeantEM != null:
+return nbOuvrierAutreDepatementDirigeantEM(_that);case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent() when nbFormationNiveau2 != null:
+return nbFormationNiveau2(_that);case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent() when ngAgendaEM != null:
+return ngAgendaEM(_that);case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent() when nbDecisionnaires != null:
+return nbDecisionnaires(_that);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
 return changeInviter(_that);case ChangeFormationRapportCelluleRequestSectionAssistanceEvent() when changeFormation != null:
 return changeFormation(_that);case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent() when changeSectionVisite != null:
 return changeSectionVisite(_that);case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent() when changeSectionActivite != null:
@@ -1293,14 +1304,25 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNombreBaptiser,required TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)  updateSectionId,required TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)  changeNomBaptiserStatic,required TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNoveauBaptiser,required TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)  changeInviter,required TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)  changeFormation,required TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionVisite,required TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionActivite,required TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)  changeSectionOuvrier,required TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)  changeAutres,required TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNombreBaptiser,required TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)  updateSectionId,required TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)  changeNomBaptiserStatic,required TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNoveauBaptiser,required TResult Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)  formationNewDFB,required TResult Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)  formationNewBaptDFD,required TResult Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)  visiteMenbre,required TResult Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)  visiteDisciple,required TResult Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)  nbTravailleurs,required TResult Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)  nbEleveAndEtudiants,required TResult Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)  nbOuvrierEM,required TResult Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)  nbOuvrierAutreDepatementDirigeantEM,required TResult Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)  nbFormationNiveau2,required TResult Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)  ngAgendaEM,required TResult Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)  nbDecisionnaires,required TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)  changeInviter,required TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)  changeFormation,required TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionVisite,required TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionActivite,required TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)  changeSectionOuvrier,required TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)  changeAutres,required TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent():
 return changeNombreBaptiser(_that);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId():
 return updateSectionId(_that);case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent():
 return changeNomBaptiserStatic(_that);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent():
-return changeNoveauBaptiser(_that);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent():
+return changeNoveauBaptiser(_that);case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent():
+return formationNewDFB(_that);case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent():
+return formationNewBaptDFD(_that);case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent():
+return visiteMenbre(_that);case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent():
+return visiteDisciple(_that);case NbTravailleursRapportCelluleRequestSectionAssistanceEvent():
+return nbTravailleurs(_that);case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent():
+return nbEleveAndEtudiants(_that);case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent():
+return nbOuvrierEM(_that);case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent():
+return nbOuvrierAutreDepatementDirigeantEM(_that);case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent():
+return nbFormationNiveau2(_that);case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent():
+return ngAgendaEM(_that);case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent():
+return nbDecisionnaires(_that);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent():
 return changeInviter(_that);case ChangeFormationRapportCelluleRequestSectionAssistanceEvent():
 return changeFormation(_that);case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent():
 return changeSectionVisite(_that);case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent():
@@ -1324,14 +1346,25 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult? Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult? Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult? Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult? Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult? Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult? Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult? Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult? Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult? Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult? Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult? Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult? Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult? Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult? Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)?  formationNewDFB,TResult? Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)?  formationNewBaptDFD,TResult? Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)?  visiteMenbre,TResult? Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)?  visiteDisciple,TResult? Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)?  nbTravailleurs,TResult? Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)?  nbEleveAndEtudiants,TResult? Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierEM,TResult? Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierAutreDepatementDirigeantEM,TResult? Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)?  nbFormationNiveau2,TResult? Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)?  ngAgendaEM,TResult? Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)?  nbDecisionnaires,TResult? Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult? Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult? Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult? Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult? Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult? Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult? Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that);case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent() when changeNomBaptiserStatic != null:
 return changeNomBaptiserStatic(_that);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNoveauBaptiser != null:
-return changeNoveauBaptiser(_that);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
+return changeNoveauBaptiser(_that);case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent() when formationNewDFB != null:
+return formationNewDFB(_that);case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent() when formationNewBaptDFD != null:
+return formationNewBaptDFD(_that);case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent() when visiteMenbre != null:
+return visiteMenbre(_that);case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent() when visiteDisciple != null:
+return visiteDisciple(_that);case NbTravailleursRapportCelluleRequestSectionAssistanceEvent() when nbTravailleurs != null:
+return nbTravailleurs(_that);case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent() when nbEleveAndEtudiants != null:
+return nbEleveAndEtudiants(_that);case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierEM != null:
+return nbOuvrierEM(_that);case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierAutreDepatementDirigeantEM != null:
+return nbOuvrierAutreDepatementDirigeantEM(_that);case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent() when nbFormationNiveau2 != null:
+return nbFormationNiveau2(_that);case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent() when ngAgendaEM != null:
+return ngAgendaEM(_that);case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent() when nbDecisionnaires != null:
+return nbDecisionnaires(_that);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
 return changeInviter(_that);case ChangeFormationRapportCelluleRequestSectionAssistanceEvent() when changeFormation != null:
 return changeFormation(_that);case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent() when changeSectionVisite != null:
 return changeSectionVisite(_that);case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent() when changeSectionActivite != null:
@@ -1355,13 +1388,24 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String id)?  updateSectionId,TResult Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)?  changeNomBaptiserStatic,TResult Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)?  changeNoveauBaptiser,TResult Function( List<RequestHumaneSectionAssistance> inviterStat)?  changeInviter,TResult Function( List<RequestAutherInformationSource> formationStat)?  changeFormation,TResult Function( List<RequestAutherInformationSource> sectionVisite)?  changeSectionVisite,TResult Function( List<RequestAutherInformationSource> sectionActivite)?  changeSectionActivite,TResult Function( List<RequestAutherInformationSource> sectionOuvrier)?  changeSectionOuvrier,TResult Function( List<RequestAutherInformationSource> autres)?  changeAutres,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String id)?  updateSectionId,TResult Function( RequestHumaneSectionAssistance nonBaptiserStatic)?  changeNomBaptiserStatic,TResult Function( RequestHumaneSectionAssistance nouveauBaptiserStat)?  changeNoveauBaptiser,TResult Function( String formationNewDFB)?  formationNewDFB,TResult Function( String formationNewBaptDFD)?  formationNewBaptDFD,TResult Function( String visiteMenbre)?  visiteMenbre,TResult Function( String visiteDisciple)?  visiteDisciple,TResult Function( String nbTravailleurs)?  nbTravailleurs,TResult Function( String nbEleveAndEtudiants)?  nbEleveAndEtudiants,TResult Function( String nbOuvrierEM)?  nbOuvrierEM,TResult Function( String nbOuvrierAutreDepatementDirigeantEM)?  nbOuvrierAutreDepatementDirigeantEM,TResult Function( String nbFormationNiveau2)?  nbFormationNiveau2,TResult Function( String ngAgendaEM)?  ngAgendaEM,TResult Function( String nbDecisionnaires)?  nbDecisionnaires,TResult Function( RequestHumaneSectionAssistance inviterStat)?  changeInviter,TResult Function( RequestAuherInformation formationStat)?  changeFormation,TResult Function( RequestAuherInformation sectionVisite)?  changeSectionVisite,TResult Function( RequestAuherInformation sectionActivite)?  changeSectionActivite,TResult Function( RequestAuherInformation sectionOuvrier)?  changeSectionOuvrier,TResult Function( String autres)?  changeAutres,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that.id);case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent() when changeNomBaptiserStatic != null:
-return changeNomBaptiserStatic(_that.nomBaptiserStat);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNoveauBaptiser != null:
-return changeNoveauBaptiser(_that.nouveauBaptiserStat);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
+return changeNomBaptiserStatic(_that.nonBaptiserStatic);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNoveauBaptiser != null:
+return changeNoveauBaptiser(_that.nouveauBaptiserStat);case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent() when formationNewDFB != null:
+return formationNewDFB(_that.formationNewDFB);case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent() when formationNewBaptDFD != null:
+return formationNewBaptDFD(_that.formationNewBaptDFD);case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent() when visiteMenbre != null:
+return visiteMenbre(_that.visiteMenbre);case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent() when visiteDisciple != null:
+return visiteDisciple(_that.visiteDisciple);case NbTravailleursRapportCelluleRequestSectionAssistanceEvent() when nbTravailleurs != null:
+return nbTravailleurs(_that.nbTravailleurs);case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent() when nbEleveAndEtudiants != null:
+return nbEleveAndEtudiants(_that.nbEleveAndEtudiants);case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierEM != null:
+return nbOuvrierEM(_that.nbOuvrierEM);case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierAutreDepatementDirigeantEM != null:
+return nbOuvrierAutreDepatementDirigeantEM(_that.nbOuvrierAutreDepatementDirigeantEM);case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent() when nbFormationNiveau2 != null:
+return nbFormationNiveau2(_that.nbFormationNiveau2);case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent() when ngAgendaEM != null:
+return ngAgendaEM(_that.ngAgendaEM);case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent() when nbDecisionnaires != null:
+return nbDecisionnaires(_that.nbDecisionnaires);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
 return changeInviter(_that.inviterStat);case ChangeFormationRapportCelluleRequestSectionAssistanceEvent() when changeFormation != null:
 return changeFormation(_that.formationStat);case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent() when changeSectionVisite != null:
 return changeSectionVisite(_that.sectionVisite);case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent() when changeSectionActivite != null:
@@ -1386,13 +1430,24 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String id)  updateSectionId,required TResult Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)  changeNomBaptiserStatic,required TResult Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)  changeNoveauBaptiser,required TResult Function( List<RequestHumaneSectionAssistance> inviterStat)  changeInviter,required TResult Function( List<RequestAutherInformationSource> formationStat)  changeFormation,required TResult Function( List<RequestAutherInformationSource> sectionVisite)  changeSectionVisite,required TResult Function( List<RequestAutherInformationSource> sectionActivite)  changeSectionActivite,required TResult Function( List<RequestAutherInformationSource> sectionOuvrier)  changeSectionOuvrier,required TResult Function( List<RequestAutherInformationSource> autres)  changeAutres,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String id)  updateSectionId,required TResult Function( RequestHumaneSectionAssistance nonBaptiserStatic)  changeNomBaptiserStatic,required TResult Function( RequestHumaneSectionAssistance nouveauBaptiserStat)  changeNoveauBaptiser,required TResult Function( String formationNewDFB)  formationNewDFB,required TResult Function( String formationNewBaptDFD)  formationNewBaptDFD,required TResult Function( String visiteMenbre)  visiteMenbre,required TResult Function( String visiteDisciple)  visiteDisciple,required TResult Function( String nbTravailleurs)  nbTravailleurs,required TResult Function( String nbEleveAndEtudiants)  nbEleveAndEtudiants,required TResult Function( String nbOuvrierEM)  nbOuvrierEM,required TResult Function( String nbOuvrierAutreDepatementDirigeantEM)  nbOuvrierAutreDepatementDirigeantEM,required TResult Function( String nbFormationNiveau2)  nbFormationNiveau2,required TResult Function( String ngAgendaEM)  ngAgendaEM,required TResult Function( String nbDecisionnaires)  nbDecisionnaires,required TResult Function( RequestHumaneSectionAssistance inviterStat)  changeInviter,required TResult Function( RequestAuherInformation formationStat)  changeFormation,required TResult Function( RequestAuherInformation sectionVisite)  changeSectionVisite,required TResult Function( RequestAuherInformation sectionActivite)  changeSectionActivite,required TResult Function( RequestAuherInformation sectionOuvrier)  changeSectionOuvrier,required TResult Function( String autres)  changeAutres,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent():
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId():
 return updateSectionId(_that.id);case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent():
-return changeNomBaptiserStatic(_that.nomBaptiserStat);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent():
-return changeNoveauBaptiser(_that.nouveauBaptiserStat);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent():
+return changeNomBaptiserStatic(_that.nonBaptiserStatic);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent():
+return changeNoveauBaptiser(_that.nouveauBaptiserStat);case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent():
+return formationNewDFB(_that.formationNewDFB);case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent():
+return formationNewBaptDFD(_that.formationNewBaptDFD);case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent():
+return visiteMenbre(_that.visiteMenbre);case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent():
+return visiteDisciple(_that.visiteDisciple);case NbTravailleursRapportCelluleRequestSectionAssistanceEvent():
+return nbTravailleurs(_that.nbTravailleurs);case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent():
+return nbEleveAndEtudiants(_that.nbEleveAndEtudiants);case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent():
+return nbOuvrierEM(_that.nbOuvrierEM);case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent():
+return nbOuvrierAutreDepatementDirigeantEM(_that.nbOuvrierAutreDepatementDirigeantEM);case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent():
+return nbFormationNiveau2(_that.nbFormationNiveau2);case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent():
+return ngAgendaEM(_that.ngAgendaEM);case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent():
+return nbDecisionnaires(_that.nbDecisionnaires);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent():
 return changeInviter(_that.inviterStat);case ChangeFormationRapportCelluleRequestSectionAssistanceEvent():
 return changeFormation(_that.formationStat);case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent():
 return changeSectionVisite(_that.sectionVisite);case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent():
@@ -1416,13 +1471,24 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String id)?  updateSectionId,TResult? Function( List<RequestHumaneSectionAssistance> nomBaptiserStat)?  changeNomBaptiserStatic,TResult? Function( List<RequestHumaneSectionAssistance> nouveauBaptiserStat)?  changeNoveauBaptiser,TResult? Function( List<RequestHumaneSectionAssistance> inviterStat)?  changeInviter,TResult? Function( List<RequestAutherInformationSource> formationStat)?  changeFormation,TResult? Function( List<RequestAutherInformationSource> sectionVisite)?  changeSectionVisite,TResult? Function( List<RequestAutherInformationSource> sectionActivite)?  changeSectionActivite,TResult? Function( List<RequestAutherInformationSource> sectionOuvrier)?  changeSectionOuvrier,TResult? Function( List<RequestAutherInformationSource> autres)?  changeAutres,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String id)?  updateSectionId,TResult? Function( RequestHumaneSectionAssistance nonBaptiserStatic)?  changeNomBaptiserStatic,TResult? Function( RequestHumaneSectionAssistance nouveauBaptiserStat)?  changeNoveauBaptiser,TResult? Function( String formationNewDFB)?  formationNewDFB,TResult? Function( String formationNewBaptDFD)?  formationNewBaptDFD,TResult? Function( String visiteMenbre)?  visiteMenbre,TResult? Function( String visiteDisciple)?  visiteDisciple,TResult? Function( String nbTravailleurs)?  nbTravailleurs,TResult? Function( String nbEleveAndEtudiants)?  nbEleveAndEtudiants,TResult? Function( String nbOuvrierEM)?  nbOuvrierEM,TResult? Function( String nbOuvrierAutreDepatementDirigeantEM)?  nbOuvrierAutreDepatementDirigeantEM,TResult? Function( String nbFormationNiveau2)?  nbFormationNiveau2,TResult? Function( String ngAgendaEM)?  ngAgendaEM,TResult? Function( String nbDecisionnaires)?  nbDecisionnaires,TResult? Function( RequestHumaneSectionAssistance inviterStat)?  changeInviter,TResult? Function( RequestAuherInformation formationStat)?  changeFormation,TResult? Function( RequestAuherInformation sectionVisite)?  changeSectionVisite,TResult? Function( RequestAuherInformation sectionActivite)?  changeSectionActivite,TResult? Function( RequestAuherInformation sectionOuvrier)?  changeSectionOuvrier,TResult? Function( String autres)?  changeAutres,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that.id);case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent() when changeNomBaptiserStatic != null:
-return changeNomBaptiserStatic(_that.nomBaptiserStat);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNoveauBaptiser != null:
-return changeNoveauBaptiser(_that.nouveauBaptiserStat);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
+return changeNomBaptiserStatic(_that.nonBaptiserStatic);case ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNoveauBaptiser != null:
+return changeNoveauBaptiser(_that.nouveauBaptiserStat);case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent() when formationNewDFB != null:
+return formationNewDFB(_that.formationNewDFB);case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent() when formationNewBaptDFD != null:
+return formationNewBaptDFD(_that.formationNewBaptDFD);case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent() when visiteMenbre != null:
+return visiteMenbre(_that.visiteMenbre);case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent() when visiteDisciple != null:
+return visiteDisciple(_that.visiteDisciple);case NbTravailleursRapportCelluleRequestSectionAssistanceEvent() when nbTravailleurs != null:
+return nbTravailleurs(_that.nbTravailleurs);case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent() when nbEleveAndEtudiants != null:
+return nbEleveAndEtudiants(_that.nbEleveAndEtudiants);case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierEM != null:
+return nbOuvrierEM(_that.nbOuvrierEM);case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent() when nbOuvrierAutreDepatementDirigeantEM != null:
+return nbOuvrierAutreDepatementDirigeantEM(_that.nbOuvrierAutreDepatementDirigeantEM);case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent() when nbFormationNiveau2 != null:
+return nbFormationNiveau2(_that.nbFormationNiveau2);case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent() when ngAgendaEM != null:
+return ngAgendaEM(_that.ngAgendaEM);case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent() when nbDecisionnaires != null:
+return nbDecisionnaires(_that.nbDecisionnaires);case ChangeInviterRapportCelluleRequestSectionAssistanceEvent() when changeInviter != null:
 return changeInviter(_that.inviterStat);case ChangeFormationRapportCelluleRequestSectionAssistanceEvent() when changeFormation != null:
 return changeFormation(_that.formationStat);case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent() when changeSectionVisite != null:
 return changeSectionVisite(_that.sectionVisite);case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent() when changeSectionActivite != null:
@@ -1573,16 +1639,10 @@ as String,
 
 
 class ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> nomBaptiserStat): _nomBaptiserStat = nomBaptiserStat;
+   ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent(this.nonBaptiserStatic);
   
 
- final  List<RequestHumaneSectionAssistance> _nomBaptiserStat;
- List<RequestHumaneSectionAssistance> get nomBaptiserStat {
-  if (_nomBaptiserStat is EqualUnmodifiableListView) return _nomBaptiserStat;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_nomBaptiserStat);
-}
-
+ final  RequestHumaneSectionAssistance nonBaptiserStatic;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1594,16 +1654,16 @@ $ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEventCopyWith<Chan
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._nomBaptiserStat, _nomBaptiserStat));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nonBaptiserStatic, nonBaptiserStatic) || other.nonBaptiserStatic == nonBaptiserStatic));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_nomBaptiserStat));
+int get hashCode => Object.hash(runtimeType,nonBaptiserStatic);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(nomBaptiserStat: $nomBaptiserStat)';
+  return 'RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(nonBaptiserStatic: $nonBaptiserStatic)';
 }
 
 
@@ -1614,11 +1674,11 @@ abstract mixin class $ChangeNomBaptiserStaticRapportCelluleRequestSectionAssista
   factory $ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> nomBaptiserStat
+ RequestHumaneSectionAssistance nonBaptiserStatic
 });
 
 
-
+$RequestHumaneSectionAssistanceCopyWith<$Res> get nonBaptiserStatic;
 
 }
 /// @nodoc
@@ -1631,30 +1691,33 @@ class _$ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEventCopyWi
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? nomBaptiserStat = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? nonBaptiserStatic = null,}) {
   return _then(ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent(
-null == nomBaptiserStat ? _self._nomBaptiserStat : nomBaptiserStat // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+null == nonBaptiserStatic ? _self.nonBaptiserStatic : nonBaptiserStatic // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistance,
   ));
 }
 
-
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceCopyWith<$Res> get nonBaptiserStatic {
+  
+  return $RequestHumaneSectionAssistanceCopyWith<$Res>(_self.nonBaptiserStatic, (value) {
+    return _then(_self.copyWith(nonBaptiserStatic: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> nouveauBaptiserStat): _nouveauBaptiserStat = nouveauBaptiserStat;
+   ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent(this.nouveauBaptiserStat);
   
 
- final  List<RequestHumaneSectionAssistance> _nouveauBaptiserStat;
- List<RequestHumaneSectionAssistance> get nouveauBaptiserStat {
-  if (_nouveauBaptiserStat is EqualUnmodifiableListView) return _nouveauBaptiserStat;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_nouveauBaptiserStat);
-}
-
+ final  RequestHumaneSectionAssistance nouveauBaptiserStat;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1666,12 +1729,12 @@ $ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEventCopyWith<ChangeN
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._nouveauBaptiserStat, _nouveauBaptiserStat));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nouveauBaptiserStat, nouveauBaptiserStat) || other.nouveauBaptiserStat == nouveauBaptiserStat));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_nouveauBaptiserStat));
+int get hashCode => Object.hash(runtimeType,nouveauBaptiserStat);
 
 @override
 String toString() {
@@ -1686,11 +1749,11 @@ abstract mixin class $ChangeNoveauBaptiserRapportCelluleRequestSectionAssistance
   factory $ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> nouveauBaptiserStat
+ RequestHumaneSectionAssistance nouveauBaptiserStat
 });
 
 
-
+$RequestHumaneSectionAssistanceCopyWith<$Res> get nouveauBaptiserStat;
 
 }
 /// @nodoc
@@ -1705,8 +1768,743 @@ class _$ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEventCopyWithI
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? nouveauBaptiserStat = null,}) {
   return _then(ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent(
-null == nouveauBaptiserStat ? _self._nouveauBaptiserStat : nouveauBaptiserStat // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+null == nouveauBaptiserStat ? _self.nouveauBaptiserStat : nouveauBaptiserStat // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistance,
+  ));
+}
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceCopyWith<$Res> get nouveauBaptiserStat {
+  
+  return $RequestHumaneSectionAssistanceCopyWith<$Res>(_self.nouveauBaptiserStat, (value) {
+    return _then(_self.copyWith(nouveauBaptiserStat: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class FormationNewDFBRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   FormationNewDFBRapportCelluleRequestSectionAssistanceEvent(this.formationNewDFB);
+  
+
+ final  String formationNewDFB;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWith<FormationNewDFBRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWithImpl<FormationNewDFBRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FormationNewDFBRapportCelluleRequestSectionAssistanceEvent&&(identical(other.formationNewDFB, formationNewDFB) || other.formationNewDFB == formationNewDFB));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,formationNewDFB);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.formationNewDFB(formationNewDFB: $formationNewDFB)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWith(FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value, $Res Function(FormationNewDFBRapportCelluleRequestSectionAssistanceEvent) _then) = _$FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String formationNewDFB
+});
+
+
+
+
+}
+/// @nodoc
+class _$FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$FormationNewDFBRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final FormationNewDFBRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(FormationNewDFBRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? formationNewDFB = null,}) {
+  return _then(FormationNewDFBRapportCelluleRequestSectionAssistanceEvent(
+null == formationNewDFB ? _self.formationNewDFB : formationNewDFB // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent(this.formationNewBaptDFD);
+  
+
+ final  String formationNewBaptDFD;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWith<FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWithImpl<FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent&&(identical(other.formationNewBaptDFD, formationNewBaptDFD) || other.formationNewBaptDFD == formationNewBaptDFD));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,formationNewBaptDFD);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.formationNewBaptDFD(formationNewBaptDFD: $formationNewBaptDFD)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWith(FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value, $Res Function(FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent) _then) = _$FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String formationNewBaptDFD
+});
+
+
+
+
+}
+/// @nodoc
+class _$FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? formationNewBaptDFD = null,}) {
+  return _then(FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent(
+null == formationNewBaptDFD ? _self.formationNewBaptDFD : formationNewBaptDFD // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class VisiteMenbreRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   VisiteMenbreRapportCelluleRequestSectionAssistanceEvent(this.visiteMenbre);
+  
+
+ final  String visiteMenbre;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWith<VisiteMenbreRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWithImpl<VisiteMenbreRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisiteMenbreRapportCelluleRequestSectionAssistanceEvent&&(identical(other.visiteMenbre, visiteMenbre) || other.visiteMenbre == visiteMenbre));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,visiteMenbre);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.visiteMenbre(visiteMenbre: $visiteMenbre)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWith(VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value, $Res Function(VisiteMenbreRapportCelluleRequestSectionAssistanceEvent) _then) = _$VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String visiteMenbre
+});
+
+
+
+
+}
+/// @nodoc
+class _$VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$VisiteMenbreRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final VisiteMenbreRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(VisiteMenbreRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? visiteMenbre = null,}) {
+  return _then(VisiteMenbreRapportCelluleRequestSectionAssistanceEvent(
+null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent(this.visiteDisciple);
+  
+
+ final  String visiteDisciple;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWith<VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWithImpl<VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent&&(identical(other.visiteDisciple, visiteDisciple) || other.visiteDisciple == visiteDisciple));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,visiteDisciple);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.visiteDisciple(visiteDisciple: $visiteDisciple)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWith(VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value, $Res Function(VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent) _then) = _$VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String visiteDisciple
+});
+
+
+
+
+}
+/// @nodoc
+class _$VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$VisiteDiscipleRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? visiteDisciple = null,}) {
+  return _then(VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent(
+null == visiteDisciple ? _self.visiteDisciple : visiteDisciple // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NbTravailleursRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NbTravailleursRapportCelluleRequestSectionAssistanceEvent(this.nbTravailleurs);
+  
+
+ final  String nbTravailleurs;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWith<NbTravailleursRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWithImpl<NbTravailleursRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NbTravailleursRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nbTravailleurs, nbTravailleurs) || other.nbTravailleurs == nbTravailleurs));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nbTravailleurs);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.nbTravailleurs(nbTravailleurs: $nbTravailleurs)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWith(NbTravailleursRapportCelluleRequestSectionAssistanceEvent value, $Res Function(NbTravailleursRapportCelluleRequestSectionAssistanceEvent) _then) = _$NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String nbTravailleurs
+});
+
+
+
+
+}
+/// @nodoc
+class _$NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NbTravailleursRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NbTravailleursRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NbTravailleursRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nbTravailleurs = null,}) {
+  return _then(NbTravailleursRapportCelluleRequestSectionAssistanceEvent(
+null == nbTravailleurs ? _self.nbTravailleurs : nbTravailleurs // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent(this.nbEleveAndEtudiants);
+  
+
+ final  String nbEleveAndEtudiants;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWith<NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWithImpl<NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nbEleveAndEtudiants, nbEleveAndEtudiants) || other.nbEleveAndEtudiants == nbEleveAndEtudiants));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nbEleveAndEtudiants);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.nbEleveAndEtudiants(nbEleveAndEtudiants: $nbEleveAndEtudiants)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWith(NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value, $Res Function(NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent) _then) = _$NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String nbEleveAndEtudiants
+});
+
+
+
+
+}
+/// @nodoc
+class _$NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nbEleveAndEtudiants = null,}) {
+  return _then(NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent(
+null == nbEleveAndEtudiants ? _self.nbEleveAndEtudiants : nbEleveAndEtudiants // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent(this.nbOuvrierEM);
+  
+
+ final  String nbOuvrierEM;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWith<NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl<NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nbOuvrierEM, nbOuvrierEM) || other.nbOuvrierEM == nbOuvrierEM));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nbOuvrierEM);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.nbOuvrierEM(nbOuvrierEM: $nbOuvrierEM)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWith(NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value, $Res Function(NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent) _then) = _$NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String nbOuvrierEM
+});
+
+
+
+
+}
+/// @nodoc
+class _$NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NbOuvrierEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nbOuvrierEM = null,}) {
+  return _then(NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent(
+null == nbOuvrierEM ? _self.nbOuvrierEM : nbOuvrierEM // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent(this.nbOuvrierAutreDepatementDirigeantEM);
+  
+
+ final  String nbOuvrierAutreDepatementDirigeantEM;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWith<NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl<NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nbOuvrierAutreDepatementDirigeantEM, nbOuvrierAutreDepatementDirigeantEM) || other.nbOuvrierAutreDepatementDirigeantEM == nbOuvrierAutreDepatementDirigeantEM));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nbOuvrierAutreDepatementDirigeantEM);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.nbOuvrierAutreDepatementDirigeantEM(nbOuvrierAutreDepatementDirigeantEM: $nbOuvrierAutreDepatementDirigeantEM)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWith(NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value, $Res Function(NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent) _then) = _$NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String nbOuvrierAutreDepatementDirigeantEM
+});
+
+
+
+
+}
+/// @nodoc
+class _$NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nbOuvrierAutreDepatementDirigeantEM = null,}) {
+  return _then(NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent(
+null == nbOuvrierAutreDepatementDirigeantEM ? _self.nbOuvrierAutreDepatementDirigeantEM : nbOuvrierAutreDepatementDirigeantEM // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent(this.nbFormationNiveau2);
+  
+
+ final  String nbFormationNiveau2;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWith<NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWithImpl<NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent&&(identical(other.nbFormationNiveau2, nbFormationNiveau2) || other.nbFormationNiveau2 == nbFormationNiveau2));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nbFormationNiveau2);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.nbFormationNiveau2(nbFormationNiveau2: $nbFormationNiveau2)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWith(NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value, $Res Function(NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent) _then) = _$NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String nbFormationNiveau2
+});
+
+
+
+
+}
+/// @nodoc
+class _$NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NbFormationNiveau2RapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nbFormationNiveau2 = null,}) {
+  return _then(NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent(
+null == nbFormationNiveau2 ? _self.nbFormationNiveau2 : nbFormationNiveau2 // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NgAgendaEMRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NgAgendaEMRapportCelluleRequestSectionAssistanceEvent(this.ngAgendaEM);
+  
+
+ final  String ngAgendaEM;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWith<NgAgendaEMRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl<NgAgendaEMRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NgAgendaEMRapportCelluleRequestSectionAssistanceEvent&&(identical(other.ngAgendaEM, ngAgendaEM) || other.ngAgendaEM == ngAgendaEM));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,ngAgendaEM);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.ngAgendaEM(ngAgendaEM: $ngAgendaEM)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWith(NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value, $Res Function(NgAgendaEMRapportCelluleRequestSectionAssistanceEvent) _then) = _$NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String ngAgendaEM
+});
+
+
+
+
+}
+/// @nodoc
+class _$NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NgAgendaEMRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NgAgendaEMRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NgAgendaEMRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? ngAgendaEM = null,}) {
+  return _then(NgAgendaEMRapportCelluleRequestSectionAssistanceEvent(
+null == ngAgendaEM ? _self.ngAgendaEM : ngAgendaEM // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
+   NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent(this.nbDecisionnaires);
+  
+
+ final  String nbDecisionnaires;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWith<NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent> get copyWith => _$NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWithImpl<NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent&&(identical(other.nbDecisionnaires, nbDecisionnaires) || other.nbDecisionnaires == nbDecisionnaires));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nbDecisionnaires);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSectionAssistanceEvent.nbDecisionnaires(nbDecisionnaires: $nbDecisionnaires)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  factory $NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWith(NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value, $Res Function(NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent) _then) = _$NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
+@useResult
+$Res call({
+ String nbDecisionnaires
+});
+
+
+
+
+}
+/// @nodoc
+class _$NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res>
+    implements $NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+  _$NbDecisionnairesRapportCelluleRequestSectionAssistanceEventCopyWithImpl(this._self, this._then);
+
+  final NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent _self;
+  final $Res Function(NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nbDecisionnaires = null,}) {
+  return _then(NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent(
+null == nbDecisionnaires ? _self.nbDecisionnaires : nbDecisionnaires // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -1717,16 +2515,10 @@ as List<RequestHumaneSectionAssistance>,
 
 
 class ChangeInviterRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeInviterRapportCelluleRequestSectionAssistanceEvent(final  List<RequestHumaneSectionAssistance> inviterStat): _inviterStat = inviterStat;
+   ChangeInviterRapportCelluleRequestSectionAssistanceEvent(this.inviterStat);
   
 
- final  List<RequestHumaneSectionAssistance> _inviterStat;
- List<RequestHumaneSectionAssistance> get inviterStat {
-  if (_inviterStat is EqualUnmodifiableListView) return _inviterStat;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_inviterStat);
-}
-
+ final  RequestHumaneSectionAssistance inviterStat;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1738,12 +2530,12 @@ $ChangeInviterRapportCelluleRequestSectionAssistanceEventCopyWith<ChangeInviterR
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeInviterRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._inviterStat, _inviterStat));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeInviterRapportCelluleRequestSectionAssistanceEvent&&(identical(other.inviterStat, inviterStat) || other.inviterStat == inviterStat));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_inviterStat));
+int get hashCode => Object.hash(runtimeType,inviterStat);
 
 @override
 String toString() {
@@ -1758,11 +2550,11 @@ abstract mixin class $ChangeInviterRapportCelluleRequestSectionAssistanceEventCo
   factory $ChangeInviterRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeInviterRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeInviterRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeInviterRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestHumaneSectionAssistance> inviterStat
+ RequestHumaneSectionAssistance inviterStat
 });
 
 
-
+$RequestHumaneSectionAssistanceCopyWith<$Res> get inviterStat;
 
 }
 /// @nodoc
@@ -1777,28 +2569,31 @@ class _$ChangeInviterRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Re
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? inviterStat = null,}) {
   return _then(ChangeInviterRapportCelluleRequestSectionAssistanceEvent(
-null == inviterStat ? _self._inviterStat : inviterStat // ignore: cast_nullable_to_non_nullable
-as List<RequestHumaneSectionAssistance>,
+null == inviterStat ? _self.inviterStat : inviterStat // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistance,
   ));
 }
 
-
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceCopyWith<$Res> get inviterStat {
+  
+  return $RequestHumaneSectionAssistanceCopyWith<$Res>(_self.inviterStat, (value) {
+    return _then(_self.copyWith(inviterStat: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class ChangeFormationRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeFormationRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> formationStat): _formationStat = formationStat;
+   ChangeFormationRapportCelluleRequestSectionAssistanceEvent(this.formationStat);
   
 
- final  List<RequestAutherInformationSource> _formationStat;
- List<RequestAutherInformationSource> get formationStat {
-  if (_formationStat is EqualUnmodifiableListView) return _formationStat;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_formationStat);
-}
-
+ final  RequestAuherInformation formationStat;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1810,12 +2605,12 @@ $ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWith<ChangeFormat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeFormationRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._formationStat, _formationStat));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeFormationRapportCelluleRequestSectionAssistanceEvent&&(identical(other.formationStat, formationStat) || other.formationStat == formationStat));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_formationStat));
+int get hashCode => Object.hash(runtimeType,formationStat);
 
 @override
 String toString() {
@@ -1830,11 +2625,11 @@ abstract mixin class $ChangeFormationRapportCelluleRequestSectionAssistanceEvent
   factory $ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeFormationRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeFormationRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestAutherInformationSource> formationStat
+ RequestAuherInformation formationStat
 });
 
 
-
+$RequestAuherInformationCopyWith<$Res> get formationStat;
 
 }
 /// @nodoc
@@ -1849,28 +2644,31 @@ class _$ChangeFormationRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? formationStat = null,}) {
   return _then(ChangeFormationRapportCelluleRequestSectionAssistanceEvent(
-null == formationStat ? _self._formationStat : formationStat // ignore: cast_nullable_to_non_nullable
-as List<RequestAutherInformationSource>,
+null == formationStat ? _self.formationStat : formationStat // ignore: cast_nullable_to_non_nullable
+as RequestAuherInformation,
   ));
 }
 
-
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestAuherInformationCopyWith<$Res> get formationStat {
+  
+  return $RequestAuherInformationCopyWith<$Res>(_self.formationStat, (value) {
+    return _then(_self.copyWith(formationStat: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> sectionVisite): _sectionVisite = sectionVisite;
+   ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(this.sectionVisite);
   
 
- final  List<RequestAutherInformationSource> _sectionVisite;
- List<RequestAutherInformationSource> get sectionVisite {
-  if (_sectionVisite is EqualUnmodifiableListView) return _sectionVisite;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_sectionVisite);
-}
-
+ final  RequestAuherInformation sectionVisite;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1882,12 +2680,12 @@ $ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWith<ChangeSe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._sectionVisite, _sectionVisite));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent&&(identical(other.sectionVisite, sectionVisite) || other.sectionVisite == sectionVisite));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sectionVisite));
+int get hashCode => Object.hash(runtimeType,sectionVisite);
 
 @override
 String toString() {
@@ -1902,11 +2700,11 @@ abstract mixin class $ChangeSectionVisiteRapportCelluleRequestSectionAssistanceE
   factory $ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestAutherInformationSource> sectionVisite
+ RequestAuherInformation sectionVisite
 });
 
 
-
+$RequestAuherInformationCopyWith<$Res> get sectionVisite;
 
 }
 /// @nodoc
@@ -1921,28 +2719,31 @@ class _$ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEventCopyWithIm
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? sectionVisite = null,}) {
   return _then(ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(
-null == sectionVisite ? _self._sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
-as List<RequestAutherInformationSource>,
+null == sectionVisite ? _self.sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
+as RequestAuherInformation,
   ));
 }
 
-
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestAuherInformationCopyWith<$Res> get sectionVisite {
+  
+  return $RequestAuherInformationCopyWith<$Res>(_self.sectionVisite, (value) {
+    return _then(_self.copyWith(sectionVisite: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> sectionActivite): _sectionActivite = sectionActivite;
+   ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(this.sectionActivite);
   
 
- final  List<RequestAutherInformationSource> _sectionActivite;
- List<RequestAutherInformationSource> get sectionActivite {
-  if (_sectionActivite is EqualUnmodifiableListView) return _sectionActivite;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_sectionActivite);
-}
-
+ final  RequestAuherInformation sectionActivite;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1954,12 +2755,12 @@ $ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWith<Change
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._sectionActivite, _sectionActivite));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent&&(identical(other.sectionActivite, sectionActivite) || other.sectionActivite == sectionActivite));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sectionActivite));
+int get hashCode => Object.hash(runtimeType,sectionActivite);
 
 @override
 String toString() {
@@ -1974,11 +2775,11 @@ abstract mixin class $ChangeSectionActiviteRapportCelluleRequestSectionAssistanc
   factory $ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestAutherInformationSource> sectionActivite
+ RequestAuherInformation sectionActivite
 });
 
 
-
+$RequestAuherInformationCopyWith<$Res> get sectionActivite;
 
 }
 /// @nodoc
@@ -1993,28 +2794,31 @@ class _$ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEventCopyWith
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? sectionActivite = null,}) {
   return _then(ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(
-null == sectionActivite ? _self._sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
-as List<RequestAutherInformationSource>,
+null == sectionActivite ? _self.sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
+as RequestAuherInformation,
   ));
 }
 
-
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestAuherInformationCopyWith<$Res> get sectionActivite {
+  
+  return $RequestAuherInformationCopyWith<$Res>(_self.sectionActivite, (value) {
+    return _then(_self.copyWith(sectionActivite: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> sectionOuvrier): _sectionOuvrier = sectionOuvrier;
+   ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(this.sectionOuvrier);
   
 
- final  List<RequestAutherInformationSource> _sectionOuvrier;
- List<RequestAutherInformationSource> get sectionOuvrier {
-  if (_sectionOuvrier is EqualUnmodifiableListView) return _sectionOuvrier;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_sectionOuvrier);
-}
-
+ final  RequestAuherInformation sectionOuvrier;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -2026,12 +2830,12 @@ $ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWith<ChangeS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._sectionOuvrier, _sectionOuvrier));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent&&(identical(other.sectionOuvrier, sectionOuvrier) || other.sectionOuvrier == sectionOuvrier));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sectionOuvrier));
+int get hashCode => Object.hash(runtimeType,sectionOuvrier);
 
 @override
 String toString() {
@@ -2046,11 +2850,11 @@ abstract mixin class $ChangeSectionOuvrierRapportCelluleRequestSectionAssistance
   factory $ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestAutherInformationSource> sectionOuvrier
+ RequestAuherInformation sectionOuvrier
 });
 
 
-
+$RequestAuherInformationCopyWith<$Res> get sectionOuvrier;
 
 }
 /// @nodoc
@@ -2065,28 +2869,31 @@ class _$ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEventCopyWithI
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? sectionOuvrier = null,}) {
   return _then(ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(
-null == sectionOuvrier ? _self._sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
-as List<RequestAutherInformationSource>,
+null == sectionOuvrier ? _self.sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
+as RequestAuherInformation,
   ));
 }
 
-
+/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestAuherInformationCopyWith<$Res> get sectionOuvrier {
+  
+  return $RequestAuherInformationCopyWith<$Res>(_self.sectionOuvrier, (value) {
+    return _then(_self.copyWith(sectionOuvrier: value));
+  });
+}
 }
 
 /// @nodoc
 
 
 class ChangeAutresRapportCelluleRequestSectionAssistanceEvent implements RapportCelluleRequestSectionAssistanceEvent {
-   ChangeAutresRapportCelluleRequestSectionAssistanceEvent(final  List<RequestAutherInformationSource> autres): _autres = autres;
+   ChangeAutresRapportCelluleRequestSectionAssistanceEvent(this.autres);
   
 
- final  List<RequestAutherInformationSource> _autres;
- List<RequestAutherInformationSource> get autres {
-  if (_autres is EqualUnmodifiableListView) return _autres;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_autres);
-}
-
+ final  String autres;
 
 /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -2098,12 +2905,12 @@ $ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWith<ChangeAutresRap
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeAutresRapportCelluleRequestSectionAssistanceEvent&&const DeepCollectionEquality().equals(other._autres, _autres));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeAutresRapportCelluleRequestSectionAssistanceEvent&&(identical(other.autres, autres) || other.autres == autres));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_autres));
+int get hashCode => Object.hash(runtimeType,autres);
 
 @override
 String toString() {
@@ -2118,7 +2925,7 @@ abstract mixin class $ChangeAutresRapportCelluleRequestSectionAssistanceEventCop
   factory $ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWith(ChangeAutresRapportCelluleRequestSectionAssistanceEvent value, $Res Function(ChangeAutresRapportCelluleRequestSectionAssistanceEvent) _then) = _$ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWithImpl;
 @useResult
 $Res call({
- List<RequestAutherInformationSource> autres
+ String autres
 });
 
 
@@ -2137,8 +2944,8 @@ class _$ChangeAutresRapportCelluleRequestSectionAssistanceEventCopyWithImpl<$Res
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? autres = null,}) {
   return _then(ChangeAutresRapportCelluleRequestSectionAssistanceEvent(
-null == autres ? _self._autres : autres // ignore: cast_nullable_to_non_nullable
-as List<RequestAutherInformationSource>,
+null == autres ? _self.autres : autres // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

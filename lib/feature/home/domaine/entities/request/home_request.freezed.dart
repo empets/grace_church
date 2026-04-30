@@ -3711,7 +3711,7 @@ as int,
 /// @nodoc
 mixin _$RequestAuherInformation implements DiagnosticableTreeMixin {
 
- String get libelle; int get count;
+ String get libelle; String get formationNewDFB; String get formationNewBaptDFD; String get visiteMenbre; String get visiteDisciple; String get nbTravailleurs; String get nbEleveAndEtudiants; String get nbOuvrierEM; String get nbOuvrierAutreDepatementDirigeantEM; String get nbFormationNiveau2; String get ngAgendaEM; String get nbDecisionnaires; String get id; int get count;
 /// Create a copy of RequestAuherInformation
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3725,21 +3725,21 @@ $RequestAuherInformationCopyWith<RequestAuherInformation> get copyWith => _$Requ
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestAuherInformation'))
-    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('count', count));
+    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('formationNewDFB', formationNewDFB))..add(DiagnosticsProperty('formationNewBaptDFD', formationNewBaptDFD))..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteDisciple', visiteDisciple))..add(DiagnosticsProperty('nbTravailleurs', nbTravailleurs))..add(DiagnosticsProperty('nbEleveAndEtudiants', nbEleveAndEtudiants))..add(DiagnosticsProperty('nbOuvrierEM', nbOuvrierEM))..add(DiagnosticsProperty('nbOuvrierAutreDepatementDirigeantEM', nbOuvrierAutreDepatementDirigeantEM))..add(DiagnosticsProperty('nbFormationNiveau2', nbFormationNiveau2))..add(DiagnosticsProperty('ngAgendaEM', ngAgendaEM))..add(DiagnosticsProperty('nbDecisionnaires', nbDecisionnaires))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('count', count));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuherInformation&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.count, count) || other.count == count));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuherInformation&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.formationNewDFB, formationNewDFB) || other.formationNewDFB == formationNewDFB)&&(identical(other.formationNewBaptDFD, formationNewBaptDFD) || other.formationNewBaptDFD == formationNewBaptDFD)&&(identical(other.visiteMenbre, visiteMenbre) || other.visiteMenbre == visiteMenbre)&&(identical(other.visiteDisciple, visiteDisciple) || other.visiteDisciple == visiteDisciple)&&(identical(other.nbTravailleurs, nbTravailleurs) || other.nbTravailleurs == nbTravailleurs)&&(identical(other.nbEleveAndEtudiants, nbEleveAndEtudiants) || other.nbEleveAndEtudiants == nbEleveAndEtudiants)&&(identical(other.nbOuvrierEM, nbOuvrierEM) || other.nbOuvrierEM == nbOuvrierEM)&&(identical(other.nbOuvrierAutreDepatementDirigeantEM, nbOuvrierAutreDepatementDirigeantEM) || other.nbOuvrierAutreDepatementDirigeantEM == nbOuvrierAutreDepatementDirigeantEM)&&(identical(other.nbFormationNiveau2, nbFormationNiveau2) || other.nbFormationNiveau2 == nbFormationNiveau2)&&(identical(other.ngAgendaEM, ngAgendaEM) || other.ngAgendaEM == ngAgendaEM)&&(identical(other.nbDecisionnaires, nbDecisionnaires) || other.nbDecisionnaires == nbDecisionnaires)&&(identical(other.id, id) || other.id == id)&&(identical(other.count, count) || other.count == count));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,libelle,count);
+int get hashCode => Object.hash(runtimeType,libelle,formationNewDFB,formationNewBaptDFD,visiteMenbre,visiteDisciple,nbTravailleurs,nbEleveAndEtudiants,nbOuvrierEM,nbOuvrierAutreDepatementDirigeantEM,nbFormationNiveau2,ngAgendaEM,nbDecisionnaires,id,count);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestAuherInformation(libelle: $libelle, count: $count)';
+  return 'RequestAuherInformation(libelle: $libelle, formationNewDFB: $formationNewDFB, formationNewBaptDFD: $formationNewBaptDFD, visiteMenbre: $visiteMenbre, visiteDisciple: $visiteDisciple, nbTravailleurs: $nbTravailleurs, nbEleveAndEtudiants: $nbEleveAndEtudiants, nbOuvrierEM: $nbOuvrierEM, nbOuvrierAutreDepatementDirigeantEM: $nbOuvrierAutreDepatementDirigeantEM, nbFormationNiveau2: $nbFormationNiveau2, ngAgendaEM: $ngAgendaEM, nbDecisionnaires: $nbDecisionnaires, id: $id, count: $count)';
 }
 
 
@@ -3750,7 +3750,7 @@ abstract mixin class $RequestAuherInformationCopyWith<$Res>  {
   factory $RequestAuherInformationCopyWith(RequestAuherInformation value, $Res Function(RequestAuherInformation) _then) = _$RequestAuherInformationCopyWithImpl;
 @useResult
 $Res call({
- String libelle, int count
+ String libelle, String formationNewDFB, String formationNewBaptDFD, String visiteMenbre, String visiteDisciple, String nbTravailleurs, String nbEleveAndEtudiants, String nbOuvrierEM, String nbOuvrierAutreDepatementDirigeantEM, String nbFormationNiveau2, String ngAgendaEM, String nbDecisionnaires, String id, int count
 });
 
 
@@ -3767,9 +3767,21 @@ class _$RequestAuherInformationCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuherInformation
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? libelle = null,Object? count = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? libelle = null,Object? formationNewDFB = null,Object? formationNewBaptDFD = null,Object? visiteMenbre = null,Object? visiteDisciple = null,Object? nbTravailleurs = null,Object? nbEleveAndEtudiants = null,Object? nbOuvrierEM = null,Object? nbOuvrierAutreDepatementDirigeantEM = null,Object? nbFormationNiveau2 = null,Object? ngAgendaEM = null,Object? nbDecisionnaires = null,Object? id = null,Object? count = null,}) {
   return _then(_self.copyWith(
 libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,formationNewDFB: null == formationNewDFB ? _self.formationNewDFB : formationNewDFB // ignore: cast_nullable_to_non_nullable
+as String,formationNewBaptDFD: null == formationNewBaptDFD ? _self.formationNewBaptDFD : formationNewBaptDFD // ignore: cast_nullable_to_non_nullable
+as String,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as String,visiteDisciple: null == visiteDisciple ? _self.visiteDisciple : visiteDisciple // ignore: cast_nullable_to_non_nullable
+as String,nbTravailleurs: null == nbTravailleurs ? _self.nbTravailleurs : nbTravailleurs // ignore: cast_nullable_to_non_nullable
+as String,nbEleveAndEtudiants: null == nbEleveAndEtudiants ? _self.nbEleveAndEtudiants : nbEleveAndEtudiants // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierEM: null == nbOuvrierEM ? _self.nbOuvrierEM : nbOuvrierEM // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierAutreDepatementDirigeantEM: null == nbOuvrierAutreDepatementDirigeantEM ? _self.nbOuvrierAutreDepatementDirigeantEM : nbOuvrierAutreDepatementDirigeantEM // ignore: cast_nullable_to_non_nullable
+as String,nbFormationNiveau2: null == nbFormationNiveau2 ? _self.nbFormationNiveau2 : nbFormationNiveau2 // ignore: cast_nullable_to_non_nullable
+as String,ngAgendaEM: null == ngAgendaEM ? _self.ngAgendaEM : ngAgendaEM // ignore: cast_nullable_to_non_nullable
+as String,nbDecisionnaires: null == nbDecisionnaires ? _self.nbDecisionnaires : nbDecisionnaires // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -3856,10 +3868,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String libelle,  int count)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String libelle,  String formationNewDFB,  String formationNewBaptDFD,  String visiteMenbre,  String visiteDisciple,  String nbTravailleurs,  String nbEleveAndEtudiants,  String nbOuvrierEM,  String nbOuvrierAutreDepatementDirigeantEM,  String nbFormationNiveau2,  String ngAgendaEM,  String nbDecisionnaires,  String id,  int count)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuherInformation() when $default != null:
-return $default(_that.libelle,_that.count);case _:
+return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_that.visiteMenbre,_that.visiteDisciple,_that.nbTravailleurs,_that.nbEleveAndEtudiants,_that.nbOuvrierEM,_that.nbOuvrierAutreDepatementDirigeantEM,_that.nbFormationNiveau2,_that.ngAgendaEM,_that.nbDecisionnaires,_that.id,_that.count);case _:
   return orElse();
 
 }
@@ -3877,10 +3889,10 @@ return $default(_that.libelle,_that.count);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String libelle,  int count)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String libelle,  String formationNewDFB,  String formationNewBaptDFD,  String visiteMenbre,  String visiteDisciple,  String nbTravailleurs,  String nbEleveAndEtudiants,  String nbOuvrierEM,  String nbOuvrierAutreDepatementDirigeantEM,  String nbFormationNiveau2,  String ngAgendaEM,  String nbDecisionnaires,  String id,  int count)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuherInformation():
-return $default(_that.libelle,_that.count);case _:
+return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_that.visiteMenbre,_that.visiteDisciple,_that.nbTravailleurs,_that.nbEleveAndEtudiants,_that.nbOuvrierEM,_that.nbOuvrierAutreDepatementDirigeantEM,_that.nbFormationNiveau2,_that.ngAgendaEM,_that.nbDecisionnaires,_that.id,_that.count);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3897,10 +3909,10 @@ return $default(_that.libelle,_that.count);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String libelle,  int count)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String libelle,  String formationNewDFB,  String formationNewBaptDFD,  String visiteMenbre,  String visiteDisciple,  String nbTravailleurs,  String nbEleveAndEtudiants,  String nbOuvrierEM,  String nbOuvrierAutreDepatementDirigeantEM,  String nbFormationNiveau2,  String ngAgendaEM,  String nbDecisionnaires,  String id,  int count)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuherInformation() when $default != null:
-return $default(_that.libelle,_that.count);case _:
+return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_that.visiteMenbre,_that.visiteDisciple,_that.nbTravailleurs,_that.nbEleveAndEtudiants,_that.nbOuvrierEM,_that.nbOuvrierAutreDepatementDirigeantEM,_that.nbFormationNiveau2,_that.ngAgendaEM,_that.nbDecisionnaires,_that.id,_that.count);case _:
   return null;
 
 }
@@ -3912,11 +3924,23 @@ return $default(_that.libelle,_that.count);case _:
 @JsonSerializable()
 
 class _RequestAuherInformation with DiagnosticableTreeMixin implements RequestAuherInformation {
-   _RequestAuherInformation({required this.libelle, required this.count});
+   _RequestAuherInformation({this.libelle = "", this.formationNewDFB = "", this.formationNewBaptDFD = "", this.visiteMenbre = "", this.visiteDisciple = "", this.nbTravailleurs = "", this.nbEleveAndEtudiants = "", this.nbOuvrierEM = "", this.nbOuvrierAutreDepatementDirigeantEM = "", this.nbFormationNiveau2 = "", this.ngAgendaEM = "", this.nbDecisionnaires = "", this.id = "", this.count = 0});
   factory _RequestAuherInformation.fromJson(Map<String, dynamic> json) => _$RequestAuherInformationFromJson(json);
 
-@override final  String libelle;
-@override final  int count;
+@override@JsonKey() final  String libelle;
+@override@JsonKey() final  String formationNewDFB;
+@override@JsonKey() final  String formationNewBaptDFD;
+@override@JsonKey() final  String visiteMenbre;
+@override@JsonKey() final  String visiteDisciple;
+@override@JsonKey() final  String nbTravailleurs;
+@override@JsonKey() final  String nbEleveAndEtudiants;
+@override@JsonKey() final  String nbOuvrierEM;
+@override@JsonKey() final  String nbOuvrierAutreDepatementDirigeantEM;
+@override@JsonKey() final  String nbFormationNiveau2;
+@override@JsonKey() final  String ngAgendaEM;
+@override@JsonKey() final  String nbDecisionnaires;
+@override@JsonKey() final  String id;
+@override@JsonKey() final  int count;
 
 /// Create a copy of RequestAuherInformation
 /// with the given fields replaced by the non-null parameter values.
@@ -3932,21 +3956,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestAuherInformation'))
-    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('count', count));
+    ..add(DiagnosticsProperty('libelle', libelle))..add(DiagnosticsProperty('formationNewDFB', formationNewDFB))..add(DiagnosticsProperty('formationNewBaptDFD', formationNewBaptDFD))..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteDisciple', visiteDisciple))..add(DiagnosticsProperty('nbTravailleurs', nbTravailleurs))..add(DiagnosticsProperty('nbEleveAndEtudiants', nbEleveAndEtudiants))..add(DiagnosticsProperty('nbOuvrierEM', nbOuvrierEM))..add(DiagnosticsProperty('nbOuvrierAutreDepatementDirigeantEM', nbOuvrierAutreDepatementDirigeantEM))..add(DiagnosticsProperty('nbFormationNiveau2', nbFormationNiveau2))..add(DiagnosticsProperty('ngAgendaEM', ngAgendaEM))..add(DiagnosticsProperty('nbDecisionnaires', nbDecisionnaires))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('count', count));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuherInformation&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.count, count) || other.count == count));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuherInformation&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.formationNewDFB, formationNewDFB) || other.formationNewDFB == formationNewDFB)&&(identical(other.formationNewBaptDFD, formationNewBaptDFD) || other.formationNewBaptDFD == formationNewBaptDFD)&&(identical(other.visiteMenbre, visiteMenbre) || other.visiteMenbre == visiteMenbre)&&(identical(other.visiteDisciple, visiteDisciple) || other.visiteDisciple == visiteDisciple)&&(identical(other.nbTravailleurs, nbTravailleurs) || other.nbTravailleurs == nbTravailleurs)&&(identical(other.nbEleveAndEtudiants, nbEleveAndEtudiants) || other.nbEleveAndEtudiants == nbEleveAndEtudiants)&&(identical(other.nbOuvrierEM, nbOuvrierEM) || other.nbOuvrierEM == nbOuvrierEM)&&(identical(other.nbOuvrierAutreDepatementDirigeantEM, nbOuvrierAutreDepatementDirigeantEM) || other.nbOuvrierAutreDepatementDirigeantEM == nbOuvrierAutreDepatementDirigeantEM)&&(identical(other.nbFormationNiveau2, nbFormationNiveau2) || other.nbFormationNiveau2 == nbFormationNiveau2)&&(identical(other.ngAgendaEM, ngAgendaEM) || other.ngAgendaEM == ngAgendaEM)&&(identical(other.nbDecisionnaires, nbDecisionnaires) || other.nbDecisionnaires == nbDecisionnaires)&&(identical(other.id, id) || other.id == id)&&(identical(other.count, count) || other.count == count));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,libelle,count);
+int get hashCode => Object.hash(runtimeType,libelle,formationNewDFB,formationNewBaptDFD,visiteMenbre,visiteDisciple,nbTravailleurs,nbEleveAndEtudiants,nbOuvrierEM,nbOuvrierAutreDepatementDirigeantEM,nbFormationNiveau2,ngAgendaEM,nbDecisionnaires,id,count);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestAuherInformation(libelle: $libelle, count: $count)';
+  return 'RequestAuherInformation(libelle: $libelle, formationNewDFB: $formationNewDFB, formationNewBaptDFD: $formationNewBaptDFD, visiteMenbre: $visiteMenbre, visiteDisciple: $visiteDisciple, nbTravailleurs: $nbTravailleurs, nbEleveAndEtudiants: $nbEleveAndEtudiants, nbOuvrierEM: $nbOuvrierEM, nbOuvrierAutreDepatementDirigeantEM: $nbOuvrierAutreDepatementDirigeantEM, nbFormationNiveau2: $nbFormationNiveau2, ngAgendaEM: $ngAgendaEM, nbDecisionnaires: $nbDecisionnaires, id: $id, count: $count)';
 }
 
 
@@ -3957,7 +3981,7 @@ abstract mixin class _$RequestAuherInformationCopyWith<$Res> implements $Request
   factory _$RequestAuherInformationCopyWith(_RequestAuherInformation value, $Res Function(_RequestAuherInformation) _then) = __$RequestAuherInformationCopyWithImpl;
 @override @useResult
 $Res call({
- String libelle, int count
+ String libelle, String formationNewDFB, String formationNewBaptDFD, String visiteMenbre, String visiteDisciple, String nbTravailleurs, String nbEleveAndEtudiants, String nbOuvrierEM, String nbOuvrierAutreDepatementDirigeantEM, String nbFormationNiveau2, String ngAgendaEM, String nbDecisionnaires, String id, int count
 });
 
 
@@ -3974,9 +3998,21 @@ class __$RequestAuherInformationCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuherInformation
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? libelle = null,Object? count = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? libelle = null,Object? formationNewDFB = null,Object? formationNewBaptDFD = null,Object? visiteMenbre = null,Object? visiteDisciple = null,Object? nbTravailleurs = null,Object? nbEleveAndEtudiants = null,Object? nbOuvrierEM = null,Object? nbOuvrierAutreDepatementDirigeantEM = null,Object? nbFormationNiveau2 = null,Object? ngAgendaEM = null,Object? nbDecisionnaires = null,Object? id = null,Object? count = null,}) {
   return _then(_RequestAuherInformation(
 libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,formationNewDFB: null == formationNewDFB ? _self.formationNewDFB : formationNewDFB // ignore: cast_nullable_to_non_nullable
+as String,formationNewBaptDFD: null == formationNewBaptDFD ? _self.formationNewBaptDFD : formationNewBaptDFD // ignore: cast_nullable_to_non_nullable
+as String,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as String,visiteDisciple: null == visiteDisciple ? _self.visiteDisciple : visiteDisciple // ignore: cast_nullable_to_non_nullable
+as String,nbTravailleurs: null == nbTravailleurs ? _self.nbTravailleurs : nbTravailleurs // ignore: cast_nullable_to_non_nullable
+as String,nbEleveAndEtudiants: null == nbEleveAndEtudiants ? _self.nbEleveAndEtudiants : nbEleveAndEtudiants // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierEM: null == nbOuvrierEM ? _self.nbOuvrierEM : nbOuvrierEM // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierAutreDepatementDirigeantEM: null == nbOuvrierAutreDepatementDirigeantEM ? _self.nbOuvrierAutreDepatementDirigeantEM : nbOuvrierAutreDepatementDirigeantEM // ignore: cast_nullable_to_non_nullable
+as String,nbFormationNiveau2: null == nbFormationNiveau2 ? _self.nbFormationNiveau2 : nbFormationNiveau2 // ignore: cast_nullable_to_non_nullable
+as String,ngAgendaEM: null == ngAgendaEM ? _self.ngAgendaEM : ngAgendaEM // ignore: cast_nullable_to_non_nullable
+as String,nbDecisionnaires: null == nbDecisionnaires ? _self.nbDecisionnaires : nbDecisionnaires // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -4273,7 +4309,7 @@ as List<RequestAuherInformation>,
 /// @nodoc
 mixin _$RequestRapportCelluleAssistance implements DiagnosticableTreeMixin {
 
- String get nombreBaptiser; List<Map<String, dynamic>> get nomBaptiserStat; List<Map<String, dynamic>> get nouveauBaptiserStat; List<Map<String, dynamic>> get inviterStat; List<Map<String, dynamic>> get formationStat; List<Map<String, dynamic>> get sectionVisite; List<Map<String, dynamic>> get sectionActivite; List<Map<String, dynamic>> get sectionOuvrier; List<Map<String, dynamic>> get autres; String get id; String get formAssistanceIsSubmit; String get formAssistanceSubmitDate;
+ String get nombreBaptiser; Map<String, dynamic> get assistanceNonBaptiser; Map<String, dynamic> get assistanceNouveau; Map<String, dynamic> get assistanceInviter; Map<String, dynamic> get assistanceCellule; String get id; String get formAssistanceIsSubmit; String get formAssistanceSubmitDate;
 /// Create a copy of RequestRapportCelluleAssistance
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4287,21 +4323,21 @@ $RequestRapportCelluleAssistanceCopyWith<RequestRapportCelluleAssistance> get co
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestRapportCelluleAssistance'))
-    ..add(DiagnosticsProperty('nombreBaptiser', nombreBaptiser))..add(DiagnosticsProperty('nomBaptiserStat', nomBaptiserStat))..add(DiagnosticsProperty('nouveauBaptiserStat', nouveauBaptiserStat))..add(DiagnosticsProperty('inviterStat', inviterStat))..add(DiagnosticsProperty('formationStat', formationStat))..add(DiagnosticsProperty('sectionVisite', sectionVisite))..add(DiagnosticsProperty('sectionActivite', sectionActivite))..add(DiagnosticsProperty('sectionOuvrier', sectionOuvrier))..add(DiagnosticsProperty('autres', autres))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('formAssistanceIsSubmit', formAssistanceIsSubmit))..add(DiagnosticsProperty('formAssistanceSubmitDate', formAssistanceSubmitDate));
+    ..add(DiagnosticsProperty('nombreBaptiser', nombreBaptiser))..add(DiagnosticsProperty('assistanceNonBaptiser', assistanceNonBaptiser))..add(DiagnosticsProperty('assistanceNouveau', assistanceNouveau))..add(DiagnosticsProperty('assistanceInviter', assistanceInviter))..add(DiagnosticsProperty('assistanceCellule', assistanceCellule))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('formAssistanceIsSubmit', formAssistanceIsSubmit))..add(DiagnosticsProperty('formAssistanceSubmitDate', formAssistanceSubmitDate));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleAssistance&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&const DeepCollectionEquality().equals(other.nomBaptiserStat, nomBaptiserStat)&&const DeepCollectionEquality().equals(other.nouveauBaptiserStat, nouveauBaptiserStat)&&const DeepCollectionEquality().equals(other.inviterStat, inviterStat)&&const DeepCollectionEquality().equals(other.formationStat, formationStat)&&const DeepCollectionEquality().equals(other.sectionVisite, sectionVisite)&&const DeepCollectionEquality().equals(other.sectionActivite, sectionActivite)&&const DeepCollectionEquality().equals(other.sectionOuvrier, sectionOuvrier)&&const DeepCollectionEquality().equals(other.autres, autres)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleAssistance&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&const DeepCollectionEquality().equals(other.assistanceNonBaptiser, assistanceNonBaptiser)&&const DeepCollectionEquality().equals(other.assistanceNouveau, assistanceNouveau)&&const DeepCollectionEquality().equals(other.assistanceInviter, assistanceInviter)&&const DeepCollectionEquality().equals(other.assistanceCellule, assistanceCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,nombreBaptiser,const DeepCollectionEquality().hash(nomBaptiserStat),const DeepCollectionEquality().hash(nouveauBaptiserStat),const DeepCollectionEquality().hash(inviterStat),const DeepCollectionEquality().hash(formationStat),const DeepCollectionEquality().hash(sectionVisite),const DeepCollectionEquality().hash(sectionActivite),const DeepCollectionEquality().hash(sectionOuvrier),const DeepCollectionEquality().hash(autres),id,formAssistanceIsSubmit,formAssistanceSubmitDate);
+int get hashCode => Object.hash(runtimeType,nombreBaptiser,const DeepCollectionEquality().hash(assistanceNonBaptiser),const DeepCollectionEquality().hash(assistanceNouveau),const DeepCollectionEquality().hash(assistanceInviter),const DeepCollectionEquality().hash(assistanceCellule),id,formAssistanceIsSubmit,formAssistanceSubmitDate);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestRapportCelluleAssistance(nombreBaptiser: $nombreBaptiser, nomBaptiserStat: $nomBaptiserStat, nouveauBaptiserStat: $nouveauBaptiserStat, inviterStat: $inviterStat, formationStat: $formationStat, sectionVisite: $sectionVisite, sectionActivite: $sectionActivite, sectionOuvrier: $sectionOuvrier, autres: $autres, id: $id, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate)';
+  return 'RequestRapportCelluleAssistance(nombreBaptiser: $nombreBaptiser, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, id: $id, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate)';
 }
 
 
@@ -4312,7 +4348,7 @@ abstract mixin class $RequestRapportCelluleAssistanceCopyWith<$Res>  {
   factory $RequestRapportCelluleAssistanceCopyWith(RequestRapportCelluleAssistance value, $Res Function(RequestRapportCelluleAssistance) _then) = _$RequestRapportCelluleAssistanceCopyWithImpl;
 @useResult
 $Res call({
- String nombreBaptiser, List<Map<String, dynamic>> nomBaptiserStat, List<Map<String, dynamic>> nouveauBaptiserStat, List<Map<String, dynamic>> inviterStat, List<Map<String, dynamic>> formationStat, List<Map<String, dynamic>> sectionVisite, List<Map<String, dynamic>> sectionActivite, List<Map<String, dynamic>> sectionOuvrier, List<Map<String, dynamic>> autres, String id, String formAssistanceIsSubmit, String formAssistanceSubmitDate
+ String nombreBaptiser, Map<String, dynamic> assistanceNonBaptiser, Map<String, dynamic> assistanceNouveau, Map<String, dynamic> assistanceInviter, Map<String, dynamic> assistanceCellule, String id, String formAssistanceIsSubmit, String formAssistanceSubmitDate
 });
 
 
@@ -4329,18 +4365,14 @@ class _$RequestRapportCelluleAssistanceCopyWithImpl<$Res>
 
 /// Create a copy of RequestRapportCelluleAssistance
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? nombreBaptiser = null,Object? nomBaptiserStat = null,Object? nouveauBaptiserStat = null,Object? inviterStat = null,Object? formationStat = null,Object? sectionVisite = null,Object? sectionActivite = null,Object? sectionOuvrier = null,Object? autres = null,Object? id = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? nombreBaptiser = null,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? id = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,}) {
   return _then(_self.copyWith(
 nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
-as String,nomBaptiserStat: null == nomBaptiserStat ? _self.nomBaptiserStat : nomBaptiserStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,nouveauBaptiserStat: null == nouveauBaptiserStat ? _self.nouveauBaptiserStat : nouveauBaptiserStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,inviterStat: null == inviterStat ? _self.inviterStat : inviterStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,formationStat: null == formationStat ? _self.formationStat : formationStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,sectionVisite: null == sectionVisite ? _self.sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,sectionActivite: null == sectionActivite ? _self.sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,sectionOuvrier: null == sectionOuvrier ? _self.sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,autres: null == autres ? _self.autres : autres // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,assistanceNouveau: null == assistanceNouveau ? _self.assistanceNouveau : assistanceNouveau // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,assistanceInviter: null == assistanceInviter ? _self.assistanceInviter : assistanceInviter // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,assistanceCellule: null == assistanceCellule ? _self.assistanceCellule : assistanceCellule // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,formAssistanceIsSubmit: null == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
 as String,formAssistanceSubmitDate: null == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,
@@ -4428,10 +4460,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String nombreBaptiser,  List<Map<String, dynamic>> nomBaptiserStat,  List<Map<String, dynamic>> nouveauBaptiserStat,  List<Map<String, dynamic>> inviterStat,  List<Map<String, dynamic>> formationStat,  List<Map<String, dynamic>> sectionVisite,  List<Map<String, dynamic>> sectionActivite,  List<Map<String, dynamic>> sectionOuvrier,  List<Map<String, dynamic>> autres,  String id,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String nombreBaptiser,  Map<String, dynamic> assistanceNonBaptiser,  Map<String, dynamic> assistanceNouveau,  Map<String, dynamic> assistanceInviter,  Map<String, dynamic> assistanceCellule,  String id,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleAssistance() when $default != null:
-return $default(_that.nombreBaptiser,_that.nomBaptiserStat,_that.nouveauBaptiserStat,_that.inviterStat,_that.formationStat,_that.sectionVisite,_that.sectionActivite,_that.sectionOuvrier,_that.autres,_that.id,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate);case _:
+return $default(_that.nombreBaptiser,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.id,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate);case _:
   return orElse();
 
 }
@@ -4449,10 +4481,10 @@ return $default(_that.nombreBaptiser,_that.nomBaptiserStat,_that.nouveauBaptiser
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String nombreBaptiser,  List<Map<String, dynamic>> nomBaptiserStat,  List<Map<String, dynamic>> nouveauBaptiserStat,  List<Map<String, dynamic>> inviterStat,  List<Map<String, dynamic>> formationStat,  List<Map<String, dynamic>> sectionVisite,  List<Map<String, dynamic>> sectionActivite,  List<Map<String, dynamic>> sectionOuvrier,  List<Map<String, dynamic>> autres,  String id,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String nombreBaptiser,  Map<String, dynamic> assistanceNonBaptiser,  Map<String, dynamic> assistanceNouveau,  Map<String, dynamic> assistanceInviter,  Map<String, dynamic> assistanceCellule,  String id,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate)  $default,) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleAssistance():
-return $default(_that.nombreBaptiser,_that.nomBaptiserStat,_that.nouveauBaptiserStat,_that.inviterStat,_that.formationStat,_that.sectionVisite,_that.sectionActivite,_that.sectionOuvrier,_that.autres,_that.id,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate);case _:
+return $default(_that.nombreBaptiser,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.id,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4469,10 +4501,10 @@ return $default(_that.nombreBaptiser,_that.nomBaptiserStat,_that.nouveauBaptiser
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String nombreBaptiser,  List<Map<String, dynamic>> nomBaptiserStat,  List<Map<String, dynamic>> nouveauBaptiserStat,  List<Map<String, dynamic>> inviterStat,  List<Map<String, dynamic>> formationStat,  List<Map<String, dynamic>> sectionVisite,  List<Map<String, dynamic>> sectionActivite,  List<Map<String, dynamic>> sectionOuvrier,  List<Map<String, dynamic>> autres,  String id,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String nombreBaptiser,  Map<String, dynamic> assistanceNonBaptiser,  Map<String, dynamic> assistanceNouveau,  Map<String, dynamic> assistanceInviter,  Map<String, dynamic> assistanceCellule,  String id,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleAssistance() when $default != null:
-return $default(_that.nombreBaptiser,_that.nomBaptiserStat,_that.nouveauBaptiserStat,_that.inviterStat,_that.formationStat,_that.sectionVisite,_that.sectionActivite,_that.sectionOuvrier,_that.autres,_that.id,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate);case _:
+return $default(_that.nombreBaptiser,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.id,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate);case _:
   return null;
 
 }
@@ -4484,64 +4516,36 @@ return $default(_that.nombreBaptiser,_that.nomBaptiserStat,_that.nouveauBaptiser
 @JsonSerializable()
 
 class _RequestRapportCelluleAssistance with DiagnosticableTreeMixin implements RequestRapportCelluleAssistance {
-   _RequestRapportCelluleAssistance({required this.nombreBaptiser, required final  List<Map<String, dynamic>> nomBaptiserStat, required final  List<Map<String, dynamic>> nouveauBaptiserStat, required final  List<Map<String, dynamic>> inviterStat, required final  List<Map<String, dynamic>> formationStat, required final  List<Map<String, dynamic>> sectionVisite, required final  List<Map<String, dynamic>> sectionActivite, required final  List<Map<String, dynamic>> sectionOuvrier, required final  List<Map<String, dynamic>> autres, required this.id, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate}): _nomBaptiserStat = nomBaptiserStat,_nouveauBaptiserStat = nouveauBaptiserStat,_inviterStat = inviterStat,_formationStat = formationStat,_sectionVisite = sectionVisite,_sectionActivite = sectionActivite,_sectionOuvrier = sectionOuvrier,_autres = autres;
+   _RequestRapportCelluleAssistance({required this.nombreBaptiser, required final  Map<String, dynamic> assistanceNonBaptiser, required final  Map<String, dynamic> assistanceNouveau, required final  Map<String, dynamic> assistanceInviter, required final  Map<String, dynamic> assistanceCellule, required this.id, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate}): _assistanceNonBaptiser = assistanceNonBaptiser,_assistanceNouveau = assistanceNouveau,_assistanceInviter = assistanceInviter,_assistanceCellule = assistanceCellule;
   factory _RequestRapportCelluleAssistance.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleAssistanceFromJson(json);
 
 @override final  String nombreBaptiser;
- final  List<Map<String, dynamic>> _nomBaptiserStat;
-@override List<Map<String, dynamic>> get nomBaptiserStat {
-  if (_nomBaptiserStat is EqualUnmodifiableListView) return _nomBaptiserStat;
+ final  Map<String, dynamic> _assistanceNonBaptiser;
+@override Map<String, dynamic> get assistanceNonBaptiser {
+  if (_assistanceNonBaptiser is EqualUnmodifiableMapView) return _assistanceNonBaptiser;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_nomBaptiserStat);
+  return EqualUnmodifiableMapView(_assistanceNonBaptiser);
 }
 
- final  List<Map<String, dynamic>> _nouveauBaptiserStat;
-@override List<Map<String, dynamic>> get nouveauBaptiserStat {
-  if (_nouveauBaptiserStat is EqualUnmodifiableListView) return _nouveauBaptiserStat;
+ final  Map<String, dynamic> _assistanceNouveau;
+@override Map<String, dynamic> get assistanceNouveau {
+  if (_assistanceNouveau is EqualUnmodifiableMapView) return _assistanceNouveau;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_nouveauBaptiserStat);
+  return EqualUnmodifiableMapView(_assistanceNouveau);
 }
 
- final  List<Map<String, dynamic>> _inviterStat;
-@override List<Map<String, dynamic>> get inviterStat {
-  if (_inviterStat is EqualUnmodifiableListView) return _inviterStat;
+ final  Map<String, dynamic> _assistanceInviter;
+@override Map<String, dynamic> get assistanceInviter {
+  if (_assistanceInviter is EqualUnmodifiableMapView) return _assistanceInviter;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_inviterStat);
+  return EqualUnmodifiableMapView(_assistanceInviter);
 }
 
- final  List<Map<String, dynamic>> _formationStat;
-@override List<Map<String, dynamic>> get formationStat {
-  if (_formationStat is EqualUnmodifiableListView) return _formationStat;
+ final  Map<String, dynamic> _assistanceCellule;
+@override Map<String, dynamic> get assistanceCellule {
+  if (_assistanceCellule is EqualUnmodifiableMapView) return _assistanceCellule;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_formationStat);
-}
-
- final  List<Map<String, dynamic>> _sectionVisite;
-@override List<Map<String, dynamic>> get sectionVisite {
-  if (_sectionVisite is EqualUnmodifiableListView) return _sectionVisite;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_sectionVisite);
-}
-
- final  List<Map<String, dynamic>> _sectionActivite;
-@override List<Map<String, dynamic>> get sectionActivite {
-  if (_sectionActivite is EqualUnmodifiableListView) return _sectionActivite;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_sectionActivite);
-}
-
- final  List<Map<String, dynamic>> _sectionOuvrier;
-@override List<Map<String, dynamic>> get sectionOuvrier {
-  if (_sectionOuvrier is EqualUnmodifiableListView) return _sectionOuvrier;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_sectionOuvrier);
-}
-
- final  List<Map<String, dynamic>> _autres;
-@override List<Map<String, dynamic>> get autres {
-  if (_autres is EqualUnmodifiableListView) return _autres;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_autres);
+  return EqualUnmodifiableMapView(_assistanceCellule);
 }
 
 @override final  String id;
@@ -4562,21 +4566,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestRapportCelluleAssistance'))
-    ..add(DiagnosticsProperty('nombreBaptiser', nombreBaptiser))..add(DiagnosticsProperty('nomBaptiserStat', nomBaptiserStat))..add(DiagnosticsProperty('nouveauBaptiserStat', nouveauBaptiserStat))..add(DiagnosticsProperty('inviterStat', inviterStat))..add(DiagnosticsProperty('formationStat', formationStat))..add(DiagnosticsProperty('sectionVisite', sectionVisite))..add(DiagnosticsProperty('sectionActivite', sectionActivite))..add(DiagnosticsProperty('sectionOuvrier', sectionOuvrier))..add(DiagnosticsProperty('autres', autres))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('formAssistanceIsSubmit', formAssistanceIsSubmit))..add(DiagnosticsProperty('formAssistanceSubmitDate', formAssistanceSubmitDate));
+    ..add(DiagnosticsProperty('nombreBaptiser', nombreBaptiser))..add(DiagnosticsProperty('assistanceNonBaptiser', assistanceNonBaptiser))..add(DiagnosticsProperty('assistanceNouveau', assistanceNouveau))..add(DiagnosticsProperty('assistanceInviter', assistanceInviter))..add(DiagnosticsProperty('assistanceCellule', assistanceCellule))..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('formAssistanceIsSubmit', formAssistanceIsSubmit))..add(DiagnosticsProperty('formAssistanceSubmitDate', formAssistanceSubmitDate));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleAssistance&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&const DeepCollectionEquality().equals(other._nomBaptiserStat, _nomBaptiserStat)&&const DeepCollectionEquality().equals(other._nouveauBaptiserStat, _nouveauBaptiserStat)&&const DeepCollectionEquality().equals(other._inviterStat, _inviterStat)&&const DeepCollectionEquality().equals(other._formationStat, _formationStat)&&const DeepCollectionEquality().equals(other._sectionVisite, _sectionVisite)&&const DeepCollectionEquality().equals(other._sectionActivite, _sectionActivite)&&const DeepCollectionEquality().equals(other._sectionOuvrier, _sectionOuvrier)&&const DeepCollectionEquality().equals(other._autres, _autres)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleAssistance&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&const DeepCollectionEquality().equals(other._assistanceNonBaptiser, _assistanceNonBaptiser)&&const DeepCollectionEquality().equals(other._assistanceNouveau, _assistanceNouveau)&&const DeepCollectionEquality().equals(other._assistanceInviter, _assistanceInviter)&&const DeepCollectionEquality().equals(other._assistanceCellule, _assistanceCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,nombreBaptiser,const DeepCollectionEquality().hash(_nomBaptiserStat),const DeepCollectionEquality().hash(_nouveauBaptiserStat),const DeepCollectionEquality().hash(_inviterStat),const DeepCollectionEquality().hash(_formationStat),const DeepCollectionEquality().hash(_sectionVisite),const DeepCollectionEquality().hash(_sectionActivite),const DeepCollectionEquality().hash(_sectionOuvrier),const DeepCollectionEquality().hash(_autres),id,formAssistanceIsSubmit,formAssistanceSubmitDate);
+int get hashCode => Object.hash(runtimeType,nombreBaptiser,const DeepCollectionEquality().hash(_assistanceNonBaptiser),const DeepCollectionEquality().hash(_assistanceNouveau),const DeepCollectionEquality().hash(_assistanceInviter),const DeepCollectionEquality().hash(_assistanceCellule),id,formAssistanceIsSubmit,formAssistanceSubmitDate);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestRapportCelluleAssistance(nombreBaptiser: $nombreBaptiser, nomBaptiserStat: $nomBaptiserStat, nouveauBaptiserStat: $nouveauBaptiserStat, inviterStat: $inviterStat, formationStat: $formationStat, sectionVisite: $sectionVisite, sectionActivite: $sectionActivite, sectionOuvrier: $sectionOuvrier, autres: $autres, id: $id, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate)';
+  return 'RequestRapportCelluleAssistance(nombreBaptiser: $nombreBaptiser, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, id: $id, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate)';
 }
 
 
@@ -4587,7 +4591,7 @@ abstract mixin class _$RequestRapportCelluleAssistanceCopyWith<$Res> implements 
   factory _$RequestRapportCelluleAssistanceCopyWith(_RequestRapportCelluleAssistance value, $Res Function(_RequestRapportCelluleAssistance) _then) = __$RequestRapportCelluleAssistanceCopyWithImpl;
 @override @useResult
 $Res call({
- String nombreBaptiser, List<Map<String, dynamic>> nomBaptiserStat, List<Map<String, dynamic>> nouveauBaptiserStat, List<Map<String, dynamic>> inviterStat, List<Map<String, dynamic>> formationStat, List<Map<String, dynamic>> sectionVisite, List<Map<String, dynamic>> sectionActivite, List<Map<String, dynamic>> sectionOuvrier, List<Map<String, dynamic>> autres, String id, String formAssistanceIsSubmit, String formAssistanceSubmitDate
+ String nombreBaptiser, Map<String, dynamic> assistanceNonBaptiser, Map<String, dynamic> assistanceNouveau, Map<String, dynamic> assistanceInviter, Map<String, dynamic> assistanceCellule, String id, String formAssistanceIsSubmit, String formAssistanceSubmitDate
 });
 
 
@@ -4604,18 +4608,14 @@ class __$RequestRapportCelluleAssistanceCopyWithImpl<$Res>
 
 /// Create a copy of RequestRapportCelluleAssistance
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? nombreBaptiser = null,Object? nomBaptiserStat = null,Object? nouveauBaptiserStat = null,Object? inviterStat = null,Object? formationStat = null,Object? sectionVisite = null,Object? sectionActivite = null,Object? sectionOuvrier = null,Object? autres = null,Object? id = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? nombreBaptiser = null,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? id = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,}) {
   return _then(_RequestRapportCelluleAssistance(
 nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
-as String,nomBaptiserStat: null == nomBaptiserStat ? _self._nomBaptiserStat : nomBaptiserStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,nouveauBaptiserStat: null == nouveauBaptiserStat ? _self._nouveauBaptiserStat : nouveauBaptiserStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,inviterStat: null == inviterStat ? _self._inviterStat : inviterStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,formationStat: null == formationStat ? _self._formationStat : formationStat // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,sectionVisite: null == sectionVisite ? _self._sectionVisite : sectionVisite // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,sectionActivite: null == sectionActivite ? _self._sectionActivite : sectionActivite // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,sectionOuvrier: null == sectionOuvrier ? _self._sectionOuvrier : sectionOuvrier // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,autres: null == autres ? _self._autres : autres // ignore: cast_nullable_to_non_nullable
-as List<Map<String, dynamic>>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self._assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,assistanceNouveau: null == assistanceNouveau ? _self._assistanceNouveau : assistanceNouveau // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,assistanceInviter: null == assistanceInviter ? _self._assistanceInviter : assistanceInviter // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,assistanceCellule: null == assistanceCellule ? _self._assistanceCellule : assistanceCellule // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,formAssistanceIsSubmit: null == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
 as String,formAssistanceSubmitDate: null == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,

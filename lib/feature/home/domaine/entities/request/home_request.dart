@@ -193,7 +193,22 @@ abstract class RequestHumaneSectionAssistance with _$RequestHumaneSectionAssista
 
 @freezed
 abstract class RequestAuherInformation with _$RequestAuherInformation {
-   factory RequestAuherInformation({required String libelle, required int  count }) = _RequestAuherInformation;
+   factory RequestAuherInformation({ 
+    @Default("") String libelle,
+    @Default("") String formationNewDFB,
+    @Default("") String formationNewBaptDFD,
+    @Default("") String visiteMenbre,
+    @Default("") String visiteDisciple,
+    @Default("") String nbTravailleurs,
+    @Default("") String nbEleveAndEtudiants,
+    @Default("") String nbOuvrierEM,
+    @Default("") String nbOuvrierAutreDepatementDirigeantEM,
+    @Default("") String nbFormationNiveau2,
+    @Default("") String ngAgendaEM,
+    @Default("") String nbDecisionnaires,
+    @Default("") String id,
+    @Default(0) int count 
+   }) = _RequestAuherInformation;
    factory RequestAuherInformation.fromJson(Map<String, dynamic> json) =>
       _$RequestAuherInformationFromJson(json);
 }
@@ -218,14 +233,10 @@ abstract class RequestRapportCelluleAssistance
     with _$RequestRapportCelluleAssistance {
   factory RequestRapportCelluleAssistance({
     required String nombreBaptiser,
-    required List<Map<String, dynamic>> nomBaptiserStat,
-    required List<Map<String, dynamic>> nouveauBaptiserStat,
-    required List<Map<String, dynamic>> inviterStat,
-    required List<Map<String, dynamic>> formationStat,
-    required List<Map<String, dynamic>> sectionVisite,
-    required List<Map<String, dynamic>> sectionActivite,
-    required List<Map<String, dynamic>> sectionOuvrier,
-    required List<Map<String, dynamic>> autres,
+    required Map<String, dynamic> assistanceNonBaptiser,
+    required Map<String, dynamic> assistanceNouveau,
+    required Map<String, dynamic> assistanceInviter,
+    required Map<String, dynamic> assistanceCellule,
     required String id,
     required String formAssistanceIsSubmit,
     required String formAssistanceSubmitDate,

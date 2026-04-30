@@ -203,7 +203,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                   sendRapportCelluleStepStatUsercase:
                       getIt<SendRapportCelluleStepStatUsercase>(),
                 ),
-                child: FormStatistic(id: state.errorMessage ?? ''),
+                child: FormStatistic(id: state.errorMessage),
               ),
             ),
           );

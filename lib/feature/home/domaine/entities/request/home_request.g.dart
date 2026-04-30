@@ -261,13 +261,42 @@ Map<String, dynamic> _$RequestHumaneSectionAssistanceToJson(
 _RequestAuherInformation _$RequestAuherInformationFromJson(
   Map<String, dynamic> json,
 ) => _RequestAuherInformation(
-  libelle: json['libelle'] as String,
-  count: (json['count'] as num).toInt(),
+  libelle: json['libelle'] as String? ?? "",
+  formationNewDFB: json['formationNewDFB'] as String? ?? "",
+  formationNewBaptDFD: json['formationNewBaptDFD'] as String? ?? "",
+  visiteMenbre: json['visiteMenbre'] as String? ?? "",
+  visiteDisciple: json['visiteDisciple'] as String? ?? "",
+  nbTravailleurs: json['nbTravailleurs'] as String? ?? "",
+  nbEleveAndEtudiants: json['nbEleveAndEtudiants'] as String? ?? "",
+  nbOuvrierEM: json['nbOuvrierEM'] as String? ?? "",
+  nbOuvrierAutreDepatementDirigeantEM:
+      json['nbOuvrierAutreDepatementDirigeantEM'] as String? ?? "",
+  nbFormationNiveau2: json['nbFormationNiveau2'] as String? ?? "",
+  ngAgendaEM: json['ngAgendaEM'] as String? ?? "",
+  nbDecisionnaires: json['nbDecisionnaires'] as String? ?? "",
+  id: json['id'] as String? ?? "",
+  count: (json['count'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$RequestAuherInformationToJson(
   _RequestAuherInformation instance,
-) => <String, dynamic>{'libelle': instance.libelle, 'count': instance.count};
+) => <String, dynamic>{
+  'libelle': instance.libelle,
+  'formationNewDFB': instance.formationNewDFB,
+  'formationNewBaptDFD': instance.formationNewBaptDFD,
+  'visiteMenbre': instance.visiteMenbre,
+  'visiteDisciple': instance.visiteDisciple,
+  'nbTravailleurs': instance.nbTravailleurs,
+  'nbEleveAndEtudiants': instance.nbEleveAndEtudiants,
+  'nbOuvrierEM': instance.nbOuvrierEM,
+  'nbOuvrierAutreDepatementDirigeantEM':
+      instance.nbOuvrierAutreDepatementDirigeantEM,
+  'nbFormationNiveau2': instance.nbFormationNiveau2,
+  'ngAgendaEM': instance.ngAgendaEM,
+  'nbDecisionnaires': instance.nbDecisionnaires,
+  'id': instance.id,
+  'count': instance.count,
+};
 
 _RequestAutherInformationSource _$RequestAutherInformationSourceFromJson(
   Map<String, dynamic> json,
@@ -286,30 +315,10 @@ _RequestRapportCelluleAssistance _$RequestRapportCelluleAssistanceFromJson(
   Map<String, dynamic> json,
 ) => _RequestRapportCelluleAssistance(
   nombreBaptiser: json['nombreBaptiser'] as String,
-  nomBaptiserStat: (json['nomBaptiserStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  nouveauBaptiserStat: (json['nouveauBaptiserStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  inviterStat: (json['inviterStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  formationStat: (json['formationStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  sectionVisite: (json['sectionVisite'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  sectionActivite: (json['sectionActivite'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  sectionOuvrier: (json['sectionOuvrier'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  autres: (json['autres'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
+  assistanceNonBaptiser: json['assistanceNonBaptiser'] as Map<String, dynamic>,
+  assistanceNouveau: json['assistanceNouveau'] as Map<String, dynamic>,
+  assistanceInviter: json['assistanceInviter'] as Map<String, dynamic>,
+  assistanceCellule: json['assistanceCellule'] as Map<String, dynamic>,
   id: json['id'] as String,
   formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String,
   formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
@@ -319,14 +328,10 @@ Map<String, dynamic> _$RequestRapportCelluleAssistanceToJson(
   _RequestRapportCelluleAssistance instance,
 ) => <String, dynamic>{
   'nombreBaptiser': instance.nombreBaptiser,
-  'nomBaptiserStat': instance.nomBaptiserStat,
-  'nouveauBaptiserStat': instance.nouveauBaptiserStat,
-  'inviterStat': instance.inviterStat,
-  'formationStat': instance.formationStat,
-  'sectionVisite': instance.sectionVisite,
-  'sectionActivite': instance.sectionActivite,
-  'sectionOuvrier': instance.sectionOuvrier,
-  'autres': instance.autres,
+  'assistanceNonBaptiser': instance.assistanceNonBaptiser,
+  'assistanceNouveau': instance.assistanceNouveau,
+  'assistanceInviter': instance.assistanceInviter,
+  'assistanceCellule': instance.assistanceCellule,
   'id': instance.id,
   'formAssistanceIsSubmit': instance.formAssistanceIsSubmit,
   'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,

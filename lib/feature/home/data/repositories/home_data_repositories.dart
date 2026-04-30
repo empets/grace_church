@@ -169,9 +169,14 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
   }
   
   @override
-  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) {
-    // TODO: implement sendImpliciteConnexion
-    throw UnimplementedError();
+  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) async {
+    final response = await domaineServiceRepository.sendImpliciteConnexion(params);
+    if (response is FirebaseSuccess<ProfileResponseModel>) {
+      return Right(ProfileResponseModel.domaine(response.data));
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
   }
   
   @override

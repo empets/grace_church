@@ -12,7 +12,7 @@ class FormActiviteBloc
           RapportCelluleRequestActivityEvent,
           RapportCelluleRequestActivityState
         > {
-  FormActiviteBloc(this.sendRapportCelluleStepAssistantUsercase)
+  FormActiviteBloc({required this.sendRapportCelluleStepAssistantUsercase})
     : super(RapportCelluleRequestActivityState.initial()) {
     on<RapportCelluleRequestActivityEvent>(formActivite);
   }

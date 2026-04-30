@@ -133,7 +133,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               label: "Suivant",
               backgroundColor: context.appColor.primaryBlue,
               colorText: context.appColor.primaryWhite,
-              icon: Icons.arrow_forward,
+              borderRadius: 10.r,
               onPressed: () async {
                 Navigator.of(context).pushAndRemoveUntil(
                   fadeRoute(const SigninView()),
