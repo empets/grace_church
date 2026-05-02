@@ -221,18 +221,23 @@ class MenuView extends StatelessWidget {
                                         is SuccessState<
                                           List<ReponsableCelluleResponse>
                                         >) {
+
+                                          log(
+                                              'isResponsableCellule: ${listResponsableState.data}',
+                                            );
                                       isResponsableCellule =
+
                                           listResponsableState.data.any((
                                             element,
                                           ) {
                                             log(
-                                              'isResponsableCellule: ${element.responsable}',
+                                              'isResponsableCellule: ${element}',
                                             );
-                                            return !element.responsable
+                                            return element.responsableCelluleId
                                                 .trim()
                                                 .toLowerCase()
                                                 .contains(
-                                                  profileStream.data.name
+                                                  profileStream.data.menberId
                                                       .trim()
                                                       .toLowerCase(),
                                                 );

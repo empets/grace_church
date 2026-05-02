@@ -211,7 +211,18 @@ class FormProfileBloc
           ),
         );
         break;
-
+      
+      case ChangeResponsableCelluleIdCreateCompteProfile(:final responsableCelluleId):
+        emit(
+          state.copyWith(
+            responsableCelluleId: responsableCelluleId,
+            status: FormzSubmissionStatus.initial,
+            isValide: Formz.validate([
+            // state.responsableCelluleId
+            ]),
+          ),
+        );
+        break;
       case ChangeSubmitCreateCompte():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
@@ -223,6 +234,7 @@ class FormProfileBloc
            if(bool.parse(state.isUpdate.value) == true){
              final response = await createProfileUsercase.call(
             RequestAuthenProfile(
+              responsableCelluleId: state.responsableCelluleId,
               name: state.name.value,
               dateNaissance: state.dateNaissance.value,
               zoneResidence: state.zoneResidence.value,
@@ -266,6 +278,7 @@ class FormProfileBloc
               submitProfile: true,
               isUpdate: false,
               deviceId: deviceId,
+              responsableCelluleId: state.responsableCelluleId,
             ),
           );
 

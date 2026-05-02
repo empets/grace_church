@@ -145,6 +145,7 @@ _ReponsableCelluleResponseModel _$ReponsableCelluleResponseModelFromJson(
   celluleName: json['celluleName'] as String?,
   secteurId: json['secteurId'] as String?,
   secteurCode: json['secteurCode'] as String?,
+  responsableCelluleId: json['responsableCelluleId'] as String?,
 );
 
 Map<String, dynamic> _$ReponsableCelluleResponseModelToJson(
@@ -162,6 +163,7 @@ Map<String, dynamic> _$ReponsableCelluleResponseModelToJson(
   'celluleName': instance.celluleName,
   'secteurId': instance.secteurId,
   'secteurCode': instance.secteurCode,
+  'responsableCelluleId': instance.responsableCelluleId,
 };
 
 _ReponsableResponseSecteurModel _$ReponsableResponseSecteurModelFromJson(

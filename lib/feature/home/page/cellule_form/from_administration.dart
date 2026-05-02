@@ -152,6 +152,11 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
     context.read<RapportCelluleRequestSectionAdministrationBloc>().add(
       RapportCelluleRequestSectionAdministrationEvent.changeOffrande("0"),
     );
+    context.read<RapportCelluleRequestSectionAdministrationBloc>().add(
+      RapportCelluleRequestSectionAdministrationEvent.changeReponsableCelluleId(
+        widget.profile?.menberId ?? "",
+      ),
+    );
   }
 
   void _updateDisciple({
@@ -203,7 +208,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                   sendRapportCelluleStepStatUsercase:
                       getIt<SendRapportCelluleStepStatUsercase>(),
                 ),
-                child: FormStatistic(id: state.errorMessage ?? ''),
+                child: FormStatistic(id: state.errorMessage),
               ),
             ),
           );

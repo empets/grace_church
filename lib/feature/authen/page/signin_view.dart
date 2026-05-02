@@ -112,9 +112,10 @@ class SigninView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: context.appColor.primaryGray500,
                     ),
+                    textAlign: TextAlign.center,
                   ),
 
-                  SizedBox(height: 41.h),
+                  SizedBox(height: 26.h),
 
                   BlocBuilder<SigningBloc, SigninState>(
                     builder: (context, state) {
@@ -122,7 +123,7 @@ class SigninView extends StatelessWidget {
                         readOnly: state.status.isInProgress ? true : false,
                         isColorBlue: state.email.isValid ? true : false,
                         inputLabel: '',
-                        textLabel: 'Ex: emma@gmail.com',
+                        textLabel: 'Adresse email',
                         errorText: state.email.isPure || state.email.isValid
                             ? null
                             : '',
@@ -148,7 +149,7 @@ class SigninView extends StatelessWidget {
                         readOnly: state.status.isInProgress ? true : false,
                         isColorBlue: state.contact.isValid ? true : false,
                         inputLabel: '',
-                        textLabel: 'Ex: +225 01 23 45 67 89',
+                        textLabel: 'Numéro de téléphone',
                         errorText: state.contact.isPure || state.contact.isValid
                             ? null
                             : '',
@@ -176,7 +177,7 @@ class SigninView extends StatelessWidget {
                         readOnly: state.status.isInProgress ? true : false,
                         isColorBlue: state.password.isValid ? true : false,
                         inputLabel: '',
-                        textLabel: 'Ex: Mot de passe',
+                        textLabel: 'Mot de passe',
                         errorText:
                             state.password.isPure || state.password.isValid
                             ? null
@@ -262,7 +263,7 @@ class SigninView extends StatelessWidget {
                               )
                             : context.appColor.primaryBlue,
                         isLoading: state.status.isInProgress,
-                        borderRadius: 8,
+                        borderRadius: 10.r,
                         onPressed: state.status.isInProgress
                             ? null
                             : () {
@@ -281,7 +282,7 @@ class SigninView extends StatelessWidget {
                     borderSideColor: context.appColor.primaryGrayDark,
                     backgroundColor: Colors.transparent,
                     isLoading: false,
-                    borderRadius: 8,
+                    borderRadius: 10.r,
                     onPressed: () async {
                       FocusScope.of(context).unfocus();
                       final shared = await SharedPreferences.getInstance();

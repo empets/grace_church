@@ -40,13 +40,8 @@ abstract class RequestCellule with _$RequestCellule {
     String? adresse,
     double? latitude,
     double? longitude,
-    String? responsableCelluleId,
-    String? responsableCellule,
-    String? contactResponsableCellule,
-    String? emailResponsableCellule,
-    String? adresseResponsableCellule,
-    String? secteurId,
-    String? secteurCode,
+    String? adresse,
+    String? celluleId,
   }) = _RequestCellule;
   factory RequestCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestCelluleFromJson(json);
@@ -60,6 +55,7 @@ abstract class RequestCellule with _$RequestCellule {
 abstract class RequestReponsableCellule with _$RequestReponsableCellule {
   factory RequestReponsableCellule({
     String? celluleResponsableName,
+    String? reponsableId,
     String? celluleCode,
     String? date,
     String? celluleName,
@@ -121,7 +117,7 @@ abstract class RequestReponsableZone with _$RequestReponsableZone {
 @freezed
 abstract class RequestAuthenProfileUpdateZone
     with _$RequestAuthenProfileUpdateZone {
-  factory RequestAuthenProfileUpdateZone({required String celluleId}) =
+  factory RequestAuthenProfileUpdateZone({required String secteurId}) =
       // secteurId
       _RequestAuthenProfileUpdateZone;
 
@@ -137,6 +133,7 @@ abstract class RequestRapportCelluleAdministration
     required String fullNameRespoZone,
     required String contactRespoZone,
     required String codeSecteur,
+    required String responsableCelluleId,
     required String fullNameRespoSecteur,
     required String contactRespoSecteur,
     required String codeCellule,
@@ -217,7 +214,22 @@ abstract class RequestHumaneSectionAssistance with _$RequestHumaneSectionAssista
 
 @freezed
 abstract class RequestAuherInformation with _$RequestAuherInformation {
-   factory RequestAuherInformation({required String libelle, required int  count }) = _RequestAuherInformation;
+   factory RequestAuherInformation({ 
+    @Default("") String libelle,
+    @Default("") String formationNewDFB,
+    @Default("") String formationNewBaptDFD,
+    @Default("") String visiteMenbre,
+    @Default("") String visiteDisciple,
+    @Default("") String nbTravailleurs,
+    @Default("") String nbEleveAndEtudiants,
+    @Default("") String nbOuvrierEM,
+    @Default("") String nbOuvrierAutreDepatementDirigeantEM,
+    @Default("") String nbFormationNiveau2,
+    @Default("") String ngAgendaEM,
+    @Default("") String nbDecisionnaires,
+    @Default("") String id,
+    @Default(0) int count 
+   }) = _RequestAuherInformation;
    factory RequestAuherInformation.fromJson(Map<String, dynamic> json) =>
       _$RequestAuherInformationFromJson(json);
 }
@@ -242,14 +254,10 @@ abstract class RequestRapportCelluleAssistance
     with _$RequestRapportCelluleAssistance {
   factory RequestRapportCelluleAssistance({
     required String nombreBaptiser,
-    required List<Map<String, dynamic>> nomBaptiserStat,
-    required List<Map<String, dynamic>> nouveauBaptiserStat,
-    required List<Map<String, dynamic>> inviterStat,
-    required List<Map<String, dynamic>> formationStat,
-    required List<Map<String, dynamic>> sectionVisite,
-    required List<Map<String, dynamic>> sectionActivite,
-    required List<Map<String, dynamic>> sectionOuvrier,
-    required List<Map<String, dynamic>> autres,
+    required Map<String, dynamic> assistanceNonBaptiser,
+    required Map<String, dynamic> assistanceNouveau,
+    required Map<String, dynamic> assistanceInviter,
+    required Map<String, dynamic> assistanceCellule,
     required String id,
     required String formAssistanceIsSubmit,
     required String formAssistanceSubmitDate,

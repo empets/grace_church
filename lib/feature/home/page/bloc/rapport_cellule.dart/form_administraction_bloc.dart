@@ -206,6 +206,16 @@ class RapportCelluleRequestSectionAdministrationBloc
         );
         break;
 
+      case ChangeReponsableCelluleIdRapportCelluleRequestSectionAdministrationEvent(
+        :final reponsableCelluleId,
+      ):
+        final updatedState = state.copyWith(
+          reponsableCelluleId: TextFormz.dirty(reponsableCelluleId),
+          status: FormzSubmissionStatus.initial,
+        );
+        emit(updatedState.copyWith(isValide: _validate(updatedState)));
+        break;
+
       // -------------------------
       // 🔥 SUBMIT (optionnel)
       // -------------------------
@@ -216,6 +226,7 @@ class RapportCelluleRequestSectionAdministrationBloc
           final result = await sendRapportCelluleStepAdministrationUsercase
               .call(
                 RequestRapportCelluleAdministration(
+                  responsableCelluleId: state.reponsableCelluleId.value,
                   codeZone: state.codeZone.value,
                   fullNameRespoZone: state.fullNameRespoZone.value,
                   contactRespoZone: state.contactRespoZone.value,
@@ -278,6 +289,7 @@ class RapportCelluleRequestSectionAdministrationBloc
       s.offrande,
       s.nombreBaptiser,
       s.nombreNonBaptiser,
+      s.reponsableCelluleId,
     ]);
   }
 }

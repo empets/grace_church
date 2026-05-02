@@ -1,13 +1,16 @@
 import 'dart:developer';
 
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_create_compte.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RapportCelluleSectionAssistanceBloc
     extends
@@ -55,19 +58,18 @@ class RapportCelluleSectionAssistanceBloc
       // 🧩 SECTIONS ASSISTANCE
       // =========================
       case ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent(
-        :final nomBaptiserStat,
+        :final nonBaptiserStatic,
       ):
 
         // ignore: dead_code
-        final noonBaptiser = state.copyWith(nomBaptiserStatic: nomBaptiserStat);
+        final noonBaptiser = state.copyWith(nonBaptiserStatic: nonBaptiserStatic);
 
         // Vérification des erreurs
-        if (nomBaptiserStat.any(
-          (item) =>
-              item.toutPetit.trim().isEmpty ||
-              item.cadets.trim().isEmpty ||
-              item.juniors.trim().isEmpty,
-        )) {
+        if (nonBaptiserStatic
+              .toutPetit.trim().isEmpty ||
+              nonBaptiserStatic.cadets.trim().isEmpty ||
+              nonBaptiserStatic.juniors.trim().isEmpty
+        ) {
           emit(
             noonBaptiser.copyWith(
               errorMessage: "Ce champ est obligatoire",
@@ -97,12 +99,9 @@ class RapportCelluleSectionAssistanceBloc
         );
 
         // Vérification des erreurs
-        if (nouveauBaptiserStat.any(
-          (item) =>
-              item.toutPetit.trim().isEmpty ||
-              item.cadets.trim().isEmpty ||
-              item.juniors.trim().isEmpty,
-        )) {
+        if (nouveauBaptiserStat.toutPetit.trim().isEmpty ||
+            nouveauBaptiserStat.cadets.trim().isEmpty ||
+            nouveauBaptiserStat.juniors.trim().isEmpty) {
           emit(
             nonBaptiser.copyWith(
               errorMessage: "Ce champ est obligatoire",
@@ -130,12 +129,9 @@ class RapportCelluleSectionAssistanceBloc
         final inviter = state.copyWith(inviter: inviterStat);
 
         // Vérification des erreurs
-        if (inviterStat.any(
-          (item) =>
-              item.toutPetit.trim().isEmpty ||
-              item.cadets.trim().isEmpty ||
-              item.juniors.trim().isEmpty,
-        )) {
+        if (inviterStat.toutPetit.trim().isEmpty ||
+            inviterStat.cadets.trim().isEmpty ||
+            inviterStat.juniors.trim().isEmpty) {
           emit(
             inviter.copyWith(
               errorMessage: "Ce champ est obligatoire",
@@ -150,131 +146,226 @@ class RapportCelluleSectionAssistanceBloc
 
         break;
 
-      case ChangeFormationRapportCelluleRequestSectionAssistanceEvent(
-        :final formationStat,
-      ):
 
-        // ignore: dead_code
-        final formation = state.copyWith(formation: formationStat );
+  case FormationNewDFBRapportCelluleRequestSectionAssistanceEvent(
+    :final formationNewDFB,
+  ):
+    final newState = state.copyWith(formationNewDFB: formationNewDFB);
 
-        // Vérification des erreurs
-        if (formationStat.map((item) => item.title).any(
-          (item) =>
-              item.trim().isEmpty 
-        )) {
-          emit(
-            formation.copyWith(
-              errorMessage: "Ce champ est obligatoire",
-              isValide: false,
-            ),
-          );
-          return;
-        }
+    if (formationNewDFB.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
 
-        // Si pas d'erreur → validation normale
-        emit(
-          formation.copyWith(errorMessage: "", isValide: _validate(formation)),
-        );
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
 
-        break;
+  case FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent(
+    :final formationNewBaptDFD,
+  ):
+    final newState = state.copyWith(formationNewBaptDFD: formationNewBaptDFD);
 
-      case ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent(
-        :final sectionVisite,
-      ):
+    if (formationNewBaptDFD.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
 
-        // ignore: dead_code
-        final sectionVisites = state.copyWith(sectionVisite: sectionVisite);
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
 
-        // Vérification des erreurs
-        if (sectionVisite.any(
-          (item) =>
-              item.title.trim().isEmpty ||
-              item.sections.any((section) => section.libelle.trim().isEmpty ),
-        )) {
-          emit(
-            sectionVisites.copyWith(
-              errorMessage: "Ce champ est obligatoire",
-              isValide: false,
-            ),
-          );
-          return;
-        }
+  case VisiteMenbreRapportCelluleRequestSectionAssistanceEvent(
+    :final visiteMenbre,
+  ):
+    final newState = state.copyWith(visiteMenbre: visiteMenbre);
 
-        // Si pas d'erreur → validation normale
-        emit(
-          sectionVisites.copyWith(
-            errorMessage: "",
-            isValide: _validate(sectionVisites),
-          ),
-        );
+    if (visiteMenbre.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
 
-        break;
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
 
-      case ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent(
-        :final sectionActivite,
-      ):
+  case VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent(
+    :final visiteDisciple,
+  ):
+    final newState = state.copyWith(visiteDisciple: visiteDisciple);
 
-        // ignore: dead_code
-        final sectionActivites = state.copyWith(
-          sectionActivite: sectionActivite,
-        );
+    if (visiteDisciple.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
 
-        // Vérification des erreurs
-        if (sectionActivite.any(
-          (item) =>
-              item.title.trim().isEmpty ||
-              item.sections.any((section) => section.libelle.trim().isEmpty ),
-        )) {
-          emit(
-            sectionActivites.copyWith(
-              errorMessage: "Ce champ est obligatoire",
-              isValide: false,
-            ),
-          );
-          return;
-        }
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
 
-        // Si pas d'erreur → validation normale
-        emit(
-          sectionActivites.copyWith(
-            errorMessage: "",
-            isValide: _validate(sectionActivites),
-          ),
-        );
+  case NbTravailleursRapportCelluleRequestSectionAssistanceEvent(
+    :final nbTravailleurs,
+  ):
+    final newState = state.copyWith(nbTravailleurs: nbTravailleurs);
 
-        break;
+    if (nbTravailleurs.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
 
-      case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent(
-        :final sectionOuvrier,
-      ):
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
 
-        // ignore: dead_code
-        final sectionOuvriers = state.copyWith(sectionOuvrier: sectionOuvrier);
+  case NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent(
+    :final nbEleveAndEtudiants,
+  ):
+    final newState = state.copyWith(
+      nbEleveAndEtudiants: nbEleveAndEtudiants,
+    );
 
-        // Vérification des erreurs
-        if (sectionOuvrier.any(
-          (item) =>
-              item.title.trim().isEmpty ||
-              item.sections.any((section) => section.libelle.trim().isEmpty ),
-        )) {
-          emit(
-            sectionOuvriers.copyWith(
-              errorMessage: "Ce champ est obligatoire",
-              isValide: false,
-            ),
-          );
-          return;
-        }
+    if (nbEleveAndEtudiants.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
 
-        // Si pas d'erreur → validation normale
-        emit(
-          sectionOuvriers.copyWith(
-            errorMessage: "",
-            isValide: _validate(sectionOuvriers),
-          ),
-        );
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
 
-        break;
+  case NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent(
+    :final nbOuvrierEM,
+  ):
+    final newState = state.copyWith(nbOuvrierEM: nbOuvrierEM);
+
+    if (nbOuvrierEM.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
+
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
+
+  case NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent(
+    :final nbOuvrierAutreDepatementDirigeantEM,
+  ):
+    final newState = state.copyWith(
+      nbOuvrierAutreDepatementDirigeantEM:
+          nbOuvrierAutreDepatementDirigeantEM,
+    );
+
+    if (nbOuvrierAutreDepatementDirigeantEM.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
+
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
+
+  case NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent(
+    :final nbFormationNiveau2,
+  ):
+    final newState = state.copyWith(
+      nbFormationNiveau2: nbFormationNiveau2,
+    );
+
+    if (nbFormationNiveau2.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
+
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
+
+  case NgAgendaEMRapportCelluleRequestSectionAssistanceEvent(
+    :final ngAgendaEM,
+  ):
+    final newState = state.copyWith(ngAgendaEM: ngAgendaEM);
+
+    if (ngAgendaEM.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
+
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
+
+  case NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent(
+    :final nbDecisionnaires,
+  ):
+    final newState = state.copyWith(
+      nbDecisionnaires: nbDecisionnaires,
+    );
+
+    if (nbDecisionnaires.isEmpty) {
+      emit(newState.copyWith(
+        errorMessage: "Ce champ est obligatoire",
+        isValide: false,
+      ));
+      return;
+    }
+
+    emit(newState.copyWith(
+      errorMessage: "",
+      isValide: _validate(newState),
+    ));
+    break;
+
+      
 
       case ChangeAutresRapportCelluleRequestSectionAssistanceEvent(
         :final autres,
@@ -284,11 +375,7 @@ class RapportCelluleSectionAssistanceBloc
         final autress = state.copyWith(sectionOuvrier: autres);
 
         // Vérification des erreurs
-        if (autres.any(
-          (item) =>
-              item.title.trim().isEmpty ||
-              item.sections.any((section) => section.libelle.trim().isEmpty ),
-        )) {
+        if (autres.isEmpty) {
           emit(
             autress.copyWith(
               errorMessage: "Ce champ est obligatoire",
@@ -303,35 +390,59 @@ class RapportCelluleSectionAssistanceBloc
 
         break;
 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       // =========================
       // 🔥 SUBMIT
       // =========================
       case SubmitRapportCelluleRequestSectionAssistanceEvent():
         emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-        await Future.delayed(const Duration(seconds: 3));
+        // await Future.delayed(const Duration(seconds: 3));
 
         log("=========>> Assistance data $state");
 
         final response = await sendRapportCelluleStepStatUsercase.call(
           RequestRapportCelluleAssistance(
             nombreBaptiser: state.nombreBaptiser.value,
-            nomBaptiserStat: state.nomBaptiserStatic
-                .map((e) => e.toJson())
-                .toList(),
-            nouveauBaptiserStat: state.nouveauBaptiser
-                .map((e) => e.toJson())
-                .toList(),
-            inviterStat: state.inviter.map((e) => e.toJson()).toList(),
-            formationStat: state.formation.map((e) => e.toJson()).toList(),
-            sectionVisite: state.sectionVisite.map((e) => e.toJson()).toList(),
-            sectionActivite: state.sectionActivite
-                .map((e) => e.toJson())
-                .toList(),
-            sectionOuvrier: state.sectionOuvrier
-                .map((e) => e.toJson())
-                .toList(),
-            autres: state.autres.map((e) => e.toJson()).toList(),
+            assistanceNonBaptiser: state.nonBaptiserStatic.toJson(),
+            assistanceNouveau: state.nouveauBaptiser.toJson(),
+            assistanceInviter: state.inviter.toJson(),
+            assistanceCellule: RequestAuherInformation(
+              libelle: "",
+              formationNewDFB: state.formationNewDFB,
+              formationNewBaptDFD: state.formationNewBaptDFD,
+              visiteMenbre: state.visiteMenbre,
+              visiteDisciple: state.visiteDisciple,
+              nbTravailleurs: state.nbTravailleurs,
+              nbEleveAndEtudiants: state.nbEleveAndEtudiants,
+              nbOuvrierEM: state.nbOuvrierEM,
+              nbOuvrierAutreDepatementDirigeantEM: state.nbOuvrierAutreDepatementDirigeantEM,
+              nbFormationNiveau2: state.nbFormationNiveau2,
+              ngAgendaEM: state.ngAgendaEM,
+              nbDecisionnaires: state.nbDecisionnaires,
+              id: state.id.value,
+              count: 0,
+            ).toJson(),
             formAssistanceIsSubmit: 'Success',
             formAssistanceSubmitDate: DateTime.now().toIso8601String(),
             id: state.id.value,
@@ -356,3 +467,5 @@ class RapportCelluleSectionAssistanceBloc
     return Formz.validate([s.nombreBaptiser, s.id]);
   }
 }
+
+

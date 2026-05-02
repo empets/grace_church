@@ -1,9 +1,12 @@
 import 'dart:developer';
 
+import 'package:firebase_database/firebase_database.dart' as databaseReference;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -14,13 +17,11 @@ import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
-import 'package:firebase_database/firebase_database.dart' as databaseReference;
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_notification_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/event/notification_event.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart';
 import 'package:grace_church/gen/assets.gen.dart';
-import 'package:intl/intl.dart';
 
 class NotificationView extends StatefulWidget {
   const NotificationView({super.key});
@@ -31,11 +32,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestCellule params,
+    RequestReponsableSecteur params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestCellule>(
+      final request = Request<RequestReponsableSecteur>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -43,14 +44,14 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('cellule')
+          .child('emsecteur')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
 
       // 4) Mettre à jour la clé
       await updateProfileKey(
-        RequestAuthenProfileUpdateZone(celluleId: ref.key.toString()),
+        RequestAuthenProfileUpdateZone(secteurId: ref.key.toString()),
       );
 
       return FirebaseSuccess(ref.key.toString());
@@ -68,10 +69,10 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('cellule/${params.celluleId}')
+          .child('responsablesSecteur/${params.secteurId}')
           .update(updates);
       // 4) Retourner le key généré
-      return FirebaseSuccess(params.celluleId);
+      return FirebaseSuccess(params.secteurId);
     } catch (e) {
       log("🔥 Firebase Notification →→→→→→→→→ $e");
       return FirebaseError(e.toString());
@@ -154,22 +155,17 @@ class _NotificationViewState extends State<NotificationView> {
                     onTap: () async {
                       // TODO: Handle notification tap
                       await sendNotifications(
-                        RequestCellule(
-                          celluleId: "cellule_001",
-                          celluleCode: "CELL-ABJ-01",
-                          nom: "Cellule Abobo PK18",
-                          date: "2026-04-08",
-                          description: "Description de la cellule",
+                        RequestReponsableSecteur(
+                          secteurResponsableName: "Touré Fatou",
+                          secteurCode: "SEC-ABJ-04",
+                          dateCreated: "2026-04-08",
+                          secteurName: "Secteur Abobo PK18",
+                          contactResponsable: "+2250104445566",
+                          emailResponsable: "fatou.toure@gmail.com",
                           adresse: "Abobo PK18, Abidjan",
-                          latitude: 5.3404,
-                          longitude: -3.9814,
-                          responsableCelluleId: "-OrVBMepeyxBgSa4H51d",
-                          responsableCellule: "Peters Emmanuel",
-                          contactResponsableCellule: "+2250104445566",
-                          emailResponsableCellule: "peters.emmanuel@gmail.com",
-                          adresseResponsableCellule: "Abobo PK18, Abidjan",
-                          secteurId: "secteur_001",
-                          secteurCode: "SEC-ABJ-01",
+                          secteurId: "secteur_004",
+                          zoneId: "zone_456789",
+                          zoneCode: "ZONE-ABJ-04",
                         ),
                       );
                       log("Notification sent");

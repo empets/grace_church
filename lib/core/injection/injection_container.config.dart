@@ -40,6 +40,8 @@ import '../../feature/home/data/service/repository_remote_service.dart' as _i61;
 import '../../feature/home/data/service/steam_remote_service.dart' as _i366;
 import '../../feature/home/domaine/repository/home_domain_repository.dart'
     as _i962;
+import '../../feature/home/domaine/usercase/connexion_implicite_usercase.dart'
+    as _i883;
 import '../../feature/home/domaine/usercase/get_cellule_usercase.dart' as _i625;
 import '../../feature/home/domaine/usercase/get_list_notification_usercase.dart'
     as _i15;
@@ -105,6 +107,11 @@ extension GetItInjectableX on _i174.GetIt {
         authenRemoteService: gh<_i259.AuthenRemoteService>(),
       ),
     );
+    gh.lazySingleton<_i883.GetConnexionImpliciteUsercase>(
+      () => _i883.GetConnexionImpliciteUsercase(
+        gh<_i962.HomeDomaineRepository>(),
+      ),
+    );
     gh.lazySingleton<_i625.GetCelluleUsercase>(
       () => _i625.GetCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
     );
@@ -153,9 +160,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i962.HomeDomaineRepository>(),
       ),
     );
-    gh.lazySingleton<_i334.CelluleBloc>(
-      () =>
-          _i334.CelluleBloc(getCelluleUsercase: gh<_i625.GetCelluleUsercase>()),
+    gh.lazySingleton<_i935.GetResponsableCelluleBloc>(
+      () => _i935.GetResponsableCelluleBloc(
+        getListResponsableCelluleUsercase:
+            gh<_i47.GetListResponsableCelluleUsercase>(),
+      ),
     );
     gh.lazySingleton<_i1031.CreateEngagementProfileUsercase>(
       () =>
@@ -181,16 +190,20 @@ extension GetItInjectableX on _i174.GetIt {
         getListSecteurUsercase: gh<_i791.GetListSecteurUsercase>(),
       ),
     );
+    gh.lazySingleton<_i303.ConnexionImpliciteBloc>(
+      () => _i303.ConnexionImpliciteBloc(
+        getConnexionImpliciteUsercase:
+            gh<_i883.GetConnexionImpliciteUsercase>(),
+      ),
+    );
     gh.lazySingleton<_i631.GetResponsableZoneBloc>(
       () => _i631.GetResponsableZoneBloc(
         getListZoneUsercase: gh<_i554.GetListZoneUsercase>(),
       ),
     );
-    gh.lazySingleton<_i935.GetResponsableCelluleBloc>(
-      () => _i935.GetResponsableCelluleBloc(
-        getListResponsableCelluleUsercase:
-            gh<_i47.GetListResponsableCelluleUsercase>(),
-      ),
+    gh.lazySingleton<_i334.CelluleBloc>(
+      () =>
+          _i334.CelluleBloc(getCelluleUsercase: gh<_i625.GetCelluleUsercase>()),
     );
     gh.lazySingleton<_i37.GetProfileBloc>(
       () => _i37.GetProfileBloc(

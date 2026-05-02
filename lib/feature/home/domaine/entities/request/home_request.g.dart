@@ -39,13 +39,8 @@ _RequestCellule _$RequestCelluleFromJson(Map<String, dynamic> json) =>
       adresse: json['adresse'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
-      responsableCelluleId: json['responsableCelluleId'] as String?,
-      responsableCellule: json['responsableCellule'] as String?,
-      contactResponsableCellule: json['contactResponsableCellule'] as String?,
-      emailResponsableCellule: json['emailResponsableCellule'] as String?,
-      adresseResponsableCellule: json['adresseResponsableCellule'] as String?,
-      secteurId: json['secteurId'] as String?,
-      secteurCode: json['secteurCode'] as String?,
+      adresse: json['adresse'] as String?,
+      celluleId: json['celluleId'] as String?,
     );
 
 Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
@@ -58,19 +53,15 @@ Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
       'adresse': instance.adresse,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'responsableCelluleId': instance.responsableCelluleId,
-      'responsableCellule': instance.responsableCellule,
-      'contactResponsableCellule': instance.contactResponsableCellule,
-      'emailResponsableCellule': instance.emailResponsableCellule,
-      'adresseResponsableCellule': instance.adresseResponsableCellule,
-      'secteurId': instance.secteurId,
-      'secteurCode': instance.secteurCode,
+      'adresse': instance.adresse,
+      'celluleId': instance.celluleId,
     };
 
 _RequestReponsableCellule _$RequestReponsableCelluleFromJson(
   Map<String, dynamic> json,
 ) => _RequestReponsableCellule(
   celluleResponsableName: json['celluleResponsableName'] as String?,
+  reponsableId: json['reponsableId'] as String?,
   celluleCode: json['celluleCode'] as String?,
   date: json['date'] as String?,
   celluleName: json['celluleName'] as String?,
@@ -86,6 +77,7 @@ Map<String, dynamic> _$RequestReponsableCelluleToJson(
   _RequestReponsableCellule instance,
 ) => <String, dynamic>{
   'celluleResponsableName': instance.celluleResponsableName,
+  'reponsableId': instance.reponsableId,
   'celluleCode': instance.celluleCode,
   'date': instance.date,
   'celluleName': instance.celluleName,
@@ -159,11 +151,11 @@ Map<String, dynamic> _$RequestReponsableZoneToJson(
 
 _RequestAuthenProfileUpdateZone _$RequestAuthenProfileUpdateZoneFromJson(
   Map<String, dynamic> json,
-) => _RequestAuthenProfileUpdateZone(celluleId: json['celluleId'] as String);
+) => _RequestAuthenProfileUpdateZone(secteurId: json['secteurId'] as String);
 
 Map<String, dynamic> _$RequestAuthenProfileUpdateZoneToJson(
   _RequestAuthenProfileUpdateZone instance,
-) => <String, dynamic>{'celluleId': instance.celluleId};
+) => <String, dynamic>{'secteurId': instance.secteurId};
 
 _RequestRapportCelluleAdministration
 _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
@@ -172,6 +164,7 @@ _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
       fullNameRespoZone: json['fullNameRespoZone'] as String,
       contactRespoZone: json['contactRespoZone'] as String,
       codeSecteur: json['codeSecteur'] as String,
+      responsableCelluleId: json['responsableCelluleId'] as String,
       fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
       contactRespoSecteur: json['contactRespoSecteur'] as String,
       codeCellule: json['codeCellule'] as String,
@@ -197,6 +190,7 @@ Map<String, dynamic> _$RequestRapportCelluleAdministrationToJson(
   'fullNameRespoZone': instance.fullNameRespoZone,
   'contactRespoZone': instance.contactRespoZone,
   'codeSecteur': instance.codeSecteur,
+  'responsableCelluleId': instance.responsableCelluleId,
   'fullNameRespoSecteur': instance.fullNameRespoSecteur,
   'contactRespoSecteur': instance.contactRespoSecteur,
   'codeCellule': instance.codeCellule,
@@ -277,13 +271,42 @@ Map<String, dynamic> _$RequestHumaneSectionAssistanceToJson(
 _RequestAuherInformation _$RequestAuherInformationFromJson(
   Map<String, dynamic> json,
 ) => _RequestAuherInformation(
-  libelle: json['libelle'] as String,
-  count: (json['count'] as num).toInt(),
+  libelle: json['libelle'] as String? ?? "",
+  formationNewDFB: json['formationNewDFB'] as String? ?? "",
+  formationNewBaptDFD: json['formationNewBaptDFD'] as String? ?? "",
+  visiteMenbre: json['visiteMenbre'] as String? ?? "",
+  visiteDisciple: json['visiteDisciple'] as String? ?? "",
+  nbTravailleurs: json['nbTravailleurs'] as String? ?? "",
+  nbEleveAndEtudiants: json['nbEleveAndEtudiants'] as String? ?? "",
+  nbOuvrierEM: json['nbOuvrierEM'] as String? ?? "",
+  nbOuvrierAutreDepatementDirigeantEM:
+      json['nbOuvrierAutreDepatementDirigeantEM'] as String? ?? "",
+  nbFormationNiveau2: json['nbFormationNiveau2'] as String? ?? "",
+  ngAgendaEM: json['ngAgendaEM'] as String? ?? "",
+  nbDecisionnaires: json['nbDecisionnaires'] as String? ?? "",
+  id: json['id'] as String? ?? "",
+  count: (json['count'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$RequestAuherInformationToJson(
   _RequestAuherInformation instance,
-) => <String, dynamic>{'libelle': instance.libelle, 'count': instance.count};
+) => <String, dynamic>{
+  'libelle': instance.libelle,
+  'formationNewDFB': instance.formationNewDFB,
+  'formationNewBaptDFD': instance.formationNewBaptDFD,
+  'visiteMenbre': instance.visiteMenbre,
+  'visiteDisciple': instance.visiteDisciple,
+  'nbTravailleurs': instance.nbTravailleurs,
+  'nbEleveAndEtudiants': instance.nbEleveAndEtudiants,
+  'nbOuvrierEM': instance.nbOuvrierEM,
+  'nbOuvrierAutreDepatementDirigeantEM':
+      instance.nbOuvrierAutreDepatementDirigeantEM,
+  'nbFormationNiveau2': instance.nbFormationNiveau2,
+  'ngAgendaEM': instance.ngAgendaEM,
+  'nbDecisionnaires': instance.nbDecisionnaires,
+  'id': instance.id,
+  'count': instance.count,
+};
 
 _RequestAutherInformationSource _$RequestAutherInformationSourceFromJson(
   Map<String, dynamic> json,
@@ -302,30 +325,10 @@ _RequestRapportCelluleAssistance _$RequestRapportCelluleAssistanceFromJson(
   Map<String, dynamic> json,
 ) => _RequestRapportCelluleAssistance(
   nombreBaptiser: json['nombreBaptiser'] as String,
-  nomBaptiserStat: (json['nomBaptiserStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  nouveauBaptiserStat: (json['nouveauBaptiserStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  inviterStat: (json['inviterStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  formationStat: (json['formationStat'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  sectionVisite: (json['sectionVisite'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  sectionActivite: (json['sectionActivite'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  sectionOuvrier: (json['sectionOuvrier'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
-  autres: (json['autres'] as List<dynamic>)
-      .map((e) => e as Map<String, dynamic>)
-      .toList(),
+  assistanceNonBaptiser: json['assistanceNonBaptiser'] as Map<String, dynamic>,
+  assistanceNouveau: json['assistanceNouveau'] as Map<String, dynamic>,
+  assistanceInviter: json['assistanceInviter'] as Map<String, dynamic>,
+  assistanceCellule: json['assistanceCellule'] as Map<String, dynamic>,
   id: json['id'] as String,
   formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String,
   formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
@@ -335,14 +338,10 @@ Map<String, dynamic> _$RequestRapportCelluleAssistanceToJson(
   _RequestRapportCelluleAssistance instance,
 ) => <String, dynamic>{
   'nombreBaptiser': instance.nombreBaptiser,
-  'nomBaptiserStat': instance.nomBaptiserStat,
-  'nouveauBaptiserStat': instance.nouveauBaptiserStat,
-  'inviterStat': instance.inviterStat,
-  'formationStat': instance.formationStat,
-  'sectionVisite': instance.sectionVisite,
-  'sectionActivite': instance.sectionActivite,
-  'sectionOuvrier': instance.sectionOuvrier,
-  'autres': instance.autres,
+  'assistanceNonBaptiser': instance.assistanceNonBaptiser,
+  'assistanceNouveau': instance.assistanceNouveau,
+  'assistanceInviter': instance.assistanceInviter,
+  'assistanceCellule': instance.assistanceCellule,
   'id': instance.id,
   'formAssistanceIsSubmit': instance.formAssistanceIsSubmit,
   'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,

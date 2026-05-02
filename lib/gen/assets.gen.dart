@@ -49,6 +49,26 @@ class $AssetsImagesGen {
   SvgGenImage get atomPrimaryiconPhoneOutlined =>
       const SvgGenImage('assets/images/atom_primaryicon_phone_outlined.svg');
 
+  /// File path: assets/images/box_up_image.png
+  AssetGenImage get boxUpImage =>
+      const AssetGenImage('assets/images/box_up_image.png');
+
+  /// File path: assets/images/check_reclamation.svg
+  SvgGenImage get checkReclamation =>
+      const SvgGenImage('assets/images/check_reclamation.svg');
+
+  /// File path: assets/images/diagnostic_successer.svg
+  SvgGenImage get diagnosticSuccesser =>
+      const SvgGenImage('assets/images/diagnostic_successer.svg');
+
+  /// File path: assets/images/icon_box_loading.svg
+  SvgGenImage get iconBoxLoading =>
+      const SvgGenImage('assets/images/icon_box_loading.svg');
+
+  /// File path: assets/images/icon_change_box.svg
+  SvgGenImage get iconChangeBox =>
+      const SvgGenImage('assets/images/icon_change_box.svg');
+
   /// File path: assets/images/image.png
   AssetGenImage get image => const AssetGenImage('assets/images/image.png');
 
@@ -68,6 +88,14 @@ class $AssetsImagesGen {
   SvgGenImage get problemeRequest =>
       const SvgGenImage('assets/images/probleme_request.svg');
 
+  /// File path: assets/images/scan_box.png
+  AssetGenImage get scanBox =>
+      const AssetGenImage('assets/images/scan_box.png');
+
+  /// File path: assets/images/wait_reclamation.svg
+  SvgGenImage get waitReclamation =>
+      const SvgGenImage('assets/images/wait_reclamation.svg');
+
   /// List of all assets
   List<dynamic> get values => [
     a03,
@@ -76,12 +104,19 @@ class $AssetsImagesGen {
     frame2087324052,
     globe,
     atomPrimaryiconPhoneOutlined,
+    boxUpImage,
+    checkReclamation,
+    diagnosticSuccesser,
+    iconBoxLoading,
+    iconChangeBox,
     image,
     o1,
     o2,
     oo,
     pic,
     problemeRequest,
+    scanBox,
+    waitReclamation,
   ];
 }
 

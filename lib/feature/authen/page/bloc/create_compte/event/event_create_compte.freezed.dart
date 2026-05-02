@@ -55,14 +55,15 @@ extension EventCreateCompteProfilePatterns on EventCreateCompteProfile {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult Function( ChangeIsUpdateCreateCompteProfile value)?  changeIsUpdate,TResult Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult Function( ChangeSubmitCreateCompte value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult Function( ChangeResponsableCelluleIdCreateCompteProfile value)?  changeResponsableCelluleId,TResult Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult Function( ChangeIsUpdateCreateCompteProfile value)?  changeIsUpdate,TResult Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult Function( ChangeSubmitCreateCompte value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
 return changeName(_that);case ChangeDateNaissanceEventCreateCompteProfile() when changeDateNaissance != null:
 return changeDateNaissance(_that);case ChangeZoneResidenceCreateCompteProfile() when changeZoneResidence != null:
 return changeZoneResidence(_that);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
-return changeProfileImage(_that);case ChangeContactCreateCompteProfile() when changeContact != null:
+return changeProfileImage(_that);case ChangeResponsableCelluleIdCreateCompteProfile() when changeResponsableCelluleId != null:
+return changeResponsableCelluleId(_that);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that);case ChangePasswordCreateCompteProfile() when changePassword != null:
 return changePassword(_that);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
 return changeIsUpdate(_that);case ChangeEmailCreateCompteProfile() when changeEmail != null:
@@ -86,14 +87,15 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNameEventCreateCompteProfile value)  changeName,required TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)  changeDateNaissance,required TResult Function( ChangeZoneResidenceCreateCompteProfile value)  changeZoneResidence,required TResult Function( ChangeProfileImageCreateCompteProfile value)  changeProfileImage,required TResult Function( ChangeContactCreateCompteProfile value)  changeContact,required TResult Function( ChangePasswordCreateCompteProfile value)  changePassword,required TResult Function( ChangeIsUpdateCreateCompteProfile value)  changeIsUpdate,required TResult Function( ChangeEmailCreateCompteProfile value)  changeEmail,required TResult Function( ChangeNationaliteCreateCompteProfile value)  changeNationalite,required TResult Function( ChangeSubmitCreateCompte value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNameEventCreateCompteProfile value)  changeName,required TResult Function( ChangeDateNaissanceEventCreateCompteProfile value)  changeDateNaissance,required TResult Function( ChangeZoneResidenceCreateCompteProfile value)  changeZoneResidence,required TResult Function( ChangeProfileImageCreateCompteProfile value)  changeProfileImage,required TResult Function( ChangeResponsableCelluleIdCreateCompteProfile value)  changeResponsableCelluleId,required TResult Function( ChangeContactCreateCompteProfile value)  changeContact,required TResult Function( ChangePasswordCreateCompteProfile value)  changePassword,required TResult Function( ChangeIsUpdateCreateCompteProfile value)  changeIsUpdate,required TResult Function( ChangeEmailCreateCompteProfile value)  changeEmail,required TResult Function( ChangeNationaliteCreateCompteProfile value)  changeNationalite,required TResult Function( ChangeSubmitCreateCompte value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile():
 return changeName(_that);case ChangeDateNaissanceEventCreateCompteProfile():
 return changeDateNaissance(_that);case ChangeZoneResidenceCreateCompteProfile():
 return changeZoneResidence(_that);case ChangeProfileImageCreateCompteProfile():
-return changeProfileImage(_that);case ChangeContactCreateCompteProfile():
+return changeProfileImage(_that);case ChangeResponsableCelluleIdCreateCompteProfile():
+return changeResponsableCelluleId(_that);case ChangeContactCreateCompteProfile():
 return changeContact(_that);case ChangePasswordCreateCompteProfile():
 return changePassword(_that);case ChangeIsUpdateCreateCompteProfile():
 return changeIsUpdate(_that);case ChangeEmailCreateCompteProfile():
@@ -116,14 +118,15 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult? Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult? Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult? Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult? Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult? Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult? Function( ChangeIsUpdateCreateCompteProfile value)?  changeIsUpdate,TResult? Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult? Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult? Function( ChangeSubmitCreateCompte value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNameEventCreateCompteProfile value)?  changeName,TResult? Function( ChangeDateNaissanceEventCreateCompteProfile value)?  changeDateNaissance,TResult? Function( ChangeZoneResidenceCreateCompteProfile value)?  changeZoneResidence,TResult? Function( ChangeProfileImageCreateCompteProfile value)?  changeProfileImage,TResult? Function( ChangeResponsableCelluleIdCreateCompteProfile value)?  changeResponsableCelluleId,TResult? Function( ChangeContactCreateCompteProfile value)?  changeContact,TResult? Function( ChangePasswordCreateCompteProfile value)?  changePassword,TResult? Function( ChangeIsUpdateCreateCompteProfile value)?  changeIsUpdate,TResult? Function( ChangeEmailCreateCompteProfile value)?  changeEmail,TResult? Function( ChangeNationaliteCreateCompteProfile value)?  changeNationalite,TResult? Function( ChangeSubmitCreateCompte value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
 return changeName(_that);case ChangeDateNaissanceEventCreateCompteProfile() when changeDateNaissance != null:
 return changeDateNaissance(_that);case ChangeZoneResidenceCreateCompteProfile() when changeZoneResidence != null:
 return changeZoneResidence(_that);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
-return changeProfileImage(_that);case ChangeContactCreateCompteProfile() when changeContact != null:
+return changeProfileImage(_that);case ChangeResponsableCelluleIdCreateCompteProfile() when changeResponsableCelluleId != null:
+return changeResponsableCelluleId(_that);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that);case ChangePasswordCreateCompteProfile() when changePassword != null:
 return changePassword(_that);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
 return changeIsUpdate(_that);case ChangeEmailCreateCompteProfile() when changeEmail != null:
@@ -146,13 +149,14 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String name)?  changeName,TResult Function( String dateNaissance)?  changeDateNaissance,TResult Function( String zoneResidence)?  changeZoneResidence,TResult Function( String profileImage)?  changeProfileImage,TResult Function( String contact)?  changeContact,TResult Function( String password)?  changePassword,TResult Function( bool isUpdate)?  changeIsUpdate,TResult Function( String email)?  changeEmail,TResult Function( String nationalite)?  changeNationalite,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String name)?  changeName,TResult Function( String dateNaissance)?  changeDateNaissance,TResult Function( String zoneResidence)?  changeZoneResidence,TResult Function( String profileImage)?  changeProfileImage,TResult Function( String responsableCelluleId)?  changeResponsableCelluleId,TResult Function( String contact)?  changeContact,TResult Function( String password)?  changePassword,TResult Function( bool isUpdate)?  changeIsUpdate,TResult Function( String email)?  changeEmail,TResult Function( String nationalite)?  changeNationalite,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
 return changeName(_that.name);case ChangeDateNaissanceEventCreateCompteProfile() when changeDateNaissance != null:
 return changeDateNaissance(_that.dateNaissance);case ChangeZoneResidenceCreateCompteProfile() when changeZoneResidence != null:
 return changeZoneResidence(_that.zoneResidence);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
-return changeProfileImage(_that.profileImage);case ChangeContactCreateCompteProfile() when changeContact != null:
+return changeProfileImage(_that.profileImage);case ChangeResponsableCelluleIdCreateCompteProfile() when changeResponsableCelluleId != null:
+return changeResponsableCelluleId(_that.responsableCelluleId);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that.contact);case ChangePasswordCreateCompteProfile() when changePassword != null:
 return changePassword(_that.password);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
 return changeIsUpdate(_that.isUpdate);case ChangeEmailCreateCompteProfile() when changeEmail != null:
@@ -176,13 +180,14 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String name)  changeName,required TResult Function( String dateNaissance)  changeDateNaissance,required TResult Function( String zoneResidence)  changeZoneResidence,required TResult Function( String profileImage)  changeProfileImage,required TResult Function( String contact)  changeContact,required TResult Function( String password)  changePassword,required TResult Function( bool isUpdate)  changeIsUpdate,required TResult Function( String email)  changeEmail,required TResult Function( String nationalite)  changeNationalite,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String name)  changeName,required TResult Function( String dateNaissance)  changeDateNaissance,required TResult Function( String zoneResidence)  changeZoneResidence,required TResult Function( String profileImage)  changeProfileImage,required TResult Function( String responsableCelluleId)  changeResponsableCelluleId,required TResult Function( String contact)  changeContact,required TResult Function( String password)  changePassword,required TResult Function( bool isUpdate)  changeIsUpdate,required TResult Function( String email)  changeEmail,required TResult Function( String nationalite)  changeNationalite,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile():
 return changeName(_that.name);case ChangeDateNaissanceEventCreateCompteProfile():
 return changeDateNaissance(_that.dateNaissance);case ChangeZoneResidenceCreateCompteProfile():
 return changeZoneResidence(_that.zoneResidence);case ChangeProfileImageCreateCompteProfile():
-return changeProfileImage(_that.profileImage);case ChangeContactCreateCompteProfile():
+return changeProfileImage(_that.profileImage);case ChangeResponsableCelluleIdCreateCompteProfile():
+return changeResponsableCelluleId(_that.responsableCelluleId);case ChangeContactCreateCompteProfile():
 return changeContact(_that.contact);case ChangePasswordCreateCompteProfile():
 return changePassword(_that.password);case ChangeIsUpdateCreateCompteProfile():
 return changeIsUpdate(_that.isUpdate);case ChangeEmailCreateCompteProfile():
@@ -205,13 +210,14 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String name)?  changeName,TResult? Function( String dateNaissance)?  changeDateNaissance,TResult? Function( String zoneResidence)?  changeZoneResidence,TResult? Function( String profileImage)?  changeProfileImage,TResult? Function( String contact)?  changeContact,TResult? Function( String password)?  changePassword,TResult? Function( bool isUpdate)?  changeIsUpdate,TResult? Function( String email)?  changeEmail,TResult? Function( String nationalite)?  changeNationalite,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String name)?  changeName,TResult? Function( String dateNaissance)?  changeDateNaissance,TResult? Function( String zoneResidence)?  changeZoneResidence,TResult? Function( String profileImage)?  changeProfileImage,TResult? Function( String responsableCelluleId)?  changeResponsableCelluleId,TResult? Function( String contact)?  changeContact,TResult? Function( String password)?  changePassword,TResult? Function( bool isUpdate)?  changeIsUpdate,TResult? Function( String email)?  changeEmail,TResult? Function( String nationalite)?  changeNationalite,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNameEventCreateCompteProfile() when changeName != null:
 return changeName(_that.name);case ChangeDateNaissanceEventCreateCompteProfile() when changeDateNaissance != null:
 return changeDateNaissance(_that.dateNaissance);case ChangeZoneResidenceCreateCompteProfile() when changeZoneResidence != null:
 return changeZoneResidence(_that.zoneResidence);case ChangeProfileImageCreateCompteProfile() when changeProfileImage != null:
-return changeProfileImage(_that.profileImage);case ChangeContactCreateCompteProfile() when changeContact != null:
+return changeProfileImage(_that.profileImage);case ChangeResponsableCelluleIdCreateCompteProfile() when changeResponsableCelluleId != null:
+return changeResponsableCelluleId(_that.responsableCelluleId);case ChangeContactCreateCompteProfile() when changeContact != null:
 return changeContact(_that.contact);case ChangePasswordCreateCompteProfile() when changePassword != null:
 return changePassword(_that.password);case ChangeIsUpdateCreateCompteProfile() when changeIsUpdate != null:
 return changeIsUpdate(_that.isUpdate);case ChangeEmailCreateCompteProfile() when changeEmail != null:
@@ -482,6 +488,72 @@ class _$ChangeProfileImageCreateCompteProfileCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? profileImage = null,}) {
   return _then(ChangeProfileImageCreateCompteProfile(
 null == profileImage ? _self.profileImage : profileImage // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChangeResponsableCelluleIdCreateCompteProfile implements EventCreateCompteProfile {
+   ChangeResponsableCelluleIdCreateCompteProfile({required this.responsableCelluleId});
+  
+
+ final  String responsableCelluleId;
+
+/// Create a copy of EventCreateCompteProfile
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeResponsableCelluleIdCreateCompteProfileCopyWith<ChangeResponsableCelluleIdCreateCompteProfile> get copyWith => _$ChangeResponsableCelluleIdCreateCompteProfileCopyWithImpl<ChangeResponsableCelluleIdCreateCompteProfile>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeResponsableCelluleIdCreateCompteProfile&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,responsableCelluleId);
+
+@override
+String toString() {
+  return 'EventCreateCompteProfile.changeResponsableCelluleId(responsableCelluleId: $responsableCelluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeResponsableCelluleIdCreateCompteProfileCopyWith<$Res> implements $EventCreateCompteProfileCopyWith<$Res> {
+  factory $ChangeResponsableCelluleIdCreateCompteProfileCopyWith(ChangeResponsableCelluleIdCreateCompteProfile value, $Res Function(ChangeResponsableCelluleIdCreateCompteProfile) _then) = _$ChangeResponsableCelluleIdCreateCompteProfileCopyWithImpl;
+@useResult
+$Res call({
+ String responsableCelluleId
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeResponsableCelluleIdCreateCompteProfileCopyWithImpl<$Res>
+    implements $ChangeResponsableCelluleIdCreateCompteProfileCopyWith<$Res> {
+  _$ChangeResponsableCelluleIdCreateCompteProfileCopyWithImpl(this._self, this._then);
+
+  final ChangeResponsableCelluleIdCreateCompteProfile _self;
+  final $Res Function(ChangeResponsableCelluleIdCreateCompteProfile) _then;
+
+/// Create a copy of EventCreateCompteProfile
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? responsableCelluleId = null,}) {
+  return _then(ChangeResponsableCelluleIdCreateCompteProfile(
+responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
