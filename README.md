@@ -31,4 +31,8 @@ samples, guidance on mobile development, and a full API reference.
 -  flutter pub run flutter_launcher_icons
 
 ## Cette CMd permet de revenir a un commit precedent
+git reflog
 git reset --hard def5678
+
+## Cette CMd permet de merger une branche
+git merge feature-form-new-format

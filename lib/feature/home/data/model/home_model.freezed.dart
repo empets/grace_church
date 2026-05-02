@@ -631,7 +631,7 @@ as String?,
 /// @nodoc
 mixin _$CelluleResponseModel {
 
- String? get celluleId; String? get celluleCode; String? get nom; String? get date; String? get description; String? get adresse; double get latitude; double get longitude; String? get responsableCelluleId; String? get responsableCellule; String? get contactResponsableCellule; String? get emailResponsableCellule; String? get adresseResponsableCellule; String? get secteurId; String? get secteurCode;
+ String? get celluleId; String? get celluleCode; String? get nom; String? get date; String? get description; String? get adresse; double? get latitude; double? get longitude; String? get responsableCelluleId; String? get responsableCellule; String? get contactResponsableCellule; String? get emailResponsableCellule; String? get adresseResponsableCellule; String? get secteurId; String? get secteurCode;
 /// Create a copy of CelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -664,7 +664,7 @@ abstract mixin class $CelluleResponseModelCopyWith<$Res>  {
   factory $CelluleResponseModelCopyWith(CelluleResponseModel value, $Res Function(CelluleResponseModel) _then) = _$CelluleResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double latitude, double longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode
+ String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double? latitude, double? longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode
 });
 
 
@@ -681,7 +681,7 @@ class _$CelluleResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of CelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = null,Object? longitude = null,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,}) {
   return _then(_self.copyWith(
 celluleId: freezed == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as String?,celluleCode: freezed == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -689,9 +689,9 @@ as String?,nom: freezed == nom ? _self.nom : nom // ignore: cast_nullable_to_non
 as String?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,adresse: freezed == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
-as String?,latitude: null == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
-as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
-as double,responsableCelluleId: freezed == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String?,latitude: freezed == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
+as double?,longitude: freezed == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
+as double?,responsableCelluleId: freezed == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
 as String?,responsableCellule: freezed == responsableCellule ? _self.responsableCellule : responsableCellule // ignore: cast_nullable_to_non_nullable
 as String?,contactResponsableCellule: freezed == contactResponsableCellule ? _self.contactResponsableCellule : contactResponsableCellule // ignore: cast_nullable_to_non_nullable
 as String?,emailResponsableCellule: freezed == emailResponsableCellule ? _self.emailResponsableCellule : emailResponsableCellule // ignore: cast_nullable_to_non_nullable
@@ -783,7 +783,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double latitude,  double longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CelluleResponseModel() when $default != null:
 return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode);case _:
@@ -804,7 +804,7 @@ return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.des
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double latitude,  double longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)  $default,) {final _that = this;
 switch (_that) {
 case _CelluleResponseModel():
 return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode);case _:
@@ -824,7 +824,7 @@ return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.des
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double latitude,  double longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)?  $default,) {final _that = this;
 switch (_that) {
 case _CelluleResponseModel() when $default != null:
 return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode);case _:
@@ -848,8 +848,8 @@ class _CelluleResponseModel implements CelluleResponseModel {
 @override final  String? date;
 @override final  String? description;
 @override final  String? adresse;
-@override final  double latitude;
-@override final  double longitude;
+@override final  double? latitude;
+@override final  double? longitude;
 @override final  String? responsableCelluleId;
 @override final  String? responsableCellule;
 @override final  String? contactResponsableCellule;
@@ -891,7 +891,7 @@ abstract mixin class _$CelluleResponseModelCopyWith<$Res> implements $CelluleRes
   factory _$CelluleResponseModelCopyWith(_CelluleResponseModel value, $Res Function(_CelluleResponseModel) _then) = __$CelluleResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double latitude, double longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode
+ String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double? latitude, double? longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode
 });
 
 
@@ -908,7 +908,7 @@ class __$CelluleResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of CelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = null,Object? longitude = null,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,}) {
   return _then(_CelluleResponseModel(
 celluleId: freezed == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as String?,celluleCode: freezed == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -916,9 +916,9 @@ as String?,nom: freezed == nom ? _self.nom : nom // ignore: cast_nullable_to_non
 as String?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,adresse: freezed == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
-as String?,latitude: null == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
-as double,longitude: null == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
-as double,responsableCelluleId: freezed == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String?,latitude: freezed == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
+as double?,longitude: freezed == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
+as double?,responsableCelluleId: freezed == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
 as String?,responsableCellule: freezed == responsableCellule ? _self.responsableCellule : responsableCellule // ignore: cast_nullable_to_non_nullable
 as String?,contactResponsableCellule: freezed == contactResponsableCellule ? _self.contactResponsableCellule : contactResponsableCellule // ignore: cast_nullable_to_non_nullable
 as String?,emailResponsableCellule: freezed == emailResponsableCellule ? _self.emailResponsableCellule : emailResponsableCellule // ignore: cast_nullable_to_non_nullable

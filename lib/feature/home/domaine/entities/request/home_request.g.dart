@@ -35,12 +35,16 @@ _RequestCellule _$RequestCelluleFromJson(Map<String, dynamic> json) =>
       celluleCode: json['celluleCode'] as String?,
       nom: json['nom'] as String?,
       date: json['date'] as String?,
-      description: json['description'] as String?,
       adresse: json['adresse'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
-      adresse: json['adresse'] as String?,
-      celluleId: json['celluleId'] as String?,
+      responsableCelluleId: json['responsableCelluleId'] as String?,
+      responsableCellule: json['responsableCellule'] as String?,
+      contactResponsableCellule: json['contactResponsableCellule'] as String?,
+      emailResponsableCellule: json['emailResponsableCellule'] as String?,
+      adresseResponsableCellule: json['adresseResponsableCellule'] as String?,
+      secteurId: json['secteurId'] as String?,
+      secteurCode: json['secteurCode'] as String?,
     );
 
 Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
@@ -49,12 +53,16 @@ Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
       'celluleCode': instance.celluleCode,
       'nom': instance.nom,
       'date': instance.date,
-      'description': instance.description,
       'adresse': instance.adresse,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'adresse': instance.adresse,
-      'celluleId': instance.celluleId,
+      'responsableCelluleId': instance.responsableCelluleId,
+      'responsableCellule': instance.responsableCellule,
+      'contactResponsableCellule': instance.contactResponsableCellule,
+      'emailResponsableCellule': instance.emailResponsableCellule,
+      'adresseResponsableCellule': instance.adresseResponsableCellule,
+      'secteurId': instance.secteurId,
+      'secteurCode': instance.secteurCode,
     };
 
 _RequestReponsableCellule _$RequestReponsableCelluleFromJson(
