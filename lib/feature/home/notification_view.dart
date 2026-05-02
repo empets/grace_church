@@ -154,20 +154,20 @@ class _NotificationViewState extends State<NotificationView> {
                   GestureDetector(
                     onTap: () async {
                       // TODO: Handle notification tap
-                      await sendNotifications(
-                        RequestReponsableSecteur(
-                          secteurResponsableName: "Touré Fatou",
-                          secteurCode: "SEC-ABJ-04",
-                          dateCreated: "2026-04-08",
-                          secteurName: "Secteur Abobo PK18",
-                          contactResponsable: "+2250104445566",
-                          emailResponsable: "fatou.toure@gmail.com",
-                          adresse: "Abobo PK18, Abidjan",
-                          secteurId: "secteur_004",
-                          zoneId: "zone_456789",
-                          zoneCode: "ZONE-ABJ-04",
-                        ),
-                      );
+                      // await sendNotifications(
+                      //   RequestReponsableSecteur(
+                      //     secteurResponsableName: "Touré Fatou",
+                      //     secteurCode: "SEC-ABJ-04",
+                      //     dateCreated: "2026-04-08",
+                      //     secteurName: "Secteur Abobo PK18",
+                      //     contactResponsable: "+2250104445566",
+                      //     emailResponsable: "fatou.toure@gmail.com",
+                      //     adresse: "Abobo PK18, Abidjan",
+                      //     secteurId: "secteur_004",
+                      //     zoneId: "zone_456789",
+                      //     zoneCode: "ZONE-ABJ-04",
+                      //   ),
+                      // );
                       log("Notification sent");
                     },
                     child: Container(child: Text("Notifications")),

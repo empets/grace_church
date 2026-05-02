@@ -36,7 +36,7 @@ abstract class RequestCellule with _$RequestCellule {
      String? celluleCode,
      String? nom,
      String? date,
-    //  String? description,
+     String? description,
      String? adresse,
      double? latitude,
      double? longitude,
