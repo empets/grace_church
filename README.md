@@ -29,3 +29,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Cette CMd permet de generer une nouvelle icone launcher pour l'application
 -  flutter pub run flutter_launcher_icons
+
+## Cette CMd permet de revenir a un commit precedent
+git reset --hard def5678

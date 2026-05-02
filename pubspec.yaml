@@ -159,7 +159,7 @@ dependencies:
   glassmorphism: ^3.0.0
   mnc_identifier_ocr: ^1.0.23
   insta_image_viewer: ^1.0.4
-  google_mlkit_text_recognition: ^0.15.0
+  # google_mlkit_text_recognition: ^0.15.0
   firebase_app_check: any
   flutter_doc_scanner: ^0.0.17
   scanner_document: any
@@ -171,6 +171,7 @@ dependencies:
   # icons_launcher: ^3.0.3
   # badges: ^3.1.2
  # gscankit: ^1.0.3
+  dotted_border: ^2.0.0
 
   
   # location: ^8.0.1
@@ -179,7 +180,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^10.0.0
-  build_runner: ^2.4.6
+  build_runner: ^2.4.13
   change_app_package_name: ^1.1.0
   flutter_gen_runner: ^5.10.0
   freezed: ^3.0.6
