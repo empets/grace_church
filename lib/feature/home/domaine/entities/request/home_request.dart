@@ -1,10 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
-
 part 'home_request.freezed.dart';
 part 'home_request.g.dart';
+
 
 @freezed
 abstract class EmptyRequest with _$EmptyRequest {
@@ -13,6 +11,9 @@ abstract class EmptyRequest with _$EmptyRequest {
       _$EmptyRequestFromJson(json);
 }
 
+//-----------------------------
+//  NOTIFICATION REQUEST MODEL 
+//------------------------------
 @freezed
 abstract class RequestNotification with _$RequestNotification {
   factory RequestNotification({
@@ -25,22 +26,35 @@ abstract class RequestNotification with _$RequestNotification {
       _$RequestNotificationFromJson(json);
 }
 
+//-----------------------------
+//  CELLULE REQUEST MODEL 
+//------------------------------
 @freezed
 abstract class RequestCellule with _$RequestCellule {
   factory RequestCellule({
-    String? responsable,
+    String? celluleId,
     String? celluleCode,
-    String? date,
     String? nom,
+    String? date,
     String? description,
+    String? adresse,
     double? latitude,
     double? longitude,
-    String? adresse,
-    String? celluleId,
+    String? responsableCelluleId,
+    String? responsableCellule,
+    String? contactResponsableCellule,
+    String? emailResponsableCellule,
+    String? adresseResponsableCellule,
+    String? secteurId,
+    String? secteurCode,
   }) = _RequestCellule;
   factory RequestCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestCelluleFromJson(json);
 }
+
+
+
+
 
 @freezed
 abstract class RequestReponsableCellule with _$RequestReponsableCellule {
@@ -60,19 +74,29 @@ abstract class RequestReponsableCellule with _$RequestReponsableCellule {
       _$RequestReponsableCelluleFromJson(json);
 }
 
+
+
+
+
+
+
+
+
 @freezed
 abstract class RequestReponsableSecteur with _$RequestReponsableSecteur {
   factory RequestReponsableSecteur({
-    String? secteurResponsableName,
-    String? secteurCode,
-    String? dateCreated,
-    String? secteurName,
-    String? contactResponsable,
-    String? emailResponsable,
-    String? adresse,
-    String? secteurId,
-    String? zoneId,
-    String? zoneCode,
+     String? secteurId,
+     String? secteurCode,
+     String? secteurName,
+     String? dateCreated,
+     String? secteurResponsableName,
+     String? contactResponsable,
+     String? emailResponsableSecteur,
+     String? adressResponsableSecteur,
+     String? responsableSecteurId,
+     String? adresse,
+     String? zoneId,
+     String? zoneCode,
   }) = _RequestReponsableSecteur;
   factory RequestReponsableSecteur.fromJson(Map<String, dynamic> json) =>
       _$RequestReponsableSecteurFromJson(json);
@@ -97,7 +121,7 @@ abstract class RequestReponsableZone with _$RequestReponsableZone {
 @freezed
 abstract class RequestAuthenProfileUpdateZone
     with _$RequestAuthenProfileUpdateZone {
-  factory RequestAuthenProfileUpdateZone({required String secteurId}) =
+  factory RequestAuthenProfileUpdateZone({required String celluleId}) =
       // secteurId
       _RequestAuthenProfileUpdateZone;
 

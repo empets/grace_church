@@ -4,6 +4,9 @@ import 'package:grace_church/feature/home/domaine/entities/response/home_respons
 part 'home_model.freezed.dart';
 part 'home_model.g.dart';
 
+//-----------------------------
+//  PROFILE RESPONSE MODEL
+//------------------------------
 @freezed
 abstract class ProfileResponseModel with _$ProfileResponseModel {
   factory ProfileResponseModel({
@@ -73,6 +76,9 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
   }
 }
 
+//-----------------------------
+//  NOTIFICATION RESPONSE MODEL
+//------------------------------
 @freezed
 abstract class NotificationResponseModel with _$NotificationResponseModel {
   factory NotificationResponseModel({
@@ -94,18 +100,25 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
   }
 }
 
+//-----------------------------
+//  CELLULE RESPONSE MODEL 
+//------------------------------
 @freezed
 abstract class CelluleResponseModel with _$CelluleResponseModel {
   factory CelluleResponseModel({
-    required String? responsable,
-    required String? celluleCode,
-    required String? date,
-    required String? nom,
-    required String? description,
-    required double? latitude,
-    required double? longitude,
-    required String? adresse,
     required String? celluleId,
+    required String? celluleCode,
+    required String? nom,
+    required String? date,
+    required String? description,
+    required String? adresse,
+    required double latitude,
+    required double longitude,
+    required String? responsableCelluleId,
+    required String? responsableCellule,
+    required String? contactResponsableCellule,
+    required String? emailResponsableCellule,
+    required String? adresseResponsableCellule,
     required String? secteurId,
     required String? secteurCode,
   }) = _CelluleResponseModel;
@@ -114,17 +127,22 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
 
   static CelluleResponse domaine(CelluleResponseModel model) {
     return CelluleResponse(
-      adresse: model.adresse.getOrEmpty(),
-      latitude: model.latitude.getOrEmpty(),
-      longitude: model.longitude.getOrEmpty(),
-      responsable: model.responsable.getOrEmpty(),
-      celluleCode: model.celluleCode.getOrEmpty(),
-      date: model.date.getOrEmpty(),
-      nom: model.nom.getOrEmpty(),
-      description: model.description.getOrEmpty(),
-      celluleId: model.celluleId.getOrEmpty(),
-      secteurId: model.secteurId.getOrEmpty(),
-      secteurCode: model.secteurCode.getOrEmpty(),
+    celluleId: model.celluleId.getOrEmpty(),
+    celluleCode: model.celluleCode.getOrEmpty(),
+    nom: model.nom.getOrEmpty(),
+    date: model.date.getOrEmpty(),
+    description: model.description.getOrEmpty(),
+    adresse: model.adresse.getOrEmpty(),
+    latitude:model.latitude.getOrEmpty(),
+    longitude:model.longitude.getOrEmpty(),
+    responsableCelluleId:model.responsableCelluleId.getOrEmpty(),
+    responsableCellule:model.responsableCellule.getOrEmpty(),
+    contactResponsableCellule:model.contactResponsableCellule.getOrEmpty(),
+    emailResponsableCellule:model.emailResponsableCellule.getOrEmpty(),
+    adresseResponsableCellule:model.adresseResponsableCellule.getOrEmpty(),
+    secteurId:model.secteurId.getOrEmpty(),
+    secteurCode:model.secteurCode.getOrEmpty(), 
+   
     );
   }
 }
@@ -167,17 +185,24 @@ abstract class ReponsableCelluleResponseModel
   }
 }
 
+
+
+//-----------------------------
+//  SECTEUR RESPONSE MODEL 
+//------------------------------
 @freezed
 abstract class ReponsableResponseSecteurModel with _$ReponsableResponseSecteurModel {
   factory ReponsableResponseSecteurModel({
-    required String? secteurResponsableName,
-    required String? secteurCode,
-    required String? dateCreated,
-    required String? secteurName,
-    required String? contactResponsable,
-    required String? emailResponsable,
-    required String? adresse,
     required String? secteurId,
+    required String? secteurCode,
+    required String? secteurName,
+    required String? dateCreated,
+    required String? secteurResponsableName,
+    required String? contactResponsable,
+    required String? emailResponsableSecteur,
+    required String? adressResponsableSecteur,
+    required String? responsableSecteurId,
+    required String? adresse,
     required String? zoneId,
     required String? zoneCode,
   }) = _ReponsableResponseSecteurModel;
@@ -186,16 +211,19 @@ abstract class ReponsableResponseSecteurModel with _$ReponsableResponseSecteurMo
 
   static ReponsableSecteurResponse toDomain(ReponsableResponseSecteurModel model) {
     return ReponsableSecteurResponse(
-      secteurResponsableName: model.secteurResponsableName.getOrEmpty(),
-      secteurCode: model.secteurCode.getOrEmpty(),
-      dateCreated: model.dateCreated.getOrEmpty(),
-      secteurName: model.secteurName.getOrEmpty(),
-      contactResponsable: model.contactResponsable.getOrEmpty(),
-      emailResponsable: model.emailResponsable.getOrEmpty(),
-      adresse: model.adresse.getOrEmpty(),
-      secteurId: model.secteurId.getOrEmpty(),
-      zoneId: model.zoneId.getOrEmpty(),
-      zoneCode: model.zoneCode.getOrEmpty(),
+    secteurId:model.secteurId.getOrEmpty(),
+    secteurCode:model.secteurCode.getOrEmpty(),
+    secteurName:model.secteurName.getOrEmpty(),
+    dateCreated:model.dateCreated.getOrEmpty(),
+    secteurResponsableName:model.secteurResponsableName.getOrEmpty(),
+    contactResponsable:model.contactResponsable.getOrEmpty(),
+    emailResponsableSecteur:model.emailResponsableSecteur.getOrEmpty(),
+    adressResponsableSecteur:model.adressResponsableSecteur.getOrEmpty(),
+    responsableSecteurId:model.responsableSecteurId.getOrEmpty(),
+    adresse:model.adresse.getOrEmpty(),
+    zoneId:model.zoneId.getOrEmpty(),
+    zoneCode:model.zoneCode.getOrEmpty(),
+  
     );
   }
 }

@@ -24,7 +24,9 @@ class CelluleBloc extends Bloc<CelluleEvent, ApiState<List<CelluleResponse>>> {
     switch (event) {
       case FetchCelluleEvent():
         emit(ApiState<List<CelluleResponse>>.load());
-        final result = await getCelluleUsercase.call(RequestCellule());
+        final result = await getCelluleUsercase.call(RequestCellule(
+          
+        ));
         emit(
           result.fold(
             (failure) =>

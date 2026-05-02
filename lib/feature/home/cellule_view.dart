@@ -143,7 +143,7 @@ class _CelluleViewState extends State<CelluleView> {
                           ),
                         ),
                         CustomeText(
-                          text: state.data.first.responsable,
+                          text: state.data.first.responsableCellule,
                           style: context.appTypographie.button.copyWith(
                             color: context.appColor.primaryBlue,
                             fontSize: 14.sp,

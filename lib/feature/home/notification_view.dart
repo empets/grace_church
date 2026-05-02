@@ -31,11 +31,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestReponsableSecteur params,
+    RequestCellule params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestReponsableSecteur>(
+      final request = Request<RequestCellule>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -43,14 +43,14 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('emsecteur')
+          .child('cellule')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
 
       // 4) Mettre à jour la clé
       await updateProfileKey(
-        RequestAuthenProfileUpdateZone(secteurId: ref.key.toString()),
+        RequestAuthenProfileUpdateZone(celluleId: ref.key.toString()),
       );
 
       return FirebaseSuccess(ref.key.toString());
@@ -68,10 +68,10 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('responsablesSecteur/${params.secteurId}')
+          .child('cellule/${params.celluleId}')
           .update(updates);
       // 4) Retourner le key généré
-      return FirebaseSuccess(params.secteurId);
+      return FirebaseSuccess(params.celluleId);
     } catch (e) {
       log("🔥 Firebase Notification →→→→→→→→→ $e");
       return FirebaseError(e.toString());
@@ -154,17 +154,22 @@ class _NotificationViewState extends State<NotificationView> {
                     onTap: () async {
                       // TODO: Handle notification tap
                       await sendNotifications(
-                        RequestReponsableSecteur(
-                          secteurResponsableName: "Touré Fatou",
-                          secteurCode: "SEC-ABJ-04",
-                          dateCreated: "2026-04-08",
-                          secteurName: "Secteur Abobo PK18",
-                          contactResponsable: "+2250104445566",
-                          emailResponsable: "fatou.toure@gmail.com",
+                        RequestCellule(
+                          celluleId: "cellule_001",
+                          celluleCode: "CELL-ABJ-01",
+                          nom: "Cellule Abobo PK18",
+                          date: "2026-04-08",
+                          description: "Description de la cellule",
                           adresse: "Abobo PK18, Abidjan",
-                          secteurId: "secteur_004",
-                          zoneId: "zone_456789",
-                          zoneCode: "ZONE-ABJ-04",
+                          latitude: 5.3404,
+                          longitude: -3.9814,
+                          responsableCelluleId: "-OrVBMepeyxBgSa4H51d",
+                          responsableCellule: "Peters Emmanuel",
+                          contactResponsableCellule: "+2250104445566",
+                          emailResponsableCellule: "peters.emmanuel@gmail.com",
+                          adresseResponsableCellule: "Abobo PK18, Abidjan",
+                          secteurId: "secteur_001",
+                          secteurCode: "SEC-ABJ-01",
                         ),
                       );
                       log("Notification sent");

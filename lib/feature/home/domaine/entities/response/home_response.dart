@@ -53,15 +53,19 @@ abstract class NotificationResponse with _$NotificationResponse {
 @freezed
 abstract class CelluleResponse with _$CelluleResponse {
   factory CelluleResponse({
-    required String responsable,
+    required String celluleId,
     required String celluleCode,
-    required String date,
     required String nom,
+    required String date,
     required String description,
+    required String adresse,
     required double latitude,
     required double longitude,
-    required String adresse,
-    required String celluleId,
+    required String responsableCelluleId,
+    required String responsableCellule,
+    required String contactResponsableCellule,
+    required String emailResponsableCellule,
+    required String adresseResponsableCellule,
     required String secteurId,
     required String secteurCode,
   }) = _CelluleResponse;
@@ -103,20 +107,27 @@ abstract class DiscipleCellule with _$DiscipleCellule {
 @freezed
 abstract class ReponsableSecteurResponse with _$ReponsableSecteurResponse {
   factory ReponsableSecteurResponse({
-    required String secteurResponsableName,
-    required String secteurCode,
-    required String dateCreated,
-    required String secteurName,
-    required String contactResponsable,
-    required String emailResponsable,
-    required String adresse,
     required String secteurId,
+    required String secteurCode,
+    required String secteurName,
+    required String dateCreated,
+    required String secteurResponsableName,
+    required String contactResponsable,
+    required String emailResponsableSecteur,
+    required String adressResponsableSecteur,
+    required String responsableSecteurId,
+    required String adresse,
     required String zoneId,
     required String zoneCode,
   }) = _ReponsableSecteurResponse;
+  
   factory ReponsableSecteurResponse.fromJson(Map<String, dynamic> json) =>
       _$ReponsableSecteurResponseFromJson(json);
 }
+
+
+
+
 
 @freezed
 abstract class ReponsableZoneResponse with _$ReponsableZoneResponse {
