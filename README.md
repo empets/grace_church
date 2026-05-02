@@ -36,3 +36,6 @@ git reset --hard def5678
 
 ## Cette CMd permet de merger une branche
 git merge feature-form-new-format
+
+## Cette CMd permet de changer le nom d'une branch
+git branch -m <nouveau_nom_branch>
