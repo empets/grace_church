@@ -212,17 +212,7 @@ class FormProfileBloc
         );
         break;
       
-      // case ChangeResponsableCelluleIdCreateCompteProfile(:final responsableCelluleId):
-      //   emit(
-      //     state.copyWith(
-      //       : responsableCelluleId,
-      //       status: FormzSubmissionStatus.initial,
-      //       isValide: Formz.validate([
-      //       // state.responsableCelluleId
-      //       ]),
-      //     ),
-      //   );
-      //   break;
+
       case ChangeSubmitCreateCompte():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
