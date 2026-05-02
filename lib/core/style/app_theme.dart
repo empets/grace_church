@@ -162,6 +162,8 @@ class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
     primaryGrayDark: Color(0xFF111827),
   );
 
+  Color? get primaryGray900 => null;
+
   @override
   AppColorsTheme copyWith({
     Color? primaryLightBlue,
