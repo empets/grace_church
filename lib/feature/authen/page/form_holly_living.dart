@@ -511,9 +511,7 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                               ApiState<List<CelluleResponse>>
                             >(
                               builder: (context, cellueState) {
-                                if (cellueState
-                                    is SuccessState<List<CelluleResponse>>) {
-                                  return Container(
+                                   return Container(
                                     margin: EdgeInsets.symmetric(vertical: 4.h),
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 12,
@@ -544,8 +542,23 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                           color: Colors.black,
                                           fontSize: 14.sp,
                                         ),
-                                        icon: Icon(Icons.keyboard_arrow_down),
-                                        items: cellueState.data
+                                        icon:  cellueState is LoadState<List<SecteurResponse>> ? SizedBox(
+                                              height: 20.h,
+                                              width: 20.w,
+                                              child: CircularProgressIndicator.adaptive(
+                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                  context.appColor.primaryBlue,
+                                                ),
+                                                backgroundColor: context.appColor.primaryLightBlue,
+                                              
+                                              ),
+                                            ):
+                                            
+                                             Icon(
+                                              Icons.keyboard_arrow_down,
+                                            ),
+                                        items: cellueState is SuccessState<List<CelluleResponse>> 
+                                            ? cellueState.data
                                             .map(
                                               (item) =>
                                                   DropdownMenuItem<
@@ -581,7 +594,7 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                                     ),
                                                   ),
                                             )
-                                            .toList(),
+                                            .toList() :[],
                                         onChanged: state.status.isInProgress
                                             ? null
                                             : (value) {
@@ -622,9 +635,8 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                       ),
                                     ),
                                   );
-                                }
+                               
 
-                                return SizedBox();
                               },
                             );
                           },

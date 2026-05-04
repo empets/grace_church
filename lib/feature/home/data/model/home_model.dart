@@ -101,7 +101,7 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
 }
 
 //-----------------------------
-//  CELLULE RESPONSE MODEL 
+//  CELLULE RESPONSE MODEL
 //------------------------------
 @freezed
 abstract class CelluleResponseModel with _$CelluleResponseModel {
@@ -127,22 +127,21 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
 
   static CelluleResponse domaine(CelluleResponseModel model) {
     return CelluleResponse(
-    celluleId: model.celluleId.getOrEmpty(),
-    celluleCode: model.celluleCode.getOrEmpty(),
-    nom: model.nom.getOrEmpty(),
-    date: model.date.getOrEmpty(),
-    description: model.description.getOrEmpty(),
-    adresse: model.adresse.getOrEmpty(),
-    latitude:model.latitude.getOrEmpty(),
-    longitude:model.longitude.getOrEmpty(),
-    responsableCelluleId:model.responsableCelluleId.getOrEmpty(),
-    responsableCellule:model.responsableCellule.getOrEmpty(),
-    contactResponsableCellule:model.contactResponsableCellule.getOrEmpty(),
-    emailResponsableCellule:model.emailResponsableCellule.getOrEmpty(),
-    adresseResponsableCellule:model.adresseResponsableCellule.getOrEmpty(),
-    secteurId:model.secteurId.getOrEmpty(),
-    secteurCode:model.secteurCode.getOrEmpty(), 
-   
+      celluleId: model.celluleId.getOrEmpty(),
+      celluleCode: model.celluleCode.getOrEmpty(),
+      nom: model.nom.getOrEmpty(),
+      date: model.date.getOrEmpty(),
+      description: model.description.getOrEmpty(),
+      adresse: model.adresse.getOrEmpty(),
+      latitude: model.latitude.getOrEmpty(),
+      longitude: model.longitude.getOrEmpty(),
+      responsableCelluleId: model.responsableCelluleId.getOrEmpty(),
+      responsableCellule: model.responsableCellule.getOrEmpty(),
+      contactResponsableCellule: model.contactResponsableCellule.getOrEmpty(),
+      emailResponsableCellule: model.emailResponsableCellule.getOrEmpty(),
+      adresseResponsableCellule: model.adresseResponsableCellule.getOrEmpty(),
+      secteurId: model.secteurId.getOrEmpty(),
+      secteurCode: model.secteurCode.getOrEmpty(),
     );
   }
 }
@@ -163,7 +162,7 @@ abstract class ReponsableCelluleResponseModel
     required String? celluleName,
     required String? secteurId,
     required String? secteurCode,
-    required String? responsableCelluleId
+    required String? responsableCelluleId,
   }) = _ReponsableCelluleResponseModel;
   factory ReponsableCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ReponsableCelluleResponseModelFromJson(json);
@@ -187,14 +186,12 @@ abstract class ReponsableCelluleResponseModel
   }
 }
 
-
-
 //-----------------------------
-//  SECTEUR RESPONSE MODEL 
+//  SECTEUR RESPONSE MODEL
 //------------------------------
 @freezed
-abstract class ReponsableResponseSecteurModel with _$ReponsableResponseSecteurModel {
-  factory ReponsableResponseSecteurModel({
+abstract class SecteurModel with _$SecteurModel {
+  factory SecteurModel({
     required String? secteurId,
     required String? secteurCode,
     required String? secteurName,
@@ -207,54 +204,258 @@ abstract class ReponsableResponseSecteurModel with _$ReponsableResponseSecteurMo
     required String? adresse,
     required String? zoneId,
     required String? zoneCode,
-  }) = _ReponsableResponseSecteurModel;
-  factory ReponsableResponseSecteurModel.fromJson(Map<String, dynamic> json) =>
-      _$ReponsableResponseSecteurModelFromJson(json);
+  }) = _SecteurModel;
+  factory SecteurModel.fromJson(Map<String, dynamic> json) =>
+      _$SecteurModelFromJson(json);
 
-  static ReponsableSecteurResponse toDomain(ReponsableResponseSecteurModel model) {
-    return ReponsableSecteurResponse(
-    secteurId:model.secteurId.getOrEmpty(),
-    secteurCode:model.secteurCode.getOrEmpty(),
-    secteurName:model.secteurName.getOrEmpty(),
-    dateCreated:model.dateCreated.getOrEmpty(),
-    secteurResponsableName:model.secteurResponsableName.getOrEmpty(),
-    contactResponsable:model.contactResponsable.getOrEmpty(),
-    emailResponsableSecteur:model.emailResponsableSecteur.getOrEmpty(),
-    adressResponsableSecteur:model.adressResponsableSecteur.getOrEmpty(),
-    responsableSecteurId:model.responsableSecteurId.getOrEmpty(),
-    adresse:model.adresse.getOrEmpty(),
-    zoneId:model.zoneId.getOrEmpty(),
-    zoneCode:model.zoneCode.getOrEmpty(),
-  
+  static SecteurResponse toDomain(SecteurModel model) {
+    return SecteurResponse(
+      secteurId: model.secteurId.getOrEmpty(),
+      secteurCode: model.secteurCode.getOrEmpty(),
+      secteurName: model.secteurName.getOrEmpty(),
+      dateCreated: model.dateCreated.getOrEmpty(),
+      secteurResponsableName: model.secteurResponsableName.getOrEmpty(),
+      contactResponsable: model.contactResponsable.getOrEmpty(),
+      emailResponsableSecteur: model.emailResponsableSecteur.getOrEmpty(),
+      adressResponsableSecteur: model.adressResponsableSecteur.getOrEmpty(),
+      responsableSecteurId: model.responsableSecteurId.getOrEmpty(),
+      adresse: model.adresse.getOrEmpty(),
+      zoneId: model.zoneId.getOrEmpty(),
+      zoneCode: model.zoneCode.getOrEmpty(),
     );
   }
 }
 
 @freezed
-abstract class ReponsableZoneResponseModel with _$ReponsableZoneResponseModel {
-  factory ReponsableZoneResponseModel({
-    required String? zoneResponsableName,
-    required String? zoneCode,
-    required String? dateCreated,
-    required String? zoneName,
-    required String? contactResponsable,
-    required String? emailResponsable,
-    required String? adresse,
+abstract class ZoneResponseModel with _$ZoneResponseModel {
+  factory ZoneResponseModel({
     required String? zoneId,
-  }) = _ReponsableZoneResponseModel;
-  factory ReponsableZoneResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$ReponsableZoneResponseModelFromJson(json);
+    required String? zoneCode,
+    required String? zoneName,
+    required String? dateCreated,
+    required String? zoneResponsableName,
+    required String? contactResponsable,
+    required String? emailResponsablezone,
+    required String? adressResponsablezone,
+    required String? responsablezoneId,
+    required String? adresse,
+    required String? regionId,
+    required String? regionCode,
+  }) = _ZoneResponseModel;
+  factory ZoneResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$ZoneResponseModelFromJson(json);
 
-  static ReponsableZoneResponse toDomain(ReponsableZoneResponseModel model) {
-    return ReponsableZoneResponse(
-      zoneResponsableName: model.zoneResponsableName.getOrEmpty(),
-      zoneCode: model.zoneCode.getOrEmpty(),
-      dateCreated: model.dateCreated.getOrEmpty(),
-      zoneName: model.zoneName.getOrEmpty(),
-      contactResponsable: model.contactResponsable.getOrEmpty(),
-      emailResponsable: model.emailResponsable.getOrEmpty(),
-      adresse: model.adresse.getOrEmpty(),
+  static ZoneResponse toDomain(ZoneResponseModel model) {
+    return ZoneResponse(
       zoneId: model.zoneId.getOrEmpty(),
+      zoneCode: model.zoneCode.getOrEmpty(),
+      zoneName: model.zoneName.getOrEmpty(),
+      dateCreated: model.dateCreated.getOrEmpty(),
+      zoneResponsableName: model.zoneResponsableName.getOrEmpty(),
+      contactResponsable: model.contactResponsable.getOrEmpty(),
+      emailResponsablezone: model.emailResponsablezone.getOrEmpty(),
+      adressResponsablezone: model.adressResponsablezone.getOrEmpty(),
+      responsablezoneId: model.responsablezoneId.getOrEmpty(),
+      adresse: model.adresse.getOrEmpty(),
+      regionId: model.regionId.getOrEmpty(),
+      regionCode: model.regionCode.getOrEmpty(),
     );
   }
+}
+
+@freezed
+abstract class RequestAuherResponseModel with _$RequestAuherResponseModel {
+  factory RequestAuherResponseModel({
+    required String? libelle,
+    required String? formationNewDFB,
+    required String? formationNewBaptDFD,
+    required String? visiteMenbre,
+    required String? visiteDisciple,
+    required String? nbTravailleurs,
+    required String? nbEleveAndEtudiants,
+    required String? nbOuvrierEM,
+    required String? nbOuvrierAutreDepatementDirigeantEM,
+    required String? nbFormationNiveau2,
+    required String? ngAgendaEM,
+    required String? nbDecisionnaires,
+    required String? id,
+    required int? count,
+  }) = _RequestAuherResponseModel;
+  factory RequestAuherResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$RequestAuherResponseModelFromJson(json);
+
+  static RequestAuherResponse toDomain(RequestAuherResponseModel model) {
+    return RequestAuherResponse(
+      libelle: model.libelle.getOrEmpty(),
+      formationNewDFB: model.formationNewDFB.getOrEmpty(),
+      formationNewBaptDFD: model.formationNewBaptDFD.getOrEmpty(),
+      visiteMenbre: model.visiteMenbre.getOrEmpty(),
+      visiteDisciple: model.visiteDisciple.getOrEmpty(),
+      nbTravailleurs: model.nbTravailleurs.getOrEmpty(),
+      nbEleveAndEtudiants: model.nbEleveAndEtudiants.getOrEmpty(),
+      nbOuvrierEM: model.nbOuvrierEM.getOrEmpty(),
+      nbOuvrierAutreDepatementDirigeantEM: model
+          .nbOuvrierAutreDepatementDirigeantEM
+          .getOrEmpty(),
+      nbFormationNiveau2: model.nbFormationNiveau2.getOrEmpty(),
+      ngAgendaEM: model.ngAgendaEM.getOrEmpty(),
+      nbDecisionnaires: model.nbDecisionnaires.getOrEmpty(),
+      id: model.id.getOrEmpty(),
+      count: model.count.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class RequestHumaneSectionAssistanceResponseModel
+    with _$RequestHumaneSectionAssistanceResponseModel {
+  factory RequestHumaneSectionAssistanceResponseModel({
+    required String? libelle,
+    required String? toutPetit,
+    required String? juniors,
+    required String? cadets,
+    required int? total,
+  }) = _RequestHumaneSectionAssistanceResponseModel;
+  factory RequestHumaneSectionAssistanceResponseModel.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestHumaneSectionAssistanceResponseModelFromJson(json);
+
+  static RequestHumaneSectionAssistanceResponse toDomain(
+    RequestHumaneSectionAssistanceResponseModel model,
+  ) {
+    return RequestHumaneSectionAssistanceResponse(
+      libelle: model.libelle.getOrEmpty(),
+      toutPetit: model.toutPetit.getOrEmpty(),
+      juniors: model.juniors.getOrEmpty(),
+      cadets: model.cadets.getOrEmpty(),
+      total: model.total.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class RequestHumaneSectionActivityModel
+    with _$RequestHumaneSectionActivityModel {
+  factory RequestHumaneSectionActivityModel({
+    required String? nom,
+    required String? probleme,
+    required String? recommandation,
+  }) = _RequestHumaneSectionActivityModel;
+  factory RequestHumaneSectionActivityModel.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestHumaneSectionActivityModelFromJson(json);
+
+  static RequestHumaneSectionActivityResponse toDomain(
+    RequestHumaneSectionActivityModel model,
+  ) {
+    return RequestHumaneSectionActivityResponse(
+      nom: model.nom.getOrEmpty(),
+      probleme: model.probleme.getOrEmpty(),
+      recommandation: model.recommandation.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class RequestSuggestionResponseModel
+    with _$RequestSuggestionResponseModel {
+  factory RequestSuggestionResponseModel({
+    required String? fullname,
+    required String? recommandation,
+    required String? isDisciple,
+    required String? probleme,
+  }) = _RequestSuggestionResponseModel;
+  factory RequestSuggestionResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$RequestSuggestionResponseModelFromJson(json);
+
+  static RequestSuggestionResponse toDomain(
+    RequestSuggestionResponseModel model,
+  ) {
+    return RequestSuggestionResponse(
+      fullname: model.fullname.getOrEmpty(),
+      recommandation: model.recommandation.getOrEmpty(),
+      isDisciple: model.isDisciple.getOrEmpty(),
+      probleme: model.probleme.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class DiscipleCelluleModel with _$DiscipleCelluleModel {
+  factory DiscipleCelluleModel({
+    required String? fullName,
+    required String? isBaptierOrNot,
+  }) = _DiscipleCelluleModel;
+  factory DiscipleCelluleModel.fromJson(Map<String, dynamic> json) =>
+      _$DiscipleCelluleModelFromJson(json);
+
+  static DiscipleCellule toDomain(DiscipleCelluleModel model) {
+    return DiscipleCellule(
+      fullName: model.fullName.getOrEmpty(),
+      isBaptierOrNot: model.isBaptierOrNot.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class RapportSuggestionModel with _$RapportSuggestionModel {
+  factory RapportSuggestionModel({
+    required String? temoignage,
+    required String? suggestions,
+    required String? probleme,
+  }) = _RapportSuggestionModel;
+  factory RapportSuggestionModel.fromJson(Map<String, dynamic> json) =>
+      _$RapportSuggestionModelFromJson(json);
+
+  static RapportSuggestion toDomain(RapportSuggestionModel model) {
+    return RapportSuggestion(
+      temoignage: model.temoignage.getOrEmpty(),
+      suggestions: model.suggestions.getOrEmpty(),
+      probleme: model.probleme.getOrEmpty(),
+    );
+  }
+}
+
+@freezed
+abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
+  factory RapportCelluleResponseModel({
+    required String codeZone,
+    required String fullNameRespoZone,
+    required String contactRespoZone,
+    required String codeSecteur,
+    required String responsableCelluleId,
+    required String fullNameRespoSecteur,
+    required String contactRespoSecteur,
+    required String codeCellule,
+    required String fullNameRespoCellule,
+    required String contactRespoCellule,
+    required String jourCellule,
+    required String offrande,
+    required String nombreBaptiser,
+    required String nombreNonBaptiser,
+    required List<DiscipleCelluleModel> discipleCellule,
+    required String id,
+    required String formAdministrationIsSubmit,
+    required String formAdministrationSubmitDate,
+    // required String nombreBaptiser,
+    required RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
+    required RequestHumaneSectionAssistanceResponseModel assistanceNouveau,
+    required RequestHumaneSectionAssistanceResponseModel assistanceInviter,
+    required RequestAuherResponseModel assistanceCellule,
+    // required String id,
+    required String formAssistanceIsSubmit,
+    required String formAssistanceSubmitDate,
+    required List<RequestSuggestionResponseModel> visiteMenbre,
+    required List<RequestSuggestionResponseModel> visiteOuvrier,
+    required String dateActivitySubmited,
+    required String formActivityIsSubmit,
+    required String formActivitySubmitDate,
+    required List<RapportSuggestionModel> suggestions,
+    required String faisAssignaler,
+    required String ouvrierSpritualLive,
+    required String formSuggestionIsSubmit,
+    required String formSuggestionSubmitDate,
+  }) = _RapportCelluleResponseModel;
+  factory RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$RapportCelluleResponseModelFromJson(json);
 }

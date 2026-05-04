@@ -21,11 +21,11 @@ abstract class DomaineServiceRepository {
   Future<FirebaseResult<List<ReponsableCelluleResponseModel>>>
   getListResponsablesCellules(RequestReponsableCellule params);
   
-  Future<FirebaseResult<List<ReponsableResponseSecteurModel>>>
-  getListResponsablesSecteurs(RequestReponsableSecteur params);
+  Future<FirebaseResult<List<SecteurModel>>>
+  getListResponsablesSecteurs(RequestSecteur params);
   
-  Future<FirebaseResult<List<ReponsableZoneResponseModel>>>
-  getListResponsablesZones(RequestReponsableZone params);
+  Future<FirebaseResult<List<ZoneResponseModel>>>
+  getListResponsablesZones(RequestZone params);
 
   Future<FirebaseResult<String>> sendRapportCelluleStepAdministration(RequestRapportCelluleAdministration params);
   Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(RequestImpliciteConnexion params);

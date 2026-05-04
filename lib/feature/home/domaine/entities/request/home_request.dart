@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'home_request.freezed.dart';
 part 'home_request.g.dart';
 
-
 @freezed
 abstract class EmptyRequest with _$EmptyRequest {
   factory EmptyRequest() = _EmptyRequest;
@@ -12,7 +11,7 @@ abstract class EmptyRequest with _$EmptyRequest {
 }
 
 //-----------------------------
-//  NOTIFICATION REQUEST MODEL 
+//  NOTIFICATION REQUEST MODEL
 //------------------------------
 @freezed
 abstract class RequestNotification with _$RequestNotification {
@@ -27,34 +26,30 @@ abstract class RequestNotification with _$RequestNotification {
 }
 
 //-----------------------------
-//  CELLULE REQUEST MODEL 
+//  CELLULE REQUEST MODEL
 //------------------------------
 @Freezed()
 abstract class RequestCellule with _$RequestCellule {
   factory RequestCellule({
-     String? celluleId,
-     String? celluleCode,
-     String? nom,
-     String? date,
-     String? description,
-     String? adresse,
-     double? latitude,
-     double? longitude,
-     String? responsableCelluleId,
-     String? responsableCellule,
-     String? contactResponsableCellule,
-     String? emailResponsableCellule,
-     String? adresseResponsableCellule,
-     String? secteurId,
-     String? secteurCode,
+    String? celluleId,
+    String? celluleCode,
+    String? nom,
+    String? date,
+    String? description,
+    String? adresse,
+    double? latitude,
+    double? longitude,
+    String? responsableCelluleId,
+    String? responsableCellule,
+    String? contactResponsableCellule,
+    String? emailResponsableCellule,
+    String? adresseResponsableCellule,
+    String? secteurId,
+    String? secteurCode,
   }) = _RequestCellule;
   factory RequestCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestCelluleFromJson(json);
 }
-
-
-
-
 
 @freezed
 abstract class RequestReponsableCellule with _$RequestReponsableCellule {
@@ -75,55 +70,57 @@ abstract class RequestReponsableCellule with _$RequestReponsableCellule {
       _$RequestReponsableCelluleFromJson(json);
 }
 
-
-
-
-
-
-
-
-
+//-----------------------------
+//  SECTEUR REQUEST MODEL
+//------------------------------
 @freezed
-abstract class RequestReponsableSecteur with _$RequestReponsableSecteur {
-  factory RequestReponsableSecteur({
-     String? secteurId,
-     String? secteurCode,
-     String? secteurName,
-     String? dateCreated,
-     String? secteurResponsableName,
-     String? contactResponsable,
-     String? emailResponsableSecteur,
-     String? adressResponsableSecteur,
-     String? responsableSecteurId,
-     String? adresse,
-     String? zoneId,
-     String? zoneCode,
-  }) = _RequestReponsableSecteur;
-  factory RequestReponsableSecteur.fromJson(Map<String, dynamic> json) =>
-      _$RequestReponsableSecteurFromJson(json);
-}
-
-@freezed
-abstract class RequestReponsableZone with _$RequestReponsableZone {
-  factory RequestReponsableZone({
-    String? zoneResponsableName,
-    String? zoneCode,
+abstract class RequestSecteur with _$RequestSecteur {
+  factory RequestSecteur({
+    String? secteurId,
+    String? secteurCode,
+    String? secteurName,
     String? dateCreated,
-    String? zoneName,
+    String? secteurResponsableName,
     String? contactResponsable,
-    String? emailResponsable,
+    String? emailResponsableSecteur,
+    String? adressResponsableSecteur,
+    String? responsableSecteurId,
     String? adresse,
     String? zoneId,
-  }) = _RequestReponsableZone;
-  factory RequestReponsableZone.fromJson(Map<String, dynamic> json) =>
-      _$RequestReponsableZoneFromJson(json);
+    String? zoneCode,
+  }) = _RequestSecteur;
+  factory RequestSecteur.fromJson(Map<String, dynamic> json) =>
+      _$RequestSecteurFromJson(json);
+}
+
+//-----------------------------
+//  ZONE REQUEST MODEL
+//------------------------------
+@freezed
+abstract class RequestZone with _$RequestZone {
+  factory RequestZone({
+    String? zoneId,
+    String? zoneCode,
+    String? zoneName,
+    String? dateCreated,
+    String? zoneResponsableName,
+    String? contactResponsable,
+    String? emailResponsablezone,
+    String? adressResponsablezone,
+    String? responsablezoneId,
+    String? adresse,
+    String? regionId,
+    String? regionCode,
+  }) = _RequestZone;
+  factory RequestZone.fromJson(Map<String, dynamic> json) =>
+      _$RequestZoneFromJson(json);
 }
 
 @freezed
 abstract class RequestAuthenProfileUpdateZone
     with _$RequestAuthenProfileUpdateZone {
-  factory RequestAuthenProfileUpdateZone({required String secteurId}) =
-      // secteurId
+  factory RequestAuthenProfileUpdateZone({required String zoneId}) =
+      // zoneId
       _RequestAuthenProfileUpdateZone;
 
   factory RequestAuthenProfileUpdateZone.fromJson(Map<String, dynamic> json) =>
@@ -168,24 +165,18 @@ abstract class RequestGeneriqueKey<T> with _$RequestGeneriqueKey<T> {
   ) => _$RequestGeneriqueKeyFromJson(json, fromJsonT);
 }
 
-
-
 @freezed
 abstract class RequestImpliciteConnexion with _$RequestImpliciteConnexion {
-  factory RequestImpliciteConnexion({
-    required String deviceId,
-  }) = _RequestImpliciteConnexion;
+  factory RequestImpliciteConnexion({required String deviceId}) =
+      _RequestImpliciteConnexion;
   factory RequestImpliciteConnexion.fromJson(Map<String, dynamic> json) =>
       _$RequestImpliciteConnexionFromJson(json);
 }
 
-
 @freezed
 abstract class RequestItemSection with _$RequestItemSection {
-  factory RequestItemSection({
-     required String name,
-     @Default(0) int count,
-  }) = _RequestItemSection;
+  factory RequestItemSection({required String name, @Default(0) int count}) =
+      _RequestItemSection;
   factory RequestItemSection.fromJson(Map<String, dynamic> json) =>
       _$RequestItemSectionFromJson(json);
 }
@@ -193,33 +184,30 @@ abstract class RequestItemSection with _$RequestItemSection {
 @freezed
 abstract class RequestSection with _$RequestSection {
   factory RequestSection({
-     required String title,
-     @Default([]) List<RequestItemSection> items,
+    required String title,
+    @Default([]) List<RequestItemSection> items,
   }) = _RequestSection;
   factory RequestSection.fromJson(Map<String, dynamic> json) =>
       _$RequestSectionFromJson(json);
 }
 
-
 @freezed
-abstract class RequestHumaneSectionAssistance with _$RequestHumaneSectionAssistance {
+abstract class RequestHumaneSectionAssistance
+    with _$RequestHumaneSectionAssistance {
   factory RequestHumaneSectionAssistance({
-      @Default("") String libelle,
-      @Default("") String toutPetit ,
-     @Default("") String juniors,
-     @Default("") String cadets,
-     @Default(0) int total,
-   
+    @Default("") String libelle,
+    @Default("") String toutPetit,
+    @Default("") String juniors,
+    @Default("") String cadets,
+    @Default(0) int total,
   }) = _RequestHumaneSectionAssistance;
   factory RequestHumaneSectionAssistance.fromJson(Map<String, dynamic> json) =>
       _$RequestHumaneSectionAssistanceFromJson(json);
 }
 
-
-
 @freezed
 abstract class RequestAuherInformation with _$RequestAuherInformation {
-   factory RequestAuherInformation({ 
+  factory RequestAuherInformation({
     @Default("") String libelle,
     @Default("") String formationNewDFB,
     @Default("") String formationNewBaptDFD,
@@ -233,26 +221,22 @@ abstract class RequestAuherInformation with _$RequestAuherInformation {
     @Default("") String ngAgendaEM,
     @Default("") String nbDecisionnaires,
     @Default("") String id,
-    @Default(0) int count 
-   }) = _RequestAuherInformation;
-   factory RequestAuherInformation.fromJson(Map<String, dynamic> json) =>
+    @Default(0) int count,
+  }) = _RequestAuherInformation;
+  factory RequestAuherInformation.fromJson(Map<String, dynamic> json) =>
       _$RequestAuherInformationFromJson(json);
 }
 
 @freezed
-abstract class RequestAutherInformationSource with _$RequestAutherInformationSource {
-  factory RequestAutherInformationSource(
-    {
-      required String title,
-      required List<RequestAuherInformation> sections
-    }) = _RequestAutherInformationSource;
+abstract class RequestAutherInformationSource
+    with _$RequestAutherInformationSource {
+  factory RequestAutherInformationSource({
+    required String title,
+    required List<RequestAuherInformation> sections,
+  }) = _RequestAutherInformationSource;
   factory RequestAutherInformationSource.fromJson(Map<String, dynamic> json) =>
       _$RequestAutherInformationSourceFromJson(json);
 }
-
-
-
-
 
 @freezed
 abstract class RequestRapportCelluleAssistance
@@ -267,11 +251,9 @@ abstract class RequestRapportCelluleAssistance
     required String formAssistanceIsSubmit,
     required String formAssistanceSubmitDate,
   }) = _RequestRapportCelluleAssistance;
-  factory RequestRapportCelluleAssistance.fromJson(
-    Map<String, dynamic> json,
-  ) => _$RequestRapportCelluleAssistanceFromJson(json);
+  factory RequestRapportCelluleAssistance.fromJson(Map<String, dynamic> json) =>
+      _$RequestRapportCelluleAssistanceFromJson(json);
 }
-
 
 @freezed
 abstract class RequestRapportCelluleActivity
@@ -283,11 +265,9 @@ abstract class RequestRapportCelluleActivity
     required String formActivityIsSubmit,
     required String formActivitySubmitDate,
   }) = _RequestRapportCelluleActivity;
-  factory RequestRapportCelluleActivity.fromJson(
-    Map<String, dynamic> json,
-  ) => _$RequestRapportCelluleActivityFromJson(json);
+  factory RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) =>
+      _$RequestRapportCelluleActivityFromJson(json);
 }
-
 
 @freezed
 abstract class RequestRapportCelluleSuggestion
@@ -299,7 +279,6 @@ abstract class RequestRapportCelluleSuggestion
     required String formSuggestionIsSubmit,
     required String formSuggestionSubmitDate,
   }) = _RequestRapportCelluleSuggestion;
-  factory RequestRapportCelluleSuggestion.fromJson(
-    Map<String, dynamic> json,
-  ) => _$RequestRapportCelluleSuggestionFromJson(json);
+  factory RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) =>
+      _$RequestRapportCelluleSuggestionFromJson(json);
 }

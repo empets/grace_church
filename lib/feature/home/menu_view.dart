@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -98,8 +100,8 @@ class MenuView extends StatelessWidget {
         "value": "profile",
       },
       {
-        "title": "Espace Cellule",
-        "icon": Icons.import_contacts_rounded,
+        "title": "Rapport de Cellule",
+        "icon": Icons.edit_document,
         "visible": true,
         "value": "cellule_space",
       },
@@ -127,11 +129,20 @@ class MenuView extends StatelessWidget {
       // {"title": "Paramètres", "icon": Icons.settings},
     ];
 
-    return BlocProvider(
-      create: (context) => GetResponsableCelluleBloc(
-        getListResponsableCelluleUsercase:
-            getIt<GetListResponsableCelluleUsercase>(),
-      )..add(CelluleEvent.fetch()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetResponsableCelluleBloc(
+            getListResponsableCelluleUsercase:
+                getIt<GetListResponsableCelluleUsercase>(),
+          )..add(CelluleEvent.fetch()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
+                ..add(CelluleEvent.fetch()),
+        ),
+      ],
       child: SafeArea(
         top: false,
         bottom: true,
@@ -143,8 +154,8 @@ class MenuView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
-                  builder: (context, profileStream) {
-                    if (profileStream is SuccessState<ProfileResponse>) {
+                  builder: (context, profileState) {
+                    if (profileState is SuccessState<ProfileResponse>) {
                       return Container(
                         margin: EdgeInsets.only(top: 40.h),
                         padding: EdgeInsets.symmetric(horizontal: 2.w),
@@ -179,7 +190,7 @@ class MenuView extends StatelessWidget {
                                             width: 0.08.sh,
                                           ),
                                         ),
-                                        profileStream.data.profileImage ?? "",
+                                        profileState.data.profileImage,
 
                                         fit: BoxFit.cover,
                                         height: 0.1.sh,
@@ -190,7 +201,7 @@ class MenuView extends StatelessWidget {
 
                                   SizedBox(width: 12.w),
                                   Text(
-                                    profileStream.data.name ?? "",
+                                    profileState.data.name,
                                     style: context.appTypographie.body.copyWith(
                                       fontSize: 20.sp,
                                       fontWeight: FontWeight.bold,
@@ -198,7 +209,7 @@ class MenuView extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    profileStream.data.email ?? "",
+                                    profileState.data.email,
                                     style: context.appTypographie.body.copyWith(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.normal,
@@ -213,38 +224,31 @@ class MenuView extends StatelessWidget {
                                 SizedBox(height: 13.h),
                                 Divider(color: Colors.grey.shade300),
                                 BlocBuilder<
-                                  GetResponsableCelluleBloc,
-                                  ApiState<List<ReponsableCelluleResponse>>
+                                  CelluleBloc,
+                                  ApiState<List<CelluleResponse>>
                                 >(
                                   builder: (context, listResponsableState) {
                                     if (listResponsableState
                                         is SuccessState<
-                                          List<ReponsableCelluleResponse>
+                                          List<CelluleResponse>
                                         >) {
-
-                                          log(
-                                              'isResponsableCellule: ${listResponsableState.data}',
-                                            );
+                                      log(
+                                        'isResponsableCellule: //${listResponsableState.data}',
+                                      );
                                       isResponsableCellule =
-
                                           listResponsableState.data.any((
                                             element,
                                           ) {
-                                            log(
-                                              'isResponsableCellule: ${element}',
-                                            );
+                                            log('isResponsableCellule: ');
                                             return element.responsableCelluleId
                                                 .trim()
                                                 .toLowerCase()
                                                 .contains(
-                                                  profileStream.data.menberId
+                                                  profileState.data.menberId
                                                       .trim()
                                                       .toLowerCase(),
                                                 );
                                           });
-                                      log(
-                                        'isResponsableCellule: $isResponsableCellule',
-                                      );
                                     }
 
                                     return Container(
@@ -273,7 +277,7 @@ class MenuView extends StatelessWidget {
                                                 ),
                                                 title: Text(
                                                   item["value"] == "profile" &&
-                                                          profileStream
+                                                          profileState
                                                                   .data
                                                                   .submitEngagement ==
                                                               true
@@ -303,7 +307,7 @@ class MenuView extends StatelessWidget {
                                                 ),
                                                 trailing:
                                                     ((item["value"] !=
-                                                        "department") )
+                                                        "department"))
                                                     ? Icon(
                                                         Icons.chevron_right,
                                                         color: context
@@ -312,7 +316,7 @@ class MenuView extends StatelessWidget {
                                                       )
                                                     : SizedBox(),
                                                 onTap: () {
-                                                  log('item: ${item}');
+                                                  log('item: ');
                                                   if (item["value"] ==
                                                       "profile") {
                                                     Navigator.of(context).push(
@@ -358,7 +362,7 @@ class MenuView extends StatelessWidget {
                                                             ),
                                                           ],
                                                           child: buildForm(
-                                                            state: profileStream
+                                                            state: profileState
                                                                 .data,
                                                           ),
                                                         ),
@@ -367,78 +371,87 @@ class MenuView extends StatelessWidget {
                                                   }
                                                   if (item["value"] ==
                                                       "cellule_space") {
-                                                        if(profileStream.data.submitSpiritual){
-                                                              Navigator.of(context).push(
-                                                      fadeRoute(
-                                                        MultiBlocProvider(
-                                                          providers: [
-                                                            BlocProvider(
-                                                              create: (context) =>
-                                                                  RapportCelluleRequestSectionAdministrationBloc(
-                                                                    sendRapportCelluleStepAdministrationUsercase:
-                                                                        getIt<
-                                                                          SendRapportCelluleStepAdministrationUsercase
-                                                                        >(),
-                                                                  ),
-                                                            ),
-                                                            BlocProvider(
-                                                              create: (context) =>
-                                                                  GetResponsableSecteurBloc(
-                                                                    getListSecteurUsercase:
-                                                                        getIt<
-                                                                          GetListSecteurUsercase
-                                                                        >(),
-                                                                  )..add(
-                                                                    CelluleEvent.fetch(),
-                                                                  ),
-                                                            ),
-                                                            BlocProvider(
-                                                              create: (context) =>
-                                                                  GetResponsableZoneBloc(
-                                                                    getListZoneUsercase:
-                                                                        getIt<
-                                                                          GetListZoneUsercase
-                                                                        >(),
-                                                                  )..add(
-                                                                    CelluleEvent.fetch(),
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                          child:
-                                                              EditingCelluleRaport(
-                                                                profile:
-                                                                    profileStream
-                                                                        .data,
+                                                    if (profileState
+                                                        .data
+                                                        .submitSpiritual) {
+                                                      Navigator.of(
+                                                        context,
+                                                      ).push(
+                                                        fadeRoute(
+                                                          MultiBlocProvider(
+                                                            providers: [
+                                                              BlocProvider(
+                                                                create: (context) =>
+                                                                    RapportCelluleRequestSectionAdministrationBloc(
+                                                                      sendRapportCelluleStepAdministrationUsercase:
+                                                                          getIt<
+                                                                            SendRapportCelluleStepAdministrationUsercase
+                                                                          >(),
+                                                                    ),
                                                               ),
+                                                              BlocProvider(
+                                                                create: (context) =>
+                                                                    GetSecteurBloc(
+                                                                      getListSecteurUsercase:
+                                                                          getIt<
+                                                                            GetListSecteurUsercase
+                                                                          >(),
+                                                                    )..add(
+                                                                      CelluleEvent.fetch(),
+                                                                    ),
+                                                              ),
+                                                              BlocProvider(
+                                                                create: (context) =>
+                                                                    GetZoneBloc(
+                                                                      getListZoneUsercase:
+                                                                          getIt<
+                                                                            GetListZoneUsercase
+                                                                          >(),
+                                                                    )..add(
+                                                                      CelluleEvent.fetch(),
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                            child:
+                                                                EditingCelluleRaport(
+                                                                  profile:
+                                                                      profileState
+                                                                          .data,
+                                                                ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                        }
-                                                        else{
-                                                        AppAlert.showInfo(context, "Veuillez finaliser votre création de compte");
-
-                                                        }
-                                                   }
+                                                      );
+                                                    } else {
+                                                      AppAlert.showInfo(
+                                                        context,
+                                                        "Veuillez finaliser votre création de compte",
+                                                      );
+                                                    }
+                                                  }
                                                   if (item["value"] ==
                                                       "cellule") {
-                                                      if(profileStream.data.submitSpiritual){
-                                                        Navigator.of(context).push(
-                                                      fadeRoute(
-                                                        CelluleView(
-                                                          cellueId:
-                                                              profileStream
-                                                                  .data
-                                                                  .celluleId ??
-                                                              "",
+                                                    if (profileState
+                                                        .data
+                                                        .submitSpiritual) {
+                                                      Navigator.of(
+                                                        context,
+                                                      ).push(
+                                                        fadeRoute(
+                                                          CelluleView(
+                                                            cellueId:
+                                                                profileState
+                                                                    .data
+                                                                    .celluleId ??
+                                                                "",
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                      }
-
-                                                      else{
-                                                        AppAlert.showInfo(context, "Veuillez finaliser votre création de compte");
-                                                      }
-
+                                                      );
+                                                    } else {
+                                                      AppAlert.showInfo(
+                                                        context,
+                                                        "Veuillez finaliser votre création de compte",
+                                                      );
+                                                    }
                                                   }
                                                   if (item["value"] ==
                                                       "announcements") {
@@ -471,7 +484,7 @@ class MenuView extends StatelessWidget {
                                                 ),
                                                 title: Text(
                                                   item["value"] == "profile" &&
-                                                          profileStream
+                                                          profileState
                                                                   .data
                                                                   .submitEngagement !=
                                                               true
@@ -509,7 +522,7 @@ class MenuView extends StatelessWidget {
                                                       )
                                                     : SizedBox(),
                                                 onTap: () {
-                                                  log('item: ${item}');
+                                                  log('item: ');
                                                   if (item["value"] ==
                                                       "profile") {
                                                     Navigator.of(context).push(
@@ -559,7 +572,7 @@ class MenuView extends StatelessWidget {
                                                             ),
                                                           ],
                                                           child: buildForm(
-                                                            state: profileStream
+                                                            state: profileState
                                                                 .data,
                                                           ),
                                                         ),
@@ -572,7 +585,7 @@ class MenuView extends StatelessWidget {
                                                       fadeRoute(
                                                         CelluleView(
                                                           cellueId:
-                                                              profileStream
+                                                              profileState
                                                                   .data
                                                                   .celluleId ??
                                                               "",
@@ -655,7 +668,7 @@ class MenuView extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                                 child: Text(
-                                  "" ?? "vous n'avez pas d'email",
+                                  "",
                                   style: context.appTypographie.body.copyWith(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.normal,
@@ -706,7 +719,7 @@ class MenuView extends StatelessWidget {
                                           )
                                         : SizedBox(),
                                     onTap: () {
-                                      log('item: ${item}');
+                                      log('item: ');
                                       if (item["value"] == "profile") {
                                         Navigator.of(context).push(
                                           fadeRoute(
@@ -802,7 +815,7 @@ class MenuView extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
+                ), 
               ],
             ),
           ),

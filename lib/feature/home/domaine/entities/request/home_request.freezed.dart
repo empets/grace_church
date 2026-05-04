@@ -1129,28 +1129,28 @@ as String?,
 
 
 /// @nodoc
-mixin _$RequestReponsableSecteur implements DiagnosticableTreeMixin {
+mixin _$RequestSecteur implements DiagnosticableTreeMixin {
 
  String? get secteurId; String? get secteurCode; String? get secteurName; String? get dateCreated; String? get secteurResponsableName; String? get contactResponsable; String? get emailResponsableSecteur; String? get adressResponsableSecteur; String? get responsableSecteurId; String? get adresse; String? get zoneId; String? get zoneCode;
-/// Create a copy of RequestReponsableSecteur
+/// Create a copy of RequestSecteur
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$RequestReponsableSecteurCopyWith<RequestReponsableSecteur> get copyWith => _$RequestReponsableSecteurCopyWithImpl<RequestReponsableSecteur>(this as RequestReponsableSecteur, _$identity);
+$RequestSecteurCopyWith<RequestSecteur> get copyWith => _$RequestSecteurCopyWithImpl<RequestSecteur>(this as RequestSecteur, _$identity);
 
-  /// Serializes this RequestReponsableSecteur to a JSON map.
+  /// Serializes this RequestSecteur to a JSON map.
   Map<String, dynamic> toJson();
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'RequestReponsableSecteur'))
+    ..add(DiagnosticsProperty('type', 'RequestSecteur'))
     ..add(DiagnosticsProperty('secteurId', secteurId))..add(DiagnosticsProperty('secteurCode', secteurCode))..add(DiagnosticsProperty('secteurName', secteurName))..add(DiagnosticsProperty('dateCreated', dateCreated))..add(DiagnosticsProperty('secteurResponsableName', secteurResponsableName))..add(DiagnosticsProperty('contactResponsable', contactResponsable))..add(DiagnosticsProperty('emailResponsableSecteur', emailResponsableSecteur))..add(DiagnosticsProperty('adressResponsableSecteur', adressResponsableSecteur))..add(DiagnosticsProperty('responsableSecteurId', responsableSecteurId))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('zoneId', zoneId))..add(DiagnosticsProperty('zoneCode', zoneCode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestReponsableSecteur&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestSecteur&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1159,15 +1159,15 @@ int get hashCode => Object.hash(runtimeType,secteurId,secteurCode,secteurName,da
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestReponsableSecteur(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
+  return 'RequestSecteur(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $RequestReponsableSecteurCopyWith<$Res>  {
-  factory $RequestReponsableSecteurCopyWith(RequestReponsableSecteur value, $Res Function(RequestReponsableSecteur) _then) = _$RequestReponsableSecteurCopyWithImpl;
+abstract mixin class $RequestSecteurCopyWith<$Res>  {
+  factory $RequestSecteurCopyWith(RequestSecteur value, $Res Function(RequestSecteur) _then) = _$RequestSecteurCopyWithImpl;
 @useResult
 $Res call({
  String? secteurId, String? secteurCode, String? secteurName, String? dateCreated, String? secteurResponsableName, String? contactResponsable, String? emailResponsableSecteur, String? adressResponsableSecteur, String? responsableSecteurId, String? adresse, String? zoneId, String? zoneCode
@@ -1178,14 +1178,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$RequestReponsableSecteurCopyWithImpl<$Res>
-    implements $RequestReponsableSecteurCopyWith<$Res> {
-  _$RequestReponsableSecteurCopyWithImpl(this._self, this._then);
+class _$RequestSecteurCopyWithImpl<$Res>
+    implements $RequestSecteurCopyWith<$Res> {
+  _$RequestSecteurCopyWithImpl(this._self, this._then);
 
-  final RequestReponsableSecteur _self;
-  final $Res Function(RequestReponsableSecteur) _then;
+  final RequestSecteur _self;
+  final $Res Function(RequestSecteur) _then;
 
-/// Create a copy of RequestReponsableSecteur
+/// Create a copy of RequestSecteur
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? secteurId = freezed,Object? secteurCode = freezed,Object? secteurName = freezed,Object? dateCreated = freezed,Object? secteurResponsableName = freezed,Object? contactResponsable = freezed,Object? emailResponsableSecteur = freezed,Object? adressResponsableSecteur = freezed,Object? responsableSecteurId = freezed,Object? adresse = freezed,Object? zoneId = freezed,Object? zoneCode = freezed,}) {
   return _then(_self.copyWith(
@@ -1208,8 +1208,8 @@ as String?,
 }
 
 
-/// Adds pattern-matching-related methods to [RequestReponsableSecteur].
-extension RequestReponsableSecteurPatterns on RequestReponsableSecteur {
+/// Adds pattern-matching-related methods to [RequestSecteur].
+extension RequestSecteurPatterns on RequestSecteur {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1222,10 +1222,10 @@ extension RequestReponsableSecteurPatterns on RequestReponsableSecteur {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestReponsableSecteur value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestSecteur value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _RequestReponsableSecteur() when $default != null:
+case _RequestSecteur() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1244,10 +1244,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestReponsableSecteur value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestSecteur value)  $default,){
 final _that = this;
 switch (_that) {
-case _RequestReponsableSecteur():
+case _RequestSecteur():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -1265,10 +1265,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestReponsableSecteur value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestSecteur value)?  $default,){
 final _that = this;
 switch (_that) {
-case _RequestReponsableSecteur() when $default != null:
+case _RequestSecteur() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1288,7 +1288,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? secteurId,  String? secteurCode,  String? secteurName,  String? dateCreated,  String? secteurResponsableName,  String? contactResponsable,  String? emailResponsableSecteur,  String? adressResponsableSecteur,  String? responsableSecteurId,  String? adresse,  String? zoneId,  String? zoneCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _RequestReponsableSecteur() when $default != null:
+case _RequestSecteur() when $default != null:
 return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCreated,_that.secteurResponsableName,_that.contactResponsable,_that.emailResponsableSecteur,_that.adressResponsableSecteur,_that.responsableSecteurId,_that.adresse,_that.zoneId,_that.zoneCode);case _:
   return orElse();
 
@@ -1309,7 +1309,7 @@ return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCr
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? secteurId,  String? secteurCode,  String? secteurName,  String? dateCreated,  String? secteurResponsableName,  String? contactResponsable,  String? emailResponsableSecteur,  String? adressResponsableSecteur,  String? responsableSecteurId,  String? adresse,  String? zoneId,  String? zoneCode)  $default,) {final _that = this;
 switch (_that) {
-case _RequestReponsableSecteur():
+case _RequestSecteur():
 return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCreated,_that.secteurResponsableName,_that.contactResponsable,_that.emailResponsableSecteur,_that.adressResponsableSecteur,_that.responsableSecteurId,_that.adresse,_that.zoneId,_that.zoneCode);case _:
   throw StateError('Unexpected subclass');
 
@@ -1329,7 +1329,7 @@ return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCr
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? secteurId,  String? secteurCode,  String? secteurName,  String? dateCreated,  String? secteurResponsableName,  String? contactResponsable,  String? emailResponsableSecteur,  String? adressResponsableSecteur,  String? responsableSecteurId,  String? adresse,  String? zoneId,  String? zoneCode)?  $default,) {final _that = this;
 switch (_that) {
-case _RequestReponsableSecteur() when $default != null:
+case _RequestSecteur() when $default != null:
 return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCreated,_that.secteurResponsableName,_that.contactResponsable,_that.emailResponsableSecteur,_that.adressResponsableSecteur,_that.responsableSecteurId,_that.adresse,_that.zoneId,_that.zoneCode);case _:
   return null;
 
@@ -1341,9 +1341,9 @@ return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCr
 /// @nodoc
 @JsonSerializable()
 
-class _RequestReponsableSecteur with DiagnosticableTreeMixin implements RequestReponsableSecteur {
-   _RequestReponsableSecteur({this.secteurId, this.secteurCode, this.secteurName, this.dateCreated, this.secteurResponsableName, this.contactResponsable, this.emailResponsableSecteur, this.adressResponsableSecteur, this.responsableSecteurId, this.adresse, this.zoneId, this.zoneCode});
-  factory _RequestReponsableSecteur.fromJson(Map<String, dynamic> json) => _$RequestReponsableSecteurFromJson(json);
+class _RequestSecteur with DiagnosticableTreeMixin implements RequestSecteur {
+   _RequestSecteur({this.secteurId, this.secteurCode, this.secteurName, this.dateCreated, this.secteurResponsableName, this.contactResponsable, this.emailResponsableSecteur, this.adressResponsableSecteur, this.responsableSecteurId, this.adresse, this.zoneId, this.zoneCode});
+  factory _RequestSecteur.fromJson(Map<String, dynamic> json) => _$RequestSecteurFromJson(json);
 
 @override final  String? secteurId;
 @override final  String? secteurCode;
@@ -1358,26 +1358,26 @@ class _RequestReponsableSecteur with DiagnosticableTreeMixin implements RequestR
 @override final  String? zoneId;
 @override final  String? zoneCode;
 
-/// Create a copy of RequestReponsableSecteur
+/// Create a copy of RequestSecteur
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$RequestReponsableSecteurCopyWith<_RequestReponsableSecteur> get copyWith => __$RequestReponsableSecteurCopyWithImpl<_RequestReponsableSecteur>(this, _$identity);
+_$RequestSecteurCopyWith<_RequestSecteur> get copyWith => __$RequestSecteurCopyWithImpl<_RequestSecteur>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$RequestReponsableSecteurToJson(this, );
+  return _$RequestSecteurToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'RequestReponsableSecteur'))
+    ..add(DiagnosticsProperty('type', 'RequestSecteur'))
     ..add(DiagnosticsProperty('secteurId', secteurId))..add(DiagnosticsProperty('secteurCode', secteurCode))..add(DiagnosticsProperty('secteurName', secteurName))..add(DiagnosticsProperty('dateCreated', dateCreated))..add(DiagnosticsProperty('secteurResponsableName', secteurResponsableName))..add(DiagnosticsProperty('contactResponsable', contactResponsable))..add(DiagnosticsProperty('emailResponsableSecteur', emailResponsableSecteur))..add(DiagnosticsProperty('adressResponsableSecteur', adressResponsableSecteur))..add(DiagnosticsProperty('responsableSecteurId', responsableSecteurId))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('zoneId', zoneId))..add(DiagnosticsProperty('zoneCode', zoneCode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestReponsableSecteur&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestSecteur&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1386,15 +1386,15 @@ int get hashCode => Object.hash(runtimeType,secteurId,secteurCode,secteurName,da
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestReponsableSecteur(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
+  return 'RequestSecteur(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$RequestReponsableSecteurCopyWith<$Res> implements $RequestReponsableSecteurCopyWith<$Res> {
-  factory _$RequestReponsableSecteurCopyWith(_RequestReponsableSecteur value, $Res Function(_RequestReponsableSecteur) _then) = __$RequestReponsableSecteurCopyWithImpl;
+abstract mixin class _$RequestSecteurCopyWith<$Res> implements $RequestSecteurCopyWith<$Res> {
+  factory _$RequestSecteurCopyWith(_RequestSecteur value, $Res Function(_RequestSecteur) _then) = __$RequestSecteurCopyWithImpl;
 @override @useResult
 $Res call({
  String? secteurId, String? secteurCode, String? secteurName, String? dateCreated, String? secteurResponsableName, String? contactResponsable, String? emailResponsableSecteur, String? adressResponsableSecteur, String? responsableSecteurId, String? adresse, String? zoneId, String? zoneCode
@@ -1405,17 +1405,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$RequestReponsableSecteurCopyWithImpl<$Res>
-    implements _$RequestReponsableSecteurCopyWith<$Res> {
-  __$RequestReponsableSecteurCopyWithImpl(this._self, this._then);
+class __$RequestSecteurCopyWithImpl<$Res>
+    implements _$RequestSecteurCopyWith<$Res> {
+  __$RequestSecteurCopyWithImpl(this._self, this._then);
 
-  final _RequestReponsableSecteur _self;
-  final $Res Function(_RequestReponsableSecteur) _then;
+  final _RequestSecteur _self;
+  final $Res Function(_RequestSecteur) _then;
 
-/// Create a copy of RequestReponsableSecteur
+/// Create a copy of RequestSecteur
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? secteurId = freezed,Object? secteurCode = freezed,Object? secteurName = freezed,Object? dateCreated = freezed,Object? secteurResponsableName = freezed,Object? contactResponsable = freezed,Object? emailResponsableSecteur = freezed,Object? adressResponsableSecteur = freezed,Object? responsableSecteurId = freezed,Object? adresse = freezed,Object? zoneId = freezed,Object? zoneCode = freezed,}) {
-  return _then(_RequestReponsableSecteur(
+  return _then(_RequestSecteur(
 secteurId: freezed == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
 as String?,secteurCode: freezed == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
 as String?,secteurName: freezed == secteurName ? _self.secteurName : secteurName // ignore: cast_nullable_to_non_nullable
@@ -1437,48 +1437,48 @@ as String?,
 
 
 /// @nodoc
-mixin _$RequestReponsableZone implements DiagnosticableTreeMixin {
+mixin _$RequestZone implements DiagnosticableTreeMixin {
 
- String? get zoneResponsableName; String? get zoneCode; String? get dateCreated; String? get zoneName; String? get contactResponsable; String? get emailResponsable; String? get adresse; String? get zoneId;
-/// Create a copy of RequestReponsableZone
+ String? get zoneId; String? get zoneCode; String? get zoneName; String? get dateCreated; String? get zoneResponsableName; String? get contactResponsable; String? get emailResponsablezone; String? get adressResponsablezone; String? get responsablezoneId; String? get adresse; String? get regionId; String? get regionCode;
+/// Create a copy of RequestZone
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$RequestReponsableZoneCopyWith<RequestReponsableZone> get copyWith => _$RequestReponsableZoneCopyWithImpl<RequestReponsableZone>(this as RequestReponsableZone, _$identity);
+$RequestZoneCopyWith<RequestZone> get copyWith => _$RequestZoneCopyWithImpl<RequestZone>(this as RequestZone, _$identity);
 
-  /// Serializes this RequestReponsableZone to a JSON map.
+  /// Serializes this RequestZone to a JSON map.
   Map<String, dynamic> toJson();
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'RequestReponsableZone'))
-    ..add(DiagnosticsProperty('zoneResponsableName', zoneResponsableName))..add(DiagnosticsProperty('zoneCode', zoneCode))..add(DiagnosticsProperty('dateCreated', dateCreated))..add(DiagnosticsProperty('zoneName', zoneName))..add(DiagnosticsProperty('contactResponsable', contactResponsable))..add(DiagnosticsProperty('emailResponsable', emailResponsable))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('zoneId', zoneId));
+    ..add(DiagnosticsProperty('type', 'RequestZone'))
+    ..add(DiagnosticsProperty('zoneId', zoneId))..add(DiagnosticsProperty('zoneCode', zoneCode))..add(DiagnosticsProperty('zoneName', zoneName))..add(DiagnosticsProperty('dateCreated', dateCreated))..add(DiagnosticsProperty('zoneResponsableName', zoneResponsableName))..add(DiagnosticsProperty('contactResponsable', contactResponsable))..add(DiagnosticsProperty('emailResponsablezone', emailResponsablezone))..add(DiagnosticsProperty('adressResponsablezone', adressResponsablezone))..add(DiagnosticsProperty('responsablezoneId', responsablezoneId))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('regionId', regionId))..add(DiagnosticsProperty('regionCode', regionCode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestReponsableZone&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestZone&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsablezone, emailResponsablezone) || other.emailResponsablezone == emailResponsablezone)&&(identical(other.adressResponsablezone, adressResponsablezone) || other.adressResponsablezone == adressResponsablezone)&&(identical(other.responsablezoneId, responsablezoneId) || other.responsablezoneId == responsablezoneId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.regionCode, regionCode) || other.regionCode == regionCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,zoneResponsableName,zoneCode,dateCreated,zoneName,contactResponsable,emailResponsable,adresse,zoneId);
+int get hashCode => Object.hash(runtimeType,zoneId,zoneCode,zoneName,dateCreated,zoneResponsableName,contactResponsable,emailResponsablezone,adressResponsablezone,responsablezoneId,adresse,regionId,regionCode);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestReponsableZone(zoneResponsableName: $zoneResponsableName, zoneCode: $zoneCode, dateCreated: $dateCreated, zoneName: $zoneName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, zoneId: $zoneId)';
+  return 'RequestZone(zoneId: $zoneId, zoneCode: $zoneCode, zoneName: $zoneName, dateCreated: $dateCreated, zoneResponsableName: $zoneResponsableName, contactResponsable: $contactResponsable, emailResponsablezone: $emailResponsablezone, adressResponsablezone: $adressResponsablezone, responsablezoneId: $responsablezoneId, adresse: $adresse, regionId: $regionId, regionCode: $regionCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $RequestReponsableZoneCopyWith<$Res>  {
-  factory $RequestReponsableZoneCopyWith(RequestReponsableZone value, $Res Function(RequestReponsableZone) _then) = _$RequestReponsableZoneCopyWithImpl;
+abstract mixin class $RequestZoneCopyWith<$Res>  {
+  factory $RequestZoneCopyWith(RequestZone value, $Res Function(RequestZone) _then) = _$RequestZoneCopyWithImpl;
 @useResult
 $Res call({
- String? zoneResponsableName, String? zoneCode, String? dateCreated, String? zoneName, String? contactResponsable, String? emailResponsable, String? adresse, String? zoneId
+ String? zoneId, String? zoneCode, String? zoneName, String? dateCreated, String? zoneResponsableName, String? contactResponsable, String? emailResponsablezone, String? adressResponsablezone, String? responsablezoneId, String? adresse, String? regionId, String? regionCode
 });
 
 
@@ -1486,25 +1486,29 @@ $Res call({
 
 }
 /// @nodoc
-class _$RequestReponsableZoneCopyWithImpl<$Res>
-    implements $RequestReponsableZoneCopyWith<$Res> {
-  _$RequestReponsableZoneCopyWithImpl(this._self, this._then);
+class _$RequestZoneCopyWithImpl<$Res>
+    implements $RequestZoneCopyWith<$Res> {
+  _$RequestZoneCopyWithImpl(this._self, this._then);
 
-  final RequestReponsableZone _self;
-  final $Res Function(RequestReponsableZone) _then;
+  final RequestZone _self;
+  final $Res Function(RequestZone) _then;
 
-/// Create a copy of RequestReponsableZone
+/// Create a copy of RequestZone
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? zoneResponsableName = freezed,Object? zoneCode = freezed,Object? dateCreated = freezed,Object? zoneName = freezed,Object? contactResponsable = freezed,Object? emailResponsable = freezed,Object? adresse = freezed,Object? zoneId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? zoneId = freezed,Object? zoneCode = freezed,Object? zoneName = freezed,Object? dateCreated = freezed,Object? zoneResponsableName = freezed,Object? contactResponsable = freezed,Object? emailResponsablezone = freezed,Object? adressResponsablezone = freezed,Object? responsablezoneId = freezed,Object? adresse = freezed,Object? regionId = freezed,Object? regionCode = freezed,}) {
   return _then(_self.copyWith(
-zoneResponsableName: freezed == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
+zoneId: freezed == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
 as String?,zoneCode: freezed == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
-as String?,dateCreated: freezed == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
 as String?,zoneName: freezed == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
+as String?,dateCreated: freezed == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String?,zoneResponsableName: freezed == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
 as String?,contactResponsable: freezed == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
-as String?,emailResponsable: freezed == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
+as String?,emailResponsablezone: freezed == emailResponsablezone ? _self.emailResponsablezone : emailResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,adressResponsablezone: freezed == adressResponsablezone ? _self.adressResponsablezone : adressResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,responsablezoneId: freezed == responsablezoneId ? _self.responsablezoneId : responsablezoneId // ignore: cast_nullable_to_non_nullable
 as String?,adresse: freezed == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
-as String?,zoneId: freezed == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String?,regionId: freezed == regionId ? _self.regionId : regionId // ignore: cast_nullable_to_non_nullable
+as String?,regionCode: freezed == regionCode ? _self.regionCode : regionCode // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -1512,8 +1516,8 @@ as String?,
 }
 
 
-/// Adds pattern-matching-related methods to [RequestReponsableZone].
-extension RequestReponsableZonePatterns on RequestReponsableZone {
+/// Adds pattern-matching-related methods to [RequestZone].
+extension RequestZonePatterns on RequestZone {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1526,10 +1530,10 @@ extension RequestReponsableZonePatterns on RequestReponsableZone {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestReponsableZone value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestZone value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _RequestReponsableZone() when $default != null:
+case _RequestZone() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1548,10 +1552,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestReponsableZone value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestZone value)  $default,){
 final _that = this;
 switch (_that) {
-case _RequestReponsableZone():
+case _RequestZone():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -1569,10 +1573,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestReponsableZone value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestZone value)?  $default,){
 final _that = this;
 switch (_that) {
-case _RequestReponsableZone() when $default != null:
+case _RequestZone() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1590,10 +1594,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? zoneResponsableName,  String? zoneCode,  String? dateCreated,  String? zoneName,  String? contactResponsable,  String? emailResponsable,  String? adresse,  String? zoneId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? zoneId,  String? zoneCode,  String? zoneName,  String? dateCreated,  String? zoneResponsableName,  String? contactResponsable,  String? emailResponsablezone,  String? adressResponsablezone,  String? responsablezoneId,  String? adresse,  String? regionId,  String? regionCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _RequestReponsableZone() when $default != null:
-return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+case _RequestZone() when $default != null:
+return $default(_that.zoneId,_that.zoneCode,_that.zoneName,_that.dateCreated,_that.zoneResponsableName,_that.contactResponsable,_that.emailResponsablezone,_that.adressResponsablezone,_that.responsablezoneId,_that.adresse,_that.regionId,_that.regionCode);case _:
   return orElse();
 
 }
@@ -1611,10 +1615,10 @@ return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? zoneResponsableName,  String? zoneCode,  String? dateCreated,  String? zoneName,  String? contactResponsable,  String? emailResponsable,  String? adresse,  String? zoneId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? zoneId,  String? zoneCode,  String? zoneName,  String? dateCreated,  String? zoneResponsableName,  String? contactResponsable,  String? emailResponsablezone,  String? adressResponsablezone,  String? responsablezoneId,  String? adresse,  String? regionId,  String? regionCode)  $default,) {final _that = this;
 switch (_that) {
-case _RequestReponsableZone():
-return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+case _RequestZone():
+return $default(_that.zoneId,_that.zoneCode,_that.zoneName,_that.dateCreated,_that.zoneResponsableName,_that.contactResponsable,_that.emailResponsablezone,_that.adressResponsablezone,_that.responsablezoneId,_that.adresse,_that.regionId,_that.regionCode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1631,10 +1635,10 @@ return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? zoneResponsableName,  String? zoneCode,  String? dateCreated,  String? zoneName,  String? contactResponsable,  String? emailResponsable,  String? adresse,  String? zoneId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? zoneId,  String? zoneCode,  String? zoneName,  String? dateCreated,  String? zoneResponsableName,  String? contactResponsable,  String? emailResponsablezone,  String? adressResponsablezone,  String? responsablezoneId,  String? adresse,  String? regionId,  String? regionCode)?  $default,) {final _that = this;
 switch (_that) {
-case _RequestReponsableZone() when $default != null:
-return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+case _RequestZone() when $default != null:
+return $default(_that.zoneId,_that.zoneCode,_that.zoneName,_that.dateCreated,_that.zoneResponsableName,_that.contactResponsable,_that.emailResponsablezone,_that.adressResponsablezone,_that.responsablezoneId,_that.adresse,_that.regionId,_that.regionCode);case _:
   return null;
 
 }
@@ -1645,59 +1649,63 @@ return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that
 /// @nodoc
 @JsonSerializable()
 
-class _RequestReponsableZone with DiagnosticableTreeMixin implements RequestReponsableZone {
-   _RequestReponsableZone({this.zoneResponsableName, this.zoneCode, this.dateCreated, this.zoneName, this.contactResponsable, this.emailResponsable, this.adresse, this.zoneId});
-  factory _RequestReponsableZone.fromJson(Map<String, dynamic> json) => _$RequestReponsableZoneFromJson(json);
+class _RequestZone with DiagnosticableTreeMixin implements RequestZone {
+   _RequestZone({this.zoneId, this.zoneCode, this.zoneName, this.dateCreated, this.zoneResponsableName, this.contactResponsable, this.emailResponsablezone, this.adressResponsablezone, this.responsablezoneId, this.adresse, this.regionId, this.regionCode});
+  factory _RequestZone.fromJson(Map<String, dynamic> json) => _$RequestZoneFromJson(json);
 
-@override final  String? zoneResponsableName;
-@override final  String? zoneCode;
-@override final  String? dateCreated;
-@override final  String? zoneName;
-@override final  String? contactResponsable;
-@override final  String? emailResponsable;
-@override final  String? adresse;
 @override final  String? zoneId;
+@override final  String? zoneCode;
+@override final  String? zoneName;
+@override final  String? dateCreated;
+@override final  String? zoneResponsableName;
+@override final  String? contactResponsable;
+@override final  String? emailResponsablezone;
+@override final  String? adressResponsablezone;
+@override final  String? responsablezoneId;
+@override final  String? adresse;
+@override final  String? regionId;
+@override final  String? regionCode;
 
-/// Create a copy of RequestReponsableZone
+/// Create a copy of RequestZone
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$RequestReponsableZoneCopyWith<_RequestReponsableZone> get copyWith => __$RequestReponsableZoneCopyWithImpl<_RequestReponsableZone>(this, _$identity);
+_$RequestZoneCopyWith<_RequestZone> get copyWith => __$RequestZoneCopyWithImpl<_RequestZone>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$RequestReponsableZoneToJson(this, );
+  return _$RequestZoneToJson(this, );
 }
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'RequestReponsableZone'))
-    ..add(DiagnosticsProperty('zoneResponsableName', zoneResponsableName))..add(DiagnosticsProperty('zoneCode', zoneCode))..add(DiagnosticsProperty('dateCreated', dateCreated))..add(DiagnosticsProperty('zoneName', zoneName))..add(DiagnosticsProperty('contactResponsable', contactResponsable))..add(DiagnosticsProperty('emailResponsable', emailResponsable))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('zoneId', zoneId));
+    ..add(DiagnosticsProperty('type', 'RequestZone'))
+    ..add(DiagnosticsProperty('zoneId', zoneId))..add(DiagnosticsProperty('zoneCode', zoneCode))..add(DiagnosticsProperty('zoneName', zoneName))..add(DiagnosticsProperty('dateCreated', dateCreated))..add(DiagnosticsProperty('zoneResponsableName', zoneResponsableName))..add(DiagnosticsProperty('contactResponsable', contactResponsable))..add(DiagnosticsProperty('emailResponsablezone', emailResponsablezone))..add(DiagnosticsProperty('adressResponsablezone', adressResponsablezone))..add(DiagnosticsProperty('responsablezoneId', responsablezoneId))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('regionId', regionId))..add(DiagnosticsProperty('regionCode', regionCode));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestReponsableZone&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestZone&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsablezone, emailResponsablezone) || other.emailResponsablezone == emailResponsablezone)&&(identical(other.adressResponsablezone, adressResponsablezone) || other.adressResponsablezone == adressResponsablezone)&&(identical(other.responsablezoneId, responsablezoneId) || other.responsablezoneId == responsablezoneId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.regionCode, regionCode) || other.regionCode == regionCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,zoneResponsableName,zoneCode,dateCreated,zoneName,contactResponsable,emailResponsable,adresse,zoneId);
+int get hashCode => Object.hash(runtimeType,zoneId,zoneCode,zoneName,dateCreated,zoneResponsableName,contactResponsable,emailResponsablezone,adressResponsablezone,responsablezoneId,adresse,regionId,regionCode);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestReponsableZone(zoneResponsableName: $zoneResponsableName, zoneCode: $zoneCode, dateCreated: $dateCreated, zoneName: $zoneName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, zoneId: $zoneId)';
+  return 'RequestZone(zoneId: $zoneId, zoneCode: $zoneCode, zoneName: $zoneName, dateCreated: $dateCreated, zoneResponsableName: $zoneResponsableName, contactResponsable: $contactResponsable, emailResponsablezone: $emailResponsablezone, adressResponsablezone: $adressResponsablezone, responsablezoneId: $responsablezoneId, adresse: $adresse, regionId: $regionId, regionCode: $regionCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$RequestReponsableZoneCopyWith<$Res> implements $RequestReponsableZoneCopyWith<$Res> {
-  factory _$RequestReponsableZoneCopyWith(_RequestReponsableZone value, $Res Function(_RequestReponsableZone) _then) = __$RequestReponsableZoneCopyWithImpl;
+abstract mixin class _$RequestZoneCopyWith<$Res> implements $RequestZoneCopyWith<$Res> {
+  factory _$RequestZoneCopyWith(_RequestZone value, $Res Function(_RequestZone) _then) = __$RequestZoneCopyWithImpl;
 @override @useResult
 $Res call({
- String? zoneResponsableName, String? zoneCode, String? dateCreated, String? zoneName, String? contactResponsable, String? emailResponsable, String? adresse, String? zoneId
+ String? zoneId, String? zoneCode, String? zoneName, String? dateCreated, String? zoneResponsableName, String? contactResponsable, String? emailResponsablezone, String? adressResponsablezone, String? responsablezoneId, String? adresse, String? regionId, String? regionCode
 });
 
 
@@ -1705,25 +1713,29 @@ $Res call({
 
 }
 /// @nodoc
-class __$RequestReponsableZoneCopyWithImpl<$Res>
-    implements _$RequestReponsableZoneCopyWith<$Res> {
-  __$RequestReponsableZoneCopyWithImpl(this._self, this._then);
+class __$RequestZoneCopyWithImpl<$Res>
+    implements _$RequestZoneCopyWith<$Res> {
+  __$RequestZoneCopyWithImpl(this._self, this._then);
 
-  final _RequestReponsableZone _self;
-  final $Res Function(_RequestReponsableZone) _then;
+  final _RequestZone _self;
+  final $Res Function(_RequestZone) _then;
 
-/// Create a copy of RequestReponsableZone
+/// Create a copy of RequestZone
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? zoneResponsableName = freezed,Object? zoneCode = freezed,Object? dateCreated = freezed,Object? zoneName = freezed,Object? contactResponsable = freezed,Object? emailResponsable = freezed,Object? adresse = freezed,Object? zoneId = freezed,}) {
-  return _then(_RequestReponsableZone(
-zoneResponsableName: freezed == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
+@override @pragma('vm:prefer-inline') $Res call({Object? zoneId = freezed,Object? zoneCode = freezed,Object? zoneName = freezed,Object? dateCreated = freezed,Object? zoneResponsableName = freezed,Object? contactResponsable = freezed,Object? emailResponsablezone = freezed,Object? adressResponsablezone = freezed,Object? responsablezoneId = freezed,Object? adresse = freezed,Object? regionId = freezed,Object? regionCode = freezed,}) {
+  return _then(_RequestZone(
+zoneId: freezed == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
 as String?,zoneCode: freezed == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
-as String?,dateCreated: freezed == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
 as String?,zoneName: freezed == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
+as String?,dateCreated: freezed == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String?,zoneResponsableName: freezed == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
 as String?,contactResponsable: freezed == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
-as String?,emailResponsable: freezed == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
+as String?,emailResponsablezone: freezed == emailResponsablezone ? _self.emailResponsablezone : emailResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,adressResponsablezone: freezed == adressResponsablezone ? _self.adressResponsablezone : adressResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,responsablezoneId: freezed == responsablezoneId ? _self.responsablezoneId : responsablezoneId // ignore: cast_nullable_to_non_nullable
 as String?,adresse: freezed == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
-as String?,zoneId: freezed == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String?,regionId: freezed == regionId ? _self.regionId : regionId // ignore: cast_nullable_to_non_nullable
+as String?,regionCode: freezed == regionCode ? _self.regionCode : regionCode // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -1735,7 +1747,7 @@ as String?,
 /// @nodoc
 mixin _$RequestAuthenProfileUpdateZone implements DiagnosticableTreeMixin {
 
- String get secteurId;
+ String get zoneId;
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1749,21 +1761,21 @@ $RequestAuthenProfileUpdateZoneCopyWith<RequestAuthenProfileUpdateZone> get copy
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestAuthenProfileUpdateZone'))
-    ..add(DiagnosticsProperty('secteurId', secteurId));
+    ..add(DiagnosticsProperty('zoneId', zoneId));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateZone&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateZone&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,secteurId);
+int get hashCode => Object.hash(runtimeType,zoneId);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestAuthenProfileUpdateZone(secteurId: $secteurId)';
+  return 'RequestAuthenProfileUpdateZone(zoneId: $zoneId)';
 }
 
 
@@ -1774,7 +1786,7 @@ abstract mixin class $RequestAuthenProfileUpdateZoneCopyWith<$Res>  {
   factory $RequestAuthenProfileUpdateZoneCopyWith(RequestAuthenProfileUpdateZone value, $Res Function(RequestAuthenProfileUpdateZone) _then) = _$RequestAuthenProfileUpdateZoneCopyWithImpl;
 @useResult
 $Res call({
- String secteurId
+ String zoneId
 });
 
 
@@ -1791,9 +1803,9 @@ class _$RequestAuthenProfileUpdateZoneCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? secteurId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? zoneId = null,}) {
   return _then(_self.copyWith(
-secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1879,10 +1891,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String secteurId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String zoneId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateZone() when $default != null:
-return $default(_that.secteurId);case _:
+return $default(_that.zoneId);case _:
   return orElse();
 
 }
@@ -1900,10 +1912,10 @@ return $default(_that.secteurId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String secteurId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String zoneId)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateZone():
-return $default(_that.secteurId);case _:
+return $default(_that.zoneId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1920,10 +1932,10 @@ return $default(_that.secteurId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String secteurId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String zoneId)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateZone() when $default != null:
-return $default(_that.secteurId);case _:
+return $default(_that.zoneId);case _:
   return null;
 
 }
@@ -1935,10 +1947,10 @@ return $default(_that.secteurId);case _:
 @JsonSerializable()
 
 class _RequestAuthenProfileUpdateZone with DiagnosticableTreeMixin implements RequestAuthenProfileUpdateZone {
-   _RequestAuthenProfileUpdateZone({required this.secteurId});
+   _RequestAuthenProfileUpdateZone({required this.zoneId});
   factory _RequestAuthenProfileUpdateZone.fromJson(Map<String, dynamic> json) => _$RequestAuthenProfileUpdateZoneFromJson(json);
 
-@override final  String secteurId;
+@override final  String zoneId;
 
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
@@ -1954,21 +1966,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestAuthenProfileUpdateZone'))
-    ..add(DiagnosticsProperty('secteurId', secteurId));
+    ..add(DiagnosticsProperty('zoneId', zoneId));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateZone&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateZone&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,secteurId);
+int get hashCode => Object.hash(runtimeType,zoneId);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestAuthenProfileUpdateZone(secteurId: $secteurId)';
+  return 'RequestAuthenProfileUpdateZone(zoneId: $zoneId)';
 }
 
 
@@ -1979,7 +1991,7 @@ abstract mixin class _$RequestAuthenProfileUpdateZoneCopyWith<$Res> implements $
   factory _$RequestAuthenProfileUpdateZoneCopyWith(_RequestAuthenProfileUpdateZone value, $Res Function(_RequestAuthenProfileUpdateZone) _then) = __$RequestAuthenProfileUpdateZoneCopyWithImpl;
 @override @useResult
 $Res call({
- String secteurId
+ String zoneId
 });
 
 
@@ -1996,9 +2008,9 @@ class __$RequestAuthenProfileUpdateZoneCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? secteurId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? zoneId = null,}) {
   return _then(_RequestAuthenProfileUpdateZone(
-secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
+zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

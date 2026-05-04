@@ -121,14 +121,14 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
   }
 
   @override
-  Future<Either<Failure, List<ReponsableSecteurResponse>>>
-  getListResponsablesSecteurs(RequestReponsableSecteur params) async {
+  Future<Either<Failure, List<SecteurResponse>>>
+  getListResponsablesSecteurs(RequestSecteur params) async {
     final response = await domaineServiceRepository.getListResponsablesSecteurs(
       params,
     );
-    if (response is FirebaseSuccess<List<ReponsableResponseSecteurModel>>) {
+    if (response is FirebaseSuccess<List<SecteurModel>>) {
       return Right(
-        response.data.map(ReponsableResponseSecteurModel.toDomain).toList(),
+        response.data.map(SecteurModel.toDomain).toList(),
       );
     } else if (response is FirebaseError) {
       return Left(Failure(message: response.toString()));
@@ -137,14 +137,14 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
   }
 
   @override
-  Future<Either<Failure, List<ReponsableZoneResponse>>>
-  getListResponsablesZones(RequestReponsableZone params) async {
+  Future<Either<Failure, List<ZoneResponse>>>
+  getListResponsablesZones(RequestZone params) async {
     final response = await domaineServiceRepository.getListResponsablesZones(
       params,
     );
-    if (response is FirebaseSuccess<List<ReponsableZoneResponseModel>>) {
+    if (response is FirebaseSuccess<List<ZoneResponseModel>>) {
       return Right(
-        response.data.map(ReponsableZoneResponseModel.toDomain).toList(),
+        response.data.map(ZoneResponseModel.toDomain).toList(),
       );
     } else if (response is FirebaseError) {
       return Left(Failure(message: response.toString()));

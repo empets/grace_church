@@ -137,9 +137,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i562.GetProfileUsercase>(
       () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
     );
-    gh.lazySingleton<_i562.GetProfileStreamUsercase>(
-      () => _i562.GetProfileStreamUsercase(gh<_i962.HomeDomaineRepository>()),
-    );
     gh.lazySingleton<_i716.SendRapportCelluleStepAdministrationUsercase>(
       () => _i716.SendRapportCelluleStepAdministrationUsercase(
         gh<_i962.HomeDomaineRepository>(),
@@ -185,8 +182,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i256.UpdateProfileUsercase>(
       () => _i256.UpdateProfileUsercase(gh<_i653.AuthenRepository>()),
     );
-    gh.lazySingleton<_i308.GetResponsableSecteurBloc>(
-      () => _i308.GetResponsableSecteurBloc(
+    gh.lazySingleton<_i308.GetSecteurBloc>(
+      () => _i308.GetSecteurBloc(
         getListSecteurUsercase: gh<_i791.GetListSecteurUsercase>(),
       ),
     );
@@ -196,8 +193,8 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i883.GetConnexionImpliciteUsercase>(),
       ),
     );
-    gh.lazySingleton<_i631.GetResponsableZoneBloc>(
-      () => _i631.GetResponsableZoneBloc(
+    gh.lazySingleton<_i631.GetZoneBloc>(
+      () => _i631.GetZoneBloc(
         getListZoneUsercase: gh<_i554.GetListZoneUsercase>(),
       ),
     );

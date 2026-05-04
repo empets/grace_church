@@ -42,7 +42,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
   final TextEditingController textEditingControllerNomResponsableCellule =
       TextEditingController();
 
-  ReponsableSecteurResponse? selectSecteur;
+  SecteurResponse? selectSecteur;
 
   Future<void> _openCalendar() async {
     final DateTime? picked = await showDatePicker(
@@ -308,7 +308,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                 ),
                                 SizedBox(height: 5.h),
                                 Container(
-                                  width: 0.6.sw,
+                                  width: 0.5.sw,
                                   margin: EdgeInsets.symmetric(vertical: 5.h),
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 4.w,
@@ -327,7 +327,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                       ),
                                       SizedBox(width: 8.w),
                                       CustomeText(
-                                        text: "Semaine du: 12 - 18 Mai 2024",
+                                        text: "Semaine de cellule",
                                         style: context.appTypographie.h2
                                             .copyWith(
                                               fontSize: 12.sp,
@@ -405,20 +405,16 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                     >(
                       builder: (context, state) {
                         return BlocBuilder<
-                          GetResponsableZoneBloc,
-                          ApiState<List<ReponsableZoneResponse>>
+                          GetZoneBloc,
+                          ApiState<List<ZoneResponse>>
                         >(
                           builder: (context, zoneState) {
                             return BlocBuilder<
-                              GetResponsableSecteurBloc,
-                              ApiState<List<ReponsableSecteurResponse>>
+                              GetSecteurBloc,
+                              ApiState<List<SecteurResponse>>
                             >(
                               builder: (context, secteurState) {
-                                if (secteurState
-                                    is SuccessState<
-                                      List<ReponsableSecteurResponse>
-                                    >) {
-                                  return Column(
+                                   return Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -443,8 +439,9 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                         ),
                                         // statutMenber
                                         child: DropdownButtonHideUnderline(
-                                          child: DropdownButton<ReponsableSecteurResponse>(
+                                          child: DropdownButton<SecteurResponse>(
                                             isExpanded: true,
+                                            
                                             dropdownColor:
                                                 context.appColor.primaryWhite,
                                             hint: Text(
@@ -459,14 +456,26 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                               color: Colors.black,
                                               fontSize: 14.sp,
                                             ),
-                                            icon: Icon(
+                                            icon: secteurState is LoadState<List<SecteurResponse>> ? SizedBox(
+                                              height: 20.h,
+                                              width: 20.w,
+                                              child: CircularProgressIndicator.adaptive(
+                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                  context.appColor.primaryBlue,
+                                                ),
+                                                backgroundColor: context.appColor.primaryLightBlue,
+                                              
+                                              ),
+                                            ):
+                                            
+                                             Icon(
                                               Icons.keyboard_arrow_down,
                                             ),
-                                            items: secteurState.data
+                                            items: secteurState is SuccessState<List<SecteurResponse>> ? secteurState.data
                                                 .map(
                                                   (item) =>
                                                       DropdownMenuItem<
-                                                        ReponsableSecteurResponse
+                                                        SecteurResponse
                                                       >(
                                                         value: item,
                                                         child: Column(
@@ -502,7 +511,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                                         ),
                                                       ),
                                                 )
-                                                .toList(),
+                                                .toList()
+                                                : [],
                                             onChanged: state.status.isInProgress
                                                 ? null
                                                 : (value) {
@@ -513,15 +523,19 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                                     if (zoneState
                                                         is SuccessState<
                                                           List<
-                                                            ReponsableZoneResponse
+                                                            ZoneResponse
                                                           >
                                                         >) {
-                                                      final secteur = zoneState
+
+                                                          // -----------------------------------------------------------------------
+                                                          //  recuper les information de la zone en fonction de la zone selectionner
+                                                          // -----------------------------------------------------------------------
+                                                      final zoneSelected = zoneState
                                                           .data
                                                           .where(
                                                             (element) =>
                                                                 element.zoneCode
-                                                                    .toLowerCase() ==
+                                                                    ?.toLowerCase() ==
                                                                 value?.zoneCode
                                                                     .toLowerCase(),
                                                           )
@@ -533,8 +547,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                                           >()
                                                           .add(
                                                             RapportCelluleRequestSectionAdministrationEvent.changeCodeZone(
-                                                              secteur?.zoneCode ??
-                                                                  '',
+                                                              zoneSelected?.zoneCode?? ""
+                                                                 ,
                                                             ),
                                                           );
                                                       context
@@ -543,8 +557,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                                           >()
                                                           .add(
                                                             RapportCelluleRequestSectionAdministrationEvent.changeFullNameRespoZone(
-                                                              secteur?.zoneResponsableName ??
-                                                                  '',
+                                                             
+                                                               zoneSelected?.zoneResponsableName ?? '',
                                                             ),
                                                           );
 
@@ -554,8 +568,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                                           >()
                                                           .add(
                                                             RapportCelluleRequestSectionAdministrationEvent.changeContactRespoZone(
-                                                              secteur?.contactResponsable ??
-                                                                  '',
+                                                              zoneSelected?.contactResponsable ?? '',
                                                             ),
                                                           );
                                                     }
@@ -598,9 +611,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                       ),
                                     ],
                                   );
-                                }
-
-                                return SizedBox();
+                               
                               },
                             );
                           },
@@ -933,7 +944,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                           textLabel:
                                               "Veuillez entrer le nom complet",
                                           inputLabel: "Nom",
-                                          errorText: nomError,
+                                          errorText: null,
                                           onChanged: (val) {
                                             _updateDisciple(
                                               context: context,
@@ -952,7 +963,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                           textLabel:
                                               "Veuillez entrer le statut",
                                           inputLabel: "Baptisé (Oui/Non)",
-                                          msgError: "",
+                                          msgError:  "",
                                           errorText: baptiseError,
                                           textInputType: TextInputType.text,
                                           onChanged: (val) {

@@ -285,19 +285,19 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   }
 
   @override
-  Future<FirebaseResult<List<ReponsableResponseSecteurModel>>>
-  getListResponsablesSecteurs(RequestReponsableSecteur params) async {
+  Future<FirebaseResult<List<SecteurModel>>>
+  getListResponsablesSecteurs(RequestSecteur params) async {
     try {
       final snapshot = await db.child('emsecteur').get();
       if (snapshot.exists) {
         final data = snapshot.value as Map<dynamic, dynamic>;
         final notifications = data.values.map((e) {
           final notificationItem = Map<String, dynamic>.from(e);
-          return ReponsableResponseSecteurModel.fromJson(notificationItem);
+          return SecteurModel.fromJson(notificationItem);
         }).toList();
         return FirebaseSuccess(
           notifications
-              .map((e) => ReponsableResponseSecteurModel.fromJson(e.toJson()))
+              .map((e) => SecteurModel.fromJson(e.toJson()))
               .toList(),
         );
       }
@@ -309,19 +309,19 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   }
 
   @override
-  Future<FirebaseResult<List<ReponsableZoneResponseModel>>>
-  getListResponsablesZones(RequestReponsableZone params) async {
+  Future<FirebaseResult<List<ZoneResponseModel>>>
+  getListResponsablesZones(RequestZone params) async {
     try {
       final snapshot = await db.child('emzone').get();
       if (snapshot.exists) {
         final data = snapshot.value as Map<dynamic, dynamic>;
         final notifications = data.values.map((e) {
           final notificationItem = Map<String, dynamic>.from(e);
-          return ReponsableZoneResponseModel.fromJson(notificationItem);
+          return ZoneResponseModel.fromJson(notificationItem);
         }).toList();
         return FirebaseSuccess(
           notifications
-              .map((e) => ReponsableZoneResponseModel.fromJson(e.toJson()))
+              .map((e) => ZoneResponseModel.fromJson(e.toJson()))
               .toList(),
         );
       }

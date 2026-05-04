@@ -9,13 +9,13 @@ import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class GetListZoneUsercase implements UseCase<List<ReponsableZoneResponse>, RequestReponsableZone> {
+class GetListZoneUsercase implements UseCase<List<ZoneResponse>, RequestZone> {
   GetListZoneUsercase(this.repository);
 
   final HomeDomaineRepository repository;
 
   @override
-  Future<Either<Failure, List<ReponsableZoneResponse>>> call(RequestReponsableZone params) {
+  Future<Either<Failure, List<ZoneResponse>>> call(RequestZone params) {
     return repository.getListResponsablesZones(params);
   }
 }

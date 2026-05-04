@@ -680,7 +680,7 @@ class RequestItemRequestSection {
 }
 
 class RequestSection {
-  final String title;
+  String title;
   final List<RequestItemRequestSection> items;
 
   RequestSection({required this.title, required this.items});

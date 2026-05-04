@@ -9,10 +9,10 @@ import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/ev
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class GetResponsableSecteurBloc
-    extends Bloc<CelluleEvent, ApiState<List<ReponsableSecteurResponse>>> {
-  GetResponsableSecteurBloc({required this.getListSecteurUsercase})
-    : super(ApiState<List<ReponsableSecteurResponse>>.initial()) {
+class GetSecteurBloc
+    extends Bloc<CelluleEvent, ApiState<List<SecteurResponse>>> {
+  GetSecteurBloc({required this.getListSecteurUsercase})
+    : super(ApiState<List<SecteurResponse>>.initial()) {
     on<CelluleEvent>(getReponsableSecteur);
   }
 
@@ -20,20 +20,20 @@ class GetResponsableSecteurBloc
 
   Future<void> getReponsableSecteur(
     CelluleEvent event,
-    Emitter<ApiState<List<ReponsableSecteurResponse>>> emit,
+    Emitter<ApiState<List<SecteurResponse>>> emit,
   ) async {
     switch (event) {
       case FetchCelluleEvent():
-        emit(ApiState<List<ReponsableSecteurResponse>>.load());
+        emit(ApiState<List<SecteurResponse>>.load());
         final result = await getListSecteurUsercase.call(
-          RequestReponsableSecteur(),
+          RequestSecteur(),
         );
         emit(
           result.fold(
-            (failure) => ApiState<List<ReponsableSecteurResponse>>.failed(
+            (failure) => ApiState<List<SecteurResponse>>.failed(
               failure.message,
             ),
-            (success) => ApiState<List<ReponsableSecteurResponse>>.success(
+            (success) => ApiState<List<SecteurResponse>>.success(
               success,
               status: FormzSubmissionStatus.success,
             ),

@@ -1,12 +1,10 @@
 import 'dart:developer';
-
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -15,7 +13,6 @@ import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
-import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_notification_usercase.dart';
@@ -32,11 +29,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestReponsableSecteur params,
+    RequestZone params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestReponsableSecteur>(
+      final request = Request<RequestZone>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -44,14 +41,14 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('emsecteur')
+          .child('emzone')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
 
       // 4) Mettre à jour la clé
       await updateProfileKey(
-        RequestAuthenProfileUpdateZone(secteurId: ref.key.toString()),
+        RequestAuthenProfileUpdateZone(zoneId: ref.key.toString()),
       );
 
       return FirebaseSuccess(ref.key.toString());
@@ -69,10 +66,10 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('responsablesSecteur/${params.secteurId}')
+          .child('emzone/${params.zoneId}')
           .update(updates);
       // 4) Retourner le key généré
-      return FirebaseSuccess(params.secteurId);
+      return FirebaseSuccess(params.zoneId);
     } catch (e) {
       log("🔥 Firebase Notification →→→→→→→→→ $e");
       return FirebaseError(e.toString());
@@ -151,27 +148,28 @@ class _NotificationViewState extends State<NotificationView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () async {
-                      // TODO: Handle notification tap
-                      // await sendNotifications(
-                      //   RequestReponsableSecteur(
-                      //     secteurResponsableName: "Touré Fatou",
-                      //     secteurCode: "SEC-ABJ-04",
-                      //     dateCreated: "2026-04-08",
-                      //     secteurName: "Secteur Abobo PK18",
-                      //     contactResponsable: "+2250104445566",
-                      //     emailResponsable: "fatou.toure@gmail.com",
-                      //     adresse: "Abobo PK18, Abidjan",
-                      //     secteurId: "secteur_004",
-                      //     zoneId: "zone_456789",
-                      //     zoneCode: "ZONE-ABJ-04",
-                      //   ),
-                      // );
-                      log("Notification sent");
-                    },
-                    child: Container(child: Text("Notifications")),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () async {
+                  //     await sendNotifications(
+                  //       RequestZone(
+                  //           zoneId: "Z001",
+                  //           zoneCode: "ZONE-ABJ-COC",
+                  //           zoneName: "Zone Cocody",
+                  //           dateCreated: "2026-05-02",
+                  //           zoneResponsableName: "Marie pière",
+                  //           contactResponsable: "+2250711111111",
+                  //           emailResponsablezone: "marie.pierre@email.com",
+                  //           adressResponsablezone: "Cocody Angré",
+                  //           responsablezoneId: "R002",
+                  //           adresse: "Cocody, Abidjan",
+                  //           regionId: "REG001",
+                  //           regionCode: "REG-ABJ",
+                  //       )
+                  //     );
+                  //     log("Notification sent");
+                  //   },
+                  //   child: Container(child: Text("Notifications")),
+                  // ),
                   BlocBuilder<
                     NotificationBloc,
                     ApiState<List<NotificationResponse>>

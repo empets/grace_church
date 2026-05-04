@@ -18,14 +18,3 @@ class GetProfileUsercase implements UseCase<ProfileResponse, EmptyRequest> {
 }
 
 
-@lazySingleton
-class GetProfileStreamUsercase implements UseCaseStream<ProfileResponse, String> {
-  GetProfileStreamUsercase(this.repository);
-
-  final HomeDomaineRepository repository;
-
-  @override
-  Stream<Either<Failure, ProfileResponse>> call(String menerId) {
-    return repository.getProfileStream();
-  }
-}

@@ -207,7 +207,7 @@ class FormProfileBloc
               state.contact,
               state.email,
               state.nationalite,
-            ]),
+            ]),  
           ),
         );
         break;
@@ -224,8 +224,7 @@ class FormProfileBloc
            if(bool.parse(state.isUpdate.value) == true){
              final response = await createProfileUsercase.call(
             RequestAuthenProfile(
-              // responsableCelluleId: state.responsableCelluleId,
-              // responsableCelluleId: state.responsableCelluleId.value,
+             
               name: state.name.value,
               dateNaissance: state.dateNaissance.value,
               zoneResidence: state.zoneResidence.value,
@@ -244,7 +243,7 @@ class FormProfileBloc
           emit(
             response.fold(
               (failure) => state.copyWith(
-                errorMessage: failure.message.getOrEmpty() ?? "",
+                errorMessage: failure.message.getOrEmpty(),
                 status: FormzSubmissionStatus.failure,
               ),
               (success) =>
@@ -276,7 +275,7 @@ class FormProfileBloc
           emit(
             response.fold(
               (failure) => state.copyWith(
-                errorMessage: failure.message.getOrEmpty() ?? "",
+                errorMessage: failure.message.getOrEmpty(),
                 status: FormzSubmissionStatus.failure,
               ),
               (success) =>

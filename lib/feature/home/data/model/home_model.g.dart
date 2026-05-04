@@ -166,62 +166,291 @@ Map<String, dynamic> _$ReponsableCelluleResponseModelToJson(
   'responsableCelluleId': instance.responsableCelluleId,
 };
 
-_ReponsableResponseSecteurModel _$ReponsableResponseSecteurModelFromJson(
+_SecteurModel _$SecteurModelFromJson(Map<String, dynamic> json) =>
+    _SecteurModel(
+      secteurId: json['secteurId'] as String?,
+      secteurCode: json['secteurCode'] as String?,
+      secteurName: json['secteurName'] as String?,
+      dateCreated: json['dateCreated'] as String?,
+      secteurResponsableName: json['secteurResponsableName'] as String?,
+      contactResponsable: json['contactResponsable'] as String?,
+      emailResponsableSecteur: json['emailResponsableSecteur'] as String?,
+      adressResponsableSecteur: json['adressResponsableSecteur'] as String?,
+      responsableSecteurId: json['responsableSecteurId'] as String?,
+      adresse: json['adresse'] as String?,
+      zoneId: json['zoneId'] as String?,
+      zoneCode: json['zoneCode'] as String?,
+    );
+
+Map<String, dynamic> _$SecteurModelToJson(_SecteurModel instance) =>
+    <String, dynamic>{
+      'secteurId': instance.secteurId,
+      'secteurCode': instance.secteurCode,
+      'secteurName': instance.secteurName,
+      'dateCreated': instance.dateCreated,
+      'secteurResponsableName': instance.secteurResponsableName,
+      'contactResponsable': instance.contactResponsable,
+      'emailResponsableSecteur': instance.emailResponsableSecteur,
+      'adressResponsableSecteur': instance.adressResponsableSecteur,
+      'responsableSecteurId': instance.responsableSecteurId,
+      'adresse': instance.adresse,
+      'zoneId': instance.zoneId,
+      'zoneCode': instance.zoneCode,
+    };
+
+_ZoneResponseModel _$ZoneResponseModelFromJson(Map<String, dynamic> json) =>
+    _ZoneResponseModel(
+      zoneId: json['zoneId'] as String?,
+      zoneCode: json['zoneCode'] as String?,
+      zoneName: json['zoneName'] as String?,
+      dateCreated: json['dateCreated'] as String?,
+      zoneResponsableName: json['zoneResponsableName'] as String?,
+      contactResponsable: json['contactResponsable'] as String?,
+      emailResponsablezone: json['emailResponsablezone'] as String?,
+      adressResponsablezone: json['adressResponsablezone'] as String?,
+      responsablezoneId: json['responsablezoneId'] as String?,
+      adresse: json['adresse'] as String?,
+      regionId: json['regionId'] as String?,
+      regionCode: json['regionCode'] as String?,
+    );
+
+Map<String, dynamic> _$ZoneResponseModelToJson(_ZoneResponseModel instance) =>
+    <String, dynamic>{
+      'zoneId': instance.zoneId,
+      'zoneCode': instance.zoneCode,
+      'zoneName': instance.zoneName,
+      'dateCreated': instance.dateCreated,
+      'zoneResponsableName': instance.zoneResponsableName,
+      'contactResponsable': instance.contactResponsable,
+      'emailResponsablezone': instance.emailResponsablezone,
+      'adressResponsablezone': instance.adressResponsablezone,
+      'responsablezoneId': instance.responsablezoneId,
+      'adresse': instance.adresse,
+      'regionId': instance.regionId,
+      'regionCode': instance.regionCode,
+    };
+
+_RequestAuherResponseModel _$RequestAuherResponseModelFromJson(
   Map<String, dynamic> json,
-) => _ReponsableResponseSecteurModel(
-  secteurId: json['secteurId'] as String?,
-  secteurCode: json['secteurCode'] as String?,
-  secteurName: json['secteurName'] as String?,
-  dateCreated: json['dateCreated'] as String?,
-  secteurResponsableName: json['secteurResponsableName'] as String?,
-  contactResponsable: json['contactResponsable'] as String?,
-  emailResponsableSecteur: json['emailResponsableSecteur'] as String?,
-  adressResponsableSecteur: json['adressResponsableSecteur'] as String?,
-  responsableSecteurId: json['responsableSecteurId'] as String?,
-  adresse: json['adresse'] as String?,
-  zoneId: json['zoneId'] as String?,
-  zoneCode: json['zoneCode'] as String?,
+) => _RequestAuherResponseModel(
+  libelle: json['libelle'] as String?,
+  formationNewDFB: json['formationNewDFB'] as String?,
+  formationNewBaptDFD: json['formationNewBaptDFD'] as String?,
+  visiteMenbre: json['visiteMenbre'] as String?,
+  visiteDisciple: json['visiteDisciple'] as String?,
+  nbTravailleurs: json['nbTravailleurs'] as String?,
+  nbEleveAndEtudiants: json['nbEleveAndEtudiants'] as String?,
+  nbOuvrierEM: json['nbOuvrierEM'] as String?,
+  nbOuvrierAutreDepatementDirigeantEM:
+      json['nbOuvrierAutreDepatementDirigeantEM'] as String?,
+  nbFormationNiveau2: json['nbFormationNiveau2'] as String?,
+  ngAgendaEM: json['ngAgendaEM'] as String?,
+  nbDecisionnaires: json['nbDecisionnaires'] as String?,
+  id: json['id'] as String?,
+  count: (json['count'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$ReponsableResponseSecteurModelToJson(
-  _ReponsableResponseSecteurModel instance,
+Map<String, dynamic> _$RequestAuherResponseModelToJson(
+  _RequestAuherResponseModel instance,
 ) => <String, dynamic>{
-  'secteurId': instance.secteurId,
-  'secteurCode': instance.secteurCode,
-  'secteurName': instance.secteurName,
-  'dateCreated': instance.dateCreated,
-  'secteurResponsableName': instance.secteurResponsableName,
-  'contactResponsable': instance.contactResponsable,
-  'emailResponsableSecteur': instance.emailResponsableSecteur,
-  'adressResponsableSecteur': instance.adressResponsableSecteur,
-  'responsableSecteurId': instance.responsableSecteurId,
-  'adresse': instance.adresse,
-  'zoneId': instance.zoneId,
-  'zoneCode': instance.zoneCode,
+  'libelle': instance.libelle,
+  'formationNewDFB': instance.formationNewDFB,
+  'formationNewBaptDFD': instance.formationNewBaptDFD,
+  'visiteMenbre': instance.visiteMenbre,
+  'visiteDisciple': instance.visiteDisciple,
+  'nbTravailleurs': instance.nbTravailleurs,
+  'nbEleveAndEtudiants': instance.nbEleveAndEtudiants,
+  'nbOuvrierEM': instance.nbOuvrierEM,
+  'nbOuvrierAutreDepatementDirigeantEM':
+      instance.nbOuvrierAutreDepatementDirigeantEM,
+  'nbFormationNiveau2': instance.nbFormationNiveau2,
+  'ngAgendaEM': instance.ngAgendaEM,
+  'nbDecisionnaires': instance.nbDecisionnaires,
+  'id': instance.id,
+  'count': instance.count,
 };
 
-_ReponsableZoneResponseModel _$ReponsableZoneResponseModelFromJson(
+_RequestHumaneSectionAssistanceResponseModel
+_$RequestHumaneSectionAssistanceResponseModelFromJson(
   Map<String, dynamic> json,
-) => _ReponsableZoneResponseModel(
-  zoneResponsableName: json['zoneResponsableName'] as String?,
-  zoneCode: json['zoneCode'] as String?,
-  dateCreated: json['dateCreated'] as String?,
-  zoneName: json['zoneName'] as String?,
-  contactResponsable: json['contactResponsable'] as String?,
-  emailResponsable: json['emailResponsable'] as String?,
-  adresse: json['adresse'] as String?,
-  zoneId: json['zoneId'] as String?,
+) => _RequestHumaneSectionAssistanceResponseModel(
+  libelle: json['libelle'] as String?,
+  toutPetit: json['toutPetit'] as String?,
+  juniors: json['juniors'] as String?,
+  cadets: json['cadets'] as String?,
+  total: (json['total'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$ReponsableZoneResponseModelToJson(
-  _ReponsableZoneResponseModel instance,
+Map<String, dynamic> _$RequestHumaneSectionAssistanceResponseModelToJson(
+  _RequestHumaneSectionAssistanceResponseModel instance,
 ) => <String, dynamic>{
-  'zoneResponsableName': instance.zoneResponsableName,
-  'zoneCode': instance.zoneCode,
-  'dateCreated': instance.dateCreated,
-  'zoneName': instance.zoneName,
-  'contactResponsable': instance.contactResponsable,
-  'emailResponsable': instance.emailResponsable,
-  'adresse': instance.adresse,
-  'zoneId': instance.zoneId,
+  'libelle': instance.libelle,
+  'toutPetit': instance.toutPetit,
+  'juniors': instance.juniors,
+  'cadets': instance.cadets,
+  'total': instance.total,
+};
+
+_RequestHumaneSectionActivityModel _$RequestHumaneSectionActivityModelFromJson(
+  Map<String, dynamic> json,
+) => _RequestHumaneSectionActivityModel(
+  nom: json['nom'] as String?,
+  probleme: json['probleme'] as String?,
+  recommandation: json['recommandation'] as String?,
+);
+
+Map<String, dynamic> _$RequestHumaneSectionActivityModelToJson(
+  _RequestHumaneSectionActivityModel instance,
+) => <String, dynamic>{
+  'nom': instance.nom,
+  'probleme': instance.probleme,
+  'recommandation': instance.recommandation,
+};
+
+_RequestSuggestionResponseModel _$RequestSuggestionResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _RequestSuggestionResponseModel(
+  fullname: json['fullname'] as String?,
+  recommandation: json['recommandation'] as String?,
+  isDisciple: json['isDisciple'] as String?,
+  probleme: json['probleme'] as String?,
+);
+
+Map<String, dynamic> _$RequestSuggestionResponseModelToJson(
+  _RequestSuggestionResponseModel instance,
+) => <String, dynamic>{
+  'fullname': instance.fullname,
+  'recommandation': instance.recommandation,
+  'isDisciple': instance.isDisciple,
+  'probleme': instance.probleme,
+};
+
+_DiscipleCelluleModel _$DiscipleCelluleModelFromJson(
+  Map<String, dynamic> json,
+) => _DiscipleCelluleModel(
+  fullName: json['fullName'] as String?,
+  isBaptierOrNot: json['isBaptierOrNot'] as String?,
+);
+
+Map<String, dynamic> _$DiscipleCelluleModelToJson(
+  _DiscipleCelluleModel instance,
+) => <String, dynamic>{
+  'fullName': instance.fullName,
+  'isBaptierOrNot': instance.isBaptierOrNot,
+};
+
+_RapportSuggestionModel _$RapportSuggestionModelFromJson(
+  Map<String, dynamic> json,
+) => _RapportSuggestionModel(
+  temoignage: json['temoignage'] as String?,
+  suggestions: json['suggestions'] as String?,
+  probleme: json['probleme'] as String?,
+);
+
+Map<String, dynamic> _$RapportSuggestionModelToJson(
+  _RapportSuggestionModel instance,
+) => <String, dynamic>{
+  'temoignage': instance.temoignage,
+  'suggestions': instance.suggestions,
+  'probleme': instance.probleme,
+};
+
+_RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _RapportCelluleResponseModel(
+  codeZone: json['codeZone'] as String,
+  fullNameRespoZone: json['fullNameRespoZone'] as String,
+  contactRespoZone: json['contactRespoZone'] as String,
+  codeSecteur: json['codeSecteur'] as String,
+  responsableCelluleId: json['responsableCelluleId'] as String,
+  fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
+  contactRespoSecteur: json['contactRespoSecteur'] as String,
+  codeCellule: json['codeCellule'] as String,
+  fullNameRespoCellule: json['fullNameRespoCellule'] as String,
+  contactRespoCellule: json['contactRespoCellule'] as String,
+  jourCellule: json['jourCellule'] as String,
+  offrande: json['offrande'] as String,
+  nombreBaptiser: json['nombreBaptiser'] as String,
+  nombreNonBaptiser: json['nombreNonBaptiser'] as String,
+  discipleCellule: (json['discipleCellule'] as List<dynamic>)
+      .map((e) => DiscipleCelluleModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  id: json['id'] as String,
+  formAdministrationIsSubmit: json['formAdministrationIsSubmit'] as String,
+  formAdministrationSubmitDate: json['formAdministrationSubmitDate'] as String,
+  assistanceNonBaptiser: RequestHumaneSectionAssistanceResponseModel.fromJson(
+    json['assistanceNonBaptiser'] as Map<String, dynamic>,
+  ),
+  assistanceNouveau: RequestHumaneSectionAssistanceResponseModel.fromJson(
+    json['assistanceNouveau'] as Map<String, dynamic>,
+  ),
+  assistanceInviter: RequestHumaneSectionAssistanceResponseModel.fromJson(
+    json['assistanceInviter'] as Map<String, dynamic>,
+  ),
+  assistanceCellule: RequestAuherResponseModel.fromJson(
+    json['assistanceCellule'] as Map<String, dynamic>,
+  ),
+  formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String,
+  formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
+  visiteMenbre: (json['visiteMenbre'] as List<dynamic>)
+      .map(
+        (e) =>
+            RequestSuggestionResponseModel.fromJson(e as Map<String, dynamic>),
+      )
+      .toList(),
+  visiteOuvrier: (json['visiteOuvrier'] as List<dynamic>)
+      .map(
+        (e) =>
+            RequestSuggestionResponseModel.fromJson(e as Map<String, dynamic>),
+      )
+      .toList(),
+  dateActivitySubmited: json['dateActivitySubmited'] as String,
+  formActivityIsSubmit: json['formActivityIsSubmit'] as String,
+  formActivitySubmitDate: json['formActivitySubmitDate'] as String,
+  suggestions: (json['suggestions'] as List<dynamic>)
+      .map((e) => RapportSuggestionModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  faisAssignaler: json['faisAssignaler'] as String,
+  ouvrierSpritualLive: json['ouvrierSpritualLive'] as String,
+  formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String,
+  formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
+);
+
+Map<String, dynamic> _$RapportCelluleResponseModelToJson(
+  _RapportCelluleResponseModel instance,
+) => <String, dynamic>{
+  'codeZone': instance.codeZone,
+  'fullNameRespoZone': instance.fullNameRespoZone,
+  'contactRespoZone': instance.contactRespoZone,
+  'codeSecteur': instance.codeSecteur,
+  'responsableCelluleId': instance.responsableCelluleId,
+  'fullNameRespoSecteur': instance.fullNameRespoSecteur,
+  'contactRespoSecteur': instance.contactRespoSecteur,
+  'codeCellule': instance.codeCellule,
+  'fullNameRespoCellule': instance.fullNameRespoCellule,
+  'contactRespoCellule': instance.contactRespoCellule,
+  'jourCellule': instance.jourCellule,
+  'offrande': instance.offrande,
+  'nombreBaptiser': instance.nombreBaptiser,
+  'nombreNonBaptiser': instance.nombreNonBaptiser,
+  'discipleCellule': instance.discipleCellule,
+  'id': instance.id,
+  'formAdministrationIsSubmit': instance.formAdministrationIsSubmit,
+  'formAdministrationSubmitDate': instance.formAdministrationSubmitDate,
+  'assistanceNonBaptiser': instance.assistanceNonBaptiser,
+  'assistanceNouveau': instance.assistanceNouveau,
+  'assistanceInviter': instance.assistanceInviter,
+  'assistanceCellule': instance.assistanceCellule,
+  'formAssistanceIsSubmit': instance.formAssistanceIsSubmit,
+  'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,
+  'visiteMenbre': instance.visiteMenbre,
+  'visiteOuvrier': instance.visiteOuvrier,
+  'dateActivitySubmited': instance.dateActivitySubmited,
+  'formActivityIsSubmit': instance.formActivityIsSubmit,
+  'formActivitySubmitDate': instance.formActivitySubmitDate,
+  'suggestions': instance.suggestions,
+  'faisAssignaler': instance.faisAssignaler,
+  'ouvrierSpritualLive': instance.ouvrierSpritualLive,
+  'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
+  'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
 };

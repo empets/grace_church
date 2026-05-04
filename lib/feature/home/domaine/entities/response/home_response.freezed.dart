@@ -1493,22 +1493,22 @@ as String,
 
 
 /// @nodoc
-mixin _$ReponsableSecteurResponse {
+mixin _$SecteurResponse {
 
  String get secteurId; String get secteurCode; String get secteurName; String get dateCreated; String get secteurResponsableName; String get contactResponsable; String get emailResponsableSecteur; String get adressResponsableSecteur; String get responsableSecteurId; String get adresse; String get zoneId; String get zoneCode;
-/// Create a copy of ReponsableSecteurResponse
+/// Create a copy of SecteurResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ReponsableSecteurResponseCopyWith<ReponsableSecteurResponse> get copyWith => _$ReponsableSecteurResponseCopyWithImpl<ReponsableSecteurResponse>(this as ReponsableSecteurResponse, _$identity);
+$SecteurResponseCopyWith<SecteurResponse> get copyWith => _$SecteurResponseCopyWithImpl<SecteurResponse>(this as SecteurResponse, _$identity);
 
-  /// Serializes this ReponsableSecteurResponse to a JSON map.
+  /// Serializes this SecteurResponse to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableSecteurResponse&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SecteurResponse&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1517,15 +1517,15 @@ int get hashCode => Object.hash(runtimeType,secteurId,secteurCode,secteurName,da
 
 @override
 String toString() {
-  return 'ReponsableSecteurResponse(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
+  return 'SecteurResponse(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ReponsableSecteurResponseCopyWith<$Res>  {
-  factory $ReponsableSecteurResponseCopyWith(ReponsableSecteurResponse value, $Res Function(ReponsableSecteurResponse) _then) = _$ReponsableSecteurResponseCopyWithImpl;
+abstract mixin class $SecteurResponseCopyWith<$Res>  {
+  factory $SecteurResponseCopyWith(SecteurResponse value, $Res Function(SecteurResponse) _then) = _$SecteurResponseCopyWithImpl;
 @useResult
 $Res call({
  String secteurId, String secteurCode, String secteurName, String dateCreated, String secteurResponsableName, String contactResponsable, String emailResponsableSecteur, String adressResponsableSecteur, String responsableSecteurId, String adresse, String zoneId, String zoneCode
@@ -1536,14 +1536,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ReponsableSecteurResponseCopyWithImpl<$Res>
-    implements $ReponsableSecteurResponseCopyWith<$Res> {
-  _$ReponsableSecteurResponseCopyWithImpl(this._self, this._then);
+class _$SecteurResponseCopyWithImpl<$Res>
+    implements $SecteurResponseCopyWith<$Res> {
+  _$SecteurResponseCopyWithImpl(this._self, this._then);
 
-  final ReponsableSecteurResponse _self;
-  final $Res Function(ReponsableSecteurResponse) _then;
+  final SecteurResponse _self;
+  final $Res Function(SecteurResponse) _then;
 
-/// Create a copy of ReponsableSecteurResponse
+/// Create a copy of SecteurResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? secteurId = null,Object? secteurCode = null,Object? secteurName = null,Object? dateCreated = null,Object? secteurResponsableName = null,Object? contactResponsable = null,Object? emailResponsableSecteur = null,Object? adressResponsableSecteur = null,Object? responsableSecteurId = null,Object? adresse = null,Object? zoneId = null,Object? zoneCode = null,}) {
   return _then(_self.copyWith(
@@ -1566,8 +1566,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [ReponsableSecteurResponse].
-extension ReponsableSecteurResponsePatterns on ReponsableSecteurResponse {
+/// Adds pattern-matching-related methods to [SecteurResponse].
+extension SecteurResponsePatterns on SecteurResponse {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1580,10 +1580,10 @@ extension ReponsableSecteurResponsePatterns on ReponsableSecteurResponse {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReponsableSecteurResponse value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SecteurResponse value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ReponsableSecteurResponse() when $default != null:
+case _SecteurResponse() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1602,10 +1602,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReponsableSecteurResponse value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SecteurResponse value)  $default,){
 final _that = this;
 switch (_that) {
-case _ReponsableSecteurResponse():
+case _SecteurResponse():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -1623,10 +1623,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReponsableSecteurResponse value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SecteurResponse value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ReponsableSecteurResponse() when $default != null:
+case _SecteurResponse() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1646,7 +1646,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String secteurId,  String secteurCode,  String secteurName,  String dateCreated,  String secteurResponsableName,  String contactResponsable,  String emailResponsableSecteur,  String adressResponsableSecteur,  String responsableSecteurId,  String adresse,  String zoneId,  String zoneCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ReponsableSecteurResponse() when $default != null:
+case _SecteurResponse() when $default != null:
 return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCreated,_that.secteurResponsableName,_that.contactResponsable,_that.emailResponsableSecteur,_that.adressResponsableSecteur,_that.responsableSecteurId,_that.adresse,_that.zoneId,_that.zoneCode);case _:
   return orElse();
 
@@ -1667,7 +1667,7 @@ return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCr
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String secteurId,  String secteurCode,  String secteurName,  String dateCreated,  String secteurResponsableName,  String contactResponsable,  String emailResponsableSecteur,  String adressResponsableSecteur,  String responsableSecteurId,  String adresse,  String zoneId,  String zoneCode)  $default,) {final _that = this;
 switch (_that) {
-case _ReponsableSecteurResponse():
+case _SecteurResponse():
 return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCreated,_that.secteurResponsableName,_that.contactResponsable,_that.emailResponsableSecteur,_that.adressResponsableSecteur,_that.responsableSecteurId,_that.adresse,_that.zoneId,_that.zoneCode);case _:
   throw StateError('Unexpected subclass');
 
@@ -1687,7 +1687,7 @@ return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCr
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String secteurId,  String secteurCode,  String secteurName,  String dateCreated,  String secteurResponsableName,  String contactResponsable,  String emailResponsableSecteur,  String adressResponsableSecteur,  String responsableSecteurId,  String adresse,  String zoneId,  String zoneCode)?  $default,) {final _that = this;
 switch (_that) {
-case _ReponsableSecteurResponse() when $default != null:
+case _SecteurResponse() when $default != null:
 return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCreated,_that.secteurResponsableName,_that.contactResponsable,_that.emailResponsableSecteur,_that.adressResponsableSecteur,_that.responsableSecteurId,_that.adresse,_that.zoneId,_that.zoneCode);case _:
   return null;
 
@@ -1699,9 +1699,9 @@ return $default(_that.secteurId,_that.secteurCode,_that.secteurName,_that.dateCr
 /// @nodoc
 @JsonSerializable()
 
-class _ReponsableSecteurResponse implements ReponsableSecteurResponse {
-   _ReponsableSecteurResponse({required this.secteurId, required this.secteurCode, required this.secteurName, required this.dateCreated, required this.secteurResponsableName, required this.contactResponsable, required this.emailResponsableSecteur, required this.adressResponsableSecteur, required this.responsableSecteurId, required this.adresse, required this.zoneId, required this.zoneCode});
-  factory _ReponsableSecteurResponse.fromJson(Map<String, dynamic> json) => _$ReponsableSecteurResponseFromJson(json);
+class _SecteurResponse implements SecteurResponse {
+   _SecteurResponse({required this.secteurId, required this.secteurCode, required this.secteurName, required this.dateCreated, required this.secteurResponsableName, required this.contactResponsable, required this.emailResponsableSecteur, required this.adressResponsableSecteur, required this.responsableSecteurId, required this.adresse, required this.zoneId, required this.zoneCode});
+  factory _SecteurResponse.fromJson(Map<String, dynamic> json) => _$SecteurResponseFromJson(json);
 
 @override final  String secteurId;
 @override final  String secteurCode;
@@ -1716,20 +1716,20 @@ class _ReponsableSecteurResponse implements ReponsableSecteurResponse {
 @override final  String zoneId;
 @override final  String zoneCode;
 
-/// Create a copy of ReponsableSecteurResponse
+/// Create a copy of SecteurResponse
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ReponsableSecteurResponseCopyWith<_ReponsableSecteurResponse> get copyWith => __$ReponsableSecteurResponseCopyWithImpl<_ReponsableSecteurResponse>(this, _$identity);
+_$SecteurResponseCopyWith<_SecteurResponse> get copyWith => __$SecteurResponseCopyWithImpl<_SecteurResponse>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ReponsableSecteurResponseToJson(this, );
+  return _$SecteurResponseToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableSecteurResponse&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SecteurResponse&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.secteurName, secteurName) || other.secteurName == secteurName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.secteurResponsableName, secteurResponsableName) || other.secteurResponsableName == secteurResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsableSecteur, emailResponsableSecteur) || other.emailResponsableSecteur == emailResponsableSecteur)&&(identical(other.adressResponsableSecteur, adressResponsableSecteur) || other.adressResponsableSecteur == adressResponsableSecteur)&&(identical(other.responsableSecteurId, responsableSecteurId) || other.responsableSecteurId == responsableSecteurId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1738,15 +1738,15 @@ int get hashCode => Object.hash(runtimeType,secteurId,secteurCode,secteurName,da
 
 @override
 String toString() {
-  return 'ReponsableSecteurResponse(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
+  return 'SecteurResponse(secteurId: $secteurId, secteurCode: $secteurCode, secteurName: $secteurName, dateCreated: $dateCreated, secteurResponsableName: $secteurResponsableName, contactResponsable: $contactResponsable, emailResponsableSecteur: $emailResponsableSecteur, adressResponsableSecteur: $adressResponsableSecteur, responsableSecteurId: $responsableSecteurId, adresse: $adresse, zoneId: $zoneId, zoneCode: $zoneCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ReponsableSecteurResponseCopyWith<$Res> implements $ReponsableSecteurResponseCopyWith<$Res> {
-  factory _$ReponsableSecteurResponseCopyWith(_ReponsableSecteurResponse value, $Res Function(_ReponsableSecteurResponse) _then) = __$ReponsableSecteurResponseCopyWithImpl;
+abstract mixin class _$SecteurResponseCopyWith<$Res> implements $SecteurResponseCopyWith<$Res> {
+  factory _$SecteurResponseCopyWith(_SecteurResponse value, $Res Function(_SecteurResponse) _then) = __$SecteurResponseCopyWithImpl;
 @override @useResult
 $Res call({
  String secteurId, String secteurCode, String secteurName, String dateCreated, String secteurResponsableName, String contactResponsable, String emailResponsableSecteur, String adressResponsableSecteur, String responsableSecteurId, String adresse, String zoneId, String zoneCode
@@ -1757,17 +1757,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ReponsableSecteurResponseCopyWithImpl<$Res>
-    implements _$ReponsableSecteurResponseCopyWith<$Res> {
-  __$ReponsableSecteurResponseCopyWithImpl(this._self, this._then);
+class __$SecteurResponseCopyWithImpl<$Res>
+    implements _$SecteurResponseCopyWith<$Res> {
+  __$SecteurResponseCopyWithImpl(this._self, this._then);
 
-  final _ReponsableSecteurResponse _self;
-  final $Res Function(_ReponsableSecteurResponse) _then;
+  final _SecteurResponse _self;
+  final $Res Function(_SecteurResponse) _then;
 
-/// Create a copy of ReponsableSecteurResponse
+/// Create a copy of SecteurResponse
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? secteurId = null,Object? secteurCode = null,Object? secteurName = null,Object? dateCreated = null,Object? secteurResponsableName = null,Object? contactResponsable = null,Object? emailResponsableSecteur = null,Object? adressResponsableSecteur = null,Object? responsableSecteurId = null,Object? adresse = null,Object? zoneId = null,Object? zoneCode = null,}) {
-  return _then(_ReponsableSecteurResponse(
+  return _then(_SecteurResponse(
 secteurId: null == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
 as String,secteurCode: null == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
 as String,secteurName: null == secteurName ? _self.secteurName : secteurName // ignore: cast_nullable_to_non_nullable
@@ -1789,42 +1789,42 @@ as String,
 
 
 /// @nodoc
-mixin _$ReponsableZoneResponse {
+mixin _$ZoneResponse {
 
- String get zoneResponsableName; String get zoneCode; String get dateCreated; String get zoneName; String get contactResponsable; String get emailResponsable; String get adresse; String get zoneId;
-/// Create a copy of ReponsableZoneResponse
+ String? get zoneId; String? get zoneCode; String? get zoneName; String? get dateCreated; String? get zoneResponsableName; String? get contactResponsable; String? get emailResponsablezone; String? get adressResponsablezone; String? get responsablezoneId; String? get adresse; String? get regionId; String? get regionCode;
+/// Create a copy of ZoneResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ReponsableZoneResponseCopyWith<ReponsableZoneResponse> get copyWith => _$ReponsableZoneResponseCopyWithImpl<ReponsableZoneResponse>(this as ReponsableZoneResponse, _$identity);
+$ZoneResponseCopyWith<ZoneResponse> get copyWith => _$ZoneResponseCopyWithImpl<ZoneResponse>(this as ZoneResponse, _$identity);
 
-  /// Serializes this ReponsableZoneResponse to a JSON map.
+  /// Serializes this ZoneResponse to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReponsableZoneResponse&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ZoneResponse&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsablezone, emailResponsablezone) || other.emailResponsablezone == emailResponsablezone)&&(identical(other.adressResponsablezone, adressResponsablezone) || other.adressResponsablezone == adressResponsablezone)&&(identical(other.responsablezoneId, responsablezoneId) || other.responsablezoneId == responsablezoneId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.regionCode, regionCode) || other.regionCode == regionCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,zoneResponsableName,zoneCode,dateCreated,zoneName,contactResponsable,emailResponsable,adresse,zoneId);
+int get hashCode => Object.hash(runtimeType,zoneId,zoneCode,zoneName,dateCreated,zoneResponsableName,contactResponsable,emailResponsablezone,adressResponsablezone,responsablezoneId,adresse,regionId,regionCode);
 
 @override
 String toString() {
-  return 'ReponsableZoneResponse(zoneResponsableName: $zoneResponsableName, zoneCode: $zoneCode, dateCreated: $dateCreated, zoneName: $zoneName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, zoneId: $zoneId)';
+  return 'ZoneResponse(zoneId: $zoneId, zoneCode: $zoneCode, zoneName: $zoneName, dateCreated: $dateCreated, zoneResponsableName: $zoneResponsableName, contactResponsable: $contactResponsable, emailResponsablezone: $emailResponsablezone, adressResponsablezone: $adressResponsablezone, responsablezoneId: $responsablezoneId, adresse: $adresse, regionId: $regionId, regionCode: $regionCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ReponsableZoneResponseCopyWith<$Res>  {
-  factory $ReponsableZoneResponseCopyWith(ReponsableZoneResponse value, $Res Function(ReponsableZoneResponse) _then) = _$ReponsableZoneResponseCopyWithImpl;
+abstract mixin class $ZoneResponseCopyWith<$Res>  {
+  factory $ZoneResponseCopyWith(ZoneResponse value, $Res Function(ZoneResponse) _then) = _$ZoneResponseCopyWithImpl;
 @useResult
 $Res call({
- String zoneResponsableName, String zoneCode, String dateCreated, String zoneName, String contactResponsable, String emailResponsable, String adresse, String zoneId
+ String? zoneId, String? zoneCode, String? zoneName, String? dateCreated, String? zoneResponsableName, String? contactResponsable, String? emailResponsablezone, String? adressResponsablezone, String? responsablezoneId, String? adresse, String? regionId, String? regionCode
 });
 
 
@@ -1832,34 +1832,38 @@ $Res call({
 
 }
 /// @nodoc
-class _$ReponsableZoneResponseCopyWithImpl<$Res>
-    implements $ReponsableZoneResponseCopyWith<$Res> {
-  _$ReponsableZoneResponseCopyWithImpl(this._self, this._then);
+class _$ZoneResponseCopyWithImpl<$Res>
+    implements $ZoneResponseCopyWith<$Res> {
+  _$ZoneResponseCopyWithImpl(this._self, this._then);
 
-  final ReponsableZoneResponse _self;
-  final $Res Function(ReponsableZoneResponse) _then;
+  final ZoneResponse _self;
+  final $Res Function(ZoneResponse) _then;
 
-/// Create a copy of ReponsableZoneResponse
+/// Create a copy of ZoneResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? zoneResponsableName = null,Object? zoneCode = null,Object? dateCreated = null,Object? zoneName = null,Object? contactResponsable = null,Object? emailResponsable = null,Object? adresse = null,Object? zoneId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? zoneId = freezed,Object? zoneCode = freezed,Object? zoneName = freezed,Object? dateCreated = freezed,Object? zoneResponsableName = freezed,Object? contactResponsable = freezed,Object? emailResponsablezone = freezed,Object? adressResponsablezone = freezed,Object? responsablezoneId = freezed,Object? adresse = freezed,Object? regionId = freezed,Object? regionCode = freezed,}) {
   return _then(_self.copyWith(
-zoneResponsableName: null == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
-as String,zoneCode: null == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
-as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
-as String,zoneName: null == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
-as String,contactResponsable: null == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
-as String,emailResponsable: null == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
-as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
-as String,zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
-as String,
+zoneId: freezed == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String?,zoneCode: freezed == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
+as String?,zoneName: freezed == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
+as String?,dateCreated: freezed == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String?,zoneResponsableName: freezed == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
+as String?,contactResponsable: freezed == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
+as String?,emailResponsablezone: freezed == emailResponsablezone ? _self.emailResponsablezone : emailResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,adressResponsablezone: freezed == adressResponsablezone ? _self.adressResponsablezone : adressResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,responsablezoneId: freezed == responsablezoneId ? _self.responsablezoneId : responsablezoneId // ignore: cast_nullable_to_non_nullable
+as String?,adresse: freezed == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String?,regionId: freezed == regionId ? _self.regionId : regionId // ignore: cast_nullable_to_non_nullable
+as String?,regionCode: freezed == regionCode ? _self.regionCode : regionCode // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
 }
 
 
-/// Adds pattern-matching-related methods to [ReponsableZoneResponse].
-extension ReponsableZoneResponsePatterns on ReponsableZoneResponse {
+/// Adds pattern-matching-related methods to [ZoneResponse].
+extension ZoneResponsePatterns on ZoneResponse {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1872,10 +1876,10 @@ extension ReponsableZoneResponsePatterns on ReponsableZoneResponse {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ReponsableZoneResponse value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ZoneResponse value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ReponsableZoneResponse() when $default != null:
+case _ZoneResponse() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1894,10 +1898,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ReponsableZoneResponse value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ZoneResponse value)  $default,){
 final _that = this;
 switch (_that) {
-case _ReponsableZoneResponse():
+case _ZoneResponse():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -1915,10 +1919,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ReponsableZoneResponse value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ZoneResponse value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ReponsableZoneResponse() when $default != null:
+case _ZoneResponse() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1936,10 +1940,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String zoneResponsableName,  String zoneCode,  String dateCreated,  String zoneName,  String contactResponsable,  String emailResponsable,  String adresse,  String zoneId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? zoneId,  String? zoneCode,  String? zoneName,  String? dateCreated,  String? zoneResponsableName,  String? contactResponsable,  String? emailResponsablezone,  String? adressResponsablezone,  String? responsablezoneId,  String? adresse,  String? regionId,  String? regionCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ReponsableZoneResponse() when $default != null:
-return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+case _ZoneResponse() when $default != null:
+return $default(_that.zoneId,_that.zoneCode,_that.zoneName,_that.dateCreated,_that.zoneResponsableName,_that.contactResponsable,_that.emailResponsablezone,_that.adressResponsablezone,_that.responsablezoneId,_that.adresse,_that.regionId,_that.regionCode);case _:
   return orElse();
 
 }
@@ -1957,10 +1961,10 @@ return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String zoneResponsableName,  String zoneCode,  String dateCreated,  String zoneName,  String contactResponsable,  String emailResponsable,  String adresse,  String zoneId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? zoneId,  String? zoneCode,  String? zoneName,  String? dateCreated,  String? zoneResponsableName,  String? contactResponsable,  String? emailResponsablezone,  String? adressResponsablezone,  String? responsablezoneId,  String? adresse,  String? regionId,  String? regionCode)  $default,) {final _that = this;
 switch (_that) {
-case _ReponsableZoneResponse():
-return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+case _ZoneResponse():
+return $default(_that.zoneId,_that.zoneCode,_that.zoneName,_that.dateCreated,_that.zoneResponsableName,_that.contactResponsable,_that.emailResponsablezone,_that.adressResponsablezone,_that.responsablezoneId,_that.adresse,_that.regionId,_that.regionCode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1977,10 +1981,10 @@ return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String zoneResponsableName,  String zoneCode,  String dateCreated,  String zoneName,  String contactResponsable,  String emailResponsable,  String adresse,  String zoneId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? zoneId,  String? zoneCode,  String? zoneName,  String? dateCreated,  String? zoneResponsableName,  String? contactResponsable,  String? emailResponsablezone,  String? adressResponsablezone,  String? responsablezoneId,  String? adresse,  String? regionId,  String? regionCode)?  $default,) {final _that = this;
 switch (_that) {
-case _ReponsableZoneResponse() when $default != null:
-return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that.zoneName,_that.contactResponsable,_that.emailResponsable,_that.adresse,_that.zoneId);case _:
+case _ZoneResponse() when $default != null:
+return $default(_that.zoneId,_that.zoneCode,_that.zoneName,_that.dateCreated,_that.zoneResponsableName,_that.contactResponsable,_that.emailResponsablezone,_that.adressResponsablezone,_that.responsablezoneId,_that.adresse,_that.regionId,_that.regionCode);case _:
   return null;
 
 }
@@ -1991,53 +1995,57 @@ return $default(_that.zoneResponsableName,_that.zoneCode,_that.dateCreated,_that
 /// @nodoc
 @JsonSerializable()
 
-class _ReponsableZoneResponse implements ReponsableZoneResponse {
-   _ReponsableZoneResponse({required this.zoneResponsableName, required this.zoneCode, required this.dateCreated, required this.zoneName, required this.contactResponsable, required this.emailResponsable, required this.adresse, required this.zoneId});
-  factory _ReponsableZoneResponse.fromJson(Map<String, dynamic> json) => _$ReponsableZoneResponseFromJson(json);
+class _ZoneResponse implements ZoneResponse {
+   _ZoneResponse({required this.zoneId, required this.zoneCode, required this.zoneName, required this.dateCreated, required this.zoneResponsableName, required this.contactResponsable, required this.emailResponsablezone, required this.adressResponsablezone, required this.responsablezoneId, required this.adresse, required this.regionId, required this.regionCode});
+  factory _ZoneResponse.fromJson(Map<String, dynamic> json) => _$ZoneResponseFromJson(json);
 
-@override final  String zoneResponsableName;
-@override final  String zoneCode;
-@override final  String dateCreated;
-@override final  String zoneName;
-@override final  String contactResponsable;
-@override final  String emailResponsable;
-@override final  String adresse;
-@override final  String zoneId;
+@override final  String? zoneId;
+@override final  String? zoneCode;
+@override final  String? zoneName;
+@override final  String? dateCreated;
+@override final  String? zoneResponsableName;
+@override final  String? contactResponsable;
+@override final  String? emailResponsablezone;
+@override final  String? adressResponsablezone;
+@override final  String? responsablezoneId;
+@override final  String? adresse;
+@override final  String? regionId;
+@override final  String? regionCode;
 
-/// Create a copy of ReponsableZoneResponse
+/// Create a copy of ZoneResponse
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ReponsableZoneResponseCopyWith<_ReponsableZoneResponse> get copyWith => __$ReponsableZoneResponseCopyWithImpl<_ReponsableZoneResponse>(this, _$identity);
+_$ZoneResponseCopyWith<_ZoneResponse> get copyWith => __$ZoneResponseCopyWithImpl<_ZoneResponse>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ReponsableZoneResponseToJson(this, );
+  return _$ZoneResponseToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReponsableZoneResponse&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsable, emailResponsable) || other.emailResponsable == emailResponsable)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ZoneResponse&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId)&&(identical(other.zoneCode, zoneCode) || other.zoneCode == zoneCode)&&(identical(other.zoneName, zoneName) || other.zoneName == zoneName)&&(identical(other.dateCreated, dateCreated) || other.dateCreated == dateCreated)&&(identical(other.zoneResponsableName, zoneResponsableName) || other.zoneResponsableName == zoneResponsableName)&&(identical(other.contactResponsable, contactResponsable) || other.contactResponsable == contactResponsable)&&(identical(other.emailResponsablezone, emailResponsablezone) || other.emailResponsablezone == emailResponsablezone)&&(identical(other.adressResponsablezone, adressResponsablezone) || other.adressResponsablezone == adressResponsablezone)&&(identical(other.responsablezoneId, responsablezoneId) || other.responsablezoneId == responsablezoneId)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.regionId, regionId) || other.regionId == regionId)&&(identical(other.regionCode, regionCode) || other.regionCode == regionCode));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,zoneResponsableName,zoneCode,dateCreated,zoneName,contactResponsable,emailResponsable,adresse,zoneId);
+int get hashCode => Object.hash(runtimeType,zoneId,zoneCode,zoneName,dateCreated,zoneResponsableName,contactResponsable,emailResponsablezone,adressResponsablezone,responsablezoneId,adresse,regionId,regionCode);
 
 @override
 String toString() {
-  return 'ReponsableZoneResponse(zoneResponsableName: $zoneResponsableName, zoneCode: $zoneCode, dateCreated: $dateCreated, zoneName: $zoneName, contactResponsable: $contactResponsable, emailResponsable: $emailResponsable, adresse: $adresse, zoneId: $zoneId)';
+  return 'ZoneResponse(zoneId: $zoneId, zoneCode: $zoneCode, zoneName: $zoneName, dateCreated: $dateCreated, zoneResponsableName: $zoneResponsableName, contactResponsable: $contactResponsable, emailResponsablezone: $emailResponsablezone, adressResponsablezone: $adressResponsablezone, responsablezoneId: $responsablezoneId, adresse: $adresse, regionId: $regionId, regionCode: $regionCode)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ReponsableZoneResponseCopyWith<$Res> implements $ReponsableZoneResponseCopyWith<$Res> {
-  factory _$ReponsableZoneResponseCopyWith(_ReponsableZoneResponse value, $Res Function(_ReponsableZoneResponse) _then) = __$ReponsableZoneResponseCopyWithImpl;
+abstract mixin class _$ZoneResponseCopyWith<$Res> implements $ZoneResponseCopyWith<$Res> {
+  factory _$ZoneResponseCopyWith(_ZoneResponse value, $Res Function(_ZoneResponse) _then) = __$ZoneResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String zoneResponsableName, String zoneCode, String dateCreated, String zoneName, String contactResponsable, String emailResponsable, String adresse, String zoneId
+ String? zoneId, String? zoneCode, String? zoneName, String? dateCreated, String? zoneResponsableName, String? contactResponsable, String? emailResponsablezone, String? adressResponsablezone, String? responsablezoneId, String? adresse, String? regionId, String? regionCode
 });
 
 
@@ -2045,26 +2053,30 @@ $Res call({
 
 }
 /// @nodoc
-class __$ReponsableZoneResponseCopyWithImpl<$Res>
-    implements _$ReponsableZoneResponseCopyWith<$Res> {
-  __$ReponsableZoneResponseCopyWithImpl(this._self, this._then);
+class __$ZoneResponseCopyWithImpl<$Res>
+    implements _$ZoneResponseCopyWith<$Res> {
+  __$ZoneResponseCopyWithImpl(this._self, this._then);
 
-  final _ReponsableZoneResponse _self;
-  final $Res Function(_ReponsableZoneResponse) _then;
+  final _ZoneResponse _self;
+  final $Res Function(_ZoneResponse) _then;
 
-/// Create a copy of ReponsableZoneResponse
+/// Create a copy of ZoneResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? zoneResponsableName = null,Object? zoneCode = null,Object? dateCreated = null,Object? zoneName = null,Object? contactResponsable = null,Object? emailResponsable = null,Object? adresse = null,Object? zoneId = null,}) {
-  return _then(_ReponsableZoneResponse(
-zoneResponsableName: null == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
-as String,zoneCode: null == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
-as String,dateCreated: null == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
-as String,zoneName: null == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
-as String,contactResponsable: null == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
-as String,emailResponsable: null == emailResponsable ? _self.emailResponsable : emailResponsable // ignore: cast_nullable_to_non_nullable
-as String,adresse: null == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
-as String,zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
-as String,
+@override @pragma('vm:prefer-inline') $Res call({Object? zoneId = freezed,Object? zoneCode = freezed,Object? zoneName = freezed,Object? dateCreated = freezed,Object? zoneResponsableName = freezed,Object? contactResponsable = freezed,Object? emailResponsablezone = freezed,Object? adressResponsablezone = freezed,Object? responsablezoneId = freezed,Object? adresse = freezed,Object? regionId = freezed,Object? regionCode = freezed,}) {
+  return _then(_ZoneResponse(
+zoneId: freezed == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+as String?,zoneCode: freezed == zoneCode ? _self.zoneCode : zoneCode // ignore: cast_nullable_to_non_nullable
+as String?,zoneName: freezed == zoneName ? _self.zoneName : zoneName // ignore: cast_nullable_to_non_nullable
+as String?,dateCreated: freezed == dateCreated ? _self.dateCreated : dateCreated // ignore: cast_nullable_to_non_nullable
+as String?,zoneResponsableName: freezed == zoneResponsableName ? _self.zoneResponsableName : zoneResponsableName // ignore: cast_nullable_to_non_nullable
+as String?,contactResponsable: freezed == contactResponsable ? _self.contactResponsable : contactResponsable // ignore: cast_nullable_to_non_nullable
+as String?,emailResponsablezone: freezed == emailResponsablezone ? _self.emailResponsablezone : emailResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,adressResponsablezone: freezed == adressResponsablezone ? _self.adressResponsablezone : adressResponsablezone // ignore: cast_nullable_to_non_nullable
+as String?,responsablezoneId: freezed == responsablezoneId ? _self.responsablezoneId : responsablezoneId // ignore: cast_nullable_to_non_nullable
+as String?,adresse: freezed == adresse ? _self.adresse : adresse // ignore: cast_nullable_to_non_nullable
+as String?,regionId: freezed == regionId ? _self.regionId : regionId // ignore: cast_nullable_to_non_nullable
+as String?,regionCode: freezed == regionCode ? _self.regionCode : regionCode // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -2604,6 +2616,1586 @@ class __$RapportSuggestionCopyWithImpl<$Res>
   return _then(_RapportSuggestion(
 temoignage: null == temoignage ? _self.temoignage : temoignage // ignore: cast_nullable_to_non_nullable
 as String,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RapportCelluleResponse {
+
+ String get codeZone; String get fullNameRespoZone; String get contactRespoZone; String get codeSecteur; String get responsableCelluleId; String get fullNameRespoSecteur; String get contactRespoSecteur; String get codeCellule; String get fullNameRespoCellule; String get contactRespoCellule; String get jourCellule; String get offrande; String get nombreBaptiser; String get nombreNonBaptiser; List<DiscipleCellule> get discipleCellule; String get id; String get formAdministrationIsSubmit; String get formAdministrationSubmitDate;// required String nombreBaptiser,
+ RequestHumaneSectionAssistanceResponse get assistanceNonBaptiser; RequestHumaneSectionAssistanceResponse get assistanceNouveau; RequestHumaneSectionAssistanceResponse get assistanceInviter; RequestAuherResponse get assistanceCellule;// required String id,
+ String get formAssistanceIsSubmit; String get formAssistanceSubmitDate; List<RequestSuggestionResponse> get visiteMenbre; List<RequestSuggestionResponse> get visiteOuvrier; String get dateActivitySubmited; String get formActivityIsSubmit; String get formActivitySubmitDate; List<RequestHumaneSectionActivityResponse> get suggestions; String get faisAssignaler; String get ouvrierSpritualLive; String get formSuggestionIsSubmit; String get formSuggestionSubmitDate;
+/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RapportCelluleResponseCopyWith<RapportCelluleResponse> get copyWith => _$RapportCelluleResponseCopyWithImpl<RapportCelluleResponse>(this as RapportCelluleResponse, _$identity);
+
+  /// Serializes this RapportCelluleResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleResponse&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other.discipleCellule, discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate)&&(identical(other.assistanceNonBaptiser, assistanceNonBaptiser) || other.assistanceNonBaptiser == assistanceNonBaptiser)&&(identical(other.assistanceNouveau, assistanceNouveau) || other.assistanceNouveau == assistanceNouveau)&&(identical(other.assistanceInviter, assistanceInviter) || other.assistanceInviter == assistanceInviter)&&(identical(other.assistanceCellule, assistanceCellule) || other.assistanceCellule == assistanceCellule)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate)&&const DeepCollectionEquality().equals(other.visiteMenbre, visiteMenbre)&&const DeepCollectionEquality().equals(other.visiteOuvrier, visiteOuvrier)&&(identical(other.dateActivitySubmited, dateActivitySubmited) || other.dateActivitySubmited == dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,responsableCelluleId,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate,assistanceNonBaptiser,assistanceNouveau,assistanceInviter,assistanceCellule,formAssistanceIsSubmit,formAssistanceSubmitDate,const DeepCollectionEquality().hash(visiteMenbre),const DeepCollectionEquality().hash(visiteOuvrier),dateActivitySubmited,formActivityIsSubmit,formActivitySubmitDate,const DeepCollectionEquality().hash(suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate]);
+
+@override
+String toString() {
+  return 'RapportCelluleResponse(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, responsableCelluleId: $responsableCelluleId, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate, visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RapportCelluleResponseCopyWith<$Res>  {
+  factory $RapportCelluleResponseCopyWith(RapportCelluleResponse value, $Res Function(RapportCelluleResponse) _then) = _$RapportCelluleResponseCopyWithImpl;
+@useResult
+$Res call({
+ String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String responsableCelluleId, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser, List<DiscipleCellule> discipleCellule, String id, String formAdministrationIsSubmit, String formAdministrationSubmitDate, RequestHumaneSectionAssistanceResponse assistanceNonBaptiser, RequestHumaneSectionAssistanceResponse assistanceNouveau, RequestHumaneSectionAssistanceResponse assistanceInviter, RequestAuherResponse assistanceCellule, String formAssistanceIsSubmit, String formAssistanceSubmitDate, List<RequestSuggestionResponse> visiteMenbre, List<RequestSuggestionResponse> visiteOuvrier, String dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, List<RequestHumaneSectionActivityResponse> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate
+});
+
+
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNonBaptiser;$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNouveau;$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceInviter;$RequestAuherResponseCopyWith<$Res> get assistanceCellule;
+
+}
+/// @nodoc
+class _$RapportCelluleResponseCopyWithImpl<$Res>
+    implements $RapportCelluleResponseCopyWith<$Res> {
+  _$RapportCelluleResponseCopyWithImpl(this._self, this._then);
+
+  final RapportCelluleResponse _self;
+  final $Res Function(RapportCelluleResponse) _then;
+
+/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? responsableCelluleId = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCellule = null,Object? id = null,Object? formAdministrationIsSubmit = null,Object? formAdministrationSubmitDate = null,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,}) {
+  return _then(_self.copyWith(
+codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
+as String,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
+as String,contactRespoZone: null == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
+as String,codeSecteur: null == codeSecteur ? _self.codeSecteur : codeSecteur // ignore: cast_nullable_to_non_nullable
+as String,responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String,fullNameRespoSecteur: null == fullNameRespoSecteur ? _self.fullNameRespoSecteur : fullNameRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String,contactRespoSecteur: null == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String,codeCellule: null == codeCellule ? _self.codeCellule : codeCellule // ignore: cast_nullable_to_non_nullable
+as String,fullNameRespoCellule: null == fullNameRespoCellule ? _self.fullNameRespoCellule : fullNameRespoCellule // ignore: cast_nullable_to_non_nullable
+as String,contactRespoCellule: null == contactRespoCellule ? _self.contactRespoCellule : contactRespoCellule // ignore: cast_nullable_to_non_nullable
+as String,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
+as String,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
+as String,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
+as String,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as String,discipleCellule: null == discipleCellule ? _self.discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
+as List<DiscipleCellule>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationIsSubmit: null == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationSubmitDate: null == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistanceResponse,assistanceNouveau: null == assistanceNouveau ? _self.assistanceNouveau : assistanceNouveau // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistanceResponse,assistanceInviter: null == assistanceInviter ? _self.assistanceInviter : assistanceInviter // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistanceResponse,assistanceCellule: null == assistanceCellule ? _self.assistanceCellule : assistanceCellule // ignore: cast_nullable_to_non_nullable
+as RequestAuherResponse,formAssistanceIsSubmit: null == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formAssistanceSubmitDate: null == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as List<RequestSuggestionResponse>,visiteOuvrier: null == visiteOuvrier ? _self.visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
+as List<RequestSuggestionResponse>,dateActivitySubmited: null == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
+as String,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<RequestHumaneSectionActivityResponse>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as String,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNonBaptiser {
+  
+  return $RequestHumaneSectionAssistanceResponseCopyWith<$Res>(_self.assistanceNonBaptiser, (value) {
+    return _then(_self.copyWith(assistanceNonBaptiser: value));
+  });
+}/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNouveau {
+  
+  return $RequestHumaneSectionAssistanceResponseCopyWith<$Res>(_self.assistanceNouveau, (value) {
+    return _then(_self.copyWith(assistanceNouveau: value));
+  });
+}/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceInviter {
+  
+  return $RequestHumaneSectionAssistanceResponseCopyWith<$Res>(_self.assistanceInviter, (value) {
+    return _then(_self.copyWith(assistanceInviter: value));
+  });
+}/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestAuherResponseCopyWith<$Res> get assistanceCellule {
+  
+  return $RequestAuherResponseCopyWith<$Res>(_self.assistanceCellule, (value) {
+    return _then(_self.copyWith(assistanceCellule: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [RapportCelluleResponse].
+extension RapportCelluleResponsePatterns on RapportCelluleResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RapportCelluleResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RapportCelluleResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RapportCelluleResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _RapportCelluleResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RapportCelluleResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RapportCelluleResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String responsableCelluleId,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCellule> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate,  RequestHumaneSectionAssistanceResponse assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponse assistanceNouveau,  RequestHumaneSectionAssistanceResponse assistanceInviter,  RequestAuherResponse assistanceCellule,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate,  List<RequestSuggestionResponse> visiteMenbre,  List<RequestSuggestionResponse> visiteOuvrier,  String dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  List<RequestHumaneSectionActivityResponse> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RapportCelluleResponse() when $default != null:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String responsableCelluleId,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCellule> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate,  RequestHumaneSectionAssistanceResponse assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponse assistanceNouveau,  RequestHumaneSectionAssistanceResponse assistanceInviter,  RequestAuherResponse assistanceCellule,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate,  List<RequestSuggestionResponse> visiteMenbre,  List<RequestSuggestionResponse> visiteOuvrier,  String dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  List<RequestHumaneSectionActivityResponse> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)  $default,) {final _that = this;
+switch (_that) {
+case _RapportCelluleResponse():
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String responsableCelluleId,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCellule> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate,  RequestHumaneSectionAssistanceResponse assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponse assistanceNouveau,  RequestHumaneSectionAssistanceResponse assistanceInviter,  RequestAuherResponse assistanceCellule,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate,  List<RequestSuggestionResponse> visiteMenbre,  List<RequestSuggestionResponse> visiteOuvrier,  String dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  List<RequestHumaneSectionActivityResponse> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)?  $default,) {final _that = this;
+switch (_that) {
+case _RapportCelluleResponse() when $default != null:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RapportCelluleResponse implements RapportCelluleResponse {
+   _RapportCelluleResponse({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCellule> discipleCellule, required this.id, required this.formAdministrationIsSubmit, required this.formAdministrationSubmitDate, required this.assistanceNonBaptiser, required this.assistanceNouveau, required this.assistanceInviter, required this.assistanceCellule, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate, required final  List<RequestSuggestionResponse> visiteMenbre, required final  List<RequestSuggestionResponse> visiteOuvrier, required this.dateActivitySubmited, required this.formActivityIsSubmit, required this.formActivitySubmitDate, required final  List<RequestHumaneSectionActivityResponse> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, required this.formSuggestionIsSubmit, required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
+  factory _RapportCelluleResponse.fromJson(Map<String, dynamic> json) => _$RapportCelluleResponseFromJson(json);
+
+@override final  String codeZone;
+@override final  String fullNameRespoZone;
+@override final  String contactRespoZone;
+@override final  String codeSecteur;
+@override final  String responsableCelluleId;
+@override final  String fullNameRespoSecteur;
+@override final  String contactRespoSecteur;
+@override final  String codeCellule;
+@override final  String fullNameRespoCellule;
+@override final  String contactRespoCellule;
+@override final  String jourCellule;
+@override final  String offrande;
+@override final  String nombreBaptiser;
+@override final  String nombreNonBaptiser;
+ final  List<DiscipleCellule> _discipleCellule;
+@override List<DiscipleCellule> get discipleCellule {
+  if (_discipleCellule is EqualUnmodifiableListView) return _discipleCellule;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_discipleCellule);
+}
+
+@override final  String id;
+@override final  String formAdministrationIsSubmit;
+@override final  String formAdministrationSubmitDate;
+// required String nombreBaptiser,
+@override final  RequestHumaneSectionAssistanceResponse assistanceNonBaptiser;
+@override final  RequestHumaneSectionAssistanceResponse assistanceNouveau;
+@override final  RequestHumaneSectionAssistanceResponse assistanceInviter;
+@override final  RequestAuherResponse assistanceCellule;
+// required String id,
+@override final  String formAssistanceIsSubmit;
+@override final  String formAssistanceSubmitDate;
+ final  List<RequestSuggestionResponse> _visiteMenbre;
+@override List<RequestSuggestionResponse> get visiteMenbre {
+  if (_visiteMenbre is EqualUnmodifiableListView) return _visiteMenbre;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_visiteMenbre);
+}
+
+ final  List<RequestSuggestionResponse> _visiteOuvrier;
+@override List<RequestSuggestionResponse> get visiteOuvrier {
+  if (_visiteOuvrier is EqualUnmodifiableListView) return _visiteOuvrier;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_visiteOuvrier);
+}
+
+@override final  String dateActivitySubmited;
+@override final  String formActivityIsSubmit;
+@override final  String formActivitySubmitDate;
+ final  List<RequestHumaneSectionActivityResponse> _suggestions;
+@override List<RequestHumaneSectionActivityResponse> get suggestions {
+  if (_suggestions is EqualUnmodifiableListView) return _suggestions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_suggestions);
+}
+
+@override final  String faisAssignaler;
+@override final  String ouvrierSpritualLive;
+@override final  String formSuggestionIsSubmit;
+@override final  String formSuggestionSubmitDate;
+
+/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RapportCelluleResponseCopyWith<_RapportCelluleResponse> get copyWith => __$RapportCelluleResponseCopyWithImpl<_RapportCelluleResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RapportCelluleResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleResponse&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other._discipleCellule, _discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate)&&(identical(other.assistanceNonBaptiser, assistanceNonBaptiser) || other.assistanceNonBaptiser == assistanceNonBaptiser)&&(identical(other.assistanceNouveau, assistanceNouveau) || other.assistanceNouveau == assistanceNouveau)&&(identical(other.assistanceInviter, assistanceInviter) || other.assistanceInviter == assistanceInviter)&&(identical(other.assistanceCellule, assistanceCellule) || other.assistanceCellule == assistanceCellule)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate)&&const DeepCollectionEquality().equals(other._visiteMenbre, _visiteMenbre)&&const DeepCollectionEquality().equals(other._visiteOuvrier, _visiteOuvrier)&&(identical(other.dateActivitySubmited, dateActivitySubmited) || other.dateActivitySubmited == dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,responsableCelluleId,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(_discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate,assistanceNonBaptiser,assistanceNouveau,assistanceInviter,assistanceCellule,formAssistanceIsSubmit,formAssistanceSubmitDate,const DeepCollectionEquality().hash(_visiteMenbre),const DeepCollectionEquality().hash(_visiteOuvrier),dateActivitySubmited,formActivityIsSubmit,formActivitySubmitDate,const DeepCollectionEquality().hash(_suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate]);
+
+@override
+String toString() {
+  return 'RapportCelluleResponse(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, responsableCelluleId: $responsableCelluleId, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate, visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RapportCelluleResponseCopyWith<$Res> implements $RapportCelluleResponseCopyWith<$Res> {
+  factory _$RapportCelluleResponseCopyWith(_RapportCelluleResponse value, $Res Function(_RapportCelluleResponse) _then) = __$RapportCelluleResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String responsableCelluleId, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser, List<DiscipleCellule> discipleCellule, String id, String formAdministrationIsSubmit, String formAdministrationSubmitDate, RequestHumaneSectionAssistanceResponse assistanceNonBaptiser, RequestHumaneSectionAssistanceResponse assistanceNouveau, RequestHumaneSectionAssistanceResponse assistanceInviter, RequestAuherResponse assistanceCellule, String formAssistanceIsSubmit, String formAssistanceSubmitDate, List<RequestSuggestionResponse> visiteMenbre, List<RequestSuggestionResponse> visiteOuvrier, String dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, List<RequestHumaneSectionActivityResponse> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate
+});
+
+
+@override $RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNonBaptiser;@override $RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNouveau;@override $RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceInviter;@override $RequestAuherResponseCopyWith<$Res> get assistanceCellule;
+
+}
+/// @nodoc
+class __$RapportCelluleResponseCopyWithImpl<$Res>
+    implements _$RapportCelluleResponseCopyWith<$Res> {
+  __$RapportCelluleResponseCopyWithImpl(this._self, this._then);
+
+  final _RapportCelluleResponse _self;
+  final $Res Function(_RapportCelluleResponse) _then;
+
+/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? responsableCelluleId = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCellule = null,Object? id = null,Object? formAdministrationIsSubmit = null,Object? formAdministrationSubmitDate = null,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,}) {
+  return _then(_RapportCelluleResponse(
+codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
+as String,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
+as String,contactRespoZone: null == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
+as String,codeSecteur: null == codeSecteur ? _self.codeSecteur : codeSecteur // ignore: cast_nullable_to_non_nullable
+as String,responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String,fullNameRespoSecteur: null == fullNameRespoSecteur ? _self.fullNameRespoSecteur : fullNameRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String,contactRespoSecteur: null == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String,codeCellule: null == codeCellule ? _self.codeCellule : codeCellule // ignore: cast_nullable_to_non_nullable
+as String,fullNameRespoCellule: null == fullNameRespoCellule ? _self.fullNameRespoCellule : fullNameRespoCellule // ignore: cast_nullable_to_non_nullable
+as String,contactRespoCellule: null == contactRespoCellule ? _self.contactRespoCellule : contactRespoCellule // ignore: cast_nullable_to_non_nullable
+as String,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
+as String,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
+as String,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
+as String,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as String,discipleCellule: null == discipleCellule ? _self._discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
+as List<DiscipleCellule>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationIsSubmit: null == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formAdministrationSubmitDate: null == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistanceResponse,assistanceNouveau: null == assistanceNouveau ? _self.assistanceNouveau : assistanceNouveau // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistanceResponse,assistanceInviter: null == assistanceInviter ? _self.assistanceInviter : assistanceInviter // ignore: cast_nullable_to_non_nullable
+as RequestHumaneSectionAssistanceResponse,assistanceCellule: null == assistanceCellule ? _self.assistanceCellule : assistanceCellule // ignore: cast_nullable_to_non_nullable
+as RequestAuherResponse,formAssistanceIsSubmit: null == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formAssistanceSubmitDate: null == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,visiteMenbre: null == visiteMenbre ? _self._visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as List<RequestSuggestionResponse>,visiteOuvrier: null == visiteOuvrier ? _self._visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
+as List<RequestSuggestionResponse>,dateActivitySubmited: null == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
+as String,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String,suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<RequestHumaneSectionActivityResponse>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as String,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
+as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNonBaptiser {
+  
+  return $RequestHumaneSectionAssistanceResponseCopyWith<$Res>(_self.assistanceNonBaptiser, (value) {
+    return _then(_self.copyWith(assistanceNonBaptiser: value));
+  });
+}/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceNouveau {
+  
+  return $RequestHumaneSectionAssistanceResponseCopyWith<$Res>(_self.assistanceNouveau, (value) {
+    return _then(_self.copyWith(assistanceNouveau: value));
+  });
+}/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<$Res> get assistanceInviter {
+  
+  return $RequestHumaneSectionAssistanceResponseCopyWith<$Res>(_self.assistanceInviter, (value) {
+    return _then(_self.copyWith(assistanceInviter: value));
+  });
+}/// Create a copy of RapportCelluleResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RequestAuherResponseCopyWith<$Res> get assistanceCellule {
+  
+  return $RequestAuherResponseCopyWith<$Res>(_self.assistanceCellule, (value) {
+    return _then(_self.copyWith(assistanceCellule: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$RequestAuherResponse {
+
+ String get libelle; String get formationNewDFB; String get formationNewBaptDFD; String get visiteMenbre; String get visiteDisciple; String get nbTravailleurs; String get nbEleveAndEtudiants; String get nbOuvrierEM; String get nbOuvrierAutreDepatementDirigeantEM; String get nbFormationNiveau2; String get ngAgendaEM; String get nbDecisionnaires; String get id; int get count;
+/// Create a copy of RequestAuherResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestAuherResponseCopyWith<RequestAuherResponse> get copyWith => _$RequestAuherResponseCopyWithImpl<RequestAuherResponse>(this as RequestAuherResponse, _$identity);
+
+  /// Serializes this RequestAuherResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuherResponse&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.formationNewDFB, formationNewDFB) || other.formationNewDFB == formationNewDFB)&&(identical(other.formationNewBaptDFD, formationNewBaptDFD) || other.formationNewBaptDFD == formationNewBaptDFD)&&(identical(other.visiteMenbre, visiteMenbre) || other.visiteMenbre == visiteMenbre)&&(identical(other.visiteDisciple, visiteDisciple) || other.visiteDisciple == visiteDisciple)&&(identical(other.nbTravailleurs, nbTravailleurs) || other.nbTravailleurs == nbTravailleurs)&&(identical(other.nbEleveAndEtudiants, nbEleveAndEtudiants) || other.nbEleveAndEtudiants == nbEleveAndEtudiants)&&(identical(other.nbOuvrierEM, nbOuvrierEM) || other.nbOuvrierEM == nbOuvrierEM)&&(identical(other.nbOuvrierAutreDepatementDirigeantEM, nbOuvrierAutreDepatementDirigeantEM) || other.nbOuvrierAutreDepatementDirigeantEM == nbOuvrierAutreDepatementDirigeantEM)&&(identical(other.nbFormationNiveau2, nbFormationNiveau2) || other.nbFormationNiveau2 == nbFormationNiveau2)&&(identical(other.ngAgendaEM, ngAgendaEM) || other.ngAgendaEM == ngAgendaEM)&&(identical(other.nbDecisionnaires, nbDecisionnaires) || other.nbDecisionnaires == nbDecisionnaires)&&(identical(other.id, id) || other.id == id)&&(identical(other.count, count) || other.count == count));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,libelle,formationNewDFB,formationNewBaptDFD,visiteMenbre,visiteDisciple,nbTravailleurs,nbEleveAndEtudiants,nbOuvrierEM,nbOuvrierAutreDepatementDirigeantEM,nbFormationNiveau2,ngAgendaEM,nbDecisionnaires,id,count);
+
+@override
+String toString() {
+  return 'RequestAuherResponse(libelle: $libelle, formationNewDFB: $formationNewDFB, formationNewBaptDFD: $formationNewBaptDFD, visiteMenbre: $visiteMenbre, visiteDisciple: $visiteDisciple, nbTravailleurs: $nbTravailleurs, nbEleveAndEtudiants: $nbEleveAndEtudiants, nbOuvrierEM: $nbOuvrierEM, nbOuvrierAutreDepatementDirigeantEM: $nbOuvrierAutreDepatementDirigeantEM, nbFormationNiveau2: $nbFormationNiveau2, ngAgendaEM: $ngAgendaEM, nbDecisionnaires: $nbDecisionnaires, id: $id, count: $count)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestAuherResponseCopyWith<$Res>  {
+  factory $RequestAuherResponseCopyWith(RequestAuherResponse value, $Res Function(RequestAuherResponse) _then) = _$RequestAuherResponseCopyWithImpl;
+@useResult
+$Res call({
+ String libelle, String formationNewDFB, String formationNewBaptDFD, String visiteMenbre, String visiteDisciple, String nbTravailleurs, String nbEleveAndEtudiants, String nbOuvrierEM, String nbOuvrierAutreDepatementDirigeantEM, String nbFormationNiveau2, String ngAgendaEM, String nbDecisionnaires, String id, int count
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestAuherResponseCopyWithImpl<$Res>
+    implements $RequestAuherResponseCopyWith<$Res> {
+  _$RequestAuherResponseCopyWithImpl(this._self, this._then);
+
+  final RequestAuherResponse _self;
+  final $Res Function(RequestAuherResponse) _then;
+
+/// Create a copy of RequestAuherResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? libelle = null,Object? formationNewDFB = null,Object? formationNewBaptDFD = null,Object? visiteMenbre = null,Object? visiteDisciple = null,Object? nbTravailleurs = null,Object? nbEleveAndEtudiants = null,Object? nbOuvrierEM = null,Object? nbOuvrierAutreDepatementDirigeantEM = null,Object? nbFormationNiveau2 = null,Object? ngAgendaEM = null,Object? nbDecisionnaires = null,Object? id = null,Object? count = null,}) {
+  return _then(_self.copyWith(
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,formationNewDFB: null == formationNewDFB ? _self.formationNewDFB : formationNewDFB // ignore: cast_nullable_to_non_nullable
+as String,formationNewBaptDFD: null == formationNewBaptDFD ? _self.formationNewBaptDFD : formationNewBaptDFD // ignore: cast_nullable_to_non_nullable
+as String,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as String,visiteDisciple: null == visiteDisciple ? _self.visiteDisciple : visiteDisciple // ignore: cast_nullable_to_non_nullable
+as String,nbTravailleurs: null == nbTravailleurs ? _self.nbTravailleurs : nbTravailleurs // ignore: cast_nullable_to_non_nullable
+as String,nbEleveAndEtudiants: null == nbEleveAndEtudiants ? _self.nbEleveAndEtudiants : nbEleveAndEtudiants // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierEM: null == nbOuvrierEM ? _self.nbOuvrierEM : nbOuvrierEM // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierAutreDepatementDirigeantEM: null == nbOuvrierAutreDepatementDirigeantEM ? _self.nbOuvrierAutreDepatementDirigeantEM : nbOuvrierAutreDepatementDirigeantEM // ignore: cast_nullable_to_non_nullable
+as String,nbFormationNiveau2: null == nbFormationNiveau2 ? _self.nbFormationNiveau2 : nbFormationNiveau2 // ignore: cast_nullable_to_non_nullable
+as String,ngAgendaEM: null == ngAgendaEM ? _self.ngAgendaEM : ngAgendaEM // ignore: cast_nullable_to_non_nullable
+as String,nbDecisionnaires: null == nbDecisionnaires ? _self.nbDecisionnaires : nbDecisionnaires // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestAuherResponse].
+extension RequestAuherResponsePatterns on RequestAuherResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestAuherResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestAuherResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestAuherResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuherResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestAuherResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuherResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String libelle,  String formationNewDFB,  String formationNewBaptDFD,  String visiteMenbre,  String visiteDisciple,  String nbTravailleurs,  String nbEleveAndEtudiants,  String nbOuvrierEM,  String nbOuvrierAutreDepatementDirigeantEM,  String nbFormationNiveau2,  String ngAgendaEM,  String nbDecisionnaires,  String id,  int count)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestAuherResponse() when $default != null:
+return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_that.visiteMenbre,_that.visiteDisciple,_that.nbTravailleurs,_that.nbEleveAndEtudiants,_that.nbOuvrierEM,_that.nbOuvrierAutreDepatementDirigeantEM,_that.nbFormationNiveau2,_that.ngAgendaEM,_that.nbDecisionnaires,_that.id,_that.count);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String libelle,  String formationNewDFB,  String formationNewBaptDFD,  String visiteMenbre,  String visiteDisciple,  String nbTravailleurs,  String nbEleveAndEtudiants,  String nbOuvrierEM,  String nbOuvrierAutreDepatementDirigeantEM,  String nbFormationNiveau2,  String ngAgendaEM,  String nbDecisionnaires,  String id,  int count)  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuherResponse():
+return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_that.visiteMenbre,_that.visiteDisciple,_that.nbTravailleurs,_that.nbEleveAndEtudiants,_that.nbOuvrierEM,_that.nbOuvrierAutreDepatementDirigeantEM,_that.nbFormationNiveau2,_that.ngAgendaEM,_that.nbDecisionnaires,_that.id,_that.count);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String libelle,  String formationNewDFB,  String formationNewBaptDFD,  String visiteMenbre,  String visiteDisciple,  String nbTravailleurs,  String nbEleveAndEtudiants,  String nbOuvrierEM,  String nbOuvrierAutreDepatementDirigeantEM,  String nbFormationNiveau2,  String ngAgendaEM,  String nbDecisionnaires,  String id,  int count)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuherResponse() when $default != null:
+return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_that.visiteMenbre,_that.visiteDisciple,_that.nbTravailleurs,_that.nbEleveAndEtudiants,_that.nbOuvrierEM,_that.nbOuvrierAutreDepatementDirigeantEM,_that.nbFormationNiveau2,_that.ngAgendaEM,_that.nbDecisionnaires,_that.id,_that.count);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestAuherResponse implements RequestAuherResponse {
+   _RequestAuherResponse({required this.libelle, required this.formationNewDFB, required this.formationNewBaptDFD, required this.visiteMenbre, required this.visiteDisciple, required this.nbTravailleurs, required this.nbEleveAndEtudiants, required this.nbOuvrierEM, required this.nbOuvrierAutreDepatementDirigeantEM, required this.nbFormationNiveau2, required this.ngAgendaEM, required this.nbDecisionnaires, required this.id, required this.count});
+  factory _RequestAuherResponse.fromJson(Map<String, dynamic> json) => _$RequestAuherResponseFromJson(json);
+
+@override final  String libelle;
+@override final  String formationNewDFB;
+@override final  String formationNewBaptDFD;
+@override final  String visiteMenbre;
+@override final  String visiteDisciple;
+@override final  String nbTravailleurs;
+@override final  String nbEleveAndEtudiants;
+@override final  String nbOuvrierEM;
+@override final  String nbOuvrierAutreDepatementDirigeantEM;
+@override final  String nbFormationNiveau2;
+@override final  String ngAgendaEM;
+@override final  String nbDecisionnaires;
+@override final  String id;
+@override final  int count;
+
+/// Create a copy of RequestAuherResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestAuherResponseCopyWith<_RequestAuherResponse> get copyWith => __$RequestAuherResponseCopyWithImpl<_RequestAuherResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestAuherResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuherResponse&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.formationNewDFB, formationNewDFB) || other.formationNewDFB == formationNewDFB)&&(identical(other.formationNewBaptDFD, formationNewBaptDFD) || other.formationNewBaptDFD == formationNewBaptDFD)&&(identical(other.visiteMenbre, visiteMenbre) || other.visiteMenbre == visiteMenbre)&&(identical(other.visiteDisciple, visiteDisciple) || other.visiteDisciple == visiteDisciple)&&(identical(other.nbTravailleurs, nbTravailleurs) || other.nbTravailleurs == nbTravailleurs)&&(identical(other.nbEleveAndEtudiants, nbEleveAndEtudiants) || other.nbEleveAndEtudiants == nbEleveAndEtudiants)&&(identical(other.nbOuvrierEM, nbOuvrierEM) || other.nbOuvrierEM == nbOuvrierEM)&&(identical(other.nbOuvrierAutreDepatementDirigeantEM, nbOuvrierAutreDepatementDirigeantEM) || other.nbOuvrierAutreDepatementDirigeantEM == nbOuvrierAutreDepatementDirigeantEM)&&(identical(other.nbFormationNiveau2, nbFormationNiveau2) || other.nbFormationNiveau2 == nbFormationNiveau2)&&(identical(other.ngAgendaEM, ngAgendaEM) || other.ngAgendaEM == ngAgendaEM)&&(identical(other.nbDecisionnaires, nbDecisionnaires) || other.nbDecisionnaires == nbDecisionnaires)&&(identical(other.id, id) || other.id == id)&&(identical(other.count, count) || other.count == count));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,libelle,formationNewDFB,formationNewBaptDFD,visiteMenbre,visiteDisciple,nbTravailleurs,nbEleveAndEtudiants,nbOuvrierEM,nbOuvrierAutreDepatementDirigeantEM,nbFormationNiveau2,ngAgendaEM,nbDecisionnaires,id,count);
+
+@override
+String toString() {
+  return 'RequestAuherResponse(libelle: $libelle, formationNewDFB: $formationNewDFB, formationNewBaptDFD: $formationNewBaptDFD, visiteMenbre: $visiteMenbre, visiteDisciple: $visiteDisciple, nbTravailleurs: $nbTravailleurs, nbEleveAndEtudiants: $nbEleveAndEtudiants, nbOuvrierEM: $nbOuvrierEM, nbOuvrierAutreDepatementDirigeantEM: $nbOuvrierAutreDepatementDirigeantEM, nbFormationNiveau2: $nbFormationNiveau2, ngAgendaEM: $ngAgendaEM, nbDecisionnaires: $nbDecisionnaires, id: $id, count: $count)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestAuherResponseCopyWith<$Res> implements $RequestAuherResponseCopyWith<$Res> {
+  factory _$RequestAuherResponseCopyWith(_RequestAuherResponse value, $Res Function(_RequestAuherResponse) _then) = __$RequestAuherResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String libelle, String formationNewDFB, String formationNewBaptDFD, String visiteMenbre, String visiteDisciple, String nbTravailleurs, String nbEleveAndEtudiants, String nbOuvrierEM, String nbOuvrierAutreDepatementDirigeantEM, String nbFormationNiveau2, String ngAgendaEM, String nbDecisionnaires, String id, int count
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestAuherResponseCopyWithImpl<$Res>
+    implements _$RequestAuherResponseCopyWith<$Res> {
+  __$RequestAuherResponseCopyWithImpl(this._self, this._then);
+
+  final _RequestAuherResponse _self;
+  final $Res Function(_RequestAuherResponse) _then;
+
+/// Create a copy of RequestAuherResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? libelle = null,Object? formationNewDFB = null,Object? formationNewBaptDFD = null,Object? visiteMenbre = null,Object? visiteDisciple = null,Object? nbTravailleurs = null,Object? nbEleveAndEtudiants = null,Object? nbOuvrierEM = null,Object? nbOuvrierAutreDepatementDirigeantEM = null,Object? nbFormationNiveau2 = null,Object? ngAgendaEM = null,Object? nbDecisionnaires = null,Object? id = null,Object? count = null,}) {
+  return _then(_RequestAuherResponse(
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,formationNewDFB: null == formationNewDFB ? _self.formationNewDFB : formationNewDFB // ignore: cast_nullable_to_non_nullable
+as String,formationNewBaptDFD: null == formationNewBaptDFD ? _self.formationNewBaptDFD : formationNewBaptDFD // ignore: cast_nullable_to_non_nullable
+as String,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as String,visiteDisciple: null == visiteDisciple ? _self.visiteDisciple : visiteDisciple // ignore: cast_nullable_to_non_nullable
+as String,nbTravailleurs: null == nbTravailleurs ? _self.nbTravailleurs : nbTravailleurs // ignore: cast_nullable_to_non_nullable
+as String,nbEleveAndEtudiants: null == nbEleveAndEtudiants ? _self.nbEleveAndEtudiants : nbEleveAndEtudiants // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierEM: null == nbOuvrierEM ? _self.nbOuvrierEM : nbOuvrierEM // ignore: cast_nullable_to_non_nullable
+as String,nbOuvrierAutreDepatementDirigeantEM: null == nbOuvrierAutreDepatementDirigeantEM ? _self.nbOuvrierAutreDepatementDirigeantEM : nbOuvrierAutreDepatementDirigeantEM // ignore: cast_nullable_to_non_nullable
+as String,nbFormationNiveau2: null == nbFormationNiveau2 ? _self.nbFormationNiveau2 : nbFormationNiveau2 // ignore: cast_nullable_to_non_nullable
+as String,ngAgendaEM: null == ngAgendaEM ? _self.ngAgendaEM : ngAgendaEM // ignore: cast_nullable_to_non_nullable
+as String,nbDecisionnaires: null == nbDecisionnaires ? _self.nbDecisionnaires : nbDecisionnaires // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,count: null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestHumaneSectionAssistanceResponse {
+
+ String get libelle; String get toutPetit; String get juniors; String get cadets; int get total;
+/// Create a copy of RequestHumaneSectionAssistanceResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionAssistanceResponseCopyWith<RequestHumaneSectionAssistanceResponse> get copyWith => _$RequestHumaneSectionAssistanceResponseCopyWithImpl<RequestHumaneSectionAssistanceResponse>(this as RequestHumaneSectionAssistanceResponse, _$identity);
+
+  /// Serializes this RequestHumaneSectionAssistanceResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionAssistanceResponse&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.toutPetit, toutPetit) || other.toutPetit == toutPetit)&&(identical(other.juniors, juniors) || other.juniors == juniors)&&(identical(other.cadets, cadets) || other.cadets == cadets)&&(identical(other.total, total) || other.total == total));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,libelle,toutPetit,juniors,cadets,total);
+
+@override
+String toString() {
+  return 'RequestHumaneSectionAssistanceResponse(libelle: $libelle, toutPetit: $toutPetit, juniors: $juniors, cadets: $cadets, total: $total)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestHumaneSectionAssistanceResponseCopyWith<$Res>  {
+  factory $RequestHumaneSectionAssistanceResponseCopyWith(RequestHumaneSectionAssistanceResponse value, $Res Function(RequestHumaneSectionAssistanceResponse) _then) = _$RequestHumaneSectionAssistanceResponseCopyWithImpl;
+@useResult
+$Res call({
+ String libelle, String toutPetit, String juniors, String cadets, int total
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestHumaneSectionAssistanceResponseCopyWithImpl<$Res>
+    implements $RequestHumaneSectionAssistanceResponseCopyWith<$Res> {
+  _$RequestHumaneSectionAssistanceResponseCopyWithImpl(this._self, this._then);
+
+  final RequestHumaneSectionAssistanceResponse _self;
+  final $Res Function(RequestHumaneSectionAssistanceResponse) _then;
+
+/// Create a copy of RequestHumaneSectionAssistanceResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? libelle = null,Object? toutPetit = null,Object? juniors = null,Object? cadets = null,Object? total = null,}) {
+  return _then(_self.copyWith(
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,toutPetit: null == toutPetit ? _self.toutPetit : toutPetit // ignore: cast_nullable_to_non_nullable
+as String,juniors: null == juniors ? _self.juniors : juniors // ignore: cast_nullable_to_non_nullable
+as String,cadets: null == cadets ? _self.cadets : cadets // ignore: cast_nullable_to_non_nullable
+as String,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestHumaneSectionAssistanceResponse].
+extension RequestHumaneSectionAssistanceResponsePatterns on RequestHumaneSectionAssistanceResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestHumaneSectionAssistanceResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionAssistanceResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestHumaneSectionAssistanceResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionAssistanceResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestHumaneSectionAssistanceResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionAssistanceResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String libelle,  String toutPetit,  String juniors,  String cadets,  int total)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionAssistanceResponse() when $default != null:
+return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.total);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String libelle,  String toutPetit,  String juniors,  String cadets,  int total)  $default,) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionAssistanceResponse():
+return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.total);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String libelle,  String toutPetit,  String juniors,  String cadets,  int total)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionAssistanceResponse() when $default != null:
+return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.total);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestHumaneSectionAssistanceResponse implements RequestHumaneSectionAssistanceResponse {
+   _RequestHumaneSectionAssistanceResponse({required this.libelle, required this.toutPetit, required this.juniors, required this.cadets, required this.total});
+  factory _RequestHumaneSectionAssistanceResponse.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionAssistanceResponseFromJson(json);
+
+@override final  String libelle;
+@override final  String toutPetit;
+@override final  String juniors;
+@override final  String cadets;
+@override final  int total;
+
+/// Create a copy of RequestHumaneSectionAssistanceResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestHumaneSectionAssistanceResponseCopyWith<_RequestHumaneSectionAssistanceResponse> get copyWith => __$RequestHumaneSectionAssistanceResponseCopyWithImpl<_RequestHumaneSectionAssistanceResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestHumaneSectionAssistanceResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionAssistanceResponse&&(identical(other.libelle, libelle) || other.libelle == libelle)&&(identical(other.toutPetit, toutPetit) || other.toutPetit == toutPetit)&&(identical(other.juniors, juniors) || other.juniors == juniors)&&(identical(other.cadets, cadets) || other.cadets == cadets)&&(identical(other.total, total) || other.total == total));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,libelle,toutPetit,juniors,cadets,total);
+
+@override
+String toString() {
+  return 'RequestHumaneSectionAssistanceResponse(libelle: $libelle, toutPetit: $toutPetit, juniors: $juniors, cadets: $cadets, total: $total)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestHumaneSectionAssistanceResponseCopyWith<$Res> implements $RequestHumaneSectionAssistanceResponseCopyWith<$Res> {
+  factory _$RequestHumaneSectionAssistanceResponseCopyWith(_RequestHumaneSectionAssistanceResponse value, $Res Function(_RequestHumaneSectionAssistanceResponse) _then) = __$RequestHumaneSectionAssistanceResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String libelle, String toutPetit, String juniors, String cadets, int total
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestHumaneSectionAssistanceResponseCopyWithImpl<$Res>
+    implements _$RequestHumaneSectionAssistanceResponseCopyWith<$Res> {
+  __$RequestHumaneSectionAssistanceResponseCopyWithImpl(this._self, this._then);
+
+  final _RequestHumaneSectionAssistanceResponse _self;
+  final $Res Function(_RequestHumaneSectionAssistanceResponse) _then;
+
+/// Create a copy of RequestHumaneSectionAssistanceResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? libelle = null,Object? toutPetit = null,Object? juniors = null,Object? cadets = null,Object? total = null,}) {
+  return _then(_RequestHumaneSectionAssistanceResponse(
+libelle: null == libelle ? _self.libelle : libelle // ignore: cast_nullable_to_non_nullable
+as String,toutPetit: null == toutPetit ? _self.toutPetit : toutPetit // ignore: cast_nullable_to_non_nullable
+as String,juniors: null == juniors ? _self.juniors : juniors // ignore: cast_nullable_to_non_nullable
+as String,cadets: null == cadets ? _self.cadets : cadets // ignore: cast_nullable_to_non_nullable
+as String,total: null == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestHumaneSectionActivityResponse {
+
+ String get nom; String get probleme; String get recommandation;
+/// Create a copy of RequestHumaneSectionActivityResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionActivityResponseCopyWith<RequestHumaneSectionActivityResponse> get copyWith => _$RequestHumaneSectionActivityResponseCopyWithImpl<RequestHumaneSectionActivityResponse>(this as RequestHumaneSectionActivityResponse, _$identity);
+
+  /// Serializes this RequestHumaneSectionActivityResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionActivityResponse&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,nom,probleme,recommandation);
+
+@override
+String toString() {
+  return 'RequestHumaneSectionActivityResponse(nom: $nom, probleme: $probleme, recommandation: $recommandation)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestHumaneSectionActivityResponseCopyWith<$Res>  {
+  factory $RequestHumaneSectionActivityResponseCopyWith(RequestHumaneSectionActivityResponse value, $Res Function(RequestHumaneSectionActivityResponse) _then) = _$RequestHumaneSectionActivityResponseCopyWithImpl;
+@useResult
+$Res call({
+ String nom, String probleme, String recommandation
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestHumaneSectionActivityResponseCopyWithImpl<$Res>
+    implements $RequestHumaneSectionActivityResponseCopyWith<$Res> {
+  _$RequestHumaneSectionActivityResponseCopyWithImpl(this._self, this._then);
+
+  final RequestHumaneSectionActivityResponse _self;
+  final $Res Function(RequestHumaneSectionActivityResponse) _then;
+
+/// Create a copy of RequestHumaneSectionActivityResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? nom = null,Object? probleme = null,Object? recommandation = null,}) {
+  return _then(_self.copyWith(
+nom: null == nom ? _self.nom : nom // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestHumaneSectionActivityResponse].
+extension RequestHumaneSectionActivityResponsePatterns on RequestHumaneSectionActivityResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestHumaneSectionActivityResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestHumaneSectionActivityResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestHumaneSectionActivityResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String nom,  String probleme,  String recommandation)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponse() when $default != null:
+return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String nom,  String probleme,  String recommandation)  $default,) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponse():
+return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String nom,  String probleme,  String recommandation)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponse() when $default != null:
+return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestHumaneSectionActivityResponse implements RequestHumaneSectionActivityResponse {
+   _RequestHumaneSectionActivityResponse({required this.nom, required this.probleme, required this.recommandation});
+  factory _RequestHumaneSectionActivityResponse.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionActivityResponseFromJson(json);
+
+@override final  String nom;
+@override final  String probleme;
+@override final  String recommandation;
+
+/// Create a copy of RequestHumaneSectionActivityResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestHumaneSectionActivityResponseCopyWith<_RequestHumaneSectionActivityResponse> get copyWith => __$RequestHumaneSectionActivityResponseCopyWithImpl<_RequestHumaneSectionActivityResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestHumaneSectionActivityResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionActivityResponse&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,nom,probleme,recommandation);
+
+@override
+String toString() {
+  return 'RequestHumaneSectionActivityResponse(nom: $nom, probleme: $probleme, recommandation: $recommandation)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestHumaneSectionActivityResponseCopyWith<$Res> implements $RequestHumaneSectionActivityResponseCopyWith<$Res> {
+  factory _$RequestHumaneSectionActivityResponseCopyWith(_RequestHumaneSectionActivityResponse value, $Res Function(_RequestHumaneSectionActivityResponse) _then) = __$RequestHumaneSectionActivityResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String nom, String probleme, String recommandation
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestHumaneSectionActivityResponseCopyWithImpl<$Res>
+    implements _$RequestHumaneSectionActivityResponseCopyWith<$Res> {
+  __$RequestHumaneSectionActivityResponseCopyWithImpl(this._self, this._then);
+
+  final _RequestHumaneSectionActivityResponse _self;
+  final $Res Function(_RequestHumaneSectionActivityResponse) _then;
+
+/// Create a copy of RequestHumaneSectionActivityResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? nom = null,Object? probleme = null,Object? recommandation = null,}) {
+  return _then(_RequestHumaneSectionActivityResponse(
+nom: null == nom ? _self.nom : nom // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$RequestSuggestionResponse {
+
+ String get fullname; String get recommandation; String get isDisciple; String get probleme;
+/// Create a copy of RequestSuggestionResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestSuggestionResponseCopyWith<RequestSuggestionResponse> get copyWith => _$RequestSuggestionResponseCopyWithImpl<RequestSuggestionResponse>(this as RequestSuggestionResponse, _$identity);
+
+  /// Serializes this RequestSuggestionResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestSuggestionResponse&&(identical(other.fullname, fullname) || other.fullname == fullname)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation)&&(identical(other.isDisciple, isDisciple) || other.isDisciple == isDisciple)&&(identical(other.probleme, probleme) || other.probleme == probleme));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fullname,recommandation,isDisciple,probleme);
+
+@override
+String toString() {
+  return 'RequestSuggestionResponse(fullname: $fullname, recommandation: $recommandation, isDisciple: $isDisciple, probleme: $probleme)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestSuggestionResponseCopyWith<$Res>  {
+  factory $RequestSuggestionResponseCopyWith(RequestSuggestionResponse value, $Res Function(RequestSuggestionResponse) _then) = _$RequestSuggestionResponseCopyWithImpl;
+@useResult
+$Res call({
+ String fullname, String recommandation, String isDisciple, String probleme
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestSuggestionResponseCopyWithImpl<$Res>
+    implements $RequestSuggestionResponseCopyWith<$Res> {
+  _$RequestSuggestionResponseCopyWithImpl(this._self, this._then);
+
+  final RequestSuggestionResponse _self;
+  final $Res Function(RequestSuggestionResponse) _then;
+
+/// Create a copy of RequestSuggestionResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? fullname = null,Object? recommandation = null,Object? isDisciple = null,Object? probleme = null,}) {
+  return _then(_self.copyWith(
+fullname: null == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,isDisciple: null == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestSuggestionResponse].
+extension RequestSuggestionResponsePatterns on RequestSuggestionResponse {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestSuggestionResponse value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestSuggestionResponse() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestSuggestionResponse value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestSuggestionResponse():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestSuggestionResponse value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestSuggestionResponse() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullname,  String recommandation,  String isDisciple,  String probleme)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestSuggestionResponse() when $default != null:
+return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullname,  String recommandation,  String isDisciple,  String probleme)  $default,) {final _that = this;
+switch (_that) {
+case _RequestSuggestionResponse():
+return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullname,  String recommandation,  String isDisciple,  String probleme)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestSuggestionResponse() when $default != null:
+return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestSuggestionResponse implements RequestSuggestionResponse {
+   _RequestSuggestionResponse({required this.fullname, required this.recommandation, required this.isDisciple, required this.probleme});
+  factory _RequestSuggestionResponse.fromJson(Map<String, dynamic> json) => _$RequestSuggestionResponseFromJson(json);
+
+@override final  String fullname;
+@override final  String recommandation;
+@override final  String isDisciple;
+@override final  String probleme;
+
+/// Create a copy of RequestSuggestionResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestSuggestionResponseCopyWith<_RequestSuggestionResponse> get copyWith => __$RequestSuggestionResponseCopyWithImpl<_RequestSuggestionResponse>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestSuggestionResponseToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestSuggestionResponse&&(identical(other.fullname, fullname) || other.fullname == fullname)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation)&&(identical(other.isDisciple, isDisciple) || other.isDisciple == isDisciple)&&(identical(other.probleme, probleme) || other.probleme == probleme));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,fullname,recommandation,isDisciple,probleme);
+
+@override
+String toString() {
+  return 'RequestSuggestionResponse(fullname: $fullname, recommandation: $recommandation, isDisciple: $isDisciple, probleme: $probleme)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestSuggestionResponseCopyWith<$Res> implements $RequestSuggestionResponseCopyWith<$Res> {
+  factory _$RequestSuggestionResponseCopyWith(_RequestSuggestionResponse value, $Res Function(_RequestSuggestionResponse) _then) = __$RequestSuggestionResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String fullname, String recommandation, String isDisciple, String probleme
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestSuggestionResponseCopyWithImpl<$Res>
+    implements _$RequestSuggestionResponseCopyWith<$Res> {
+  __$RequestSuggestionResponseCopyWithImpl(this._self, this._then);
+
+  final _RequestSuggestionResponse _self;
+  final $Res Function(_RequestSuggestionResponse) _then;
+
+/// Create a copy of RequestSuggestionResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? fullname = null,Object? recommandation = null,Object? isDisciple = null,Object? probleme = null,}) {
+  return _then(_RequestSuggestionResponse(
+fullname: null == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,isDisciple: null == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
 as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
 as String,
   ));
