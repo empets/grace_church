@@ -3,8 +3,10 @@ import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
     hide EmptyRequest;
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 abstract class DomaineServiceRepository {
+
   Future<FirebaseResult<ProfileResponseModel>> getProfile(
     EmptyRequest notParms,
   );
@@ -32,6 +34,8 @@ abstract class DomaineServiceRepository {
   Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params);
   Future<FirebaseResult<String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params);
   Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params);
+
+  Future<FirebaseResult<List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params);
 
 }
 

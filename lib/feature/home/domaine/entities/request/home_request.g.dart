@@ -407,3 +407,13 @@ Map<String, dynamic> _$RequestRapportCelluleSuggestionToJson(
   'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
   'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
 };
+
+_RequestRapportCellule _$RequestRapportCelluleFromJson(
+  Map<String, dynamic> json,
+) => _RequestRapportCellule(
+  responsableCelluleId: json['responsableCelluleId'] as String,
+);
+
+Map<String, dynamic> _$RequestRapportCelluleToJson(
+  _RequestRapportCellule instance,
+) => <String, dynamic>{'responsableCelluleId': instance.responsableCelluleId};

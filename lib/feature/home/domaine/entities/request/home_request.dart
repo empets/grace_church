@@ -282,3 +282,14 @@ abstract class RequestRapportCelluleSuggestion
   factory RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleSuggestionFromJson(json);
 }
+
+
+@freezed
+abstract class RequestRapportCellule
+    with _$RequestRapportCellule {
+  factory RequestRapportCellule({
+    required String responsableCelluleId
+  }) = _RequestRapportCellule;
+  factory RequestRapportCellule.fromJson(Map<String, dynamic> json) =>
+      _$RequestRapportCelluleFromJson(json);
+}

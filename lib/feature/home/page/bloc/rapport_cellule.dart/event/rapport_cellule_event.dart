@@ -87,3 +87,10 @@ class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestio
    factory RapportCelluleRequestSuggestionEvent.submit() = SubmitRapportCelluleRequestSuggestionEvent;
 }
 
+
+@freezed
+class FecthDataEvent with _$FecthDataEvent {
+   factory FecthDataEvent.fetchData() = FetchDataFecthDataEvent;
+   factory FecthDataEvent.fetchDataById(String id) = FetchDataByIdFecthDataEvent;
+
+}

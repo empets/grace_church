@@ -92,4 +92,12 @@ abstract class HomeDomaineRepository {
   //  elle retourne un objet ProfileResponse qui contient le profil de l'utilisateur
   // -------------------------------------------------------------
   Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params);
+
+  // -------------------------------------------------------------
+  //  cette methode permet de recuperer le rapport de la cellule
+  //  elle prend en parametre un objet RequestRapportCellule qui contient les criteres de recherche
+  //  elle retourne une liste de RapportCelluleResponse qui contient les rapport de la cellule
+  // -------------------------------------------------------------
+  Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params);
+
 }

@@ -50,6 +50,8 @@ import '../../feature/home/domaine/usercase/get_list_responsable_cellule_usercas
 import '../../feature/home/domaine/usercase/get_list_secteur.dart' as _i791;
 import '../../feature/home/domaine/usercase/get_list_zone.dart' as _i554;
 import '../../feature/home/domaine/usercase/get_profile_usercase.dart' as _i562;
+import '../../feature/home/domaine/usercase/get_rapport_cellule_usercase.dart'
+    as _i540;
 import '../../feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart'
     as _i716;
 import '../../feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart'
@@ -69,6 +71,8 @@ import '../../feature/home/page/bloc/departement/eglise_maison/get_responsable_s
 import '../../feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart'
     as _i631;
 import '../../feature/home/page/bloc/get_profile/get_profile_bloc.dart' as _i37;
+import '../../feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart'
+    as _i471;
 import 'injection_container.dart' as _i809;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -137,6 +141,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i562.GetProfileUsercase>(
       () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
     );
+    gh.lazySingleton<_i540.GetRapportCelluleUsercase>(
+      () => _i540.GetRapportCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
+    );
     gh.lazySingleton<_i716.SendRapportCelluleStepAdministrationUsercase>(
       () => _i716.SendRapportCelluleStepAdministrationUsercase(
         gh<_i962.HomeDomaineRepository>(),
@@ -181,6 +188,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i256.UpdateProfileUsercase>(
       () => _i256.UpdateProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i471.GetRapportCelluleBloc>(
+      () => _i471.GetRapportCelluleBloc(
+        getRapportCelluleUsercase: gh<_i540.GetRapportCelluleUsercase>(),
+      ),
     );
     gh.lazySingleton<_i308.GetSecteurBloc>(
       () => _i308.GetSecteurBloc(

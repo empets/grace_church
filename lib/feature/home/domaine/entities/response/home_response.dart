@@ -173,7 +173,7 @@ abstract class RapportSuggestion with _$RapportSuggestion {
 
 // --------------------------------
 //
-// Rapport Suggestion Response
+// Rapport Cellule Response
 //
 @freezed
 abstract class RapportCelluleResponse with _$RapportCelluleResponse {

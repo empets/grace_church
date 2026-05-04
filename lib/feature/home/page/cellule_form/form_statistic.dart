@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
@@ -222,6 +223,9 @@ class _FormStatisticState extends State<FormStatistic> {
               ),
             ),
           );
+        }
+        if(state.status.isFailure){
+         AppAlert.showError(context, state.errorMessage ?? "Une erreur est survenue");
         }
       },
       child: Scaffold(

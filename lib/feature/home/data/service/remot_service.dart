@@ -10,6 +10,7 @@ import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/repository_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
     hide EmptyRequest;
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
@@ -98,7 +99,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       }
       return FirebaseError("Aucune notification trouvée");
     } catch (e) {
-      log("🔥 Firebase Notification →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }
@@ -179,7 +179,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           final snapshot = await db.child('notfications').get();
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
-            log("🔥 Firebase Notification N →→→→→→→→→ $data");
             final notifications = data.values.map((e) {
               final notificationItem = Map<String, dynamic>.from(e);
               return NotificationResponseModel.fromJson(notificationItem);
@@ -194,7 +193,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       }
       return FirebaseError("Aucune notification trouvée");
     } catch (e) {
-      log("🔥 Firebase Notification n →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }
@@ -217,15 +215,12 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
               .get();
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
-            log("🔥 Firebase Notification N →→→→→→→→→ $data");
 
-            
             final notifications = data.values.map((e) {
               final notificationItem = Map<String, dynamic>.from(e);
 
               return CelluleResponseModel.fromJson(notificationItem);
             }).toList();
-            log("🔥 Firebase Notification N →→→→→→→→→ $data");
 
             return FirebaseSuccess(
               notifications
@@ -237,10 +232,8 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
         default:
           final snapshot = await db.child('cellule').get();
-            log("🔥 Firebase Notification →→→→→→→→→ ${snapshot.exists}");
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
-             log("🔥 Firebase Notification →→→→→→→→→ ${data}");
 
             final notifications = data.values.map((e) {
               final notificationItem = Map<String, dynamic>.from(e);
@@ -255,7 +248,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           return FirebaseError("Aucune notification trouvée");
       }
     } catch (e) {
-      log("🔥 Firebase Notification →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }
@@ -279,14 +271,14 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       }
       return FirebaseError("Aucune responsables de cellule trouvés");
     } catch (e) {
-      log("🔥 Firebase Responsable Cellule →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }
 
   @override
-  Future<FirebaseResult<List<SecteurModel>>>
-  getListResponsablesSecteurs(RequestSecteur params) async {
+  Future<FirebaseResult<List<SecteurModel>>> getListResponsablesSecteurs(
+    RequestSecteur params,
+  ) async {
     try {
       final snapshot = await db.child('emsecteur').get();
       if (snapshot.exists) {
@@ -296,21 +288,19 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           return SecteurModel.fromJson(notificationItem);
         }).toList();
         return FirebaseSuccess(
-          notifications
-              .map((e) => SecteurModel.fromJson(e.toJson()))
-              .toList(),
+          notifications.map((e) => SecteurModel.fromJson(e.toJson())).toList(),
         );
       }
       return FirebaseError("Aucune responsables de secteur trouvés");
     } catch (e) {
-      log("🔥 Firebase Responsable Secteur →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }
 
   @override
-  Future<FirebaseResult<List<ZoneResponseModel>>>
-  getListResponsablesZones(RequestZone params) async {
+  Future<FirebaseResult<List<ZoneResponseModel>>> getListResponsablesZones(
+    RequestZone params,
+  ) async {
     try {
       final snapshot = await db.child('emzone').get();
       if (snapshot.exists) {
@@ -327,170 +317,91 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       }
       return FirebaseError("Aucune responsables de zone trouvés");
     } catch (e) {
-      log("🔥 Firebase Responsable Zone →→→→→→→→→ ${e}");
       return FirebaseError(e.toString());
     }
   }
-
 
   @override
-  Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(RequestImpliciteConnexion params) async{
-  
+  Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(
+    RequestImpliciteConnexion params,
+  ) async {
     try {
-         final userIdExist = await db
-            .child('menber')
-            .orderByChild('deviceId')
-            .equalTo(params.deviceId)
-            .get();
+      final userIdExist = await db
+          .child('menber')
+          .orderByChild('deviceId')
+          .equalTo(params.deviceId)
+          .get();
 
-         if(userIdExist.exists) { 
-           final data = userIdExist.value as Map<dynamic, dynamic>;
-           final notifications = data.values.map((e) {
-             final notificationItem = Map<String, dynamic>.from(e);
-             return ProfileResponseModel.fromJson(notificationItem);
-           }).toList();
-           return FirebaseSuccess(notifications.first);
-         }
-            log("🤕-------->> user not found");
+      if (userIdExist.exists) {
+        final data = userIdExist.value as Map<dynamic, dynamic>;
+        final notifications = data.values.map((e) {
+          final notificationItem = Map<String, dynamic>.from(e);
+          return ProfileResponseModel.fromJson(notificationItem);
+        }).toList();
+        return FirebaseSuccess(notifications.first);
+      }
 
-         return FirebaseError("L'utilisateur n'existe pas");
-        
-      
+      return FirebaseError("L'utilisateur n'existe pas");
     } catch (e) {
-      log("🔥-------->> $e");
       return FirebaseError(e.toString());
-      
     }
   }
-    
-  
-  
 
-  
-
-
-    @override
+  @override
   Future<FirebaseResult<String>> sendRapportCelluleStepAdministration(
     RequestRapportCelluleAdministration params,
   ) async {
-
-       final shared = await shareData.SharedPreferences.getInstance();
-         final localUserRequestSection = shared.getString('rapport_cellule_key');
-
-
-    try {
-      final request = Request<RequestRapportCelluleAdministration>(
-        data: params.toJson(),
-        user: "",
-        serviceLibelle: 'rapport_cellule',
-      );
-      
-      // 2) Créer une nouvelle entré ou table
-      final ref = db.child('rapport_cellule').push();
-      // 3) Sauvegarder dans Firebase (en convertissant en Map)
-      await ref.set(request.data);
-
-      // // 4) Mettre à jour la clé
-      await updateForKey(
-        db: db,
-        path: 'rapport_cellule',
-        id: ref.key.toString(),
-      );
-
-      // 4) Retourner le key généré
-      return FirebaseSuccess(ref.key!);
-    } catch (e) {
-      log("📦 Data envoyée : ${jsonEncode(params)}");
-      log("🔥 Firebase ERROR sendRapportCelluleStepAdministration →" 
-      "${FirebaseException(plugin: 'request',code:e.toString(),  message: e.toString())}");
-      return FirebaseError(e.toString());
-    }
-  }
-  
-
-
-
-  @override
-  Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params) async {
-         final shared = await shareData.SharedPreferences.getInstance();
-         final localUserRequestSection = shared.getString('rapport_cellule_key');
-
-
-      try {
-        final userIdExist = await db
-            .child('rapport_cellule')
-            .orderByChild('id')
-            .equalTo(localUserRequestSection)
-            .get();
-            
-
-        if (userIdExist.exists) {
-          final Map<String, dynamic> updates = {
-            ...params.toJson(), // nouveaux champs simples
-            'id': params.id,
-            'userId': params.id.toString(),
-          };
-          // 2) Créer une nouvelle entrée
-            await db.child('rapport_cellule/$localUserRequestSection').update(updates);
-          
-
-          // 4) Retourner le key généré
-          return FirebaseSuccess(params.id); 
-        }
-        return FirebaseError('User not found');
-
-      } catch (e) {
-        log("${FirebaseException(message: e.toString(), plugin: "authen")}");
-      
-
-        log("🔥 Firebase ERROR updateProfile → $e");
-        return FirebaseError(e.toString());
-      }
-
-      
-  }
-  
-  @override
-  Future<FirebaseResult<String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params) async {
-       final shared = await shareData.SharedPreferences.getInstance();
+    final shared = await shareData.SharedPreferences.getInstance();
     final localUserRequestSection = shared.getString('rapport_cellule_key');
 
     try {
-      final userIdExist = await db
-          .child('rapport_cellule')
-          .orderByChild('id')
-          .equalTo(localUserRequestSection)
-          .get();
+      //----------------------------------------------------
+      // Si une clé existe déjà, mettre à jour les données
+      //----------------------------------------------------
+      if (localUserRequestSection != null) {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(),
+          'id': localUserRequestSection,
+          
+        };
+        await db
+            .child('rapport_cellule/$localUserRequestSection')
+            .update(updates);
+        return FirebaseSuccess(localUserRequestSection);
+      } else{
+        final request = Request<RequestRapportCelluleAdministration>(
+          data: params.toJson(),
           
 
-      if (
-          userIdExist.exists ) {
-      
-        final Map<String, dynamic> updates = {
-          ...params.toJson(), // nouveaux champs simples
-      
-        };
-        // 2) Créer une nouvelle entrée
-        await db.child('rapport_cellule/${localUserRequestSection}').update(updates);
+          user: "",
+          serviceLibelle: 'rapport_cellule',
+        );
+        // 2) Créer une nouvelle entré ou table
+        final ref = db.child('rapport_cellule').push();
+        // 3) Sauvegarder dans Firebase (en convertissant en Map)
+        await ref.set(request.data);
+
+        // // 4) Mettre à jour la clé
+        await updateForKey(
+          db: db,
+          path: 'rapport_cellule',
+          id: ref.key.toString(),
+        );
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(localUserRequestSection!);
+        return FirebaseSuccess(ref.key!);
       }
-      return FirebaseError('User not found');
-
     } catch (e) {
-      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
-    
+      log("🔥 Firebase ERROR sendRapportCelluleStepAdministration → $e");
 
-      log("🔥 Firebase ERROR updateProfile → $e");
       return FirebaseError(e.toString());
     }
-    
   }
-  
+
   @override
-  Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params) async {
-    
+  Future<FirebaseResult<String>> sendRapportCelluleStepAssistance(
+    RequestRapportCelluleAssistance params,
+  ) async {
     final shared = await shareData.SharedPreferences.getInstance();
     final localUserRequestSection = shared.getString('rapport_cellule_key');
 
@@ -500,25 +411,115 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           .orderByChild('id')
           .equalTo(localUserRequestSection)
           .get();
+
+      if (userIdExist.exists) {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+          'id':localUserRequestSection,
           
-      if (
-        userIdExist.exists ) {
+        };
+        // 2) Créer une nouvelle entrée
+        await db
+            .child('rapport_cellule/$localUserRequestSection')
+            .update(updates);
+
+        // 4) Retourner le key généré
+        return FirebaseSuccess(params.id);
+      }
+      return FirebaseError('User not found');
+    } catch (e) {
+      log("🔥 Firebase ERROR updateProfile → $e");
+      return FirebaseError(e.toString());
+    }
+  }
+
+  @override
+  Future<FirebaseResult<String>> sendRapportCelluleStepActivity(
+    RequestRapportCelluleActivity params,
+  ) async {
+    final shared = await shareData.SharedPreferences.getInstance();
+    final localUserRequestSection = shared.getString('rapport_cellule_key');
+
+    try {
+      final userIdExist = await db
+          .child('rapport_cellule')
+          .orderByChild('id')
+          .equalTo(localUserRequestSection)
+          .get();
+
+      if (userIdExist.exists) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
         };
         // 2) Créer une nouvelle entrée
-        await db.child('rapport_cellule/${localUserRequestSection}').update(updates);
+        await db
+            .child('rapport_cellule/${localUserRequestSection}')
+            .update(updates);
+
         // 4) Retourner le key généré
         return FirebaseSuccess(localUserRequestSection!);
       }
       return FirebaseError('User not found');
     } catch (e) {
-      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
-    
-
       log("🔥 Firebase ERROR updateProfile → $e");
       return FirebaseError(e.toString());
     }
-    
+  }
+
+  @override
+  Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(
+    RequestRapportCelluleSuggestion params,
+  ) async {
+    final shared = await shareData.SharedPreferences.getInstance();
+    final localUserRequestSection = shared.getString('rapport_cellule_key');
+
+    try {
+      final userIdExist = await db
+          .child('rapport_cellule')
+          .orderByChild('id')
+          .equalTo(localUserRequestSection)
+          .get();
+
+      if (userIdExist.exists) {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), 
+        };
+        // 2) Mettre à jour l'entrée existante
+        await db
+            .child('rapport_cellule/${localUserRequestSection}')
+            .update(updates);
+        // 3) Supprimer la clé locale après envoi réussi
+        shared.remove('rapport_cellule_key');
+        return FirebaseSuccess('');
+      }
+      return FirebaseError('User not found');
+    } catch (e) {
+      log("🔥 Firebase ERROR updateProfile → $e");
+      return FirebaseError(e.toString());
+    }
+  }
+
+  @override
+  Future<FirebaseResult<List<RapportCelluleResponse>>> getRapportCellule(
+    RequestRapportCellule params,
+  ) async {
+    try {
+      final response = await db
+          .child('rapport_cellule')
+          .orderByChild('responsableCelluleId')
+          .equalTo(params.responsableCelluleId)
+          .get();
+      if (!response.exists) {
+        return FirebaseError('Rapport cellule not found');
+      }
+      final data = List<dynamic>.from(response.value as List);
+      final rapportCelluleResponse = data
+          .map((e) => RapportCelluleResponse.fromJson(e))
+          .toList();
+      return FirebaseSuccess(rapportCelluleResponse);
+    } catch (e) {
+      log("🔥 Firebase ERROR getRapportCellule → $e");
+      return FirebaseError(e.toString());
+    }
   }
 }

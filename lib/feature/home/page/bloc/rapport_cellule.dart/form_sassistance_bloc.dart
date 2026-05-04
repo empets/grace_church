@@ -419,7 +419,6 @@ class RapportCelluleSectionAssistanceBloc
 
         // await Future.delayed(const Duration(seconds: 3));
 
-        log("=========>> Assistance data $state");
 
         final response = await sendRapportCelluleStepStatUsercase.call(
           RequestRapportCelluleAssistance(

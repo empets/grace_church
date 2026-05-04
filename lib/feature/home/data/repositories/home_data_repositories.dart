@@ -152,6 +152,18 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
 
+    @override
+  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) async {
+    final response = await domaineServiceRepository.sendImpliciteConnexion(params);
+    if (response is FirebaseSuccess<ProfileResponseModel>) {
+      return Right(ProfileResponseModel.domaine(response.data));
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
+  
+
   @override
   Future<Either<Failure, String>> sendRapportCelluleStepAdministration(
     RequestRapportCelluleAdministration params,
@@ -168,17 +180,7 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
   
-  @override
-  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) async {
-    final response = await domaineServiceRepository.sendImpliciteConnexion(params);
-    if (response is FirebaseSuccess<ProfileResponseModel>) {
-      return Right(ProfileResponseModel.domaine(response.data));
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
-    }
-    return Left(Failure(message: "Erreur inconnue"));
-  }
-  
+
   @override
   Future<Either<Failure, String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params) async {
     final response = await domaineServiceRepository.sendRapportCelluleStepAssistance(params);
@@ -205,6 +207,19 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
   Future<Either<Failure, String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params)async {
     final response = await domaineServiceRepository.sendRapportCelluleStepSuggestion(params);
     if (response is FirebaseSuccess<String>) {
+      return Right(response.data);
+    } else if (response is FirebaseError) {
+      return Left(Failure(message: response.toString()));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
+
+
+  
+  @override
+  Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params) async {
+    final response = await domaineServiceRepository.getRapportCellule(params);
+    if (response is FirebaseSuccess<List<RapportCelluleResponse>>) {
       return Right(response.data);
     } else if (response is FirebaseError) {
       return Left(Failure(message: response.toString()));

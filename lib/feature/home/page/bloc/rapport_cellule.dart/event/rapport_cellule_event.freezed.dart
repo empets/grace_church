@@ -3890,4 +3890,268 @@ String toString() {
 
 
 
+/// @nodoc
+mixin _$FecthDataEvent {
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FecthDataEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'FecthDataEvent()';
+}
+
+
+}
+
+/// @nodoc
+class $FecthDataEventCopyWith<$Res>  {
+$FecthDataEventCopyWith(FecthDataEvent _, $Res Function(FecthDataEvent) __);
+}
+
+
+/// Adds pattern-matching-related methods to [FecthDataEvent].
+extension FecthDataEventPatterns on FecthDataEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchDataFecthDataEvent value)?  fetchData,TResult Function( FetchDataByIdFecthDataEvent value)?  fetchDataById,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case FetchDataFecthDataEvent() when fetchData != null:
+return fetchData(_that);case FetchDataByIdFecthDataEvent() when fetchDataById != null:
+return fetchDataById(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchDataFecthDataEvent value)  fetchData,required TResult Function( FetchDataByIdFecthDataEvent value)  fetchDataById,}){
+final _that = this;
+switch (_that) {
+case FetchDataFecthDataEvent():
+return fetchData(_that);case FetchDataByIdFecthDataEvent():
+return fetchDataById(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchDataFecthDataEvent value)?  fetchData,TResult? Function( FetchDataByIdFecthDataEvent value)?  fetchDataById,}){
+final _that = this;
+switch (_that) {
+case FetchDataFecthDataEvent() when fetchData != null:
+return fetchData(_that);case FetchDataByIdFecthDataEvent() when fetchDataById != null:
+return fetchDataById(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchData,TResult Function( String id)?  fetchDataById,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case FetchDataFecthDataEvent() when fetchData != null:
+return fetchData();case FetchDataByIdFecthDataEvent() when fetchDataById != null:
+return fetchDataById(_that.id);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchData,required TResult Function( String id)  fetchDataById,}) {final _that = this;
+switch (_that) {
+case FetchDataFecthDataEvent():
+return fetchData();case FetchDataByIdFecthDataEvent():
+return fetchDataById(_that.id);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchData,TResult? Function( String id)?  fetchDataById,}) {final _that = this;
+switch (_that) {
+case FetchDataFecthDataEvent() when fetchData != null:
+return fetchData();case FetchDataByIdFecthDataEvent() when fetchDataById != null:
+return fetchDataById(_that.id);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class FetchDataFecthDataEvent implements FecthDataEvent {
+   FetchDataFecthDataEvent();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchDataFecthDataEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'FecthDataEvent.fetchData()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class FetchDataByIdFecthDataEvent implements FecthDataEvent {
+   FetchDataByIdFecthDataEvent(this.id);
+  
+
+ final  String id;
+
+/// Create a copy of FecthDataEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FetchDataByIdFecthDataEventCopyWith<FetchDataByIdFecthDataEvent> get copyWith => _$FetchDataByIdFecthDataEventCopyWithImpl<FetchDataByIdFecthDataEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchDataByIdFecthDataEvent&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id);
+
+@override
+String toString() {
+  return 'FecthDataEvent.fetchDataById(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FetchDataByIdFecthDataEventCopyWith<$Res> implements $FecthDataEventCopyWith<$Res> {
+  factory $FetchDataByIdFecthDataEventCopyWith(FetchDataByIdFecthDataEvent value, $Res Function(FetchDataByIdFecthDataEvent) _then) = _$FetchDataByIdFecthDataEventCopyWithImpl;
+@useResult
+$Res call({
+ String id
+});
+
+
+
+
+}
+/// @nodoc
+class _$FetchDataByIdFecthDataEventCopyWithImpl<$Res>
+    implements $FetchDataByIdFecthDataEventCopyWith<$Res> {
+  _$FetchDataByIdFecthDataEventCopyWithImpl(this._self, this._then);
+
+  final FetchDataByIdFecthDataEvent _self;
+  final $Res Function(FetchDataByIdFecthDataEvent) _then;
+
+/// Create a copy of FecthDataEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(FetchDataByIdFecthDataEvent(
+null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on
