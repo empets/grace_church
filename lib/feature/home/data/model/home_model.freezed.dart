@@ -3478,11 +3478,280 @@ as String?,
 
 
 /// @nodoc
+mixin _$RequestHumaneSectionActivityResponseModel {
+
+ String get nom; String get probleme; String get recommandation;
+/// Create a copy of RequestHumaneSectionActivityResponseModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestHumaneSectionActivityResponseModelCopyWith<RequestHumaneSectionActivityResponseModel> get copyWith => _$RequestHumaneSectionActivityResponseModelCopyWithImpl<RequestHumaneSectionActivityResponseModel>(this as RequestHumaneSectionActivityResponseModel, _$identity);
+
+  /// Serializes this RequestHumaneSectionActivityResponseModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionActivityResponseModel&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,nom,probleme,recommandation);
+
+@override
+String toString() {
+  return 'RequestHumaneSectionActivityResponseModel(nom: $nom, probleme: $probleme, recommandation: $recommandation)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestHumaneSectionActivityResponseModelCopyWith<$Res>  {
+  factory $RequestHumaneSectionActivityResponseModelCopyWith(RequestHumaneSectionActivityResponseModel value, $Res Function(RequestHumaneSectionActivityResponseModel) _then) = _$RequestHumaneSectionActivityResponseModelCopyWithImpl;
+@useResult
+$Res call({
+ String nom, String probleme, String recommandation
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestHumaneSectionActivityResponseModelCopyWithImpl<$Res>
+    implements $RequestHumaneSectionActivityResponseModelCopyWith<$Res> {
+  _$RequestHumaneSectionActivityResponseModelCopyWithImpl(this._self, this._then);
+
+  final RequestHumaneSectionActivityResponseModel _self;
+  final $Res Function(RequestHumaneSectionActivityResponseModel) _then;
+
+/// Create a copy of RequestHumaneSectionActivityResponseModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? nom = null,Object? probleme = null,Object? recommandation = null,}) {
+  return _then(_self.copyWith(
+nom: null == nom ? _self.nom : nom // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestHumaneSectionActivityResponseModel].
+extension RequestHumaneSectionActivityResponseModelPatterns on RequestHumaneSectionActivityResponseModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestHumaneSectionActivityResponseModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponseModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestHumaneSectionActivityResponseModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponseModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestHumaneSectionActivityResponseModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponseModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String nom,  String probleme,  String recommandation)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponseModel() when $default != null:
+return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String nom,  String probleme,  String recommandation)  $default,) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponseModel():
+return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String nom,  String probleme,  String recommandation)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestHumaneSectionActivityResponseModel() when $default != null:
+return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestHumaneSectionActivityResponseModel implements RequestHumaneSectionActivityResponseModel {
+   _RequestHumaneSectionActivityResponseModel({required this.nom, required this.probleme, required this.recommandation});
+  factory _RequestHumaneSectionActivityResponseModel.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionActivityResponseModelFromJson(json);
+
+@override final  String nom;
+@override final  String probleme;
+@override final  String recommandation;
+
+/// Create a copy of RequestHumaneSectionActivityResponseModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestHumaneSectionActivityResponseModelCopyWith<_RequestHumaneSectionActivityResponseModel> get copyWith => __$RequestHumaneSectionActivityResponseModelCopyWithImpl<_RequestHumaneSectionActivityResponseModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestHumaneSectionActivityResponseModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionActivityResponseModel&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,nom,probleme,recommandation);
+
+@override
+String toString() {
+  return 'RequestHumaneSectionActivityResponseModel(nom: $nom, probleme: $probleme, recommandation: $recommandation)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestHumaneSectionActivityResponseModelCopyWith<$Res> implements $RequestHumaneSectionActivityResponseModelCopyWith<$Res> {
+  factory _$RequestHumaneSectionActivityResponseModelCopyWith(_RequestHumaneSectionActivityResponseModel value, $Res Function(_RequestHumaneSectionActivityResponseModel) _then) = __$RequestHumaneSectionActivityResponseModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String nom, String probleme, String recommandation
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestHumaneSectionActivityResponseModelCopyWithImpl<$Res>
+    implements _$RequestHumaneSectionActivityResponseModelCopyWith<$Res> {
+  __$RequestHumaneSectionActivityResponseModelCopyWithImpl(this._self, this._then);
+
+  final _RequestHumaneSectionActivityResponseModel _self;
+  final $Res Function(_RequestHumaneSectionActivityResponseModel) _then;
+
+/// Create a copy of RequestHumaneSectionActivityResponseModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? nom = null,Object? probleme = null,Object? recommandation = null,}) {
+  return _then(_RequestHumaneSectionActivityResponseModel(
+nom: null == nom ? _self.nom : nom // ignore: cast_nullable_to_non_nullable
+as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$RapportCelluleResponseModel {
 
- String get codeZone; String get fullNameRespoZone; String get contactRespoZone; String get codeSecteur; String get responsableCelluleId; String get fullNameRespoSecteur; String get contactRespoSecteur; String get codeCellule; String get fullNameRespoCellule; String get contactRespoCellule; String get jourCellule; String get offrande; String get nombreBaptiser; String get nombreNonBaptiser; List<DiscipleCelluleModel> get discipleCellule; String get id; String get formAdministrationIsSubmit; String get formAdministrationSubmitDate;// required String nombreBaptiser,
- RequestHumaneSectionAssistanceResponseModel get assistanceNonBaptiser; RequestHumaneSectionAssistanceResponseModel get assistanceNouveau; RequestHumaneSectionAssistanceResponseModel get assistanceInviter; RequestAuherResponseModel get assistanceCellule;// required String id,
- String get formAssistanceIsSubmit; String get formAssistanceSubmitDate; List<RequestSuggestionResponseModel> get visiteMenbre; List<RequestSuggestionResponseModel> get visiteOuvrier; String get dateActivitySubmited; String get formActivityIsSubmit; String get formActivitySubmitDate; List<RapportSuggestionModel> get suggestions; String get faisAssignaler; String get ouvrierSpritualLive; String get formSuggestionIsSubmit; String get formSuggestionSubmitDate;
+ String? get codeZone; String? get fullNameRespoZone; String? get contactRespoZone; String? get codeSecteur; String? get responsableCelluleId; String? get fullNameRespoSecteur; String? get contactRespoSecteur; String? get codeCellule; String? get fullNameRespoCellule; String? get contactRespoCellule; String? get jourCellule; String? get offrande; String? get nombreBaptiser; String? get nombreNonBaptiser; List<DiscipleCelluleModel> get discipleCellule; String? get id; String? get formAdministrationIsSubmit; String? get formAdministrationSubmitDate; String? get resumerPredication;// required String? nombreBaptiser,
+ RequestHumaneSectionAssistanceResponseModel get assistanceNonBaptiser; RequestHumaneSectionAssistanceResponseModel get assistanceNouveau; RequestHumaneSectionAssistanceResponseModel get assistanceInviter; RequestAuherResponseModel get assistanceCellule;// required String? id,
+ String? get formAssistanceIsSubmit; String? get formAssistanceSubmitDate; List<RequestSuggestionResponseModel> get visiteMenbre; List<RequestSuggestionResponseModel> get visiteOuvrier; String? get dateActivitySubmited; String? get formActivityIsSubmit; String? get formActivitySubmitDate; List<RequestHumaneSectionActivityResponseModel> get suggestions; String? get faisAssignaler; String? get ouvrierSpritualLive; String? get formSuggestionIsSubmit; String? get formSuggestionSubmitDate;
 /// Create a copy of RapportCelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3495,16 +3764,16 @@ $RapportCelluleResponseModelCopyWith<RapportCelluleResponseModel> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleResponseModel&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other.discipleCellule, discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate)&&(identical(other.assistanceNonBaptiser, assistanceNonBaptiser) || other.assistanceNonBaptiser == assistanceNonBaptiser)&&(identical(other.assistanceNouveau, assistanceNouveau) || other.assistanceNouveau == assistanceNouveau)&&(identical(other.assistanceInviter, assistanceInviter) || other.assistanceInviter == assistanceInviter)&&(identical(other.assistanceCellule, assistanceCellule) || other.assistanceCellule == assistanceCellule)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate)&&const DeepCollectionEquality().equals(other.visiteMenbre, visiteMenbre)&&const DeepCollectionEquality().equals(other.visiteOuvrier, visiteOuvrier)&&(identical(other.dateActivitySubmited, dateActivitySubmited) || other.dateActivitySubmited == dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleResponseModel&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other.discipleCellule, discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.assistanceNonBaptiser, assistanceNonBaptiser) || other.assistanceNonBaptiser == assistanceNonBaptiser)&&(identical(other.assistanceNouveau, assistanceNouveau) || other.assistanceNouveau == assistanceNouveau)&&(identical(other.assistanceInviter, assistanceInviter) || other.assistanceInviter == assistanceInviter)&&(identical(other.assistanceCellule, assistanceCellule) || other.assistanceCellule == assistanceCellule)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate)&&const DeepCollectionEquality().equals(other.visiteMenbre, visiteMenbre)&&const DeepCollectionEquality().equals(other.visiteOuvrier, visiteOuvrier)&&(identical(other.dateActivitySubmited, dateActivitySubmited) || other.dateActivitySubmited == dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,responsableCelluleId,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate,assistanceNonBaptiser,assistanceNouveau,assistanceInviter,assistanceCellule,formAssistanceIsSubmit,formAssistanceSubmitDate,const DeepCollectionEquality().hash(visiteMenbre),const DeepCollectionEquality().hash(visiteOuvrier),dateActivitySubmited,formActivityIsSubmit,formActivitySubmitDate,const DeepCollectionEquality().hash(suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate]);
+int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,responsableCelluleId,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate,resumerPredication,assistanceNonBaptiser,assistanceNouveau,assistanceInviter,assistanceCellule,formAssistanceIsSubmit,formAssistanceSubmitDate,const DeepCollectionEquality().hash(visiteMenbre),const DeepCollectionEquality().hash(visiteOuvrier),dateActivitySubmited,formActivityIsSubmit,formActivitySubmitDate,const DeepCollectionEquality().hash(suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate]);
 
 @override
 String toString() {
-  return 'RapportCelluleResponseModel(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, responsableCelluleId: $responsableCelluleId, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate, visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
+  return 'RapportCelluleResponseModel(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, responsableCelluleId: $responsableCelluleId, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate, resumerPredication: $resumerPredication, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate, visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
 }
 
 
@@ -3515,7 +3784,7 @@ abstract mixin class $RapportCelluleResponseModelCopyWith<$Res>  {
   factory $RapportCelluleResponseModelCopyWith(RapportCelluleResponseModel value, $Res Function(RapportCelluleResponseModel) _then) = _$RapportCelluleResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String responsableCelluleId, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser, List<DiscipleCelluleModel> discipleCellule, String id, String formAdministrationIsSubmit, String formAdministrationSubmitDate, RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser, RequestHumaneSectionAssistanceResponseModel assistanceNouveau, RequestHumaneSectionAssistanceResponseModel assistanceInviter, RequestAuherResponseModel assistanceCellule, String formAssistanceIsSubmit, String formAssistanceSubmitDate, List<RequestSuggestionResponseModel> visiteMenbre, List<RequestSuggestionResponseModel> visiteOuvrier, String dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, List<RapportSuggestionModel> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate
+ String? codeZone, String? fullNameRespoZone, String? contactRespoZone, String? codeSecteur, String? responsableCelluleId, String? fullNameRespoSecteur, String? contactRespoSecteur, String? codeCellule, String? fullNameRespoCellule, String? contactRespoCellule, String? jourCellule, String? offrande, String? nombreBaptiser, String? nombreNonBaptiser, List<DiscipleCelluleModel> discipleCellule, String? id, String? formAdministrationIsSubmit, String? formAdministrationSubmitDate, String? resumerPredication, RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser, RequestHumaneSectionAssistanceResponseModel assistanceNouveau, RequestHumaneSectionAssistanceResponseModel assistanceInviter, RequestAuherResponseModel assistanceCellule, String? formAssistanceIsSubmit, String? formAssistanceSubmitDate, List<RequestSuggestionResponseModel> visiteMenbre, List<RequestSuggestionResponseModel> visiteOuvrier, String? dateActivitySubmited, String? formActivityIsSubmit, String? formActivitySubmitDate, List<RequestHumaneSectionActivityResponseModel> suggestions, String? faisAssignaler, String? ouvrierSpritualLive, String? formSuggestionIsSubmit, String? formSuggestionSubmitDate
 });
 
 
@@ -3532,43 +3801,44 @@ class _$RapportCelluleResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? responsableCelluleId = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCellule = null,Object? id = null,Object? formAdministrationIsSubmit = null,Object? formAdministrationSubmitDate = null,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = freezed,Object? fullNameRespoZone = freezed,Object? contactRespoZone = freezed,Object? codeSecteur = freezed,Object? responsableCelluleId = freezed,Object? fullNameRespoSecteur = freezed,Object? contactRespoSecteur = freezed,Object? codeCellule = freezed,Object? fullNameRespoCellule = freezed,Object? contactRespoCellule = freezed,Object? jourCellule = freezed,Object? offrande = freezed,Object? nombreBaptiser = freezed,Object? nombreNonBaptiser = freezed,Object? discipleCellule = null,Object? id = freezed,Object? formAdministrationIsSubmit = freezed,Object? formAdministrationSubmitDate = freezed,Object? resumerPredication = freezed,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? formAssistanceIsSubmit = freezed,Object? formAssistanceSubmitDate = freezed,Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = freezed,Object? formActivityIsSubmit = freezed,Object? formActivitySubmitDate = freezed,Object? suggestions = null,Object? faisAssignaler = freezed,Object? ouvrierSpritualLive = freezed,Object? formSuggestionIsSubmit = freezed,Object? formSuggestionSubmitDate = freezed,}) {
   return _then(_self.copyWith(
-codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
-as String,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
-as String,contactRespoZone: null == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
-as String,codeSecteur: null == codeSecteur ? _self.codeSecteur : codeSecteur // ignore: cast_nullable_to_non_nullable
-as String,responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
-as String,fullNameRespoSecteur: null == fullNameRespoSecteur ? _self.fullNameRespoSecteur : fullNameRespoSecteur // ignore: cast_nullable_to_non_nullable
-as String,contactRespoSecteur: null == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
-as String,codeCellule: null == codeCellule ? _self.codeCellule : codeCellule // ignore: cast_nullable_to_non_nullable
-as String,fullNameRespoCellule: null == fullNameRespoCellule ? _self.fullNameRespoCellule : fullNameRespoCellule // ignore: cast_nullable_to_non_nullable
-as String,contactRespoCellule: null == contactRespoCellule ? _self.contactRespoCellule : contactRespoCellule // ignore: cast_nullable_to_non_nullable
-as String,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
-as String,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
-as String,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
-as String,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
-as String,discipleCellule: null == discipleCellule ? _self.discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
-as List<DiscipleCelluleModel>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,formAdministrationIsSubmit: null == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formAdministrationSubmitDate: null == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
-as String,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
+codeZone: freezed == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
+as String?,fullNameRespoZone: freezed == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
+as String?,contactRespoZone: freezed == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
+as String?,codeSecteur: freezed == codeSecteur ? _self.codeSecteur : codeSecteur // ignore: cast_nullable_to_non_nullable
+as String?,responsableCelluleId: freezed == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String?,fullNameRespoSecteur: freezed == fullNameRespoSecteur ? _self.fullNameRespoSecteur : fullNameRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String?,contactRespoSecteur: freezed == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String?,codeCellule: freezed == codeCellule ? _self.codeCellule : codeCellule // ignore: cast_nullable_to_non_nullable
+as String?,fullNameRespoCellule: freezed == fullNameRespoCellule ? _self.fullNameRespoCellule : fullNameRespoCellule // ignore: cast_nullable_to_non_nullable
+as String?,contactRespoCellule: freezed == contactRespoCellule ? _self.contactRespoCellule : contactRespoCellule // ignore: cast_nullable_to_non_nullable
+as String?,jourCellule: freezed == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
+as String?,offrande: freezed == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
+as String?,nombreBaptiser: freezed == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
+as String?,nombreNonBaptiser: freezed == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as String?,discipleCellule: null == discipleCellule ? _self.discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
+as List<DiscipleCelluleModel>,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,formAdministrationIsSubmit: freezed == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formAdministrationSubmitDate: freezed == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,resumerPredication: freezed == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
+as String?,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
 as RequestHumaneSectionAssistanceResponseModel,assistanceNouveau: null == assistanceNouveau ? _self.assistanceNouveau : assistanceNouveau // ignore: cast_nullable_to_non_nullable
 as RequestHumaneSectionAssistanceResponseModel,assistanceInviter: null == assistanceInviter ? _self.assistanceInviter : assistanceInviter // ignore: cast_nullable_to_non_nullable
 as RequestHumaneSectionAssistanceResponseModel,assistanceCellule: null == assistanceCellule ? _self.assistanceCellule : assistanceCellule // ignore: cast_nullable_to_non_nullable
-as RequestAuherResponseModel,formAssistanceIsSubmit: null == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formAssistanceSubmitDate: null == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
-as String,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as RequestAuherResponseModel,formAssistanceIsSubmit: freezed == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formAssistanceSubmitDate: freezed == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
 as List<RequestSuggestionResponseModel>,visiteOuvrier: null == visiteOuvrier ? _self.visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
-as List<RequestSuggestionResponseModel>,dateActivitySubmited: null == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
-as String,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
-as String,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
-as List<RapportSuggestionModel>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
-as String,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
-as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
-as String,
+as List<RequestSuggestionResponseModel>,dateActivitySubmited: freezed == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
+as String?,formActivityIsSubmit: freezed == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formActivitySubmitDate: freezed == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<RequestHumaneSectionActivityResponseModel>,faisAssignaler: freezed == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as String?,ouvrierSpritualLive: freezed == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as String?,formSuggestionIsSubmit: freezed == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formSuggestionSubmitDate: freezed == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 /// Create a copy of RapportCelluleResponseModel
@@ -3689,10 +3959,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String responsableCelluleId,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCelluleModel> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate,  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponseModel assistanceNouveau,  RequestHumaneSectionAssistanceResponseModel assistanceInviter,  RequestAuherResponseModel assistanceCellule,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate,  List<RequestSuggestionResponseModel> visiteMenbre,  List<RequestSuggestionResponseModel> visiteOuvrier,  String dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  List<RapportSuggestionModel> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? codeZone,  String? fullNameRespoZone,  String? contactRespoZone,  String? codeSecteur,  String? responsableCelluleId,  String? fullNameRespoSecteur,  String? contactRespoSecteur,  String? codeCellule,  String? fullNameRespoCellule,  String? contactRespoCellule,  String? jourCellule,  String? offrande,  String? nombreBaptiser,  String? nombreNonBaptiser,  List<DiscipleCelluleModel> discipleCellule,  String? id,  String? formAdministrationIsSubmit,  String? formAdministrationSubmitDate,  String? resumerPredication,  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponseModel assistanceNouveau,  RequestHumaneSectionAssistanceResponseModel assistanceInviter,  RequestAuherResponseModel assistanceCellule,  String? formAssistanceIsSubmit,  String? formAssistanceSubmitDate,  List<RequestSuggestionResponseModel> visiteMenbre,  List<RequestSuggestionResponseModel> visiteOuvrier,  String? dateActivitySubmited,  String? formActivityIsSubmit,  String? formActivitySubmitDate,  List<RequestHumaneSectionActivityResponseModel> suggestions,  String? faisAssignaler,  String? ouvrierSpritualLive,  String? formSuggestionIsSubmit,  String? formSuggestionSubmitDate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RapportCelluleResponseModel() when $default != null:
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.resumerPredication,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
   return orElse();
 
 }
@@ -3710,10 +3980,10 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String responsableCelluleId,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCelluleModel> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate,  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponseModel assistanceNouveau,  RequestHumaneSectionAssistanceResponseModel assistanceInviter,  RequestAuherResponseModel assistanceCellule,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate,  List<RequestSuggestionResponseModel> visiteMenbre,  List<RequestSuggestionResponseModel> visiteOuvrier,  String dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  List<RapportSuggestionModel> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? codeZone,  String? fullNameRespoZone,  String? contactRespoZone,  String? codeSecteur,  String? responsableCelluleId,  String? fullNameRespoSecteur,  String? contactRespoSecteur,  String? codeCellule,  String? fullNameRespoCellule,  String? contactRespoCellule,  String? jourCellule,  String? offrande,  String? nombreBaptiser,  String? nombreNonBaptiser,  List<DiscipleCelluleModel> discipleCellule,  String? id,  String? formAdministrationIsSubmit,  String? formAdministrationSubmitDate,  String? resumerPredication,  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponseModel assistanceNouveau,  RequestHumaneSectionAssistanceResponseModel assistanceInviter,  RequestAuherResponseModel assistanceCellule,  String? formAssistanceIsSubmit,  String? formAssistanceSubmitDate,  List<RequestSuggestionResponseModel> visiteMenbre,  List<RequestSuggestionResponseModel> visiteOuvrier,  String? dateActivitySubmited,  String? formActivityIsSubmit,  String? formActivitySubmitDate,  List<RequestHumaneSectionActivityResponseModel> suggestions,  String? faisAssignaler,  String? ouvrierSpritualLive,  String? formSuggestionIsSubmit,  String? formSuggestionSubmitDate)  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleResponseModel():
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.resumerPredication,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3730,10 +4000,10 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String codeZone,  String fullNameRespoZone,  String contactRespoZone,  String codeSecteur,  String responsableCelluleId,  String fullNameRespoSecteur,  String contactRespoSecteur,  String codeCellule,  String fullNameRespoCellule,  String contactRespoCellule,  String jourCellule,  String offrande,  String nombreBaptiser,  String nombreNonBaptiser,  List<DiscipleCelluleModel> discipleCellule,  String id,  String formAdministrationIsSubmit,  String formAdministrationSubmitDate,  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponseModel assistanceNouveau,  RequestHumaneSectionAssistanceResponseModel assistanceInviter,  RequestAuherResponseModel assistanceCellule,  String formAssistanceIsSubmit,  String formAssistanceSubmitDate,  List<RequestSuggestionResponseModel> visiteMenbre,  List<RequestSuggestionResponseModel> visiteOuvrier,  String dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  List<RapportSuggestionModel> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? codeZone,  String? fullNameRespoZone,  String? contactRespoZone,  String? codeSecteur,  String? responsableCelluleId,  String? fullNameRespoSecteur,  String? contactRespoSecteur,  String? codeCellule,  String? fullNameRespoCellule,  String? contactRespoCellule,  String? jourCellule,  String? offrande,  String? nombreBaptiser,  String? nombreNonBaptiser,  List<DiscipleCelluleModel> discipleCellule,  String? id,  String? formAdministrationIsSubmit,  String? formAdministrationSubmitDate,  String? resumerPredication,  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,  RequestHumaneSectionAssistanceResponseModel assistanceNouveau,  RequestHumaneSectionAssistanceResponseModel assistanceInviter,  RequestAuherResponseModel assistanceCellule,  String? formAssistanceIsSubmit,  String? formAssistanceSubmitDate,  List<RequestSuggestionResponseModel> visiteMenbre,  List<RequestSuggestionResponseModel> visiteOuvrier,  String? dateActivitySubmited,  String? formActivityIsSubmit,  String? formActivitySubmitDate,  List<RequestHumaneSectionActivityResponseModel> suggestions,  String? faisAssignaler,  String? ouvrierSpritualLive,  String? formSuggestionIsSubmit,  String? formSuggestionSubmitDate)?  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleResponseModel() when $default != null:
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.codeSecteur,_that.responsableCelluleId,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCellule,_that.id,_that.formAdministrationIsSubmit,_that.formAdministrationSubmitDate,_that.resumerPredication,_that.assistanceNonBaptiser,_that.assistanceNouveau,_that.assistanceInviter,_that.assistanceCellule,_that.formAssistanceIsSubmit,_that.formAssistanceSubmitDate,_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate);case _:
   return null;
 
 }
@@ -3745,23 +4015,23 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 @JsonSerializable()
 
 class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
-   _RapportCelluleResponseModel({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCelluleModel> discipleCellule, required this.id, required this.formAdministrationIsSubmit, required this.formAdministrationSubmitDate, required this.assistanceNonBaptiser, required this.assistanceNouveau, required this.assistanceInviter, required this.assistanceCellule, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate, required final  List<RequestSuggestionResponseModel> visiteMenbre, required final  List<RequestSuggestionResponseModel> visiteOuvrier, required this.dateActivitySubmited, required this.formActivityIsSubmit, required this.formActivitySubmitDate, required final  List<RapportSuggestionModel> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, required this.formSuggestionIsSubmit, required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
+   _RapportCelluleResponseModel({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCelluleModel> discipleCellule, required this.id, required this.formAdministrationIsSubmit, required this.formAdministrationSubmitDate, required this.resumerPredication, required this.assistanceNonBaptiser, required this.assistanceNouveau, required this.assistanceInviter, required this.assistanceCellule, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate, required final  List<RequestSuggestionResponseModel> visiteMenbre, required final  List<RequestSuggestionResponseModel> visiteOuvrier, required this.dateActivitySubmited, required this.formActivityIsSubmit, required this.formActivitySubmitDate, required final  List<RequestHumaneSectionActivityResponseModel> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, required this.formSuggestionIsSubmit, required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
   factory _RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) => _$RapportCelluleResponseModelFromJson(json);
 
-@override final  String codeZone;
-@override final  String fullNameRespoZone;
-@override final  String contactRespoZone;
-@override final  String codeSecteur;
-@override final  String responsableCelluleId;
-@override final  String fullNameRespoSecteur;
-@override final  String contactRespoSecteur;
-@override final  String codeCellule;
-@override final  String fullNameRespoCellule;
-@override final  String contactRespoCellule;
-@override final  String jourCellule;
-@override final  String offrande;
-@override final  String nombreBaptiser;
-@override final  String nombreNonBaptiser;
+@override final  String? codeZone;
+@override final  String? fullNameRespoZone;
+@override final  String? contactRespoZone;
+@override final  String? codeSecteur;
+@override final  String? responsableCelluleId;
+@override final  String? fullNameRespoSecteur;
+@override final  String? contactRespoSecteur;
+@override final  String? codeCellule;
+@override final  String? fullNameRespoCellule;
+@override final  String? contactRespoCellule;
+@override final  String? jourCellule;
+@override final  String? offrande;
+@override final  String? nombreBaptiser;
+@override final  String? nombreNonBaptiser;
  final  List<DiscipleCelluleModel> _discipleCellule;
 @override List<DiscipleCelluleModel> get discipleCellule {
   if (_discipleCellule is EqualUnmodifiableListView) return _discipleCellule;
@@ -3769,17 +4039,18 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
   return EqualUnmodifiableListView(_discipleCellule);
 }
 
-@override final  String id;
-@override final  String formAdministrationIsSubmit;
-@override final  String formAdministrationSubmitDate;
-// required String nombreBaptiser,
+@override final  String? id;
+@override final  String? formAdministrationIsSubmit;
+@override final  String? formAdministrationSubmitDate;
+@override final  String? resumerPredication;
+// required String? nombreBaptiser,
 @override final  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser;
 @override final  RequestHumaneSectionAssistanceResponseModel assistanceNouveau;
 @override final  RequestHumaneSectionAssistanceResponseModel assistanceInviter;
 @override final  RequestAuherResponseModel assistanceCellule;
-// required String id,
-@override final  String formAssistanceIsSubmit;
-@override final  String formAssistanceSubmitDate;
+// required String? id,
+@override final  String? formAssistanceIsSubmit;
+@override final  String? formAssistanceSubmitDate;
  final  List<RequestSuggestionResponseModel> _visiteMenbre;
 @override List<RequestSuggestionResponseModel> get visiteMenbre {
   if (_visiteMenbre is EqualUnmodifiableListView) return _visiteMenbre;
@@ -3794,20 +4065,20 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
   return EqualUnmodifiableListView(_visiteOuvrier);
 }
 
-@override final  String dateActivitySubmited;
-@override final  String formActivityIsSubmit;
-@override final  String formActivitySubmitDate;
- final  List<RapportSuggestionModel> _suggestions;
-@override List<RapportSuggestionModel> get suggestions {
+@override final  String? dateActivitySubmited;
+@override final  String? formActivityIsSubmit;
+@override final  String? formActivitySubmitDate;
+ final  List<RequestHumaneSectionActivityResponseModel> _suggestions;
+@override List<RequestHumaneSectionActivityResponseModel> get suggestions {
   if (_suggestions is EqualUnmodifiableListView) return _suggestions;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_suggestions);
 }
 
-@override final  String faisAssignaler;
-@override final  String ouvrierSpritualLive;
-@override final  String formSuggestionIsSubmit;
-@override final  String formSuggestionSubmitDate;
+@override final  String? faisAssignaler;
+@override final  String? ouvrierSpritualLive;
+@override final  String? formSuggestionIsSubmit;
+@override final  String? formSuggestionSubmitDate;
 
 /// Create a copy of RapportCelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -3822,16 +4093,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleResponseModel&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other._discipleCellule, _discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate)&&(identical(other.assistanceNonBaptiser, assistanceNonBaptiser) || other.assistanceNonBaptiser == assistanceNonBaptiser)&&(identical(other.assistanceNouveau, assistanceNouveau) || other.assistanceNouveau == assistanceNouveau)&&(identical(other.assistanceInviter, assistanceInviter) || other.assistanceInviter == assistanceInviter)&&(identical(other.assistanceCellule, assistanceCellule) || other.assistanceCellule == assistanceCellule)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate)&&const DeepCollectionEquality().equals(other._visiteMenbre, _visiteMenbre)&&const DeepCollectionEquality().equals(other._visiteOuvrier, _visiteOuvrier)&&(identical(other.dateActivitySubmited, dateActivitySubmited) || other.dateActivitySubmited == dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleResponseModel&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other._discipleCellule, _discipleCellule)&&(identical(other.id, id) || other.id == id)&&(identical(other.formAdministrationIsSubmit, formAdministrationIsSubmit) || other.formAdministrationIsSubmit == formAdministrationIsSubmit)&&(identical(other.formAdministrationSubmitDate, formAdministrationSubmitDate) || other.formAdministrationSubmitDate == formAdministrationSubmitDate)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.assistanceNonBaptiser, assistanceNonBaptiser) || other.assistanceNonBaptiser == assistanceNonBaptiser)&&(identical(other.assistanceNouveau, assistanceNouveau) || other.assistanceNouveau == assistanceNouveau)&&(identical(other.assistanceInviter, assistanceInviter) || other.assistanceInviter == assistanceInviter)&&(identical(other.assistanceCellule, assistanceCellule) || other.assistanceCellule == assistanceCellule)&&(identical(other.formAssistanceIsSubmit, formAssistanceIsSubmit) || other.formAssistanceIsSubmit == formAssistanceIsSubmit)&&(identical(other.formAssistanceSubmitDate, formAssistanceSubmitDate) || other.formAssistanceSubmitDate == formAssistanceSubmitDate)&&const DeepCollectionEquality().equals(other._visiteMenbre, _visiteMenbre)&&const DeepCollectionEquality().equals(other._visiteOuvrier, _visiteOuvrier)&&(identical(other.dateActivitySubmited, dateActivitySubmited) || other.dateActivitySubmited == dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,responsableCelluleId,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(_discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate,assistanceNonBaptiser,assistanceNouveau,assistanceInviter,assistanceCellule,formAssistanceIsSubmit,formAssistanceSubmitDate,const DeepCollectionEquality().hash(_visiteMenbre),const DeepCollectionEquality().hash(_visiteOuvrier),dateActivitySubmited,formActivityIsSubmit,formActivitySubmitDate,const DeepCollectionEquality().hash(_suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate]);
+int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,codeSecteur,responsableCelluleId,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(_discipleCellule),id,formAdministrationIsSubmit,formAdministrationSubmitDate,resumerPredication,assistanceNonBaptiser,assistanceNouveau,assistanceInviter,assistanceCellule,formAssistanceIsSubmit,formAssistanceSubmitDate,const DeepCollectionEquality().hash(_visiteMenbre),const DeepCollectionEquality().hash(_visiteOuvrier),dateActivitySubmited,formActivityIsSubmit,formActivitySubmitDate,const DeepCollectionEquality().hash(_suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate]);
 
 @override
 String toString() {
-  return 'RapportCelluleResponseModel(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, responsableCelluleId: $responsableCelluleId, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate, visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
+  return 'RapportCelluleResponseModel(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, codeSecteur: $codeSecteur, responsableCelluleId: $responsableCelluleId, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCellule: $discipleCellule, id: $id, formAdministrationIsSubmit: $formAdministrationIsSubmit, formAdministrationSubmitDate: $formAdministrationSubmitDate, resumerPredication: $resumerPredication, assistanceNonBaptiser: $assistanceNonBaptiser, assistanceNouveau: $assistanceNouveau, assistanceInviter: $assistanceInviter, assistanceCellule: $assistanceCellule, formAssistanceIsSubmit: $formAssistanceIsSubmit, formAssistanceSubmitDate: $formAssistanceSubmitDate, visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate)';
 }
 
 
@@ -3842,7 +4113,7 @@ abstract mixin class _$RapportCelluleResponseModelCopyWith<$Res> implements $Rap
   factory _$RapportCelluleResponseModelCopyWith(_RapportCelluleResponseModel value, $Res Function(_RapportCelluleResponseModel) _then) = __$RapportCelluleResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String codeZone, String fullNameRespoZone, String contactRespoZone, String codeSecteur, String responsableCelluleId, String fullNameRespoSecteur, String contactRespoSecteur, String codeCellule, String fullNameRespoCellule, String contactRespoCellule, String jourCellule, String offrande, String nombreBaptiser, String nombreNonBaptiser, List<DiscipleCelluleModel> discipleCellule, String id, String formAdministrationIsSubmit, String formAdministrationSubmitDate, RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser, RequestHumaneSectionAssistanceResponseModel assistanceNouveau, RequestHumaneSectionAssistanceResponseModel assistanceInviter, RequestAuherResponseModel assistanceCellule, String formAssistanceIsSubmit, String formAssistanceSubmitDate, List<RequestSuggestionResponseModel> visiteMenbre, List<RequestSuggestionResponseModel> visiteOuvrier, String dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, List<RapportSuggestionModel> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate
+ String? codeZone, String? fullNameRespoZone, String? contactRespoZone, String? codeSecteur, String? responsableCelluleId, String? fullNameRespoSecteur, String? contactRespoSecteur, String? codeCellule, String? fullNameRespoCellule, String? contactRespoCellule, String? jourCellule, String? offrande, String? nombreBaptiser, String? nombreNonBaptiser, List<DiscipleCelluleModel> discipleCellule, String? id, String? formAdministrationIsSubmit, String? formAdministrationSubmitDate, String? resumerPredication, RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser, RequestHumaneSectionAssistanceResponseModel assistanceNouveau, RequestHumaneSectionAssistanceResponseModel assistanceInviter, RequestAuherResponseModel assistanceCellule, String? formAssistanceIsSubmit, String? formAssistanceSubmitDate, List<RequestSuggestionResponseModel> visiteMenbre, List<RequestSuggestionResponseModel> visiteOuvrier, String? dateActivitySubmited, String? formActivityIsSubmit, String? formActivitySubmitDate, List<RequestHumaneSectionActivityResponseModel> suggestions, String? faisAssignaler, String? ouvrierSpritualLive, String? formSuggestionIsSubmit, String? formSuggestionSubmitDate
 });
 
 
@@ -3859,43 +4130,44 @@ class __$RapportCelluleResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? codeSecteur = null,Object? responsableCelluleId = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCellule = null,Object? id = null,Object? formAdministrationIsSubmit = null,Object? formAdministrationSubmitDate = null,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? formAssistanceIsSubmit = null,Object? formAssistanceSubmitDate = null,Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = freezed,Object? fullNameRespoZone = freezed,Object? contactRespoZone = freezed,Object? codeSecteur = freezed,Object? responsableCelluleId = freezed,Object? fullNameRespoSecteur = freezed,Object? contactRespoSecteur = freezed,Object? codeCellule = freezed,Object? fullNameRespoCellule = freezed,Object? contactRespoCellule = freezed,Object? jourCellule = freezed,Object? offrande = freezed,Object? nombreBaptiser = freezed,Object? nombreNonBaptiser = freezed,Object? discipleCellule = null,Object? id = freezed,Object? formAdministrationIsSubmit = freezed,Object? formAdministrationSubmitDate = freezed,Object? resumerPredication = freezed,Object? assistanceNonBaptiser = null,Object? assistanceNouveau = null,Object? assistanceInviter = null,Object? assistanceCellule = null,Object? formAssistanceIsSubmit = freezed,Object? formAssistanceSubmitDate = freezed,Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = freezed,Object? formActivityIsSubmit = freezed,Object? formActivitySubmitDate = freezed,Object? suggestions = null,Object? faisAssignaler = freezed,Object? ouvrierSpritualLive = freezed,Object? formSuggestionIsSubmit = freezed,Object? formSuggestionSubmitDate = freezed,}) {
   return _then(_RapportCelluleResponseModel(
-codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
-as String,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
-as String,contactRespoZone: null == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
-as String,codeSecteur: null == codeSecteur ? _self.codeSecteur : codeSecteur // ignore: cast_nullable_to_non_nullable
-as String,responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
-as String,fullNameRespoSecteur: null == fullNameRespoSecteur ? _self.fullNameRespoSecteur : fullNameRespoSecteur // ignore: cast_nullable_to_non_nullable
-as String,contactRespoSecteur: null == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
-as String,codeCellule: null == codeCellule ? _self.codeCellule : codeCellule // ignore: cast_nullable_to_non_nullable
-as String,fullNameRespoCellule: null == fullNameRespoCellule ? _self.fullNameRespoCellule : fullNameRespoCellule // ignore: cast_nullable_to_non_nullable
-as String,contactRespoCellule: null == contactRespoCellule ? _self.contactRespoCellule : contactRespoCellule // ignore: cast_nullable_to_non_nullable
-as String,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
-as String,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
-as String,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
-as String,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
-as String,discipleCellule: null == discipleCellule ? _self._discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
-as List<DiscipleCelluleModel>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,formAdministrationIsSubmit: null == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formAdministrationSubmitDate: null == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
-as String,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
+codeZone: freezed == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
+as String?,fullNameRespoZone: freezed == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
+as String?,contactRespoZone: freezed == contactRespoZone ? _self.contactRespoZone : contactRespoZone // ignore: cast_nullable_to_non_nullable
+as String?,codeSecteur: freezed == codeSecteur ? _self.codeSecteur : codeSecteur // ignore: cast_nullable_to_non_nullable
+as String?,responsableCelluleId: freezed == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String?,fullNameRespoSecteur: freezed == fullNameRespoSecteur ? _self.fullNameRespoSecteur : fullNameRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String?,contactRespoSecteur: freezed == contactRespoSecteur ? _self.contactRespoSecteur : contactRespoSecteur // ignore: cast_nullable_to_non_nullable
+as String?,codeCellule: freezed == codeCellule ? _self.codeCellule : codeCellule // ignore: cast_nullable_to_non_nullable
+as String?,fullNameRespoCellule: freezed == fullNameRespoCellule ? _self.fullNameRespoCellule : fullNameRespoCellule // ignore: cast_nullable_to_non_nullable
+as String?,contactRespoCellule: freezed == contactRespoCellule ? _self.contactRespoCellule : contactRespoCellule // ignore: cast_nullable_to_non_nullable
+as String?,jourCellule: freezed == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
+as String?,offrande: freezed == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
+as String?,nombreBaptiser: freezed == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
+as String?,nombreNonBaptiser: freezed == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as String?,discipleCellule: null == discipleCellule ? _self._discipleCellule : discipleCellule // ignore: cast_nullable_to_non_nullable
+as List<DiscipleCelluleModel>,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,formAdministrationIsSubmit: freezed == formAdministrationIsSubmit ? _self.formAdministrationIsSubmit : formAdministrationIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formAdministrationSubmitDate: freezed == formAdministrationSubmitDate ? _self.formAdministrationSubmitDate : formAdministrationSubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,resumerPredication: freezed == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
+as String?,assistanceNonBaptiser: null == assistanceNonBaptiser ? _self.assistanceNonBaptiser : assistanceNonBaptiser // ignore: cast_nullable_to_non_nullable
 as RequestHumaneSectionAssistanceResponseModel,assistanceNouveau: null == assistanceNouveau ? _self.assistanceNouveau : assistanceNouveau // ignore: cast_nullable_to_non_nullable
 as RequestHumaneSectionAssistanceResponseModel,assistanceInviter: null == assistanceInviter ? _self.assistanceInviter : assistanceInviter // ignore: cast_nullable_to_non_nullable
 as RequestHumaneSectionAssistanceResponseModel,assistanceCellule: null == assistanceCellule ? _self.assistanceCellule : assistanceCellule // ignore: cast_nullable_to_non_nullable
-as RequestAuherResponseModel,formAssistanceIsSubmit: null == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formAssistanceSubmitDate: null == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
-as String,visiteMenbre: null == visiteMenbre ? _self._visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
+as RequestAuherResponseModel,formAssistanceIsSubmit: freezed == formAssistanceIsSubmit ? _self.formAssistanceIsSubmit : formAssistanceIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formAssistanceSubmitDate: freezed == formAssistanceSubmitDate ? _self.formAssistanceSubmitDate : formAssistanceSubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,visiteMenbre: null == visiteMenbre ? _self._visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
 as List<RequestSuggestionResponseModel>,visiteOuvrier: null == visiteOuvrier ? _self._visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
-as List<RequestSuggestionResponseModel>,dateActivitySubmited: null == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
-as String,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
-as String,suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
-as List<RapportSuggestionModel>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
-as String,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
-as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
-as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
-as String,
+as List<RequestSuggestionResponseModel>,dateActivitySubmited: freezed == dateActivitySubmited ? _self.dateActivitySubmited : dateActivitySubmited // ignore: cast_nullable_to_non_nullable
+as String?,formActivityIsSubmit: freezed == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formActivitySubmitDate: freezed == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
+as List<RequestHumaneSectionActivityResponseModel>,faisAssignaler: freezed == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
+as String?,ouvrierSpritualLive: freezed == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
+as String?,formSuggestionIsSubmit: freezed == formSuggestionIsSubmit ? _self.formSuggestionIsSubmit : formSuggestionIsSubmit // ignore: cast_nullable_to_non_nullable
+as String?,formSuggestionSubmitDate: freezed == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

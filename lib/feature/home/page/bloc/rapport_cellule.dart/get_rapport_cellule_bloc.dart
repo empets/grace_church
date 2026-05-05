@@ -18,11 +18,13 @@ class GetRapportCelluleBloc extends Bloc<FecthDataEvent, ApiState<List<RapportCe
 
   Future<void> _onFecthData(FecthDataEvent event, Emitter<ApiState<List<RapportCelluleResponse>>> emit) async {
     switch (event) {
-      case FetchDataByIdFecthDataEvent(: final id):
-        if (id.isNotEmpty) {
+
+
+      case FetchDataByIdFecthDataEvent(: final responsableCelluleId):
+        if (responsableCelluleId.isNotEmpty) {
           emit(ApiState<List<RapportCelluleResponse>>.load());
 
-          final response = await getRapportCelluleUsercase.call(RequestRapportCellule(responsableCelluleId: id));
+          final response = await getRapportCelluleUsercase.call(RequestRapportCellule(responsableCelluleId: responsableCelluleId));
           emit(
             response.fold(
               (l) => ApiState<List<RapportCelluleResponse>>.failed(l.message),

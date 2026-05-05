@@ -297,7 +297,7 @@ class _CelluleViewState extends State<CelluleView> {
                         ),
 
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 10.h),
+                          margin: EdgeInsets.symmetric(vertical: 6.h),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -310,14 +310,14 @@ class _CelluleViewState extends State<CelluleView> {
                                 ),
                               ),
                               SizedBox(width: 10.w),
-                              CustomeText(
-                                text: "TOUT VOIR",
-                                style: context.appTypographie.button.copyWith(
-                                  color: context.appColor.primaryBlue,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
+                              // CustomeText(
+                              //   text: "TOUT VOIR",
+                              //   style: context.appTypographie.button.copyWith(
+                              //     color: context.appColor.primaryBlue,
+                              //     fontSize: 12.sp,
+                              //     fontWeight: FontWeight.w800,
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -415,94 +415,37 @@ class _CelluleViewState extends State<CelluleView> {
                             ],
                           ),
                         ),
-
-                        Container(
-                          margin: EdgeInsets.only(top: 14.h),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomeText(
-                                text: "Menbres de la cellule",
-                                style: context.appTypographie.button.copyWith(
-                                  color: context.appColor.primaryGrayDark,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(3.h),
-                                decoration: BoxDecoration(
-                                  color: context.appColor.primaryLightBlue,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: CustomeText(
-                                  text: "12",
-                                  style: context.appTypographie.button.copyWith(
-                                    color: context.appColor.primaryGrayDark,
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
+                        SizedBox(height: 10.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Prédication de la semaine",
+                            style: context.appTypographie.body.copyWith(
+                              fontSize: 14,
+                              color: context.appColor.primaryGrayDark,
+                              fontWeight: FontWeight.w600
+                            ),
                           ),
                         ),
-                        SizedBox(height: 17.h),
+                        SizedBox(height: 10.h),
+
                         Container(
-                          height: 0.1.sh,
-
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(right: 10.w),
-                                    padding: EdgeInsets.all(5.r),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color:
-                                            context.appColor.primaryLightBlue,
-                                      ),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: ClipOval(
-                                      child: Image.network(
-                                        loadingBuilder:
-                                            (context, child, loadingProgress) {
-                                              return child;
-                                            },
-                                        errorBuilder: (_, __, ___) => ClipOval(
-                                          child: Image.network(
-                                            "yAssets.icons.profileAvatarPlaceholderLarge .path",
-                                            fit: BoxFit.contain,
-                                            height: 0.08.sh,
-                                            width: 0.08.sh,
-                                          ),
-                                        ),
-                                        "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
-
-                                        fit: BoxFit.cover,
-                                        height: 40.h,
-                                        width: 40.h,
-                                      ),
-                                    ),
+                          height: 0.16.sh,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                CustomeText(
+                                  text:
+                                      'sResponsableCellule: //[CelluleResponse(celluleId: -OrjhFA9201mksNHui-l, celluleCode: CELL002, nom: Cellule Cocody, date: 2026-05-02, description: Cellule secondaire Cocody, adresse: Cocody Angré, latitude: 5.3599, longitude: -3.9876, responsableCelluleId: -Orjg2BE-p2iQBFVntAj, responsableCellule: Koné Awa, contactResponsableCellule: +2250711111111, emailResponsableCellule: awa.kone@email.com, adresseResponsableCellule: Angré 8e tranche, secteurId: ',
+                                  style: context.appTypographie.body.copyWith(
+                                    fontSize: 12,
+                                    color: context.appColor.primaryGray500,
                                   ),
-                                  CustomeText(
-                                    text: "John Doe",
-                                    style: context.appTypographie.button
-                                        .copyWith(
-                                          color:
-                                              context.appColor.primaryGray500,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w800,
-                                        ),
-                                  ),
-                                ],
-                              );
-                            },
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),

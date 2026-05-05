@@ -310,6 +310,7 @@ _RapportCelluleResponse _$RapportCelluleResponseFromJson(
   dateActivitySubmited: json['dateActivitySubmited'] as String,
   formActivityIsSubmit: json['formActivityIsSubmit'] as String,
   formActivitySubmitDate: json['formActivitySubmitDate'] as String,
+  resumerPredication: json['resumerPredication'] as String,
   suggestions: (json['suggestions'] as List<dynamic>)
       .map(
         (e) => RequestHumaneSectionActivityResponse.fromJson(
@@ -355,6 +356,7 @@ Map<String, dynamic> _$RapportCelluleResponseToJson(
   'dateActivitySubmited': instance.dateActivitySubmited,
   'formActivityIsSubmit': instance.formActivityIsSubmit,
   'formActivitySubmitDate': instance.formActivitySubmitDate,
+  'resumerPredication': instance.resumerPredication,
   'suggestions': instance.suggestions,
   'faisAssignaler': instance.faisAssignaler,
   'ouvrierSpritualLive': instance.ouvrierSpritualLive,

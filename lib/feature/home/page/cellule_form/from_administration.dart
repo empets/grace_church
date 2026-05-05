@@ -25,7 +25,7 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_ad
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_statistic.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
 
 class EditingCelluleRaport extends StatefulWidget {
   const EditingCelluleRaport({super.key, this.profile});
@@ -364,670 +364,762 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                 ),
                 SizedBox(height: 16.h),
 
-                Row(
-                  children: [
-                    Icon(
-                      Icons.account_balance,
-                      color: context.appColor.primaryDarkBlue,
-                    ),
-                    SizedBox(width: 8.w),
-                    CustomeText(
-                      text: "Administration",
-                      style: context.appTypographie.body.copyWith(
-                        fontSize: 13.sp,
-                        color: context.appColor.primaryGrayDark,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16.h),
-
-                // SizedBox(height: 12.h),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Secteur",
-                          style: context.appTypographie.small.copyWith(
-                            color: Colors.grey.shade700,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(width: 3.w),
-                      ],
-                    ),
-                    BlocBuilder<
-                      RapportCelluleRequestSectionAdministrationBloc,
-                      RapportCelluleRequestSectionAdministrationState
-                    >(
-                      builder: (context, state) {
-                        return BlocBuilder<
-                          GetZoneBloc,
-                          ApiState<List<ZoneResponse>>
-                        >(
-                          builder: (context, zoneState) {
-                            return BlocBuilder<
-                              GetSecteurBloc,
-                              ApiState<List<SecteurResponse>>
-                            >(
-                              builder: (context, secteurState) {
-                                   return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.symmetric(
-                                          vertical: 4.h,
-                                        ),
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 12,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: state.codeSecteur.isValid
-                                                ? context
-                                                      .appColor
-                                                      .primaryLightBlue
-                                                : Colors.grey.withOpacity(.5),
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            10,
-                                          ),
-                                        ),
-                                        // statutMenber
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton<SecteurResponse>(
-                                            isExpanded: true,
-                                            
-                                            dropdownColor:
-                                                context.appColor.primaryWhite,
-                                            hint: Text(
-                                              "Selectionner une cellule",
-                                              style: GoogleFonts.roboto(
-                                                color: Colors.grey,
-                                                fontSize: 14.sp,
-                                              ),
-                                            ),
-                                            value: selectSecteur,
-                                            style: GoogleFonts.roboto(
-                                              color: Colors.black,
-                                              fontSize: 14.sp,
-                                            ),
-                                            icon: secteurState is LoadState<List<SecteurResponse>> ? SizedBox(
-                                              height: 20.h,
-                                              width: 20.w,
-                                              child: CircularProgressIndicator.adaptive(
-                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                  context.appColor.primaryBlue,
-                                                ),
-                                                backgroundColor: context.appColor.primaryLightBlue,
-                                              
-                                              ),
-                                            ):
-                                            
-                                             Icon(
-                                              Icons.keyboard_arrow_down,
-                                            ),
-                                            items: secteurState is SuccessState<List<SecteurResponse>> ? secteurState.data
-                                                .map(
-                                                  (item) =>
-                                                      DropdownMenuItem<
-                                                        SecteurResponse
-                                                      >(
-                                                        value: item,
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            SizedBox(
-                                                              height: 9.h,
-                                                            ),
-                                                            Text(
-                                                              item.secteurResponsableName,
-                                                              style:
-                                                                  GoogleFonts.roboto(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                  ),
-                                                            ),
-
-                                                            Text(
-                                                              item.adresse,
-                                                              style:
-                                                                  GoogleFonts.roboto(
-                                                                    color: Colors
-                                                                        .grey,
-                                                                    fontSize:
-                                                                        0.sp,
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                )
-                                                .toList()
-                                                : [],
-                                            onChanged: state.status.isInProgress
-                                                ? null
-                                                : (value) {
-                                                    setState(() {
-                                                      selectSecteur = value;
-                                                    });
-
-                                                    if (zoneState
-                                                        is SuccessState<
-                                                          List<
-                                                            ZoneResponse
-                                                          >
-                                                        >) {
-
-                                                          // -----------------------------------------------------------------------
-                                                          //  recuper les information de la zone en fonction de la zone selectionner
-                                                          // -----------------------------------------------------------------------
-                                                      final zoneSelected = zoneState
-                                                          .data
-                                                          .where(
-                                                            (element) =>
-                                                                element.zoneCode
-                                                                    ?.toLowerCase() ==
-                                                                value?.zoneCode
-                                                                    .toLowerCase(),
-                                                          )
-                                                          .firstOrNull;
-
-                                                      context
-                                                          .read<
-                                                            RapportCelluleRequestSectionAdministrationBloc
-                                                          >()
-                                                          .add(
-                                                            RapportCelluleRequestSectionAdministrationEvent.changeCodeZone(
-                                                              zoneSelected?.zoneCode?? ""
-                                                                 ,
-                                                            ),
-                                                          );
-                                                      context
-                                                          .read<
-                                                            RapportCelluleRequestSectionAdministrationBloc
-                                                          >()
-                                                          .add(
-                                                            RapportCelluleRequestSectionAdministrationEvent.changeFullNameRespoZone(
-                                                             
-                                                               zoneSelected?.zoneResponsableName ?? '',
-                                                            ),
-                                                          );
-
-                                                      context
-                                                          .read<
-                                                            RapportCelluleRequestSectionAdministrationBloc
-                                                          >()
-                                                          .add(
-                                                            RapportCelluleRequestSectionAdministrationEvent.changeContactRespoZone(
-                                                              zoneSelected?.contactResponsable ?? '',
-                                                            ),
-                                                          );
-                                                    }
-
-                                                    context
-                                                        .read<
-                                                          RapportCelluleRequestSectionAdministrationBloc
-                                                        >()
-                                                        .add(
-                                                          RapportCelluleRequestSectionAdministrationEvent.changeCodeSecteur(
-                                                            value?.secteurCode ??
-                                                                '',
-                                                          ),
-                                                        );
-
-                                                    context
-                                                        .read<
-                                                          RapportCelluleRequestSectionAdministrationBloc
-                                                        >()
-                                                        .add(
-                                                          RapportCelluleRequestSectionAdministrationEvent.changeFullNameRespoSecteur(
-                                                            value?.secteurResponsableName ??
-                                                                '',
-                                                          ),
-                                                        );
-
-                                                    context
-                                                        .read<
-                                                          RapportCelluleRequestSectionAdministrationBloc
-                                                        >()
-                                                        .add(
-                                                          RapportCelluleRequestSectionAdministrationEvent.changeContactRespoSecteur(
-                                                            value?.contactResponsable ??
-                                                                '',
-                                                          ),
-                                                        );
-                                                  },
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                               
-                              },
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    SizedBox(height: 9.h),
-                  ],
-                ),
-
-                BlocBuilder<
-                  RapportCelluleRequestSectionAdministrationBloc,
-                  RapportCelluleRequestSectionAdministrationState
-                >(
-                  builder: (context, state) {
-                    return ProductionFormCustomer(
-                      isColorBlue: state.fullNameRespoCellule.isValid
-                          ? true
-                          : false,
-                      readOnly: true,
-                      controller: textEditingControllerNomResponsableCellule,
-                      // textEditingControllerDateNaissance,
-                      inputLabel: "Nom complet de l'ouvrier",
-                      textLabel: "Renseigner le nom complet de l'ouvrier",
-                      errorText:
-                          state.fullNameRespoCellule.isPure ||
-                              state.fullNameRespoCellule.isValid
-                          ? null
-                          : '',
-                      msgError: 'Veuillez renseigner ce champ',
-                      sufixIcon: Icon(
-                        Icons.person,
-                        color: context.appColor.primaryBlue,
-                      ),
-                      onChanged: (value) {},
-                    );
-                  },
-                ),
-                SizedBox(height: 5.h),
-                BlocBuilder<
-                  RapportCelluleRequestSectionAdministrationBloc,
-                  RapportCelluleRequestSectionAdministrationState
-                >(
-                  builder: (context, state) {
-                    return ProductionFormCustomer(
-                      isColorBlue: state.jourCellule.isValid ? true : false,
-                      readOnly: true,
-                      controller: textEditingControllerDateNaissance,
-                      inputLabel: 'Selctionner une date',
-                      textLabel: "Cliquer sur l'icon juste à droite ",
-                      errorText:
-                          state.jourCellule.isPure || state.jourCellule.isValid
-                          ? null
-                          : '',
-                      msgError: 'Veuillez renseigner ce champ',
-                      sufixIcon: Container(
-                        margin: EdgeInsets.only(right: 3.w),
-                        decoration: BoxDecoration(
-                          color: context.appColor.primaryLightBlue,
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: IconButton(
-                          onPressed: _openCalendar,
-                          icon: Icon(
-                            Icons.calendar_month_sharp,
-                            color: context.appColor.primaryBlue,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 5.h),
-
-                BlocBuilder<
-                  RapportCelluleRequestSectionAdministrationBloc,
-                  RapportCelluleRequestSectionAdministrationState
-                >(
-                  builder: (context, state) {
-                    return ProductionFormCustomer(
-                      textInputType: TextInputType.phone,
-                      isColorBlue: state.offrande.isValid ? true : false,
-                      readOnly: false,
-                      inputLabel: 'Offrande',
-                      textLabel: "Cliquer sur l'icon juste à droite ",
-                      errorText: state.offrande.isPure || state.offrande.isValid
-                          ? null
-                          : '',
-                      msgError: 'Veuillez renseigner ce champ',
-                      sufixIcon: Icon(
-                        Icons.monetization_on_outlined,
-                        color: context.appColor.primaryBlue,
-                      ),
-                      onChanged: (value) {
-                        context
-                            .read<
-                              RapportCelluleRequestSectionAdministrationBloc
-                            >()
-                            .add(
-                              RapportCelluleRequestSectionAdministrationEvent.changeOffrande(
-                                value,
-                              ),
-                            );
-                      },
-                    );
-                  },
-                ),
-                SizedBox(height: 16.h),
-
-                Row(
-                  children: [
-                    Icon(
-                      Icons.trending_up_outlined,
-                      color: context.appColor.primaryDarkBlue,
-                    ),
-                    SizedBox(width: 8.w),
-                    CustomeText(
-                      text: "Assistance et Statistiques",
-                      style: context.appTypographie.body.copyWith(
-                        fontSize: 13.sp,
-                        color: context.appColor.primaryGrayDark,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8.h),
-                BlocBuilder<
-                  RapportCelluleRequestSectionAdministrationBloc,
-                  RapportCelluleRequestSectionAdministrationState
-                >(
-                  builder: (context, state) {
-                    return Container(
-                      height: isChowIcon ? 0.3.sh : 0.12.sh,
-                      child: Scrollbar(
-                        radius: Radius.circular(10.r),
-                        child: Expanded(
-                          child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: RequestSectionEffectif.length,
-                            itemBuilder: (context, index) {
-                              final RequestSection =
-                                  RequestSectionEffectif[index];
-                              return Card(
-                                color: Colors.white,
-                                elevation: 0.5.h,
-                                borderOnForeground: true,
-                                child: ExpansionTile(
-                                  // splashColor: Colors.transparent,
-                                  onExpansionChanged: (value) {
-                                    WidgetsBinding.instance
-                                        .addPostFrameCallback((_) {
-                                          setState(() {
-                                            isChowIcon = !isChowIcon;
-                                          });
-                                        });
-                                  },
-                                  initiallyExpanded: isChowIcon,
-                                  tilePadding: EdgeInsets.symmetric(
-                                    horizontal: 16.w,
-                                    vertical: 8.h,
-                                  ),
-                                  iconColor: const Color(0xFF888888),
-                                  shape: Border.all(color: Colors.transparent),
-                                  collapsedShape: Border.all(
-                                    color: Colors.transparent,
-                                  ),
-                                  title: Text(
-                                    RequestSection.title,
-                                    style: GoogleFonts.roboto(
-                                      color: Colors.black,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  children: RequestSection.items.map((item) {
-                                    if (item.name.contains("Baptisé")) {
-                                      log('message ${item.name}${item.count}');
-                                      context
-                                          .read<
-                                            RapportCelluleRequestSectionAdministrationBloc
-                                          >()
-                                          .add(
-                                            RapportCelluleRequestSectionAdministrationEvent.changeNombreBaptiser(
-                                              item.count.toString(),
-                                            ),
-                                          );
-                                    } else {
-                                      context
-                                          .read<
-                                            RapportCelluleRequestSectionAdministrationBloc
-                                          >()
-                                          .add(
-                                            RapportCelluleRequestSectionAdministrationEvent.changeNombreNonBaptiser(
-                                              item.count.toString(),
-                                            ),
-                                          );
-                                    }
-                                    return Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 16.w,
-                                        vertical: 8.h,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            item.name,
-                                            style: GoogleFonts.roboto(
-                                              color: Color(0xFF888888),
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.remove,
-                                                  color: Color(0xFF888888),
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    if (item.count > 0)
-                                                      item.count--;
-                                                  });
-                                                },
-                                              ),
-
-                                              Text(item.count.toString()),
-
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.add,
-                                                  color: Color(0xFF888888),
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    item.count++;
-                                                  });
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }).toList(),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                Column(
-                  children: [
-                    CustomeTextFormFieldWithoutBorder(
-                      textInputType: TextInputType.number,
-                      textLabel: "Exemple : 3",
-                      errorText: null,
-                      msgError: "Veuillez entrer le nombre de disciple",
-                      inputLabel: "Nombre de disciple",
-                      onChanged: (value) {
-                        // TODO: Handle the value change
-                        final number = int.tryParse(value) ?? 1;
-                        updateNombre2(RequestSection2, number);
-                      },
-                    ),
-
-                    BlocBuilder<
-                      RapportCelluleRequestSectionAdministrationBloc,
-                      RapportCelluleRequestSectionAdministrationState
-                    >(
-                      builder: (context, state) {
-                        return Column(
-                          children: [
-                            ...List<Widget>.generate(RequestSection2.rows.length, (
-                              index,
-                            ) {
-                              // ─── Récupère le disciple à cet index précis ───
-                              final currentDisciple =
-                                  state.discipleCelluleList.length > index
-                                  ? state.discipleCelluleList[index]
-                                  : null;
-
-                              // ─── Validation Nom ───
-                              final nomError =
-                                  (currentDisciple == null ||
-                                      currentDisciple.fullName.trim().isEmpty)
-                                  ? "Veuillez entrer le nom complet"
-                                  : null;
-
-                              // ─── Validation Baptisé (Oui/Non uniquement) ───
-                              final baptiseError =
-                                  (currentDisciple == null ||
-                                      !RegExp(
-                                        r'^(Oui|Non)$',
-                                        caseSensitive: false,
-                                      ).hasMatch(
-                                        currentDisciple.isBaptierOrNot.trim(),
-                                      ))
-                                  ? "Veuillez entrer Oui ou Non uniquement"
-                                  : null;
-
-                              return Container(
-                                margin: EdgeInsets.only(bottom: 16.h),
-                                child: Card(
-                                  color: Colors.white,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 16.w,
-                                      vertical: 16.h,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          "Disciple ${index + 1}",
-                                          style: context.appTypographie.body
-                                              .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-
-                                        // ─── Champ Nom ───
-                                        CustomeTextFormFieldWithoutBorder(
-                                          textLabel:
-                                              "Veuillez entrer le nom complet",
-                                          inputLabel: "Nom",
-                                          errorText: null,
-                                          onChanged: (val) {
-                                            _updateDisciple(
-                                              context: context,
-                                              index: index,
-                                              state: state,
-                                              fullName: val,
-                                            );
-                                          },
-                                          msgError: '',
-                                        ),
-
-                                        SizedBox(height: 9.h),
-
-                                        // ─── Champ Baptisé ───
-                                        CustomeTextFormFieldWithoutBorder(
-                                          textLabel:
-                                              "Veuillez entrer le statut",
-                                          inputLabel: "Baptisé (Oui/Non)",
-                                          msgError:  "",
-                                          errorText: baptiseError,
-                                          textInputType: TextInputType.text,
-                                          onChanged: (val) {
-                                            _updateDisciple(
-                                              context: context,
-                                              index: index,
-                                              state: state,
-                                              isBaptierOrNot: val,
-                                            );
-                                          },
-                                        ),
-
-                                        SizedBox(height: 16.h),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                          ],
-                        );
-                      },
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: 9.h),
-
                 BlocBuilder<RapportCelluleRequestSectionAdministrationBloc, RapportCelluleRequestSectionAdministrationState>(
                   builder: (context, state) {
-                    return FormNextTeps(
-                      icons: Icons.trending_up_sharp,
-                      title: 'Assistance ',
-                      description: 'Personne présente a la cellule',
-                      isNextForm: state.isValide,
-                    );
-                  },
-                ),
+                    return state.status.isInProgress ?  Column(
+                      children: [
+                        SizedBox(
+                          height: 0.2.sh,
+                        ),
+                        Center(child: CircularProgressIndicator(
+                          backgroundColor: context.appColor.primaryLightBlue,
+                          valueColor: AlwaysStoppedAnimation<Color>(context.appColor.primaryBlue),
+                        )),
+                      ],
+                    ) : Column(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.account_balance,
+                              color: context.appColor.primaryDarkBlue,
+                            ),
+                            SizedBox(width: 8.w),
+                            CustomeText(
+                              text: "Administration",
+                              style: context.appTypographie.body.copyWith(
+                                fontSize: 13.sp,
+                                color: context.appColor.primaryGrayDark,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16.h),
 
-                BlocBuilder<
-                  RapportCelluleRequestSectionAdministrationBloc,
-                  RapportCelluleRequestSectionAdministrationState
-                >(
-                  builder: (context, state) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(vertical: 20.h),
-                      child: PrimaryButton(
-                        label: 'Suivant',
-                        colorText: context.appColor.primaryWhite,
-                        isLoading: state.status.isInProgress,
-                        onPressed: state.status.isInProgress || !state.isValide
-                            ? null
-                            : () {
-                                log("---------->> Submit");
-                                FocusScope.of(context).unfocus();
+                        // SizedBox(height: 12.h),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "Secteur",
+                                  style: context.appTypographie.small.copyWith(
+                                    color: Colors.grey.shade700,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(width: 3.w),
+                              ],
+                            ),
+                            BlocBuilder<
+                              RapportCelluleRequestSectionAdministrationBloc,
+                              RapportCelluleRequestSectionAdministrationState
+                            >(
+                              builder: (context, state) {
+                                return BlocBuilder<
+                                  GetZoneBloc,
+                                  ApiState<List<ZoneResponse>>
+                                >(
+                                  builder: (context, zoneState) {
+                                    return BlocBuilder<
+                                      GetSecteurBloc,
+                                      ApiState<List<SecteurResponse>>
+                                    >(
+                                      builder: (context, secteurState) {
+                                        return Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                vertical: 4.h,
+                                              ),
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 12,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color:
+                                                      state.codeSecteur.isValid
+                                                      ? context
+                                                            .appColor
+                                                            .primaryLightBlue
+                                                      : Colors.grey.withOpacity(
+                                                          .5,
+                                                        ),
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              // statutMenber
+                                              child: DropdownButtonHideUnderline(
+                                                child: DropdownButton<SecteurResponse>(
+                                                  isExpanded: true,
+
+                                                  dropdownColor: context
+                                                      .appColor
+                                                      .primaryWhite,
+                                                  hint: Text(
+                                                    "Selectionner une cellule",
+                                                    style: GoogleFonts.roboto(
+                                                      color: Colors.grey,
+                                                      fontSize: 14.sp,
+                                                    ),
+                                                  ),
+                                                  value: selectSecteur,
+                                                  style: GoogleFonts.roboto(
+                                                    color: Colors.black,
+                                                    fontSize: 14.sp,
+                                                  ),
+                                                  icon:
+                                                      secteurState
+                                                          is LoadState<
+                                                            List<
+                                                              SecteurResponse
+                                                            >
+                                                          >
+                                                      ? SizedBox(
+                                                          height: 20.h,
+                                                          width: 20.w,
+                                                          child: CircularProgressIndicator.adaptive(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                  Color
+                                                                >(
+                                                                  context
+                                                                      .appColor
+                                                                      .primaryBlue,
+                                                                ),
+                                                            backgroundColor: context
+                                                                .appColor
+                                                                .primaryLightBlue,
+                                                          ),
+                                                        )
+                                                      : Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down,
+                                                        ),
+                                                  items:
+                                                      secteurState
+                                                          is SuccessState<
+                                                            List<
+                                                              SecteurResponse
+                                                            >
+                                                          >
+                                                      ? secteurState.data
+                                                            .map(
+                                                              (
+                                                                item,
+                                                              ) => DropdownMenuItem<SecteurResponse>(
+                                                                value: item,
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      height:
+                                                                          9.h,
+                                                                    ),
+                                                                    Text(
+                                                                      item.secteurResponsableName,
+                                                                      style: GoogleFonts.roboto(
+                                                                        color: Colors
+                                                                            .black,
+                                                                        fontSize:
+                                                                            12.sp,
+                                                                      ),
+                                                                    ),
+
+                                                                    Text(
+                                                                      item.adresse,
+                                                                      style: GoogleFonts.roboto(
+                                                                        color: Colors
+                                                                            .grey,
+                                                                        fontSize:
+                                                                            0.sp,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            )
+                                                            .toList()
+                                                      : [],
+                                                  onChanged:
+                                                      state.status.isInProgress
+                                                      ? null
+                                                      : (value) {
+                                                          setState(() {
+                                                            selectSecteur =
+                                                                value;
+                                                          });
+
+                                                          if (zoneState
+                                                              is SuccessState<
+                                                                List<
+                                                                  ZoneResponse
+                                                                >
+                                                              >) {
+                                                            // -----------------------------------------------------------------------
+                                                            //  recuper les information de la zone en fonction de la zone selectionner
+                                                            // -----------------------------------------------------------------------
+                                                            final zoneSelected = zoneState
+                                                                .data
+                                                                .where(
+                                                                  (element) =>
+                                                                      element
+                                                                          .zoneCode
+                                                                          ?.toLowerCase() ==
+                                                                      value
+                                                                          ?.zoneCode
+                                                                          .toLowerCase(),
+                                                                )
+                                                                .firstOrNull;
+
+                                                            context
+                                                                .read<
+                                                                  RapportCelluleRequestSectionAdministrationBloc
+                                                                >()
+                                                                .add(
+                                                                  RapportCelluleRequestSectionAdministrationEvent.changeCodeZone(
+                                                                    zoneSelected
+                                                                            ?.zoneCode ??
+                                                                        "",
+                                                                  ),
+                                                                );
+                                                            context
+                                                                .read<
+                                                                  RapportCelluleRequestSectionAdministrationBloc
+                                                                >()
+                                                                .add(
+                                                                  RapportCelluleRequestSectionAdministrationEvent.changeFullNameRespoZone(
+                                                                    zoneSelected
+                                                                            ?.zoneResponsableName ??
+                                                                        '',
+                                                                  ),
+                                                                );
+
+                                                            context
+                                                                .read<
+                                                                  RapportCelluleRequestSectionAdministrationBloc
+                                                                >()
+                                                                .add(
+                                                                  RapportCelluleRequestSectionAdministrationEvent.changeContactRespoZone(
+                                                                    zoneSelected
+                                                                            ?.contactResponsable ??
+                                                                        '',
+                                                                  ),
+                                                                );
+                                                          }
+
+                                                          context
+                                                              .read<
+                                                                RapportCelluleRequestSectionAdministrationBloc
+                                                              >()
+                                                              .add(
+                                                                RapportCelluleRequestSectionAdministrationEvent.changeCodeSecteur(
+                                                                  value?.secteurCode ??
+                                                                      '',
+                                                                ),
+                                                              );
+
+                                                          context
+                                                              .read<
+                                                                RapportCelluleRequestSectionAdministrationBloc
+                                                              >()
+                                                              .add(
+                                                                RapportCelluleRequestSectionAdministrationEvent.changeFullNameRespoSecteur(
+                                                                  value?.secteurResponsableName ??
+                                                                      '',
+                                                                ),
+                                                              );
+
+                                                          context
+                                                              .read<
+                                                                RapportCelluleRequestSectionAdministrationBloc
+                                                              >()
+                                                              .add(
+                                                                RapportCelluleRequestSectionAdministrationEvent.changeContactRespoSecteur(
+                                                                  value?.contactResponsable ??
+                                                                      '',
+                                                                ),
+                                                              );
+                                                        },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                            SizedBox(height: 9.h),
+                          ],
+                        ),
+
+                        BlocBuilder<
+                          RapportCelluleRequestSectionAdministrationBloc,
+                          RapportCelluleRequestSectionAdministrationState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              readOnly: state.status.isInProgress,
+                              isColorBlue: state.fullNameRespoCellule.isValid
+                                  ? true
+                                  : false,
+                              controller:
+                                  textEditingControllerNomResponsableCellule,
+                              // textEditingControllerDateNaissance,
+                              inputLabel: "Nom complet de l'ouvrier",
+                              textLabel:
+                                  "Renseigner le nom complet de l'ouvrier",
+                              errorText:
+                                  state.fullNameRespoCellule.isPure ||
+                                      state.fullNameRespoCellule.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              sufixIcon: Icon(
+                                Icons.person,
+                                color: context.appColor.primaryBlue,
+                              ),
+                              onChanged: (value) {},
+                            );
+                          },
+                        ),
+                        SizedBox(height: 5.h),
+                        BlocBuilder<
+                          RapportCelluleRequestSectionAdministrationBloc,
+                          RapportCelluleRequestSectionAdministrationState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              readOnly: state.status.isInProgress,
+                              isColorBlue: state.jourCellule.isValid
+                                  ? true
+                                  : false,
+                              controller: textEditingControllerDateNaissance,
+                              inputLabel: 'Selctionner une date',
+                              textLabel: "Cliquer sur l'icon juste à droite ",
+                              errorText:
+                                  state.jourCellule.isPure ||
+                                      state.jourCellule.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              sufixIcon: Container(
+                                margin: EdgeInsets.only(right: 3.w),
+                                decoration: BoxDecoration(
+                                  color: context.appColor.primaryLightBlue,
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                                child: IconButton(
+                                  onPressed: _openCalendar,
+                                  icon: Icon(
+                                    Icons.calendar_month_sharp,
+                                    color: context.appColor.primaryBlue,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 5.h),
+
+                        BlocBuilder<
+                          RapportCelluleRequestSectionAdministrationBloc,
+                          RapportCelluleRequestSectionAdministrationState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              readOnly: state.status.isInProgress,
+                              textInputType: TextInputType.phone,
+                              isColorBlue: state.offrande.isValid
+                                  ? true
+                                  : false,
+                              inputLabel: 'Offrande',
+                              textLabel: "Cliquer sur l'icon juste à droite ",
+                              errorText:
+                                  state.offrande.isPure ||
+                                      state.offrande.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              sufixIcon: Icon(
+                                Icons.monetization_on_outlined,
+                                color: context.appColor.primaryBlue,
+                              ),
+                              onChanged: (value) {
                                 context
                                     .read<
                                       RapportCelluleRequestSectionAdministrationBloc
                                     >()
                                     .add(
-                                      RapportCelluleRequestSectionAdministrationEvent.submit(),
+                                      RapportCelluleRequestSectionAdministrationEvent.changeOffrande(
+                                        value,
+                                      ),
                                     );
                               },
-                      ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 16.h),
+
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.trending_up_outlined,
+                              color: context.appColor.primaryDarkBlue,
+                            ),
+                            SizedBox(width: 8.w),
+                            CustomeText(
+                              text: "Assistance et Statistiques",
+                              style: context.appTypographie.body.copyWith(
+                                fontSize: 13.sp,
+                                color: context.appColor.primaryGrayDark,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 8.h),
+                        BlocBuilder<
+                          RapportCelluleRequestSectionAdministrationBloc,
+                          RapportCelluleRequestSectionAdministrationState
+                        >(
+                          builder: (context, state) {
+                            return Container(
+                              height: isChowIcon ? 0.3.sh : 0.12.sh,
+                              child: Scrollbar(
+                                radius: Radius.circular(10.r),
+                                child: Expanded(
+                                  child: ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    itemCount: RequestSectionEffectif.length,
+                                    itemBuilder: (context, index) {
+                                      final RequestSection =
+                                          RequestSectionEffectif[index];
+                                      return Card(
+                                        color: Colors.white,
+                                        elevation: 0.5.h,
+                                        borderOnForeground: true,
+                                        child: ExpansionTile(
+                                          // splashColor: Colors.transparent,
+                                          onExpansionChanged: (value) {
+                                            WidgetsBinding.instance
+                                                .addPostFrameCallback((_) {
+                                                  setState(() {
+                                                    isChowIcon = !isChowIcon;
+                                                  });
+                                                });
+                                          },
+                                          initiallyExpanded: isChowIcon,
+                                          tilePadding: EdgeInsets.symmetric(
+                                            horizontal: 16.w,
+                                            vertical: 8.h,
+                                          ),
+                                          iconColor: const Color(0xFF888888),
+                                          shape: Border.all(
+                                            color: Colors.transparent,
+                                          ),
+                                          collapsedShape: Border.all(
+                                            color: Colors.transparent,
+                                          ),
+                                          title: Text(
+                                            RequestSection.title,
+                                            style: GoogleFonts.roboto(
+                                              color: Colors.black,
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          children: RequestSection.items.map((
+                                            item,
+                                          ) {
+                                            if (item.name.contains("Baptisé")) {
+                                              log(
+                                                'message ${item.name}${item.count}',
+                                              );
+                                              context
+                                                  .read<
+                                                    RapportCelluleRequestSectionAdministrationBloc
+                                                  >()
+                                                  .add(
+                                                    RapportCelluleRequestSectionAdministrationEvent.changeNombreBaptiser(
+                                                      item.count.toString(),
+                                                    ),
+                                                  );
+                                            } else {
+                                              context
+                                                  .read<
+                                                    RapportCelluleRequestSectionAdministrationBloc
+                                                  >()
+                                                  .add(
+                                                    RapportCelluleRequestSectionAdministrationEvent.changeNombreNonBaptiser(
+                                                      item.count.toString(),
+                                                    ),
+                                                  );
+                                            }
+                                            return Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 16.w,
+                                                vertical: 8.h,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    item.name,
+                                                    style: GoogleFonts.roboto(
+                                                      color: Color(0xFF888888),
+                                                      fontSize: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      IconButton(
+                                                        icon: Icon(
+                                                          Icons.remove,
+                                                          color: Color(
+                                                            0xFF888888,
+                                                          ),
+                                                        ),
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            if (item.count > 0)
+                                                              item.count--;
+                                                          });
+                                                        },
+                                                      ),
+
+                                                      Text(
+                                                        item.count.toString(),
+                                                      ),
+
+                                                      IconButton(
+                                                        icon: Icon(
+                                                          Icons.add,
+                                                          color: Color(
+                                                            0xFF888888,
+                                                          ),
+                                                        ),
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            item.count++;
+                                                          });
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        Column(
+                          children: [
+                            BlocBuilder<
+                              RapportCelluleRequestSectionAdministrationBloc,
+                              RapportCelluleRequestSectionAdministrationState
+                            >(
+                              builder: (context, state) {
+                                return CustomeTextFormFieldWithoutBorder(
+                                  textInputType: TextInputType.number,
+                                  readOnly: state.isValide,
+                                  textLabel: "Exemple : 3",
+                                  errorText: null,
+                                  msgError:
+                                      "Veuillez entrer le nombre de disciple",
+                                  inputLabel: "Nombre de disciple",
+                                  onChanged: (value) {
+                                    // TODO: Handle the value change
+                                    final number = int.tryParse(value) ?? 1;
+                                    updateNombre2(RequestSection2, number);
+                                  },
+                                );
+                              },
+                            ),
+
+                            BlocBuilder<
+                              RapportCelluleRequestSectionAdministrationBloc,
+                              RapportCelluleRequestSectionAdministrationState
+                            >(
+                              builder: (context, state) {
+                                return Column(
+                                  children: [
+                                    ...List<Widget>.generate(RequestSection2.rows.length, (
+                                      index,
+                                    ) {
+                                      // ─── Récupère le disciple à cet index précis ───
+                                      final currentDisciple =
+                                          state.discipleCelluleList.length >
+                                              index
+                                          ? state.discipleCelluleList[index]
+                                          : null;
+
+                                      // ─── Validation Nom ───
+                                      final nomError =
+                                          (currentDisciple == null ||
+                                              currentDisciple.fullName
+                                                  .trim()
+                                                  .isEmpty)
+                                          ? "Veuillez entrer le nom complet"
+                                          : null;
+
+                                      // ─── Validation Baptisé (Oui/Non uniquement) ───
+                                      final baptiseError =
+                                          (currentDisciple == null ||
+                                              !RegExp(
+                                                r'^(Oui|Non)$',
+                                                caseSensitive: false,
+                                              ).hasMatch(
+                                                currentDisciple.isBaptierOrNot
+                                                    .trim(),
+                                              ))
+                                          ? "Veuillez entrer Oui ou Non uniquement"
+                                          : null;
+
+                                      return Container(
+                                        margin: EdgeInsets.only(bottom: 16.h),
+                                        child: Card(
+                                          color: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 16.w,
+                                              vertical: 16.h,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  "Disciple ${index + 1}",
+                                                  style: context
+                                                      .appTypographie
+                                                      .body
+                                                      .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                ),
+
+                                                // ─── Champ Nom ───
+                                                CustomeTextFormFieldWithoutBorder(
+                                                  readOnly: state.status.isInProgress,
+                                                  textLabel:
+                                                      "Veuillez entrer le nom complet",
+                                                  inputLabel: "Nom",
+                                                  errorText: null,
+                                                  onChanged: (val) {
+                                                    _updateDisciple(
+                                                      context: context,
+                                                      index: index,
+                                                      state: state,
+                                                      fullName: val,
+                                                    );
+                                                  },
+                                                  msgError: '',
+                                                ),
+
+                                                SizedBox(height: 9.h),
+
+                                                // ─── Champ Baptisé ───
+                                                CustomeTextFormFieldWithoutBorder(
+                                                  readOnly:state.status.isInProgress,
+                                                  textLabel:
+                                                      "Veuillez entrer le statut",
+                                                  inputLabel:
+                                                      "Baptisé (Oui/Non)",
+                                                  msgError: "",
+                                                  errorText: baptiseError,
+                                                  textInputType:
+                                                      TextInputType.text,
+                                                  onChanged: (val) {
+                                                    _updateDisciple(
+                                                      context: context,
+                                                      index: index,
+                                                      state: state,
+                                                      isBaptierOrNot: val,
+                                                    );
+                                                  },
+                                                ),
+
+                                                SizedBox(height: 16.h),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ],
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: 9.h),
+
+                        BlocBuilder<
+                          RapportCelluleRequestSectionAdministrationBloc,
+                          RapportCelluleRequestSectionAdministrationState
+                        >(
+                          builder: (context, state) {
+                            return FormNextTeps(
+                              icons: Icons.trending_up_sharp,
+                              title: 'Assistance ',
+                              description: 'Personne présente a la cellule',
+                              isNextForm: state.isValide,
+                            );
+                          },
+                        ),
+
+                        BlocBuilder<
+                          RapportCelluleRequestSectionAdministrationBloc,
+                          RapportCelluleRequestSectionAdministrationState
+                        >(
+                          builder: (context, state) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 20.h),
+                              child: PrimaryButton(
+                                label: 'Suivant',
+                                colorText: context.appColor.primaryWhite,
+                                isLoading: state.status.isInProgress,
+                                onPressed:
+                                    state.status.isInProgress || !state.isValide
+                                    ? null
+                                    : () {
+                                        log("---------->> Submit");
+                                        FocusScope.of(context).unfocus();
+                                        context
+                                            .read<
+                                              RapportCelluleRequestSectionAdministrationBloc
+                                            >()
+                                            .add(
+                                              RapportCelluleRequestSectionAdministrationEvent.submit(),
+                                            );
+                                      },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     );
                   },
                 ),

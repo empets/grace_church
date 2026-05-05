@@ -278,6 +278,7 @@ abstract class RequestRapportCelluleSuggestion
     required String ouvrierSpritualLive,
     required String formSuggestionIsSubmit,
     required String formSuggestionSubmitDate,
+    required String resumerPredication,
   }) = _RequestRapportCelluleSuggestion;
   factory RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleSuggestionFromJson(json);

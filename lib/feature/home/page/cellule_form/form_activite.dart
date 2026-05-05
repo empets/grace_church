@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
@@ -147,7 +149,8 @@ class _FormActiviteState extends State<FormActivite> {
             fadeRoute(
               BlocProvider(
                 create: (context) => FormSuggestionBloc(
-                  sendRapportCelluleStepSuggestionUsercase: getIt<SendRapportCelluleStepSuggestionUsercase>(),
+                  sendRapportCelluleStepSuggestionUsercase:
+                      getIt<SendRapportCelluleStepSuggestionUsercase>(),
                 ),
                 child: const FormOuvrierSpritualLive(),
               ),
@@ -295,288 +298,327 @@ class _FormActiviteState extends State<FormActivite> {
                 ),
                 SizedBox(height: 0.02.sh),
 
-                Row(
-                  children: [
-                    Icon(Icons.search, color: context.appColor.primaryDarkBlue),
-                    SizedBox(width: 8.w),
-                    CustomeText(
-                      text: "RequestSection visite",
-                      style: context.appTypographie.body.copyWith(
-                        fontSize: 13.sp,
-                        color: context.appColor.primaryGrayDark,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(height: 16.h),
-
-                    TextField(
-                      
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Nombre de visite faite aux disciples",
-                        labelStyle: context.appTypographie.body.copyWith(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        final number = int.tryParse(value) ?? 1;
-                        updateNombre(RequestSection, number);
-                      },
-                    ),
-                    BlocBuilder<
-                      FormActiviteBloc,
-                      RapportCelluleRequestActivityState
-                    >(
-                      builder: (context, state) {
-                        return Column(
-                          children: List.generate(RequestSection.rows.length, (
-                            index,
-                          ) {
-                            final row = RequestSection.rows[index];
-
-                            return Card(
-                              color: Colors.white,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 16.w,
-                                  vertical: 12.h,
-                                ),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "Disciple visité ${index + 1}",
-                                      style: context.appTypographie.body
-                                          .copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-
-                                    TextField(
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Nom",
-                                      ),
-                                      onChanged: (val) {
-                                        row.nom = val;
-                                        _updateDisciple(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          fullName: row.nom,
-                                          isBaptierOrNot: true,
-                                        );
-                                      },
-                                    ),
-
-                                    TextField(
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Problème",
-                                      ),
-                                      onChanged: (val) {
-                                        row.probleme = val;
-                                        _updateDisciple(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          probleme: row.probleme,
-                                          isBaptierOrNot: true,
-                                        );
-                                      },
-                                    ),
-
-                                    TextField(
-                                      minLines: 2,
-                                      maxLines: 4,
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Recommandation",
-                                      ),
-                                      onChanged: (val) {
-                                        row.recommandation = val;
-                                        _updateDisciple(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          recommandation: row.recommandation,
-                                          isBaptierOrNot: true,
-                                        );
-                                      },
-                                    ),
-
-                                    SizedBox(height: 16),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-
-                BlocBuilder<
-                  FormActiviteBloc,
-                  RapportCelluleRequestActivityState
-                >(
+                BlocBuilder<FormActiviteBloc, RapportCelluleRequestActivityState>(
                   builder: (context, state) {
-                    return Column(
+                    return state.status.isInProgress ?  Column(
                       children: [
-                        SizedBox(height: 16.h),
-                        TextField(
-                          readOnly: state.status.isInProgress,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            labelText: "Nombre de visite faite aux membres",
-                            labelStyle: context.appTypographie.body.copyWith(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold,
+                        SizedBox(
+                          height: 0.2.sh,
+                        ),
+                        Center(child: CircularProgressIndicator(
+                          backgroundColor: context.appColor.primaryLightBlue,
+                          valueColor: AlwaysStoppedAnimation<Color>(context.appColor.primaryBlue),
+                        )),
+                      ],
+                    ) : Column(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.search,
+                              color: context.appColor.primaryDarkBlue,
                             ),
-                          ),
-                          onChanged: (value) {
-                            final number = int.tryParse(value) ?? 1;
-                            updateNombre2(RequestSection2, number);
-                          },
+                            SizedBox(width: 8.w),
+                            CustomeText(
+                              text: "RequestSection visite",
+                              style: context.appTypographie.body.copyWith(
+                                fontSize: 13.sp,
+                                color: context.appColor.primaryGrayDark,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
                         ),
                         Column(
-                          children: List.generate(RequestSection2.rows.length, (
-                            index,
-                          ) {
-                            final row = RequestSection2.rows[index];
+                          children: [
+                            SizedBox(height: 16.h),
 
-                            return Card(
-                              color: Colors.white,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 16.w,
-                                  vertical: 12.h,
-                                ),
-                                child: Column(
-                                  children: [
-                                    //  Icon(Icons.file_open_rounded),:
-                                    Text(
-                                      " Membre visité ${index + 1}",
-                                      style: context.appTypographie.body
-                                          .copyWith(
-                                            fontWeight: FontWeight.bold,
+                            TextField(
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                labelText:
+                                    "Nombre de visite faite aux disciples",
+                                labelStyle: context.appTypographie.body
+                                    .copyWith(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              onChanged: (value) {
+                                final number = int.tryParse(value) ?? 1;
+                                updateNombre(RequestSection, number);
+                              },
+                            ),
+                            BlocBuilder<
+                              FormActiviteBloc,
+                              RapportCelluleRequestActivityState
+                            >(
+                              builder: (context, state) {
+                                return Column(
+                                  children: List.generate(
+                                    RequestSection.rows.length,
+                                    (index) {
+                                      final row = RequestSection.rows[index];
+
+                                      return Card(
+                                        color: Colors.white,
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16.w,
+                                            vertical: 12.h,
                                           ),
-                                    ),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                "Disciple visité ${index + 1}",
+                                                style: context
+                                                    .appTypographie
+                                                    .body
+                                                    .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                              ),
 
-                                    TextField(
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Nom",
-                                      ),
-                                      onChanged: (val) {
-                                        // row.nom = val;
-                                        _updateDisciple2(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          fullName: val,
-                                          isBaptierOrNot: false,
-                                        );
-                                      },
-                                    ),
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Nom",
+                                                ),
+                                                onChanged: (val) {
+                                                  row.nom = val;
+                                                  _updateDisciple(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    fullName: row.nom,
+                                                    isBaptierOrNot: true,
+                                                  );
+                                                },
+                                              ),
 
-                                    TextField(
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Problème",
-                                      ),
-                                      onChanged: (val) {
-                                        // row.probleme = val;
-                                        _updateDisciple2(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          probleme: val,
-                                          isBaptierOrNot: false,
-                                        );
-                                      },
-                                    ),
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Problème",
+                                                ),
+                                                onChanged: (val) {
+                                                  row.probleme = val;
+                                                  _updateDisciple(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    probleme: row.probleme,
+                                                    isBaptierOrNot: true,
+                                                  );
+                                                },
+                                              ),
 
-                                    TextField(
-                                      minLines: 2,
-                                      maxLines: 4,
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Recommandation",
-                                      ),
-                                      onChanged: (val) {
-                                        // row.recommandation = val;
-                                        _updateDisciple2(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          recommandation: val,
-                                          isBaptierOrNot: false,
-                                        );
-                                      },
-                                    ),
+                                              TextField(
+                                                minLines: 2,
+                                                maxLines: 4,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Recommandation",
+                                                ),
+                                                onChanged: (val) {
+                                                  row.recommandation = val;
+                                                  _updateDisciple(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    recommandation:
+                                                        row.recommandation,
+                                                    isBaptierOrNot: true,
+                                                  );
+                                                },
+                                              ),
 
-                                    SizedBox(height: 16),
-                                  ],
+                                              SizedBox(height: 16),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+
+                        BlocBuilder<
+                          FormActiviteBloc,
+                          RapportCelluleRequestActivityState
+                        >(
+                          builder: (context, state) {
+                            return Column(
+                              children: [
+                                SizedBox(height: 16.h),
+                                TextField(
+                                  readOnly: state.status.isInProgress,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    labelText:
+                                        "Nombre de visite faite aux membres",
+                                    labelStyle: context.appTypographie.body
+                                        .copyWith(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  onChanged: (value) {
+                                    final number = int.tryParse(value) ?? 1;
+                                    updateNombre2(RequestSection2, number);
+                                  },
                                 ),
+                                Column(
+                                  children: List.generate(
+                                    RequestSection2.rows.length,
+                                    (index) {
+                                      final row = RequestSection2.rows[index];
+
+                                      return Card(
+                                        color: Colors.white,
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16.w,
+                                            vertical: 12.h,
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              //  Icon(Icons.file_open_rounded),:
+                                              Text(
+                                                " Membre visité ${index + 1}",
+                                                style: context
+                                                    .appTypographie
+                                                    .body
+                                                    .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                              ),
+
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Nom",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.nom = val;
+                                                  _updateDisciple2(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    fullName: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Problème",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.probleme = val;
+                                                  _updateDisciple2(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    probleme: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              TextField(
+                                                minLines: 2,
+                                                maxLines: 4,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Recommandation",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.recommandation = val;
+                                                  _updateDisciple2(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    recommandation: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              SizedBox(height: 16),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+
+                        BlocBuilder<
+                          FormActiviteBloc,
+                          RapportCelluleRequestActivityState
+                        >(
+                          builder: (context, state) {
+                            return Container(
+                              margin: EdgeInsets.only(top: 20.h, bottom: 17.h),
+                              child: FormNextTeps(
+                                icons: Icons.lightbulb_outline,
+                                title: 'Suggestion ',
+                                description: 'vos suggestions pour la cellule',
+                                isNextForm: state.isValide,
                               ),
                             );
-                          }),
+                          },
                         ),
+
+                        BlocBuilder<
+                          FormActiviteBloc,
+                          RapportCelluleRequestActivityState
+                        >(
+                          builder: (context, state) {
+                            return Container(
+                              margin: EdgeInsets.only(top: 20.h, bottom: 30.h),
+                              child: PrimaryButton(
+                                label: 'Suivant',
+                                colorText: context.appColor.primaryWhite,
+                                isLoading: state.status.isInProgress,
+                                onPressed: () {
+                                  context.read<FormActiviteBloc>().add(
+                                    RapportCelluleRequestActivityEvent.updateSectionId(
+                                      "-OqmHAqmgTFtsgDMyH2x",
+                                    ),
+                                  );
+
+                                  context.read<FormActiviteBloc>().add(
+                                    RapportCelluleRequestActivityEvent.submit(),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 20.h),
                       ],
                     );
                   },
                 ),
-
-                BlocBuilder<
-                  FormActiviteBloc,
-                  RapportCelluleRequestActivityState
-                >(
-                  builder: (context, state) {
-                    return Container(
-                      margin: EdgeInsets.only(top: 20.h, bottom: 17.h),
-                      child: FormNextTeps(
-                        icons: Icons.lightbulb_outline,
-                        title: 'Suggestion ',
-                        description: 'vos suggestions pour la cellule',
-                        isNextForm: state.isValide,
-                      ),
-                    );
-                  },
-                ),
-
-                BlocBuilder<
-                  FormActiviteBloc,
-                  RapportCelluleRequestActivityState
-                >(
-                  builder: (context, state) {
-                    return Container(
-                      margin: EdgeInsets.only(top: 20.h, bottom: 30.h),
-                      child: PrimaryButton(
-                        label: 'Suivant',
-                        colorText: context.appColor.primaryWhite,
-                        isLoading: state.status.isInProgress,
-                        onPressed: () {
-                          context.read<FormActiviteBloc>().add(
-                            RapportCelluleRequestActivityEvent.updateSectionId(
-                              "-OqmHAqmgTFtsgDMyH2x",
-                            ),
-                          );
-
-                          context.read<FormActiviteBloc>().add(
-                            RapportCelluleRequestActivityEvent.submit(),
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 20.h),
               ],
             ),
           ),

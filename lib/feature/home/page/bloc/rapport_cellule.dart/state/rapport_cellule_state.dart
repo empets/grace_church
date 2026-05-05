@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_statistic.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
 
 part 'rapport_cellule_state.freezed.dart';
 
@@ -164,6 +164,7 @@ abstract class RapportCelluleRequestSuggestionState with _$RapportCelluleRequest
   const factory RapportCelluleRequestSuggestionState({
       required TextFormz faisAssignaler,
       required TextFormz ouvrierSpritualLive,
+      required TextFormz resumerPredication,
      required List<RapportSuggestion> suggestions,
       required FormzSubmissionStatus status,
     required String errorMessage,
@@ -173,6 +174,7 @@ abstract class RapportCelluleRequestSuggestionState with _$RapportCelluleRequest
   factory RapportCelluleRequestSuggestionState.initial() => const RapportCelluleRequestSuggestionState(
     faisAssignaler: TextFormz.pure(),
     ouvrierSpritualLive: TextFormz.pure(),
+    resumerPredication: TextFormz.pure(),
     suggestions: [],
     status: FormzSubmissionStatus.initial,
     errorMessage: '',

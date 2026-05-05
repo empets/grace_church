@@ -21,10 +21,9 @@ class ImplRemoteService implements AuthenRemoteService {
   Future<FirebaseResult<String?>> createProfile(
     RequestAuthenProfile params,
   ) async {
-    // final shared = await shareData.SharedPreferences.getInstance();
-    // final localUserRequestSection = shared.getString('menberkey');
 
     try {
+      // ici on verifie si le nom ou l'email existe deja
       final nameExist = await db
           .child('menber')
           .orderByChild('name')
@@ -37,10 +36,9 @@ class ImplRemoteService implements AuthenRemoteService {
           .get();
 
           if(nameExist.exists || emailExist.exists){
-              return FirebaseError("Name or email already exists");
+              return FirebaseError("le nom ou l'email existe déjà");
           }
           else {
-          log('------>> LA BD  EXISTE PAS');
           // 1) Construire l'objet Request
           final request = Request<RequestAuthenProfile>(
             data: params.toJson(),
@@ -88,10 +86,7 @@ class ImplRemoteService implements AuthenRemoteService {
 
   
     } catch (e) {
-      log("${FirebaseException(message: e.toString(), plugin: "authen")}");
-      ;
 
-      log("🔥 Firebase ERROR createProfile → $e");
       return FirebaseError(e.toString());
     }
   }

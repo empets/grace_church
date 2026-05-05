@@ -3,6 +3,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -71,6 +72,13 @@ class _FormSocialProfessionnalState extends State<FormSocialProfessionnal> {
                 child: FormHollyLiving(),
               ),
             ),
+          );
+        }
+        if (state.status.isFailure) {
+          return AppAlert.showError(
+            context,
+            state.errorMessage,
+            showOnTop: true,
           );
         }
       },

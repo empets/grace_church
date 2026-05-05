@@ -500,7 +500,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   }
 
   @override
-  Future<FirebaseResult<List<RapportCelluleResponse>>> getRapportCellule(
+  Future<FirebaseResult<List<RapportCelluleResponseModel>>> getRapportCellule(
     RequestRapportCellule params,
   ) async {
     try {
@@ -509,16 +509,25 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           .orderByChild('responsableCelluleId')
           .equalTo(params.responsableCelluleId)
           .get();
+     
       if (!response.exists) {
         return FirebaseError('Rapport cellule not found');
       }
-      final data = List<dynamic>.from(response.value as List);
-      final rapportCelluleResponse = data
-          .map((e) => RapportCelluleResponse.fromJson(e))
-          .toList();
-      return FirebaseSuccess(rapportCelluleResponse);
+         final data = response.value as Map<dynamic, dynamic>;
+        
+
+        final notifications = data.values.map((e) {
+        
+          log("🦁 getRapportCellule → ${e}");
+          return RapportCelluleResponseModel.fromJson(Map<String, dynamic>.from(e));
+        });
+         log("🦁 getRapportCellule → ${notifications}");
+        return FirebaseSuccess(
+          [notifications.first]
+              
+        );
     } catch (e) {
-      log("🔥 Firebase ERROR getRapportCellule → $e");
+      log("🔥 Firebase ERROR getRapportCellule → ${e.runtimeType}");
       return FirebaseError(e.toString());
     }
   }

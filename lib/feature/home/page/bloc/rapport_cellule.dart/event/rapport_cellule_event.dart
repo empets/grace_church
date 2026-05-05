@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_statistic.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
 part 'rapport_cellule_event.freezed.dart';
 
 @freezed
@@ -82,6 +82,7 @@ class RapportCelluleRequestActivityEvent with _$RapportCelluleRequestActivityEve
 @freezed
 class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestionEvent {
    factory RapportCelluleRequestSuggestionEvent.changeDisciple(List<RapportSuggestion> suggestion ) = ChangeDiscipleRapportCelluleRequestSuggestionEvent;
+   factory RapportCelluleRequestSuggestionEvent.changeResumerPredication(String resumerPredication ) = ChangeResumerPredicationRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.faisAssignaler(String isAssignaler) = FaisAssignalerRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.etatsSprituelOuvrier(String etatsSprituelOuvrier) = EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.submit() = SubmitRapportCelluleRequestSuggestionEvent;
@@ -91,6 +92,6 @@ class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestio
 @freezed
 class FecthDataEvent with _$FecthDataEvent {
    factory FecthDataEvent.fetchData() = FetchDataFecthDataEvent;
-   factory FecthDataEvent.fetchDataById(String id) = FetchDataByIdFecthDataEvent;
+   factory FecthDataEvent.fetchDataById({required String responsableCelluleId}) = FetchDataByIdFecthDataEvent;
 
 }

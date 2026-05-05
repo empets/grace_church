@@ -234,232 +234,312 @@ class _FormOuvrierSpritualLiveDataState extends State<FormOuvrierSpritualLive> {
                 ),
                 SizedBox(height: 0.02.sh),
 
-                Row(
-                  children: [
-                    Icon(Icons.person, color: context.appColor.primaryDarkBlue),
-                    SizedBox(width: 8.w),
-                    CustomeText(
-                      text: "Section Ouvrier ",
-                      style: context.appTypographie.body.copyWith(
-                        fontSize: 13.sp,
-                        color: context.appColor.primaryGrayDark,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-
                 BlocBuilder<FormSuggestionBloc, RapportCelluleRequestSuggestionState>(
                   builder: (context, state) {
-                    return Column(
+                    return state.status.isInProgress ?  Column(
                       children: [
-                        SizedBox(height: 10.h),
-                        TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            labelText:
-                                "Entrer le nombre de visite faite aux membres",
-                            labelStyle: context.appTypographie.body.copyWith(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold,
+                        SizedBox(
+                          height: 0.2.sh,
+                        ),
+                        Center(child: CircularProgressIndicator(
+                          backgroundColor: context.appColor.primaryLightBlue,
+                          valueColor: AlwaysStoppedAnimation<Color>(context.appColor.primaryBlue),
+                        )),
+                      ],
+                    ) : Column(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: context.appColor.primaryDarkBlue,
                             ),
-                          ),
-                          onChanged: (value) {
-                            final number = int.tryParse(value) ?? 1;
-                            updateNombre2(RequestSection2, number);
+                            SizedBox(width: 8.w),
+                            CustomeText(
+                              text: "Section Ouvrier ",
+                              style: context.appTypographie.body.copyWith(
+                                fontSize: 13.sp,
+                                color: context.appColor.primaryGrayDark,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        BlocBuilder<
+                          FormSuggestionBloc,
+                          RapportCelluleRequestSuggestionState
+                        >(
+                          builder: (context, state) {
+                            return Column(
+                              children: [
+                                SizedBox(height: 10.h),
+                                TextField(
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    labelText:
+                                        "Entrer le nombre de visite faite aux membres",
+                                    labelStyle: context.appTypographie.body
+                                        .copyWith(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  onChanged: (value) {
+                                    final number = int.tryParse(value) ?? 1;
+                                    updateNombre2(RequestSection2, number);
+                                  },
+                                ),
+                                Column(
+                                  children: List.generate(
+                                    RequestSection2.rows.length,
+                                    (index) {
+                                      final row = RequestSection2.rows[index];
+                                      return Card(
+                                        color: Colors.white,
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16.w,
+                                            vertical: 12.h,
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              //  Icon(Icons.file_open_rounded),:
+                                              Text(
+                                                "Suggestion ${index + 1}",
+                                                style: context
+                                                    .appTypographie
+                                                    .body
+                                                    .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                              ),
+
+                                              TextField(
+                                                maxLines: 3,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText:
+                                                      "Témoignages-Evènements-Dons-Aides",
+                                                ),
+                                                onChanged: (val) {
+                                                  row.nom = val;
+                                                  _updateDisciple2(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    temoignage: row.nom,
+                                                  );
+                                                },
+                                              ),
+
+                                              TextField(
+                                                maxLines: 3,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Suggestions",
+                                                ),
+                                                onChanged: (val) {
+                                                  row.probleme = val;
+                                                  _updateDisciple2(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    probleme: row.probleme,
+                                                  );
+                                                },
+                                              ),
+
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                maxLines: 3,
+                                                decoration: InputDecoration(
+                                                  labelText:
+                                                      "Problème personnel del’ouvrier",
+                                                ),
+                                                onChanged: (val) {
+                                                  row.recommandation = val;
+                                                  _updateDisciple2(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    suggestions:
+                                                        row.recommandation,
+                                                  );
+                                                },
+                                              ),
+
+                                              SizedBox(height: 16),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
                           },
                         ),
-                        Column(
-                          children: List.generate(RequestSection2.rows.length, (
-                            index,
-                          ) {
-                            final row = RequestSection2.rows[index];
-                            return Card(
-                              color: Colors.white,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 16.w,
-                                  vertical: 12.h,
-                                ),
-                                child: Column(
-                                  children: [
-                                    //  Icon(Icons.file_open_rounded),:
-                                    Text(
-                                      "Suggestion ${index + 1}",
-                                      style: context.appTypographie.body
-                                          .copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
+                        SizedBox(height: 16.h),
 
-                                    TextField(
-                                      maxLines: 3,
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            "Témoignages-Evènements-Dons-Aides",
-                                      ),
-                                      onChanged: (val) {
-                                        row.nom = val;
-                                        _updateDisciple2(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          temoignage: row.nom
+
+                            BlocBuilder<
+                          FormSuggestionBloc,
+                          RapportCelluleRequestSuggestionState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              textInputType: TextInputType.text,
+                              isColorBlue: state.resumerPredication.isValid
+                                  ? true
+                                  : false,
+                              readOnly: state.status.isInProgress,
+                              // controller:
+                              // textEditingControllerDateNaissance,
+                              inputLabel: "Message partager lors de la cellule",
+                              textLabel:
+                                  "Renseigner les projets et autres faits",
+                              errorText:
+                                  state.resumerPredication.isPure ||
+                                      state.resumerPredication.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              prefixIcon: Icon(
+                                Icons.book,
+                                color: context.appColor.primaryBlue,
+                              ),
+                              maxLines: 3,
+                              minLines: 2,
+                              onChanged: (value) {
+                                context.read<FormSuggestionBloc>().add(
+                                  RapportCelluleRequestSuggestionEvent.changeResumerPredication(
+                                    value,
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+
+
+                        SizedBox(height: 16.h),
+
+                        BlocBuilder<
+                          FormSuggestionBloc,
+                          RapportCelluleRequestSuggestionState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              textInputType: TextInputType.text,
+                              isColorBlue: state.faisAssignaler.isValid
+                                  ? true
+                                  : false,
+                              readOnly: state.status.isInProgress,
+                              // controller:
+                              // textEditingControllerDateNaissance,
+                              inputLabel: "Projet et Autre faits a signaler",
+                              textLabel:
+                                  "Renseigner les projets et autres faits",
+                              errorText:
+                                  state.faisAssignaler.isPure ||
+                                      state.faisAssignaler.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              prefixIcon: Icon(
+                                Icons.edit,
+                                color: context.appColor.primaryBlue,
+                              ),
+                              maxLines: 3,
+                              minLines: 2,
+                              onChanged: (value) {
+                                context.read<FormSuggestionBloc>().add(
+                                  RapportCelluleRequestSuggestionEvent.faisAssignaler(
+                                    value,
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+
+                        SizedBox(height: 16.h),
+
+                        BlocBuilder<
+                          FormSuggestionBloc,
+                          RapportCelluleRequestSuggestionState
+                        >(
+                          builder: (context, state) {
+                            return ProductionFormCustomer(
+                              textInputType: TextInputType.text,
+                              isColorBlue: state.ouvrierSpritualLive.isValid
+                                  ? true
+                                  : false,
+                              readOnly: state.status.isInProgress,
+                              // controller:
+                              // textEditingControllerDateNaissance,
+                              inputLabel:
+                                  "Etat spirituel de l'eglise de maison",
+                              textLabel: "Renseigner l'état spirituel",
+                              errorText:
+                                  state.ouvrierSpritualLive.isPure ||
+                                      state.ouvrierSpritualLive.isValid
+                                  ? null
+                                  : '',
+                              msgError: 'Veuillez renseigner ce champ',
+                              prefixIcon: Icon(
+                                Icons.auto_awesome_rounded,
+                                color: context.appColor.primaryBlue,
+                              ),
+                              maxLines: 3,
+                              minLines: 2,
+                              onChanged: (value) {
+                                context.read<FormSuggestionBloc>().add(
+                                  RapportCelluleRequestSuggestionEvent.etatsSprituelOuvrier(
+                                    value,
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+
+                        BlocBuilder<
+                          FormSuggestionBloc,
+                          RapportCelluleRequestSuggestionState
+                        >(
+                          builder: (context, state) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 20.h),
+                              child: PrimaryButton(
+                                label: 'Suivant',
+                                colorText: context.appColor.primaryWhite,
+                                isLoading: state.status.isInProgress,
+                                onPressed:
+                                    state.status.isInProgress ||
+                                        !state.ouvrierSpritualLive.isValid
+                                    ? null
+                                    : () {
+                                        context.read<FormSuggestionBloc>().add(
+                                          RapportCelluleRequestSuggestionEvent.submit(),
                                         );
                                       },
-                                    ),
-
-                                    TextField(
-                                      maxLines: 3,
-                                      readOnly: state.status.isInProgress,
-                                      decoration: InputDecoration(
-                                        labelText: "Suggestions",
-                                      ),
-                                      onChanged: (val) {
-                                        row.probleme = val;
-                                        _updateDisciple2(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          probleme: row.probleme,
-                                        );
-                                      },
-                                    ),
-
-                                    TextField(
-                                      readOnly: state.status.isInProgress,
-                                      maxLines: 3,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            "Problème personnel del’ouvrier",
-                                      ),
-                                      onChanged: (val) {
-                                        row.recommandation = val;
-                                        _updateDisciple2(
-                                          context: context,
-                                          index: index,
-                                          state: state,
-                                          suggestions: row.recommandation,
-                                        );
-                                      },
-                                    ),
-
-                                    SizedBox(height: 16),
-                                  ],
-                                ),
                               ),
                             );
-                          }),
+                          },
                         ),
+
+                        SizedBox(height: 30.h),
                       ],
                     );
                   },
                 ),
-                SizedBox(height: 16.h),
-
-                BlocBuilder<
-                  FormSuggestionBloc,
-                  RapportCelluleRequestSuggestionState
-                >(
-                  builder: (context, state) {
-                    return ProductionFormCustomer(
-                      textInputType: TextInputType.text,
-                      isColorBlue: state.faisAssignaler.isValid ? true : false,
-                      readOnly: state.status.isInProgress,
-                      // controller:
-                      // textEditingControllerDateNaissance,
-                      inputLabel: "Projet et Autre faits a signaler",
-                      textLabel: "Renseigner les projets et autres faits",
-                      errorText:
-                          state.faisAssignaler.isPure ||
-                              state.faisAssignaler.isValid
-                          ? null
-                          : '',
-                      msgError: 'Veuillez renseigner ce champ',
-                      prefixIcon: Icon(
-                        Icons.edit,
-                        color: context.appColor.primaryBlue,
-                      ),
-                      maxLines: 3,
-                      minLines: 2,
-                      onChanged: (value) {
-                        context.read<FormSuggestionBloc>().add(
-                          RapportCelluleRequestSuggestionEvent.faisAssignaler(
-                            value,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-
-                SizedBox(height: 16.h),
-
-                BlocBuilder<
-                  FormSuggestionBloc,
-                  RapportCelluleRequestSuggestionState
-                >(
-                  builder: (context, state) {
-                    return ProductionFormCustomer(
-                      textInputType: TextInputType.text,
-                      isColorBlue: state.ouvrierSpritualLive.isValid
-                          ? true
-                          : false,
-                      readOnly: state.status.isInProgress,
-                      // controller:
-                      // textEditingControllerDateNaissance,
-                      inputLabel: "Etat spirituel de l'eglise de maison",
-                      textLabel: "Renseigner l'état spirituel",
-                      errorText:
-                          state.ouvrierSpritualLive.isPure ||
-                              state.ouvrierSpritualLive.isValid
-                          ? null
-                          : '',
-                      msgError: 'Veuillez renseigner ce champ',
-                      prefixIcon: Icon(
-                        Icons.auto_awesome_rounded,
-                        color: context.appColor.primaryBlue,
-                      ),
-                      maxLines: 3,
-                      minLines: 2,
-                      onChanged: (value) {
-                        context.read<FormSuggestionBloc>().add(
-                          RapportCelluleRequestSuggestionEvent.etatsSprituelOuvrier(
-                            value,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-
-                BlocBuilder<
-                  FormSuggestionBloc,
-                  RapportCelluleRequestSuggestionState
-                >(
-                  builder: (context, state) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(vertical: 20.h),
-                      child: PrimaryButton(
-                        label: 'Suivant',
-                        colorText: context.appColor.primaryWhite,
-                        isLoading: state.status.isInProgress,
-                        onPressed:
-                            state.status.isInProgress ||
-                                !state.ouvrierSpritualLive.isValid
-                            ? null
-                            : () {
-                                context.read<FormSuggestionBloc>().add(
-                                  RapportCelluleRequestSuggestionEvent.submit(),
-                                );
-                              },
-                      ),
-                    );
-                  },
-                ),
-
-                SizedBox(height: 30.h),
               ],
             ),
           ),

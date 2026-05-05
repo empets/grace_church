@@ -209,6 +209,7 @@ abstract class RapportCelluleResponse with _$RapportCelluleResponse {
     required String dateActivitySubmited,
     required String formActivityIsSubmit,
     required String formActivitySubmitDate,
+    required String resumerPredication,
     required List<RequestHumaneSectionActivityResponse> suggestions,
     required String faisAssignaler,
     required String ouvrierSpritualLive,
@@ -217,6 +218,9 @@ abstract class RapportCelluleResponse with _$RapportCelluleResponse {
   }) = _RapportCelluleResponse;
   factory RapportCelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$RapportCelluleResponseFromJson(json);
+
+
+    
 }
 
 @freezed

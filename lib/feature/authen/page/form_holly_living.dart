@@ -185,6 +185,13 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                 }
                 Navigator.of(context).push(fadeRoute(const FormEngagement()));
               }
+              if (state.status.isFailure) {
+                return AppAlert.showError(
+                  context,
+                  state.errorMessage,
+                  showOnTop: true,
+                );
+              }
             },
           ),
           BlocListener<CelluleBloc, ApiState<List<CelluleResponse>>>(
@@ -511,59 +518,69 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                               ApiState<List<CelluleResponse>>
                             >(
                               builder: (context, cellueState) {
-                                   return Container(
-                                    margin: EdgeInsets.symmetric(vertical: 4.h),
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 12,
+                                return Container(
+                                  margin: EdgeInsets.symmetric(vertical: 4.h),
+                                  padding: EdgeInsets.symmetric(horizontal: 12),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: state.statusSpirituel.isValid
+                                          ? context.appColor.primaryLightBlue
+                                          : Colors.grey.withOpacity(.5),
                                     ),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: state.statusSpirituel.isValid
-                                            ? context.appColor.primaryLightBlue
-                                            : Colors.grey.withOpacity(.5),
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    // statutMenber
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton<CelluleResponse>(
-                                        isExpanded: true,
-                                        dropdownColor:
-                                            context.appColor.primaryWhite,
-                                        hint: Text(
-                                          "Selectionner une cellule",
-                                          style: GoogleFonts.roboto(
-                                            color: Colors.grey,
-                                            fontSize: 14.sp,
-                                          ),
-                                        ),
-                                        value: selectedCellule,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  // statutMenber
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton<CelluleResponse>(
+                                      isExpanded: true,
+                                      dropdownColor:
+                                          context.appColor.primaryWhite,
+                                      hint: Text(
+                                        "Selectionner une cellule",
                                         style: GoogleFonts.roboto(
-                                          color: Colors.black,
+                                          color: Colors.grey,
                                           fontSize: 14.sp,
                                         ),
-                                        icon:  cellueState is LoadState<List<SecteurResponse>> ? SizedBox(
+                                      ),
+                                      value: selectedCellule,
+                                      style: GoogleFonts.roboto(
+                                        color: Colors.black,
+                                        fontSize: 14.sp,
+                                      ),
+                                      icon:
+                                          cellueState
+                                              is LoadState<
+                                                List<SecteurResponse>
+                                              >
+                                          ? SizedBox(
                                               height: 20.h,
                                               width: 20.w,
-                                              child: CircularProgressIndicator.adaptive(
-                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                  context.appColor.primaryBlue,
-                                                ),
-                                                backgroundColor: context.appColor.primaryLightBlue,
-                                              
-                                              ),
-                                            ):
-                                            
-                                             Icon(
-                                              Icons.keyboard_arrow_down,
-                                            ),
-                                        items: cellueState is SuccessState<List<CelluleResponse>> 
-                                            ? cellueState.data
-                                            .map(
-                                              (item) =>
-                                                  DropdownMenuItem<
-                                                    CelluleResponse
-                                                  >(
+                                              child:
+                                                  CircularProgressIndicator.adaptive(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                          Color
+                                                        >(
+                                                          context
+                                                              .appColor
+                                                              .primaryBlue,
+                                                        ),
+                                                    backgroundColor: context
+                                                        .appColor
+                                                        .primaryLightBlue,
+                                                  ),
+                                            )
+                                          : Icon(Icons.keyboard_arrow_down),
+                                      items:
+                                          cellueState
+                                              is SuccessState<
+                                                List<CelluleResponse>
+                                              >
+                                          ? cellueState.data
+                                                .map(
+                                                  (
+                                                    item,
+                                                  ) => DropdownMenuItem<CelluleResponse>(
                                                     value: item,
                                                     child: Column(
                                                       crossAxisAlignment:
@@ -593,50 +610,48 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                                       ],
                                                     ),
                                                   ),
-                                            )
-                                            .toList() :[],
-                                        onChanged: state.status.isInProgress
-                                            ? null
-                                            : (value) {
-                                                setState(() {
-                                                  selectedCellule = value;
-                                                });
-                                                context
-                                                    .read<
-                                                      CreateComteProfileSpiritualLifeBloc
-                                                    >()
-                                                    .add(
-                                                      EventCreateCompteSpiritualLife.changeCellulePriere(
-                                                        value?.nom ?? '',
-                                                      ),
-                                                    );
+                                                )
+                                                .toList()
+                                          : [],
+                                      onChanged: state.status.isInProgress
+                                          ? null
+                                          : (value) {
+                                              setState(() {
+                                                selectedCellule = value;
+                                              });
+                                              context
+                                                  .read<
+                                                    CreateComteProfileSpiritualLifeBloc
+                                                  >()
+                                                  .add(
+                                                    EventCreateCompteSpiritualLife.changeCellulePriere(
+                                                      value?.nom ?? '',
+                                                    ),
+                                                  );
 
-                                                context
-                                                    .read<
-                                                      CreateComteProfileSpiritualLifeBloc
-                                                    >()
-                                                    .add(
-                                                      EventCreateCompteSpiritualLife.changeCelluleCode(
-                                                        value?.celluleCode ??
-                                                            '',
-                                                      ),
-                                                    );
+                                              context
+                                                  .read<
+                                                    CreateComteProfileSpiritualLifeBloc
+                                                  >()
+                                                  .add(
+                                                    EventCreateCompteSpiritualLife.changeCelluleCode(
+                                                      value?.celluleCode ?? '',
+                                                    ),
+                                                  );
 
-                                                context
-                                                    .read<
-                                                      CreateComteProfileSpiritualLifeBloc
-                                                    >()
-                                                    .add(
-                                                      EventCreateCompteSpiritualLife.changeCelluleId(
-                                                        value?.celluleId ?? '',
-                                                      ),
-                                                    );
-                                              },
-                                      ),
+                                              context
+                                                  .read<
+                                                    CreateComteProfileSpiritualLifeBloc
+                                                  >()
+                                                  .add(
+                                                    EventCreateCompteSpiritualLife.changeCelluleId(
+                                                      value?.celluleId ?? '',
+                                                    ),
+                                                  );
+                                            },
                                     ),
-                                  );
-                               
-
+                                  ),
+                                );
                               },
                             );
                           },

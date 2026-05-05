@@ -355,29 +355,47 @@ Map<String, dynamic> _$RapportSuggestionModelToJson(
   'probleme': instance.probleme,
 };
 
+_RequestHumaneSectionActivityResponseModel
+_$RequestHumaneSectionActivityResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _RequestHumaneSectionActivityResponseModel(
+  nom: json['nom'] as String,
+  probleme: json['probleme'] as String,
+  recommandation: json['recommandation'] as String,
+);
+
+Map<String, dynamic> _$RequestHumaneSectionActivityResponseModelToJson(
+  _RequestHumaneSectionActivityResponseModel instance,
+) => <String, dynamic>{
+  'nom': instance.nom,
+  'probleme': instance.probleme,
+  'recommandation': instance.recommandation,
+};
+
 _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
   Map<String, dynamic> json,
 ) => _RapportCelluleResponseModel(
-  codeZone: json['codeZone'] as String,
-  fullNameRespoZone: json['fullNameRespoZone'] as String,
-  contactRespoZone: json['contactRespoZone'] as String,
-  codeSecteur: json['codeSecteur'] as String,
-  responsableCelluleId: json['responsableCelluleId'] as String,
-  fullNameRespoSecteur: json['fullNameRespoSecteur'] as String,
-  contactRespoSecteur: json['contactRespoSecteur'] as String,
-  codeCellule: json['codeCellule'] as String,
-  fullNameRespoCellule: json['fullNameRespoCellule'] as String,
-  contactRespoCellule: json['contactRespoCellule'] as String,
-  jourCellule: json['jourCellule'] as String,
-  offrande: json['offrande'] as String,
-  nombreBaptiser: json['nombreBaptiser'] as String,
-  nombreNonBaptiser: json['nombreNonBaptiser'] as String,
+  codeZone: json['codeZone'] as String?,
+  fullNameRespoZone: json['fullNameRespoZone'] as String?,
+  contactRespoZone: json['contactRespoZone'] as String?,
+  codeSecteur: json['codeSecteur'] as String?,
+  responsableCelluleId: json['responsableCelluleId'] as String?,
+  fullNameRespoSecteur: json['fullNameRespoSecteur'] as String?,
+  contactRespoSecteur: json['contactRespoSecteur'] as String?,
+  codeCellule: json['codeCellule'] as String?,
+  fullNameRespoCellule: json['fullNameRespoCellule'] as String?,
+  contactRespoCellule: json['contactRespoCellule'] as String?,
+  jourCellule: json['jourCellule'] as String?,
+  offrande: json['offrande'] as String?,
+  nombreBaptiser: json['nombreBaptiser'] as String?,
+  nombreNonBaptiser: json['nombreNonBaptiser'] as String?,
   discipleCellule: (json['discipleCellule'] as List<dynamic>)
       .map((e) => DiscipleCelluleModel.fromJson(e as Map<String, dynamic>))
       .toList(),
-  id: json['id'] as String,
-  formAdministrationIsSubmit: json['formAdministrationIsSubmit'] as String,
-  formAdministrationSubmitDate: json['formAdministrationSubmitDate'] as String,
+  id: json['id'] as String?,
+  formAdministrationIsSubmit: json['formAdministrationIsSubmit'] as String?,
+  formAdministrationSubmitDate: json['formAdministrationSubmitDate'] as String?,
+  resumerPredication: json['resumerPredication'] as String?,
   assistanceNonBaptiser: RequestHumaneSectionAssistanceResponseModel.fromJson(
     json['assistanceNonBaptiser'] as Map<String, dynamic>,
   ),
@@ -390,8 +408,8 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
   assistanceCellule: RequestAuherResponseModel.fromJson(
     json['assistanceCellule'] as Map<String, dynamic>,
   ),
-  formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String,
-  formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
+  formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String?,
+  formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String?,
   visiteMenbre: (json['visiteMenbre'] as List<dynamic>)
       .map(
         (e) =>
@@ -404,16 +422,20 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
             RequestSuggestionResponseModel.fromJson(e as Map<String, dynamic>),
       )
       .toList(),
-  dateActivitySubmited: json['dateActivitySubmited'] as String,
-  formActivityIsSubmit: json['formActivityIsSubmit'] as String,
-  formActivitySubmitDate: json['formActivitySubmitDate'] as String,
+  dateActivitySubmited: json['dateActivitySubmited'] as String?,
+  formActivityIsSubmit: json['formActivityIsSubmit'] as String?,
+  formActivitySubmitDate: json['formActivitySubmitDate'] as String?,
   suggestions: (json['suggestions'] as List<dynamic>)
-      .map((e) => RapportSuggestionModel.fromJson(e as Map<String, dynamic>))
+      .map(
+        (e) => RequestHumaneSectionActivityResponseModel.fromJson(
+          e as Map<String, dynamic>,
+        ),
+      )
       .toList(),
-  faisAssignaler: json['faisAssignaler'] as String,
-  ouvrierSpritualLive: json['ouvrierSpritualLive'] as String,
-  formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String,
-  formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
+  faisAssignaler: json['faisAssignaler'] as String?,
+  ouvrierSpritualLive: json['ouvrierSpritualLive'] as String?,
+  formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String?,
+  formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String?,
 );
 
 Map<String, dynamic> _$RapportCelluleResponseModelToJson(
@@ -437,6 +459,7 @@ Map<String, dynamic> _$RapportCelluleResponseModelToJson(
   'id': instance.id,
   'formAdministrationIsSubmit': instance.formAdministrationIsSubmit,
   'formAdministrationSubmitDate': instance.formAdministrationSubmitDate,
+  'resumerPredication': instance.resumerPredication,
   'assistanceNonBaptiser': instance.assistanceNonBaptiser,
   'assistanceNouveau': instance.assistanceNouveau,
   'assistanceInviter': instance.assistanceInviter,

@@ -417,45 +417,110 @@ abstract class RapportSuggestionModel with _$RapportSuggestionModel {
 }
 
 @freezed
+abstract class RequestHumaneSectionActivityResponseModel
+    with _$RequestHumaneSectionActivityResponseModel {
+  factory RequestHumaneSectionActivityResponseModel({
+    required String nom,
+    required String probleme,
+    required String recommandation,
+  }) = _RequestHumaneSectionActivityResponseModel;
+  factory RequestHumaneSectionActivityResponseModel.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RequestHumaneSectionActivityResponseModelFromJson(json);
+
+  static RequestHumaneSectionActivityResponse toDomain(RequestHumaneSectionActivityResponseModel model) {
+    return RequestHumaneSectionActivityResponse(
+      nom: model.nom.getOrEmpty(),
+      probleme: model.probleme.getOrEmpty(),
+      recommandation: model.recommandation.getOrEmpty(),
+    );
+  }
+}
+
+
+@freezed
 abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
   factory RapportCelluleResponseModel({
-    required String codeZone,
-    required String fullNameRespoZone,
-    required String contactRespoZone,
-    required String codeSecteur,
-    required String responsableCelluleId,
-    required String fullNameRespoSecteur,
-    required String contactRespoSecteur,
-    required String codeCellule,
-    required String fullNameRespoCellule,
-    required String contactRespoCellule,
-    required String jourCellule,
-    required String offrande,
-    required String nombreBaptiser,
-    required String nombreNonBaptiser,
+    required String? codeZone,
+    required String? fullNameRespoZone,
+    required String? contactRespoZone,
+    required String? codeSecteur,
+    required String? responsableCelluleId,
+    required String? fullNameRespoSecteur,
+    required String? contactRespoSecteur,
+    required String? codeCellule,
+    required String? fullNameRespoCellule,
+    required String? contactRespoCellule,
+    required String? jourCellule,
+    required String? offrande,
+    required String? nombreBaptiser,
+    required String? nombreNonBaptiser,
     required List<DiscipleCelluleModel> discipleCellule,
-    required String id,
-    required String formAdministrationIsSubmit,
-    required String formAdministrationSubmitDate,
-    // required String nombreBaptiser,
+    required String? id,
+    required String? formAdministrationIsSubmit,
+    required String? formAdministrationSubmitDate,
+    required String? resumerPredication,
+
+    // required String? nombreBaptiser,
     required RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
     required RequestHumaneSectionAssistanceResponseModel assistanceNouveau,
     required RequestHumaneSectionAssistanceResponseModel assistanceInviter,
     required RequestAuherResponseModel assistanceCellule,
-    // required String id,
-    required String formAssistanceIsSubmit,
-    required String formAssistanceSubmitDate,
+    // required String? id,
+    required String? formAssistanceIsSubmit,
+    required String? formAssistanceSubmitDate,
     required List<RequestSuggestionResponseModel> visiteMenbre,
     required List<RequestSuggestionResponseModel> visiteOuvrier,
-    required String dateActivitySubmited,
-    required String formActivityIsSubmit,
-    required String formActivitySubmitDate,
-    required List<RapportSuggestionModel> suggestions,
-    required String faisAssignaler,
-    required String ouvrierSpritualLive,
-    required String formSuggestionIsSubmit,
-    required String formSuggestionSubmitDate,
+    required String? dateActivitySubmited,
+    required String? formActivityIsSubmit,
+    required String? formActivitySubmitDate,
+    required List<RequestHumaneSectionActivityResponseModel> suggestions,
+    required String? faisAssignaler,
+    required String? ouvrierSpritualLive,
+    required String? formSuggestionIsSubmit,
+    required String? formSuggestionSubmitDate,
   }) = _RapportCelluleResponseModel;
   factory RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$RapportCelluleResponseModelFromJson(json);
+
+
+  static RapportCelluleResponse toDomain(RapportCelluleResponseModel model) {
+    return RapportCelluleResponse(
+      codeZone: model.codeZone.getOrEmpty(),
+      fullNameRespoZone: model.fullNameRespoZone.getOrEmpty(),
+      contactRespoZone: model.contactRespoZone.getOrEmpty(),
+      codeSecteur: model.codeSecteur.getOrEmpty(),
+      responsableCelluleId: model.responsableCelluleId.getOrEmpty(),
+      fullNameRespoSecteur: model.fullNameRespoSecteur.getOrEmpty(),
+      contactRespoSecteur: model.contactRespoSecteur.getOrEmpty(),
+      codeCellule: model.codeCellule.getOrEmpty(),
+      fullNameRespoCellule: model.fullNameRespoCellule.getOrEmpty(),
+      contactRespoCellule: model.contactRespoCellule.getOrEmpty(),
+      jourCellule: model.jourCellule.getOrEmpty(),
+      offrande: model.offrande.getOrEmpty(),
+      nombreBaptiser: model.nombreBaptiser.getOrEmpty(),
+      nombreNonBaptiser: model.nombreNonBaptiser.getOrEmpty(),
+      discipleCellule: model.discipleCellule.map((e) => DiscipleCelluleModel.toDomain(e)).toList(),
+      id: model.id.getOrEmpty(),
+      formAdministrationIsSubmit: model.formAdministrationIsSubmit.getOrEmpty(),
+      formAdministrationSubmitDate: model.formAdministrationSubmitDate.getOrEmpty(),
+      resumerPredication: model.resumerPredication.getOrEmpty(),
+      assistanceNonBaptiser: RequestHumaneSectionAssistanceResponseModel.toDomain(model.assistanceNonBaptiser),
+      assistanceNouveau: RequestHumaneSectionAssistanceResponseModel.toDomain(model.assistanceNouveau),
+      assistanceInviter: RequestHumaneSectionAssistanceResponseModel.toDomain(model.assistanceInviter),
+      assistanceCellule: RequestAuherResponseModel.toDomain(model.assistanceCellule),
+      formAssistanceIsSubmit: model.formAssistanceIsSubmit.getOrEmpty(),
+      formAssistanceSubmitDate: model.formAssistanceSubmitDate.getOrEmpty(),
+      visiteMenbre: model.visiteMenbre.map((e) => RequestSuggestionResponseModel.toDomain(e)).toList(),
+      visiteOuvrier: model.visiteOuvrier.map((e) => RequestSuggestionResponseModel.toDomain(e)).toList(),
+      dateActivitySubmited: model.dateActivitySubmited.getOrEmpty(),
+      formActivityIsSubmit: model.formActivityIsSubmit.getOrEmpty(),
+      formActivitySubmitDate: model.formActivitySubmitDate.getOrEmpty(),
+      suggestions: model.suggestions.map((e)=> RequestHumaneSectionActivityResponseModel.toDomain(e)).toList(),
+      faisAssignaler: model.faisAssignaler.getOrEmpty(),
+      ouvrierSpritualLive: model.ouvrierSpritualLive.getOrEmpty(),
+      formSuggestionIsSubmit: model.formSuggestionIsSubmit.getOrEmpty(),
+      formSuggestionSubmitDate: model.formSuggestionSubmitDate.getOrEmpty(),
+    );
+  }
 }

@@ -3520,11 +3520,12 @@ extension RapportCelluleRequestSuggestionEventPatterns on RapportCelluleRequestS
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)?  changeDisciple,TResult Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)?  faisAssignaler,TResult Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)?  etatsSprituelOuvrier,TResult Function( SubmitRapportCelluleRequestSuggestionEvent value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)?  changeDisciple,TResult Function( ChangeResumerPredicationRapportCelluleRequestSuggestionEvent value)?  changeResumerPredication,TResult Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)?  faisAssignaler,TResult Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)?  etatsSprituelOuvrier,TResult Function( SubmitRapportCelluleRequestSuggestionEvent value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
-return changeDisciple(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return changeDisciple(_that);case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent() when changeResumerPredication != null:
+return changeResumerPredication(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
 return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
 return etatsSprituelOuvrier(_that);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
 return submit(_that);case _:
@@ -3545,11 +3546,12 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)  changeDisciple,required TResult Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)  faisAssignaler,required TResult Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)  etatsSprituelOuvrier,required TResult Function( SubmitRapportCelluleRequestSuggestionEvent value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)  changeDisciple,required TResult Function( ChangeResumerPredicationRapportCelluleRequestSuggestionEvent value)  changeResumerPredication,required TResult Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)  faisAssignaler,required TResult Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)  etatsSprituelOuvrier,required TResult Function( SubmitRapportCelluleRequestSuggestionEvent value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestSuggestionEvent():
-return changeDisciple(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent():
+return changeDisciple(_that);case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent():
+return changeResumerPredication(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent():
 return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent():
 return etatsSprituelOuvrier(_that);case SubmitRapportCelluleRequestSuggestionEvent():
 return submit(_that);case _:
@@ -3569,11 +3571,12 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)?  changeDisciple,TResult? Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)?  faisAssignaler,TResult? Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)?  etatsSprituelOuvrier,TResult? Function( SubmitRapportCelluleRequestSuggestionEvent value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeDiscipleRapportCelluleRequestSuggestionEvent value)?  changeDisciple,TResult? Function( ChangeResumerPredicationRapportCelluleRequestSuggestionEvent value)?  changeResumerPredication,TResult? Function( FaisAssignalerRapportCelluleRequestSuggestionEvent value)?  faisAssignaler,TResult? Function( EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent value)?  etatsSprituelOuvrier,TResult? Function( SubmitRapportCelluleRequestSuggestionEvent value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
-return changeDisciple(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return changeDisciple(_that);case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent() when changeResumerPredication != null:
+return changeResumerPredication(_that);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
 return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
 return etatsSprituelOuvrier(_that);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
 return submit(_that);case _:
@@ -3593,10 +3596,11 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<RapportSuggestion> suggestion)?  changeDisciple,TResult Function( String isAssignaler)?  faisAssignaler,TResult Function( String etatsSprituelOuvrier)?  etatsSprituelOuvrier,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<RapportSuggestion> suggestion)?  changeDisciple,TResult Function( String resumerPredication)?  changeResumerPredication,TResult Function( String isAssignaler)?  faisAssignaler,TResult Function( String etatsSprituelOuvrier)?  etatsSprituelOuvrier,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
-return changeDisciple(_that.suggestion);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return changeDisciple(_that.suggestion);case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent() when changeResumerPredication != null:
+return changeResumerPredication(_that.resumerPredication);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
 return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
 return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
 return submit();case _:
@@ -3617,10 +3621,11 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<RapportSuggestion> suggestion)  changeDisciple,required TResult Function( String isAssignaler)  faisAssignaler,required TResult Function( String etatsSprituelOuvrier)  etatsSprituelOuvrier,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<RapportSuggestion> suggestion)  changeDisciple,required TResult Function( String resumerPredication)  changeResumerPredication,required TResult Function( String isAssignaler)  faisAssignaler,required TResult Function( String etatsSprituelOuvrier)  etatsSprituelOuvrier,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestSuggestionEvent():
-return changeDisciple(_that.suggestion);case FaisAssignalerRapportCelluleRequestSuggestionEvent():
+return changeDisciple(_that.suggestion);case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent():
+return changeResumerPredication(_that.resumerPredication);case FaisAssignalerRapportCelluleRequestSuggestionEvent():
 return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent():
 return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case SubmitRapportCelluleRequestSuggestionEvent():
 return submit();case _:
@@ -3640,10 +3645,11 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<RapportSuggestion> suggestion)?  changeDisciple,TResult? Function( String isAssignaler)?  faisAssignaler,TResult? Function( String etatsSprituelOuvrier)?  etatsSprituelOuvrier,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<RapportSuggestion> suggestion)?  changeDisciple,TResult? Function( String resumerPredication)?  changeResumerPredication,TResult? Function( String isAssignaler)?  faisAssignaler,TResult? Function( String etatsSprituelOuvrier)?  etatsSprituelOuvrier,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestSuggestionEvent() when changeDisciple != null:
-return changeDisciple(_that.suggestion);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
+return changeDisciple(_that.suggestion);case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent() when changeResumerPredication != null:
+return changeResumerPredication(_that.resumerPredication);case FaisAssignalerRapportCelluleRequestSuggestionEvent() when faisAssignaler != null:
 return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent() when etatsSprituelOuvrier != null:
 return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case SubmitRapportCelluleRequestSuggestionEvent() when submit != null:
 return submit();case _:
@@ -3720,6 +3726,72 @@ class _$ChangeDiscipleRapportCelluleRequestSuggestionEventCopyWithImpl<$Res>
   return _then(ChangeDiscipleRapportCelluleRequestSuggestionEvent(
 null == suggestion ? _self._suggestion : suggestion // ignore: cast_nullable_to_non_nullable
 as List<RapportSuggestion>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChangeResumerPredicationRapportCelluleRequestSuggestionEvent implements RapportCelluleRequestSuggestionEvent {
+   ChangeResumerPredicationRapportCelluleRequestSuggestionEvent(this.resumerPredication);
+  
+
+ final  String resumerPredication;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWith<ChangeResumerPredicationRapportCelluleRequestSuggestionEvent> get copyWith => _$ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWithImpl<ChangeResumerPredicationRapportCelluleRequestSuggestionEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeResumerPredicationRapportCelluleRequestSuggestionEvent&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,resumerPredication);
+
+@override
+String toString() {
+  return 'RapportCelluleRequestSuggestionEvent.changeResumerPredication(resumerPredication: $resumerPredication)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWith<$Res> implements $RapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  factory $ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWith(ChangeResumerPredicationRapportCelluleRequestSuggestionEvent value, $Res Function(ChangeResumerPredicationRapportCelluleRequestSuggestionEvent) _then) = _$ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWithImpl;
+@useResult
+$Res call({
+ String resumerPredication
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWithImpl<$Res>
+    implements $ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWith<$Res> {
+  _$ChangeResumerPredicationRapportCelluleRequestSuggestionEventCopyWithImpl(this._self, this._then);
+
+  final ChangeResumerPredicationRapportCelluleRequestSuggestionEvent _self;
+  final $Res Function(ChangeResumerPredicationRapportCelluleRequestSuggestionEvent) _then;
+
+/// Create a copy of RapportCelluleRequestSuggestionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? resumerPredication = null,}) {
+  return _then(ChangeResumerPredicationRapportCelluleRequestSuggestionEvent(
+null == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -4001,11 +4073,11 @@ return fetchDataById(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchData,TResult Function( String id)?  fetchDataById,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchData,TResult Function( String responsableCelluleId)?  fetchDataById,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent() when fetchData != null:
 return fetchData();case FetchDataByIdFecthDataEvent() when fetchDataById != null:
-return fetchDataById(_that.id);case _:
+return fetchDataById(_that.responsableCelluleId);case _:
   return orElse();
 
 }
@@ -4023,11 +4095,11 @@ return fetchDataById(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchData,required TResult Function( String id)  fetchDataById,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchData,required TResult Function( String responsableCelluleId)  fetchDataById,}) {final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent():
 return fetchData();case FetchDataByIdFecthDataEvent():
-return fetchDataById(_that.id);case _:
+return fetchDataById(_that.responsableCelluleId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4044,11 +4116,11 @@ return fetchDataById(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchData,TResult? Function( String id)?  fetchDataById,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchData,TResult? Function( String responsableCelluleId)?  fetchDataById,}) {final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent() when fetchData != null:
 return fetchData();case FetchDataByIdFecthDataEvent() when fetchDataById != null:
-return fetchDataById(_that.id);case _:
+return fetchDataById(_that.responsableCelluleId);case _:
   return null;
 
 }
@@ -4092,10 +4164,10 @@ String toString() {
 
 
 class FetchDataByIdFecthDataEvent implements FecthDataEvent {
-   FetchDataByIdFecthDataEvent(this.id);
+   FetchDataByIdFecthDataEvent({required this.responsableCelluleId});
   
 
- final  String id;
+ final  String responsableCelluleId;
 
 /// Create a copy of FecthDataEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -4107,16 +4179,16 @@ $FetchDataByIdFecthDataEventCopyWith<FetchDataByIdFecthDataEvent> get copyWith =
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchDataByIdFecthDataEvent&&(identical(other.id, id) || other.id == id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchDataByIdFecthDataEvent&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode => Object.hash(runtimeType,responsableCelluleId);
 
 @override
 String toString() {
-  return 'FecthDataEvent.fetchDataById(id: $id)';
+  return 'FecthDataEvent.fetchDataById(responsableCelluleId: $responsableCelluleId)';
 }
 
 
@@ -4127,7 +4199,7 @@ abstract mixin class $FetchDataByIdFecthDataEventCopyWith<$Res> implements $Fect
   factory $FetchDataByIdFecthDataEventCopyWith(FetchDataByIdFecthDataEvent value, $Res Function(FetchDataByIdFecthDataEvent) _then) = _$FetchDataByIdFecthDataEventCopyWithImpl;
 @useResult
 $Res call({
- String id
+ String responsableCelluleId
 });
 
 
@@ -4144,9 +4216,9 @@ class _$FetchDataByIdFecthDataEventCopyWithImpl<$Res>
 
 /// Create a copy of FecthDataEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? responsableCelluleId = null,}) {
   return _then(FetchDataByIdFecthDataEvent(
-null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

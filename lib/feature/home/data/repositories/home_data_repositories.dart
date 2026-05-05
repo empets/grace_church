@@ -25,23 +25,13 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
 
     if (response is FirebaseSuccess<ProfileResponseModel>) {
       return Right(ProfileResponseModel.domaine(response.data));
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<ProfileResponseModel>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
 
-  @override
-  Stream<Either<Failure, ProfileResponse>> getProfileStream() {
-    return domaineServiceRepository.getProfileStream().map((event) {
-      if (event is FirebaseSuccess<ProfileResponseModel>) {
-        return Right(ProfileResponseModel.domaine(event.data));
-      } else if (event is FirebaseError) {
-        return Left(Failure(message: event.toString()));
-      }
-      return Left(Failure(message: "Erreur inconnue"));
-    });
-  }
+
 
   @override
   Future<Either<Failure, String>> sendNotifications(
@@ -70,8 +60,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
       return Right(
         response.data.map(NotificationResponseModel.toDomaine).toList(),
       );
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<List<NotificationResponseModel>>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -85,8 +75,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
       return Right(
         response.data.map(NotificationResponseModel.toDomaine).toList(),
       );
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<List<NotificationResponseModel>>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -98,8 +88,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     final response = await domaineServiceRepository.getListCellules(params);
     if (response is FirebaseSuccess<List<CelluleResponseModel>>) {
       return Right(response.data.map(CelluleResponseModel.domaine).toList());
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<List<CelluleResponseModel>>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -114,8 +104,9 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
       return Right(
         response.data.map(ReponsableCelluleResponseModel.domaine).toList(),
       );
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<List<ReponsableCelluleResponseModel>>) {
+      
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -130,8 +121,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
       return Right(
         response.data.map(SecteurModel.toDomain).toList(),
       );
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<List<SecteurModel>>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -146,8 +137,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
       return Right(
         response.data.map(ZoneResponseModel.toDomain).toList(),
       );
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<List<ZoneResponseModel>>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -157,8 +148,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     final response = await domaineServiceRepository.sendImpliciteConnexion(params);
     if (response is FirebaseSuccess<ProfileResponseModel>) {
       return Right(ProfileResponseModel.domaine(response.data));
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<ProfileResponseModel>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -174,8 +165,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
       final shared = await SharedPreferences.getInstance();
       await shared.setString('rapport_cellule_key', response.data);
       return Right(response.data);
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<String>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -186,8 +177,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     final response = await domaineServiceRepository.sendRapportCelluleStepAssistance(params);
     if (response is FirebaseSuccess<String>) {
       return Right(response.data);
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<String>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -197,8 +188,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     final response = await domaineServiceRepository.sendRapportCelluleStepActivity(params);
     if (response is FirebaseSuccess<String>) {
       return Right(response.data);
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<String>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -208,8 +199,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     final response = await domaineServiceRepository.sendRapportCelluleStepSuggestion(params);
     if (response is FirebaseSuccess<String>) {
       return Right(response.data);
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    } else if (response is FirebaseError<String>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
@@ -219,10 +210,10 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
   @override
   Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params) async {
     final response = await domaineServiceRepository.getRapportCellule(params);
-    if (response is FirebaseSuccess<List<RapportCelluleResponse>>) {
-      return Right(response.data);
-    } else if (response is FirebaseError) {
-      return Left(Failure(message: response.toString()));
+    if (response is FirebaseSuccess<List<RapportCelluleResponseModel>>) {
+      return Right(response.data.map(RapportCelluleResponseModel.toDomain).toList());
+    } else if (response is FirebaseError<List<RapportCelluleResponseModel>>) {
+      return Left(Failure(message: response.message));
     }
     return Left(Failure(message: "Erreur inconnue"));
   }

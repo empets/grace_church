@@ -396,6 +396,7 @@ _RequestRapportCelluleSuggestion _$RequestRapportCelluleSuggestionFromJson(
   ouvrierSpritualLive: json['ouvrierSpritualLive'] as String,
   formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String,
   formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
+  resumerPredication: json['resumerPredication'] as String,
 );
 
 Map<String, dynamic> _$RequestRapportCelluleSuggestionToJson(
@@ -406,6 +407,7 @@ Map<String, dynamic> _$RequestRapportCelluleSuggestionToJson(
   'ouvrierSpritualLive': instance.ouvrierSpritualLive,
   'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
   'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
+  'resumerPredication': instance.resumerPredication,
 };
 
 _RequestRapportCellule _$RequestRapportCelluleFromJson(

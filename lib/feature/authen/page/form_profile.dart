@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shimmer/shimmer.dart';
+
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -19,11 +23,7 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_geographie.dart';
-import 'package:grace_church/feature/authen/page/form_social_professionnal.dart'
-    hide FormNextTeps;
-import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
 
 class FormProfile extends StatefulWidget {
   const FormProfile({

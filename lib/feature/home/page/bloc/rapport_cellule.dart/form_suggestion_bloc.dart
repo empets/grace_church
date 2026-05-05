@@ -83,6 +83,20 @@ class FormSuggestionBloc
         );
 
         break;
+      case ChangeResumerPredicationRapportCelluleRequestSuggestionEvent(
+        :final resumerPredication,
+      ):
+        final resumerPredicationData = state.copyWith(
+          resumerPredication: TextFormz.dirty(resumerPredication),
+          status: FormzSubmissionStatus.initial,
+        );
+        emit(
+          resumerPredicationData.copyWith(
+            isValide: _validate(resumerPredicationData),
+          ),
+        );
+
+        break;
       case SubmitRapportCelluleRequestSuggestionEvent():
         if (state.isValide) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
@@ -96,6 +110,7 @@ class FormSuggestionBloc
               ouvrierSpritualLive: state.ouvrierSpritualLive.value,
               formSuggestionIsSubmit: "Success",
               formSuggestionSubmitDate: DateTime.now().toIso8601String(),
+              resumerPredication: state.resumerPredication.value,
             ),
           );
           emit(
@@ -112,5 +127,5 @@ class FormSuggestionBloc
 }
 
 bool _validate(RapportCelluleRequestSuggestionState s) {
-  return Formz.validate([s.faisAssignaler, s.ouvrierSpritualLive]);
+  return Formz.validate([s.faisAssignaler, s.ouvrierSpritualLive, s.resumerPredication]);
 }

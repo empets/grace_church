@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -24,14 +26,15 @@ Future<FirebaseResult<T>> getData<T>(
     final snapshot = await ref.get();
 
     if (!snapshot.exists) {
-      return FirebaseError("Aucune donnée trouvée");
+      return FirebaseError(FirebaseException(plugin: "auth", code: "404", message: "Aucune donnée trouvée").message ?? "Aucune donnée trouvée");
     }
 
     final raw = snapshot.value;
 
     return FirebaseSuccess(mapper(raw));
   } catch (e) {
-    return FirebaseError(e.toString());
+    log("------------------------------>>1 $e");
+    return FirebaseError(FirebaseException(plugin: "auth", code: "", message: e.toString()).message?? '');
   }
 }
 
@@ -50,6 +53,7 @@ Future<FirebaseResult<T>> getDocument<T>(
 
     return FirebaseSuccess(mapper(doc.data() as Map<String, dynamic>));
   } catch (e) {
-    return FirebaseError(e.toString());
+    log("------------------------------>>2 $e");
+    return FirebaseError(FirebaseException(plugin: "auth", code: "", message: e.toString()).message?? '');
   }
 }
