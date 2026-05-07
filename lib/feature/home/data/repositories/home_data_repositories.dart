@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:grace_church/core/api/failure/fail.dart';
 import 'package:grace_church/core/data_process/success.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/repository_remote_service.dart';
@@ -24,6 +25,8 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     final response = await domaineServiceRepository.getProfile(notParms);
 
     if (response is FirebaseSuccess<ProfileResponseModel>) {
+        final shared = await SharedPreferences.getInstance();
+      await shared.setString('menberkey', response.data.menberId ?? "sdfdssdsdifhsdfsudk");
       return Right(ProfileResponseModel.domaine(response.data));
     } else if (response is FirebaseError<ProfileResponseModel>) {
       return Left(Failure(message: response.message));
@@ -205,8 +208,6 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
 
-
-  
   @override
   Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params) async {
     final response = await domaineServiceRepository.getRapportCellule(params);

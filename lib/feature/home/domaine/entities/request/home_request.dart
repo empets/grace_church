@@ -119,7 +119,7 @@ abstract class RequestZone with _$RequestZone {
 @freezed
 abstract class RequestAuthenProfileUpdateZone
     with _$RequestAuthenProfileUpdateZone {
-  factory RequestAuthenProfileUpdateZone({required String zoneId}) =
+  factory RequestAuthenProfileUpdateZone({required String noticationId}) =
       // zoneId
       _RequestAuthenProfileUpdateZone;
 
@@ -147,7 +147,7 @@ abstract class RequestRapportCelluleAdministration
     required String nombreNonBaptiser,
     required List<Map<String, dynamic>> discipleCellule,
     required String id,
-    required String formAdministrationIsSubmit,
+    @Default('false') String formAdministrationIsSubmit,
     required String formAdministrationSubmitDate,
   }) = _RequestRapportCelluleAdministration;
   factory RequestRapportCelluleAdministration.fromJson(
@@ -248,7 +248,7 @@ abstract class RequestRapportCelluleAssistance
     required Map<String, dynamic> assistanceInviter,
     required Map<String, dynamic> assistanceCellule,
     required String id,
-    required String formAssistanceIsSubmit,
+    @Default('false') String formAssistanceIsSubmit,
     required String formAssistanceSubmitDate,
   }) = _RequestRapportCelluleAssistance;
   factory RequestRapportCelluleAssistance.fromJson(Map<String, dynamic> json) =>
@@ -262,7 +262,7 @@ abstract class RequestRapportCelluleActivity
     required List<Map<String, dynamic>> visiteMenbre,
     required List<Map<String, dynamic>> visiteOuvrier,
     required List<Map<String, dynamic>> dateActivitySubmited,
-    required String formActivityIsSubmit,
+    @Default('false')  String formActivityIsSubmit,
     required String formActivitySubmitDate,
   }) = _RequestRapportCelluleActivity;
   factory RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) =>
@@ -276,7 +276,7 @@ abstract class RequestRapportCelluleSuggestion
     required List<Map<String, dynamic>> suggestions,
     required String faisAssignaler,
     required String ouvrierSpritualLive,
-    required String formSuggestionIsSubmit,
+    @Default('false')  String formSuggestionIsSubmit,
     required String formSuggestionSubmitDate,
     required String resumerPredication,
   }) = _RequestRapportCelluleSuggestion;

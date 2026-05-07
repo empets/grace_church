@@ -2284,11 +2284,11 @@ return $default(_that.fullname,_that.isDisciple,_that.probleme,_that.recommandat
 @JsonSerializable()
 
 class _VisiteDisciple implements VisiteDisciple {
-   _VisiteDisciple({required this.fullname, required this.isDisciple, required this.probleme, required this.recommandation});
+   _VisiteDisciple({required this.fullname, this.isDisciple = false, required this.probleme, required this.recommandation});
   factory _VisiteDisciple.fromJson(Map<String, dynamic> json) => _$VisiteDiscipleFromJson(json);
 
 @override final  String fullname;
-@override final  bool isDisciple;
+@override@JsonKey() final  bool isDisciple;
 @override final  String probleme;
 @override final  String recommandation;
 
@@ -3939,7 +3939,7 @@ as String,
 /// @nodoc
 mixin _$RequestSuggestionResponse {
 
- String get fullname; String get recommandation; String get isDisciple; String get probleme;
+ String get fullname; String get recommandation; bool get isDisciple; String get probleme;
 /// Create a copy of RequestSuggestionResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3972,7 +3972,7 @@ abstract mixin class $RequestSuggestionResponseCopyWith<$Res>  {
   factory $RequestSuggestionResponseCopyWith(RequestSuggestionResponse value, $Res Function(RequestSuggestionResponse) _then) = _$RequestSuggestionResponseCopyWithImpl;
 @useResult
 $Res call({
- String fullname, String recommandation, String isDisciple, String probleme
+ String fullname, String recommandation, bool isDisciple, String probleme
 });
 
 
@@ -3994,7 +3994,7 @@ class _$RequestSuggestionResponseCopyWithImpl<$Res>
 fullname: null == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
 as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
 as String,isDisciple: null == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
-as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as bool,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -4080,7 +4080,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullname,  String recommandation,  String isDisciple,  String probleme)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullname,  String recommandation,  bool isDisciple,  String probleme)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestSuggestionResponse() when $default != null:
 return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
@@ -4101,7 +4101,7 @@ return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probl
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullname,  String recommandation,  String isDisciple,  String probleme)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullname,  String recommandation,  bool isDisciple,  String probleme)  $default,) {final _that = this;
 switch (_that) {
 case _RequestSuggestionResponse():
 return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
@@ -4121,7 +4121,7 @@ return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probl
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullname,  String recommandation,  String isDisciple,  String probleme)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullname,  String recommandation,  bool isDisciple,  String probleme)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestSuggestionResponse() when $default != null:
 return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
@@ -4141,7 +4141,7 @@ class _RequestSuggestionResponse implements RequestSuggestionResponse {
 
 @override final  String fullname;
 @override final  String recommandation;
-@override final  String isDisciple;
+@override final  bool isDisciple;
 @override final  String probleme;
 
 /// Create a copy of RequestSuggestionResponse
@@ -4177,7 +4177,7 @@ abstract mixin class _$RequestSuggestionResponseCopyWith<$Res> implements $Reque
   factory _$RequestSuggestionResponseCopyWith(_RequestSuggestionResponse value, $Res Function(_RequestSuggestionResponse) _then) = __$RequestSuggestionResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String fullname, String recommandation, String isDisciple, String probleme
+ String fullname, String recommandation, bool isDisciple, String probleme
 });
 
 
@@ -4199,7 +4199,7 @@ class __$RequestSuggestionResponseCopyWithImpl<$Res>
 fullname: null == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
 as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
 as String,isDisciple: null == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
-as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as bool,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

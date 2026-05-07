@@ -3,11 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
-import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
-import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_ouvrier_spritual_live.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -30,17 +28,28 @@ import 'package:grace_church/feature/authen/page/form_social_professionnal.dart'
 import 'package:grace_church/feature/authen/page/signin_view.dart';
 import 'package:grace_church/feature/home/cellule_view.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_responsable_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
 import 'package:grace_church/feature/home/notification_view.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_cellue_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
+import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
 import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
 
@@ -252,14 +261,10 @@ class MenuView extends StatelessWidget {
                                             is SuccessState<
                                               List<CelluleResponse>
                                             >) {
-                                          log(
-                                            'isResponsableCellule: //${listCelluleState.data}',
-                                          );
                                           isResponsableCellule =
                                               listCelluleState.data.any((
                                                 element,
                                               ) {
-                                                log('isResponsableCellule: ');
                                                 return element
                                                     .responsableCelluleId
                                                     .trim()
@@ -404,65 +409,54 @@ class MenuView extends StatelessWidget {
                                                         if (profileState
                                                             .data
                                                             .submitSpiritual) {
-                                                              
-                                                              if(listRapportCelluleState is SuccessState<List<RapportCelluleResponse>>){
-                                                                 final itmes = listRapportCelluleState.data;
-                                                                 itmes.where((x)=> x.responsableCelluleId == profileState.data.menberId).firstWhere((x)=> x.formSuggestionIsSubmit.contains("Success"));
-                                                                 log('info -->> $itmes');
-                                                                  Navigator.of(
-                                                                          context,
-                                                                        ).push(
-                                                                          fadeRoute(
-                                                                            MultiBlocProvider(
-                                                                              providers: [
-                                                                                BlocProvider(
-                                                                                  create: (context) => RapportCelluleRequestSectionAdministrationBloc(
-                                                                                    sendRapportCelluleStepAdministrationUsercase:
-                                                                                        getIt<
-                                                                                          SendRapportCelluleStepAdministrationUsercase
-                                                                                        >(),
-                                                                                  ),
-                                                                                ),
-                                                                                BlocProvider(
-                                                                                  create: (context) =>
-                                                                                      GetSecteurBloc(
-                                                                                        getListSecteurUsercase:
-                                                                                            getIt<
-                                                                                              GetListSecteurUsercase
-                                                                                            >(),
-                                                                                      )..add(
-                                                                                        CelluleEvent.fetch(),
-                                                                                      ),
-                                                                                ),
-                                                                                BlocProvider(
-                                                                                  create: (context) =>
-                                                                                      GetZoneBloc(
-                                                                                        getListZoneUsercase:
-                                                                                            getIt<
-                                                                                              GetListZoneUsercase
-                                                                                            >(),
-                                                                                      )..add(
-                                                                                        CelluleEvent.fetch(),
-                                                                                      ),
-                                                                                ),
-                                                                              ],
-                                                                              child: EditingCelluleRaport(
-                                                                                profile:
-                                                                                    profileState
-                                                                                        .data,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                  
-
-                                                                
+                                                                 Navigator.of(
+                                                            context,
+                                                          ).push(
+                                                            fadeRoute(
+                                                              MultiBlocProvider(
+                                                                providers: [
+                                                                  BlocProvider(
+                                                                    create: (context) => RapportCelluleRequestSectionAdministrationBloc(
+                                                                      sendRapportCelluleStepAdministrationUsercase:
+                                                                          getIt<
+                                                                            SendRapportCelluleStepAdministrationUsercase
+                                                                          >(),
+                                                                    ),
+                                                                  ),
+                                                                  BlocProvider(
+                                                                    create: (context) =>
+                                                                        GetSecteurBloc(
+                                                                          getListSecteurUsercase:
+                                                                              getIt<
+                                                                                GetListSecteurUsercase
+                                                                              >(),
+                                                                        )..add(
+                                                                          CelluleEvent.fetch(),
+                                                                        ),
+                                                                  ),
+                                                                  BlocProvider(
+                                                                    create: (context) =>
+                                                                        GetZoneBloc(
+                                                                          getListZoneUsercase:
+                                                                              getIt<
+                                                                                GetListZoneUsercase
+                                                                              >(),
+                                                                        )..add(
+                                                                          CelluleEvent.fetch(),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                                child: EditingCelluleRaport(
+                                                                  profile:
+                                                                      profileState
+                                                                          .data,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
                                                         
-                                                                
-                                                              }
-
-                                                             
-
+                                                         else {
                                                           Navigator.of(
                                                             context,
                                                           ).push(
@@ -508,61 +502,7 @@ class MenuView extends StatelessWidget {
                                                               ),
                                                             ),
                                                           );
-                                                     
 
-                                                                
-                                                          
-                                                        } 
-                                                        
-                                                        
-                                                        else {
-
-                                                          Navigator.of(
-                                                            context,
-                                                          ).push(
-                                                            fadeRoute(
-                                                              MultiBlocProvider(
-                                                                providers: [
-                                                                  BlocProvider(
-                                                                    create: (context) => RapportCelluleRequestSectionAdministrationBloc(
-                                                                      sendRapportCelluleStepAdministrationUsercase:
-                                                                          getIt<
-                                                                            SendRapportCelluleStepAdministrationUsercase
-                                                                          >(),
-                                                                    ),
-                                                                  ),
-                                                                  BlocProvider(
-                                                                    create: (context) =>
-                                                                        GetSecteurBloc(
-                                                                          getListSecteurUsercase:
-                                                                              getIt<
-                                                                                GetListSecteurUsercase
-                                                                              >(),
-                                                                        )..add(
-                                                                          CelluleEvent.fetch(),
-                                                                        ),
-                                                                  ),
-                                                                  BlocProvider(
-                                                                    create: (context) =>
-                                                                        GetZoneBloc(
-                                                                          getListZoneUsercase:
-                                                                              getIt<
-                                                                                GetListZoneUsercase
-                                                                              >(),
-                                                                        )..add(
-                                                                          CelluleEvent.fetch(),
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                                child: EditingCelluleRaport(
-                                                                  profile:
-                                                                      profileState
-                                                                          .data,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                     
                                                           AppAlert.showInfo(
                                                             context,
                                                             "Veuillez finaliser votre création de compte",

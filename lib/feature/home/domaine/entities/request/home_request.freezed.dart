@@ -1747,7 +1747,7 @@ as String?,
 /// @nodoc
 mixin _$RequestAuthenProfileUpdateZone implements DiagnosticableTreeMixin {
 
- String get zoneId;
+ String get noticationId;
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1761,21 +1761,21 @@ $RequestAuthenProfileUpdateZoneCopyWith<RequestAuthenProfileUpdateZone> get copy
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestAuthenProfileUpdateZone'))
-    ..add(DiagnosticsProperty('zoneId', zoneId));
+    ..add(DiagnosticsProperty('noticationId', noticationId));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateZone&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenProfileUpdateZone&&(identical(other.noticationId, noticationId) || other.noticationId == noticationId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,zoneId);
+int get hashCode => Object.hash(runtimeType,noticationId);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestAuthenProfileUpdateZone(zoneId: $zoneId)';
+  return 'RequestAuthenProfileUpdateZone(noticationId: $noticationId)';
 }
 
 
@@ -1786,7 +1786,7 @@ abstract mixin class $RequestAuthenProfileUpdateZoneCopyWith<$Res>  {
   factory $RequestAuthenProfileUpdateZoneCopyWith(RequestAuthenProfileUpdateZone value, $Res Function(RequestAuthenProfileUpdateZone) _then) = _$RequestAuthenProfileUpdateZoneCopyWithImpl;
 @useResult
 $Res call({
- String zoneId
+ String noticationId
 });
 
 
@@ -1803,9 +1803,9 @@ class _$RequestAuthenProfileUpdateZoneCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? zoneId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? noticationId = null,}) {
   return _then(_self.copyWith(
-zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+noticationId: null == noticationId ? _self.noticationId : noticationId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -1891,10 +1891,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String zoneId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String noticationId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateZone() when $default != null:
-return $default(_that.zoneId);case _:
+return $default(_that.noticationId);case _:
   return orElse();
 
 }
@@ -1912,10 +1912,10 @@ return $default(_that.zoneId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String zoneId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String noticationId)  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateZone():
-return $default(_that.zoneId);case _:
+return $default(_that.noticationId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1932,10 +1932,10 @@ return $default(_that.zoneId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String zoneId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String noticationId)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestAuthenProfileUpdateZone() when $default != null:
-return $default(_that.zoneId);case _:
+return $default(_that.noticationId);case _:
   return null;
 
 }
@@ -1947,10 +1947,10 @@ return $default(_that.zoneId);case _:
 @JsonSerializable()
 
 class _RequestAuthenProfileUpdateZone with DiagnosticableTreeMixin implements RequestAuthenProfileUpdateZone {
-   _RequestAuthenProfileUpdateZone({required this.zoneId});
+   _RequestAuthenProfileUpdateZone({required this.noticationId});
   factory _RequestAuthenProfileUpdateZone.fromJson(Map<String, dynamic> json) => _$RequestAuthenProfileUpdateZoneFromJson(json);
 
-@override final  String zoneId;
+@override final  String noticationId;
 
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
@@ -1966,21 +1966,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestAuthenProfileUpdateZone'))
-    ..add(DiagnosticsProperty('zoneId', zoneId));
+    ..add(DiagnosticsProperty('noticationId', noticationId));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateZone&&(identical(other.zoneId, zoneId) || other.zoneId == zoneId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenProfileUpdateZone&&(identical(other.noticationId, noticationId) || other.noticationId == noticationId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,zoneId);
+int get hashCode => Object.hash(runtimeType,noticationId);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestAuthenProfileUpdateZone(zoneId: $zoneId)';
+  return 'RequestAuthenProfileUpdateZone(noticationId: $noticationId)';
 }
 
 
@@ -1991,7 +1991,7 @@ abstract mixin class _$RequestAuthenProfileUpdateZoneCopyWith<$Res> implements $
   factory _$RequestAuthenProfileUpdateZoneCopyWith(_RequestAuthenProfileUpdateZone value, $Res Function(_RequestAuthenProfileUpdateZone) _then) = __$RequestAuthenProfileUpdateZoneCopyWithImpl;
 @override @useResult
 $Res call({
- String zoneId
+ String noticationId
 });
 
 
@@ -2008,9 +2008,9 @@ class __$RequestAuthenProfileUpdateZoneCopyWithImpl<$Res>
 
 /// Create a copy of RequestAuthenProfileUpdateZone
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? zoneId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? noticationId = null,}) {
   return _then(_RequestAuthenProfileUpdateZone(
-zoneId: null == zoneId ? _self.zoneId : zoneId // ignore: cast_nullable_to_non_nullable
+noticationId: null == noticationId ? _self.noticationId : noticationId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -2239,7 +2239,7 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 @JsonSerializable()
 
 class _RequestRapportCelluleAdministration with DiagnosticableTreeMixin implements RequestRapportCelluleAdministration {
-   _RequestRapportCelluleAdministration({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<Map<String, dynamic>> discipleCellule, required this.id, required this.formAdministrationIsSubmit, required this.formAdministrationSubmitDate}): _discipleCellule = discipleCellule;
+   _RequestRapportCelluleAdministration({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<Map<String, dynamic>> discipleCellule, required this.id, this.formAdministrationIsSubmit = 'false', required this.formAdministrationSubmitDate}): _discipleCellule = discipleCellule;
   factory _RequestRapportCelluleAdministration.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleAdministrationFromJson(json);
 
 @override final  String codeZone;
@@ -2264,7 +2264,7 @@ class _RequestRapportCelluleAdministration with DiagnosticableTreeMixin implemen
 }
 
 @override final  String id;
-@override final  String formAdministrationIsSubmit;
+@override@JsonKey() final  String formAdministrationIsSubmit;
 @override final  String formAdministrationSubmitDate;
 
 /// Create a copy of RequestRapportCelluleAdministration
@@ -4558,7 +4558,7 @@ return $default(_that.nombreBaptiser,_that.assistanceNonBaptiser,_that.assistanc
 @JsonSerializable()
 
 class _RequestRapportCelluleAssistance with DiagnosticableTreeMixin implements RequestRapportCelluleAssistance {
-   _RequestRapportCelluleAssistance({required this.nombreBaptiser, required final  Map<String, dynamic> assistanceNonBaptiser, required final  Map<String, dynamic> assistanceNouveau, required final  Map<String, dynamic> assistanceInviter, required final  Map<String, dynamic> assistanceCellule, required this.id, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate}): _assistanceNonBaptiser = assistanceNonBaptiser,_assistanceNouveau = assistanceNouveau,_assistanceInviter = assistanceInviter,_assistanceCellule = assistanceCellule;
+   _RequestRapportCelluleAssistance({required this.nombreBaptiser, required final  Map<String, dynamic> assistanceNonBaptiser, required final  Map<String, dynamic> assistanceNouveau, required final  Map<String, dynamic> assistanceInviter, required final  Map<String, dynamic> assistanceCellule, required this.id, this.formAssistanceIsSubmit = 'false', required this.formAssistanceSubmitDate}): _assistanceNonBaptiser = assistanceNonBaptiser,_assistanceNouveau = assistanceNouveau,_assistanceInviter = assistanceInviter,_assistanceCellule = assistanceCellule;
   factory _RequestRapportCelluleAssistance.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleAssistanceFromJson(json);
 
 @override final  String nombreBaptiser;
@@ -4591,7 +4591,7 @@ class _RequestRapportCelluleAssistance with DiagnosticableTreeMixin implements R
 }
 
 @override final  String id;
-@override final  String formAssistanceIsSubmit;
+@override@JsonKey() final  String formAssistanceIsSubmit;
 @override final  String formAssistanceSubmitDate;
 
 /// Create a copy of RequestRapportCelluleAssistance
@@ -4875,7 +4875,7 @@ return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmite
 @JsonSerializable()
 
 class _RequestRapportCelluleActivity with DiagnosticableTreeMixin implements RequestRapportCelluleActivity {
-   _RequestRapportCelluleActivity({required final  List<Map<String, dynamic>> visiteMenbre, required final  List<Map<String, dynamic>> visiteOuvrier, required final  List<Map<String, dynamic>> dateActivitySubmited, required this.formActivityIsSubmit, required this.formActivitySubmitDate}): _visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_dateActivitySubmited = dateActivitySubmited;
+   _RequestRapportCelluleActivity({required final  List<Map<String, dynamic>> visiteMenbre, required final  List<Map<String, dynamic>> visiteOuvrier, required final  List<Map<String, dynamic>> dateActivitySubmited, this.formActivityIsSubmit = 'false', required this.formActivitySubmitDate}): _visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_dateActivitySubmited = dateActivitySubmited;
   factory _RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleActivityFromJson(json);
 
  final  List<Map<String, dynamic>> _visiteMenbre;
@@ -4899,7 +4899,7 @@ class _RequestRapportCelluleActivity with DiagnosticableTreeMixin implements Req
   return EqualUnmodifiableListView(_dateActivitySubmited);
 }
 
-@override final  String formActivityIsSubmit;
+@override@JsonKey() final  String formActivityIsSubmit;
 @override final  String formActivitySubmitDate;
 
 /// Create a copy of RequestRapportCelluleActivity
@@ -5181,7 +5181,7 @@ return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive
 @JsonSerializable()
 
 class _RequestRapportCelluleSuggestion with DiagnosticableTreeMixin implements RequestRapportCelluleSuggestion {
-   _RequestRapportCelluleSuggestion({required final  List<Map<String, dynamic>> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, required this.formSuggestionIsSubmit, required this.formSuggestionSubmitDate, required this.resumerPredication}): _suggestions = suggestions;
+   _RequestRapportCelluleSuggestion({required final  List<Map<String, dynamic>> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, this.formSuggestionIsSubmit = 'false', required this.formSuggestionSubmitDate, required this.resumerPredication}): _suggestions = suggestions;
   factory _RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleSuggestionFromJson(json);
 
  final  List<Map<String, dynamic>> _suggestions;
@@ -5193,7 +5193,7 @@ class _RequestRapportCelluleSuggestion with DiagnosticableTreeMixin implements R
 
 @override final  String faisAssignaler;
 @override final  String ouvrierSpritualLive;
-@override final  String formSuggestionIsSubmit;
+@override@JsonKey() final  String formSuggestionIsSubmit;
 @override final  String formSuggestionSubmitDate;
 @override final  String resumerPredication;
 

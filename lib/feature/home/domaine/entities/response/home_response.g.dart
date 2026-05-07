@@ -237,7 +237,7 @@ Map<String, dynamic> _$ZoneResponseToJson(_ZoneResponse instance) =>
 _VisiteDisciple _$VisiteDiscipleFromJson(Map<String, dynamic> json) =>
     _VisiteDisciple(
       fullname: json['fullname'] as String,
-      isDisciple: json['isDisciple'] as bool,
+      isDisciple: json['isDisciple'] as bool? ?? false,
       probleme: json['probleme'] as String,
       recommandation: json['recommandation'] as String,
     );
@@ -445,7 +445,7 @@ _RequestSuggestionResponse _$RequestSuggestionResponseFromJson(
 ) => _RequestSuggestionResponse(
   fullname: json['fullname'] as String,
   recommandation: json['recommandation'] as String,
-  isDisciple: json['isDisciple'] as String,
+  isDisciple: json['isDisciple'] as bool,
   probleme: json['probleme'] as String,
 );
 

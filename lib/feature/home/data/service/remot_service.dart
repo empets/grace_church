@@ -499,6 +499,8 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     }
   }
 
+
+
   @override
   Future<FirebaseResult<List<RapportCelluleResponseModel>>> getRapportCellule(
     RequestRapportCellule params,
@@ -514,16 +516,19 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         return FirebaseError('Rapport cellule not found');
       }
          final data = response.value as Map<dynamic, dynamic>;
+           final notifications = data.values.map((e) {
+  log("::::::::>>>>>>>> $e");
+
+  final notificationItem = convertMap(e as Map);
+
+  return RapportCelluleResponseModel.fromJson(notificationItem);
+}).toList();
         
 
-        final notifications = data.values.map((e) {
-        
-          log("🦁 getRapportCellule → ${e}");
-          return RapportCelluleResponseModel.fromJson(Map<String, dynamic>.from(e));
-        });
          log("🦁 getRapportCellule → ${notifications}");
         return FirebaseSuccess(
-          [notifications.first]
+          notifications
+
               
         );
     } catch (e) {
@@ -531,4 +536,27 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError(e.toString());
     }
   }
+}
+
+
+Map<String, dynamic> convertMap(Map data) {
+  return data.map(
+    (key, value) {
+      if (value is Map) {
+        return MapEntry(key.toString(), convertMap(value));
+      } else if (value is List) {
+        return MapEntry(
+          key.toString(),
+          value.map((e) {
+            if (e is Map) {
+              return convertMap(e);
+            }
+            return e;
+          }).toList(),
+        );
+      }
+
+      return MapEntry(key.toString(), value);
+    },
+  );
 }

@@ -152,7 +152,7 @@ abstract class ZoneResponse with _$ZoneResponse {
 abstract class VisiteDisciple with _$VisiteDisciple {
   factory VisiteDisciple({
     required String fullname,
-    required bool isDisciple,
+    @Default(false) bool isDisciple,
     required String probleme,
     required String recommandation,
   }) = _VisiteDisciple;
@@ -279,7 +279,7 @@ abstract class RequestSuggestionResponse
   factory RequestSuggestionResponse({
     required String fullname,
     required String recommandation,
-    required String isDisciple,
+    required bool isDisciple,
     required String probleme,
   }) = _RequestSuggestionResponse;
   factory RequestSuggestionResponse.fromJson(Map<String, dynamic> json) =>

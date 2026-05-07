@@ -164,11 +164,13 @@ Map<String, dynamic> _$RequestZoneToJson(_RequestZone instance) =>
 
 _RequestAuthenProfileUpdateZone _$RequestAuthenProfileUpdateZoneFromJson(
   Map<String, dynamic> json,
-) => _RequestAuthenProfileUpdateZone(zoneId: json['zoneId'] as String);
+) => _RequestAuthenProfileUpdateZone(
+  noticationId: json['noticationId'] as String,
+);
 
 Map<String, dynamic> _$RequestAuthenProfileUpdateZoneToJson(
   _RequestAuthenProfileUpdateZone instance,
-) => <String, dynamic>{'zoneId': instance.zoneId};
+) => <String, dynamic>{'noticationId': instance.noticationId};
 
 _RequestRapportCelluleAdministration
 _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
@@ -191,7 +193,8 @@ _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
           .map((e) => e as Map<String, dynamic>)
           .toList(),
       id: json['id'] as String,
-      formAdministrationIsSubmit: json['formAdministrationIsSubmit'] as String,
+      formAdministrationIsSubmit:
+          json['formAdministrationIsSubmit'] as String? ?? 'false',
       formAdministrationSubmitDate:
           json['formAdministrationSubmitDate'] as String,
     );
@@ -343,7 +346,7 @@ _RequestRapportCelluleAssistance _$RequestRapportCelluleAssistanceFromJson(
   assistanceInviter: json['assistanceInviter'] as Map<String, dynamic>,
   assistanceCellule: json['assistanceCellule'] as Map<String, dynamic>,
   id: json['id'] as String,
-  formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String,
+  formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String? ?? 'false',
   formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
 );
 
@@ -372,7 +375,7 @@ _RequestRapportCelluleActivity _$RequestRapportCelluleActivityFromJson(
   dateActivitySubmited: (json['dateActivitySubmited'] as List<dynamic>)
       .map((e) => e as Map<String, dynamic>)
       .toList(),
-  formActivityIsSubmit: json['formActivityIsSubmit'] as String,
+  formActivityIsSubmit: json['formActivityIsSubmit'] as String? ?? 'false',
   formActivitySubmitDate: json['formActivitySubmitDate'] as String,
 );
 
@@ -394,7 +397,7 @@ _RequestRapportCelluleSuggestion _$RequestRapportCelluleSuggestionFromJson(
       .toList(),
   faisAssignaler: json['faisAssignaler'] as String,
   ouvrierSpritualLive: json['ouvrierSpritualLive'] as String,
-  formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String,
+  formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String? ?? 'false',
   formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
   resumerPredication: json['resumerPredication'] as String,
 );

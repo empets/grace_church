@@ -310,11 +310,11 @@ abstract class RequestAuherResponseModel with _$RequestAuherResponseModel {
 abstract class RequestHumaneSectionAssistanceResponseModel
     with _$RequestHumaneSectionAssistanceResponseModel {
   factory RequestHumaneSectionAssistanceResponseModel({
-    required String? libelle,
-    required String? toutPetit,
-    required String? juniors,
-    required String? cadets,
-    required int? total,
+    @Default("") String? libelle,
+    @Default("") String? toutPetit,
+    @Default("") String? juniors,
+    @Default("") String? cadets,
+    @Default(0) int? total,
   }) = _RequestHumaneSectionAssistanceResponseModel;
   factory RequestHumaneSectionAssistanceResponseModel.fromJson(
     Map<String, dynamic> json,
@@ -337,9 +337,9 @@ abstract class RequestHumaneSectionAssistanceResponseModel
 abstract class RequestHumaneSectionActivityModel
     with _$RequestHumaneSectionActivityModel {
   factory RequestHumaneSectionActivityModel({
-    required String? nom,
-    required String? probleme,
-    required String? recommandation,
+    @Default("") String? nom,
+    @Default("") String? probleme,
+    @Default("") String? recommandation,
   }) = _RequestHumaneSectionActivityModel;
   factory RequestHumaneSectionActivityModel.fromJson(
     Map<String, dynamic> json,
@@ -360,10 +360,10 @@ abstract class RequestHumaneSectionActivityModel
 abstract class RequestSuggestionResponseModel
     with _$RequestSuggestionResponseModel {
   factory RequestSuggestionResponseModel({
-    required String? fullname,
-    required String? recommandation,
-    required String? isDisciple,
-    required String? probleme,
+    @Default("") String? fullname,
+    @Default("") String? recommandation,
+    @Default(false) bool? isDisciple,
+    @Default("") String? probleme,
   }) = _RequestSuggestionResponseModel;
   factory RequestSuggestionResponseModel.fromJson(Map<String, dynamic> json) =>
       _$RequestSuggestionResponseModelFromJson(json);
@@ -383,8 +383,8 @@ abstract class RequestSuggestionResponseModel
 @freezed
 abstract class DiscipleCelluleModel with _$DiscipleCelluleModel {
   factory DiscipleCelluleModel({
-    required String? fullName,
-    required String? isBaptierOrNot,
+    @Default("") String? fullName,
+    @Default("") String? isBaptierOrNot,
   }) = _DiscipleCelluleModel;
   factory DiscipleCelluleModel.fromJson(Map<String, dynamic> json) =>
       _$DiscipleCelluleModelFromJson(json);
@@ -400,9 +400,9 @@ abstract class DiscipleCelluleModel with _$DiscipleCelluleModel {
 @freezed
 abstract class RapportSuggestionModel with _$RapportSuggestionModel {
   factory RapportSuggestionModel({
-    required String? temoignage,
-    required String? suggestions,
-    required String? probleme,
+    @Default("") String? temoignage,
+    @Default("") String? suggestions,
+    @Default("") String? probleme,
   }) = _RapportSuggestionModel;
   factory RapportSuggestionModel.fromJson(Map<String, dynamic> json) =>
       _$RapportSuggestionModelFromJson(json);
@@ -420,9 +420,9 @@ abstract class RapportSuggestionModel with _$RapportSuggestionModel {
 abstract class RequestHumaneSectionActivityResponseModel
     with _$RequestHumaneSectionActivityResponseModel {
   factory RequestHumaneSectionActivityResponseModel({
-    required String nom,
-    required String probleme,
-    required String recommandation,
+    @Default("") String nom,
+    @Default("") String probleme,
+    @Default("") String recommandation,
   }) = _RequestHumaneSectionActivityResponseModel;
   factory RequestHumaneSectionActivityResponseModel.fromJson(
     Map<String, dynamic> json,
@@ -457,7 +457,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     required String? nombreNonBaptiser,
     required List<DiscipleCelluleModel> discipleCellule,
     required String? id,
-    required String? formAdministrationIsSubmit,
+    @Default('false')  String? formAdministrationIsSubmit,
     required String? formAdministrationSubmitDate,
     required String? resumerPredication,
 
@@ -467,17 +467,17 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     required RequestHumaneSectionAssistanceResponseModel assistanceInviter,
     required RequestAuherResponseModel assistanceCellule,
     // required String? id,
-    required String? formAssistanceIsSubmit,
+    @Default('false')  String? formAssistanceIsSubmit,
     required String? formAssistanceSubmitDate,
     required List<RequestSuggestionResponseModel> visiteMenbre,
     required List<RequestSuggestionResponseModel> visiteOuvrier,
     required String? dateActivitySubmited,
-    required String? formActivityIsSubmit,
+    @Default('false')  String? formActivityIsSubmit,
     required String? formActivitySubmitDate,
     required List<RequestHumaneSectionActivityResponseModel> suggestions,
     required String? faisAssignaler,
     required String? ouvrierSpritualLive,
-    required String? formSuggestionIsSubmit,
+    @Default('false')  String? formSuggestionIsSubmit,
     required String? formSuggestionSubmitDate,
   }) = _RapportCelluleResponseModel;
   factory RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -516,7 +516,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
       dateActivitySubmited: model.dateActivitySubmited.getOrEmpty(),
       formActivityIsSubmit: model.formActivityIsSubmit.getOrEmpty(),
       formActivitySubmitDate: model.formActivitySubmitDate.getOrEmpty(),
-      suggestions: model.suggestions.map((e)=> RequestHumaneSectionActivityResponseModel.toDomain(e)).toList(),
+      suggestions: model.suggestions.map( RequestHumaneSectionActivityResponseModel.toDomain).toList(),
       faisAssignaler: model.faisAssignaler.getOrEmpty(),
       ouvrierSpritualLive: model.ouvrierSpritualLive.getOrEmpty(),
       formSuggestionIsSubmit: model.formSuggestionIsSubmit.getOrEmpty(),

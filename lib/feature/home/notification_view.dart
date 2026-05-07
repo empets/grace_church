@@ -29,11 +29,11 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   Future<FirebaseResult<String>> sendNotifications(
-    RequestZone params,
+    RequestNotification params,
   ) async {
     try {
       // 1) Construire l'objet Request
-      final request = Request<RequestZone>(
+      final request = Request<RequestNotification>(
         data: params.toJson(),
         user: "",
         serviceLibelle: 'serviceLibelle',
@@ -41,14 +41,14 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entré ou table
       final ref = databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('emzone')
+          .child('notfications')
           .push();
       // 3) Sauvegarder dans Firebase (en convertissant en Map)
       await ref.set(request.data);
 
       // 4) Mettre à jour la clé
       await updateProfileKey(
-        RequestAuthenProfileUpdateZone(zoneId: ref.key.toString()),
+        RequestAuthenProfileUpdateZone(noticationId: ref.key.toString()),
       );
 
       return FirebaseSuccess(ref.key.toString());
@@ -66,10 +66,10 @@ class _NotificationViewState extends State<NotificationView> {
       // 2) Créer une nouvelle entrée
       await databaseReference.FirebaseDatabase.instance
           .ref()
-          .child('emzone/${params.zoneId}')
+          .child('notfications/${params.noticationId}')
           .update(updates);
       // 4) Retourner le key généré
-      return FirebaseSuccess(params.zoneId);
+      return FirebaseSuccess(params.noticationId);
     } catch (e) {
       log("🔥 Firebase Notification →→→→→→→→→ $e");
       return FirebaseError(e.toString());
@@ -148,28 +148,17 @@ class _NotificationViewState extends State<NotificationView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // GestureDetector(
-                  //   onTap: () async {
-                  //     await sendNotifications(
-                  //       RequestZone(
-                  //           zoneId: "Z001",
-                  //           zoneCode: "ZONE-ABJ-COC",
-                  //           zoneName: "Zone Cocody",
-                  //           dateCreated: "2026-05-02",
-                  //           zoneResponsableName: "Marie pière",
-                  //           contactResponsable: "+2250711111111",
-                  //           emailResponsablezone: "marie.pierre@email.com",
-                  //           adressResponsablezone: "Cocody Angré",
-                  //           responsablezoneId: "R002",
-                  //           adresse: "Cocody, Abidjan",
-                  //           regionId: "REG001",
-                  //           regionCode: "REG-ABJ",
-                  //       )
-                  //     );
-                  //     log("Notification sent");
-                  //   },
-                  //   child: Container(child: Text("Notifications")),
-                  // ),
+                  GestureDetector(
+                    onTap: () async {
+                      await sendNotifications(
+                        RequestNotification(title: 'URGENT', tag: 'URGENT', date: DateTime.now().toString(), description: 'Ce dimanche, un culte spécial sera organisé. Venez nombreux pour un moment de louange, d’adoration et d’écoute de la parole de Dieu.'
+                         
+                        )
+                      );
+                      log("Notification sent");
+                    },
+                    child: Container(child: Text("Notifications")),
+                  ),
                   BlocBuilder<
                     NotificationBloc,
                     ApiState<List<NotificationResponse>>

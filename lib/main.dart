@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -90,11 +91,11 @@ class MyApp extends StatelessWidget {
         },
         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
           builder: (context, state) {
-            return 
-              // DiagnosticRebootBox();
-              // state is SuccessState<bool> ? const OverviewScreen() : OnboardingScreen();
-            
-            state is SuccessState<ProfileResponse> ?  OverviewScreen() : OnboardingScreen();
+            return state is LoadState<ProfileResponse>
+                ? SplachSreen()
+                : state is SuccessState<ProfileResponse>
+                ? const OverviewScreen()
+                : OnboardingScreen();
           },
         ),
         // OverviewScreen(),
@@ -102,7 +103,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 class DiagnosticRebootBox extends StatefulWidget {
   const DiagnosticRebootBox({super.key});
@@ -163,12 +163,13 @@ class _DiagnosticRebootBoxState extends State<DiagnosticRebootBox> {
       },
     ];
     return Scaffold(
-      body: SafeArea(child: Column(
-        children: [
-          SizedBox(height: 16.h),
+      body: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(height: 16.h),
 
-          Row(
-            children: List.generate(
+            Row(
+              children: List.generate(
                 steps.length,
                 (index) => Container(
                   decoration: BoxDecoration(
@@ -183,18 +184,13 @@ class _DiagnosticRebootBoxState extends State<DiagnosticRebootBox> {
                   ),
                 ),
               ),
-            
-          )
-
-        ],
-      ))
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-
-
-
-
 
 class DiancHeaderProgress extends StatelessWidget {
   const DiancHeaderProgress({
@@ -221,12 +217,7 @@ class DiancHeaderProgress extends StatelessWidget {
             color: Color(0xFF50BE87),
             shape: BoxShape.circle,
           ),
-          child: Container(
-       
-            color: Colors.white,
-            width: 10.w,
-            height: 10.h,
-          ),
+          child: Container(color: Colors.white, width: 10.w, height: 10.h),
         );
       case 'en_cours':
         return Container(
@@ -347,9 +338,7 @@ class DiancHeaderProgress extends StatelessWidget {
           // Etape en cours
           //----------------------------
           Container(
-            margin: EdgeInsets.only(
-              left: index == 0 ? 4.w : 7.w,
-            ),
+            margin: EdgeInsets.only(left: index == 0 ? 4.w : 7.w),
             child: Text(
               steps[index]['etapeEnCours'] as String,
               style: context.appTypographie.body.copyWith(
@@ -368,20 +357,26 @@ class DiancHeaderProgress extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                    margin: EdgeInsets.only(
-                        // left: index < steps.length - 1 ? 6.w : 0.w,
-                        left: index == 0 ? 4.w : (steps.last.length - 1) > 0 ? 13.w : 0.w,
-                        right: index < steps.length - 1 ? 7.w : 0.w
-                        ),
-                    child:
-                        _checkStepStatus(step: diagnosticsSetp?[index]['statut'] ?? '')),
+                  margin: EdgeInsets.only(
+                    // left: index < steps.length - 1 ? 6.w : 0.w,
+                    left: index == 0
+                        ? 4.w
+                        : (steps.last.length - 1) > 0
+                        ? 13.w
+                        : 0.w,
+                    right: index < steps.length - 1 ? 7.w : 0.w,
+                  ),
+                  child: _checkStepStatus(
+                    step: diagnosticsSetp?[index]['statut'] ?? '',
+                  ),
+                ),
                 if (index < steps.length - 1) ...[
                   Container(
                     width: 0.27.sw,
                     height: 2.h,
-                    margin:  index < steps.length - 1 
-                     ? EdgeInsets.only(left: 9.w, right: 1.w)
-                     : EdgeInsets.only(left: 1.w, right: 0.w),
+                    margin: index < steps.length - 1
+                        ? EdgeInsets.only(left: 9.w, right: 1.w)
+                        : EdgeInsets.only(left: 1.w, right: 0.w),
                     color: _getStepColor(
                       status: diagnosticsSetp?[index]['statut'] ?? '',
                       steps: steps,
@@ -421,7 +416,9 @@ class DiancHeaderProgress extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Text(
-                  _getStatusLabel(status: diagnosticsSetp?[index]['statut'] ?? ''),
+                  _getStatusLabel(
+                    status: diagnosticsSetp?[index]['statut'] ?? '',
+                  ),
                   style: context.appTypographie.body.copyWith(
                     fontSize: 7.sp,
                     fontWeight: FontWeight.w500,
@@ -433,6 +430,36 @@ class DiancHeaderProgress extends StatelessWidget {
               ),
             ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class SplachSreen extends StatelessWidget {
+  const SplachSreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: context.appColor.primaryBlue,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Align(
+            alignment: AlignmentGeometry.center,
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation(Colors.white),
+              strokeWidth: 2,
+            ),
+          ),
+          SizedBox(height: 10.h),
+          CustomeText(
+            text: "Version 1.2.23",
+            style: context.appTypographie.small.copyWith(color: Colors.white10),
+          ),
+          SizedBox(height: 0.1.sh),
         ],
       ),
     );

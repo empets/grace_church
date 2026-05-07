@@ -1848,6 +1848,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
+  raindrop_animated_splash_screen:
+    dependency: "direct main"
+    description:
+      name: raindrop_animated_splash_screen
+      sha256: "5756e139c2ef7e395c92795ae155da43c22d20e84dddbf13e8b6a88ff7e28709"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   realtime_client:
     dependency: transitive
     description:

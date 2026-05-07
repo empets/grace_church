@@ -2327,14 +2327,14 @@ return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.t
 @JsonSerializable()
 
 class _RequestHumaneSectionAssistanceResponseModel implements RequestHumaneSectionAssistanceResponseModel {
-   _RequestHumaneSectionAssistanceResponseModel({required this.libelle, required this.toutPetit, required this.juniors, required this.cadets, required this.total});
+   _RequestHumaneSectionAssistanceResponseModel({this.libelle = "", this.toutPetit = "", this.juniors = "", this.cadets = "", this.total = 0});
   factory _RequestHumaneSectionAssistanceResponseModel.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionAssistanceResponseModelFromJson(json);
 
-@override final  String? libelle;
-@override final  String? toutPetit;
-@override final  String? juniors;
-@override final  String? cadets;
-@override final  int? total;
+@override@JsonKey() final  String? libelle;
+@override@JsonKey() final  String? toutPetit;
+@override@JsonKey() final  String? juniors;
+@override@JsonKey() final  String? cadets;
+@override@JsonKey() final  int? total;
 
 /// Create a copy of RequestHumaneSectionAssistanceResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -2600,12 +2600,12 @@ return $default(_that.nom,_that.probleme,_that.recommandation);case _:
 @JsonSerializable()
 
 class _RequestHumaneSectionActivityModel implements RequestHumaneSectionActivityModel {
-   _RequestHumaneSectionActivityModel({required this.nom, required this.probleme, required this.recommandation});
+   _RequestHumaneSectionActivityModel({this.nom = "", this.probleme = "", this.recommandation = ""});
   factory _RequestHumaneSectionActivityModel.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionActivityModelFromJson(json);
 
-@override final  String? nom;
-@override final  String? probleme;
-@override final  String? recommandation;
+@override@JsonKey() final  String? nom;
+@override@JsonKey() final  String? probleme;
+@override@JsonKey() final  String? recommandation;
 
 /// Create a copy of RequestHumaneSectionActivityModel
 /// with the given fields replaced by the non-null parameter values.
@@ -2673,7 +2673,7 @@ as String?,
 /// @nodoc
 mixin _$RequestSuggestionResponseModel {
 
- String? get fullname; String? get recommandation; String? get isDisciple; String? get probleme;
+ String? get fullname; String? get recommandation; bool? get isDisciple; String? get probleme;
 /// Create a copy of RequestSuggestionResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2706,7 +2706,7 @@ abstract mixin class $RequestSuggestionResponseModelCopyWith<$Res>  {
   factory $RequestSuggestionResponseModelCopyWith(RequestSuggestionResponseModel value, $Res Function(RequestSuggestionResponseModel) _then) = _$RequestSuggestionResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String? fullname, String? recommandation, String? isDisciple, String? probleme
+ String? fullname, String? recommandation, bool? isDisciple, String? probleme
 });
 
 
@@ -2728,7 +2728,7 @@ class _$RequestSuggestionResponseModelCopyWithImpl<$Res>
 fullname: freezed == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
 as String?,recommandation: freezed == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
 as String?,isDisciple: freezed == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
-as String?,probleme: freezed == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as bool?,probleme: freezed == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -2814,7 +2814,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? fullname,  String? recommandation,  String? isDisciple,  String? probleme)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? fullname,  String? recommandation,  bool? isDisciple,  String? probleme)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestSuggestionResponseModel() when $default != null:
 return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
@@ -2835,7 +2835,7 @@ return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probl
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? fullname,  String? recommandation,  String? isDisciple,  String? probleme)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? fullname,  String? recommandation,  bool? isDisciple,  String? probleme)  $default,) {final _that = this;
 switch (_that) {
 case _RequestSuggestionResponseModel():
 return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
@@ -2855,7 +2855,7 @@ return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probl
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? fullname,  String? recommandation,  String? isDisciple,  String? probleme)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? fullname,  String? recommandation,  bool? isDisciple,  String? probleme)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestSuggestionResponseModel() when $default != null:
 return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probleme);case _:
@@ -2870,13 +2870,13 @@ return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probl
 @JsonSerializable()
 
 class _RequestSuggestionResponseModel implements RequestSuggestionResponseModel {
-   _RequestSuggestionResponseModel({required this.fullname, required this.recommandation, required this.isDisciple, required this.probleme});
+   _RequestSuggestionResponseModel({this.fullname = "", this.recommandation = "", this.isDisciple = false, this.probleme = ""});
   factory _RequestSuggestionResponseModel.fromJson(Map<String, dynamic> json) => _$RequestSuggestionResponseModelFromJson(json);
 
-@override final  String? fullname;
-@override final  String? recommandation;
-@override final  String? isDisciple;
-@override final  String? probleme;
+@override@JsonKey() final  String? fullname;
+@override@JsonKey() final  String? recommandation;
+@override@JsonKey() final  bool? isDisciple;
+@override@JsonKey() final  String? probleme;
 
 /// Create a copy of RequestSuggestionResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -2911,7 +2911,7 @@ abstract mixin class _$RequestSuggestionResponseModelCopyWith<$Res> implements $
   factory _$RequestSuggestionResponseModelCopyWith(_RequestSuggestionResponseModel value, $Res Function(_RequestSuggestionResponseModel) _then) = __$RequestSuggestionResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? fullname, String? recommandation, String? isDisciple, String? probleme
+ String? fullname, String? recommandation, bool? isDisciple, String? probleme
 });
 
 
@@ -2933,7 +2933,7 @@ class __$RequestSuggestionResponseModelCopyWithImpl<$Res>
 fullname: freezed == fullname ? _self.fullname : fullname // ignore: cast_nullable_to_non_nullable
 as String?,recommandation: freezed == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
 as String?,isDisciple: freezed == isDisciple ? _self.isDisciple : isDisciple // ignore: cast_nullable_to_non_nullable
-as String?,probleme: freezed == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
+as bool?,probleme: freezed == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -3140,11 +3140,11 @@ return $default(_that.fullName,_that.isBaptierOrNot);case _:
 @JsonSerializable()
 
 class _DiscipleCelluleModel implements DiscipleCelluleModel {
-   _DiscipleCelluleModel({required this.fullName, required this.isBaptierOrNot});
+   _DiscipleCelluleModel({this.fullName = "", this.isBaptierOrNot = ""});
   factory _DiscipleCelluleModel.fromJson(Map<String, dynamic> json) => _$DiscipleCelluleModelFromJson(json);
 
-@override final  String? fullName;
-@override final  String? isBaptierOrNot;
+@override@JsonKey() final  String? fullName;
+@override@JsonKey() final  String? isBaptierOrNot;
 
 /// Create a copy of DiscipleCelluleModel
 /// with the given fields replaced by the non-null parameter values.
@@ -3407,12 +3407,12 @@ return $default(_that.temoignage,_that.suggestions,_that.probleme);case _:
 @JsonSerializable()
 
 class _RapportSuggestionModel implements RapportSuggestionModel {
-   _RapportSuggestionModel({required this.temoignage, required this.suggestions, required this.probleme});
+   _RapportSuggestionModel({this.temoignage = "", this.suggestions = "", this.probleme = ""});
   factory _RapportSuggestionModel.fromJson(Map<String, dynamic> json) => _$RapportSuggestionModelFromJson(json);
 
-@override final  String? temoignage;
-@override final  String? suggestions;
-@override final  String? probleme;
+@override@JsonKey() final  String? temoignage;
+@override@JsonKey() final  String? suggestions;
+@override@JsonKey() final  String? probleme;
 
 /// Create a copy of RapportSuggestionModel
 /// with the given fields replaced by the non-null parameter values.
@@ -3676,12 +3676,12 @@ return $default(_that.nom,_that.probleme,_that.recommandation);case _:
 @JsonSerializable()
 
 class _RequestHumaneSectionActivityResponseModel implements RequestHumaneSectionActivityResponseModel {
-   _RequestHumaneSectionActivityResponseModel({required this.nom, required this.probleme, required this.recommandation});
+   _RequestHumaneSectionActivityResponseModel({this.nom = "", this.probleme = "", this.recommandation = ""});
   factory _RequestHumaneSectionActivityResponseModel.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionActivityResponseModelFromJson(json);
 
-@override final  String nom;
-@override final  String probleme;
-@override final  String recommandation;
+@override@JsonKey() final  String nom;
+@override@JsonKey() final  String probleme;
+@override@JsonKey() final  String recommandation;
 
 /// Create a copy of RequestHumaneSectionActivityResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -4015,7 +4015,7 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 @JsonSerializable()
 
 class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
-   _RapportCelluleResponseModel({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCelluleModel> discipleCellule, required this.id, required this.formAdministrationIsSubmit, required this.formAdministrationSubmitDate, required this.resumerPredication, required this.assistanceNonBaptiser, required this.assistanceNouveau, required this.assistanceInviter, required this.assistanceCellule, required this.formAssistanceIsSubmit, required this.formAssistanceSubmitDate, required final  List<RequestSuggestionResponseModel> visiteMenbre, required final  List<RequestSuggestionResponseModel> visiteOuvrier, required this.dateActivitySubmited, required this.formActivityIsSubmit, required this.formActivitySubmitDate, required final  List<RequestHumaneSectionActivityResponseModel> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, required this.formSuggestionIsSubmit, required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
+   _RapportCelluleResponseModel({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCelluleModel> discipleCellule, required this.id, this.formAdministrationIsSubmit = 'false', required this.formAdministrationSubmitDate, required this.resumerPredication, required this.assistanceNonBaptiser, required this.assistanceNouveau, required this.assistanceInviter, required this.assistanceCellule, this.formAssistanceIsSubmit = 'false', required this.formAssistanceSubmitDate, required final  List<RequestSuggestionResponseModel> visiteMenbre, required final  List<RequestSuggestionResponseModel> visiteOuvrier, required this.dateActivitySubmited, this.formActivityIsSubmit = 'false', required this.formActivitySubmitDate, required final  List<RequestHumaneSectionActivityResponseModel> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, this.formSuggestionIsSubmit = 'false', required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
   factory _RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) => _$RapportCelluleResponseModelFromJson(json);
 
 @override final  String? codeZone;
@@ -4040,7 +4040,7 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 }
 
 @override final  String? id;
-@override final  String? formAdministrationIsSubmit;
+@override@JsonKey() final  String? formAdministrationIsSubmit;
 @override final  String? formAdministrationSubmitDate;
 @override final  String? resumerPredication;
 // required String? nombreBaptiser,
@@ -4049,7 +4049,7 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 @override final  RequestHumaneSectionAssistanceResponseModel assistanceInviter;
 @override final  RequestAuherResponseModel assistanceCellule;
 // required String? id,
-@override final  String? formAssistanceIsSubmit;
+@override@JsonKey() final  String? formAssistanceIsSubmit;
 @override final  String? formAssistanceSubmitDate;
  final  List<RequestSuggestionResponseModel> _visiteMenbre;
 @override List<RequestSuggestionResponseModel> get visiteMenbre {
@@ -4066,7 +4066,7 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 }
 
 @override final  String? dateActivitySubmited;
-@override final  String? formActivityIsSubmit;
+@override@JsonKey() final  String? formActivityIsSubmit;
 @override final  String? formActivitySubmitDate;
  final  List<RequestHumaneSectionActivityResponseModel> _suggestions;
 @override List<RequestHumaneSectionActivityResponseModel> get suggestions {
@@ -4077,7 +4077,7 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 
 @override final  String? faisAssignaler;
 @override final  String? ouvrierSpritualLive;
-@override final  String? formSuggestionIsSubmit;
+@override@JsonKey() final  String? formSuggestionIsSubmit;
 @override final  String? formSuggestionSubmitDate;
 
 /// Create a copy of RapportCelluleResponseModel
