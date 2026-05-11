@@ -73,6 +73,8 @@ abstract class CelluleResponse with _$CelluleResponse {
     required String adresseResponsableCellule,
     required String secteurId,
     required String secteurCode,
+    required String jourCellule,
+    required String heureCellule,
   }) = _CelluleResponse;
   factory CelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$CelluleResponseFromJson(json);

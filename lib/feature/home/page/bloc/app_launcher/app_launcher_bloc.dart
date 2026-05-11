@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:grace_church/core/extension/extention.dart';
-import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
-
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
+import 'package:grace_church/core/extension/extention.dart';
+import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_profile_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 
 @lazySingleton
@@ -73,11 +73,16 @@ class ConnexionImpliciteBloc extends Bloc<ProfileEvent, ApiState<ProfileResponse
           deviceId: deviceId,
          )
         );
+
+       
         
        emit(
           result.fold(
             (l) => ApiState<ProfileResponse>.failed(l.message),
-            (r) => ApiState<ProfileResponse>.success(r, status: FormzSubmissionStatus.success),
+            (r)  {
+
+              return ApiState<ProfileResponse>.success(r, status: FormzSubmissionStatus.success);
+            },
           )
        );
 

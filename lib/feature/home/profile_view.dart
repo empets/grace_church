@@ -347,7 +347,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                                 GetProfileBloc
                                                               >()
                                                               .add(
-                                                                const ProfileEvent.fetch(),
+                                                                const ProfileEvent.fetchProfileNumberId(null),
                                                               );
                                                         }
                                                       },
@@ -617,7 +617,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                     context
                                                         .read<GetProfileBloc>()
                                                         .add(
-                                                          const ProfileEvent.fetch(),
+                                                          const ProfileEvent.fetchProfileNumberId(null),
                                                         );
                                                   }
                                                 },
@@ -889,7 +889,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                             GetProfileBloc
                                                           >()
                                                           .add(
-                                                            const ProfileEvent.fetch(),
+                                                            const ProfileEvent.fetchProfileNumberId(null),
                                                           );
                                                     }
                                                   },
@@ -1153,7 +1153,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                             GetProfileBloc
                                                           >()
                                                           .add(
-                                                            const ProfileEvent.fetch(),
+                                                            const ProfileEvent.fetchProfileNumberId(null),
                                                           );
                                                     }
                                                   },
@@ -1448,7 +1448,7 @@ class _ProfileViewState extends State<ProfileView> {
                                     borderRadius: 14.r,
                                     onPressed: () {
                                       context.read<GetProfileBloc>().add(
-                                        const ProfileEvent.fetch(),
+                                        const ProfileEvent.fetchProfileNumberId(null),
                                       );
                                     },
                                   );

@@ -121,6 +121,8 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
     required String? adresseResponsableCellule,
     required String? secteurId,
     required String? secteurCode,
+    required String? jourCellule,
+    required String? heureCellule,
   }) = _CelluleResponseModel;
   factory CelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CelluleResponseModelFromJson(json);
@@ -142,6 +144,8 @@ abstract class CelluleResponseModel with _$CelluleResponseModel {
       adresseResponsableCellule: model.adresseResponsableCellule.getOrEmpty(),
       secteurId: model.secteurId.getOrEmpty(),
       secteurCode: model.secteurCode.getOrEmpty(),
+      jourCellule: model.jourCellule.getOrEmpty(),
+      heureCellule: model.heureCellule.getOrEmpty(),
     );
   }
 }

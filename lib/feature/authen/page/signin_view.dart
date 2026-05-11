@@ -38,11 +38,13 @@ class SigninView extends StatelessWidget {
         listener: (context, state) async {
           if (state.status.isSuccess) {
             // Navigation vers la page suivante
-            final shared = await SharedPreferences.getInstance();
-            await shared.setString('isAppLauncher', 'isAppLauncher');
+            // final shared = await SharedPreferences.getInstance();
+            // await shared.setString('isAppLauncher', 'isAppLauncher');
 
             Navigator.of(context).pushAndRemoveUntil(
-              fadeRoute(const OverviewScreen()),
+              fadeRoute( OverviewScreen(
+                menberId: state.errorMessage
+              )),
               (route) => false,
             );
           } else if (state.status.isFailure) {

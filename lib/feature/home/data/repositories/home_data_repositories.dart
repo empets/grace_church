@@ -20,7 +20,7 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
 
   @override
   Future<Either<Failure, ProfileResponse>> getProfile(
-    EmptyRequest notParms,
+    RequestGetProfile notParms,
   ) async {
     final response = await domaineServiceRepository.getProfile(notParms);
 

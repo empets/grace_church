@@ -10,7 +10,7 @@ abstract class HomeDomaineRepository {
   //  elle prend en parametre un objet EmptyRequest qui ne contient rien
   //  elle retourne un objet ProfileResponse qui contient le profile de l'utilisateur
   // -------------------------------------------------------------
-  Future<Either<Failure, ProfileResponse>> getProfile(EmptyRequest notParms);
+  Future<Either<Failure, ProfileResponse>> getProfile(RequestGetProfile notParms);
  
   //  cette methode permet d'envoyer une notification
   //  elle prend en parametre un objet RequestNotification qui contient les parametres de la requete 

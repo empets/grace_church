@@ -173,6 +173,8 @@ dependencies:
  # gscankit: ^1.0.3
   dotted_border: ^2.0.0
   raindrop_animated_splash_screen: ^0.0.2
+  mcp_dart: ^2.1.1
+  share_plus: any
   
 
   

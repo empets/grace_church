@@ -57,8 +57,11 @@ class SigningBloc extends Bloc<SigninEvent, SigninState> {
                 errorMessage: 'Ce profile n\'existe pas merci de vous inscrire',
                 status: FormzSubmissionStatus.failure,
               ),
-              (profile) =>
-                  state.copyWith(status: FormzSubmissionStatus.success),
+              (profile) => state.copyWith(
+                errorMessage: profile.toString(),
+                status: FormzSubmissionStatus.success,
+                
+              ),
             ),
           );
         }

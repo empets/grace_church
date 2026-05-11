@@ -223,6 +223,281 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 
 
 /// @nodoc
+mixin _$RequestGetProfile implements DiagnosticableTreeMixin {
+
+ String get numberId;
+/// Create a copy of RequestGetProfile
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestGetProfileCopyWith<RequestGetProfile> get copyWith => _$RequestGetProfileCopyWithImpl<RequestGetProfile>(this as RequestGetProfile, _$identity);
+
+  /// Serializes this RequestGetProfile to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestGetProfile'))
+    ..add(DiagnosticsProperty('numberId', numberId));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestGetProfile&&(identical(other.numberId, numberId) || other.numberId == numberId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,numberId);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestGetProfile(numberId: $numberId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestGetProfileCopyWith<$Res>  {
+  factory $RequestGetProfileCopyWith(RequestGetProfile value, $Res Function(RequestGetProfile) _then) = _$RequestGetProfileCopyWithImpl;
+@useResult
+$Res call({
+ String numberId
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestGetProfileCopyWithImpl<$Res>
+    implements $RequestGetProfileCopyWith<$Res> {
+  _$RequestGetProfileCopyWithImpl(this._self, this._then);
+
+  final RequestGetProfile _self;
+  final $Res Function(RequestGetProfile) _then;
+
+/// Create a copy of RequestGetProfile
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? numberId = null,}) {
+  return _then(_self.copyWith(
+numberId: null == numberId ? _self.numberId : numberId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestGetProfile].
+extension RequestGetProfilePatterns on RequestGetProfile {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestGetProfile value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestGetProfile() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestGetProfile value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestGetProfile():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestGetProfile value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestGetProfile() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String numberId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestGetProfile() when $default != null:
+return $default(_that.numberId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String numberId)  $default,) {final _that = this;
+switch (_that) {
+case _RequestGetProfile():
+return $default(_that.numberId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String numberId)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestGetProfile() when $default != null:
+return $default(_that.numberId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestGetProfile with DiagnosticableTreeMixin implements RequestGetProfile {
+   _RequestGetProfile({required this.numberId});
+  factory _RequestGetProfile.fromJson(Map<String, dynamic> json) => _$RequestGetProfileFromJson(json);
+
+@override final  String numberId;
+
+/// Create a copy of RequestGetProfile
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestGetProfileCopyWith<_RequestGetProfile> get copyWith => __$RequestGetProfileCopyWithImpl<_RequestGetProfile>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestGetProfileToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestGetProfile'))
+    ..add(DiagnosticsProperty('numberId', numberId));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestGetProfile&&(identical(other.numberId, numberId) || other.numberId == numberId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,numberId);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestGetProfile(numberId: $numberId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestGetProfileCopyWith<$Res> implements $RequestGetProfileCopyWith<$Res> {
+  factory _$RequestGetProfileCopyWith(_RequestGetProfile value, $Res Function(_RequestGetProfile) _then) = __$RequestGetProfileCopyWithImpl;
+@override @useResult
+$Res call({
+ String numberId
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestGetProfileCopyWithImpl<$Res>
+    implements _$RequestGetProfileCopyWith<$Res> {
+  __$RequestGetProfileCopyWithImpl(this._self, this._then);
+
+  final _RequestGetProfile _self;
+  final $Res Function(_RequestGetProfile) _then;
+
+/// Create a copy of RequestGetProfile
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? numberId = null,}) {
+  return _then(_RequestGetProfile(
+numberId: null == numberId ? _self.numberId : numberId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$RequestNotification implements DiagnosticableTreeMixin {
 
  String get title; String get tag; String get date; String get description;
@@ -509,7 +784,7 @@ as String,
 /// @nodoc
 mixin _$RequestCellule implements DiagnosticableTreeMixin {
 
- String? get celluleId; String? get celluleCode; String? get nom; String? get date; String? get description; String? get adresse; double? get latitude; double? get longitude; String? get responsableCelluleId; String? get responsableCellule; String? get contactResponsableCellule; String? get emailResponsableCellule; String? get adresseResponsableCellule; String? get secteurId; String? get secteurCode;
+ String? get celluleId; String? get celluleCode; String? get nom; String? get date; String? get description; String? get adresse; double? get latitude; double? get longitude; String? get responsableCelluleId; String? get responsableCellule; String? get contactResponsableCellule; String? get emailResponsableCellule; String? get adresseResponsableCellule; String? get secteurId; String? get secteurCode; String? get jourCellule; String? get heureCellule;
 /// Create a copy of RequestCellule
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -523,21 +798,21 @@ $RequestCelluleCopyWith<RequestCellule> get copyWith => _$RequestCelluleCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestCellule'))
-    ..add(DiagnosticsProperty('celluleId', celluleId))..add(DiagnosticsProperty('celluleCode', celluleCode))..add(DiagnosticsProperty('nom', nom))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('latitude', latitude))..add(DiagnosticsProperty('longitude', longitude))..add(DiagnosticsProperty('responsableCelluleId', responsableCelluleId))..add(DiagnosticsProperty('responsableCellule', responsableCellule))..add(DiagnosticsProperty('contactResponsableCellule', contactResponsableCellule))..add(DiagnosticsProperty('emailResponsableCellule', emailResponsableCellule))..add(DiagnosticsProperty('adresseResponsableCellule', adresseResponsableCellule))..add(DiagnosticsProperty('secteurId', secteurId))..add(DiagnosticsProperty('secteurCode', secteurCode));
+    ..add(DiagnosticsProperty('celluleId', celluleId))..add(DiagnosticsProperty('celluleCode', celluleCode))..add(DiagnosticsProperty('nom', nom))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('latitude', latitude))..add(DiagnosticsProperty('longitude', longitude))..add(DiagnosticsProperty('responsableCelluleId', responsableCelluleId))..add(DiagnosticsProperty('responsableCellule', responsableCellule))..add(DiagnosticsProperty('contactResponsableCellule', contactResponsableCellule))..add(DiagnosticsProperty('emailResponsableCellule', emailResponsableCellule))..add(DiagnosticsProperty('adresseResponsableCellule', adresseResponsableCellule))..add(DiagnosticsProperty('secteurId', secteurId))..add(DiagnosticsProperty('secteurCode', secteurCode))..add(DiagnosticsProperty('jourCellule', jourCellule))..add(DiagnosticsProperty('heureCellule', heureCellule));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestCellule&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.date, date) || other.date == date)&&(identical(other.description, description) || other.description == description)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.responsableCellule, responsableCellule) || other.responsableCellule == responsableCellule)&&(identical(other.contactResponsableCellule, contactResponsableCellule) || other.contactResponsableCellule == contactResponsableCellule)&&(identical(other.emailResponsableCellule, emailResponsableCellule) || other.emailResponsableCellule == emailResponsableCellule)&&(identical(other.adresseResponsableCellule, adresseResponsableCellule) || other.adresseResponsableCellule == adresseResponsableCellule)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestCellule&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.date, date) || other.date == date)&&(identical(other.description, description) || other.description == description)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.responsableCellule, responsableCellule) || other.responsableCellule == responsableCellule)&&(identical(other.contactResponsableCellule, contactResponsableCellule) || other.contactResponsableCellule == contactResponsableCellule)&&(identical(other.emailResponsableCellule, emailResponsableCellule) || other.emailResponsableCellule == emailResponsableCellule)&&(identical(other.adresseResponsableCellule, adresseResponsableCellule) || other.adresseResponsableCellule == adresseResponsableCellule)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.heureCellule, heureCellule) || other.heureCellule == heureCellule));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,celluleId,celluleCode,nom,date,description,adresse,latitude,longitude,responsableCelluleId,responsableCellule,contactResponsableCellule,emailResponsableCellule,adresseResponsableCellule,secteurId,secteurCode);
+int get hashCode => Object.hash(runtimeType,celluleId,celluleCode,nom,date,description,adresse,latitude,longitude,responsableCelluleId,responsableCellule,contactResponsableCellule,emailResponsableCellule,adresseResponsableCellule,secteurId,secteurCode,jourCellule,heureCellule);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestCellule(celluleId: $celluleId, celluleCode: $celluleCode, nom: $nom, date: $date, description: $description, adresse: $adresse, latitude: $latitude, longitude: $longitude, responsableCelluleId: $responsableCelluleId, responsableCellule: $responsableCellule, contactResponsableCellule: $contactResponsableCellule, emailResponsableCellule: $emailResponsableCellule, adresseResponsableCellule: $adresseResponsableCellule, secteurId: $secteurId, secteurCode: $secteurCode)';
+  return 'RequestCellule(celluleId: $celluleId, celluleCode: $celluleCode, nom: $nom, date: $date, description: $description, adresse: $adresse, latitude: $latitude, longitude: $longitude, responsableCelluleId: $responsableCelluleId, responsableCellule: $responsableCellule, contactResponsableCellule: $contactResponsableCellule, emailResponsableCellule: $emailResponsableCellule, adresseResponsableCellule: $adresseResponsableCellule, secteurId: $secteurId, secteurCode: $secteurCode, jourCellule: $jourCellule, heureCellule: $heureCellule)';
 }
 
 
@@ -548,7 +823,7 @@ abstract mixin class $RequestCelluleCopyWith<$Res>  {
   factory $RequestCelluleCopyWith(RequestCellule value, $Res Function(RequestCellule) _then) = _$RequestCelluleCopyWithImpl;
 @useResult
 $Res call({
- String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double? latitude, double? longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode
+ String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double? latitude, double? longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode, String? jourCellule, String? heureCellule
 });
 
 
@@ -565,7 +840,7 @@ class _$RequestCelluleCopyWithImpl<$Res>
 
 /// Create a copy of RequestCellule
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,Object? jourCellule = freezed,Object? heureCellule = freezed,}) {
   return _then(_self.copyWith(
 celluleId: freezed == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as String?,celluleCode: freezed == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -582,6 +857,8 @@ as String?,emailResponsableCellule: freezed == emailResponsableCellule ? _self.e
 as String?,adresseResponsableCellule: freezed == adresseResponsableCellule ? _self.adresseResponsableCellule : adresseResponsableCellule // ignore: cast_nullable_to_non_nullable
 as String?,secteurId: freezed == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
 as String?,secteurCode: freezed == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
+as String?,jourCellule: freezed == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
+as String?,heureCellule: freezed == heureCellule ? _self.heureCellule : heureCellule // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -667,10 +944,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode,  String? jourCellule,  String? heureCellule)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestCellule() when $default != null:
-return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode);case _:
+return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode,_that.jourCellule,_that.heureCellule);case _:
   return orElse();
 
 }
@@ -688,10 +965,10 @@ return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.des
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode,  String? jourCellule,  String? heureCellule)  $default,) {final _that = this;
 switch (_that) {
 case _RequestCellule():
-return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode);case _:
+return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode,_that.jourCellule,_that.heureCellule);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -708,10 +985,10 @@ return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.des
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? celluleId,  String? celluleCode,  String? nom,  String? date,  String? description,  String? adresse,  double? latitude,  double? longitude,  String? responsableCelluleId,  String? responsableCellule,  String? contactResponsableCellule,  String? emailResponsableCellule,  String? adresseResponsableCellule,  String? secteurId,  String? secteurCode,  String? jourCellule,  String? heureCellule)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestCellule() when $default != null:
-return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode);case _:
+return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.description,_that.adresse,_that.latitude,_that.longitude,_that.responsableCelluleId,_that.responsableCellule,_that.contactResponsableCellule,_that.emailResponsableCellule,_that.adresseResponsableCellule,_that.secteurId,_that.secteurCode,_that.jourCellule,_that.heureCellule);case _:
   return null;
 
 }
@@ -723,7 +1000,7 @@ return $default(_that.celluleId,_that.celluleCode,_that.nom,_that.date,_that.des
 @JsonSerializable()
 
 class _RequestCellule with DiagnosticableTreeMixin implements RequestCellule {
-   _RequestCellule({this.celluleId, this.celluleCode, this.nom, this.date, this.description, this.adresse, this.latitude, this.longitude, this.responsableCelluleId, this.responsableCellule, this.contactResponsableCellule, this.emailResponsableCellule, this.adresseResponsableCellule, this.secteurId, this.secteurCode});
+   _RequestCellule({this.celluleId, this.celluleCode, this.nom, this.date, this.description, this.adresse, this.latitude, this.longitude, this.responsableCelluleId, this.responsableCellule, this.contactResponsableCellule, this.emailResponsableCellule, this.adresseResponsableCellule, this.secteurId, this.secteurCode, this.jourCellule, this.heureCellule});
   factory _RequestCellule.fromJson(Map<String, dynamic> json) => _$RequestCelluleFromJson(json);
 
 @override final  String? celluleId;
@@ -741,6 +1018,8 @@ class _RequestCellule with DiagnosticableTreeMixin implements RequestCellule {
 @override final  String? adresseResponsableCellule;
 @override final  String? secteurId;
 @override final  String? secteurCode;
+@override final  String? jourCellule;
+@override final  String? heureCellule;
 
 /// Create a copy of RequestCellule
 /// with the given fields replaced by the non-null parameter values.
@@ -756,21 +1035,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestCellule'))
-    ..add(DiagnosticsProperty('celluleId', celluleId))..add(DiagnosticsProperty('celluleCode', celluleCode))..add(DiagnosticsProperty('nom', nom))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('latitude', latitude))..add(DiagnosticsProperty('longitude', longitude))..add(DiagnosticsProperty('responsableCelluleId', responsableCelluleId))..add(DiagnosticsProperty('responsableCellule', responsableCellule))..add(DiagnosticsProperty('contactResponsableCellule', contactResponsableCellule))..add(DiagnosticsProperty('emailResponsableCellule', emailResponsableCellule))..add(DiagnosticsProperty('adresseResponsableCellule', adresseResponsableCellule))..add(DiagnosticsProperty('secteurId', secteurId))..add(DiagnosticsProperty('secteurCode', secteurCode));
+    ..add(DiagnosticsProperty('celluleId', celluleId))..add(DiagnosticsProperty('celluleCode', celluleCode))..add(DiagnosticsProperty('nom', nom))..add(DiagnosticsProperty('date', date))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('adresse', adresse))..add(DiagnosticsProperty('latitude', latitude))..add(DiagnosticsProperty('longitude', longitude))..add(DiagnosticsProperty('responsableCelluleId', responsableCelluleId))..add(DiagnosticsProperty('responsableCellule', responsableCellule))..add(DiagnosticsProperty('contactResponsableCellule', contactResponsableCellule))..add(DiagnosticsProperty('emailResponsableCellule', emailResponsableCellule))..add(DiagnosticsProperty('adresseResponsableCellule', adresseResponsableCellule))..add(DiagnosticsProperty('secteurId', secteurId))..add(DiagnosticsProperty('secteurCode', secteurCode))..add(DiagnosticsProperty('jourCellule', jourCellule))..add(DiagnosticsProperty('heureCellule', heureCellule));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestCellule&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.date, date) || other.date == date)&&(identical(other.description, description) || other.description == description)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.responsableCellule, responsableCellule) || other.responsableCellule == responsableCellule)&&(identical(other.contactResponsableCellule, contactResponsableCellule) || other.contactResponsableCellule == contactResponsableCellule)&&(identical(other.emailResponsableCellule, emailResponsableCellule) || other.emailResponsableCellule == emailResponsableCellule)&&(identical(other.adresseResponsableCellule, adresseResponsableCellule) || other.adresseResponsableCellule == adresseResponsableCellule)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestCellule&&(identical(other.celluleId, celluleId) || other.celluleId == celluleId)&&(identical(other.celluleCode, celluleCode) || other.celluleCode == celluleCode)&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.date, date) || other.date == date)&&(identical(other.description, description) || other.description == description)&&(identical(other.adresse, adresse) || other.adresse == adresse)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId)&&(identical(other.responsableCellule, responsableCellule) || other.responsableCellule == responsableCellule)&&(identical(other.contactResponsableCellule, contactResponsableCellule) || other.contactResponsableCellule == contactResponsableCellule)&&(identical(other.emailResponsableCellule, emailResponsableCellule) || other.emailResponsableCellule == emailResponsableCellule)&&(identical(other.adresseResponsableCellule, adresseResponsableCellule) || other.adresseResponsableCellule == adresseResponsableCellule)&&(identical(other.secteurId, secteurId) || other.secteurId == secteurId)&&(identical(other.secteurCode, secteurCode) || other.secteurCode == secteurCode)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.heureCellule, heureCellule) || other.heureCellule == heureCellule));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,celluleId,celluleCode,nom,date,description,adresse,latitude,longitude,responsableCelluleId,responsableCellule,contactResponsableCellule,emailResponsableCellule,adresseResponsableCellule,secteurId,secteurCode);
+int get hashCode => Object.hash(runtimeType,celluleId,celluleCode,nom,date,description,adresse,latitude,longitude,responsableCelluleId,responsableCellule,contactResponsableCellule,emailResponsableCellule,adresseResponsableCellule,secteurId,secteurCode,jourCellule,heureCellule);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestCellule(celluleId: $celluleId, celluleCode: $celluleCode, nom: $nom, date: $date, description: $description, adresse: $adresse, latitude: $latitude, longitude: $longitude, responsableCelluleId: $responsableCelluleId, responsableCellule: $responsableCellule, contactResponsableCellule: $contactResponsableCellule, emailResponsableCellule: $emailResponsableCellule, adresseResponsableCellule: $adresseResponsableCellule, secteurId: $secteurId, secteurCode: $secteurCode)';
+  return 'RequestCellule(celluleId: $celluleId, celluleCode: $celluleCode, nom: $nom, date: $date, description: $description, adresse: $adresse, latitude: $latitude, longitude: $longitude, responsableCelluleId: $responsableCelluleId, responsableCellule: $responsableCellule, contactResponsableCellule: $contactResponsableCellule, emailResponsableCellule: $emailResponsableCellule, adresseResponsableCellule: $adresseResponsableCellule, secteurId: $secteurId, secteurCode: $secteurCode, jourCellule: $jourCellule, heureCellule: $heureCellule)';
 }
 
 
@@ -781,7 +1060,7 @@ abstract mixin class _$RequestCelluleCopyWith<$Res> implements $RequestCelluleCo
   factory _$RequestCelluleCopyWith(_RequestCellule value, $Res Function(_RequestCellule) _then) = __$RequestCelluleCopyWithImpl;
 @override @useResult
 $Res call({
- String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double? latitude, double? longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode
+ String? celluleId, String? celluleCode, String? nom, String? date, String? description, String? adresse, double? latitude, double? longitude, String? responsableCelluleId, String? responsableCellule, String? contactResponsableCellule, String? emailResponsableCellule, String? adresseResponsableCellule, String? secteurId, String? secteurCode, String? jourCellule, String? heureCellule
 });
 
 
@@ -798,7 +1077,7 @@ class __$RequestCelluleCopyWithImpl<$Res>
 
 /// Create a copy of RequestCellule
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? celluleId = freezed,Object? celluleCode = freezed,Object? nom = freezed,Object? date = freezed,Object? description = freezed,Object? adresse = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? responsableCelluleId = freezed,Object? responsableCellule = freezed,Object? contactResponsableCellule = freezed,Object? emailResponsableCellule = freezed,Object? adresseResponsableCellule = freezed,Object? secteurId = freezed,Object? secteurCode = freezed,Object? jourCellule = freezed,Object? heureCellule = freezed,}) {
   return _then(_RequestCellule(
 celluleId: freezed == celluleId ? _self.celluleId : celluleId // ignore: cast_nullable_to_non_nullable
 as String?,celluleCode: freezed == celluleCode ? _self.celluleCode : celluleCode // ignore: cast_nullable_to_non_nullable
@@ -815,6 +1094,8 @@ as String?,emailResponsableCellule: freezed == emailResponsableCellule ? _self.e
 as String?,adresseResponsableCellule: freezed == adresseResponsableCellule ? _self.adresseResponsableCellule : adresseResponsableCellule // ignore: cast_nullable_to_non_nullable
 as String?,secteurId: freezed == secteurId ? _self.secteurId : secteurId // ignore: cast_nullable_to_non_nullable
 as String?,secteurCode: freezed == secteurCode ? _self.secteurCode : secteurCode // ignore: cast_nullable_to_non_nullable
+as String?,jourCellule: freezed == jourCellule ? _self.jourCellule : jourCellule // ignore: cast_nullable_to_non_nullable
+as String?,heureCellule: freezed == heureCellule ? _self.heureCellule : heureCellule // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ConnexionImpliciteBloc(
         getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
-      )..add(ProfileEvent.fetch()),
+      )..add(ProfileEvent.fetchProfileNumberId(null)),
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
@@ -94,15 +94,119 @@ class MyApp extends StatelessWidget {
             return state is LoadState<ProfileResponse>
                 ? SplachSreen()
                 : state is SuccessState<ProfileResponse>
-                ? const OverviewScreen()
+                ? OverviewScreen(menberId: state.data.menberId)
                 : OnboardingScreen();
           },
         ),
-        // OverviewScreen(),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class DiagnosticRebootBox extends StatefulWidget {
   const DiagnosticRebootBox({super.key});

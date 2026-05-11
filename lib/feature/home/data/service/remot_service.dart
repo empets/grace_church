@@ -1,7 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/extention.dart';
@@ -10,11 +7,9 @@ import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/repository_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
     hide EmptyRequest;
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 @LazySingleton(as: DomaineServiceRepository)
 class ImpDomaineServiceRepository implements DomaineServiceRepository {
@@ -24,18 +19,14 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
   @override
   Future<FirebaseResult<ProfileResponseModel>> getProfile(
-    EmptyRequest notParms,
+    RequestGetProfile notParms,
   ) async {
-    final shared = await shareData.SharedPreferences.getInstance();
-    final menberkey = await shared.getString('menberkey');
+   
 
-    log('🔥Menberkey: $menberkey');
 
     try {
-      final response = await db.child('menber/$menberkey').get();
+      final response = await db.child('menber/${notParms.numberId}').get();
       final data = Map<String, dynamic>.from(response.value as Map);
-      log('🔥Data: $data ');
-
       if (response.exists) {
         final firebaseResult = ProfileResponseModel.fromJson(data);
         return FirebaseSuccess(firebaseResult);
@@ -43,40 +34,10 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         return FirebaseError("une erreur est survenue");
       }
     } catch (e) {
-      log('🔥Error getting profile: $e');
       return FirebaseError('${e.toString()}');
     }
   }
 
-  @override
-  Stream<FirebaseResult<ProfileResponseModel>> getProfileStream() async* {
-    final shared = await shareData.SharedPreferences.getInstance();
-    final menberkey = shared.getString('menberkey');
-
-    if (menberkey == null) {
-      yield FirebaseError("Menberkey not found");
-      return;
-    }
-
-    databaseReference.FirebaseDatabase.instance
-        .ref('users')
-        .child(menberkey)
-        .onValue
-        .map((event) {
-          final data = event.snapshot.value;
-
-          if (data == null) {
-            // Si l'utilisateur n'existe pas encore
-            return FirebaseError("L'utilisateur n'existe pas");
-          }
-          // Conversion sécurisée en Map<String, dynamic>
-          return FirebaseSuccess(
-            ProfileResponseModel.fromJson(
-              Map<String, dynamic>.from(data as Map),
-            ),
-          );
-        });
-  }
 
   @override
   Future<FirebaseResult<List<NotificationResponseModel>>> getListNotifications(
@@ -228,7 +189,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
                   .toList(),
             );
           }
-          return FirebaseError("Aucune notification trouvée");
+          return FirebaseError("Aucune cellule trouvée");
 
         default:
           final snapshot = await db.child('cellule').get();

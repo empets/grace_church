@@ -105,6 +105,8 @@ _CelluleResponse _$CelluleResponseFromJson(Map<String, dynamic> json) =>
       adresseResponsableCellule: json['adresseResponsableCellule'] as String,
       secteurId: json['secteurId'] as String,
       secteurCode: json['secteurCode'] as String,
+      jourCellule: json['jourCellule'] as String,
+      heureCellule: json['heureCellule'] as String,
     );
 
 Map<String, dynamic> _$CelluleResponseToJson(_CelluleResponse instance) =>
@@ -124,6 +126,8 @@ Map<String, dynamic> _$CelluleResponseToJson(_CelluleResponse instance) =>
       'adresseResponsableCellule': instance.adresseResponsableCellule,
       'secteurId': instance.secteurId,
       'secteurCode': instance.secteurCode,
+      'jourCellule': instance.jourCellule,
+      'heureCellule': instance.heureCellule,
     };
 
 _ReponsableCelluleResponse _$ReponsableCelluleResponseFromJson(

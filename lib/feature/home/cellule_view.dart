@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:share_plus/share_plus.dart';
+
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -13,25 +17,72 @@ import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/page/form_geographie.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
+import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class CelluleView extends StatefulWidget {
-  const CelluleView({super.key, required this.cellueId});
+  const CelluleView({
+    super.key,
+    required this.cellueId,
+    required this.profileState,
+  });
   final String cellueId;
+  final ApiState<ProfileResponse> profileState;
 
   @override
   State<CelluleView> createState() => _CelluleViewState();
 }
 
+late bool isResponsableCellule = false;
+
 class _CelluleViewState extends State<CelluleView> {
+  Future<void> callSupport({required String number}) async {
+    final status = await Permission.phone.request();
+
+    if (status.isGranted) {
+      await FlutterPhoneDirectCaller.callNumber(number);
+    }
+  }
+
+  Future<void> shareCelluleLatLong({
+    required double lat,
+    required double long,
+  }) async {
+    await SharePlus.instance.share(
+      ShareParams(
+        text:
+            'https://www.google.com/maps/@$lat,${long}z?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D',
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
-            ..add(CelluleEvent.fetchByCriteria(celluleId: widget.cellueId)),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
+                ..add(CelluleEvent.fetchByCriteria(celluleId: widget.cellueId)),
+        ),
+
+        BlocProvider(
+          create: (context) => GetRapportCelluleBloc(
+            getRapportCelluleUsercase: getIt<GetRapportCelluleUsercase>(),
+          ),
+        ),
+      ],
       child: BlocListener<CelluleBloc, ApiState<List<CelluleResponse>>>(
         listener: (context, state) {
           if (state is FailedState<List<CelluleResponse>>) {
@@ -81,89 +132,128 @@ class _CelluleViewState extends State<CelluleView> {
                       children: [
                         Stack(
                           children: [
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                padding: EdgeInsets.all(5.r),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: context.appColor.primaryLightBlue,
-                                  ),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: ClipOval(
-                                  child: Image.network(
-                                    loadingBuilder:
-                                        (context, child, loadingProgress) {
-                                          return child;
-                                        },
-                                    errorBuilder: (_, __, ___) => ClipOval(
-                                      child: Image.network(
-                                        "yAssets.icons.profileAvatarPlaceholderLarge .path",
-                                        fit: BoxFit.contain,
-                                        height: 0.08.sh,
-                                        width: 0.08.sh,
-                                      ),
+                            if (widget.profileState
+                                is SuccessState<ProfileResponse>) ...[
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  padding: EdgeInsets.all(5.r),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: context.appColor.primaryLightBlue,
                                     ),
-                                    "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
-
-                                    fit: BoxFit.cover,
-                                    height: 0.1.sh,
-                                    width: 0.1.sh,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ClipOval(
+                                    child: Image.network(
+                                      loadingBuilder:
+                                          (context, child, loadingProgress) {
+                                            return child;
+                                          },
+                                      errorBuilder: (_, __, ___) => ClipOval(
+                                        child: Image.network(
+                                          "yAssets.icons.profileAvatarPlaceholderLarge .path",
+                                          fit: BoxFit.contain,
+                                          height: 0.08.sh,
+                                          width: 0.08.sh,
+                                        ),
+                                      ),
+                                      (widget.profileState
+                                              as SuccessState<ProfileResponse>)
+                                          .data
+                                          .profileImage,
+                                      fit: BoxFit.cover,
+                                      height: 0.1.sh,
+                                      width: 0.1.sh,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                            ] else ...[
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  padding: EdgeInsets.all(5.r),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: context.appColor.primaryLightBlue,
+                                    ),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ClipOval(
+                                    child: Image.network(
+                                      loadingBuilder:
+                                          (context, child, loadingProgress) {
+                                            return child;
+                                          },
+                                      errorBuilder: (_, __, ___) => ClipOval(
+                                        child: Image.network(
+                                          "yAssets.icons.profileAvatarPlaceholderLarge .path",
+                                          fit: BoxFit.contain,
+                                          height: 0.08.sh,
+                                          width: 0.08.sh,
+                                        ),
+                                      ),
+                                      "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png",
 
-                            // Positioned(
-                            //   right: 0.30.sw,
-                            //   bottom: 5.w,
-                            //   child: GestureDetector(
-                            //     child: Container(
-                            //       margin: EdgeInsets.only(top: 4.h),
-                            //       padding: const EdgeInsets.all(10),
-                            //       decoration: BoxDecoration(
-                            //         color: context.appColor.primaryLightBlue,
-                            //         shape: BoxShape.circle,
-                            //       ),
-                            //       child: Icon(Icons.edit, size: 13.h),
-                            //     ),
-                            //   ),
-                            // ),
+                                      fit: BoxFit.cover,
+                                      height: 0.1.sh,
+                                      width: 0.1.sh,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ],
                         ),
 
-                        SizedBox(height: 14.h),
+                        SizedBox(height: 10.h),
 
-                        CustomeText(
-                          text: state.data.first.nom,
-                          style: context.appTypographie.button.copyWith(
-                            color: context.appColor.primaryGrayDark,
-                            fontSize: 16.sp,
+                        if (widget.profileState
+                            is SuccessState<ProfileResponse>) ...[
+                          CustomeText(
+                            text:
+                                (widget.profileState
+                                        as SuccessState<ProfileResponse>)
+                                    .data
+                                    .name,
+                            style: context.appTypographie.button.copyWith(
+                              color: context.appColor.primaryGrayDark,
+                              fontSize: 16.sp,
+                            ),
                           ),
-                        ),
-                        CustomeText(
-                          text: state.data.first.responsableCellule,
-                          style: context.appTypographie.button.copyWith(
-                            color: context.appColor.primaryBlue,
-                            fontSize: 14.sp,
+
+                          CustomeText(
+                            text:
+                                (widget.profileState
+                                        as SuccessState<ProfileResponse>)
+                                    .data
+                                    .email,
+                            style: context.appTypographie.button.copyWith(
+                              color: context.appColor.primaryBlue,
+                              fontSize: 14.sp,
+                            ),
                           ),
-                        ),
+                        ],
 
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 10.h),
                           child: Row(
                             children: [
                               Flexible(
-                                flex: 3,
+                                flex: 2,
                                 child: PrimaryButton(
-                                  label: "Contacter",
+                                  label: "Contactez le responsable",
                                   fontSize: 13.sp,
                                   iconLeading: true,
                                   colorText: context.appColor.primaryWhite,
                                   backgroundColor: context.appColor.primaryBlue,
-                                  leadingIcon: Icons.chat_bubble_rounded,
-                                  onPressed: () {},
+                                  onPressed: () => callSupport(
+                                    number: state
+                                        .data
+                                        .first
+                                        .contactResponsableCellule,
+                                  ),
                                 ),
                               ),
                               SizedBox(width: 10.w),
@@ -178,7 +268,12 @@ class _CelluleViewState extends State<CelluleView> {
                                   icon: Icons.share,
                                   iconColor: context.appColor.primaryBlue,
                                   fontSize: 13.sp,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    shareCelluleLatLong(
+                                      lat: state.data.first.latitude,
+                                      long: state.data.first.longitude,
+                                    );
+                                  },
                                 ),
                               ),
                             ],
@@ -206,7 +301,7 @@ class _CelluleViewState extends State<CelluleView> {
                                     color: context.appColor.primaryBlue,
                                   ),
                                   CustomeText(
-                                    text: "Lieu de réunion",
+                                    text: "Lieu : ${state.data.first.adresse}",
                                     style: context.appTypographie.button
                                         .copyWith(
                                           color:
@@ -246,7 +341,7 @@ class _CelluleViewState extends State<CelluleView> {
                                       Container(
                                         width: 0.5.sw,
                                         child: CustomeText(
-                                          text: state.data.first.adresse,
+                                          text: state.data.first.nom,
                                           style: context.appTypographie.button
                                               .copyWith(
                                                 color: context
@@ -263,14 +358,34 @@ class _CelluleViewState extends State<CelluleView> {
                                         children: [
                                           GestureDetector(
                                             onTap: () {
-                                               Navigator.of(context)
-                                                .push<dynamic>(
-                                                  fadeRoute( FormGeographie(lat: state.data.first.latitude.toString(), lng: state.data.first.longitude.toString())),
-                                                );
+                                              Navigator.of(
+                                                context,
+                                              ).push<dynamic>(
+                                                fadeRoute(
+                                                  FormGeographie(
+                                                    lat: state
+                                                        .data
+                                                        .first
+                                                        .latitude
+                                                        .toString(),
+                                                    lng: state
+                                                        .data
+                                                        .first
+                                                        .longitude
+                                                        .toString(),
+                                                    adresse: state
+                                                        .data
+                                                        .first
+                                                        .adresse,
+                                                  ),
+                                                ),
+                                              );
                                             },
                                             child: CustomeText(
                                               text: "Voir plus",
-                                              style: context.appTypographie.button
+                                              style: context
+                                                  .appTypographie
+                                                  .button
                                                   .copyWith(
                                                     color: context
                                                         .appColor
@@ -310,14 +425,6 @@ class _CelluleViewState extends State<CelluleView> {
                                 ),
                               ),
                               SizedBox(width: 10.w),
-                              // CustomeText(
-                              //   text: "TOUT VOIR",
-                              //   style: context.appTypographie.button.copyWith(
-                              //     color: context.appColor.primaryBlue,
-                              //     fontSize: 12.sp,
-                              //     fontWeight: FontWeight.w800,
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
@@ -349,16 +456,16 @@ class _CelluleViewState extends State<CelluleView> {
                                 child: Column(
                                   children: [
                                     CustomeText(
-                                      text: "Temps",
+                                      text: "JO",
                                       style: context.appTypographie.button
                                           .copyWith(
                                             color: context.appColor.primaryBlue,
-                                            fontSize: 12.sp,
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w800,
                                           ),
                                     ),
                                     CustomeText(
-                                      text: "2h30",
+                                      text: "UR",
                                       style: context.appTypographie.button
                                           .copyWith(
                                             color: context.appColor.primaryBlue,
@@ -374,13 +481,14 @@ class _CelluleViewState extends State<CelluleView> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CustomeText(
-                                    text: "Chaque vendredi de la semaine",
+                                    text:
+                                        "Chaque ${state.data.first.jourCellule} de la semaine",
                                     style: context.appTypographie.button
                                         .copyWith(
                                           color:
                                               context.appColor.primaryGrayDark,
                                           fontSize: 14.sp,
-                                          fontWeight: FontWeight.w800,
+                                          fontWeight: FontWeight.w400,
                                         ),
                                   ),
                                   Row(
@@ -392,7 +500,8 @@ class _CelluleViewState extends State<CelluleView> {
                                       ),
                                       SizedBox(width: 5.w),
                                       CustomeText(
-                                        text: "19h00 - 21h00",
+                                        text:
+                                            "A partir de ${state.data.first.heureCellule}h",
                                         style: context.appTypographie.button
                                             .copyWith(
                                               color: context
@@ -406,12 +515,6 @@ class _CelluleViewState extends State<CelluleView> {
                                   ),
                                 ],
                               ),
-                              Spacer(),
-                              Icon(
-                                Icons.chevron_right,
-                                color: context.appColor.primaryGray500,
-                                size: 24.sp,
-                              ),
                             ],
                           ),
                         ),
@@ -423,29 +526,50 @@ class _CelluleViewState extends State<CelluleView> {
                             style: context.appTypographie.body.copyWith(
                               fontSize: 14,
                               color: context.appColor.primaryGrayDark,
-                              fontWeight: FontWeight.w600
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                         SizedBox(height: 10.h),
-
-                        Container(
-                          height: 0.16.sh,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                CustomeText(
-                                  text:
-                                      'sResponsableCellule: //[CelluleResponse(celluleId: -OrjhFA9201mksNHui-l, celluleCode: CELL002, nom: Cellule Cocody, date: 2026-05-02, description: Cellule secondaire Cocody, adresse: Cocody Angré, latitude: 5.3599, longitude: -3.9876, responsableCelluleId: -Orjg2BE-p2iQBFVntAj, responsableCellule: Koné Awa, contactResponsableCellule: +2250711111111, emailResponsableCellule: awa.kone@email.com, adresseResponsableCellule: Angré 8e tranche, secteurId: ',
-                                  style: context.appTypographie.body.copyWith(
-                                    fontSize: 12,
-                                    color: context.appColor.primaryGray500,
+                        BlocBuilder<
+                          GetRapportCelluleBloc,
+                          ApiState<List<RapportCelluleResponse>>
+                        >(
+                          builder: (context, stateRapport) {
+                            if (stateRapport
+                                is SuccessState<List<RapportCelluleResponse>>) {
+                              stateRapport.data.sort(
+                                (a, b) => b.dateActivitySubmited.compareTo(
+                                  a.dateActivitySubmited,
+                                ),
+                              );
+                              final item = stateRapport.data.first;
+                              return Container(
+                                height: 0.16.sh,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      CustomeText(
+                                        text: item.resumerPredication ?? '',
+                                        style: context.appTypographie.body
+                                            .copyWith(
+                                              fontSize: 12,
+                                              color: context
+                                                  .appColor
+                                                  .primaryGray500,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        )
+                              );
+                            }
+
+                            return Container();
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -459,6 +583,8 @@ class _CelluleViewState extends State<CelluleView> {
                     padding: EdgeInsets.symmetric(horizontal: 25.w),
                     child: SvgPicture.asset(assets.images.problemeRequest.path),
                   ),
+                  SizedBox(height: 28.h),
+
                   Text(
                     "Une erreur est survenue !",
                     style: context.appTypographie.body.copyWith(
@@ -493,6 +619,86 @@ class _CelluleViewState extends State<CelluleView> {
                   ),
                 ],
               );
+            },
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          floatingActionButton: BlocBuilder<CelluleBloc, ApiState<List<CelluleResponse>>>(
+            builder: (context, listCelluleState) {
+              if (listCelluleState is SuccessState<List<CelluleResponse>>) {
+                if (widget.profileState is SuccessState<ProfileResponse>) {
+                  isResponsableCellule = listCelluleState.data.any((element) {
+                    return element.responsableCelluleId
+                        .trim()
+                        .toLowerCase()
+                        .contains(
+                          (widget.profileState as SuccessState<ProfileResponse>)
+                              .data
+                              .menberId
+                              .trim()
+                              .toLowerCase(),
+                        );
+                  });
+                }
+              }
+
+              return isResponsableCellule
+                  ? Container(
+                      margin: EdgeInsets.only(bottom: 10.h),
+                      child: FloatingActionButton(
+                        backgroundColor: context.appColor.primaryBlue
+                            .withValues(alpha: 0.5),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            fadeRoute(
+                              MultiBlocProvider(
+                                providers: [
+                                  BlocProvider(
+                                    create: (context) =>
+                                        RapportCelluleRequestSectionAdministrationBloc(
+                                          sendRapportCelluleStepAdministrationUsercase:
+                                              getIt<
+                                                SendRapportCelluleStepAdministrationUsercase
+                                              >(),
+                                        ),
+                                  ),
+                                  BlocProvider(
+                                    create: (context) => GetSecteurBloc(
+                                      getListSecteurUsercase:
+                                          getIt<GetListSecteurUsercase>(),
+                                    )..add(CelluleEvent.fetch()),
+                                  ),
+                                  BlocProvider(
+                                    create: (context) => GetZoneBloc(
+                                      getListZoneUsercase:
+                                          getIt<GetListZoneUsercase>(),
+                                    )..add(CelluleEvent.fetch()),
+                                  ),
+                                ],
+                                child: EditingCelluleRaport(
+                                  profile:
+                                      (widget.profileState
+                                              as SuccessState<ProfileResponse>)
+                                          .data,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Badge(
+                          child: Icon(Icons.edit, color: Colors.white),
+                          backgroundColor: Colors.transparent,
+                          label: Text(
+                            '',
+                            style: context.appTypographie.body.copyWith(
+                              color: Colors.white,
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink();
             },
           ),
         ),

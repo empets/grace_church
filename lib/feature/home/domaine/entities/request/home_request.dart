@@ -10,6 +10,13 @@ abstract class EmptyRequest with _$EmptyRequest {
       _$EmptyRequestFromJson(json);
 }
 
+@freezed
+abstract class RequestGetProfile with _$RequestGetProfile {
+  factory RequestGetProfile({required String numberId}) = _RequestGetProfile;
+  factory RequestGetProfile.fromJson(Map<String, dynamic> json) =>
+      _$RequestGetProfileFromJson(json);
+}
+
 //-----------------------------
 //  NOTIFICATION REQUEST MODEL
 //------------------------------
@@ -46,6 +53,8 @@ abstract class RequestCellule with _$RequestCellule {
     String? adresseResponsableCellule,
     String? secteurId,
     String? secteurCode,
+    String? jourCellule,
+    String? heureCellule,
   }) = _RequestCellule;
   factory RequestCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestCelluleFromJson(json);

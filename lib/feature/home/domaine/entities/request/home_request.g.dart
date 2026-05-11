@@ -12,6 +12,12 @@ _EmptyRequest _$EmptyRequestFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$EmptyRequestToJson(_EmptyRequest instance) =>
     <String, dynamic>{};
 
+_RequestGetProfile _$RequestGetProfileFromJson(Map<String, dynamic> json) =>
+    _RequestGetProfile(numberId: json['numberId'] as String);
+
+Map<String, dynamic> _$RequestGetProfileToJson(_RequestGetProfile instance) =>
+    <String, dynamic>{'numberId': instance.numberId};
+
 _RequestNotification _$RequestNotificationFromJson(Map<String, dynamic> json) =>
     _RequestNotification(
       title: json['title'] as String,
@@ -46,6 +52,8 @@ _RequestCellule _$RequestCelluleFromJson(Map<String, dynamic> json) =>
       adresseResponsableCellule: json['adresseResponsableCellule'] as String?,
       secteurId: json['secteurId'] as String?,
       secteurCode: json['secteurCode'] as String?,
+      jourCellule: json['jourCellule'] as String?,
+      heureCellule: json['heureCellule'] as String?,
     );
 
 Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
@@ -65,6 +73,8 @@ Map<String, dynamic> _$RequestCelluleToJson(_RequestCellule instance) =>
       'adresseResponsableCellule': instance.adresseResponsableCellule,
       'secteurId': instance.secteurId,
       'secteurCode': instance.secteurCode,
+      'jourCellule': instance.jourCellule,
+      'heureCellule': instance.heureCellule,
     };
 
 _RequestReponsableCellule _$RequestReponsableCelluleFromJson(

@@ -30,10 +30,11 @@ enum PermissionState { notAsked, granted, denied }
 enum SheetView { form, locationSearch }
 
 class FormGeographie extends StatelessWidget {
-   FormGeographie({super.key,  this.lat = '',  this.lng = ''});
+   FormGeographie({super.key,  this.lat = '',  this.lng = '', this.adresse = ''});
 
   final String lat;
   final String lng;
+  final String adresse;
 
   @override
   Widget build(BuildContext context) {
@@ -64,16 +65,17 @@ class FormGeographie extends StatelessWidget {
         //       RequestManagementInjection.createEligibilityCubit(),
         // ),
       ],
-      child: _EligibilityTestPageContent(lat: lat, lng: lng),
+      child: _EligibilityTestPageContent(lat: lat, lng: lng, adresse: adresse),
     );
   }
 }
 
 class _EligibilityTestPageContent extends StatefulWidget {
-  const _EligibilityTestPageContent({this.lat = '', this.lng = ''});
+  const _EligibilityTestPageContent({this.lat = '', this.lng = '', this.adresse = ''});
 
   final String lat;
   final String lng;
+  final String adresse;
 
   @override
   State<_EligibilityTestPageContent> createState() =>
@@ -398,7 +400,7 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
 
 
                   if(widget.lat.trim().isNotEmpty && widget.lng.trim().isNotEmpty)
-                  MapMarkerData(
+                    MapMarkerData(
                     location: MapLocation(
                       latitude: double.parse(widget.lat),
                       longitude: double.parse(widget.lng),
@@ -406,6 +408,7 @@ class _EligibilityTestPageState extends State<_EligibilityTestPageContent> {
                     color: context.appColor.primaryBlue,
                     size: 40,
                   ),
+                  
                 ],
                 onTap: _handleMapTap,
                 onControlsReady: (zoomIn, zoomOut, recenter) {

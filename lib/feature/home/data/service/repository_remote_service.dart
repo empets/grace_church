@@ -3,15 +3,12 @@ import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
     hide EmptyRequest;
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 abstract class DomaineServiceRepository {
 
   Future<FirebaseResult<ProfileResponseModel>> getProfile(
-    EmptyRequest notParms,
+    RequestGetProfile notParms,
   );
-  Stream<FirebaseResult<ProfileResponseModel>> getProfileStream();
-  // Future<FirebaseResult<String>> sendNotifications(RequestNotification params);
   Future<FirebaseResult<List<NotificationResponseModel>>> getListNotifications(
     EmptyRequest notParms,
   );
