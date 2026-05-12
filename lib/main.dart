@@ -1,24 +1,29 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:grace_church/core/custome_widget/custome_text.dart';
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/constante/params.dart';
+import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/core/observer/observer.dart';
 import 'package:grace_church/core/style/app_theme.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_usercase.dart';
 import 'package:grace_church/feature/home/onboarding_view.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
+import 'package:audio_service/audio_service.dart';
+import 'package:just_audio/just_audio.dart';
+
+late AudioHandler audioHandler;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +37,15 @@ void main() async {
       messagingSenderId: GlobalParams.messagingSenderId,
       projectId: GlobalParams.projectId,
       storageBucket: GlobalParams.storageBucket,
+    ),
+  );
+
+   audioHandler = await AudioService.init(
+    builder: () => MyAudioHandler(),
+    config: const AudioServiceConfig(
+      androidNotificationChannelId: 'com.example.app.audio',
+      androidNotificationChannelName: 'Audio Playback',
+      androidNotificationOngoing: true,
     ),
   );
 
@@ -112,6 +126,48 @@ class MyApp extends StatelessWidget {
 
 
 
+
+class MyAudioHandler extends BaseAudioHandler {
+  final _player = AudioPlayer();
+
+  MyAudioHandler() {
+    _init();
+  }
+
+  Future<void> _init() async {
+    await _player.setUrl(
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    );
+
+    mediaItem.add(
+      MediaItem(
+        id: '1',
+        album: 'Mon Album',
+        title: 'Ma Musique',
+        artist: 'Mon App',
+      ),
+    );
+
+    _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
+  }
+
+  PlaybackState _transformEvent(PlaybackEvent event) {
+    return PlaybackState(
+      controls: [
+        MediaControl.pause,
+        MediaControl.play,
+      ],
+      playing: _player.playing,
+      processingState: AudioProcessingState.ready,
+    );
+  }
+
+  @override
+  Future<void> play() => _player.play();
+
+  @override
+  Future<void> pause() => _player.pause();
+}
 
 
 

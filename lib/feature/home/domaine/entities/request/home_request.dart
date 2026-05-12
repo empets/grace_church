@@ -129,7 +129,6 @@ abstract class RequestZone with _$RequestZone {
 abstract class RequestAuthenProfileUpdateZone
     with _$RequestAuthenProfileUpdateZone {
   factory RequestAuthenProfileUpdateZone({required String noticationId}) =
-      // zoneId
       _RequestAuthenProfileUpdateZone;
 
   factory RequestAuthenProfileUpdateZone.fromJson(Map<String, dynamic> json) =>
