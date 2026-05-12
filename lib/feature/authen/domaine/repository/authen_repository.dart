@@ -41,4 +41,15 @@ abstract class AuthenRepository {
   // il retourne un objet String? qui contient l'id de la connexion cree ou mis a jour
   // ---------------------------------------------------------------------------------------------
   Future<Either<Failure, String?>> createSignIn(RequestAuthenSignIn request);
+  
+  // ---------------------------------------------------------------------------------------------
+  // Cette permet de mettre a jour le device id apres la sign 
+  // il prend en paramètre un objet RequestAuthenUpdateProfileKey qui contient les parametre de la requette (deviceId)
+  // il retourne un objet String? qui contient l'id de la connexion cree ou mis a jour
+  // ---------------------------------------------------------------------------------------------
+  Future<Either<Failure, String?>> updateProfileId(
+    RequestAuthenUpdateProfileKey params,
+  );
 }
+
+

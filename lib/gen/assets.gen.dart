@@ -45,6 +45,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/Globe.svg
   SvgGenImage get globe => const SvgGenImage('assets/images/Globe.svg');
 
+  /// File path: assets/images/arrow_back.svg
+  SvgGenImage get arrowBack =>
+      const SvgGenImage('assets/images/arrow_back.svg');
+
   /// File path: assets/images/atom_primaryicon_phone_outlined.svg
   SvgGenImage get atomPrimaryiconPhoneOutlined =>
       const SvgGenImage('assets/images/atom_primaryicon_phone_outlined.svg');
@@ -103,6 +107,7 @@ class $AssetsImagesGen {
     frame2087324050,
     frame2087324052,
     globe,
+    arrowBack,
     atomPrimaryiconPhoneOutlined,
     boxUpImage,
     checkReclamation,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -26,6 +27,7 @@ import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 
 class FormHollyLiving extends StatefulWidget {
   const FormHollyLiving({super.key, this.profile = false});
@@ -235,10 +237,7 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                                   top: 4.h,
                                   bottom: 5.h,
                                 ),
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: context.appColor.primaryGrayDark,
-                                ),
+                                child:SvgPicture.asset(assets.images.arrowBack.path),
                               ),
                             ),
                             CustomeText(
@@ -767,7 +766,6 @@ class _FormHollyLivingState extends State<FormHollyLiving> {
                               return PrimaryButton(
                                 isLoading: state.status.isInProgress,
                                 label: 'Continuer',
-                                icon: Icons.arrow_forward_rounded,
                                 backgroundColor:
                                     state.status.isInProgress || state.isValide
                                     ? context.appColor.primaryBlue

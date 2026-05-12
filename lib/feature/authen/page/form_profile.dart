@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
@@ -51,21 +53,21 @@ class _FormProfileState extends State<FormProfile> {
   Future<void> _openCalendar() async {
     final DateTime? picked = await showDatePicker(
       context: context,
-     initialDate: DateTime(2012),
-  firstDate: DateTime(1900),
-  lastDate: DateTime.now(), // pas de futur
-  selectableDayPredicate: (day) {
-    final now = DateTime.now();
+      initialDate: DateTime(2012),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(), // pas de futur
+      selectableDayPredicate: (day) {
+        final now = DateTime.now();
 
-    // 🔥 âge minimum 14 ans
-    final maxDate = DateTime(now.year - 14, now.month, now.day);
+        // 🔥 âge minimum 14 ans
+        final maxDate = DateTime(now.year - 14, now.month, now.day);
 
-    if (day.isAfter(maxDate)) {
-      return false;
-    }
+        if (day.isAfter(maxDate)) {
+          return false;
+        }
 
-    return true;
-  },
+        return true;
+      },
 
       /// 🎨 Custom Theme
       builder: (context, child) {
@@ -164,7 +166,15 @@ class _FormProfileState extends State<FormProfile> {
         },
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
-          appBar: AppBar(backgroundColor: Colors.grey.shade50),
+          appBar: AppBar(
+            backgroundColor: Colors.grey.shade50,
+            leading: IconButton(
+              icon: SvgPicture.asset(assets.images.arrowBack.path),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
           body: SafeArea(
             child: SingleChildScrollView(
               child: Container(
@@ -576,7 +586,6 @@ class _FormProfileState extends State<FormProfile> {
                           return PrimaryButton(
                             isLoading: state.status.isInProgress,
                             label: 'Continuer',
-                            icon: Icons.arrow_forward_rounded,
                             backgroundColor:
                                 state.status.isInProgress || state.isValide
                                 ? context.appColor.primaryBlue

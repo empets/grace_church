@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/core/alert/app_alerte.dart';
+import 'package:grace_church/core/extension/extention.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
@@ -22,7 +26,6 @@ import 'package:grace_church/feature/home/page/bloc/notification/notification_bl
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({super.key,  this.menberId = ''});
-  
   final String menberId;
 
   @override
@@ -58,8 +61,14 @@ class _OverviewScreenState extends State<OverviewScreen> {
       child: MultiBlocListener(
         listeners: [
           BlocListener<GetProfileBloc, ApiState<ProfileResponse>>(
-            listener: (context, profileState) {
+            listener: (context, profileState) async{
               if (profileState is FailedState<ProfileResponse>) {
+                AppAlert.showInfo(context, profileState.message.getOrEmpty());
+              }
+              if(profileState is SuccessState<ProfileResponse>){
+                    final shared = await SharedPreferences.getInstance();
+                   await shared.setString('menberkey', profileState.data.menberId);
+                
               }
             },
           ),

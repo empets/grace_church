@@ -12,4 +12,7 @@ abstract class AuthenRemoteService {
   );
   Future<FirebaseResult<String?>> createSignIn(RequestAuthenSignIn params);
   Future<FirebaseResult<String?>> updateProfile(RequestAuthenProfile params);
+  Future<FirebaseResult<String?>> updateProfileId(
+    RequestAuthenUpdateProfileKey params,
+  );
 }

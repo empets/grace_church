@@ -117,3 +117,18 @@ abstract class RequestAuthenSignIn with _$RequestAuthenSignIn {
   factory RequestAuthenSignIn.fromJson(Map<String, dynamic> json) =>
       _$RequestAuthenSignInFromJson(json);
 }
+
+
+@freezed
+abstract class RequestAuthenUpdateProfileKey with _$RequestAuthenUpdateProfileKey {
+  factory RequestAuthenUpdateProfileKey({
+    required String menberId,
+    required String deviceId,
+  }) = _RequestAuthenUpdateProfileKey;
+
+  factory RequestAuthenUpdateProfileKey.fromJson(Map<String, dynamic> json) =>
+      _$RequestAuthenUpdateProfileKeyFromJson(json);
+}
+
+
+

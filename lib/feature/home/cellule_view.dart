@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -25,7 +26,6 @@ import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/ce
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
@@ -83,6 +83,7 @@ class _CelluleViewState extends State<CelluleView> {
           ),
         ),
       ],
+
       child: BlocListener<CelluleBloc, ApiState<List<CelluleResponse>>>(
         listener: (context, state) {
           if (state is FailedState<List<CelluleResponse>>) {
@@ -95,7 +96,15 @@ class _CelluleViewState extends State<CelluleView> {
         },
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
-          appBar: AppBar(backgroundColor: Colors.grey.shade50),
+          appBar:AppBar(
+        backgroundColor: Colors.grey.shade50,
+        leading: IconButton(
+          icon: SvgPicture.asset(assets.images.arrowBack.path),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
           body: BlocBuilder<CelluleBloc, ApiState<List<CelluleResponse>>>(
             builder: (context, state) {
               if (state is LoadState<List<CelluleResponse>>) {
@@ -543,7 +552,7 @@ class _CelluleViewState extends State<CelluleView> {
                                   a.dateActivitySubmited,
                                 ),
                               );
-                              final item = stateRapport.data.first;
+                              final item = stateRapport.data.last;
                               return Container(
                                 height: 0.16.sh,
                                 child: SingleChildScrollView(
@@ -552,7 +561,7 @@ class _CelluleViewState extends State<CelluleView> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       CustomeText(
-                                        text: item.resumerPredication ?? '',
+                                        text: item.resumerPredication,
                                         style: context.appTypographie.body
                                             .copyWith(
                                               fontSize: 12,
@@ -626,6 +635,14 @@ class _CelluleViewState extends State<CelluleView> {
             builder: (context, listCelluleState) {
               if (listCelluleState is SuccessState<List<CelluleResponse>>) {
                 if (widget.profileState is SuccessState<ProfileResponse>) {
+                  context.read<GetRapportCelluleBloc>().add(
+                    FecthDataEvent.fetchDataById(
+                      responsableCelluleId:
+                          (widget.profileState as SuccessState<ProfileResponse>)
+                              .data
+                              .menberId,
+                    ),
+                  );
                   isResponsableCellule = listCelluleState.data.any((element) {
                     return element.responsableCelluleId
                         .trim()

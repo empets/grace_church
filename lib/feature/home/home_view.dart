@@ -3,16 +3,19 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/core/custome_widget/navigate.dart';
-import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
 
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/cellule_view.dart';
+import 'package:grace_church/feature/home/depatelement_view.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -43,9 +46,6 @@ class _HomeViewState extends State<HomeView> {
     _controller;
     super.dispose();
   }
-
-  late String _celluleId = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +111,6 @@ class _HomeViewState extends State<HomeView> {
 
               BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
                 builder: (context, profileState) {
-                  
                   return BlocBuilder<
                     CelluleBloc,
                     ApiState<List<CelluleResponse>>
@@ -123,109 +122,216 @@ class _HomeViewState extends State<HomeView> {
                           quickActionRequestSectionItem.length,
                           (index) {
                             final items = quickActionRequestSectionItem[index];
-                            return Expanded(
-                              child: GestureDetector(
-                                onTap: listCelluleState is SuccessState<List<CelluleResponse>> ? () {
-                                  final iscellule = listCelluleState.data.any(
-                                    (element) {
-                                      log("celluleId: ${element.celluleId}");
-                                      return element.celluleId
-                                          .trim()
-                                          .toLowerCase()
-                                          .contains(
-                                            profileState is SuccessState<ProfileResponse>
-                                                ? profileState.data.celluleId.trim().toLowerCase()
-                                                : '',
-                                          );
-                                    },
-                                  );
-                             
-                                  if (iscellule) {
-                                    if (items["value"] == "cellule") {
-                                      Navigator.of(context).push(
-                                        fadeRoute(
-                                          CelluleView(
-                                            cellueId:
-                                               profileState is SuccessState<ProfileResponse>
-                                                ? profileState.data.celluleId
-                                                : '',
-                                            profileState: profileState
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  }
-                                                                } : null,
-                                child: Container(
-                                  margin: EdgeInsets.only(right: 6.w),
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 11.h,
-                                    horizontal: 12.w,
-                                  ),
+                            return (items["value"] == "cellule" && 
+                                    (profileState
+                                        is SuccessState<ProfileResponse>)) ||
+                                    (items["value"] == "departement" &&
+                                        (profileState
+                                            is SuccessState<ProfileResponse>))
+                                ? Expanded(
+                                    child: GestureDetector(
+                                      onTap:
+                                          listCelluleState
+                                              is SuccessState<
+                                                List<CelluleResponse>
+                                              >
+                                          ? () {
+                                              final iscellule = listCelluleState
+                                                  .data
+                                                  .any((element) {
+                                                    log(
+                                                      "celluleId: ${element.celluleId}",
+                                                    );
+                                                    return element.celluleId
+                                                        .trim()
+                                                        .toLowerCase()
+                                                        .contains(
+                                                          profileState
+                                                              .data
+                                                              .celluleId
+                                                              .trim()
+                                                              .toLowerCase(),
+                                                        );
+                                                  });
 
-                                  decoration: BoxDecoration(
-                                    color: context.appColor.primaryWhite,
-                                    border: Border.all(
-                                      color: context.appColor.primaryGray100,
-                                    ),
-                                    borderRadius: BorderRadius.circular(9.r),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withValues(
-                                          alpha: 0.1,
+                                              if (iscellule) {
+                                                if (items["value"] ==
+                                                    "cellule") {
+                                                  Navigator.of(context).push(
+                                                    fadeRoute(
+                                                      CelluleView(
+                                                        cellueId: (profileState)
+                                                            .data
+                                                            .celluleId,
+                                                        profileState:
+                                                            profileState,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                if (items["value"] ==
+                                                    "departement") {
+                                                  Navigator.of(context).push(
+                                                    fadeRoute(
+                                                      DepatelementView(),
+                                                    ),
+                                                  );
+                                                }
+                                              }
+                                            }
+                                          : null,
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 6.w),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 11.h,
+                                          horizontal: 12.w,
                                         ),
-                                        offset: Offset(0, 1),
-                                        blurRadius: 0.2,
-                                      ),
-                                    ],
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.all(12.r),
                                         decoration: BoxDecoration(
-                                          color:
-                                              context.appColor.primaryLightBlue,
-                                          borderRadius: BorderRadius.circular(
-                                            6.r,
+                                          color: context.appColor.primaryWhite,
+                                          border: Border.all(
+                                            color:
+                                                context.appColor.primaryGray100,
                                           ),
-                                        ),
-                                        child: Icon(
-                                          items['icon'],
-                                          color: context.appColor.primaryBlue,
-                                        ),
-                                      ),
-                                      SizedBox(height: 9.h),
-
-                                      CustomeText(
-                                        text: items['title'],
-                                        style: context.appTypographie.body
-                                            .copyWith(
-                                              fontSize: 13.5.sp,
-                                              color: Colors.black,
-                                              letterSpacing: 0.sp,
-                                              fontWeight: FontWeight.bold,
+                                          borderRadius: BorderRadius.circular(
+                                            9.r,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withValues(
+                                                alpha: 0.1,
+                                              ),
+                                              offset: Offset(0, 1),
+                                              blurRadius: 0.2,
                                             ),
-                                      ),
-
-                                      CustomeText(
-                                        text: items['decription'],
-                                        style: context.appTypographie.small
-                                            .copyWith(
-                                              fontSize: 10.5.sp,
-                                              letterSpacing: 0.sp,
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray700,
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(12.r),
+                                              decoration: BoxDecoration(
+                                                color: context
+                                                    .appColor
+                                                    .primaryLightBlue,
+                                                borderRadius:
+                                                    BorderRadius.circular(6.r),
+                                              ),
+                                              child: Icon(
+                                                items['icon'],
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue,
+                                              ),
                                             ),
+                                            SizedBox(height: 9.h),
+                                            CustomeText(
+                                              text: items['title'],
+                                              style: context.appTypographie.body
+                                                  .copyWith(
+                                                    fontSize: 13.5.sp,
+                                                    color: Colors.black,
+                                                    letterSpacing: 0.sp,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                            CustomeText(
+                                              text: items['decription'],
+                                              style: context
+                                                  .appTypographie
+                                                  .small
+                                                  .copyWith(
+                                                    fontSize: 10.5.sp,
+                                                    letterSpacing: 0.sp,
+                                                    color: context
+                                                        .appColor
+                                                        .primaryGray700,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
+                                    ),
+                                  )
+                                : Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 6.w),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 11.h,
+                                          horizontal: 12.w,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: context.appColor.primaryWhite,
+                                          border: Border.all(
+                                            color:
+                                                context.appColor.primaryGray100,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            9.r,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withValues(
+                                                alpha: 0.1,
+                                              ),
+                                              offset: Offset(0, 1),
+                                              blurRadius: 0.2,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(12.r),
+                                              decoration: BoxDecoration(
+                                                color: context
+                                                    .appColor
+                                                    .primaryLightBlue,
+                                                borderRadius:
+                                                    BorderRadius.circular(6.r),
+                                              ),
+                                              child: Icon(
+                                                items['icon'],
+                                                color: context
+                                                    .appColor
+                                                    .primaryBlue.withValues(alpha: 0.2)
+                                              ),
+                                            ),
+                                            SizedBox(height: 9.h),
+                                            CustomeText(
+                                              text: items['title'],
+                                              style: context.appTypographie.body
+                                                  .copyWith(
+                                                    fontSize: 13.5.sp,
+                                                    color: Colors.black.withValues(alpha: 0.2),
+                                                    letterSpacing: 0.sp,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                            ),
+                                            CustomeText(
+                                              text: items['decription'],
+                                              style: context
+                                                  .appTypographie
+                                                  .small
+                                                  .copyWith(
+                                                    fontSize: 10.5.sp,
+                                                    letterSpacing: 0.sp,
+                                                    color: context
+                                                        .appColor
+                                                        .primaryGray700.withValues(alpha: 0.2)
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
                           },
                         ),
                       );
@@ -267,54 +373,69 @@ class _HomeViewState extends State<HomeView> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.only(right: 14.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Stack(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.r),
-                                    child: Image.network(
-                                      "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
-                                      height: 0.17.sh,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 6.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CustomeText(
-                                      text: "Conference de la jeunesse 2024",
-                                      style: context.appTypographie.small
-                                          .copyWith(
-                                            fontSize: 12.sp,
-                                            letterSpacing: 0.sp,
-                                            color: context
-                                                .appColor
-                                                .primaryGrayDark,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                    CustomeText(
-                                      text: "Samedi 12 Octobre a 06:00 PM",
-                                      style: context.appTypographie.small
-                                          .copyWith(
-                                            fontSize: 11.sp,
-                                            letterSpacing: 0.sp,
-                                            color:
-                                                context.appColor.primaryGray500,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                    ),
-                                  ],
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              fadeRoute(
+                                 SHowProgrammeAnnonce(
+                                  imageUrl: "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
                                 ),
                               ),
-                            ],
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(right: 14.w),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                
+                                    Hero(
+                                      tag: 'event_',
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8.r),
+                                        child: 
+                                          Image.network(
+                                            "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
+                                            height: 0.17.sh,
+                                          ),
+                                      ),
+                                    ),
+                                
+                                
+                                Container(
+                                  margin: EdgeInsets.symmetric(vertical: 6.h),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      CustomeText(
+                                        text: "Conference de la jeunesse 2024",
+                                        style: context.appTypographie.small
+                                            .copyWith(
+                                              fontSize: 12.sp,
+                                              letterSpacing: 0.sp,
+                                              color: context
+                                                  .appColor
+                                                  .primaryGrayDark,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                      CustomeText(
+                                        text: "Samedi 12 Octobre a 06:00 PM",
+                                        style: context.appTypographie.small
+                                            .copyWith(
+                                              fontSize: 11.sp,
+                                              letterSpacing: 0.sp,
+                                              color:
+                                                  context.appColor.primaryGray500,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -410,6 +531,44 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+
+
+class SHowProgrammeAnnonce extends StatelessWidget {
+  const SHowProgrammeAnnonce({super.key, required this.imageUrl});
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: SvgPicture.asset(assets.images.arrowBack.path,color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Hero(
+            tag: 'event_',
+            child: Center(
+              child: Image.network(
+                imageUrl,
+                height: 0.3.sh,
+              ),
+            ),
+          )
+          
+        ],
       ),
     );
   }

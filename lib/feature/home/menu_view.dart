@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as gt;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -23,7 +26,6 @@ import 'package:grace_church/feature/authen/page/form_holly_living.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
 import 'package:grace_church/feature/authen/page/signin_view.dart';
-import 'package:grace_church/feature/home/cellule_view.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_responsable_cellule_usercase.dart';
@@ -44,6 +46,7 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rap
 import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
 
+// ignore: must_be_immutable
 class MenuView extends StatelessWidget {
   MenuView({super.key});
 
@@ -72,28 +75,6 @@ class MenuView extends StatelessWidget {
         "visible": true,
         "value": "profile",
       },
-
-      {
-        "title": "Ma Cellule de Maison",
-        "icon": Icons.groups,
-        "visible": true,
-        "value": "cellule",
-      },
-
-      {
-        "title": "Mon Département",
-        "icon": Icons.apartment_rounded,
-        "visible": false,
-        "value": "department",
-      },
-      {
-        "title": "Annonces de l'Église",
-        "icon": Icons.campaign,
-        "visible": true,
-        "value": "announcements",
-      },
-
-      // {"title": "Paramètres", "icon": Icons.settings},
     ];
     final List<Map<String, dynamic>> menuItemsForResponsable = [
       {
@@ -102,34 +83,6 @@ class MenuView extends StatelessWidget {
         "visible": true,
         "value": "profile",
       },
-      {
-        "title": "Rapport de Cellule",
-        "icon": Icons.edit_document,
-        "visible": true,
-        "value": "cellule_space",
-      },
-
-      {
-        "title": "Ma Cellule de Maison",
-        "icon": Icons.groups,
-        "visible": true,
-        "value": "cellule",
-      },
-
-      {
-        "title": "Mon Département",
-        "icon": Icons.apartment_rounded,
-        "visible": false,
-        "value": "department",
-      },
-      {
-        "title": "Annonces de l'Église",
-        "icon": Icons.campaign,
-        "visible": true,
-        "value": "announcements",
-      },
-
-      // {"title": "Paramètres", "icon": Icons.settings},
     ];
 
     return MultiBlocProvider(
@@ -662,22 +615,6 @@ class MenuView extends StatelessWidget {
                                                           ),
                                                         );
                                                       }
-                                                      // if (item["value"] ==
-                                                      //     "cellule") {
-                                                      //   Navigator.of(
-                                                      //     context,
-                                                      //   ).push(
-                                                      //     fadeRoute(
-                                                      //       CelluleView(
-                                                      //         cellueId:
-                                                      //             profileState
-                                                      //                 .data
-                                                      //                 .celluleId ??
-                                                      //             "",
-                                                      //       ),
-                                                      //     ),
-                                                      //   );
-                                                      // }
                                                       if (item["value"] ==
                                                           "announcements") {
                                                         Navigator.of(
@@ -955,7 +892,6 @@ class LogOutPope extends StatelessWidget {
         TextButton(
           onPressed: () async {
             final shared = await SharedPreferences.getInstance();
-
             final menberkey = await shared.getString('menberkey');
             log("disconnect now $menberkey");
             if (menberkey != null && menberkey.isNotEmpty) {
@@ -964,6 +900,7 @@ class LogOutPope extends StatelessWidget {
                 fadeRoute(const SigninView()),
                 (route) => false,
               );
+           
             }
           },
           child: Text(

@@ -2205,4 +2205,270 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$RequestAuthenUpdateProfileKey {
+
+ String get menberId; String get deviceId;
+/// Create a copy of RequestAuthenUpdateProfileKey
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestAuthenUpdateProfileKeyCopyWith<RequestAuthenUpdateProfileKey> get copyWith => _$RequestAuthenUpdateProfileKeyCopyWithImpl<RequestAuthenUpdateProfileKey>(this as RequestAuthenUpdateProfileKey, _$identity);
+
+  /// Serializes this RequestAuthenUpdateProfileKey to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestAuthenUpdateProfileKey&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.deviceId, deviceId) || other.deviceId == deviceId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,menberId,deviceId);
+
+@override
+String toString() {
+  return 'RequestAuthenUpdateProfileKey(menberId: $menberId, deviceId: $deviceId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestAuthenUpdateProfileKeyCopyWith<$Res>  {
+  factory $RequestAuthenUpdateProfileKeyCopyWith(RequestAuthenUpdateProfileKey value, $Res Function(RequestAuthenUpdateProfileKey) _then) = _$RequestAuthenUpdateProfileKeyCopyWithImpl;
+@useResult
+$Res call({
+ String menberId, String deviceId
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestAuthenUpdateProfileKeyCopyWithImpl<$Res>
+    implements $RequestAuthenUpdateProfileKeyCopyWith<$Res> {
+  _$RequestAuthenUpdateProfileKeyCopyWithImpl(this._self, this._then);
+
+  final RequestAuthenUpdateProfileKey _self;
+  final $Res Function(RequestAuthenUpdateProfileKey) _then;
+
+/// Create a copy of RequestAuthenUpdateProfileKey
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? menberId = null,Object? deviceId = null,}) {
+  return _then(_self.copyWith(
+menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,deviceId: null == deviceId ? _self.deviceId : deviceId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestAuthenUpdateProfileKey].
+extension RequestAuthenUpdateProfileKeyPatterns on RequestAuthenUpdateProfileKey {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestAuthenUpdateProfileKey value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestAuthenUpdateProfileKey() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestAuthenUpdateProfileKey value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuthenUpdateProfileKey():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestAuthenUpdateProfileKey value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestAuthenUpdateProfileKey() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String menberId,  String deviceId)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestAuthenUpdateProfileKey() when $default != null:
+return $default(_that.menberId,_that.deviceId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String menberId,  String deviceId)  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuthenUpdateProfileKey():
+return $default(_that.menberId,_that.deviceId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String menberId,  String deviceId)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestAuthenUpdateProfileKey() when $default != null:
+return $default(_that.menberId,_that.deviceId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestAuthenUpdateProfileKey implements RequestAuthenUpdateProfileKey {
+   _RequestAuthenUpdateProfileKey({required this.menberId, required this.deviceId});
+  factory _RequestAuthenUpdateProfileKey.fromJson(Map<String, dynamic> json) => _$RequestAuthenUpdateProfileKeyFromJson(json);
+
+@override final  String menberId;
+@override final  String deviceId;
+
+/// Create a copy of RequestAuthenUpdateProfileKey
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestAuthenUpdateProfileKeyCopyWith<_RequestAuthenUpdateProfileKey> get copyWith => __$RequestAuthenUpdateProfileKeyCopyWithImpl<_RequestAuthenUpdateProfileKey>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestAuthenUpdateProfileKeyToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestAuthenUpdateProfileKey&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.deviceId, deviceId) || other.deviceId == deviceId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,menberId,deviceId);
+
+@override
+String toString() {
+  return 'RequestAuthenUpdateProfileKey(menberId: $menberId, deviceId: $deviceId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestAuthenUpdateProfileKeyCopyWith<$Res> implements $RequestAuthenUpdateProfileKeyCopyWith<$Res> {
+  factory _$RequestAuthenUpdateProfileKeyCopyWith(_RequestAuthenUpdateProfileKey value, $Res Function(_RequestAuthenUpdateProfileKey) _then) = __$RequestAuthenUpdateProfileKeyCopyWithImpl;
+@override @useResult
+$Res call({
+ String menberId, String deviceId
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestAuthenUpdateProfileKeyCopyWithImpl<$Res>
+    implements _$RequestAuthenUpdateProfileKeyCopyWith<$Res> {
+  __$RequestAuthenUpdateProfileKeyCopyWithImpl(this._self, this._then);
+
+  final _RequestAuthenUpdateProfileKey _self;
+  final $Res Function(_RequestAuthenUpdateProfileKey) _then;
+
+/// Create a copy of RequestAuthenUpdateProfileKey
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? menberId = null,Object? deviceId = null,}) {
+  return _then(_RequestAuthenUpdateProfileKey(
+menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,deviceId: null == deviceId ? _self.deviceId : deviceId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

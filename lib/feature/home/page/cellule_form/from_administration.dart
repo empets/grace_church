@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,6 +27,7 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sa
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
 import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 
 class EditingCelluleRaport extends StatefulWidget {
   const EditingCelluleRaport({super.key, this.profile});
@@ -238,12 +240,10 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                           top: 4.h,
                           bottom: 5.h,
                         ),
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: context.appColor.primaryGrayDark,
-                        ),
+                        child: SvgPicture.asset(assets.images.arrowBack.path),
                       ),
                     ),
+          
                     CustomeText(
                       text: 'Rapport Cellule ',
                       style: context.appTypographie.subtitle.copyWith(

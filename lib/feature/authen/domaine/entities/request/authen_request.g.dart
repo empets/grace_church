@@ -151,3 +151,17 @@ Map<String, dynamic> _$RequestAuthenSignInToJson(
   'email': instance.email,
   'password': instance.password,
 };
+
+_RequestAuthenUpdateProfileKey _$RequestAuthenUpdateProfileKeyFromJson(
+  Map<String, dynamic> json,
+) => _RequestAuthenUpdateProfileKey(
+  menberId: json['menberId'] as String,
+  deviceId: json['deviceId'] as String,
+);
+
+Map<String, dynamic> _$RequestAuthenUpdateProfileKeyToJson(
+  _RequestAuthenUpdateProfileKey instance,
+) => <String, dynamic>{
+  'menberId': instance.menberId,
+  'deviceId': instance.deviceId,
+};

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/constante/const.dart';
@@ -16,6 +17,7 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_engagement_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/home/overview.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 
 class FormEngagement extends StatefulWidget {
   const FormEngagement({super.key, this.profile = false});
@@ -150,10 +152,7 @@ class _FormEngagementState extends State<FormEngagement> {
                                   top: 4.h,
                                   bottom: 5.h,
                                 ),
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: context.appColor.primaryGrayDark,
-                                ),
+                                child: SvgPicture.asset(assets.images.arrowBack.path),
                               ),
                             ),
                             CustomeText(
@@ -512,7 +511,6 @@ class _FormEngagementState extends State<FormEngagement> {
                               return PrimaryButton(
                                 isLoading: state.status.isInProgress,
                                 label: 'Continuer',
-                                icon: Icons.arrow_forward_rounded,
                                 backgroundColor:
                                     state.status.isInProgress || state.isValide
                                     ? context.appColor.primaryBlue

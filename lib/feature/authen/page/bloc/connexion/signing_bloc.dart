@@ -1,18 +1,23 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/update_profile_deviceid_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/event/signin_event.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/state/signin_state.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/signin_profile.dart';
 
 class SigningBloc extends Bloc<SigninEvent, SigninState> {
-  SigningBloc({required this.createSignInProfileUsercase})
+  SigningBloc({required this.createSignInProfileUsercase, required this.updateProfileDeviceIdUsercase})
     : super(SigninState.initial()) {
     on<SigninEvent>(_onEvent);
   }
 
   final CreateSignInProfileUsercase createSignInProfileUsercase;
+  final UpdateProfileDeviceIdUsercase updateProfileDeviceIdUsercase;
 
   void _onEvent(SigninEvent event, Emitter<SigninState> emit) async {
     switch (event) {
@@ -43,6 +48,10 @@ class SigningBloc extends Bloc<SigninEvent, SigninState> {
       case SubmitSigninEvent():
         if (state.isValid) {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+          final deviceId = await getDeviceFingerprint();
+
+
           final response = await createSignInProfileUsercase.call(
             RequestAuthenSignIn(
               email: state.email.value,
@@ -57,17 +66,27 @@ class SigningBloc extends Bloc<SigninEvent, SigninState> {
                 errorMessage: 'Ce profile n\'existe pas merci de vous inscrire',
                 status: FormzSubmissionStatus.failure,
               ),
-              (profile) => state.copyWith(
+              (profile) {
+
+                log('deviceID ::----------->>  $deviceId');
+
+                 updateProfileDeviceIdUsercase.call(
+                  RequestAuthenUpdateProfileKey(deviceId: deviceId, menberId: profile.toString())
+                );
+                return state.copyWith(
                 errorMessage: profile.toString(),
                 status: FormzSubmissionStatus.success,
                 
-              ),
+              );
+              },
             ),
           );
         }
-
         break;
     }
+
+
+
   }
 
   bool _validate(SigninState state) {

@@ -139,7 +139,15 @@ class _NotificationViewState extends State<NotificationView> {
       )..add(NotificationEvent.fetch()),
       child: Scaffold(
         backgroundColor: Colors.grey.shade50,
-        appBar: AppBar(backgroundColor: Colors.grey.shade50),
+        appBar: AppBar(
+        backgroundColor: Colors.grey.shade50,
+        leading: IconButton(
+          icon: SvgPicture.asset(assets.images.arrowBack.path),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
         body: SafeArea(
           bottom: true,
           child: Container(
@@ -148,17 +156,17 @@ class _NotificationViewState extends State<NotificationView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () async {
-                      await sendNotifications(
-                        RequestNotification(title: 'URGENT', tag: 'URGENT', date: DateTime.now().toString(), description: 'Ce dimanche, un culte spécial sera organisé. Venez nombreux pour un moment de louange, d’adoration et d’écoute de la parole de Dieu.'
+                  // GestureDetector(
+                  //   onTap: () async {
+                  //     await sendNotifications(
+                  //       RequestNotification(title: 'URGENT', tag: 'URGENT', date: DateTime.now().toString(), description: 'Ce dimanche, un culte spécial sera organisé. Venez nombreux pour un moment de louange, d’adoration et d’écoute de la parole de Dieu.'
                          
-                        )
-                      );
-                      log("Notification sent");
-                    },
-                    child: Container(child: Text("Notifications")),
-                  ),
+                  //       )
+                  //     );
+                  //     log("Notification sent");
+                  //   },
+                  //   child: Container(child: Text("Notifications")),
+                  // ),
                   BlocBuilder<
                     NotificationBloc,
                     ApiState<List<NotificationResponse>>

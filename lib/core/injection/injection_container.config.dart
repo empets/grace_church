@@ -31,6 +31,8 @@ import '../../feature/authen/domaine/usercase/create_social_profile_usercase.dar
 import '../../feature/authen/domaine/usercase/create_spiritual_profile.dart'
     as _i127;
 import '../../feature/authen/domaine/usercase/signin_profile.dart' as _i409;
+import '../../feature/authen/domaine/usercase/update_profile_deviceid_usercase.dart'
+    as _i240;
 import '../../feature/authen/domaine/usercase/update_profile_usercase.dart'
     as _i256;
 import '../../feature/home/data/repositories/home_data_repositories.dart'
@@ -185,6 +187,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i409.CreateSignInProfileUsercase>(
       () => _i409.CreateSignInProfileUsercase(gh<_i653.AuthenRepository>()),
+    );
+    gh.lazySingleton<_i240.UpdateProfileDeviceIdUsercase>(
+      () => _i240.UpdateProfileDeviceIdUsercase(gh<_i653.AuthenRepository>()),
     );
     gh.lazySingleton<_i256.UpdateProfileUsercase>(
       () => _i256.UpdateProfileUsercase(gh<_i653.AuthenRepository>()),

@@ -342,4 +342,27 @@ class ImplRemoteService implements AuthenRemoteService {
       return FirebaseError('${e.toString()}');
     }
   }
+  
+  @override
+  Future<FirebaseResult<String?>> updateProfileId(RequestAuthenUpdateProfileKey params) async{
+   
+    try {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+          'serviceLibelle': '',
+          'userId': params.menberId,
+        };
+        // 2) Créer une nouvelle entrée
+        await db.child('menber/${params.menberId}').update(updates);
+
+        // 4) Retourner le key généré
+        return FirebaseSuccess(params.menberId);
+  
+
+    } catch (e) {
+
+      log("🔥 Firebase ERROR updateProfile → $e");
+      return FirebaseError(e.toString());
+    }
+  }
 }

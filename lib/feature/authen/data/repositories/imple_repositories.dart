@@ -105,5 +105,18 @@ class ImpleAuthenRepository implements AuthenRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+  
+  @override
+  Future<Either<Failure, String?>> updateProfileId(RequestAuthenUpdateProfileKey params) async {
+    final response = await authenRemoteService.updateProfileId(params);
+    if (response is FirebaseSuccess<String?>) {
+      final shared = await SharedPreferences.getInstance();
+      await shared.setString('menberkey', response.data ?? '');
+      return Right(response.data);
+    } else if (response is FirebaseError<String?>) {
+      return Left(Failure(message: response.message));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
 
 }

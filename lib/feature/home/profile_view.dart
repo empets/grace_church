@@ -159,7 +159,15 @@ class _ProfileViewState extends State<ProfileView> {
         ],
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
-          appBar: AppBar(backgroundColor: Colors.grey.shade50),
+          appBar: AppBar(
+        backgroundColor: Colors.grey.shade50,
+        leading: IconButton(
+          icon: SvgPicture.asset(assets.images.arrowBack.path),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
           body: BlocBuilder<
             GetProfileBloc,
             ApiState<ProfileResponse>

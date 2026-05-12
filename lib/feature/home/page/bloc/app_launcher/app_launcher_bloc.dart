@@ -7,7 +7,6 @@ import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_usercase.dart';
-import 'package:grace_church/feature/home/domaine/usercase/get_profile_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 
 @lazySingleton
@@ -34,12 +33,6 @@ class AppLauncherBloc extends Bloc<ProfileEvent, ApiState<bool>> {
         }
         break;
 
-      // case ProfileEventGetProfileId(appId: final appId):
-      //   // TODO: Handle this case.
-      //   break;
-
-      // default:
-      //   break;
     }
   }
 }

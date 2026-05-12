@@ -13,6 +13,7 @@ import 'package:grace_church/feature/authen/domaine/usercase/create_profile_user
 import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/signin_profile.dart';
+import 'package:grace_church/feature/authen/domaine/usercase/update_profile_deviceid_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/update_profile_usercase.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/event/signin_event.dart';
 import 'package:grace_church/feature/authen/page/bloc/connexion/signing_bloc.dart';
@@ -23,7 +24,6 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/gen/assets.gen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SigninView extends StatelessWidget {
   const SigninView({super.key});
@@ -33,14 +33,11 @@ class SigninView extends StatelessWidget {
     return BlocProvider(
       create: (context) => SigningBloc(
         createSignInProfileUsercase: getIt<CreateSignInProfileUsercase>(),
+        updateProfileDeviceIdUsercase: getIt<UpdateProfileDeviceIdUsercase>(),
       ),
       child: BlocListener<SigningBloc, SigninState>(
         listener: (context, state) async {
           if (state.status.isSuccess) {
-            // Navigation vers la page suivante
-            // final shared = await SharedPreferences.getInstance();
-            // await shared.setString('isAppLauncher', 'isAppLauncher');
-
             Navigator.of(context).pushAndRemoveUntil(
               fadeRoute( OverviewScreen(
                 menberId: state.errorMessage
@@ -287,8 +284,7 @@ class SigninView extends StatelessWidget {
                     borderRadius: 10.r,
                     onPressed: () async {
                       FocusScope.of(context).unfocus();
-                      final shared = await SharedPreferences.getInstance();
-                      await shared.setString('isAppLauncher', 'isAppLauncher');
+
                       Navigator.of(context).pushAndRemoveUntil(
                         fadeRoute(const OverviewScreen()),
                         (route) => false,
