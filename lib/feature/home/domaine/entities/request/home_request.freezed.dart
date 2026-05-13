@@ -5824,4 +5824,285 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$RequestReadNotification implements DiagnosticableTreeMixin {
+
+ String get notificationId; String get menberId; String get vueAt;
+/// Create a copy of RequestReadNotification
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RequestReadNotificationCopyWith<RequestReadNotification> get copyWith => _$RequestReadNotificationCopyWithImpl<RequestReadNotification>(this as RequestReadNotification, _$identity);
+
+  /// Serializes this RequestReadNotification to a JSON map.
+  Map<String, dynamic> toJson();
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestReadNotification'))
+    ..add(DiagnosticsProperty('notificationId', notificationId))..add(DiagnosticsProperty('menberId', menberId))..add(DiagnosticsProperty('vueAt', vueAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestReadNotification&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.vueAt, vueAt) || other.vueAt == vueAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,notificationId,menberId,vueAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestReadNotification(notificationId: $notificationId, menberId: $menberId, vueAt: $vueAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RequestReadNotificationCopyWith<$Res>  {
+  factory $RequestReadNotificationCopyWith(RequestReadNotification value, $Res Function(RequestReadNotification) _then) = _$RequestReadNotificationCopyWithImpl;
+@useResult
+$Res call({
+ String notificationId, String menberId, String vueAt
+});
+
+
+
+
+}
+/// @nodoc
+class _$RequestReadNotificationCopyWithImpl<$Res>
+    implements $RequestReadNotificationCopyWith<$Res> {
+  _$RequestReadNotificationCopyWithImpl(this._self, this._then);
+
+  final RequestReadNotification _self;
+  final $Res Function(RequestReadNotification) _then;
+
+/// Create a copy of RequestReadNotification
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? notificationId = null,Object? menberId = null,Object? vueAt = null,}) {
+  return _then(_self.copyWith(
+notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
+as String,menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,vueAt: null == vueAt ? _self.vueAt : vueAt // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [RequestReadNotification].
+extension RequestReadNotificationPatterns on RequestReadNotification {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RequestReadNotification value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RequestReadNotification() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RequestReadNotification value)  $default,){
+final _that = this;
+switch (_that) {
+case _RequestReadNotification():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RequestReadNotification value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RequestReadNotification() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String notificationId,  String menberId,  String vueAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RequestReadNotification() when $default != null:
+return $default(_that.notificationId,_that.menberId,_that.vueAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String notificationId,  String menberId,  String vueAt)  $default,) {final _that = this;
+switch (_that) {
+case _RequestReadNotification():
+return $default(_that.notificationId,_that.menberId,_that.vueAt);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String notificationId,  String menberId,  String vueAt)?  $default,) {final _that = this;
+switch (_that) {
+case _RequestReadNotification() when $default != null:
+return $default(_that.notificationId,_that.menberId,_that.vueAt);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _RequestReadNotification with DiagnosticableTreeMixin implements RequestReadNotification {
+   _RequestReadNotification({required this.notificationId, required this.menberId, required this.vueAt});
+  factory _RequestReadNotification.fromJson(Map<String, dynamic> json) => _$RequestReadNotificationFromJson(json);
+
+@override final  String notificationId;
+@override final  String menberId;
+@override final  String vueAt;
+
+/// Create a copy of RequestReadNotification
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RequestReadNotificationCopyWith<_RequestReadNotification> get copyWith => __$RequestReadNotificationCopyWithImpl<_RequestReadNotification>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RequestReadNotificationToJson(this, );
+}
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'RequestReadNotification'))
+    ..add(DiagnosticsProperty('notificationId', notificationId))..add(DiagnosticsProperty('menberId', menberId))..add(DiagnosticsProperty('vueAt', vueAt));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestReadNotification&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.vueAt, vueAt) || other.vueAt == vueAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,notificationId,menberId,vueAt);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'RequestReadNotification(notificationId: $notificationId, menberId: $menberId, vueAt: $vueAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RequestReadNotificationCopyWith<$Res> implements $RequestReadNotificationCopyWith<$Res> {
+  factory _$RequestReadNotificationCopyWith(_RequestReadNotification value, $Res Function(_RequestReadNotification) _then) = __$RequestReadNotificationCopyWithImpl;
+@override @useResult
+$Res call({
+ String notificationId, String menberId, String vueAt
+});
+
+
+
+
+}
+/// @nodoc
+class __$RequestReadNotificationCopyWithImpl<$Res>
+    implements _$RequestReadNotificationCopyWith<$Res> {
+  __$RequestReadNotificationCopyWithImpl(this._self, this._then);
+
+  final _RequestReadNotification _self;
+  final $Res Function(_RequestReadNotification) _then;
+
+/// Create a copy of RequestReadNotification
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? notificationId = null,Object? menberId = null,Object? vueAt = null,}) {
+  return _then(_RequestReadNotification(
+notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
+as String,menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,vueAt: null == vueAt ? _self.vueAt : vueAt // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

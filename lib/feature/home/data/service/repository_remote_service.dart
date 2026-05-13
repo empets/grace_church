@@ -32,5 +32,8 @@ abstract class DomaineServiceRepository {
   Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params);
   Future<FirebaseResult<List<RapportCelluleResponseModel>>> getRapportCellule(RequestRapportCellule params);
 
+  Future<FirebaseResult<String>> readNotification(RequestReadNotification params);
+
+
 }
 

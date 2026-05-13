@@ -355,15 +355,7 @@ class _HomeViewState extends State<HomeView> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      CustomeText(
-                        text: 'Voir tout',
-                        style: context.appTypographie.small.copyWith(
-                          fontSize: 12.sp,
-                          letterSpacing: 0.sp,
-                          color: context.appColor.primaryBlue,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                 
                     ],
                   ),
                   SizedBox(height: 7.h),

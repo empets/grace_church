@@ -484,7 +484,7 @@ class MenuView extends StatelessWidget {
                                                           context,
                                                         ).push(
                                                           fadeRoute(
-                                                            NotificationView(),
+                                                            NotificationView(profileId: "",),
                                                           ),
                                                         );
                                                       }
@@ -621,7 +621,7 @@ class MenuView extends StatelessWidget {
                                                           context,
                                                         ).push(
                                                           fadeRoute(
-                                                            NotificationView(),
+                                                            NotificationView(profileId: "",),
                                                           ),
                                                         );
                                                       }

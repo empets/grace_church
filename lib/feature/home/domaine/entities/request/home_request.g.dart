@@ -432,3 +432,19 @@ _RequestRapportCellule _$RequestRapportCelluleFromJson(
 Map<String, dynamic> _$RequestRapportCelluleToJson(
   _RequestRapportCellule instance,
 ) => <String, dynamic>{'responsableCelluleId': instance.responsableCelluleId};
+
+_RequestReadNotification _$RequestReadNotificationFromJson(
+  Map<String, dynamic> json,
+) => _RequestReadNotification(
+  notificationId: json['notificationId'] as String,
+  menberId: json['menberId'] as String,
+  vueAt: json['vueAt'] as String,
+);
+
+Map<String, dynamic> _$RequestReadNotificationToJson(
+  _RequestReadNotification instance,
+) => <String, dynamic>{
+  'notificationId': instance.notificationId,
+  'menberId': instance.menberId,
+  'vueAt': instance.vueAt,
+};

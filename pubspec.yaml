@@ -178,7 +178,8 @@ dependencies:
   get: any
   photo_viewer: ^1.0.0
   just_audio: ^0.9.36
-  audio_service: ^0.18.12
+  audio_service: ^0.18.0
+  video_player: ^2.8.0
 
   
 

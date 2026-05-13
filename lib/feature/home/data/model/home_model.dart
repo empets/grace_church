@@ -86,6 +86,8 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
     required String? description,
     required String? tag,
     required String? date,
+    required String? notificationId,
+    required List <NotificationClickResponseModel> clicks,
   }) = _NotificationResponseModel;
   factory NotificationResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseModelFromJson(json);
@@ -96,9 +98,33 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
       description: model.description.getOrEmpty(),
       tag: model.tag.getOrEmpty(),
       date: model.date.getOrEmpty(),
+      notificationId: model.notificationId.getOrEmpty(),
+      clicks:  model.clicks.map(NotificationClickResponseModel.toDomaine).toList(),
     );
   }
 }
+
+
+@freezed
+abstract class NotificationClickResponseModel with _$NotificationClickResponseModel {
+  factory NotificationClickResponseModel({
+    @Default("") String? menberId,
+    @Default("") String? vueAt,
+  }) = _NotificationClickResponseModel;
+  factory NotificationClickResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$NotificationClickResponseModelFromJson(json);
+
+  static NotificationClickResponse toDomaine(NotificationClickResponseModel model) {
+    return NotificationClickResponse(
+      menberId: model.menberId.getOrEmpty(),
+      vueAt: model.vueAt.getOrEmpty(),
+    );
+  }
+}
+
+
+
+
 
 //-----------------------------
 //  CELLULE RESPONSE MODEL
@@ -504,7 +530,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
       offrande: model.offrande.getOrEmpty(),
       nombreBaptiser: model.nombreBaptiser.getOrEmpty(),
       nombreNonBaptiser: model.nombreNonBaptiser.getOrEmpty(),
-      discipleCellule: model.discipleCellule.map((e) => DiscipleCelluleModel.toDomain(e)).toList(),
+      discipleCellule: model.discipleCellule.map(DiscipleCelluleModel.toDomain).toList(),
       id: model.id.getOrEmpty(),
       formAdministrationIsSubmit: model.formAdministrationIsSubmit.getOrEmpty(),
       formAdministrationSubmitDate: model.formAdministrationSubmitDate.getOrEmpty(),

@@ -217,4 +217,15 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+  
+  @override
+  Future<Either<Failure, String>> readNotification(RequestReadNotification params) async {
+    final response = await domaineServiceRepository.readNotification(params);
+    if (response is FirebaseSuccess<String>) {
+      return Right(response.data);
+    } else if (response is FirebaseError<String>) {
+      return Left(Failure(message: response.message));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
 }

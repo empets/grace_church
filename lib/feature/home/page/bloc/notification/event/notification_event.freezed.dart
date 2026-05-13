@@ -279,4 +279,264 @@ as String?,
 
 }
 
+/// @nodoc
+mixin _$NotificationReadEvent {
+
+ String get menberId; String get notificationId;
+/// Create a copy of NotificationReadEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NotificationReadEventCopyWith<NotificationReadEvent> get copyWith => _$NotificationReadEventCopyWithImpl<NotificationReadEvent>(this as NotificationReadEvent, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationReadEvent&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,menberId,notificationId);
+
+@override
+String toString() {
+  return 'NotificationReadEvent(menberId: $menberId, notificationId: $notificationId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NotificationReadEventCopyWith<$Res>  {
+  factory $NotificationReadEventCopyWith(NotificationReadEvent value, $Res Function(NotificationReadEvent) _then) = _$NotificationReadEventCopyWithImpl;
+@useResult
+$Res call({
+ String menberId, String notificationId
+});
+
+
+
+
+}
+/// @nodoc
+class _$NotificationReadEventCopyWithImpl<$Res>
+    implements $NotificationReadEventCopyWith<$Res> {
+  _$NotificationReadEventCopyWithImpl(this._self, this._then);
+
+  final NotificationReadEvent _self;
+  final $Res Function(NotificationReadEvent) _then;
+
+/// Create a copy of NotificationReadEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? menberId = null,Object? notificationId = null,}) {
+  return _then(_self.copyWith(
+menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [NotificationReadEvent].
+extension NotificationReadEventPatterns on NotificationReadEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchNotificationReadEvent value)?  fetch,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case FetchNotificationReadEvent() when fetch != null:
+return fetch(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchNotificationReadEvent value)  fetch,}){
+final _that = this;
+switch (_that) {
+case FetchNotificationReadEvent():
+return fetch(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchNotificationReadEvent value)?  fetch,}){
+final _that = this;
+switch (_that) {
+case FetchNotificationReadEvent() when fetch != null:
+return fetch(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String menberId,  String notificationId)?  fetch,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case FetchNotificationReadEvent() when fetch != null:
+return fetch(_that.menberId,_that.notificationId);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String menberId,  String notificationId)  fetch,}) {final _that = this;
+switch (_that) {
+case FetchNotificationReadEvent():
+return fetch(_that.menberId,_that.notificationId);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String menberId,  String notificationId)?  fetch,}) {final _that = this;
+switch (_that) {
+case FetchNotificationReadEvent() when fetch != null:
+return fetch(_that.menberId,_that.notificationId);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class FetchNotificationReadEvent implements NotificationReadEvent {
+  const FetchNotificationReadEvent({required this.menberId, required this.notificationId});
+  
+
+@override final  String menberId;
+@override final  String notificationId;
+
+/// Create a copy of NotificationReadEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FetchNotificationReadEventCopyWith<FetchNotificationReadEvent> get copyWith => _$FetchNotificationReadEventCopyWithImpl<FetchNotificationReadEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchNotificationReadEvent&&(identical(other.menberId, menberId) || other.menberId == menberId)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,menberId,notificationId);
+
+@override
+String toString() {
+  return 'NotificationReadEvent.fetch(menberId: $menberId, notificationId: $notificationId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FetchNotificationReadEventCopyWith<$Res> implements $NotificationReadEventCopyWith<$Res> {
+  factory $FetchNotificationReadEventCopyWith(FetchNotificationReadEvent value, $Res Function(FetchNotificationReadEvent) _then) = _$FetchNotificationReadEventCopyWithImpl;
+@override @useResult
+$Res call({
+ String menberId, String notificationId
+});
+
+
+
+
+}
+/// @nodoc
+class _$FetchNotificationReadEventCopyWithImpl<$Res>
+    implements $FetchNotificationReadEventCopyWith<$Res> {
+  _$FetchNotificationReadEventCopyWithImpl(this._self, this._then);
+
+  final FetchNotificationReadEvent _self;
+  final $Res Function(FetchNotificationReadEvent) _then;
+
+/// Create a copy of NotificationReadEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? menberId = null,Object? notificationId = null,}) {
+  return _then(FetchNotificationReadEvent(
+menberId: null == menberId ? _self.menberId : menberId // ignore: cast_nullable_to_non_nullable
+as String,notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

@@ -100,4 +100,11 @@ abstract class HomeDomaineRepository {
   // -------------------------------------------------------------
   Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params);
 
+  // -------------------------------------------------------------
+  //  cette methode permet de valider de confimer qu'il a lue la notification
+  //  elle prend en parametre un objet RequestReadNotification qui contient les criteres de recherche
+  //  elle retourne une String qui contient le message de reponse
+  // -------------------------------------------------------------
+  Future<Either<Failure, String>> readNotification(RequestReadNotification params);
+
 }

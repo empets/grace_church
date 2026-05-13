@@ -302,3 +302,16 @@ abstract class RequestRapportCellule
   factory RequestRapportCellule.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleFromJson(json);
 }
+
+
+@freezed
+abstract class RequestReadNotification
+    with _$RequestReadNotification {
+  factory RequestReadNotification({
+    required String notificationId,
+    required String menberId,
+    required String vueAt,
+  }) = _RequestReadNotification;
+  factory RequestReadNotification.fromJson(Map<String, dynamic> json) =>
+      _$RequestReadNotificationFromJson(json);
+}

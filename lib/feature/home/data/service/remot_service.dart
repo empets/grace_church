@@ -21,9 +21,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   Future<FirebaseResult<ProfileResponseModel>> getProfile(
     RequestGetProfile notParms,
   ) async {
-   
-
-
     try {
       final response = await db.child('menber/${notParms.numberId}').get();
       final data = Map<String, dynamic>.from(response.value as Map);
@@ -37,7 +34,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError('${e.toString()}');
     }
   }
-
 
   @override
   Future<FirebaseResult<List<NotificationResponseModel>>> getListNotifications(
@@ -77,16 +73,17 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
             if (data.values.isNotEmpty) {
               notifications
                   .map((e) {
-                    final notificationItem = Map<String, dynamic>.from(e);
+                    final notificationItem = convertMap(e as Map);
                     return NotificationResponseModel.fromJson(notificationItem);
                   })
-                  .where((e) => e.title?.contains(params.title) ?? false)
+                  .where((e) => e.title?.trim().toLowerCase().contains(params.title.toLowerCase()) ?? false)
                   .toList();
+                 
               // .toList();
               return FirebaseSuccess(
                 notifications
                     .map((e) => NotificationResponseModel.fromJson(e.toJson()))
-                    .toList(),
+                    .toList() ,
               );
             }
             return FirebaseSuccess([]);
@@ -102,7 +99,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
             final data = snapshot.value as Map<dynamic, dynamic>;
             if (data.values.isNotEmpty) {
               final notifications = data.values.map((e) {
-                final notificationItem = Map<String, dynamic>.from(e);
+                final notificationItem = convertMap(e as Map);
                 return NotificationResponseModel.fromJson(notificationItem);
               }).toList();
               return FirebaseSuccess(
@@ -122,7 +119,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
             final data = snapshot.value as Map<dynamic, dynamic>;
             final notifications = data.values
                 .map((e) {
-                  final notificationItem = Map<String, dynamic>.from(e);
+                  final notificationItem = convertMap(e as Map);
                   return NotificationResponseModel.fromJson(notificationItem);
                 })
                 .where((e) => e.date?.contains(params.date) ?? false)
@@ -141,7 +138,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
             final notifications = data.values.map((e) {
-              final notificationItem = Map<String, dynamic>.from(e);
+              final notificationItem = convertMap(e as Map);
               return NotificationResponseModel.fromJson(notificationItem);
             }).toList();
             return FirebaseSuccess(
@@ -154,6 +151,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       }
       return FirebaseError("Aucune notification trouvée");
     } catch (e) {
+      log("Error in getNotifications: $e");
       return FirebaseError(e.toString());
     }
   }
@@ -323,16 +321,14 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         final Map<String, dynamic> updates = {
           ...params.toJson(),
           'id': localUserRequestSection,
-          
         };
         await db
             .child('rapport_cellule/$localUserRequestSection')
             .update(updates);
         return FirebaseSuccess(localUserRequestSection);
-      } else{
+      } else {
         final request = Request<RequestRapportCelluleAdministration>(
           data: params.toJson(),
-          
 
           user: "",
           serviceLibelle: 'rapport_cellule',
@@ -376,8 +372,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       if (userIdExist.exists) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
-          'id':localUserRequestSection,
-          
+          'id': localUserRequestSection,
         };
         // 2) Créer une nouvelle entrée
         await db
@@ -442,9 +437,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           .get();
 
       if (userIdExist.exists) {
-        final Map<String, dynamic> updates = {
-          ...params.toJson(), 
-        };
+        final Map<String, dynamic> updates = {...params.toJson()};
         // 2) Mettre à jour l'entrée existante
         await db
             .child('rapport_cellule/${localUserRequestSection}')
@@ -460,8 +453,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     }
   }
 
-
-
   @override
   Future<FirebaseResult<List<RapportCelluleResponseModel>>> getRapportCellule(
     RequestRapportCellule params,
@@ -472,52 +463,64 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           .orderByChild('responsableCelluleId')
           .equalTo(params.responsableCelluleId)
           .get();
-     
       if (!response.exists) {
         return FirebaseError('Rapport cellule not found');
       }
-         final data = response.value as Map<dynamic, dynamic>;
-           final notifications = data.values.map((e) {
-  log("::::::::>>>>>>>> $e");
-
-  final notificationItem = convertMap(e as Map);
-
-  return RapportCelluleResponseModel.fromJson(notificationItem);
-}).toList();
-        
-
-         log("🦁 getRapportCellule → ${notifications}");
-        return FirebaseSuccess(
-          notifications
-
-              
-        );
+      final data = response.value as Map<dynamic, dynamic>;
+      final notifications = data.values.map((e) {
+        final notificationItem = convertMap(e as Map);
+        return RapportCelluleResponseModel.fromJson(notificationItem);
+      }).toList();
+      return FirebaseSuccess(notifications);
     } catch (e) {
-      log("🔥 Firebase ERROR getRapportCellule → ${e.runtimeType}");
+      return FirebaseError(e.toString());
+    }
+  }
+  
+  @override
+  Future<FirebaseResult<String>> readNotification(RequestReadNotification params) async {
+    try {
+      final doc = await db.child('notfications/${params.notificationId}/clicks/${params.menberId}').get();
+
+      if(doc.exists) {
+        return FirebaseError('Notification déjà lu');
+      }
+      else {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(), // nouveaux champs simples
+          'serviceLibelle': '',
+        
+        };
+        // 2) Créer une nouvelle entrée
+        await db.child('notfications/${params.notificationId}/clicks/${params.menberId}').update(updates);
+
+        // 4) Retourner le key généré
+        return FirebaseSuccess(params.menberId);
+
+      }
+    } catch (e) {
       return FirebaseError(e.toString());
     }
   }
 }
 
-
 Map<String, dynamic> convertMap(Map data) {
-  return data.map(
-    (key, value) {
-      if (value is Map) {
-        return MapEntry(key.toString(), convertMap(value));
-      } else if (value is List) {
-        return MapEntry(
-          key.toString(),
-          value.map((e) {
-            if (e is Map) {
-              return convertMap(e);
-            }
-            return e;
-          }).toList(),
-        );
-      }
+  return data.map((key, value) {
+    if (value is Map) {
+      return MapEntry(key.toString(), convertMap(value));
+    } else if (value is List) {
+      return MapEntry(
+        key.toString(),
+        value.map((e) {
+          if (e is Map) {
+            return convertMap(e);
+          }
+          return e;
+        }).toList(),
+        
+      );
+    }
 
-      return MapEntry(key.toString(), value);
-    },
-  );
+    return MapEntry(key.toString(), value);
+  });
 }

@@ -1,13 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/core/alert/app_alerte.dart';
-import 'package:grace_church/core/extension/extention.dart';
+import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_usercase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
@@ -44,7 +47,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
               GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
                 ..add(ProfileEvent.fetchProfileNumberId(widget.menberId.isNotEmpty ? widget.menberId : '')),
         ),
-        BlocProvider(create: (context) => AppLauncherBloc()),
+        BlocProvider.value(value: ConnexionImpliciteBloc(
+          getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
+        )),
         BlocProvider(
           create: (context) => NotificationBloc(
             getListNotificationUsercase: getIt<GetListNotificationUsercase>(),
@@ -67,13 +72,13 @@ class _OverviewScreenState extends State<OverviewScreen> {
               }
               if(profileState is SuccessState<ProfileResponse>){
                     final shared = await SharedPreferences.getInstance();
-                   await shared.setString('menberkey', profileState.data.menberId);
+                    await shared.setString('menberkey', profileState.data.menberId);
                 
               }
             },
           ),
         ],
-        child: BlocBuilder<AppLauncherBloc, ApiState<bool>>(
+        child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
           builder: (context, state) {
             return Scaffold(
               backgroundColor: Colors.grey.shade50,
@@ -81,13 +86,16 @@ class _OverviewScreenState extends State<OverviewScreen> {
               drawer: MenuView(),
               body: HomeView(),
               floatingActionButton:
-                  BlocBuilder<
-                    NotificationBloc,
-                    ApiState<List<NotificationResponse>>
-                  >(
+              BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
+                builder: (context, stateProfile) {
+                  if(stateProfile is SuccessState<ProfileResponse>){
+                    return      BlocBuilder< NotificationBloc,ApiState<List<NotificationResponse>>>(
                     builder: (context, notificationState) {
+                      log("::::::::-------->> $notificationState");
                       if (notificationState
                           is SuccessState<List<NotificationResponse>>) {
+                           notificationState.data.forEach((element) {
+                           });
                         return Container(
                           margin: EdgeInsets.only(bottom: 10.h),
                           child: FloatingActionButton(
@@ -96,7 +104,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
                             onPressed: () {
                               Navigator.of(
                                 context,
-                              ).push(fadeRoute(const NotificationView()));
+                              ).push(fadeRoute( NotificationView(
+                                profileId: stateProfile.data.menberId,
+                              )));
                             },
                             child: Badge(
                               child: Icon(
@@ -119,7 +129,12 @@ class _OverviewScreenState extends State<OverviewScreen> {
                         return Container();
                       }
                     },
-                  ),
+                  );
+               
+                  }
+                  return Container();
+                },
+              ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.endFloat,
             );

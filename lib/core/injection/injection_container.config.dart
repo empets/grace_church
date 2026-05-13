@@ -62,6 +62,8 @@ import '../../feature/home/domaine/usercase/rapport_cellule_state_usercase.dart'
     as _i1061;
 import '../../feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart'
     as _i163;
+import '../../feature/home/domaine/usercase/read_notification_usercase.dart'
+    as _i821;
 import '../../feature/home/page/bloc/app_launcher/app_launcher_bloc.dart'
     as _i303;
 import '../../feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart'
@@ -165,6 +167,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i163.SendRapportCelluleStepSuggestionUsercase(
         gh<_i962.HomeDomaineRepository>(),
       ),
+    );
+    gh.lazySingleton<_i821.ReadNotificationUsercase>(
+      () => _i821.ReadNotificationUsercase(gh<_i962.HomeDomaineRepository>()),
     );
     gh.lazySingleton<_i935.GetResponsableCelluleBloc>(
       () => _i935.GetResponsableCelluleBloc(
