@@ -87,7 +87,7 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
     required String? tag,
     required String? date,
     required String? notificationId,
-    required List <NotificationClickResponseModel> clicks,
+    required NotificationClickResponseModel clicks,
   }) = _NotificationResponseModel;
   factory NotificationResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseModelFromJson(json);
@@ -99,7 +99,7 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
       tag: model.tag.getOrEmpty(),
       date: model.date.getOrEmpty(),
       notificationId: model.notificationId.getOrEmpty(),
-      clicks:  model.clicks.map(NotificationClickResponseModel.toDomaine).toList(),
+      clicks: NotificationClickResponseModel.toDomaine(model.clicks),
     );
   }
 }
@@ -108,8 +108,8 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
 @freezed
 abstract class NotificationClickResponseModel with _$NotificationClickResponseModel {
   factory NotificationClickResponseModel({
-    @Default("") String? menberId,
-    @Default("") String? vueAt,
+   required String? menberId,
+   required String? vueAt,
   }) = _NotificationClickResponseModel;
   factory NotificationClickResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationClickResponseModelFromJson(json);

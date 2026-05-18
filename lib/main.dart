@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
@@ -41,32 +44,35 @@ void main() async {
     anonKey: GlobalParams.supabaseAnonKey,
   );
 
-  await Firebase.initializeApp(
-    name: "authenfication",
-    options: FirebaseOptions(
-      apiKey: GlobalParams.apisKey,
-      appId: GlobalParams.appsId,
-      messagingSenderId: GlobalParams.messagingsSenderId,
-      projectId: GlobalParams.projectsId,
-      storageBucket: GlobalParams.storageBuckets,
-    ),
-  );
+  // await Firebase.initializeApp(
+  //   name: "authenfication",
+  //   options: FirebaseOptions(
+  //     apiKey: GlobalParams.apisKey,
+  //     appId: GlobalParams.appsId,
+  //     messagingSenderId: GlobalParams.messagingsSenderId,
+  //     projectId: GlobalParams.projectsId,
+  //     storageBucket: GlobalParams.storageBuckets,
+  //   ),
+  // );
 
   Bloc.observer = SimpleBlocObserver();
   await configureDependencies();
+   final deviceId = await getDeviceFingerprint();
+   log("message======>> $deviceId");
 
-  runApp(const MyApp());
+  runApp(MyApp(deviceId: deviceId));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.deviceId});
+  final String deviceId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ConnexionImpliciteBloc(
         getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
-      )..add(ProfileEvent.fetchProfileNumberId(null)),
+      )..add(ProfileEvent.getProfileByDeviceId(deviceId)),
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
@@ -77,7 +83,6 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData.light().copyWith(
               primaryColor: Colors.black,
-
               textTheme: GoogleFonts.robotoTextTheme(
                 Theme.of(context).textTheme,
               ),
@@ -95,7 +100,7 @@ class MyApp extends StatelessWidget {
             return state is LoadState<ProfileResponse>
                 ? SplachSreen()
                 : state is SuccessState<ProfileResponse>
-                ? OverviewScreen(menberId: state.data.menberId)
+                ? OverviewScreen(menberId: state.data.menberId, isFormImpliciteConnexion: true)
                 : OnboardingScreen();
           },
         ),

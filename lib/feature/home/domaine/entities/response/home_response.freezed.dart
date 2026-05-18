@@ -359,7 +359,7 @@ as String,
 /// @nodoc
 mixin _$NotificationResponse {
 
- String get title; String get description; String get tag; String get date; String get notificationId; List<NotificationClickResponse> get clicks;
+ String get title; String get description; String get tag; String get date; String get notificationId; NotificationClickResponse get clicks;
 /// Create a copy of NotificationResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -372,12 +372,12 @@ $NotificationResponseCopyWith<NotificationResponse> get copyWith => _$Notificati
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationResponse&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&const DeepCollectionEquality().equals(other.clicks, clicks));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationResponse&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.clicks, clicks) || other.clicks == clicks));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,const DeepCollectionEquality().hash(clicks));
+int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,clicks);
 
 @override
 String toString() {
@@ -392,11 +392,11 @@ abstract mixin class $NotificationResponseCopyWith<$Res>  {
   factory $NotificationResponseCopyWith(NotificationResponse value, $Res Function(NotificationResponse) _then) = _$NotificationResponseCopyWithImpl;
 @useResult
 $Res call({
- String title, String description, String tag, String date, String notificationId, List<NotificationClickResponse> clicks
+ String title, String description, String tag, String date, String notificationId, NotificationClickResponse clicks
 });
 
 
-
+$NotificationClickResponseCopyWith<$Res> get clicks;
 
 }
 /// @nodoc
@@ -417,10 +417,19 @@ as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nul
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String,notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
 as String,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
-as List<NotificationClickResponse>,
+as NotificationClickResponse,
   ));
 }
-
+/// Create a copy of NotificationResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NotificationClickResponseCopyWith<$Res> get clicks {
+  
+  return $NotificationClickResponseCopyWith<$Res>(_self.clicks, (value) {
+    return _then(_self.copyWith(clicks: value));
+  });
+}
 }
 
 
@@ -502,7 +511,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date,  String notificationId,  List<NotificationClickResponse> clicks)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date,  String notificationId,  NotificationClickResponse clicks)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NotificationResponse() when $default != null:
 return $default(_that.title,_that.description,_that.tag,_that.date,_that.notificationId,_that.clicks);case _:
@@ -523,7 +532,7 @@ return $default(_that.title,_that.description,_that.tag,_that.date,_that.notific
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date,  String notificationId,  List<NotificationClickResponse> clicks)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date,  String notificationId,  NotificationClickResponse clicks)  $default,) {final _that = this;
 switch (_that) {
 case _NotificationResponse():
 return $default(_that.title,_that.description,_that.tag,_that.date,_that.notificationId,_that.clicks);case _:
@@ -543,7 +552,7 @@ return $default(_that.title,_that.description,_that.tag,_that.date,_that.notific
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String description,  String tag,  String date,  String notificationId,  List<NotificationClickResponse> clicks)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String description,  String tag,  String date,  String notificationId,  NotificationClickResponse clicks)?  $default,) {final _that = this;
 switch (_that) {
 case _NotificationResponse() when $default != null:
 return $default(_that.title,_that.description,_that.tag,_that.date,_that.notificationId,_that.clicks);case _:
@@ -558,7 +567,7 @@ return $default(_that.title,_that.description,_that.tag,_that.date,_that.notific
 @JsonSerializable()
 
 class _NotificationResponse implements NotificationResponse {
-   _NotificationResponse({required this.title, required this.description, required this.tag, required this.date, required this.notificationId, required final  List<NotificationClickResponse> clicks}): _clicks = clicks;
+   _NotificationResponse({required this.title, required this.description, required this.tag, required this.date, required this.notificationId, required this.clicks});
   factory _NotificationResponse.fromJson(Map<String, dynamic> json) => _$NotificationResponseFromJson(json);
 
 @override final  String title;
@@ -566,13 +575,7 @@ class _NotificationResponse implements NotificationResponse {
 @override final  String tag;
 @override final  String date;
 @override final  String notificationId;
- final  List<NotificationClickResponse> _clicks;
-@override List<NotificationClickResponse> get clicks {
-  if (_clicks is EqualUnmodifiableListView) return _clicks;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_clicks);
-}
-
+@override final  NotificationClickResponse clicks;
 
 /// Create a copy of NotificationResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -587,12 +590,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationResponse&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&const DeepCollectionEquality().equals(other._clicks, _clicks));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationResponse&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.clicks, clicks) || other.clicks == clicks));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,const DeepCollectionEquality().hash(_clicks));
+int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,clicks);
 
 @override
 String toString() {
@@ -607,11 +610,11 @@ abstract mixin class _$NotificationResponseCopyWith<$Res> implements $Notificati
   factory _$NotificationResponseCopyWith(_NotificationResponse value, $Res Function(_NotificationResponse) _then) = __$NotificationResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String description, String tag, String date, String notificationId, List<NotificationClickResponse> clicks
+ String title, String description, String tag, String date, String notificationId, NotificationClickResponse clicks
 });
 
 
-
+@override $NotificationClickResponseCopyWith<$Res> get clicks;
 
 }
 /// @nodoc
@@ -631,12 +634,21 @@ as String,description: null == description ? _self.description : description // 
 as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as String,notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
-as String,clicks: null == clicks ? _self._clicks : clicks // ignore: cast_nullable_to_non_nullable
-as List<NotificationClickResponse>,
+as String,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
+as NotificationClickResponse,
   ));
 }
 
-
+/// Create a copy of NotificationResponse
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NotificationClickResponseCopyWith<$Res> get clicks {
+  
+  return $NotificationClickResponseCopyWith<$Res>(_self.clicks, (value) {
+    return _then(_self.copyWith(clicks: value));
+  });
+}
 }
 
 

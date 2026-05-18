@@ -56,15 +56,15 @@ class ConnexionImpliciteBloc extends Bloc<ProfileEvent, ApiState<ProfileResponse
     Emitter<ApiState<ProfileResponse>> emit,
   ) async {
     switch (event) {
-      case ProfileEvent():
-
+      case GetProfileByDeviceIdProfileEventGetProfileId(: final deviceId):
+      
     
         emit(ApiState<ProfileResponse>.load());
-        final deviceId = await getDeviceFingerprint();
+        final appId = await getDeviceFingerprint();
         
         final result = await getConnexionImpliciteUsercase.call(
          RequestImpliciteConnexion(
-          deviceId: deviceId,
+          deviceId: appId,
          )
         );
 
@@ -73,10 +73,7 @@ class ConnexionImpliciteBloc extends Bloc<ProfileEvent, ApiState<ProfileResponse
        emit(
           result.fold(
             (l) => ApiState<ProfileResponse>.failed(l.message),
-            (r)  {
-
-              return ApiState<ProfileResponse>.success(r, status: FormzSubmissionStatus.success);
-            },
+            (r) => ApiState<ProfileResponse>.success(r, status: FormzSubmissionStatus.success),
           )
        );
 

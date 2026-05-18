@@ -25,7 +25,7 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
 
     if (response is FirebaseSuccess<ProfileResponseModel>) {
         final shared = await SharedPreferences.getInstance();
-      await shared.setString('menberkey', response.data.menberId ?? "sdfdssdsdifhsdfsudk");
+      await shared.setString('menberkey', response.data.menberId ?? "");
       return Right(ProfileResponseModel.domaine(response.data));
     } else if (response is FirebaseError<ProfileResponseModel>) {
       return Left(Failure(message: response.message));

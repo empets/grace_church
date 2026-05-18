@@ -55,12 +55,12 @@ extension ProfileEventPatterns on ProfileEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchProfileNumberIdProfileEventFetch value)?  fetchProfileNumberId,TResult Function( getProfileIdProfileEventGetProfileId value)?  getProfileId,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchProfileNumberIdProfileEventFetch value)?  fetchProfileNumberId,TResult Function( GetProfileByDeviceIdProfileEventGetProfileId value)?  getProfileByDeviceId,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case FetchProfileNumberIdProfileEventFetch() when fetchProfileNumberId != null:
-return fetchProfileNumberId(_that);case getProfileIdProfileEventGetProfileId() when getProfileId != null:
-return getProfileId(_that);case _:
+return fetchProfileNumberId(_that);case GetProfileByDeviceIdProfileEventGetProfileId() when getProfileByDeviceId != null:
+return getProfileByDeviceId(_that);case _:
   return orElse();
 
 }
@@ -78,12 +78,12 @@ return getProfileId(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchProfileNumberIdProfileEventFetch value)  fetchProfileNumberId,required TResult Function( getProfileIdProfileEventGetProfileId value)  getProfileId,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchProfileNumberIdProfileEventFetch value)  fetchProfileNumberId,required TResult Function( GetProfileByDeviceIdProfileEventGetProfileId value)  getProfileByDeviceId,}){
 final _that = this;
 switch (_that) {
 case FetchProfileNumberIdProfileEventFetch():
-return fetchProfileNumberId(_that);case getProfileIdProfileEventGetProfileId():
-return getProfileId(_that);case _:
+return fetchProfileNumberId(_that);case GetProfileByDeviceIdProfileEventGetProfileId():
+return getProfileByDeviceId(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +100,12 @@ return getProfileId(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchProfileNumberIdProfileEventFetch value)?  fetchProfileNumberId,TResult? Function( getProfileIdProfileEventGetProfileId value)?  getProfileId,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchProfileNumberIdProfileEventFetch value)?  fetchProfileNumberId,TResult? Function( GetProfileByDeviceIdProfileEventGetProfileId value)?  getProfileByDeviceId,}){
 final _that = this;
 switch (_that) {
 case FetchProfileNumberIdProfileEventFetch() when fetchProfileNumberId != null:
-return fetchProfileNumberId(_that);case getProfileIdProfileEventGetProfileId() when getProfileId != null:
-return getProfileId(_that);case _:
+return fetchProfileNumberId(_that);case GetProfileByDeviceIdProfileEventGetProfileId() when getProfileByDeviceId != null:
+return getProfileByDeviceId(_that);case _:
   return null;
 
 }
@@ -122,11 +122,11 @@ return getProfileId(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String? numberId)?  fetchProfileNumberId,TResult Function( String appId)?  getProfileId,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String? numberId)?  fetchProfileNumberId,TResult Function( String deviceId)?  getProfileByDeviceId,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case FetchProfileNumberIdProfileEventFetch() when fetchProfileNumberId != null:
-return fetchProfileNumberId(_that.numberId);case getProfileIdProfileEventGetProfileId() when getProfileId != null:
-return getProfileId(_that.appId);case _:
+return fetchProfileNumberId(_that.numberId);case GetProfileByDeviceIdProfileEventGetProfileId() when getProfileByDeviceId != null:
+return getProfileByDeviceId(_that.deviceId);case _:
   return orElse();
 
 }
@@ -144,11 +144,11 @@ return getProfileId(_that.appId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String? numberId)  fetchProfileNumberId,required TResult Function( String appId)  getProfileId,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String? numberId)  fetchProfileNumberId,required TResult Function( String deviceId)  getProfileByDeviceId,}) {final _that = this;
 switch (_that) {
 case FetchProfileNumberIdProfileEventFetch():
-return fetchProfileNumberId(_that.numberId);case getProfileIdProfileEventGetProfileId():
-return getProfileId(_that.appId);case _:
+return fetchProfileNumberId(_that.numberId);case GetProfileByDeviceIdProfileEventGetProfileId():
+return getProfileByDeviceId(_that.deviceId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +165,11 @@ return getProfileId(_that.appId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String? numberId)?  fetchProfileNumberId,TResult? Function( String appId)?  getProfileId,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String? numberId)?  fetchProfileNumberId,TResult? Function( String deviceId)?  getProfileByDeviceId,}) {final _that = this;
 switch (_that) {
 case FetchProfileNumberIdProfileEventFetch() when fetchProfileNumberId != null:
-return fetchProfileNumberId(_that.numberId);case getProfileIdProfileEventGetProfileId() when getProfileId != null:
-return getProfileId(_that.appId);case _:
+return fetchProfileNumberId(_that.numberId);case GetProfileByDeviceIdProfileEventGetProfileId() when getProfileByDeviceId != null:
+return getProfileByDeviceId(_that.deviceId);case _:
   return null;
 
 }
@@ -246,43 +246,43 @@ as String?,
 /// @nodoc
 
 
-class getProfileIdProfileEventGetProfileId implements ProfileEvent {
-  const getProfileIdProfileEventGetProfileId(this.appId);
+class GetProfileByDeviceIdProfileEventGetProfileId implements ProfileEvent {
+  const GetProfileByDeviceIdProfileEventGetProfileId(this.deviceId);
   
 
- final  String appId;
+ final  String deviceId;
 
 /// Create a copy of ProfileEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$getProfileIdProfileEventGetProfileIdCopyWith<getProfileIdProfileEventGetProfileId> get copyWith => _$getProfileIdProfileEventGetProfileIdCopyWithImpl<getProfileIdProfileEventGetProfileId>(this, _$identity);
+$GetProfileByDeviceIdProfileEventGetProfileIdCopyWith<GetProfileByDeviceIdProfileEventGetProfileId> get copyWith => _$GetProfileByDeviceIdProfileEventGetProfileIdCopyWithImpl<GetProfileByDeviceIdProfileEventGetProfileId>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is getProfileIdProfileEventGetProfileId&&(identical(other.appId, appId) || other.appId == appId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetProfileByDeviceIdProfileEventGetProfileId&&(identical(other.deviceId, deviceId) || other.deviceId == deviceId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,appId);
+int get hashCode => Object.hash(runtimeType,deviceId);
 
 @override
 String toString() {
-  return 'ProfileEvent.getProfileId(appId: $appId)';
+  return 'ProfileEvent.getProfileByDeviceId(deviceId: $deviceId)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $getProfileIdProfileEventGetProfileIdCopyWith<$Res> implements $ProfileEventCopyWith<$Res> {
-  factory $getProfileIdProfileEventGetProfileIdCopyWith(getProfileIdProfileEventGetProfileId value, $Res Function(getProfileIdProfileEventGetProfileId) _then) = _$getProfileIdProfileEventGetProfileIdCopyWithImpl;
+abstract mixin class $GetProfileByDeviceIdProfileEventGetProfileIdCopyWith<$Res> implements $ProfileEventCopyWith<$Res> {
+  factory $GetProfileByDeviceIdProfileEventGetProfileIdCopyWith(GetProfileByDeviceIdProfileEventGetProfileId value, $Res Function(GetProfileByDeviceIdProfileEventGetProfileId) _then) = _$GetProfileByDeviceIdProfileEventGetProfileIdCopyWithImpl;
 @useResult
 $Res call({
- String appId
+ String deviceId
 });
 
 
@@ -290,18 +290,18 @@ $Res call({
 
 }
 /// @nodoc
-class _$getProfileIdProfileEventGetProfileIdCopyWithImpl<$Res>
-    implements $getProfileIdProfileEventGetProfileIdCopyWith<$Res> {
-  _$getProfileIdProfileEventGetProfileIdCopyWithImpl(this._self, this._then);
+class _$GetProfileByDeviceIdProfileEventGetProfileIdCopyWithImpl<$Res>
+    implements $GetProfileByDeviceIdProfileEventGetProfileIdCopyWith<$Res> {
+  _$GetProfileByDeviceIdProfileEventGetProfileIdCopyWithImpl(this._self, this._then);
 
-  final getProfileIdProfileEventGetProfileId _self;
-  final $Res Function(getProfileIdProfileEventGetProfileId) _then;
+  final GetProfileByDeviceIdProfileEventGetProfileId _self;
+  final $Res Function(GetProfileByDeviceIdProfileEventGetProfileId) _then;
 
 /// Create a copy of ProfileEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? appId = null,}) {
-  return _then(getProfileIdProfileEventGetProfileId(
-null == appId ? _self.appId : appId // ignore: cast_nullable_to_non_nullable
+@pragma('vm:prefer-inline') $Res call({Object? deviceId = null,}) {
+  return _then(GetProfileByDeviceIdProfileEventGetProfileId(
+null == deviceId ? _self.deviceId : deviceId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

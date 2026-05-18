@@ -28,8 +28,9 @@ import 'package:grace_church/feature/home/page/bloc/notification/event/notificat
 import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart';
 
 class OverviewScreen extends StatefulWidget {
-  const OverviewScreen({super.key,  this.menberId = ''});
+  const OverviewScreen({super.key,  this.menberId = '', this.isFormImpliciteConnexion = false});
   final String menberId;
+  final bool isFormImpliciteConnexion;
 
   @override
   State<OverviewScreen> createState() => _OverviewScreenState();
@@ -42,26 +43,33 @@ class _OverviewScreenState extends State<OverviewScreen> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        if(widget.isFormImpliciteConnexion)...[
+           BlocProvider(
           create: (context) =>
               GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
-                ..add(ProfileEvent.fetchProfileNumberId(widget.menberId.isNotEmpty ? widget.menberId : '')),
+                ..add(ProfileEvent.fetchProfileNumberId(widget.menberId)),
         ),
-        BlocProvider.value(value: ConnexionImpliciteBloc(
+         BlocProvider.value(value: ConnexionImpliciteBloc(
           getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
         )),
+        
+       
         BlocProvider(
+          create: (context) =>
+              CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
+                ..add(CelluleEvent.fetch()),
+        ),
+
+        ],
+         BlocProvider(
           create: (context) => NotificationBloc(
             getListNotificationUsercase: getIt<GetListNotificationUsercase>(),
             getListNotificationByCriteriaUsercase:
                 getIt<GetListNotificationByCriteriaUsercase>(),
           )..add(NotificationEvent.fetch()),
         ),
-        BlocProvider(
-          create: (context) =>
-              CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
-                ..add(CelluleEvent.fetch()),
-        ),
+       
+       
       ],
       child: MultiBlocListener(
         listeners: [
@@ -69,11 +77,6 @@ class _OverviewScreenState extends State<OverviewScreen> {
             listener: (context, profileState) async{
               if (profileState is FailedState<ProfileResponse>) {
                 AppAlert.showInfo(context, profileState.message.getOrEmpty());
-              }
-              if(profileState is SuccessState<ProfileResponse>){
-                    final shared = await SharedPreferences.getInstance();
-                    await shared.setString('menberkey', profileState.data.menberId);
-                
               }
             },
           ),
@@ -89,9 +92,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
               BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
                 builder: (context, stateProfile) {
                   if(stateProfile is SuccessState<ProfileResponse>){
-                    return      BlocBuilder< NotificationBloc,ApiState<List<NotificationResponse>>>(
+                    return BlocBuilder< NotificationBloc,ApiState<List<NotificationResponse>>>(
                     builder: (context, notificationState) {
-                      log("::::::::-------->> $notificationState");
+                      log("<<<:::::-----------_>> ${notificationState}");
                       if (notificationState
                           is SuccessState<List<NotificationResponse>>) {
                            notificationState.data.forEach((element) {

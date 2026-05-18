@@ -5,8 +5,8 @@ part 'profile_event.freezed.dart';
 abstract class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.fetchProfileNumberId(String? numberId) =
       FetchProfileNumberIdProfileEventFetch;
-  const factory ProfileEvent.getProfileId(String appId) =
-      getProfileIdProfileEventGetProfileId;
+  const factory ProfileEvent.getProfileByDeviceId(String deviceId) =
+      GetProfileByDeviceIdProfileEventGetProfileId;
 }
 
 

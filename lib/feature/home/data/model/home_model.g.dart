@@ -80,12 +80,9 @@ _NotificationResponseModel _$NotificationResponseModelFromJson(
   tag: json['tag'] as String?,
   date: json['date'] as String?,
   notificationId: json['notificationId'] as String?,
-  clicks: (json['clicks'] as List<dynamic>)
-      .map(
-        (e) =>
-            NotificationClickResponseModel.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
+  clicks: NotificationClickResponseModel.fromJson(
+    json['clicks'] as Map<String, dynamic>,
+  ),
 );
 
 Map<String, dynamic> _$NotificationResponseModelToJson(
@@ -102,8 +99,8 @@ Map<String, dynamic> _$NotificationResponseModelToJson(
 _NotificationClickResponseModel _$NotificationClickResponseModelFromJson(
   Map<String, dynamic> json,
 ) => _NotificationClickResponseModel(
-  menberId: json['menberId'] as String? ?? "",
-  vueAt: json['vueAt'] as String? ?? "",
+  menberId: json['menberId'] as String?,
+  vueAt: json['vueAt'] as String?,
 );
 
 Map<String, dynamic> _$NotificationClickResponseModelToJson(

@@ -112,41 +112,44 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           }
           return FirebaseError("Aucune notification trouvée");
 
-        case RequestNotification(date: final date) when date.isNotEmpty:
-          final snapshot = await db.child('notfications').get();
+        // case RequestNotification(date: final date) when date.isNotEmpty:
+        //   final snapshot = await db.child('notfications').get();
 
-          if (snapshot.exists) {
-            final data = snapshot.value as Map<dynamic, dynamic>;
-            final notifications = data.values
-                .map((e) {
-                  final notificationItem = convertMap(e as Map);
-                  return NotificationResponseModel.fromJson(notificationItem);
-                })
-                .where((e) => e.date?.contains(params.date) ?? false)
-                .toList();
-            // .toList();
-            return FirebaseSuccess(
-              notifications
-                  .map((e) => NotificationResponseModel.fromJson(e.toJson()))
-                  .toList(),
-            );
-          }
-          return FirebaseError("Aucune notification trouvée");
+        //   if (snapshot.exists) {
+        //     final data = snapshot.value as Map<dynamic, dynamic>;
+        //     final notifications = data.values
+        //         .map((e) {
+        //           final notificationItem = convertMap(e as Map);
+        //           return NotificationResponseModel.fromJson(notificationItem);
+        //         })
+        //         .where((e) => e.date?.contains(params.date) ?? false)
+        //         .toList();
+        //     // .toList();
+        //     return FirebaseSuccess(
+        //       notifications
+        //           .map((e) => NotificationResponseModel.fromJson(e.toJson()))
+        //           .toList(),
+        //     );
+        //   }
+        //   return FirebaseError("Aucune notification trouvée");
 
         default:
           final snapshot = await db.child('notfications').get();
           if (snapshot.exists) {
-            final data = snapshot.value as Map<dynamic, dynamic>;
-            final notifications = data.values.map((e) {
-              final notificationItem = convertMap(e as Map);
-              return NotificationResponseModel.fromJson(notificationItem);
-            }).toList();
-            return FirebaseSuccess(
-              notifications
-                  .map((e) => NotificationResponseModel.fromJson(e.toJson()))
-                  .toList(),
-            );
-          }
+  final data = snapshot.value as Map<dynamic, dynamic>;
+
+  final notifications = data.values.expand((e) {
+    final notificationItems = parseImages(e as Map);
+
+    return notificationItems.map(
+      (item) => NotificationResponseModel.fromJson(
+        Map<String, dynamic>.from(item),
+      ),
+    );
+  }).toList();
+
+  return FirebaseSuccess(notifications);
+}
           return FirebaseError("Aucune notification trouvée");
       }
       return FirebaseError("Aucune notification trouvée");
@@ -504,6 +507,20 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   }
 }
 
+List<Map<String, dynamic>> parseImages(dynamic data) {
+  if (data == null) return [];
+
+  if (data is List) {
+    return data.map((e) => e as Map<String, dynamic>).toList();
+  }
+
+  if (data is Map) {
+    return data.values.map((e) => e as Map<String, dynamic>).toList();
+  }
+
+  return [];
+}
+
 Map<String, dynamic> convertMap(Map data) {
   return data.map((key, value) {
     if (value is Map) {
@@ -515,6 +532,7 @@ Map<String, dynamic> convertMap(Map data) {
           if (e is Map) {
             return convertMap(e);
           }
+          log("``````` ${e}");
           return e;
         }).toList(),
         

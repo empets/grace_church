@@ -52,9 +52,7 @@ abstract class NotificationResponse with _$NotificationResponse {
     required String tag,
     required String date,
      required String notificationId,
-     required List<NotificationClickResponse> clicks,
-    // required String menberId,
-    // required String vueAt,
+     required NotificationClickResponse clicks,
   }) = _NotificationResponse;
   factory NotificationResponse.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseFromJson(json);

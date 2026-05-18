@@ -78,9 +78,9 @@ _NotificationResponse _$NotificationResponseFromJson(
   tag: json['tag'] as String,
   date: json['date'] as String,
   notificationId: json['notificationId'] as String,
-  clicks: (json['clicks'] as List<dynamic>)
-      .map((e) => NotificationClickResponse.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  clicks: NotificationClickResponse.fromJson(
+    json['clicks'] as Map<String, dynamic>,
+  ),
 );
 
 Map<String, dynamic> _$NotificationResponseToJson(
