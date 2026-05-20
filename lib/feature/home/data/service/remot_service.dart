@@ -532,18 +532,19 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
        
 
 
-        final notifications = await db
-              .child('notfications/${params.notificationId}')
-              .orderByChild('notificationId')
-              .equalTo(params.notificationId)
-              .get();
+        // final notifications = await db
+        //       .child('notfications/${params.notificationId}')
+        //       .orderByChild('notificationId')
+        //       .equalTo(params.notificationId)
             
-            if (notifications.exists) {
-               await db
-            .child('notfications/${params.notificationId}/clicks/${params.menberId}')
-            .update(updates);
+        //       .get();
+            
+        //     if (notifications.exists) {
+        //        await db
+        //     .child('notfications/${params.notificationId}/clicks/${params.menberId}')
+        //     .update(updates);
               
-            }
+        //     }
 
         
 
