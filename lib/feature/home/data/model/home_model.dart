@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
@@ -82,12 +84,12 @@ abstract class ProfileResponseModel with _$ProfileResponseModel {
 @freezed
 abstract class NotificationResponseModel with _$NotificationResponseModel {
   factory NotificationResponseModel({
-    required String? title,
-    required String? description,
-    required String? tag,
-    required String? date,
-    required String? notificationId,
-    required NotificationClickResponseModel clicks,
+    @Default('') String title,
+    @Default('') String description,
+    @Default('') String tag,
+    @Default('') String date,
+    @Default('') String notificationId,
+    @Default([]) List<NotificationClickResponseModel> clicks,  
   }) = _NotificationResponseModel;
   factory NotificationResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseModelFromJson(json);
@@ -99,7 +101,7 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
       tag: model.tag.getOrEmpty(),
       date: model.date.getOrEmpty(),
       notificationId: model.notificationId.getOrEmpty(),
-      clicks: NotificationClickResponseModel.toDomaine(model.clicks),
+      clicks: model.clicks.map( NotificationClickResponseModel.toDomaine).toList(),
     );
   }
 }
@@ -108,8 +110,8 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
 @freezed
 abstract class NotificationClickResponseModel with _$NotificationClickResponseModel {
   factory NotificationClickResponseModel({
-   required String? menberId,
-   required String? vueAt,
+    String? menberId,
+    String? vueAt,
   }) = _NotificationClickResponseModel;
   factory NotificationClickResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationClickResponseModelFromJson(json);

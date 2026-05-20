@@ -75,14 +75,20 @@ Map<String, dynamic> _$ProfileResponseModelToJson(
 _NotificationResponseModel _$NotificationResponseModelFromJson(
   Map<String, dynamic> json,
 ) => _NotificationResponseModel(
-  title: json['title'] as String?,
-  description: json['description'] as String?,
-  tag: json['tag'] as String?,
-  date: json['date'] as String?,
-  notificationId: json['notificationId'] as String?,
-  clicks: NotificationClickResponseModel.fromJson(
-    json['clicks'] as Map<String, dynamic>,
-  ),
+  title: json['title'] as String? ?? '',
+  description: json['description'] as String? ?? '',
+  tag: json['tag'] as String? ?? '',
+  date: json['date'] as String? ?? '',
+  notificationId: json['notificationId'] as String? ?? '',
+  clicks:
+      (json['clicks'] as List<dynamic>?)
+          ?.map(
+            (e) => NotificationClickResponseModel.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList() ??
+      const [],
 );
 
 Map<String, dynamic> _$NotificationResponseModelToJson(

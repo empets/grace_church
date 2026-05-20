@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_usercase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -13,6 +12,7 @@ import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_notification_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_profile_usercase.dart';
@@ -61,6 +61,28 @@ class _OverviewScreenState extends State<OverviewScreen> {
         ),
 
         ],
+            if(!widget.isFormImpliciteConnexion)...[
+           BlocProvider(
+          create: (context) =>
+              GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
+                ..add(ProfileEvent.fetchProfileNumberId(widget.menberId)),
+        ),
+         BlocProvider.value(value: ConnexionImpliciteBloc(
+          getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
+        )),
+         BlocProvider(
+          create: (context) =>
+              CelluleBloc(getCelluleUsercase: getIt<GetCelluleUsercase>())
+                ..add(CelluleEvent.fetch()),
+        ),
+        
+       
+      
+
+        ],
+
+
+
          BlocProvider(
           create: (context) => NotificationBloc(
             getListNotificationUsercase: getIt<GetListNotificationUsercase>(),
@@ -80,6 +102,13 @@ class _OverviewScreenState extends State<OverviewScreen> {
               }
             },
           ),
+            BlocListener<NotificationBloc, ApiState<List<NotificationResponse>>>(
+            listener: (context, notificationState) async{
+              if (notificationState is FailedState<List<NotificationResponse>>) {
+                AppAlert.showInfo(context, notificationState.message.getOrEmpty());
+              }
+            },
+          ),
         ],
         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
           builder: (context, state) {
@@ -94,11 +123,17 @@ class _OverviewScreenState extends State<OverviewScreen> {
                   if(stateProfile is SuccessState<ProfileResponse>){
                     return BlocBuilder< NotificationBloc,ApiState<List<NotificationResponse>>>(
                     builder: (context, notificationState) {
-                      log("<<<:::::-----------_>> ${notificationState}");
+                  
                       if (notificationState
                           is SuccessState<List<NotificationResponse>>) {
-                           notificationState.data.forEach((element) {
-                           });
+
+                          final filteredNotifications = notificationState.data.where((notification) {
+                            return notification.clicks.every((click) => click.menberId != stateProfile.data.menberId);
+                          }).toList();
+                          
+                        
+                            
+ 
                         return Container(
                           margin: EdgeInsets.only(bottom: 10.h),
                           child: FloatingActionButton(
@@ -116,9 +151,9 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                 Icons.notifications_active,
                                 color: Colors.white,
                               ),
-                              backgroundColor: Colors.transparent,
+                              backgroundColor: filteredNotifications.length > 0 ? Colors.red : Colors.transparent,
                               label: Text(
-                                '',
+                                filteredNotifications.length > 0 ? filteredNotifications.length.toString() : '',
                                 style: context.appTypographie.body.copyWith(
                                   color: Colors.white,
                                   fontSize: 10.sp,
@@ -129,6 +164,8 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           ),
                         );
                       } else {
+
+                           
                         return Container();
                       }
                     },

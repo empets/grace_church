@@ -41,21 +41,31 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   ) async {
     try {
       final snapshot = await db.child('notfications').get();
-      if (snapshot.exists) {
-        final data = snapshot.value as Map<dynamic, dynamic>;
-        final notifications = data.values.map((e) {
-          final notificationItem = Map<String, dynamic>.from(e);
+      log('------snapshot: ${snapshot.value}');
 
-          return NotificationResponseModel.fromJson(notificationItem);
+      if (snapshot.exists) {
+        final notifications = snapshot.value as Map<dynamic, dynamic>;
+
+        final parsedNotifications = notifications.values.map((e) {
+          final parsed = parseFirebaseMap(e);
+          // ✅ clicks est un Map de Maps => convertir en List manuellement
+          if (parsed['clicks'] is Map<String, dynamic>) {
+            parsed['clicks'] = (parsed['clicks'] as Map<String, dynamic>).values
+                .map((click) => Map<String, dynamic>.from(click as Map))
+                .toList();
+          } else {
+            parsed['clicks'] = <Map<String, dynamic>>[];
+          }
+
+          log('------clicks final: ${parsed['clicks']}');
+          return NotificationResponseModel.fromJson(parsed);
         }).toList();
-        return FirebaseSuccess(
-          notifications
-              .map((e) => NotificationResponseModel.fromJson(e.toJson()))
-              .toList(),
-        );
+        return FirebaseSuccess(parsedNotifications);
       }
+
       return FirebaseError("Aucune notification trouvée");
     } catch (e) {
+      log('------error: $e');
       return FirebaseError(e.toString());
     }
   }
@@ -67,6 +77,8 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       switch (params) {
         case RequestNotification(title: final title) when title.isNotEmpty:
           final snapshot = await db.child('notfications').get();
+          log('e<<<: ${snapshot.value}');
+
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
             final notifications = data.values;
@@ -76,14 +88,20 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
                     final notificationItem = convertMap(e as Map);
                     return NotificationResponseModel.fromJson(notificationItem);
                   })
-                  .where((e) => e.title?.trim().toLowerCase().contains(params.title.toLowerCase()) ?? false)
+                  .where(
+                    (e) =>
+                        e.title?.trim().toLowerCase().contains(
+                          params.title.toLowerCase(),
+                        ) ??
+                        false,
+                  )
                   .toList();
-                 
+
               // .toList();
               return FirebaseSuccess(
                 notifications
                     .map((e) => NotificationResponseModel.fromJson(e.toJson()))
-                    .toList() ,
+                    .toList(),
               );
             }
             return FirebaseSuccess([]);
@@ -95,6 +113,8 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
               .orderByChild('tag')
               .equalTo(params.tag)
               .get();
+          log('e<<<: ${snapshot.value}');
+
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
             if (data.values.isNotEmpty) {
@@ -135,21 +155,22 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
         default:
           final snapshot = await db.child('notfications').get();
+          log('e<<<: ${snapshot.value}');
           if (snapshot.exists) {
-  final data = snapshot.value as Map<dynamic, dynamic>;
+            final data = snapshot.value as Map<dynamic, dynamic>;
 
-  final notifications = data.values.expand((e) {
-    final notificationItems = parseImages(e as Map);
+            final notifications = data.values.expand((e) {
+              final notificationItems = parseImages(e as Map);
 
-    return notificationItems.map(
-      (item) => NotificationResponseModel.fromJson(
-        Map<String, dynamic>.from(item),
-      ),
-    );
-  }).toList();
+              return notificationItems.map(
+                (item) => NotificationResponseModel.fromJson(
+                  Map<String, dynamic>.from(item),
+                ),
+              );
+            }).toList();
 
-  return FirebaseSuccess(notifications);
-}
+            return FirebaseSuccess(notifications);
+          }
           return FirebaseError("Aucune notification trouvée");
       }
       return FirebaseError("Aucune notification trouvée");
@@ -479,33 +500,83 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError(e.toString());
     }
   }
-  
-  @override
-  Future<FirebaseResult<String>> readNotification(RequestReadNotification params) async {
-    try {
-      final doc = await db.child('notfications/${params.notificationId}/clicks/${params.menberId}').get();
 
-      if(doc.exists) {
-        return FirebaseError('Notification déjà lu');
-      }
-      else {
+  @override
+  Future<FirebaseResult<String>> readNotification(
+    RequestReadNotification params,
+  ) async {
+    log('readNotification: ${params.toJson()}');
+    try {
+      final doc = await db
+          .child(
+            'notfications/${params.notificationId}/clicks/${params.menberId}',
+          )
+          .get();
+
+      if (doc.exists) {
         final Map<String, dynamic> updates = {
-          ...params.toJson(), // nouveaux champs simples
+          ...params.toJson(),
           'serviceLibelle': '',
-        
         };
         // 2) Créer une nouvelle entrée
-        await db.child('notfications/${params.notificationId}/clicks/${params.menberId}').update(updates);
+        await db
+            .child('notfications/${params.notificationId}/clicks/${params.menberId}')
+            .set(updates);
+        return FirebaseError('Notification déjà lu');
+      } else {
+        final Map<String, dynamic> updates = {
+          ...params.toJson(),
+          'serviceLibelle': '',
+        };
+        // 2) Créer une nouvelle entrée
+       
+
+
+        final notifications = await db
+              .child('notfications/${params.notificationId}')
+              .orderByChild('notificationId')
+              .equalTo(params.notificationId)
+              .get();
+            
+            if (notifications.exists) {
+               await db
+            .child('notfications/${params.notificationId}/clicks/${params.menberId}')
+            .update(updates);
+              
+            }
+
+        
+
+
+
 
         // 4) Retourner le key généré
         return FirebaseSuccess(params.menberId);
-
       }
     } catch (e) {
       return FirebaseError(e.toString());
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 List<Map<String, dynamic>> parseImages(dynamic data) {
   if (data == null) return [];
@@ -535,10 +606,51 @@ Map<String, dynamic> convertMap(Map data) {
           log("``````` ${e}");
           return e;
         }).toList(),
-        
       );
     }
 
     return MapEntry(key.toString(), value);
   });
+}
+
+Map<String, dynamic> convertMapToNotificationClick(Map data) {
+  return data.map((key, value) {
+    if (value is Map) {
+      return MapEntry(key.toString(), convertMapToNotificationClick(value));
+    } else if (value is List) {
+      return MapEntry(
+        key.toString(),
+        value.map((e) {
+          if (e is Map) {
+            return convertMapToNotificationClick(e);
+          }
+
+          return e;
+        }).toList(),
+      );
+    }
+    if (value == null) {
+      return MapEntry(key.toString(), {});
+    }
+
+    return MapEntry(key.toString(), value);
+  });
+}
+
+Map<String, dynamic> parseFirebaseMap(dynamic raw) {
+  if (raw == null || raw is! Map) return {};
+
+  final map = Map<String, dynamic>.from(raw);
+
+  map.forEach((key, value) {
+    if (value is Map) {
+      map[key] = parseFirebaseMap(value);
+    } else if (value is List) {
+      map[key] = value
+          .map((item) => item is Map ? parseFirebaseMap(item) : item)
+          .toList();
+    }
+  });
+
+  return map; // ✅ ne touche plus clicks ici
 }

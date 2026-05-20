@@ -139,8 +139,7 @@ class MenuView extends StatelessWidget {
                                     padding: EdgeInsets.all(5.r),
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                        color:
-                                            context.appColor.primaryLightBlue,
+                                        color: context.appColor.primaryLightBlue,
                                       ),
                                       shape: BoxShape.circle,
                                     ),

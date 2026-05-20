@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
@@ -28,12 +30,17 @@ class NotificationBloc
         final result = await getListNotificationUsercase.call(EmptyRequest());
         emit(
           result.fold(
-            (failure) =>
-                ApiState<List<NotificationResponse>>.failed(failure.message),
-            (success) => ApiState<List<NotificationResponse>>.success(
+            (failure) {
+              log("NOTIFICATION 1.1 <<<:::::-----------_>> ${failure}");
+              return ApiState<List<NotificationResponse>>.failed(failure.message);
+            },
+            (success) {
+              log("NOTIFICATION 1.2 <<<:::::-----------_>> ${success}");
+              return ApiState<List<NotificationResponse>>.success(
               success,
               status: FormzSubmissionStatus.success,
-            ),
+            );
+            },
           ),
         );
 

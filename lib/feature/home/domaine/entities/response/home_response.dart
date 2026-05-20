@@ -51,8 +51,8 @@ abstract class NotificationResponse with _$NotificationResponse {
     required String description,
     required String tag,
     required String date,
-     required String notificationId,
-     required NotificationClickResponse clicks,
+    required String notificationId,
+    required List<NotificationClickResponse> clicks,
   }) = _NotificationResponse;
   factory NotificationResponse.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseFromJson(json);

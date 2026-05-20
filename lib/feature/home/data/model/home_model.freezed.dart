@@ -359,7 +359,7 @@ as String?,
 /// @nodoc
 mixin _$NotificationResponseModel {
 
- String? get title; String? get description; String? get tag; String? get date; String? get notificationId; NotificationClickResponseModel get clicks;
+ String get title; String get description; String get tag; String get date; String get notificationId; List<NotificationClickResponseModel> get clicks;
 /// Create a copy of NotificationResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -372,12 +372,12 @@ $NotificationResponseModelCopyWith<NotificationResponseModel> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationResponseModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.clicks, clicks) || other.clicks == clicks));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NotificationResponseModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&const DeepCollectionEquality().equals(other.clicks, clicks));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,clicks);
+int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,const DeepCollectionEquality().hash(clicks));
 
 @override
 String toString() {
@@ -392,11 +392,11 @@ abstract mixin class $NotificationResponseModelCopyWith<$Res>  {
   factory $NotificationResponseModelCopyWith(NotificationResponseModel value, $Res Function(NotificationResponseModel) _then) = _$NotificationResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String? title, String? description, String? tag, String? date, String? notificationId, NotificationClickResponseModel clicks
+ String title, String description, String tag, String date, String notificationId, List<NotificationClickResponseModel> clicks
 });
 
 
-$NotificationClickResponseModelCopyWith<$Res> get clicks;
+
 
 }
 /// @nodoc
@@ -409,27 +409,18 @@ class _$NotificationResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of NotificationResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? tag = freezed,Object? date = freezed,Object? notificationId = freezed,Object? clicks = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? description = null,Object? tag = null,Object? date = null,Object? notificationId = null,Object? clicks = null,}) {
   return _then(_self.copyWith(
-title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,tag: freezed == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
-as String?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as String?,notificationId: freezed == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
-as String?,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
-as NotificationClickResponseModel,
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
+as String,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
+as List<NotificationClickResponseModel>,
   ));
 }
-/// Create a copy of NotificationResponseModel
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$NotificationClickResponseModelCopyWith<$Res> get clicks {
-  
-  return $NotificationClickResponseModelCopyWith<$Res>(_self.clicks, (value) {
-    return _then(_self.copyWith(clicks: value));
-  });
-}
+
 }
 
 
@@ -511,7 +502,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? description,  String? tag,  String? date,  String? notificationId,  NotificationClickResponseModel clicks)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date,  String notificationId,  List<NotificationClickResponseModel> clicks)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NotificationResponseModel() when $default != null:
 return $default(_that.title,_that.description,_that.tag,_that.date,_that.notificationId,_that.clicks);case _:
@@ -532,7 +523,7 @@ return $default(_that.title,_that.description,_that.tag,_that.date,_that.notific
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? description,  String? tag,  String? date,  String? notificationId,  NotificationClickResponseModel clicks)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String description,  String tag,  String date,  String notificationId,  List<NotificationClickResponseModel> clicks)  $default,) {final _that = this;
 switch (_that) {
 case _NotificationResponseModel():
 return $default(_that.title,_that.description,_that.tag,_that.date,_that.notificationId,_that.clicks);case _:
@@ -552,7 +543,7 @@ return $default(_that.title,_that.description,_that.tag,_that.date,_that.notific
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? description,  String? tag,  String? date,  String? notificationId,  NotificationClickResponseModel clicks)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String description,  String tag,  String date,  String notificationId,  List<NotificationClickResponseModel> clicks)?  $default,) {final _that = this;
 switch (_that) {
 case _NotificationResponseModel() when $default != null:
 return $default(_that.title,_that.description,_that.tag,_that.date,_that.notificationId,_that.clicks);case _:
@@ -567,15 +558,21 @@ return $default(_that.title,_that.description,_that.tag,_that.date,_that.notific
 @JsonSerializable()
 
 class _NotificationResponseModel implements NotificationResponseModel {
-   _NotificationResponseModel({required this.title, required this.description, required this.tag, required this.date, required this.notificationId, required this.clicks});
+   _NotificationResponseModel({this.title = '', this.description = '', this.tag = '', this.date = '', this.notificationId = '', final  List<NotificationClickResponseModel> clicks = const []}): _clicks = clicks;
   factory _NotificationResponseModel.fromJson(Map<String, dynamic> json) => _$NotificationResponseModelFromJson(json);
 
-@override final  String? title;
-@override final  String? description;
-@override final  String? tag;
-@override final  String? date;
-@override final  String? notificationId;
-@override final  NotificationClickResponseModel clicks;
+@override@JsonKey() final  String title;
+@override@JsonKey() final  String description;
+@override@JsonKey() final  String tag;
+@override@JsonKey() final  String date;
+@override@JsonKey() final  String notificationId;
+ final  List<NotificationClickResponseModel> _clicks;
+@override@JsonKey() List<NotificationClickResponseModel> get clicks {
+  if (_clicks is EqualUnmodifiableListView) return _clicks;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_clicks);
+}
+
 
 /// Create a copy of NotificationResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -590,12 +587,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationResponseModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&(identical(other.clicks, clicks) || other.clicks == clicks));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NotificationResponseModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.date, date) || other.date == date)&&(identical(other.notificationId, notificationId) || other.notificationId == notificationId)&&const DeepCollectionEquality().equals(other._clicks, _clicks));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,clicks);
+int get hashCode => Object.hash(runtimeType,title,description,tag,date,notificationId,const DeepCollectionEquality().hash(_clicks));
 
 @override
 String toString() {
@@ -610,11 +607,11 @@ abstract mixin class _$NotificationResponseModelCopyWith<$Res> implements $Notif
   factory _$NotificationResponseModelCopyWith(_NotificationResponseModel value, $Res Function(_NotificationResponseModel) _then) = __$NotificationResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? title, String? description, String? tag, String? date, String? notificationId, NotificationClickResponseModel clicks
+ String title, String description, String tag, String date, String notificationId, List<NotificationClickResponseModel> clicks
 });
 
 
-@override $NotificationClickResponseModelCopyWith<$Res> get clicks;
+
 
 }
 /// @nodoc
@@ -627,28 +624,19 @@ class __$NotificationResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of NotificationResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? description = freezed,Object? tag = freezed,Object? date = freezed,Object? notificationId = freezed,Object? clicks = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? description = null,Object? tag = null,Object? date = null,Object? notificationId = null,Object? clicks = null,}) {
   return _then(_NotificationResponseModel(
-title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String?,tag: freezed == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
-as String?,date: freezed == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
-as String?,notificationId: freezed == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
-as String?,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
-as NotificationClickResponseModel,
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as String,notificationId: null == notificationId ? _self.notificationId : notificationId // ignore: cast_nullable_to_non_nullable
+as String,clicks: null == clicks ? _self._clicks : clicks // ignore: cast_nullable_to_non_nullable
+as List<NotificationClickResponseModel>,
   ));
 }
 
-/// Create a copy of NotificationResponseModel
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$NotificationClickResponseModelCopyWith<$Res> get clicks {
-  
-  return $NotificationClickResponseModelCopyWith<$Res>(_self.clicks, (value) {
-    return _then(_self.copyWith(clicks: value));
-  });
-}
+
 }
 
 
@@ -850,7 +838,7 @@ return $default(_that.menberId,_that.vueAt);case _:
 @JsonSerializable()
 
 class _NotificationClickResponseModel implements NotificationClickResponseModel {
-   _NotificationClickResponseModel({required this.menberId, required this.vueAt});
+   _NotificationClickResponseModel({this.menberId, this.vueAt});
   factory _NotificationClickResponseModel.fromJson(Map<String, dynamic> json) => _$NotificationClickResponseModelFromJson(json);
 
 @override final  String? menberId;
