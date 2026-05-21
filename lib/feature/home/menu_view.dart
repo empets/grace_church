@@ -33,7 +33,7 @@ import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart
 import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
-import 'package:grace_church/feature/home/notification_view.dart';
+import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_cellue_bloc.dart';
@@ -82,6 +82,12 @@ class MenuView extends StatelessWidget {
         "icon": Icons.person,
         "visible": true,
         "value": "profile",
+      },
+      {
+        "title": "Notification",
+        "icon": Icons.notifications,
+        "visible": true,
+        "value": "notification",
       },
     ];
 
@@ -478,12 +484,12 @@ class MenuView extends StatelessWidget {
                                                         }
                                                       }
                                                       if (item["value"] ==
-                                                          "announcements") {
+                                                          "notification") {
                                                         Navigator.of(
                                                           context,
                                                         ).push(
                                                           fadeRoute(
-                                                            NotificationView(profileId: "",),
+                                                            NotificationView(profileId: profileState.data.menberId),
                                                           ),
                                                         );
                                                       }

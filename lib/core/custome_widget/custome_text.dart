@@ -39,7 +39,7 @@ class _ExpandableTextState extends State<ExpandableText> {
       children: [
         Text(
           widget.text,
-          maxLines: expanded ? null : 2,
+          maxLines: expanded ? null : 1,
           overflow: expanded ? TextOverflow.visible : TextOverflow.ellipsis,
           style: context.appTypographie.body.copyWith(
             color: context.appColor.primaryGrayDark,

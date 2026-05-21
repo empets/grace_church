@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/usercase/read_notification_usercase.dart';
@@ -15,13 +17,19 @@ class ReadNotificationBloc extends Bloc<NotificationReadEvent, ApiState<String>>
 
     switch (event) {
       case FetchNotificationReadEvent(:final menberId, :final notificationId):
+       
+       if(menberId.trim().isNotEmpty && notificationId.trim().isNotEmpty) {
+           emit(ApiState<String>.load());
 
-        emit(ApiState<String>.load());
+           log('notificationId: $notificationId');
      
        final response = await readNotificationUsercase(RequestReadNotification(menberId: menberId, notificationId: notificationId, vueAt: DateTime.now().toString()));
        
        emit(response.fold((l) => FailedState<String>(l.message), (r) => SuccessState<String>(r)));
    
+       }
+
+      
     }
     
   }

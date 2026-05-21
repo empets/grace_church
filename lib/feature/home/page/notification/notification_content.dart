@@ -1,111 +1,36 @@
 import 'dart:developer';
 
-import 'package:firebase_database/firebase_database.dart' as databaseReference;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
-
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
-import 'package:grace_church/core/custome_widget/form_filed.dart';
-import 'package:grace_church/core/data_process/request/request.dart';
-import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/core/injection/injection_container.dart';
-import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
-import 'package:grace_church/feature/home/domaine/usercase/get_list_notification_usercase.dart';
-import 'package:grace_church/feature/home/domaine/usercase/read_notification_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/event/notification_event.dart';
-import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart' show NotificationBloc;
 import 'package:grace_church/feature/home/page/bloc/notification/readnotification_bloc.dart';
 import 'package:grace_church/gen/assets.gen.dart';
+import 'package:intl/intl.dart';
 
-class NotificationView extends StatefulWidget {
-  const NotificationView({super.key, required this.profileId});
+class NotificationContent extends StatefulWidget {
+  const NotificationContent({super.key, required this.profileId});
   final String profileId;
 
   @override
-  State<NotificationView> createState() => _NotificationViewState();
+  State<NotificationContent> createState() => _NotificationContentState();
 }
 
-class _NotificationViewState extends State<NotificationView> {
-  Future<FirebaseResult<String>> sendNotifications(
-    RequestNotification params,
-  ) async {
-    try {
-      // 1) Construire l'objet Request
-      final request = Request<RequestNotification>(
-        data: params.toJson(),
-        user: "",
-        serviceLibelle: 'serviceLibelle',
-      );
-      // 2) Créer une nouvelle entré ou table
-      final ref = databaseReference.FirebaseDatabase.instance
-          .ref()
-          .child('notfications')
-          .push();
-      // 3) Sauvegarder dans Firebase (en convertissant en Map)
-      await ref.set(request.data);
+class _NotificationContentState extends State<NotificationContent> {
 
-      // 4) Mettre à jour la clé
-      await updateProfileKey(
-        RequestAuthenProfileUpdateZone(noticationId: ref.key.toString()),
-      );
-
-      return FirebaseSuccess(ref.key.toString());
-    } catch (e) {
-      log("🔥 Firebase Notification →→→→→→→→→ $e");
-      return FirebaseError(e.toString());
-    }
-  }
-
-  Future<FirebaseResult<String?>> updateProfileKey(
-    RequestAuthenProfileUpdateZone params,
-  ) async {
-    try {
-      final Map<String, dynamic> updates = {...params.toJson()};
-      // 2) Créer une nouvelle entrée
-      await databaseReference.FirebaseDatabase.instance
-          .ref()
-          .child('notfications/${params.noticationId}')
-          .update(updates);
-      // 4) Retourner le key généré
-      return FirebaseSuccess(params.noticationId);
-    } catch (e) {
-      log("🔥 Firebase Notification →→→→→→→→→ $e");
-      return FirebaseError(e.toString());
-    }
-  }
-
-  String formatDate(String date) {
+    late bool isRead = false;
+      String formatDate(String date) {
     DateTime dateTime = DateTime.parse(date);
     // String formattedDate = '${dateTime.day}/${dateTime.month}/${dateTime.year}';
     String formatted = DateFormat("d MMMM y 'à' H:mm", 'fr').format(dateTime);
     return formatted;
-  }
-
-  String formatTimeDifference(DateTime date) {
-    final now = DateTime.now();
-    final diff = now.difference(date);
-
-    if (diff.inSeconds < 60) {
-      return "À l'instant";
-    }
-    if (diff.inMinutes < 60) {
-      return "Il y a ${diff.inMinutes} min";
-    }
-    if (diff.inHours < 24) {
-      return "Il y a ${diff.inHours} h";
-    }
-    if (diff.inDays < 7) {
-      return "Il y a ${diff.inDays} jours";
-    }
-
-    return "Le ${date.day}/${date.month}/${date.year}";
   }
 
   @override
@@ -122,7 +47,6 @@ class _NotificationViewState extends State<NotificationView> {
           return Colors.grey;
       }
     }
-
     Color _getTagTextColor(String tag) {
       switch (tag.toLowerCase()) {
         case 'urgent':
@@ -136,214 +60,38 @@ class _NotificationViewState extends State<NotificationView> {
       }
     }
 
-    return MultiBlocProvider(
-        providers: [
-            BlocProvider(
-          create: (context) => NotificationBloc(
-            getListNotificationUsercase: getIt<GetListNotificationUsercase>(),
-            getListNotificationByCriteriaUsercase:
-                getIt<GetListNotificationByCriteriaUsercase>(),
-          )..add(NotificationEvent.fetch()),
-    
-        ),
-            BlocProvider(
-                create: (context) => ReadNotificationBloc(
-                  readNotificationUsercase: getIt<ReadNotificationUsercase>(),
-                ),
-            ),
-        ],
-              child: Scaffold(
-            backgroundColor: Colors.grey.shade50,
-            appBar: AppBar(
-            backgroundColor: Colors.grey.shade50,
-            leading: IconButton(
-              icon: SvgPicture.asset(assets.images.arrowBack.path),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
-            body: SafeArea(
-              bottom: true,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // GestureDetector(
-                      //   onTap: () async {
-                      //     await sendNotifications(
-                      //       RequestNotification(title: 'URGENT', tag: 'URGENT', date: DateTime.now().toString(), description: 'Ce dimanche, un culte spécial sera organisé. Venez nombreux pour un moment de louange, d’adoration et d’écoute de la parole de Dieu.'
-                             
-                      //       )
-                      //     );
-                      //     log("Notification sent");
-                      //   },
-                      //   child: Container(child: Text("Notifications")),
-                      // ),
-                      BlocBuilder<
-                        NotificationBloc,
-                        ApiState<List<NotificationResponse>>
-                      >(
-                        builder: (context, state) {
-                          return ProductionFormCustomer(
-                            letSpace: [],
-                            textLabel: "Rechercher une annonce",
-                            errorText: null,
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: context.appColor.primaryGray700,
-                            ),
-                            msgError: "",
-                            inputLabel: "",
-    
-                            onChanged: (value) {
-                              context.read<NotificationBloc>().add(
-                                NotificationEvent.fetchByTag(title: value),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                      SizedBox(height: 16.h),
-                      Row(
-                        children: [
-                          Expanded(
-                            child:
-                                BlocBuilder<
-                                  NotificationBloc,
-                                  ApiState<List<NotificationResponse>>
-                                >(
-                                  builder: (context, state) {
-                                    return ShareButton(
-                                      textToShare: "Tous",
-                                      label: "Tous",
-                                      colorText: Colors.white,
-                                      iconLeading: false,
-                                      iconColor: Colors.red,
-                                      backgroundColor: context.appColor.primaryBlue,
-                                      borderRadius: 20,
-                                      fontSize: 12.sp,
-                                      onPressed: () {
-                                        context.read<NotificationBloc>().add(
-                                          NotificationEvent.fetch(),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                          ),
-                          SizedBox(width: 2.w),
-                          Expanded(
-                            child:
-                                BlocBuilder<
-                                  NotificationBloc,
-                                  ApiState<List<NotificationResponse>>
-                                >(
-                                  builder: (context, state) {
-                                    return ShareButton(
-                                      textToShare: "Urgent",
-                                      label: "Urgent",
-                                      colorText: Colors.red,
-                                      leadingIcon: Icons.warning,
-                                      iconLeading: true,
-                                      iconColor: Colors.red,
-                                      borderSideColor: Colors.red,
-                                      backgroundColor: Colors.red.shade50,
-                                      borderRadius: 20,
-                                      fontSize: 12.sp,
-                                      onPressed: () {
-                                        context.read<NotificationBloc>().add(
-                                          NotificationEvent.fetchByTag(
-                                            tag: "urgent".toUpperCase(),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                          ),
-                          SizedBox(width: 2.w),
-                          Expanded(
-                            child:
-                                BlocBuilder<
-                                  NotificationBloc,
-                                  ApiState<List<NotificationResponse>>
-                                >(
-                                  builder: (context, state) {
-                                    return ShareButton(
-                                      textToShare: "Info",
-                                      label: "Info",
-                                      colorText: context.appColor.primaryBlue,
-                                      leadingIcon: Icons.info,
-                                      iconLeading: true,
-                                      iconColor: context.appColor.primaryBlue,
-                                      borderSideColor: context.appColor.primaryBlue,
-                                      backgroundColor: context.appColor.primaryBlue
-                                          .withValues(alpha: 0.1),
-                                      borderRadius: 20,
-                                      fontSize: 12.sp,
-                                      onPressed: () {
-                                        context.read<NotificationBloc>().add(
-                                          NotificationEvent.fetchByTag(
-                                            tag: "info".toUpperCase(),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                          ),
-                          SizedBox(width: 2.w),
-                          Expanded(
-                            child:
-                                BlocBuilder<
-                                  NotificationBloc,
-                                  ApiState<List<NotificationResponse>>
-                                >(
-                                  builder: (context, state) {
-                                    return ShareButton(
-                                      textToShare: "Rappel",
-                                      label: "Rappel",
-                                      colorText: context.appColor.primaryWarning,
-                                      leadingIcon:
-                                          Icons.access_time_filled_outlined,
-                                      iconLeading: true,
-                                      iconColor: context.appColor.primaryWarning,
-                                      borderSideColor:
-                                          context.appColor.primaryWarning,
-                                      backgroundColor: context
-                                          .appColor
-                                          .primaryWarning
-                                          .withValues(alpha: 0.1),
-                                      borderRadius: 20,
-                                      fontSize: 12.sp,
-                                      onPressed: () {
-                                        context.read<NotificationBloc>().add(
-                                          NotificationEvent.fetchByTag(
-                                            tag: "rappel".toUpperCase(),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16.h),
-    
-                      CustomeText(
-                        text: "ANNONCE RECENTES",
-                        style: context.appTypographie.button.copyWith(
-                          color: context.appColor.primaryGray700,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 16.h),
-    
+    String formatTimeDifference(DateTime date) {
+      final now = DateTime.now();
+      final diff = now.difference(date);
+
+      if (diff.inSeconds < 60) {
+        return "À l'instant";
+      }
+      if (diff.inMinutes < 60) {
+        return "Il y a ${diff.inMinutes} min";
+      }
+      if (diff.inHours < 24) {
+        return "Il y a ${diff.inHours} h";
+      }
+      if (diff.inDays < 7) {
+        return "Il y a ${diff.inDays} jours";
+      }
+
+      return "Le ${date.day}/${date.month}/${date.year}";
+    }
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 1.h),
+      height: 0.9.sh,
+      width: double.infinity,
+      child: Column(
+        children: [
+          // Text(
+          //   'Notification ',
+          //   style: context.appTypographie.body.copyWith(fontSize: 16.h),
+          // ),
+
+          
                       BlocBuilder<
                         NotificationBloc,
                         ApiState<List<NotificationResponse>>
@@ -395,7 +143,7 @@ class _NotificationViewState extends State<NotificationView> {
                           if (notificationState
                               is SuccessState<List<NotificationResponse>>) {
                             return Container(
-                              height: 0.6.sh,
+                              height: 0.8.sh,
                               child: ListView.builder(
                                 itemCount: notificationState.data.length,
                                 itemBuilder: (context, index) {
@@ -404,12 +152,18 @@ class _NotificationViewState extends State<NotificationView> {
                                   );
                                   final itemsNotification =
                                       notificationState.data[index];
-                                  return GestureDetector(
+
+                                   isRead = itemsNotification.clicks.any((element) => element.menberId == widget.profileId);
+
+                                         final readElement = itemsNotification.clicks.where((element) => element.menberId == widget.profileId).map((element) => element).firstOrNull;
+
+                                    if (readElement != null) {
+                                          return GestureDetector(
                                     onTap: () {
                                       context.read<ReadNotificationBloc>().add(
                                         NotificationReadEvent.fetch(
-                                          menberId: widget.profileId,
-                                          notificationId: itemsNotification.notificationId,
+                                          menberId: widget.profileId.trim(),
+                                          notificationId: itemsNotification.notificationId.trim()
                                         ),
                                       );
                                     },
@@ -420,7 +174,7 @@ class _NotificationViewState extends State<NotificationView> {
                                         horizontal: 8.w,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: !isRead?  Colors.white : Colors.grey.shade200,
                                         borderRadius: BorderRadius.circular(12.r),
                                         boxShadow: [
                                           BoxShadow(
@@ -532,7 +286,21 @@ class _NotificationViewState extends State<NotificationView> {
                                       ),
                                     ),
                                   );
-                                },
+                               
+                                         }  
+                                   
+
+
+                                  
+
+
+
+
+
+
+
+
+                                  return SizedBox(); },
                               ),
                             );
                           } else {
@@ -582,12 +350,9 @@ class _NotificationViewState extends State<NotificationView> {
                           }
                         },
                       ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+
+        ],
+      ),
     );
   }
 }
