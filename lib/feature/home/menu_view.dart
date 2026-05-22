@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart' as gt;
+import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -33,7 +34,6 @@ import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart
 import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
-import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_cellue_bloc.dart';
@@ -44,6 +44,7 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/r
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
+import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
 
 // ignore: must_be_immutable
@@ -89,6 +90,12 @@ class MenuView extends StatelessWidget {
         "visible": true,
         "value": "notification",
       },
+       {
+        "title": "History rapport",
+        "icon": Icons.history_rounded,
+        "visible": true,
+        "value": "history_rapport",
+      },
     ];
 
     return MultiBlocProvider(
@@ -114,8 +121,10 @@ class MenuView extends StatelessWidget {
         top: false,
         bottom: true,
         child: Drawer(
+          
           child: Container(
             color: Colors.grey.shade50,
+            width: 0.5.sw,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -492,6 +501,16 @@ class MenuView extends StatelessWidget {
                                                             NotificationView(profileId: profileState.data.menberId),
                                                           ),
                                                         );
+                                                      }
+                                                      if (item['value'] == 'history_rapport') {
+                                                         Navigator.of(
+                                                          context,
+                                                        ).push(
+                                                          fadeRoute(
+                                                            HistoryRapportView(profileId: profileState.data.menberId),
+                                                          ),
+                                                        );
+                                                        
                                                       }
                                                     },
                                                   );

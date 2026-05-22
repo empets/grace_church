@@ -6,6 +6,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:intl/intl.dart';
 
 import 'package:grace_church/core/data_process/success.dart';
@@ -467,4 +468,69 @@ Future<String> getDeviceFingerprint() async {
   final bytes = utf8.encode(raw);
   final hash = sha256.convert(bytes);
   return hash.toString(); // ex: "a3f1c8d2..."
+}
+
+
+
+   // 20 mars 2025 à 14:30
+  String formatDate(String date) {
+    DateTime dateTime = DateTime.parse(date);
+    String formatted = DateFormat("d MMMM y 'à' HH:mm" , 'fr').format(dateTime);
+    return formatted;
+  }
+   // il y a 1 minute, 2 heures, 3 jours, etc.
+   String formatTimeDifference(DateTime date) {
+    final now = DateTime.now();
+    final diff = now.difference(date);
+
+    if (diff.inSeconds < 60) {
+      return "À l'instant";
+    }
+    if (diff.inMinutes < 60) {
+      return "Il y a ${diff.inMinutes} min";
+    }
+    if (diff.inHours < 24) {
+      return "Il y a ${diff.inHours} h";
+    }
+    if (diff.inDays < 7) {
+      return "Il y a ${diff.inDays} jours";
+    }
+
+    return "Le ${date.day}/${date.month}/${date.year}";
+  }
+
+  // permet de donner la couleur a une bordure du tag selon le type 
+  Color getTagTextColor({required BuildContext context, required String tag}) {
+      switch (tag.toLowerCase()) {
+        case 'urgent':
+          return Colors.red;
+        case 'rappel':
+          return context.appColor.primaryWarning;
+        case 'info':
+          return context.appColor.primaryBlue;
+        default:
+          return Colors.grey;
+      }
+    }
+  
+  // permet de donner la couleur de fond du tag selon le type 
+      Color getTagBackgroundColor({required BuildContext context, required String tag}) {
+      switch (tag.toLowerCase()) {
+        case 'urgent':
+          return Colors.red.shade50;
+        case 'rappel':
+          return context.appColor.primaryWarning.withValues(alpha: 0.1);
+        case 'info':
+          return context.appColor.primaryBlue.withValues(alpha: 0.1);
+        default:
+          return Colors.grey;
+      }
+    }
+
+// remplce tout les 00: et .00 par rien
+String cleanValue(String value) {
+  return value
+      .replaceAll('00:', '')
+      .replaceAll('.00', '')
+      .trim();
 }

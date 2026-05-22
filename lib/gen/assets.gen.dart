@@ -92,6 +92,10 @@ class $AssetsImagesGen {
   SvgGenImage get problemeRequest =>
       const SvgGenImage('assets/images/probleme_request.svg');
 
+  /// File path: assets/images/rapport_empty.svg
+  SvgGenImage get rapportEmpty =>
+      const SvgGenImage('assets/images/rapport_empty.svg');
+
   /// File path: assets/images/scan_box.png
   AssetGenImage get scanBox =>
       const AssetGenImage('assets/images/scan_box.png');
@@ -120,6 +124,7 @@ class $AssetsImagesGen {
     oo,
     pic,
     problemeRequest,
+    rapportEmpty,
     scanBox,
     waitReclamation,
   ];

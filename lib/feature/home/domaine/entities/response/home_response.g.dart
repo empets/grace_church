@@ -290,6 +290,7 @@ _RapportCelluleResponse _$RapportCelluleResponseFromJson(
 ) => _RapportCelluleResponse(
   codeZone: json['codeZone'] as String,
   fullNameRespoZone: json['fullNameRespoZone'] as String,
+  lieu: json['lieu'] as String,
   contactRespoZone: json['contactRespoZone'] as String,
   codeSecteur: json['codeSecteur'] as String,
   responsableCelluleId: json['responsableCelluleId'] as String,
@@ -350,6 +351,7 @@ Map<String, dynamic> _$RapportCelluleResponseToJson(
 ) => <String, dynamic>{
   'codeZone': instance.codeZone,
   'fullNameRespoZone': instance.fullNameRespoZone,
+  'lieu': instance.lieu,
   'contactRespoZone': instance.contactRespoZone,
   'codeSecteur': instance.codeSecteur,
   'responsableCelluleId': instance.responsableCelluleId,

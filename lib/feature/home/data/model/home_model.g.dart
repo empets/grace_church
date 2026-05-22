@@ -424,6 +424,7 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
       json['formAdministrationIsSubmit'] as String? ?? 'false',
   formAdministrationSubmitDate: json['formAdministrationSubmitDate'] as String?,
   resumerPredication: json['resumerPredication'] as String?,
+  lieu: json['lieu'] as String?,
   assistanceNonBaptiser: RequestHumaneSectionAssistanceResponseModel.fromJson(
     json['assistanceNonBaptiser'] as Map<String, dynamic>,
   ),
@@ -488,6 +489,7 @@ Map<String, dynamic> _$RapportCelluleResponseModelToJson(
   'formAdministrationIsSubmit': instance.formAdministrationIsSubmit,
   'formAdministrationSubmitDate': instance.formAdministrationSubmitDate,
   'resumerPredication': instance.resumerPredication,
+  'lieu': instance.lieu,
   'assistanceNonBaptiser': instance.assistanceNonBaptiser,
   'assistanceNouveau': instance.assistanceNouveau,
   'assistanceInviter': instance.assistanceInviter,

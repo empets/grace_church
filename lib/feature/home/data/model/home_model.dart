@@ -492,6 +492,8 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     @Default('false')  String? formAdministrationIsSubmit,
     required String? formAdministrationSubmitDate,
     required String? resumerPredication,
+    required String? lieu,
+
 
     // required String? nombreBaptiser,
     required RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
@@ -518,6 +520,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
 
   static RapportCelluleResponse toDomain(RapportCelluleResponseModel model) {
     return RapportCelluleResponse(
+      lieu: model.lieu.getOrEmpty(),
       codeZone: model.codeZone.getOrEmpty(),
       fullNameRespoZone: model.fullNameRespoZone.getOrEmpty(),
       contactRespoZone: model.contactRespoZone.getOrEmpty(),

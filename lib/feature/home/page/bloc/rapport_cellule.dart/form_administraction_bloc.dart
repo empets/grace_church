@@ -216,6 +216,17 @@ class RapportCelluleRequestSectionAdministrationBloc
         emit(updatedState.copyWith(isValide: _validate(updatedState)));
         break;
 
+
+      case ChangeLieuRapportCelluleRequestSectionAdministrationEvent(
+        :final lieu,
+      ):
+        final updatedState = state.copyWith(
+          lieu: TextFormz.dirty(lieu),
+          status: FormzSubmissionStatus.initial,
+        );
+        emit(updatedState.copyWith(isValide: _validate(updatedState)));
+        break;
+
       // -------------------------
       // 🔥 SUBMIT (optionnel)
       // -------------------------
@@ -290,6 +301,7 @@ class RapportCelluleRequestSectionAdministrationBloc
       s.nombreBaptiser,
       s.nombreNonBaptiser,
       s.reponsableCelluleId,
+      s.lieu,
     ]);
   }
 }

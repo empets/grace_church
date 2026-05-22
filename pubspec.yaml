@@ -176,6 +176,10 @@ dependencies:
   mcp_dart: ^2.1.1
   share_plus: any
   get: any
+  pdf: ^3.10.8
+  printing: ^5.11.1
+  path_provider: ^2.1.2
+  pluto_grid: any
 
 
   

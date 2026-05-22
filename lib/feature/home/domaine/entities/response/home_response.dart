@@ -201,6 +201,7 @@ abstract class RapportCelluleResponse with _$RapportCelluleResponse {
   factory RapportCelluleResponse({
     required String codeZone,
     required String fullNameRespoZone,
+    required String lieu,
     required String contactRespoZone,
     required String codeSecteur,
     required String responsableCelluleId,

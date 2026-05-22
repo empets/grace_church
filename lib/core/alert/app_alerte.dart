@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -348,3 +350,17 @@ class _DraggableBottomSheetContentState
   }
 }
 
+
+
+class AppGeneretedColors {
+  static final Random _random = Random();
+
+  static Color randomColor() {
+    return Color.fromARGB(
+      255,
+      _random.nextInt(256),
+      _random.nextInt(256),
+      _random.nextInt(256),
+    );
+  }
+}

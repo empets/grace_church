@@ -159,6 +159,12 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
         widget.profile?.menberId ?? "",
       ),
     );
+      context.read<RapportCelluleRequestSectionAdministrationBloc>().add(
+      RapportCelluleRequestSectionAdministrationEvent.changeLieu(
+        widget.profile?.cellulePriere ?? "",
+      ),
+    );
+  
   }
 
   void _updateDisciple({

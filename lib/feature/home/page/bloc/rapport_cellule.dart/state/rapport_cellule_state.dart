@@ -36,6 +36,7 @@ abstract class RapportCelluleRequestSectionAdministrationState with _$RapportCel
     // Statistiques
     required TextFormz nombreBaptiser,
     required TextFormz nombreNonBaptiser,
+    required TextFormz lieu,
 
     // Liste disciples
      required List<DiscipleCellule> discipleCelluleList,
@@ -59,6 +60,7 @@ abstract class RapportCelluleRequestSectionAdministrationState with _$RapportCel
     offrande: TextFormz.pure(),
     nombreBaptiser: TextFormz.pure(),
     nombreNonBaptiser: TextFormz.pure(),
+    lieu: TextFormz.pure(),
     discipleCelluleList: [],
     status: FormzSubmissionStatus.initial,
     errorMessage: '',

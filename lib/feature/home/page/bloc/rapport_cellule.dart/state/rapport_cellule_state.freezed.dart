@@ -19,7 +19,7 @@ mixin _$RapportCelluleRequestSectionAdministrationState {
  TextFormz get codeSecteur; TextFormz get fullNameRespoSecteur; TextFormz get contactRespoSecteur;// Cellule
  TextFormz get codeCellule; TextFormz get fullNameRespoCellule; TextFormz get contactRespoCellule;// Infos cellule
  TextFormz get jourCellule; TextFormz get offrande;// Statistiques
- TextFormz get nombreBaptiser; TextFormz get nombreNonBaptiser;// Liste disciples
+ TextFormz get nombreBaptiser; TextFormz get nombreNonBaptiser; TextFormz get lieu;// Liste disciples
  List<DiscipleCellule> get discipleCelluleList; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of RapportCelluleRequestSectionAdministrationState
 /// with the given fields replaced by the non-null parameter values.
@@ -31,16 +31,16 @@ $RapportCelluleRequestSectionAdministrationStateCopyWith<RapportCelluleRequestSe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSectionAdministrationState&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.reponsableCelluleId, reponsableCelluleId) || other.reponsableCelluleId == reponsableCelluleId)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other.discipleCelluleList, discipleCelluleList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSectionAdministrationState&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.reponsableCelluleId, reponsableCelluleId) || other.reponsableCelluleId == reponsableCelluleId)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&(identical(other.lieu, lieu) || other.lieu == lieu)&&const DeepCollectionEquality().equals(other.discipleCelluleList, discipleCelluleList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,codeZone,fullNameRespoZone,contactRespoZone,reponsableCelluleId,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(discipleCelluleList),status,errorMessage,isValide);
+int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,reponsableCelluleId,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,lieu,const DeepCollectionEquality().hash(discipleCelluleList),status,errorMessage,isValide]);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestSectionAdministrationState(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, reponsableCelluleId: $reponsableCelluleId, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCelluleList: $discipleCelluleList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'RapportCelluleRequestSectionAdministrationState(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, reponsableCelluleId: $reponsableCelluleId, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, lieu: $lieu, discipleCelluleList: $discipleCelluleList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $RapportCelluleRequestSectionAdministrationStateCopyWith<$R
   factory $RapportCelluleRequestSectionAdministrationStateCopyWith(RapportCelluleRequestSectionAdministrationState value, $Res Function(RapportCelluleRequestSectionAdministrationState) _then) = _$RapportCelluleRequestSectionAdministrationStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz codeZone, TextFormz fullNameRespoZone, TextFormz contactRespoZone, TextFormz reponsableCelluleId, TextFormz codeSecteur, TextFormz fullNameRespoSecteur, TextFormz contactRespoSecteur, TextFormz codeCellule, TextFormz fullNameRespoCellule, TextFormz contactRespoCellule, TextFormz jourCellule, TextFormz offrande, TextFormz nombreBaptiser, TextFormz nombreNonBaptiser, List<DiscipleCellule> discipleCelluleList, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz codeZone, TextFormz fullNameRespoZone, TextFormz contactRespoZone, TextFormz reponsableCelluleId, TextFormz codeSecteur, TextFormz fullNameRespoSecteur, TextFormz contactRespoSecteur, TextFormz codeCellule, TextFormz fullNameRespoCellule, TextFormz contactRespoCellule, TextFormz jourCellule, TextFormz offrande, TextFormz nombreBaptiser, TextFormz nombreNonBaptiser, TextFormz lieu, List<DiscipleCellule> discipleCelluleList, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -68,7 +68,7 @@ class _$RapportCelluleRequestSectionAdministrationStateCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleRequestSectionAdministrationState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? reponsableCelluleId = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCelluleList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? reponsableCelluleId = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? lieu = null,Object? discipleCelluleList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_self.copyWith(
 codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
 as TextFormz,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
@@ -84,6 +84,7 @@ as TextFormz,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule 
 as TextFormz,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
 as TextFormz,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
 as TextFormz,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as TextFormz,lieu: null == lieu ? _self.lieu : lieu // ignore: cast_nullable_to_non_nullable
 as TextFormz,discipleCelluleList: null == discipleCelluleList ? _self.discipleCelluleList : discipleCelluleList // ignore: cast_nullable_to_non_nullable
 as List<DiscipleCellule>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -173,10 +174,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz codeZone,  TextFormz fullNameRespoZone,  TextFormz contactRespoZone,  TextFormz reponsableCelluleId,  TextFormz codeSecteur,  TextFormz fullNameRespoSecteur,  TextFormz contactRespoSecteur,  TextFormz codeCellule,  TextFormz fullNameRespoCellule,  TextFormz contactRespoCellule,  TextFormz jourCellule,  TextFormz offrande,  TextFormz nombreBaptiser,  TextFormz nombreNonBaptiser,  List<DiscipleCellule> discipleCelluleList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz codeZone,  TextFormz fullNameRespoZone,  TextFormz contactRespoZone,  TextFormz reponsableCelluleId,  TextFormz codeSecteur,  TextFormz fullNameRespoSecteur,  TextFormz contactRespoSecteur,  TextFormz codeCellule,  TextFormz fullNameRespoCellule,  TextFormz contactRespoCellule,  TextFormz jourCellule,  TextFormz offrande,  TextFormz nombreBaptiser,  TextFormz nombreNonBaptiser,  TextFormz lieu,  List<DiscipleCellule> discipleCelluleList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSectionAdministrationState() when $default != null:
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.reponsableCelluleId,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCelluleList,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.reponsableCelluleId,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.lieu,_that.discipleCelluleList,_that.status,_that.errorMessage,_that.isValide);case _:
   return orElse();
 
 }
@@ -194,10 +195,10 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz codeZone,  TextFormz fullNameRespoZone,  TextFormz contactRespoZone,  TextFormz reponsableCelluleId,  TextFormz codeSecteur,  TextFormz fullNameRespoSecteur,  TextFormz contactRespoSecteur,  TextFormz codeCellule,  TextFormz fullNameRespoCellule,  TextFormz contactRespoCellule,  TextFormz jourCellule,  TextFormz offrande,  TextFormz nombreBaptiser,  TextFormz nombreNonBaptiser,  List<DiscipleCellule> discipleCelluleList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz codeZone,  TextFormz fullNameRespoZone,  TextFormz contactRespoZone,  TextFormz reponsableCelluleId,  TextFormz codeSecteur,  TextFormz fullNameRespoSecteur,  TextFormz contactRespoSecteur,  TextFormz codeCellule,  TextFormz fullNameRespoCellule,  TextFormz contactRespoCellule,  TextFormz jourCellule,  TextFormz offrande,  TextFormz nombreBaptiser,  TextFormz nombreNonBaptiser,  TextFormz lieu,  List<DiscipleCellule> discipleCelluleList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSectionAdministrationState():
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.reponsableCelluleId,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCelluleList,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.reponsableCelluleId,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.lieu,_that.discipleCelluleList,_that.status,_that.errorMessage,_that.isValide);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -214,10 +215,10 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz codeZone,  TextFormz fullNameRespoZone,  TextFormz contactRespoZone,  TextFormz reponsableCelluleId,  TextFormz codeSecteur,  TextFormz fullNameRespoSecteur,  TextFormz contactRespoSecteur,  TextFormz codeCellule,  TextFormz fullNameRespoCellule,  TextFormz contactRespoCellule,  TextFormz jourCellule,  TextFormz offrande,  TextFormz nombreBaptiser,  TextFormz nombreNonBaptiser,  List<DiscipleCellule> discipleCelluleList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz codeZone,  TextFormz fullNameRespoZone,  TextFormz contactRespoZone,  TextFormz reponsableCelluleId,  TextFormz codeSecteur,  TextFormz fullNameRespoSecteur,  TextFormz contactRespoSecteur,  TextFormz codeCellule,  TextFormz fullNameRespoCellule,  TextFormz contactRespoCellule,  TextFormz jourCellule,  TextFormz offrande,  TextFormz nombreBaptiser,  TextFormz nombreNonBaptiser,  TextFormz lieu,  List<DiscipleCellule> discipleCelluleList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSectionAdministrationState() when $default != null:
-return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.reponsableCelluleId,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.discipleCelluleList,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_that.reponsableCelluleId,_that.codeSecteur,_that.fullNameRespoSecteur,_that.contactRespoSecteur,_that.codeCellule,_that.fullNameRespoCellule,_that.contactRespoCellule,_that.jourCellule,_that.offrande,_that.nombreBaptiser,_that.nombreNonBaptiser,_that.lieu,_that.discipleCelluleList,_that.status,_that.errorMessage,_that.isValide);case _:
   return null;
 
 }
@@ -229,7 +230,7 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 
 
 class _RapportCelluleRequestSectionAdministrationState implements RapportCelluleRequestSectionAdministrationState {
-  const _RapportCelluleRequestSectionAdministrationState({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.reponsableCelluleId, required this.codeSecteur, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCellule> discipleCelluleList, required this.status, required this.errorMessage, required this.isValide}): _discipleCelluleList = discipleCelluleList;
+  const _RapportCelluleRequestSectionAdministrationState({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.reponsableCelluleId, required this.codeSecteur, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required this.lieu, required final  List<DiscipleCellule> discipleCelluleList, required this.status, required this.errorMessage, required this.isValide}): _discipleCelluleList = discipleCelluleList;
   
 
 // Zone
@@ -251,6 +252,7 @@ class _RapportCelluleRequestSectionAdministrationState implements RapportCellule
 // Statistiques
 @override final  TextFormz nombreBaptiser;
 @override final  TextFormz nombreNonBaptiser;
+@override final  TextFormz lieu;
 // Liste disciples
  final  List<DiscipleCellule> _discipleCelluleList;
 // Liste disciples
@@ -274,16 +276,16 @@ _$RapportCelluleRequestSectionAdministrationStateCopyWith<_RapportCelluleRequest
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestSectionAdministrationState&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.reponsableCelluleId, reponsableCelluleId) || other.reponsableCelluleId == reponsableCelluleId)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&const DeepCollectionEquality().equals(other._discipleCelluleList, _discipleCelluleList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestSectionAdministrationState&&(identical(other.codeZone, codeZone) || other.codeZone == codeZone)&&(identical(other.fullNameRespoZone, fullNameRespoZone) || other.fullNameRespoZone == fullNameRespoZone)&&(identical(other.contactRespoZone, contactRespoZone) || other.contactRespoZone == contactRespoZone)&&(identical(other.reponsableCelluleId, reponsableCelluleId) || other.reponsableCelluleId == reponsableCelluleId)&&(identical(other.codeSecteur, codeSecteur) || other.codeSecteur == codeSecteur)&&(identical(other.fullNameRespoSecteur, fullNameRespoSecteur) || other.fullNameRespoSecteur == fullNameRespoSecteur)&&(identical(other.contactRespoSecteur, contactRespoSecteur) || other.contactRespoSecteur == contactRespoSecteur)&&(identical(other.codeCellule, codeCellule) || other.codeCellule == codeCellule)&&(identical(other.fullNameRespoCellule, fullNameRespoCellule) || other.fullNameRespoCellule == fullNameRespoCellule)&&(identical(other.contactRespoCellule, contactRespoCellule) || other.contactRespoCellule == contactRespoCellule)&&(identical(other.jourCellule, jourCellule) || other.jourCellule == jourCellule)&&(identical(other.offrande, offrande) || other.offrande == offrande)&&(identical(other.nombreBaptiser, nombreBaptiser) || other.nombreBaptiser == nombreBaptiser)&&(identical(other.nombreNonBaptiser, nombreNonBaptiser) || other.nombreNonBaptiser == nombreNonBaptiser)&&(identical(other.lieu, lieu) || other.lieu == lieu)&&const DeepCollectionEquality().equals(other._discipleCelluleList, _discipleCelluleList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,codeZone,fullNameRespoZone,contactRespoZone,reponsableCelluleId,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,const DeepCollectionEquality().hash(_discipleCelluleList),status,errorMessage,isValide);
+int get hashCode => Object.hashAll([runtimeType,codeZone,fullNameRespoZone,contactRespoZone,reponsableCelluleId,codeSecteur,fullNameRespoSecteur,contactRespoSecteur,codeCellule,fullNameRespoCellule,contactRespoCellule,jourCellule,offrande,nombreBaptiser,nombreNonBaptiser,lieu,const DeepCollectionEquality().hash(_discipleCelluleList),status,errorMessage,isValide]);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestSectionAdministrationState(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, reponsableCelluleId: $reponsableCelluleId, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, discipleCelluleList: $discipleCelluleList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'RapportCelluleRequestSectionAdministrationState(codeZone: $codeZone, fullNameRespoZone: $fullNameRespoZone, contactRespoZone: $contactRespoZone, reponsableCelluleId: $reponsableCelluleId, codeSecteur: $codeSecteur, fullNameRespoSecteur: $fullNameRespoSecteur, contactRespoSecteur: $contactRespoSecteur, codeCellule: $codeCellule, fullNameRespoCellule: $fullNameRespoCellule, contactRespoCellule: $contactRespoCellule, jourCellule: $jourCellule, offrande: $offrande, nombreBaptiser: $nombreBaptiser, nombreNonBaptiser: $nombreNonBaptiser, lieu: $lieu, discipleCelluleList: $discipleCelluleList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -294,7 +296,7 @@ abstract mixin class _$RapportCelluleRequestSectionAdministrationStateCopyWith<$
   factory _$RapportCelluleRequestSectionAdministrationStateCopyWith(_RapportCelluleRequestSectionAdministrationState value, $Res Function(_RapportCelluleRequestSectionAdministrationState) _then) = __$RapportCelluleRequestSectionAdministrationStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz codeZone, TextFormz fullNameRespoZone, TextFormz contactRespoZone, TextFormz reponsableCelluleId, TextFormz codeSecteur, TextFormz fullNameRespoSecteur, TextFormz contactRespoSecteur, TextFormz codeCellule, TextFormz fullNameRespoCellule, TextFormz contactRespoCellule, TextFormz jourCellule, TextFormz offrande, TextFormz nombreBaptiser, TextFormz nombreNonBaptiser, List<DiscipleCellule> discipleCelluleList, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz codeZone, TextFormz fullNameRespoZone, TextFormz contactRespoZone, TextFormz reponsableCelluleId, TextFormz codeSecteur, TextFormz fullNameRespoSecteur, TextFormz contactRespoSecteur, TextFormz codeCellule, TextFormz fullNameRespoCellule, TextFormz contactRespoCellule, TextFormz jourCellule, TextFormz offrande, TextFormz nombreBaptiser, TextFormz nombreNonBaptiser, TextFormz lieu, List<DiscipleCellule> discipleCelluleList, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -311,7 +313,7 @@ class __$RapportCelluleRequestSectionAdministrationStateCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleRequestSectionAdministrationState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? reponsableCelluleId = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? discipleCelluleList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? codeZone = null,Object? fullNameRespoZone = null,Object? contactRespoZone = null,Object? reponsableCelluleId = null,Object? codeSecteur = null,Object? fullNameRespoSecteur = null,Object? contactRespoSecteur = null,Object? codeCellule = null,Object? fullNameRespoCellule = null,Object? contactRespoCellule = null,Object? jourCellule = null,Object? offrande = null,Object? nombreBaptiser = null,Object? nombreNonBaptiser = null,Object? lieu = null,Object? discipleCelluleList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_RapportCelluleRequestSectionAdministrationState(
 codeZone: null == codeZone ? _self.codeZone : codeZone // ignore: cast_nullable_to_non_nullable
 as TextFormz,fullNameRespoZone: null == fullNameRespoZone ? _self.fullNameRespoZone : fullNameRespoZone // ignore: cast_nullable_to_non_nullable
@@ -327,6 +329,7 @@ as TextFormz,jourCellule: null == jourCellule ? _self.jourCellule : jourCellule 
 as TextFormz,offrande: null == offrande ? _self.offrande : offrande // ignore: cast_nullable_to_non_nullable
 as TextFormz,nombreBaptiser: null == nombreBaptiser ? _self.nombreBaptiser : nombreBaptiser // ignore: cast_nullable_to_non_nullable
 as TextFormz,nombreNonBaptiser: null == nombreNonBaptiser ? _self.nombreNonBaptiser : nombreNonBaptiser // ignore: cast_nullable_to_non_nullable
+as TextFormz,lieu: null == lieu ? _self.lieu : lieu // ignore: cast_nullable_to_non_nullable
 as TextFormz,discipleCelluleList: null == discipleCelluleList ? _self._discipleCelluleList : discipleCelluleList // ignore: cast_nullable_to_non_nullable
 as List<DiscipleCellule>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable

@@ -126,6 +126,7 @@ class _CelluleViewState extends State<CelluleView> {
                       style: context.appTypographie.body.copyWith(
                         fontSize: 12.sp,
                         color: context.appColor.primaryBlue,
+                        // color: Colors.grey.shade200
                       ),
                     ),
                   ],

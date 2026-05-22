@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/core/custome_widget/navigate.dart';
-import 'package:grace_church/feature/home/domaine/usercase/read_notification_usercase.dart';
-import 'package:grace_church/feature/home/page/bloc/notification/readnotification_bloc.dart';
-import 'package:grace_church/feature/home/page/notification/notification_content.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
@@ -15,6 +12,8 @@ import 'package:grace_church/feature/home/domaine/usercase/connexion_implicite_u
 import 'package:grace_church/feature/home/domaine/usercase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_list_notification_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_profile_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/read_notification_usercase.dart';
 import 'package:grace_church/feature/home/home_view.dart';
 import 'package:grace_church/feature/home/menu_view.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
@@ -24,6 +23,8 @@ import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_ev
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/event/notification_event.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/notification/readnotification_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 
 class OverviewScreen extends StatefulWidget {
@@ -88,6 +89,11 @@ class _OverviewScreenState extends State<OverviewScreen> {
             getListNotificationByCriteriaUsercase:
                 getIt<GetListNotificationByCriteriaUsercase>(),
           )..add(NotificationEvent.fetch()),
+        ),
+          BlocProvider(
+          create: (context) => GetRapportCelluleBloc(
+            getRapportCelluleUsercase: getIt<GetRapportCelluleUsercase>(),
+          ),
         ),
       ],
       child: MultiBlocListener(
@@ -175,7 +181,6 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                 //                 getListNotificationByCriteriaUsercase:
                                 //                     getIt<GetListNotificationByCriteriaUsercase>(),
                                 //               )..add(NotificationEvent.fetch()),
-
                                 //             ),
                                 //                 BlocProvider(
                                 //                     create: (context) => ReadNotificationBloc(
@@ -191,7 +196,6 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                 //         ),
                                 //       ),
                                 //     );
-
                                 // if (result == true) {
                                 //   context.read<NotificationBloc>().add(
                                 //     NotificationEvent.fetch(),
@@ -219,7 +223,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                 ),
                               )
                             ),
-                          ): SizedBox();
+                          ): SizedBox.fromSize();
                         } else {
                           return Container();
                         }
