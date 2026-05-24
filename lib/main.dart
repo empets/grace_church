@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -21,6 +22,101 @@ import 'package:grace_church/feature/home/onboarding_view.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+
+
+
+    Future<void> initNotifications() async {
+  tz.initializeTimeZones();
+
+  // ← ajout important
+  final String timeZoneName = await FlutterTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(timeZoneName));
+
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  const DarwinInitializationSettings iosSettings =
+      DarwinInitializationSettings(
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      );
+
+  await flutterLocalNotificationsPlugin.initialize(
+    const InitializationSettings(
+      android: androidSettings,
+      iOS: iosSettings,
+    ),
+  );
+}
+
+Future<void> scheduleNotification() async {
+  final androidImpl = flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<  // ← < ajouté ici
+          AndroidFlutterLocalNotificationsPlugin>();
+
+  final bool? granted = await androidImpl?.requestExactAlarmsPermission();
+
+  if (granted == false) {
+    print('Permission refusée');
+    return;
+  }
+
+  await flutterLocalNotificationsPlugin.zonedSchedule(
+    1,
+    'Rappel',
+    'Il est l\'heure !',
+    tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
+    const NotificationDetails(
+      android: AndroidNotificationDetails(
+        'channel_id',
+        'Mon Canal',
+        importance: Importance.max,
+        priority: Priority.high,
+      ),
+    ),
+    androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -43,6 +139,9 @@ void main() async {
     url: GlobalParams.supabaseUrl,
     anonKey: GlobalParams.supabaseAnonKey,
   );
+
+  await initNotifications();      // ← timezone initialisé ici
+  await scheduleNotification(); 
 
   // await Firebase.initializeApp(
   //   name: "authenfication",

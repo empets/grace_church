@@ -176,6 +176,9 @@ dependencies:
   mcp_dart: ^2.1.1
   share_plus: any
   get: any
+  flutter_local_notifications: ^17.0.0
+  flutter_timezone: ^1.0.8
+
 
 
   
