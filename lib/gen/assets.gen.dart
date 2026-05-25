@@ -130,6 +130,21 @@ class $AssetsImagesGen {
   ];
 }
 
+class $AssetsRapportTemplateGen {
+  const $AssetsRapportTemplateGen();
+
+  /// File path: assets/rapport_template/rapport_.docx
+  String get rapport =>
+      'packages/grace_church/assets/rapport_template/rapport_.docx';
+
+  /// File path: assets/rapport_template/rapport_em.docx
+  String get rapportEm =>
+      'packages/grace_church/assets/rapport_template/rapport_em.docx';
+
+  /// List of all assets
+  List<String> get values => [rapport, rapportEm];
+}
+
 class assets {
   const assets._();
 
@@ -137,6 +152,8 @@ class assets {
 
   static const $AssetsIconLauncherGen iconLauncher = $AssetsIconLauncherGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsRapportTemplateGen rapportTemplate =
+      $AssetsRapportTemplateGen();
 }
 
 class AssetGenImage {

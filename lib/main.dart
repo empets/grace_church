@@ -97,7 +97,8 @@ class MyApp extends StatelessWidget {
         },
         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
           builder: (context, state) {
-            return state is LoadState<ProfileResponse>
+            return 
+             state is LoadState<ProfileResponse>
                 ? SplachSreen()
                 : state is SuccessState<ProfileResponse>
                 ? OverviewScreen(menberId: state.data.menberId, isFormImpliciteConnexion: true)
@@ -108,7 +109,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 
 

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/feature/home/page/cellule/rapport_cellule_pdf_view.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -313,248 +314,396 @@ class RapportCellulePDFView extends StatelessWidget {
                 ),
 
                 pw.SizedBox(height: 20.h),
+
+                // EFFECTIF SECTION
                 pw.Row(
-                  mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                   children: [
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
-                        pw.Text(
-                          "ASSISTANCE ET DONNEES STATISTIQUES",
-                          style: pw.TextStyle(
-                            fontSize: 18,
-                            fontWeight: pw.FontWeight.bold,
-                            color: PdfColors.red,
-                          ),
-                        ),
-                        pw.Container(
-                          // width: 16.w,
+                        
+                      buildCard(
                           padding: pw.EdgeInsets.symmetric(
-                            horizontal: 9.w,
-                            vertical: 2,
+                            horizontal: 37.6.w,
+                            vertical: 5.h,
                           ),
-                          alignment: pw.Alignment.center,
-                          decoration: pw.BoxDecoration(
-                            border: pw.Border.all(color: PdfColors.black),
+                          isDefaultBorder: false,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(color: PdfColors.black),
+                            right: pw.BorderSide(color: PdfColors.grey),
+                            left: pw.BorderSide(color: PdfColors.grey),
                           ),
-                          child: pw.Text("EFFECTIF"),
+                          child: pw.Row(
+                            children: [pw.Text("EFFECTIF"), pw.SizedBox(width: 1.w)],
                         ),
-                        pw.Table(
-                          border: pw.TableBorder.all(color: PdfColors.grey300),
+                      ),
+                        pw.Row(
                           children: [
-                            pw.TableRow(
-                              children: [
-                                tableCell("Chrét.Bapt"), //<< LGINE 1
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    int.parse(rapportCellule.nombreBaptiser) > 9
-                                        ? "${rapportCellule.nombreBaptiser}"
-                                        : "0${rapportCellule.nombreBaptiser}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ), //<< LGINE 1
-                              ],
+                            buildCard(
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 8.w,
+                                vertical: 5.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border(
+                                top: pw.BorderSide(color: PdfColors.black),
+                              ),
+                              child: pw.Row(children: [pw.Text("Chrét.Bapt")]),
                             ),
-                            pw.TableRow(
-                              children: [
-                                tableCell("Chré.N.Bapt "), //<< LGINE 1
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    int.parse(
-                                              rapportCellule.nombreNonBaptiser,
-                                            ) >
-                                            9
-                                        ? "${rapportCellule.nombreNonBaptiser}"
-                                        : "0${rapportCellule.nombreNonBaptiser}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            pw.TableRow(
-                              children: [
-                                tableCell("TOTAL"), //<< LGINE 2
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            buildCardValue(
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 6.9.w,
+                                vertical: 5.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border(
+                                top: pw.BorderSide(color: PdfColors.black),
+                              ),
+                              child: pw.Row(children: [pw.Text("01")]),
                             ),
                           ],
                         ),
                         pw.Row(
                           children: [
-                            pw.Column(
-                              crossAxisAlignment: pw.CrossAxisAlignment.start,
-                              children: [
-                                pw.Container(
-                                  height: 100.h,
-                                  alignment: pw.Alignment.center,
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  decoration: pw.BoxDecoration(
-                                    border: pw.Border.all(
-                                      color: PdfColors.black,
-                                    ),
-                                  ),
-                                  child: pw.Transform.rotateBox(
-                                    angle: 1.57,
-                                    child: pw.Text(
-                                      "sdsdfsdf",
-                                      style: pw.TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: pw.FontWeight.bold,
-                                        color: PdfColors.red,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                           pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: [
-                             pw.Container(
-                              height: 100.h,
+                            buildCard(
                               padding: pw.EdgeInsets.symmetric(
-                                // horizontal: 9.w,
-                                // vertical: 2,
+                                horizontal: 4.w,
+                                vertical: 5.h,
                               ),
-                              alignment: pw.Alignment.topCenter,
-                              decoration: pw.BoxDecoration(
-                                border: pw.Border.all(color: PdfColors.black),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border(
+                                top: pw.BorderSide(color: PdfColors.black),
                               ),
-                              child:pw.Column(
-                                children: [
-                                  pw.Container(
-                                    padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-                                    decoration: pw.BoxDecoration(
-                                      border: pw.Border(
-                                        bottom: pw.BorderSide(color: PdfColors.black),
-                                      ),
-                                    ),
-                                    child: pw.Text("Chrétiens baptisés"),
-                                  ),
-                                  pw.Row(
-                                    children: [
-                                      pw.Column(
-                                        children: [
-                                         pw.Padding(padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),child: pw.Text("Chrétiens\nNon\nbaptisés"),)
-                                        ],
-                                      ),
-                                        pw.Table(
-                          border: pw.TableBorder.all(color: PdfColors.grey300),
-                          children: [
-                            pw.TableRow(
-                              children: [
-                                tableCell("Chrét.Bapt"), //<< LGINE 1
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    int.parse(rapportCellule.nombreBaptiser) > 9
-                                        ? "${rapportCellule.nombreBaptiser}"
-                                        : "0${rapportCellule.nombreBaptiser}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ), //<< LGINE 1
-                              ],
+                              child: pw.Row(children: [pw.Text("Chré.N.Bapt")]),
                             ),
-                            pw.TableRow(
-                              children: [
-                                tableCell("Chré.N.Bapt "), //<< LGINE 1
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    int.parse(
-                                              rapportCellule.nombreNonBaptiser,
-                                            ) >
-                                            9
-                                        ? "${rapportCellule.nombreNonBaptiser}"
-                                        : "0${rapportCellule.nombreNonBaptiser}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            pw.TableRow(
-                              children: [
-                                tableCell("TOTAL"), //<< LGINE 2
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            buildCardValue(
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 6.9.w,
+                                vertical: 5.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border(
+                                top: pw.BorderSide(color: PdfColors.black),
+                              ),
+                              child: pw.Row(children: [pw.Text("01")]),
                             ),
                           ],
                         ),
-                      
-
-                                    
-                                    ],
-                                  ),
-                                ],
+                         pw.Row(
+                          children: [
+                            buildCard(
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 22.4.w,
+                                vertical: 5.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border(
+                                top: pw.BorderSide(color: PdfColors.black),
+                              ),
+                              child: pw.Row(
+                                mainAxisAlignment: pw.MainAxisAlignment.start,
+                                children: [pw.Text("Total")],
                               ),
                             ),
-                            ]
-                           )
+                            buildCardValue(
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 4.w,
+                                vertical: 5.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border(
+                                top: pw.BorderSide(color: PdfColors.black),
+                              ),
+                              child: pw.Row(children: [pw.Text("201")]),
+                            ),
                           ],
                         ),
                       ],
                     ),
+                   
+                    // ROW TOW
+                    pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        buildCard(
+                          padding: pw.EdgeInsets.symmetric(
+                            horizontal: 64.w,
+                            vertical: 5.h,
+                          ),
+                          isDefaultBorder: false,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                            right: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Column(
+                            children: [
+                              pw.Row(children: [pw.Text("EGLISE DE MAISON")]),
+                              pw.SizedBox(height: 21.h),
+                            ],
+                          ),
+                        ),
+                       pw.Row(
+                        children: [
+                          buildCard(
+                          padding: pw.EdgeInsets.symmetric(
+                            horizontal: 4.w,
+                            vertical: 6.h,
+                          ),
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Column(
+                            children: [
+                              pw.Row(children: [pw.Text("CETTE\nSEMAINE")]),
+                              pw.SizedBox(height: 8.h),
+                            ],
+                          ),
+                        ),
+                         buildCard(
+                          padding: pw.EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 10.5.h,
+                          ),
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Column(
+                            children: [
+                              pw.Row(children: [pw.Text("T ")]),
+                              pw.SizedBox(height: 11.h),
+                            ],
+                          ),
+                        ),
+                           buildCard(
+                          padding: pw.EdgeInsets.symmetric(
+                            horizontal: 4.w,
+                            vertical: 6.h,
+                          ),
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Column(
+                            children: [
+                              pw.Row(children: [pw.Text("SEMAINE\nPASSEE")]),
+                              pw.SizedBox(height: 8.h),
+                            ],
+                          ),
+                        ),
+
+                         buildCard(
+                          padding: pw.EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 10.5.h,
+                          ),
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Column(
+                            children: [
+                              pw.Row(children: [pw.Text("T ")]),
+                              pw.SizedBox(height: 11.h),
+                            ],
+                          ),
+                        ),
+
+                         buildCard(
+                          padding: pw.EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 12.h,
+                          ),
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border(
+                            top: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Column(
+                            children: [
+                              pw.Row(children: [pw.Text("ECART")]),
+                              pw.SizedBox(height: 8.h),
+                            ],
+                          ),
+                        ),
+
+
+
+
+
+
+
+                       ],),
+                       
+
+                      ]
+                    )
                   ],
                 ),
+                // SUB EFFECTIF SECTION
+                pw.Row(
+                  children: [
+                    pw.Container(
+                      height: 0.27.sh,
+                      alignment: pw.Alignment.center,
+                     padding: pw.EdgeInsets.symmetric(
+                      horizontal: 6.w,
+                      vertical: 10.h,
+                     ),
+                     decoration: pw.BoxDecoration(
+                      border: pw.Border.all(color: PdfColors.black),
+                     ),
+                     child:pw.Transform.rotateBox(angle: 1.57, child: pw.Text("ASSISTANCE")),
+                    ),
+                    pw.Column(
+                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                     pw.Row(
+                      children: [
+                        buildCard(
+                          padding: pw. EdgeInsets.symmetric(horizontal: 5.9.w, vertical: 5.h),
+                          isDefaultBorder: false,
+                          customeBorder: pw.Border(
+                            bottom: pw.BorderSide(
+                              color: PdfColors.black,
+                              style: pw.BorderStyle.solid,
+                            ),
+                          ),
+                          child: pw.Text("Chrétiens baptisés")),
+                         buildCardValue(
+                          width: 58.w,
+                              padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("00")),
+                          buildCardValue(
+                          width: 30.5.w,
+                              padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("00")),
+                             buildCardValue(
+                          width: 59.w,
+                              padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("00")),
+                                 buildCardValue(
+                          width: 30.w,
+                              padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("00")), 
+                              buildCardValue(
+                          width: 58.3.w,
+                              padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("00")),      
+                      ],
+                     ),
+                        pw.Row(
+                          children: [
+                            buildCard(
+                              padding: pw.EdgeInsets.symmetric(horizontal: 5.3.w, vertical: 5.h),
+                              isDefaultBorder: false,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("Chrétiens\nNon\nbaptisés")),
+                              pw.Column(
+                                children: [
+                                  pw.Row(
+                                    children: [
+                                      buildCardValue(
+                                        width: 65.w,
+                                        padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                                        isDefaultBorder: true,
+                                        customeBorder: pw.Border.all(color: PdfColors.black),
+                                        child:  pw.Text("Tout-petits")
+                                      ),
+                                      buildCardValue(
+                                        width: 58.3.w,
+                                        padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                                        isDefaultBorder: true,
+                                        customeBorder: pw.Border.all(color: PdfColors.black),
+                                        child: pw.Text("00")
+                                      ),
+                                    ],
+                                  ),
+                                   pw.Row(
+                                    children: [
+                                      buildCardValue(
+                                        width: 65.w,
+                                        padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                                        isDefaultBorder: true,
+                                        customeBorder: pw.Border.all(color: PdfColors.black),
+                                        child:  pw.Text("cadets")
+                                      ),
+                                      buildCardValue(
+                                        width: 58.3.w,
+                                        padding: pw.EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.3.h),
+                                        isDefaultBorder: true,
+                                        customeBorder: pw.Border.all(color: PdfColors.black),
+                                        child: pw.Text("00")
+                                      ),
+                                    ],
+                                  )
+                                  
+                                ],
+                              )
+
+                          ],
+                        ),
+                         pw.Row(
+                          children: [
+                            buildCard(
+                              padding: pw.EdgeInsets.symmetric(horizontal: 4.0.w, vertical: 10.h),
+                              isDefaultBorder: false,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("Nouveaux")),
+                              
+                          ],
+                        ),
+                         pw.Row(
+                          children: [
+                            buildCard(
+                              padding: pw.EdgeInsets.symmetric(horizontal: 13.w, vertical: 12.h),
+                              isDefaultBorder: false,
+                              customeBorder: pw.Border.all(color: PdfColors.black),
+                              child: pw.Text("Invités")),
+                              
+                          ],
+                        )
+                      ],
+                    ),
+
+                    
+
+                    
+                  ],
+                )
+              
               ],
             ),
           );
@@ -587,10 +736,292 @@ class RapportCellulePDFView extends StatelessWidget {
   }
 }
 
-pw.Container buildCard({required pw.Widget text}) {
+pw.Container buildCard({
+  required pw.Widget child,
+  double? width,
+  pw.EdgeInsetsGeometry? padding,
+  pw.EdgeInsetsGeometry? margin,
+  bool isDefaultBorder = false,
+  pw.BoxBorder? customeBorder,
+}) {
   return pw.Container(
-    padding: pw.EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
-    decoration: pw.BoxDecoration(border: pw.Border.all(color: PdfColors.grey)),
-    child: text,
+    padding: padding ?? pw.EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
+    margin: margin ?? pw.EdgeInsets.zero,
+    decoration: pw.BoxDecoration(
+      border: isDefaultBorder
+          ? pw.Border.all(color: PdfColors.grey)
+          : customeBorder,
+    ),
+    child: child,
   );
 }
+
+
+pw.Container buildCardValue({
+  required pw.Widget child,
+  double? width,
+  pw.EdgeInsetsGeometry? padding,
+  pw.EdgeInsetsGeometry? margin,
+  bool isDefaultBorder = false,
+  pw.BoxBorder? customeBorder,
+}) {
+  return pw.Container(
+    width: width ?? 60.w,
+    padding: padding ?? pw.EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
+    margin: margin ?? pw.EdgeInsets.zero,
+    decoration: pw.BoxDecoration(
+      border: isDefaultBorder
+          ? pw.Border.all(color: PdfColors.grey)
+          : customeBorder,
+    ),
+    child: child,
+  );
+}
+
+
+
+
+
+  //  pw.Row(
+  //                 mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+  //                 children: [
+  //                   pw.Column(
+  //                     crossAxisAlignment: pw.CrossAxisAlignment.start,
+  //                     children: [
+  //                       pw.Text(
+  //                         "ASSISTANCE ET DONNEES STATISTIQUES",
+  //                         style: pw.TextStyle(
+  //                           fontSize: 18,
+  //                           fontWeight: pw.FontWeight.bold,
+  //                           color: PdfColors.red,
+  //                         ),
+  //                       ),
+  //                       pw.Container(
+  //                         // width: 16.w,
+  //                         padding: pw.EdgeInsets.symmetric(
+  //                           horizontal: 9.w,
+  //                           vertical: 2,
+  //                         ),
+  //                         alignment: pw.Alignment.center,
+  //                         decoration: pw.BoxDecoration(
+  //                           border: pw.Border.all(color: PdfColors.black),
+  //                         ),
+  //                         child: pw.Text("EFFECTIF"),
+  //                       ),
+  //                       pw.Table(
+  //                         border: pw.TableBorder.all(color: PdfColors.grey300),
+  //                         children: [
+  //                           pw.TableRow(
+  //                             children: [
+  //                               tableCell("Chrét.Bapt"), //<< LGINE 1
+  //                               pw.Padding(
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 child: pw.Text(
+  //                                   int.parse(rapportCellule.nombreBaptiser) > 9
+  //                                       ? "${rapportCellule.nombreBaptiser}"
+  //                                       : "0${rapportCellule.nombreBaptiser}",
+  //                                   style: pw.TextStyle(
+  //                                     color: PdfColors.black,
+  //                                     fontWeight: pw.FontWeight.bold,
+  //                                     fontSize: 12.5.sp,
+  //                                   ),
+  //                                 ),
+  //                               ), //<< LGINE 1
+  //                             ],
+  //                           ),
+  //                           pw.TableRow(
+  //                             children: [
+  //                               tableCell("Chré.N.Bapt "), //<< LGINE 1
+  //                               pw.Padding(
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 child: pw.Text(
+  //                                   int.parse(
+  //                                             rapportCellule.nombreNonBaptiser,
+  //                                           ) >
+  //                                           9
+  //                                       ? "${rapportCellule.nombreNonBaptiser}"
+  //                                       : "0${rapportCellule.nombreNonBaptiser}",
+  //                                   style: pw.TextStyle(
+  //                                     color: PdfColors.black,
+  //                                     fontWeight: pw.FontWeight.bold,
+  //                                     fontSize: 12.5.sp,
+  //                                   ),
+  //                                 ),
+  //                               ),
+  //                             ],
+  //                           ),
+  //                           pw.TableRow(
+  //                             children: [
+  //                               tableCell("TOTAL"), //<< LGINE 2
+  //                               pw.Padding(
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 child: pw.Text(
+  //                                   "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+  //                                   style: pw.TextStyle(
+  //                                     color: PdfColors.black,
+  //                                     fontWeight: pw.FontWeight.bold,
+  //                                     fontSize: 12.5.sp,
+  //                                   ),
+  //                                 ),
+  //                               ),
+  //                             ],
+  //                           ),
+  //                         ],
+  //                       ),
+  //                       pw.Row(
+  //                         children: [
+  //                           pw.Column(
+  //                             crossAxisAlignment: pw.CrossAxisAlignment.start,
+  //                             children: [
+  //                               pw.Container(
+  //                                 height: 100.h,
+  //                                 alignment: pw.Alignment.center,
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 decoration: pw.BoxDecoration(
+  //                                   border: pw.Border.all(
+  //                                     color: PdfColors.black,
+  //                                   ),
+  //                                 ),
+  //                                 child: pw.Transform.rotateBox(
+  //                                   angle: 1.57,
+  //                                   child: pw.Text(
+  //                                     "sdsdfsdf",
+  //                                     style: pw.TextStyle(
+  //                                       fontSize: 18,
+  //                                       fontWeight: pw.FontWeight.bold,
+  //                                       color: PdfColors.red,
+  //                                     ),
+  //                                   ),
+  //                                 ),
+  //                               ),
+  //                             ],
+  //                           ),
+  //                          pw.Column(
+  //                           crossAxisAlignment: pw.CrossAxisAlignment.start,
+  //                           children: [
+  //                            pw.Container(
+  //                             height: 100.h,
+  //                             padding: pw.EdgeInsets.symmetric(
+  //                               // horizontal: 9.w,
+  //                               // vertical: 2,
+  //                             ),
+  //                             alignment: pw.Alignment.topCenter,
+  //                             decoration: pw.BoxDecoration(
+  //                               border: pw.Border.all(color: PdfColors.black),
+  //                             ),
+  //                             child:pw.Column(
+  //                               children: [
+  //                                 pw.Container(
+  //                                   padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
+  //                                   decoration: pw.BoxDecoration(
+  //                                     border: pw.Border(
+  //                                       bottom: pw.BorderSide(color: PdfColors.black),
+  //                                     ),
+  //                                   ),
+  //                                   child: pw.Text("Chrétiens baptisés"),
+  //                                 ),
+  //                                 pw.Row(
+  //                                   children: [
+  //                                     pw.Column(
+  //                                       children: [
+  //                                        pw.Padding(padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),child: pw.Text("Chrétiens\nNon\nbaptisés"),)
+  //                                       ],
+  //                                     ),
+  //                                       pw.Table(
+  //                         border: pw.TableBorder.all(color: PdfColors.grey300),
+  //                         children: [
+  //                           pw.TableRow(
+  //                             children: [
+  //                               tableCell("Chrét.Bapt"), //<< LGINE 1
+  //                               pw.Padding(
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 child: pw.Text(
+  //                                   int.parse(rapportCellule.nombreBaptiser) > 9
+  //                                       ? "${rapportCellule.nombreBaptiser}"
+  //                                       : "0${rapportCellule.nombreBaptiser}",
+  //                                   style: pw.TextStyle(
+  //                                     color: PdfColors.black,
+  //                                     fontWeight: pw.FontWeight.bold,
+  //                                     fontSize: 12.5.sp,
+  //                                   ),
+  //                                 ),
+  //                               ), //<< LGINE 1
+  //                             ],
+  //                           ),
+  //                           pw.TableRow(
+  //                             children: [
+  //                               tableCell("Chré.N.Bapt "), //<< LGINE 1
+  //                               pw.Padding(
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 child: pw.Text(
+  //                                   int.parse(
+  //                                             rapportCellule.nombreNonBaptiser,
+  //                                           ) >
+  //                                           9
+  //                                       ? "${rapportCellule.nombreNonBaptiser}"
+  //                                       : "0${rapportCellule.nombreNonBaptiser}",
+  //                                   style: pw.TextStyle(
+  //                                     color: PdfColors.black,
+  //                                     fontWeight: pw.FontWeight.bold,
+  //                                     fontSize: 12.5.sp,
+  //                                   ),
+  //                                 ),
+  //                               ),
+  //                             ],
+  //                           ),
+  //                           pw.TableRow(
+  //                             children: [
+  //                               tableCell("TOTAL"), //<< LGINE 2
+  //                               pw.Padding(
+  //                                 padding: pw.EdgeInsets.symmetric(
+  //                                   horizontal: 3.w,
+  //                                   vertical: 3.h,
+  //                                 ),
+  //                                 child: pw.Text(
+  //                                   "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+  //                                   style: pw.TextStyle(
+  //                                     color: PdfColors.black,
+  //                                     fontWeight: pw.FontWeight.bold,
+  //                                     fontSize: 12.5.sp,
+  //                                   ),
+  //                                 ),
+  //                               ),
+  //                             ],
+  //                           ),
+  //                         ],
+  //                       ),
+                      
+
+                                    
+  //                                   ],
+  //                                 ),
+  //                               ],
+  //                             ),
+  //                           ),
+  //                           ]
+  //                          )
+  //                         ],
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ],
+  //               ),
+            
