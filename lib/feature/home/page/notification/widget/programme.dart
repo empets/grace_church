@@ -205,6 +205,7 @@ class _BannerSliderState extends State<BannerSlider> {
             ),
           ),
         ),
+        
       ],
     );
   }
