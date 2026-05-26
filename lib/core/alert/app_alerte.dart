@@ -151,72 +151,88 @@ class AppAlert {
         ),
       );
   }
-}
 
-
-class AppBottomSheet {
-  Future<dynamic> showBottomSheetScrollable(
-  BuildContext context,
-  MediaQueryData media,
-  Widget Function(double size) contentBuilder, {
-  bool isScrollControlled = true,
-  double initialChildSize = 0.6,
-  double maxChildSize = 0.9,
-  double minChildSize = 0.5,
-  bool showFromTop = false,
-  bool isDismissible = true,
-}) {
-  if (showFromTop) {
-    return showGeneralDialog(
+  static void showNotificationPopUp({
+    required BuildContext context,
+    required Widget child,
+  }) {
+    showDialog(
       context: context,
-      barrierDismissible: isDismissible,
-      barrierLabel: '',
-      barrierColor: Colors.black54,
-      transitionDuration: const Duration(milliseconds: 300),
-      pageBuilder: (_, __, ___) => Align(
-        alignment: Alignment.topCenter,
-        child: Material(
-          color: Colors.transparent,
-          child: contentBuilder(initialChildSize),
-        ),
-      ),
-      transitionBuilder: (_, animation, __, child) {
-        return SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(0, -1),
-            end: Offset.zero,
-          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+      barrierColor: Colors.black.withValues(alpha: 0.92),
+
+      builder: (_) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+           insetPadding: const EdgeInsets.all(1),
           child: child,
         );
       },
     );
   }
+}
 
-  return showModalBottomSheet(
-    context: context,
-    backgroundColor: Colors.white,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(15.r),
-        topRight: Radius.circular(15.r),
-      ),
-    ),
-    isScrollControlled: true,
-    builder: (_) {
-      return _DraggableBottomSheetContent(
-        contentBuilder: contentBuilder,
-        initialChildSize: initialChildSize,
-        maxChildSize: maxChildSize,
-        minChildSize: minChildSize,
+class AppBottomSheet {
+  Future<dynamic> showBottomSheetScrollable(
+    BuildContext context,
+    MediaQueryData media,
+    Widget Function(double size) contentBuilder, {
+    bool isScrollControlled = true,
+    double initialChildSize = 0.6,
+    double maxChildSize = 0.9,
+    double minChildSize = 0.5,
+    bool showFromTop = false,
+    bool isDismissible = true,
+  }) {
+    if (showFromTop) {
+      return showGeneralDialog(
+        context: context,
+        barrierDismissible: isDismissible,
+        barrierLabel: '',
+        barrierColor: Colors.black54,
+        transitionDuration: const Duration(milliseconds: 300),
+        pageBuilder: (_, __, ___) => Align(
+          alignment: Alignment.topCenter,
+          child: Material(
+            color: Colors.transparent,
+            child: contentBuilder(initialChildSize),
+          ),
+        ),
+        transitionBuilder: (_, animation, __, child) {
+          return SlideTransition(
+            position:
+                Tween<Offset>(
+                  begin: const Offset(0, -1),
+                  end: Offset.zero,
+                ).animate(
+                  CurvedAnimation(parent: animation, curve: Curves.easeOut),
+                ),
+            child: child,
+          );
+        },
       );
-    },
-  );
+    }
+
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15.r),
+          topRight: Radius.circular(15.r),
+        ),
+      ),
+      isScrollControlled: true,
+      builder: (_) {
+        return _DraggableBottomSheetContent(
+          contentBuilder: contentBuilder,
+          initialChildSize: initialChildSize,
+          maxChildSize: maxChildSize,
+          minChildSize: minChildSize,
+        );
+      },
+    );
+  }
 }
-
-
-  
-}
-
 
 class _DraggableBottomSheetContent extends StatefulWidget {
   const _DraggableBottomSheetContent({
@@ -349,8 +365,6 @@ class _DraggableBottomSheetContentState
     );
   }
 }
-
-
 
 class AppGeneretedColors {
   static final Random _random = Random();
