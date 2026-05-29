@@ -446,7 +446,7 @@ class RapportCellulePDFView extends StatelessWidget {
                               children: [
                                 buildCard(
                                   padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 64.w,
+                                    horizontal: 58.w,
                                     vertical: 5.h,
                                   ),
                                   isDefaultBorder: false,
@@ -471,10 +471,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                 ),
                                 pw.Row(
                                   children: [
-                                    buildCard(
+                                    buildCardValue(
+                                      height: 50.h,
+                                      width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 4.w,
-                                        vertical: 6.h,
+                                         vertical: 8.8.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -487,36 +489,19 @@ class RapportCellulePDFView extends StatelessWidget {
                                         children: [
                                           pw.Row(
                                             children: [
-                                              pw.Text("CETTE\nSEMAINE"),
+                                              pw.Text("CETTE\nSEMAINE",style: pw.TextStyle(fontSize: 10.sp)),
                                             ],
                                           ),
-                                          pw.SizedBox(height: 8.h),
+                                          pw.SizedBox(height: 5.h),
                                         ],
                                       ),
                                     ),
+                                
                                     buildCard(
+                                      width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 10.w,
-                                        vertical: 10.5.h,
-                                      ),
-                                      isDefaultBorder: true,
-                                      customeBorder: pw.Border(
-                                        top: pw.BorderSide(
-                                          color: PdfColors.black,
-                                          style: pw.BorderStyle.solid,
-                                        ),
-                                      ),
-                                      child: pw.Column(
-                                        children: [
-                                          pw.Row(children: [pw.Text("T ")]),
-                                          pw.SizedBox(height: 11.h),
-                                        ],
-                                      ),
-                                    ),
-                                    buildCard(
-                                      padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 4.w,
-                                        vertical: 6.h,
+                                        horizontal: 11.4.w,
+                                        vertical: 12.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -529,18 +514,18 @@ class RapportCellulePDFView extends StatelessWidget {
                                         children: [
                                           pw.Row(
                                             children: [
-                                              pw.Text("SEMAINE\nPASSEE"),
+                                              pw.Text("T", style: pw.TextStyle(fontSize: 10.sp)),
                                             ],
                                           ),
                                           pw.SizedBox(height: 8.h),
                                         ],
                                       ),
                                     ),
-
                                     buildCard(
+                                      width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 10.w,
-                                        vertical: 10.5.h,
+                                        horizontal: 4.w,
+                                        vertical: 7.3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -551,13 +536,39 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Column(
                                         children: [
-                                          pw.Row(children: [pw.Text("T ")]),
+                                          pw.Row(
+                                            children: [
+                                              pw.Text("SEMAINE\nPASSEE", style: pw.TextStyle(fontSize: 10.sp)),
+                                            ],
+                                          ),
+                                          pw.SizedBox(height: 8.h),
+                                        ],
+                                      ),
+                                    ),
+
+                                    buildCard(
+                                       width: 55.w,
+                                      padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 11.4.w,
+                                        vertical: 11.h,
+                                      ),
+                                      isDefaultBorder: true,
+                                      customeBorder: pw.Border(
+                                        top: pw.BorderSide(
+                                          color: PdfColors.black,
+                                          style: pw.BorderStyle.solid,
+                                        ),
+                                      ),
+                                      child: pw.Column(
+                                        children: [
+                                          pw.Row(children: [pw.Text("T ", style: pw.TextStyle(fontSize: 10.sp))]),
                                           pw.SizedBox(height: 11.h),
                                         ],
                                       ),
                                     ),
 
                                     buildCard(
+                                      width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 10.w,
                                         vertical: 12.h,
@@ -571,7 +582,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Column(
                                         children: [
-                                          pw.Row(children: [pw.Text("ECART")]),
+                                          pw.Row(children: [pw.Text("ECART", style: pw.TextStyle(fontSize: 10.sp))]),
                                           pw.SizedBox(height: 8.h),
                                         ],
                                       ),
@@ -586,7 +597,7 @@ class RapportCellulePDFView extends StatelessWidget {
                         pw.Row(
                           children: [
                             pw.Container(
-                              height: 0.228.sh,
+                              height: 0.26.sh,
                               alignment: pw.Alignment.center,
                               padding: pw.EdgeInsets.symmetric(
                                 horizontal: 6.w,
@@ -604,6 +615,7 @@ class RapportCellulePDFView extends StatelessWidget {
                               mainAxisAlignment: pw.MainAxisAlignment.start,
                               crossAxisAlignment: pw.CrossAxisAlignment.start,
                               children: [
+                                // ROW ASSISTANCE 
                                 pw.Row(
                                   children: [
                                     buildCard(
@@ -620,23 +632,25 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Text("Chrétiens baptisés"),
                                     ),
+                                    // Columne cette semaine 
                                     buildCardValue(
-                                      width: 58.w,
+                                      width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
-                                        vertical: 5.3.h,
+                                        vertical: 4.9.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
-                                        color: PdfColors.black,
+                                        color: PdfColors.grey300,
                                       ),
                                       child: pw.Text(
                                         "00",
-                                        style: pw.TextStyle(fontSize: 12.sp),
+                                       
                                       ),
                                     ),
+                                    // Columne cette semaine T
                                     buildCardValue(
-                                      width: 30.5.w,
+                                       width: 29.5.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
                                         vertical: 5.3.h,
@@ -647,8 +661,9 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Text("00"),
                                     ),
+                                    // Columne semaine passé
                                     buildCardValue(
-                                      width: 59.w,
+                                      width: 52.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
                                         vertical: 5.3.h,
@@ -659,8 +674,9 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Text("00"),
                                     ),
+                                    // Columne semaine passé T
                                     buildCardValue(
-                                      width: 30.w,
+                                      width: 32.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
                                         vertical: 5.3.h,
@@ -671,8 +687,9 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Text("00"),
                                     ),
+                                    // Columne ecart
                                     buildCardValue(
-                                      width: 58.3.w,
+                                      width: 54.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
                                         vertical: 5.3.h,
@@ -681,20 +698,21 @@ class RapportCellulePDFView extends StatelessWidget {
                                       customeBorder: pw.Border.all(
                                         color: PdfColors.black,
                                       ),
-                                      child: pw.Text("00"),
+                                      child: pw.Text("EC"),
                                     ),
                                   ],
                                 ),
+                               
                                 pw.Row(
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.3.w,
-                                        vertical: 8.h,
+                                        vertical: 12.8.h,
                                       ),
-                                      isDefaultBorder: false,
+                                      isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
-                                        color: PdfColors.black,
+                                        color: PdfColors.grey300,
                                       ),
                                       child: pw.Text(
                                         "Chrétiens\nNon\nbaptisés",
@@ -707,11 +725,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                       children: [
                                         pw.Row(
                                           children: [
+                                      
                                             buildCardValue(
                                               width: 56.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
-                                                vertical: 2.h,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -724,11 +743,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 1.h,
+                                                horizontal: 5.w,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -743,8 +763,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                             buildCardValue(
                                               width: 56.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 2.h,
+                                                 horizontal: 5.w,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -757,11 +777,13 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
+
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 1.h,
+                                                horizontal: 5.w,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -790,10 +812,11 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
+                                                horizontal: 5.w,
                                                 vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
@@ -806,24 +829,28 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                    
                                     pw.Row(
                                       children: [
+                                        // Columne Cette semaine T
                                         buildCardValue(
-                                          width: 30.w,
+                                          width: 29.5.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.7.h,
                                           ),
                                           isDefaultBorder: true,
                                           child: pw.Text("00"),
                                         ),
+                                        // Columne semaine passe 
                                         pw.Column(
+                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
                                           children: [
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 1.h,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -832,10 +859,10 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text("00"),
                                             ),
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 1.h,
+                                                vertical: 2.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -844,7 +871,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text("00"),
                                             ),
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
                                                 vertical: 4.h,
@@ -857,38 +884,42 @@ class RapportCellulePDFView extends StatelessWidget {
                                             ),
                                           ],
                                         ),
+                                        // Columne semaine passé T
                                         buildCardValue(
                                           width: 31.2.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.5.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("T"),
                                         ),
+                                        // Columne ECART
                                         buildCardValue(
-                                          width: 59.w,
+                                           width: 54.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.5.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("EC"),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
+                                
+                                // ROW NOVEAUX
                                 pw.Row(
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 4.0.w,
-                                        vertical: 18.h,
+                                        horizontal: 4.4.w,
+                                        vertical: 21.h,
                                       ),
-                                      isDefaultBorder: false,
+                                      isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
-                                        color: PdfColors.black,
+                                        color: PdfColors.grey300,
                                       ),
                                       child: pw.Text(
                                         "Nouveaux",
@@ -901,11 +932,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                       children: [
                                         pw.Row(
                                           children: [
+                                      
                                             buildCardValue(
                                               width: 56.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
-                                                vertical: 3.h,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -918,11 +950,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 2.h,
+                                                horizontal: 5.w,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -937,8 +970,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                             buildCardValue(
                                               width: 56.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 2.h,
+                                                 horizontal: 5.w,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -951,11 +984,13 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
+
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 1.h,
+                                                horizontal: 5.w,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -984,10 +1019,11 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
+                                                horizontal: 5.w,
                                                 vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
@@ -1000,24 +1036,28 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                    
                                     pw.Row(
                                       children: [
+                                        // Columne Cette semaine T
                                         buildCardValue(
-                                          width: 30.w,
+                                          width: 29.5.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.7.h,
                                           ),
                                           isDefaultBorder: true,
                                           child: pw.Text("00"),
                                         ),
+                                        // Columne semaine passe 
                                         pw.Column(
+                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
                                           children: [
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 1.h,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1026,10 +1066,10 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text("00"),
                                             ),
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 1.h,
+                                                vertical: 2.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1038,7 +1078,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text("00"),
                                             ),
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
                                                 vertical: 4.h,
@@ -1051,38 +1091,42 @@ class RapportCellulePDFView extends StatelessWidget {
                                             ),
                                           ],
                                         ),
+                                        // Columne semaine passé T
                                         buildCardValue(
                                           width: 31.2.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.5.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("T"),
                                         ),
+                                        // Columne ECART
                                         buildCardValue(
-                                          width: 59.w,
+                                           width: 54.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.5.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("EC"),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
+                               
+                                // ROW INVITE
                                 pw.Row(
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 11.w,
-                                        vertical: 17.h,
+                                        horizontal: 11.4.w,
+                                        vertical: 21.9.h,
                                       ),
-                                      isDefaultBorder: false,
+                                      isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
-                                        color: PdfColors.black,
+                                        color: PdfColors.grey300,
                                       ),
                                       child: pw.Text(
                                         "Invités",
@@ -1095,11 +1139,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                       children: [
                                         pw.Row(
                                           children: [
+                                      
                                             buildCardValue(
                                               width: 56.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
-                                                vertical: 2.h,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1112,11 +1157,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 1.h,
+                                                horizontal: 5.w,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1131,8 +1177,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                             buildCardValue(
                                               width: 56.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 2.h,
+                                                 horizontal: 5.w,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1145,11 +1191,13 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
+
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 1.h,
+                                                horizontal: 5.w,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1178,10 +1226,11 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
+                                            // Columne Cette semaine
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
+                                                horizontal: 5.w,
                                                 vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
@@ -1194,25 +1243,28 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-
+                                    
                                     pw.Row(
                                       children: [
+                                        // Columne Cette semaine T
                                         buildCardValue(
-                                          width: 30.w,
+                                          width: 29.5.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.7.h,
                                           ),
                                           isDefaultBorder: true,
                                           child: pw.Text("00"),
                                         ),
+                                        // Columne semaine passe 
                                         pw.Column(
+                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
                                           children: [
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 1.h,
+                                                vertical: 3.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1221,10 +1273,10 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text("00"),
                                             ),
                                             buildCardValue(
-                                              width: 58.w,
+                                               width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 1.h,
+                                                vertical: 2.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
@@ -1233,7 +1285,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text("00"),
                                             ),
                                             buildCardValue(
-                                              width: 58.w,
+                                              width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
                                                 vertical: 4.h,
@@ -1246,29 +1298,32 @@ class RapportCellulePDFView extends StatelessWidget {
                                             ),
                                           ],
                                         ),
+                                        // Columne semaine passé T
                                         buildCardValue(
                                           width: 31.2.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.5.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("T"),
                                         ),
+                                        // Columne ECART
                                         buildCardValue(
-                                          width: 59.w,
+                                           width: 54.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 17.h,
+                                            vertical: 20.5.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("EC"),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
-                              ],
+                               
+                             ],
                             ),
                           ],
                         ),
@@ -1284,16 +1339,17 @@ class RapportCellulePDFView extends StatelessWidget {
                           crossAxisAlignment: pw.CrossAxisAlignment.start,
                           children: [
                           buildCard(
+                            
                             padding: pw.EdgeInsets.symmetric(
-                              horizontal: 4.w,
-                                vertical: 16.h,
+                              horizontal: 5.w,
+                                vertical: 17.h,
                             ),
                             isDefaultBorder: true,
                             child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
                             buildCard(
                                 padding: pw.EdgeInsets.symmetric(
-                                  horizontal: 3.w,
-                                    vertical: 13.h,
+                                  horizontal: 7.w,
+                                    vertical: 12.2.h,
                                   ),
                             isDefaultBorder: true,
                             child: pw.Text("Nom et\nprénoms", style: pw.TextStyle(fontSize: 9.sp))),
@@ -1310,11 +1366,19 @@ class RapportCellulePDFView extends StatelessWidget {
                                 pw.Row(
                                   children: [
                                   buildCard(
+                                     padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 9.w,
+                                        vertical: 4.9.h,
+                                      ),
                                   isDefaultBorder: true,
-                                  child: pw.Text("Abscent")),
+                                  child: pw.Text("Abscent", style: pw.TextStyle(fontSize: 9.sp))),
                                     buildCard(
+                                      padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 7.w,
+                                       vertical: 4.9.h,
+                                      ),
                                   isDefaultBorder: true,
-                                  child: pw.Text("Abscent")),
+                                  child: pw.Text("Abscent", style: pw.TextStyle(fontSize: 9.sp))),
                                     
                                   ],
                                 )
@@ -1325,13 +1389,50 @@ class RapportCellulePDFView extends StatelessWidget {
                           children: [
                             buildCard(
                               padding: pw.EdgeInsets.symmetric(
+                                horizontal: 6.w,
+                                vertical: 16.h,
+                              ),
+                              isDefaultBorder: false,
+                              customeBorder: null,
+                              child: pw.Text("01",style: pw.TextStyle(fontSize: 9.sp))),
+                            buildCardValue(
+                              width: 49.w,
+                              padding: pw.EdgeInsets.symmetric(
                                 horizontal: 4.w,
-                                vertical: 14.h,
+                                vertical: 15.3.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: null,
+                              child: pw.Text("Name°",style: pw.TextStyle(fontSize: 9.sp))),
+                              buildCardValue(
+                              width: 49.w,
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 4.w,
+                                vertical: 16.h,
                               ),
                               isDefaultBorder: true,
                               child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
+                                   buildCardValue(
+                              width: 49.w,
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 4.w,
+                                vertical: 16.h,
+                              ),
+                              isDefaultBorder: true,
+                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
+                          ],
+                        ),
+                            pw.Row(
+                          children: [
+                            buildCard(
+                              padding: pw.EdgeInsets.symmetric(
+                                 horizontal: 6.w,
+                                vertical: 14.4.h,
+                              ),
+                              isDefaultBorder: true,
+                              child: pw.Text("02",style: pw.TextStyle(fontSize: 9.sp))),
                             buildCardValue(
-                              width: 40.w,
+                               width: 49.w,
                               padding: pw.EdgeInsets.symmetric(
                                 horizontal: 4.w,
                                 vertical: 15.h,
@@ -1360,13 +1461,13 @@ class RapportCellulePDFView extends StatelessWidget {
                           children: [
                             buildCard(
                               padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 14.h,
+                                horizontal: 6.w,
+                                vertical: 14.3.h,
                               ),
                               isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
+                              child: pw.Text("03",style: pw.TextStyle(fontSize: 9.sp))),
                             buildCardValue(
-                              width: 40.w,
+                               width: 49.w,
                               padding: pw.EdgeInsets.symmetric(
                                 horizontal: 4.w,
                                 vertical: 15.h,
@@ -1391,42 +1492,34 @@ class RapportCellulePDFView extends StatelessWidget {
                               child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
                           ],
                         ),
-                            pw.Row(
-                          children: [
-                            buildCard(
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 14.h,
+                        buildCard(
+                          width: 0.5.sw,
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border.all(color: PdfColors.red),
+                          child: pw.Row(
+                            mainAxisAlignment: pw.MainAxisAlignment.center,
+                            children: [
+                             pw.SizedBox(width: 27.w),
+                             pw.Text("ETAT SPIRITUEL DESEM",style: pw.TextStyle(fontSize: 9.sp, color: PdfColors.red)),
+                             pw.SizedBox(width: 27.w),
+
+                            ]
+                          )),
+                          buildCard(
+                          width: 0.5.sw,
+                          padding: pw.EdgeInsets.symmetric(horizontal: 31.w, vertical: 39.h),
+                          isDefaultBorder: true,
+                          customeBorder: pw.Border.all(color: PdfColors.red),
+                          child: pw.Center(
+                            child: pw.Text(
+                              "ETAT SPIRITUEL DESEM",
+                              style: pw.TextStyle(
+                                fontSize: 9.sp,
+                                color: PdfColors.red,
                               ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                            buildCardValue(
-                              width: 40.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                              buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                                   buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                          ],
+                            ),
+                          ),
                         )
-                      
                       
                       ],
                     )
@@ -1488,12 +1581,14 @@ pw.Container buildCard({
 pw.Container buildCardValue({
   required pw.Widget child,
   double? width,
+  double? height,
   pw.EdgeInsetsGeometry? padding,
   pw.EdgeInsetsGeometry? margin,
   bool isDefaultBorder = false,
   pw.BoxBorder? customeBorder,
 }) {
   return pw.Container(
+    // height: 50.sh,
     width: width ?? 60.w,
     padding: padding ?? pw.EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
     margin: margin ?? pw.EdgeInsets.zero,
