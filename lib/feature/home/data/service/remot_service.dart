@@ -512,6 +512,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         return FirebaseError('Rapport cellule not found');
       }
       final data = response.value as Map<dynamic, dynamic>;
+      log('data: $data');
       final notifications = data.values.map((e) {
         final notificationItem = convertMap(e as Map);
         return RapportCelluleResponseModel.fromJson(notificationItem);
