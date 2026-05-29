@@ -1,14 +1,9 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart' as gt;
 import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -66,6 +61,12 @@ class MenuView extends StatelessWidget {
   }
 
   late bool isResponsableCellule = false;
+
+  Future<String> getMenberkey() async {
+    final shared = await SharedPreferences.getInstance();
+    final menberkey = await shared.getString('menberkey');
+    return menberkey ?? '';
+  }
 
   @override
   Widget build(BuildContext context) {

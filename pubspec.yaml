@@ -176,16 +176,23 @@ dependencies:
   mcp_dart: ^2.1.1
   share_plus: any
   get: any
-  pdf: ^3.10.8
+  pdf: ^3.10.8 
   printing: ^5.11.1
   path_provider: ^2.1.2
   pluto_grid: any
+  flutter_local_notifications: ^17.0.0
+
 
 
   
 
   
   # location: ^8.0.1
+
+dependency_overrides: 
+  flutter_timezone_plus: any
+ 
+
 
 dev_dependencies:
   flutter_test:

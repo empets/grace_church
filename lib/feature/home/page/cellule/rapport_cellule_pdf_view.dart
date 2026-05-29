@@ -1,14 +1,10 @@
 import 'dart:typed_data';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grace_church/feature/home/page/cellule/rapport_cellule_pdf_view.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/navigator_widget/custome_app_bar.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
