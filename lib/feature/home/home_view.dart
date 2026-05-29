@@ -1,20 +1,24 @@
 import 'dart:developer';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/feature/home/page/notification/widget/programme.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
 
+import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/feature/home/page/cellule/cellule_view.dart';
 import 'package:grace_church/feature/home/depatelement_view.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_view.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class HomeView extends StatefulWidget {
@@ -46,6 +50,12 @@ class _HomeViewState extends State<HomeView> {
     _controller;
     super.dispose();
   }
+  
+  final String qrCodeData = 'https://docs.google.com/forms/d/e/1FAIpQLSefCnQAipz_PngsajC0IXdsWNKf9_nkQQ8aNjI_BrcDkKCahg/viewform?pli=1&pli=1';
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +83,9 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ------------------------------------
+              // TV Programme
+              // ------------------------------------
               Container(
                 height: 0.23333333.sh,
                 width: double.infinity,
@@ -109,6 +122,9 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
 
+              // ------------------------------------
+              // Actions rapides Menu
+              // ------------------------------------
               BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
                 builder: (context, profileState) {
                   return BlocBuilder<
@@ -122,9 +138,11 @@ class _HomeViewState extends State<HomeView> {
                           quickActionRequestSectionItem.length,
                           (index) {
                             final items = quickActionRequestSectionItem[index];
-                            return (items["value"] == "cellule" && 
-                                    (profileState
-                                        is SuccessState<ProfileResponse>)) ||
+                            return (items["value"] == "cellule" &&
+                                        (profileState
+                                            is SuccessState<
+                                              ProfileResponse
+                                            >)) ||
                                     (items["value"] == "departement" &&
                                         (profileState
                                             is SuccessState<ProfileResponse>))
@@ -256,8 +274,7 @@ class _HomeViewState extends State<HomeView> {
                                   )
                                 : Expanded(
                                     child: GestureDetector(
-                                      onTap: () {
-                                      },
+                                      onTap: () {},
                                       child: Container(
                                         margin: EdgeInsets.only(right: 6.w),
                                         padding: EdgeInsets.symmetric(
@@ -300,7 +317,8 @@ class _HomeViewState extends State<HomeView> {
                                                 items['icon'],
                                                 color: context
                                                     .appColor
-                                                    .primaryBlue.withValues(alpha: 0.2)
+                                                    .primaryBlue
+                                                    .withValues(alpha: 0.2),
                                               ),
                                             ),
                                             SizedBox(height: 9.h),
@@ -309,7 +327,8 @@ class _HomeViewState extends State<HomeView> {
                                               style: context.appTypographie.body
                                                   .copyWith(
                                                     fontSize: 13.5.sp,
-                                                    color: Colors.black.withValues(alpha: 0.2),
+                                                    color: Colors.black
+                                                        .withValues(alpha: 0.2),
                                                     letterSpacing: 0.sp,
                                                     fontWeight: FontWeight.bold,
                                                   ),
@@ -324,7 +343,8 @@ class _HomeViewState extends State<HomeView> {
                                                     letterSpacing: 0.sp,
                                                     color: context
                                                         .appColor
-                                                        .primaryGray700.withValues(alpha: 0.2)
+                                                        .primaryGray700
+                                                        .withValues(alpha: 0.2),
                                                   ),
                                             ),
                                           ],
@@ -347,103 +367,34 @@ class _HomeViewState extends State<HomeView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomeText(
-                        text: 'Programmes à venir',
-                        style: context.appTypographie.body.copyWith(
-                          letterSpacing: 0.sp,
-                          color: context.appColor.primaryGrayDark,
-                          fontWeight: FontWeight.w600,
+                      GestureDetector(
+                        child: CustomeText(
+                          text: 'Programmes à venir',
+                          style: context.appTypographie.body.copyWith(
+                            letterSpacing: 0.sp,
+                            color: context.appColor.primaryGrayDark,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                 
                     ],
                   ),
                   SizedBox(height: 7.h),
-
-                  SizedBox(
-                    height: 0.25.sh,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              fadeRoute(
-                                 SHowProgrammeAnnonce(
-                                  imageUrl: "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(right: 14.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                
-                                    Hero(
-                                      tag: 'event_',
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8.r),
-                                        child: 
-                                          Image.network(
-                                            "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
-                                            height: 0.17.sh,
-                                          ),
-                                      ),
-                                    ),
-                                
-                                
-                                Container(
-                                  margin: EdgeInsets.symmetric(vertical: 6.h),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      CustomeText(
-                                        text: "Conference de la jeunesse 2024",
-                                        style: context.appTypographie.small
-                                            .copyWith(
-                                              fontSize: 12.sp,
-                                              letterSpacing: 0.sp,
-                                              color: context
-                                                  .appColor
-                                                  .primaryGrayDark,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
-                                      CustomeText(
-                                        text: "Samedi 12 Octobre a 06:00 PM",
-                                        style: context.appTypographie.small
-                                            .copyWith(
-                                              fontSize: 11.sp,
-                                              letterSpacing: 0.sp,
-                                              color:
-                                                  context.appColor.primaryGray500,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
                 ],
               ),
-
-              CustomeText(
-                text: 'File de l\'Église',
-                style: context.appTypographie.body.copyWith(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w900,
-                ),
+              
+              // ------------------------------------
+              // Programmes à venir: Carousel Slider
+              // -----------------------------------
+              Container(
+               padding: EdgeInsets.symmetric(vertical: 9.w),
+                child: BannerSlider(),
               ),
 
+                
+              // ---------------------------
+              // Meditation quotidienne
+              // ---------------------------
               Container(
                 margin: EdgeInsets.only(top: 8.h),
                 padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
@@ -459,7 +410,7 @@ class _HomeViewState extends State<HomeView> {
                     Row(
                       children: [
                         Icon(
-                          Icons.menu_book_rounded,
+                          Icons.water_drop_rounded,
                           color: context.appColor.primaryBlue,
                           size: 16.sp,
                         ),
@@ -469,7 +420,7 @@ class _HomeViewState extends State<HomeView> {
                           style: context.appTypographie.body.copyWith(
                             fontSize: 12.sp,
                             color: context.appColor.primaryBlue,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w800,
                           ),
                         ),
                       ],
@@ -492,9 +443,9 @@ class _HomeViewState extends State<HomeView> {
                             " (reference : 2 Corinthiens 12:9)",
                         style: context.appTypographie.subtitle.copyWith(
                           fontSize: 13.sp,
-                          color: context.appColor.primaryGrayDark,
+                          color: context.appColor.primaryGray500,
                           fontWeight: FontWeight.w600,
-                          fontStyle: FontStyle.italic,
+                          // fontStyle: FontStyle.italic,
                         ),
                       ),
                     ),
@@ -506,7 +457,7 @@ class _HomeViewState extends State<HomeView> {
                             fontSize: 12.sp,
                             color: context.appColor.primaryBlue,
                             fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.italic,
+                            // fontStyle: FontStyle.italic,
                           ),
                         ),
                         SizedBox(width: 5.w),
@@ -520,6 +471,45 @@ class _HomeViewState extends State<HomeView> {
                   ],
                 ),
               ),
+              SizedBox(height: 10.h),
+
+              // ------------------------------------
+              // Rejoindre notre communauté via QR Code
+              // ------------------------------------
+              Row(
+                children: [
+                  Flexible(
+                    child: CustomeText(
+                      text:
+                          'Scannez le QR Code pour rejoindre notre communauté',
+                      style: context.appTypographie.body.copyWith(
+                        fontSize: 14.sp,
+                        color: context.appColor.primaryGray500,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 4.h),
+                    padding: EdgeInsets.all(9.r),
+                    decoration: BoxDecoration(
+                      color:  context.appColor.primaryLightBlue.withValues(
+                    alpha: 0.4,
+                  ),
+                      borderRadius: BorderRadius.circular(9.r),
+                    ),
+                    child: QrImageView(
+                      data: qrCodeData,
+                      version: QrVersions.auto,
+                      size: 100.h,
+                      eyeStyle: const QrEyeStyle(
+                        eyeShape: QrEyeShape.square,
+                        color: Color(0xFFFF7900),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -530,38 +520,3 @@ class _HomeViewState extends State<HomeView> {
 
 
 
-class SHowProgrammeAnnonce extends StatelessWidget {
-  const SHowProgrammeAnnonce({super.key, required this.imageUrl});
-  final String imageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: SvgPicture.asset(assets.images.arrowBack.path,color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Hero(
-            tag: 'event_',
-            child: Center(
-              child: Image.network(
-                imageUrl,
-                height: 0.3.sh,
-              ),
-            ),
-          )
-          
-        ],
-      ),
-    );
-  }
-}

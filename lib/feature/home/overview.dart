@@ -26,6 +26,7 @@ import 'package:grace_church/feature/home/page/bloc/notification/notification_bl
 import 'package:grace_church/feature/home/page/bloc/notification/readnotification_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/notification/notification_view.dart';
+import 'package:grace_church/feature/home/page/notification/widget/programme.dart';
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({
@@ -100,6 +101,14 @@ class _OverviewScreenState extends State<OverviewScreen> {
         listeners: [
           BlocListener<GetProfileBloc, ApiState<ProfileResponse>>(
             listener: (context, profileState) async {
+              if (profileState is SuccessState<ProfileResponse>) {
+                AppAlert.showNotificationPopUp(
+                  context: context,
+                  child: NotificationPopeView(
+                    imageUrl: "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
+                  ),
+                );
+              }
               if (profileState is FailedState<ProfileResponse>) {
                 AppAlert.showInfo(context, profileState.message.getOrEmpty());
               }
