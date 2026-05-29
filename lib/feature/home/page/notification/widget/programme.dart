@@ -146,8 +146,8 @@ class _BannerSliderState extends State<BannerSlider> {
                   // margin: EdgeInsets.symmetric(horizontal: 8.w),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.r),
-                    child: CachedNetworkImage(
-                      imageUrl: image,
+                    child: Image.network(
+                      image,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),

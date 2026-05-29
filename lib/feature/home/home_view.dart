@@ -83,6 +83,9 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ------------------------------------
+              // TV Programme
+              // ------------------------------------
               Container(
                 height: 0.23333333.sh,
                 width: double.infinity,
@@ -119,6 +122,9 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
 
+              // ------------------------------------
+              // Actions rapides Menu
+              // ------------------------------------
               BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
                 builder: (context, profileState) {
                   return BlocBuilder<
@@ -362,14 +368,6 @@ class _HomeViewState extends State<HomeView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                           AppAlert.showNotificationPopUp(
-                          context: context,
-                          child: NotificationPopeView(
-                            imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg_1fHVQkEzzBU60S1y4QC9zn1jWckQPvXIiragkBFzg1n2lJQf8xeMTY&s=10",
-                          ),
-                        );
-                        },
                         child: CustomeText(
                           text: 'Programmes à venir',
                           style: context.appTypographie.body.copyWith(
@@ -382,15 +380,21 @@ class _HomeViewState extends State<HomeView> {
                     ],
                   ),
                   SizedBox(height: 7.h),
-
                 ],
               ),
-           
+              
+              // ------------------------------------
+              // Programmes à venir: Carousel Slider
+              // -----------------------------------
               Container(
                padding: EdgeInsets.symmetric(vertical: 9.w),
                 child: BannerSlider(),
               ),
 
+                
+              // ---------------------------
+              // Meditation quotidienne
+              // ---------------------------
               Container(
                 margin: EdgeInsets.only(top: 8.h),
                 padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
@@ -469,6 +473,9 @@ class _HomeViewState extends State<HomeView> {
               ),
               SizedBox(height: 10.h),
 
+              // ------------------------------------
+              // Rejoindre notre communauté via QR Code
+              // ------------------------------------
               Row(
                 children: [
                   Flexible(
