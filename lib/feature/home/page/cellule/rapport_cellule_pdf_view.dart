@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/core/constante/const.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -140,7 +141,7 @@ class RapportCellulePDFView extends StatelessWidget {
 
                 pw.Align(
                   child: pw.Container(
-                    margin: pw.EdgeInsets.only(top: 15.h),
+                    margin: pw.EdgeInsets.only(top: 8.h),
                     padding: const pw.EdgeInsets.all(10),
                     decoration: pw.BoxDecoration(
                       border: pw.Border.all(color: PdfColors.red),
@@ -163,7 +164,7 @@ class RapportCellulePDFView extends StatelessWidget {
                 ),
                 pw.Align(
                   child: pw.Container(
-                    margin: pw.EdgeInsets.only(top: 7.h, bottom: 14.h),
+                    margin: pw.EdgeInsets.only(top: 5.h, bottom: 7.h),
                     padding: const pw.EdgeInsets.all(10),
                     decoration: pw.BoxDecoration(
                       border: pw.Border.all(color: PdfColors.red),
@@ -186,7 +187,7 @@ class RapportCellulePDFView extends StatelessWidget {
                   ),
                 ),
 
-                pw.SizedBox(height: 5.h),
+              
                 // TABLEAU ADIMANISTRATION
                 pw.Container(
                   margin: pw.EdgeInsets.only(right: 10.h),
@@ -310,7 +311,7 @@ class RapportCellulePDFView extends StatelessWidget {
                   ),
                 ),
 
-                pw.SizedBox(height: 20.h),
+                pw.SizedBox(height: 13.h),
 
                 // EFFECTIF SECTION
                 pw.Stack(
@@ -324,7 +325,7 @@ class RapportCellulePDFView extends StatelessWidget {
                               children: [
                                 buildCard(
                                   padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 37.6.w,
+                                    horizontal: 43.w,
                                     vertical: 5.h,
                                   ),
                                   isDefaultBorder: false,
@@ -335,7 +336,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                   ),
                                   child: pw.Row(
                                     children: [
-                                      pw.Text("EFFECTIF"),
+                                      pw.Text("EFFECTIF", style: pw.TextStyle(fontSize: 9.sp)),
                                       pw.SizedBox(width: 1.w),
                                     ],
                                   ),
@@ -344,8 +345,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 8.w,
-                                        vertical: 5.h,
+                                        horizontal: 13.7.w,
+                                        vertical: 3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -354,13 +355,13 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                       ),
                                       child: pw.Row(
-                                        children: [pw.Text("Chrét.Bapt")],
+                                        children: [pw.Text("Chrét.Bapt",style: pw.TextStyle(fontSize: 9.sp))],
                                       ),
                                     ),
                                     buildCardValue(
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 6.9.w,
-                                        vertical: 5.h,
+                                        vertical: 3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -368,7 +369,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                           color: PdfColors.black,
                                         ),
                                       ),
-                                      child: pw.Row(children: [pw.Text("01")]),
+                                      child: pw.Row(children: [pw.Text("01",style: pw.TextStyle(fontSize: 9.sp))]),
                                     ),
                                   ],
                                 ),
@@ -376,8 +377,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 4.w,
-                                        vertical: 5.h,
+                                       horizontal: 10.4.w,
+                                        vertical: 3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -386,13 +387,13 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                       ),
                                       child: pw.Row(
-                                        children: [pw.Text("Chré.N.Bapt")],
+                                        children: [pw.Text("Chré.N.Bapt",style: pw.TextStyle(fontSize: 9.sp))],
                                       ),
                                     ),
                                     buildCardValue(
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 6.9.w,
-                                        vertical: 5.h,
+                                        vertical: 3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -400,7 +401,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                           color: PdfColors.black,
                                         ),
                                       ),
-                                      child: pw.Row(children: [pw.Text("01")]),
+                                      child: pw.Row(children: [pw.Text("01",style: pw.TextStyle(fontSize: 9.sp))]),
                                     ),
                                   ],
                                 ),
@@ -408,8 +409,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 22.4.w,
-                                        vertical: 5.h,
+                                        horizontal: 25.w,
+                                        vertical: 3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -420,13 +421,13 @@ class RapportCellulePDFView extends StatelessWidget {
                                       child: pw.Row(
                                         mainAxisAlignment:
                                             pw.MainAxisAlignment.start,
-                                        children: [pw.Text("Total")],
+                                        children: [pw.Text("Total",style: pw.TextStyle(fontSize: 9.sp))],
                                       ),
                                     ),
                                     buildCardValue(
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 4.w,
-                                        vertical: 5.h,
+                                        vertical: 3.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -434,7 +435,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                           color: PdfColors.black,
                                         ),
                                       ),
-                                      child: pw.Row(children: [pw.Text("201")]),
+                                      child: pw.Row(children: [pw.Text("201",style: pw.TextStyle(fontSize: 9.sp))]),
                                     ),
                                   ],
                                 ),
@@ -446,8 +447,8 @@ class RapportCellulePDFView extends StatelessWidget {
                               children: [
                                 buildCard(
                                   padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 58.w,
-                                    vertical: 5.h,
+                                    horizontal: 73.w,
+                                    vertical: 1.h,
                                   ),
                                   isDefaultBorder: false,
                                   customeBorder: pw.Border(
@@ -455,28 +456,28 @@ class RapportCellulePDFView extends StatelessWidget {
                                       color: PdfColors.black,
                                       style: pw.BorderStyle.solid,
                                     ),
-                                    right: pw.BorderSide(
-                                      color: PdfColors.black,
-                                      style: pw.BorderStyle.solid,
-                                    ),
+                                    // right: pw.BorderSide(
+                                    //   color: PdfColors.black,
+                                    //   style: pw.BorderStyle.solid,
+                                    // ),
                                   ),
                                   child: pw.Column(
                                     children: [
                                       pw.Row(
-                                        children: [pw.Text("EGLISE DE MAISON")],
+                                        children: [pw.Text("EGLISE DE MAISON",style: pw.TextStyle(fontSize: 9.sp))],
                                       ),
-                                      pw.SizedBox(height: 21.h),
+                                      pw.SizedBox(height: 10.h),
                                     ],
                                   ),
                                 ),
                                 pw.Row(
                                   children: [
-                                    buildCardValue(
-                                      height: 50.h,
+                                    buildCard(
+                                      
                                       width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 4.w,
-                                         vertical: 8.8.h,
+                                        horizontal: 7.w,
+                                        vertical: 12.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border(
@@ -487,16 +488,86 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Column(
                                         children: [
-                                          pw.Row(
-                                            children: [
-                                              pw.Text("CETTE\nSEMAINE",style: pw.TextStyle(fontSize: 10.sp)),
-                                            ],
-                                          ),
-                                          pw.SizedBox(height: 5.h),
+                                              pw.Text(
+                                                "CETTE",
+                                                style: pw.TextStyle(
+                                                  fontSize: 10.sp,
+                                                ),
+                                              ),
+                                            pw.Text(
+                                                "SEMAINE",
+                                                style: pw.TextStyle(
+                                                  fontSize: 9.sp,
+                                                ),
+                                              ),
                                         ],
                                       ),
                                     ),
-                                
+
+                                    buildCard(
+                                      width: 55.w,
+                                      padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 11.4.w,
+                                        vertical: 12.h,
+                                      ),
+                                      isDefaultBorder: true,
+                                      customeBorder: pw.Border(
+                                        top: pw.BorderSide(
+                                          color: PdfColors.black,
+                                          style: pw.BorderStyle.solid,
+                                        ),
+                                      ),
+                                      child: pw.Column(
+                                        children: [
+                                          
+                                           pw.Text(
+                                                "T",
+                                                style: pw.TextStyle(
+                                                  fontSize: 10.sp,
+                                                ),
+                                              ),
+                                               pw.Text(
+                                                "T",
+                                                style: pw.TextStyle(
+                                                  fontSize: 9.sp,
+                                                  color: PdfColors.white
+                                                ),
+                                              ),
+                                        ],
+                                      ),
+                                    ),
+                                    buildCard(
+                                      width: 55.w,
+                                      padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 4.w,
+                                        vertical: 12.h,
+                                      ),
+                                      isDefaultBorder: true,
+                                      customeBorder: pw.Border(
+                                        top: pw.BorderSide(
+                                          color: PdfColors.black,
+                                          style: pw.BorderStyle.solid,
+                                        ),
+                                      ),
+                                      child: pw.Column(
+                                        children: [
+                                         pw.Text(
+                                                "SEMAINE",
+                                                style: pw.TextStyle(
+                                                  fontSize: 10.sp,
+                                                ),
+                                              ),
+                                           pw.Text(
+                                                "PASSEE",
+                                                style: pw.TextStyle(
+                                                  fontSize: 9.sp,
+                                                ),
+                                              ),
+                                          
+                                        ],
+                                      ),
+                                    ),
+
                                     buildCard(
                                       width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
@@ -514,55 +585,22 @@ class RapportCellulePDFView extends StatelessWidget {
                                         children: [
                                           pw.Row(
                                             children: [
-                                              pw.Text("T", style: pw.TextStyle(fontSize: 10.sp)),
+                                              pw.Text(
+                                                "T ",
+                                                style: pw.TextStyle(
+                                                  fontSize: 10.sp,
+                                                ),
+                                              ),
                                             ],
                                           ),
-                                          pw.SizedBox(height: 8.h),
-                                        ],
-                                      ),
-                                    ),
-                                    buildCard(
-                                      width: 55.w,
-                                      padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 4.w,
-                                        vertical: 7.3.h,
-                                      ),
-                                      isDefaultBorder: true,
-                                      customeBorder: pw.Border(
-                                        top: pw.BorderSide(
-                                          color: PdfColors.black,
-                                          style: pw.BorderStyle.solid,
-                                        ),
-                                      ),
-                                      child: pw.Column(
-                                        children: [
-                                          pw.Row(
-                                            children: [
-                                              pw.Text("SEMAINE\nPASSEE", style: pw.TextStyle(fontSize: 10.sp)),
-                                            ],
-                                          ),
-                                          pw.SizedBox(height: 8.h),
-                                        ],
-                                      ),
-                                    ),
-
-                                    buildCard(
-                                       width: 55.w,
-                                      padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 11.4.w,
-                                        vertical: 11.h,
-                                      ),
-                                      isDefaultBorder: true,
-                                      customeBorder: pw.Border(
-                                        top: pw.BorderSide(
-                                          color: PdfColors.black,
-                                          style: pw.BorderStyle.solid,
-                                        ),
-                                      ),
-                                      child: pw.Column(
-                                        children: [
-                                          pw.Row(children: [pw.Text("T ", style: pw.TextStyle(fontSize: 10.sp))]),
-                                          pw.SizedBox(height: 11.h),
+                                           pw.Text(
+                                                "T ",
+                                                style: pw.TextStyle(
+                                                  fontSize: 9.sp,
+                                                  color: PdfColors.white,
+                                                ),
+                                              ),
+                                         
                                         ],
                                       ),
                                     ),
@@ -582,8 +620,23 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Column(
                                         children: [
-                                          pw.Row(children: [pw.Text("ECART", style: pw.TextStyle(fontSize: 10.sp))]),
-                                          pw.SizedBox(height: 8.h),
+                                          pw.Row(
+                                            children: [
+                                              pw.Text(
+                                                "ECART",
+                                                style: pw.TextStyle(
+                                                  fontSize: 10.sp,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          pw.Text(
+                                            "ECART",
+                                            style: pw.TextStyle(
+                                              fontSize: 9.sp,
+                                              color: PdfColors.white                                            ),
+                                          ),
+                                          // pw.SizedBox(height: 8.h),
                                         ],
                                       ),
                                     ),
@@ -597,7 +650,7 @@ class RapportCellulePDFView extends StatelessWidget {
                         pw.Row(
                           children: [
                             pw.Container(
-                              height: 0.26.sh,
+                              height: 0.24.sh,
                               alignment: pw.Alignment.center,
                               padding: pw.EdgeInsets.symmetric(
                                 horizontal: 6.w,
@@ -608,19 +661,21 @@ class RapportCellulePDFView extends StatelessWidget {
                               ),
                               child: pw.Transform.rotateBox(
                                 angle: 1.57,
-                                child: pw.Text("ASSISTANCE"),
+                                child: pw.Text("ASSISTANCE",),
                               ),
                             ),
                             pw.Column(
                               mainAxisAlignment: pw.MainAxisAlignment.start,
                               crossAxisAlignment: pw.CrossAxisAlignment.start,
                               children: [
-                                // ROW ASSISTANCE 
+                                //--->> ROW ASSISTANCE
                                 pw.Row(
+                                  crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                  mainAxisAlignment: pw.MainAxisAlignment.start,
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 5.9.w,
+                                        horizontal: 19.1.w,
                                         vertical: 5.h,
                                       ),
                                       isDefaultBorder: false,
@@ -630,85 +685,89 @@ class RapportCellulePDFView extends StatelessWidget {
                                           style: pw.BorderStyle.solid,
                                         ),
                                       ),
-                                      child: pw.Text("Chrétiens baptisés"),
+                                      child: pw.Text(
+                                        "Chrétiens baptisés",
+                                        style: pw.TextStyle(fontSize: 8.sp),
+                                      ),
                                     ),
-                                    // Columne cette semaine 
+                                    // Columne cette semaine
                                     buildCardValue(
-                                      width: 55.w,
+                                       width: 55.w,
                                       padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 5.w,
+                                        horizontal: 4.1.w,
                                         vertical: 4.9.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
                                         color: PdfColors.grey300,
                                       ),
-                                      child: pw.Text(
-                                        "00",
-                                       
-                                      ),
+                                      child: pw.Text("0S",style: pw.TextStyle(fontSize: 8.sp),),
                                     ),
                                     // Columne cette semaine T
                                     buildCardValue(
-                                       width: 29.5.w,
+                                       width: 29.1.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
-                                        vertical: 5.3.h,
+                                        vertical: 5.0.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
                                         color: PdfColors.black,
                                       ),
-                                      child: pw.Text("00"),
+                                      child: pw.Text("00",style: pw.TextStyle(fontSize: 8.sp),),
                                     ),
                                     // Columne semaine passé
                                     buildCardValue(
-                                      width: 52.w,
+                                      width: 52.5.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
-                                        vertical: 5.3.h,
+                                        vertical: 5.0.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
                                         color: PdfColors.black,
                                       ),
-                                      child: pw.Text("00"),
+                                      child: pw.Text("00",style: pw.TextStyle(fontSize: 8.sp),),
                                     ),
                                     // Columne semaine passé T
                                     buildCardValue(
                                       width: 32.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
-                                        vertical: 5.3.h,
+                                       vertical: 5.0.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
                                         color: PdfColors.black,
                                       ),
-                                      child: pw.Text("00"),
+                                      child: pw.Text("00",style: pw.TextStyle(fontSize: 8.sp)),
                                     ),
                                     // Columne ecart
                                     buildCardValue(
                                       width: 54.w,
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.w,
-                                        vertical: 5.3.h,
+                                        vertical: 5.0.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
                                         color: PdfColors.black,
                                       ),
-                                      child: pw.Text("EC"),
+                                      child: pw.Text("EC",style: pw.TextStyle(fontSize: 8.sp)),
                                     ),
                                   ],
                                 ),
                                
-                                pw.Row(
+                                //--->> Non chrétiens
+                                ...List.generate(3, (index){
+                                  return   pw.Row(
+                                  crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                  mainAxisAlignment: pw.MainAxisAlignment.start,
                                   children: [
                                     buildCard(
                                       padding: pw.EdgeInsets.symmetric(
                                         horizontal: 5.3.w,
-                                        vertical: 12.8.h,
+                                        vertical: 12.1.h,
                                       ),
                                       isDefaultBorder: true,
                                       customeBorder: pw.Border.all(
@@ -716,7 +775,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       child: pw.Text(
                                         "Chrétiens\nNon\nbaptisés",
-                                        style: pw.TextStyle(fontSize: 9.sp),
+                                        style: pw.TextStyle(fontSize: 8.sp),
                                       ),
                                     ),
                                     pw.Column(
@@ -724,10 +783,11 @@ class RapportCellulePDFView extends StatelessWidget {
                                           pw.CrossAxisAlignment.start,
                                       children: [
                                         pw.Row(
+                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                          mainAxisAlignment: pw.MainAxisAlignment.start,
                                           children: [
-                                      
                                             buildCardValue(
-                                              width: 56.w,
+                                              width: 59.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
                                                 vertical: 4.h,
@@ -739,7 +799,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text(
                                                 "Tout-petits",
                                                 style: pw.TextStyle(
-                                                  fontSize: 9.sp,
+                                                  fontSize: 8.sp,
                                                 ),
                                               ),
                                             ),
@@ -748,22 +808,26 @@ class RapportCellulePDFView extends StatelessWidget {
                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
-                                                vertical: 3.h,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
                                                 color: PdfColors.black,
                                               ),
-                                              child: pw.Text("00"),
+                                              child: pw.Text("00", style: pw.TextStyle(
+                                                  fontSize: 8.sp,
+                                                ),),
                                             ),
                                           ],
                                         ),
                                         pw.Row(
+                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                          mainAxisAlignment: pw.MainAxisAlignment.start,
                                           children: [
                                             buildCardValue(
-                                              width: 56.w,
+                                              width: 59.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                 horizontal: 5.w,
+                                                horizontal: 5.w,
                                                 vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
@@ -771,32 +835,35 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 color: PdfColors.black,
                                               ),
                                               child: pw.Text(
-                                                "Cadets",
+                                                "cadets",
                                                 style: pw.TextStyle(
-                                                  fontSize: 9.sp,
+                                                  fontSize: 8.sp,
                                                 ),
                                               ),
                                             ),
                                             // Columne Cette semaine
-
                                             buildCardValue(
-                                               width: 55.w,
+                                              width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
-                                                vertical: 3.h,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
                                                 color: PdfColors.black,
                                               ),
-                                              child: pw.Text("00"),
+                                              child: pw.Text("00", style: pw.TextStyle(
+                                                  fontSize: 8.sp,
+                                                ),),
                                             ),
                                           ],
                                         ),
-                                        pw.Row(
+                                         pw.Row(
+                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                          mainAxisAlignment: pw.MainAxisAlignment.start,
                                           children: [
                                             buildCardValue(
-                                              width: 56.w,
+                                               width: 59.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
                                                 vertical: 4.h,
@@ -808,145 +875,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                               child: pw.Text(
                                                 "Juniors",
                                                 style: pw.TextStyle(
-                                                  fontSize: 9.sp,
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne Cette semaine
-                                            buildCardValue(
-                                               width: 55.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    
-                                    pw.Row(
-                                      children: [
-                                        // Columne Cette semaine T
-                                        buildCardValue(
-                                          width: 29.5.w,
-                                          padding: pw.EdgeInsets.symmetric(
-                                            horizontal: 1.w,
-                                            vertical: 20.7.h,
-                                          ),
-                                          isDefaultBorder: true,
-                                          child: pw.Text("00"),
-                                        ),
-                                        // Columne semaine passe 
-                                        pw.Column(
-                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
-                                          children: [
-                                            buildCardValue(
-                                              width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                            buildCardValue(
-                                               width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 2.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                            buildCardValue(
-                                              width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                        // Columne semaine passé T
-                                        buildCardValue(
-                                          width: 31.2.w,
-                                          padding: pw.EdgeInsets.symmetric(
-                                            horizontal: 1.w,
-                                            vertical: 20.5.h,
-                                          ),
-                                          isDefaultBorder: true,
-                                          child: pw.Text("T"),
-                                        ),
-                                        // Columne ECART
-                                        buildCardValue(
-                                           width: 54.w,
-                                          padding: pw.EdgeInsets.symmetric(
-                                            horizontal: 1.w,
-                                            vertical: 20.5.h,
-                                          ),
-                                          isDefaultBorder: true,
-                                          child: pw.Text("EC"),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                
-                                // ROW NOVEAUX
-                                pw.Row(
-                                  children: [
-                                    buildCard(
-                                      padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 4.4.w,
-                                        vertical: 21.h,
-                                      ),
-                                      isDefaultBorder: true,
-                                      customeBorder: pw.Border.all(
-                                        color: PdfColors.grey300,
-                                      ),
-                                      child: pw.Text(
-                                        "Nouveaux",
-                                        style: pw.TextStyle(fontSize: 9.sp),
-                                      ),
-                                    ),
-                                    pw.Column(
-                                      crossAxisAlignment:
-                                          pw.CrossAxisAlignment.start,
-                                      children: [
-                                        pw.Row(
-                                          children: [
-                                      
-                                            buildCardValue(
-                                              width: 56.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text(
-                                                "Tout-petits",
-                                                style: pw.TextStyle(
-                                                  fontSize: 9.sp,
+                                                  fontSize: 8.sp,
                                                 ),
                                               ),
                                             ),
@@ -955,127 +884,50 @@ class RapportCellulePDFView extends StatelessWidget {
                                               width: 55.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                        pw.Row(
-                                          children: [
-                                            buildCardValue(
-                                              width: 56.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                 horizontal: 5.w,
                                                 vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
                                                 color: PdfColors.black,
                                               ),
-                                              child: pw.Text(
-                                                "Cadets",
-                                                style: pw.TextStyle(
-                                                  fontSize: 9.sp,
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne Cette semaine
-
-                                            buildCardValue(
-                                               width: 55.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                        pw.Row(
-                                          children: [
-                                            buildCardValue(
-                                              width: 56.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text(
-                                                "Juniors",
-                                                style: pw.TextStyle(
-                                                  fontSize: 9.sp,
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne Cette semaine
-                                            buildCardValue(
-                                               width: 55.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
+                                              child: pw.Text("00", style: pw.TextStyle(
+                                                  fontSize: 8.sp,
+                                                ),),
                                             ),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    
+
                                     pw.Row(
+                                      crossAxisAlignment: pw.CrossAxisAlignment.start,
                                       children: [
                                         // Columne Cette semaine T
                                         buildCardValue(
                                           width: 29.5.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 20.7.h,
+                                            vertical: 20.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("00"),
+                                          child: pw.Text("0T", style: pw.TextStyle(fontSize: 8.sp,),),
                                         ),
-                                        // Columne semaine passe 
+                                        // Columne semaine passe
                                         pw.Column(
-                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              pw.CrossAxisAlignment.start,
                                           children: [
                                             buildCardValue(
                                               width: 52.w,
                                               padding: pw.EdgeInsets.symmetric(
                                                 horizontal: 1.w,
-                                                vertical: 3.h,
+                                                vertical: 4.h,
                                               ),
                                               isDefaultBorder: true,
                                               customeBorder: pw.Border.all(
                                                 color: PdfColors.black,
                                               ),
-                                              child: pw.Text("00"),
-                                            ),
-                                            buildCardValue(
-                                               width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 2.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
+                                              child: pw.Text("00", style: pw.TextStyle(fontSize: 8.sp,),),
                                             ),
                                             buildCardValue(
                                               width: 52.w,
@@ -1087,7 +939,19 @@ class RapportCellulePDFView extends StatelessWidget {
                                               customeBorder: pw.Border.all(
                                                 color: PdfColors.black,
                                               ),
-                                              child: pw.Text("00"),
+                                              child: pw.Text("00", style: pw.TextStyle(fontSize: 8.sp,),),
+                                            ),
+                                            buildCardValue(
+                                              width: 52.w,
+                                              padding: pw.EdgeInsets.symmetric(
+                                                horizontal: 1.w,
+                                                vertical: 4.h,
+                                              ),
+                                              isDefaultBorder: true,
+                                              customeBorder: pw.Border.all(
+                                                color: PdfColors.black,
+                                              ),
+                                              child: pw.Text("00", style: pw.TextStyle(fontSize: 8.sp,),),
                                             ),
                                           ],
                                         ),
@@ -1096,434 +960,373 @@ class RapportCellulePDFView extends StatelessWidget {
                                           width: 31.2.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 20.5.h,
+                                            vertical: 20.2.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("T"),
+                                          child: pw.Text("T", style: pw.TextStyle(fontSize: 8.sp,),),
                                         ),
                                         // Columne ECART
                                         buildCardValue(
-                                           width: 54.w,
+                                          width: 54.w,
                                           padding: pw.EdgeInsets.symmetric(
                                             horizontal: 1.w,
-                                            vertical: 20.5.h,
+                                            vertical: 20.1.h,
                                           ),
                                           isDefaultBorder: true,
-                                          child: pw.Text("EC"),
+                                          child: pw.Text("EC", style: pw.TextStyle(fontSize: 8.sp,),),
                                         ),
                                       ],
                                     ),
                                   ],
-                                ),
+                                );
+                                })
                                
-                                // ROW INVITE
-                                pw.Row(
-                                  children: [
-                                    buildCard(
-                                      padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 11.4.w,
-                                        vertical: 21.9.h,
-                                      ),
-                                      isDefaultBorder: true,
-                                      customeBorder: pw.Border.all(
-                                        color: PdfColors.grey300,
-                                      ),
-                                      child: pw.Text(
-                                        "Invités",
-                                        style: pw.TextStyle(fontSize: 9.sp),
-                                      ),
-                                    ),
-                                    pw.Column(
-                                      crossAxisAlignment:
-                                          pw.CrossAxisAlignment.start,
-                                      children: [
-                                        pw.Row(
-                                          children: [
-                                      
-                                            buildCardValue(
-                                              width: 56.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text(
-                                                "Tout-petits",
-                                                style: pw.TextStyle(
-                                                  fontSize: 9.sp,
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne Cette semaine
-                                            buildCardValue(
-                                              width: 55.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                        pw.Row(
-                                          children: [
-                                            buildCardValue(
-                                              width: 56.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                 horizontal: 5.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text(
-                                                "Cadets",
-                                                style: pw.TextStyle(
-                                                  fontSize: 9.sp,
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne Cette semaine
-
-                                            buildCardValue(
-                                               width: 55.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                        pw.Row(
-                                          children: [
-                                            buildCardValue(
-                                              width: 56.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text(
-                                                "Juniors",
-                                                style: pw.TextStyle(
-                                                  fontSize: 9.sp,
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne Cette semaine
-                                            buildCardValue(
-                                               width: 55.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 5.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    
-                                    pw.Row(
-                                      children: [
-                                        // Columne Cette semaine T
-                                        buildCardValue(
-                                          width: 29.5.w,
-                                          padding: pw.EdgeInsets.symmetric(
-                                            horizontal: 1.w,
-                                            vertical: 20.7.h,
-                                          ),
-                                          isDefaultBorder: true,
-                                          child: pw.Text("00"),
-                                        ),
-                                        // Columne semaine passe 
-                                        pw.Column(
-                                          crossAxisAlignment: pw.CrossAxisAlignment.start,
-                                          children: [
-                                            buildCardValue(
-                                              width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 3.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                            buildCardValue(
-                                               width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 2.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                            buildCardValue(
-                                              width: 52.w,
-                                              padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 1.w,
-                                                vertical: 4.h,
-                                              ),
-                                              isDefaultBorder: true,
-                                              customeBorder: pw.Border.all(
-                                                color: PdfColors.black,
-                                              ),
-                                              child: pw.Text("00"),
-                                            ),
-                                          ],
-                                        ),
-                                        // Columne semaine passé T
-                                        buildCardValue(
-                                          width: 31.2.w,
-                                          padding: pw.EdgeInsets.symmetric(
-                                            horizontal: 1.w,
-                                            vertical: 20.5.h,
-                                          ),
-                                          isDefaultBorder: true,
-                                          child: pw.Text("T"),
-                                        ),
-                                        // Columne ECART
-                                        buildCardValue(
-                                           width: 54.w,
-                                          padding: pw.EdgeInsets.symmetric(
-                                            horizontal: 1.w,
-                                            vertical: 20.5.h,
-                                          ),
-                                          isDefaultBorder: true,
-                                          child: pw.Text("EC"),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                               
-                             ],
+                               ],
                             ),
                           ],
                         ),
+                        //
+                        ...List.generate(rapportpdfItem.length-2, (index) {return    pw.Row(
+                          children: [
+                            buildCardValue(
+                              width: 129.w,
+                              isDefaultBorder: true,
+                              child: pw.Text(
+                                "Total",
+                                style: pw.TextStyle(
+                                  fontWeight: pw.FontWeight.bold,
+                                  fontSize: 7.sp,
+                                ),
+                              ),
+                            ),
+                            buildCardValue(
+                              width: 84.1.w,
+                              isDefaultBorder: true,
+                              child: pw.Text(
+                                "Total",
+                                style: pw.TextStyle(
+                                  fontSize: 7.sp,
+                                ),
+                              ),
+                            ),
+                            // Semaine passer
+                            buildCardValue(
+                              width: 52.w,
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 1.w,
+                                vertical: 4.h,
+                              ),
+                              isDefaultBorder: true,
+                              customeBorder: pw.Border.all(
+                                color: PdfColors.black,
+                              ),
+                              child: pw.Text(
+                                "00",
+                                style: pw.TextStyle(
+                                  fontSize: 7.sp,
+                                ),
+                              ),
+                            ),
+                            // Columne semaine passé T
+                            buildCardValue(
+                              width: 31.2.w,
+                               padding: pw.EdgeInsets.symmetric(
+                                horizontal: 1.w,
+                                vertical: 4.h,
+                              ),
+                              isDefaultBorder: true,
+                              child: pw.Text("T",style: pw.TextStyle(
+                                  fontSize: 7.sp,
+                                ),),
+                            ),
+                            // Columne ECART
+                            buildCardValue(
+                              width: 54.w,
+                              padding: pw.EdgeInsets.symmetric(
+                                horizontal: 1.w,
+                                vertical: 4.h,
+                              ),
+                              isDefaultBorder: true,
+                              child: pw.Text("EC",style: pw.TextStyle(
+                                  fontSize: 7.sp,
+                                ),),
+                            ),
+                          ],
+                        );
+                     }).toList(),
                       ],
                     ),
+                    
                     pw.Positioned(
                       right: 0.w,
                       top: 0,
-                      child:    pw.Column(
-                      crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      children: [
-                        pw.Row(
-                          crossAxisAlignment: pw.CrossAxisAlignment.start,
-                          children: [
-                          buildCard(
-                            
-                            padding: pw.EdgeInsets.symmetric(
-                              horizontal: 5.w,
-                                vertical: 17.h,
-                            ),
-                            isDefaultBorder: true,
-                            child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                            buildCard(
+                      child: pw.Column(
+                        crossAxisAlignment: pw.CrossAxisAlignment.start,
+                        children: [
+                          pw.Row(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: [
+                              buildCard(
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 5.w,
+                                  vertical: 17.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCard(
                                 padding: pw.EdgeInsets.symmetric(
                                   horizontal: 7.w,
-                                    vertical: 12.2.h,
-                                  ),
-                            isDefaultBorder: true,
-                            child: pw.Text("Nom et\nprénoms", style: pw.TextStyle(fontSize: 9.sp))),
-                            pw.Column(
-                              crossAxisAlignment: pw.CrossAxisAlignment.start,
-                              children: [
-                                buildCard(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 36.w,
-                                    vertical: 7.h,
-                                  ),
-                                  isDefaultBorder: true,
-                                  child: pw.Text("Status", style: pw.TextStyle(fontSize: 9.sp))),
-                                pw.Row(
-                                  children: [
+                                  vertical: 12.2.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "Nom et\nprénoms",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              pw.Column(
+                                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                                children: [
                                   buildCard(
-                                     padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 9.w,
-                                        vertical: 4.9.h,
+                                    padding: pw.EdgeInsets.symmetric(
+                                      horizontal: 36.w,
+                                      vertical: 7.h,
+                                    ),
+                                    isDefaultBorder: true,
+                                    child: pw.Text(
+                                      "Status",
+                                      style: pw.TextStyle(fontSize: 9.sp),
+                                    ),
+                                  ),
+                                  pw.Row(
+                                    children: [
+                                      buildCard(
+                                        padding: pw.EdgeInsets.symmetric(
+                                          horizontal: 9.w,
+                                          vertical: 4.9.h,
+                                        ),
+                                        isDefaultBorder: true,
+                                        child: pw.Text(
+                                          "Abscent",
+                                          style: pw.TextStyle(fontSize: 9.sp),
+                                        ),
                                       ),
-                                  isDefaultBorder: true,
-                                  child: pw.Text("Abscent", style: pw.TextStyle(fontSize: 9.sp))),
-                                    buildCard(
-                                      padding: pw.EdgeInsets.symmetric(
-                                        horizontal: 7.w,
-                                       vertical: 4.9.h,
+                                      buildCard(
+                                        padding: pw.EdgeInsets.symmetric(
+                                          horizontal: 7.w,
+                                          vertical: 4.9.h,
+                                        ),
+                                        isDefaultBorder: true,
+                                        child: pw.Text(
+                                          "Abscent",
+                                          style: pw.TextStyle(fontSize: 9.sp),
+                                        ),
                                       ),
-                                  isDefaultBorder: true,
-                                  child: pw.Text("Abscent", style: pw.TextStyle(fontSize: 9.sp))),
-                                    
-                                  ],
-                                )
-                              ],
-                            )
-                        ]),
-                        pw.Row(
-                          children: [
-                            buildCard(
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 6.w,
-                                vertical: 16.h,
+                                    ],
+                                  ),
+                                ],
                               ),
-                              isDefaultBorder: false,
-                              customeBorder: null,
-                              child: pw.Text("01",style: pw.TextStyle(fontSize: 9.sp))),
-                            buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.3.h,
-                              ),
-                              isDefaultBorder: true,
-                              customeBorder: null,
-                              child: pw.Text("Name°",style: pw.TextStyle(fontSize: 9.sp))),
-                              buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 16.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                                   buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 16.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                          ],
-                        ),
-                            pw.Row(
-                          children: [
-                            buildCard(
-                              padding: pw.EdgeInsets.symmetric(
-                                 horizontal: 6.w,
-                                vertical: 14.4.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("02",style: pw.TextStyle(fontSize: 9.sp))),
-                            buildCardValue(
-                               width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                              buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                                   buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                          ],
-                        ),
-                            pw.Row(
-                          children: [
-                            buildCard(
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 6.w,
-                                vertical: 14.3.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("03",style: pw.TextStyle(fontSize: 9.sp))),
-                            buildCardValue(
-                               width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                              buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                                   buildCardValue(
-                              width: 49.w,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 4.w,
-                                vertical: 15.h,
-                              ),
-                              isDefaultBorder: true,
-                              child: pw.Text("N°",style: pw.TextStyle(fontSize: 9.sp))),
-                          ],
-                        ),
-                        buildCard(
-                          width: 0.5.sw,
-                          isDefaultBorder: true,
-                          customeBorder: pw.Border.all(color: PdfColors.red),
-                          child: pw.Row(
-                            mainAxisAlignment: pw.MainAxisAlignment.center,
+                            ],
+                          ),
+                          pw.Row(
                             children: [
-                             pw.SizedBox(width: 27.w),
-                             pw.Text("ETAT SPIRITUEL DESEM",style: pw.TextStyle(fontSize: 9.sp, color: PdfColors.red)),
-                             pw.SizedBox(width: 27.w),
-
-                            ]
-                          )),
+                              buildCard(
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 6.w,
+                                  vertical: 16.h,
+                                ),
+                                isDefaultBorder: false,
+                                customeBorder: null,
+                                child: pw.Text(
+                                  "01",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.3.h,
+                                ),
+                                isDefaultBorder: true,
+                                customeBorder: null,
+                                child: pw.Text(
+                                  "Name°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 16.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 16.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pw.Row(
+                            children: [
+                              buildCard(
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 6.w,
+                                  vertical: 14.4.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "02",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pw.Row(
+                            children: [
+                              buildCard(
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 6.w,
+                                  vertical: 14.3.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "03",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 15.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                            ],
+                          ),
                           buildCard(
-                          width: 0.5.sw,
-                          padding: pw.EdgeInsets.symmetric(horizontal: 31.w, vertical: 39.h),
-                          isDefaultBorder: true,
-                          customeBorder: pw.Border.all(color: PdfColors.red),
-                          child: pw.Center(
-                            child: pw.Text(
-                              "ETAT SPIRITUEL DESEM",
-                              style: pw.TextStyle(
-                                fontSize: 9.sp,
-                                color: PdfColors.red,
+                            width: 0.5.sw,
+                            isDefaultBorder: true,
+                            customeBorder: pw.Border.all(color: PdfColors.red),
+                            child: pw.Row(
+                              mainAxisAlignment: pw.MainAxisAlignment.center,
+                              children: [
+                                pw.SizedBox(width: 27.w),
+                                pw.Text(
+                                  "ETAT SPIRITUEL DESEM",
+                                  style: pw.TextStyle(
+                                    fontSize: 9.sp,
+                                    color: PdfColors.red,
+                                  ),
+                                ),
+                                pw.SizedBox(width: 27.w),
+                              ],
+                            ),
+                          ),
+                          buildCard(
+                            width: 0.2.sw,
+                            padding: pw.EdgeInsets.symmetric(
+                              horizontal: 31.w,
+                              vertical: 108.h,
+                            ),
+                            isDefaultBorder: true,
+                            customeBorder: pw.Border.all(color: PdfColors.red),
+                            child: pw.Center(
+                              child: pw.Text(
+                                "ETAT SPIRITUEL DESEM",
+                                style: pw.TextStyle(
+                                  fontSize: 9.sp,
+                                  color: PdfColors.red,
+                                ),
                               ),
                             ),
                           ),
-                        )
-                      
-                      ],
-                    )
-                 )
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -1600,251 +1403,3 @@ pw.Container buildCardValue({
     child: child,
   );
 }
-
-
-
-
-
-  //  pw.Row(
-  //                 mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-  //                 children: [
-  //                   pw.Column(
-  //                     crossAxisAlignment: pw.CrossAxisAlignment.start,
-  //                     children: [
-  //                       pw.Text(
-  //                         "ASSISTANCE ET DONNEES STATISTIQUES",
-  //                         style: pw.TextStyle(
-  //                           fontSize: 18,
-  //                           fontWeight: pw.FontWeight.bold,
-  //                           color: PdfColors.red,
-  //                         ),
-  //                       ),
-  //                       pw.Container(
-  //                         // width: 16.w,
-  //                         padding: pw.EdgeInsets.symmetric(
-  //                           horizontal: 9.w,
-  //                           vertical: 2,
-  //                         ),
-  //                         alignment: pw.Alignment.center,
-  //                         decoration: pw.BoxDecoration(
-  //                           border: pw.Border.all(color: PdfColors.black),
-  //                         ),
-  //                         child: pw.Text("EFFECTIF"),
-  //                       ),
-  //                       pw.Table(
-  //                         border: pw.TableBorder.all(color: PdfColors.grey300),
-  //                         children: [
-  //                           pw.TableRow(
-  //                             children: [
-  //                               tableCell("Chrét.Bapt"), //<< LGINE 1
-  //                               pw.Padding(
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 child: pw.Text(
-  //                                   int.parse(rapportCellule.nombreBaptiser) > 9
-  //                                       ? "${rapportCellule.nombreBaptiser}"
-  //                                       : "0${rapportCellule.nombreBaptiser}",
-  //                                   style: pw.TextStyle(
-  //                                     color: PdfColors.black,
-  //                                     fontWeight: pw.FontWeight.bold,
-  //                                     fontSize: 12.5.sp,
-  //                                   ),
-  //                                 ),
-  //                               ), //<< LGINE 1
-  //                             ],
-  //                           ),
-  //                           pw.TableRow(
-  //                             children: [
-  //                               tableCell("Chré.N.Bapt "), //<< LGINE 1
-  //                               pw.Padding(
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 child: pw.Text(
-  //                                   int.parse(
-  //                                             rapportCellule.nombreNonBaptiser,
-  //                                           ) >
-  //                                           9
-  //                                       ? "${rapportCellule.nombreNonBaptiser}"
-  //                                       : "0${rapportCellule.nombreNonBaptiser}",
-  //                                   style: pw.TextStyle(
-  //                                     color: PdfColors.black,
-  //                                     fontWeight: pw.FontWeight.bold,
-  //                                     fontSize: 12.5.sp,
-  //                                   ),
-  //                                 ),
-  //                               ),
-  //                             ],
-  //                           ),
-  //                           pw.TableRow(
-  //                             children: [
-  //                               tableCell("TOTAL"), //<< LGINE 2
-  //                               pw.Padding(
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 child: pw.Text(
-  //                                   "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
-  //                                   style: pw.TextStyle(
-  //                                     color: PdfColors.black,
-  //                                     fontWeight: pw.FontWeight.bold,
-  //                                     fontSize: 12.5.sp,
-  //                                   ),
-  //                                 ),
-  //                               ),
-  //                             ],
-  //                           ),
-  //                         ],
-  //                       ),
-  //                       pw.Row(
-  //                         children: [
-  //                           pw.Column(
-  //                             crossAxisAlignment: pw.CrossAxisAlignment.start,
-  //                             children: [
-  //                               pw.Container(
-  //                                 height: 100.h,
-  //                                 alignment: pw.Alignment.center,
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 decoration: pw.BoxDecoration(
-  //                                   border: pw.Border.all(
-  //                                     color: PdfColors.black,
-  //                                   ),
-  //                                 ),
-  //                                 child: pw.Transform.rotateBox(
-  //                                   angle: 1.57,
-  //                                   child: pw.Text(
-  //                                     "sdsdfsdf",
-  //                                     style: pw.TextStyle(
-  //                                       fontSize: 18,
-  //                                       fontWeight: pw.FontWeight.bold,
-  //                                       color: PdfColors.red,
-  //                                     ),
-  //                                   ),
-  //                                 ),
-  //                               ),
-  //                             ],
-  //                           ),
-  //                          pw.Column(
-  //                           crossAxisAlignment: pw.CrossAxisAlignment.start,
-  //                           children: [
-  //                            pw.Container(
-  //                             height: 100.h,
-  //                             padding: pw.EdgeInsets.symmetric(
-  //                               // horizontal: 9.w,
-  //                               // vertical: 2,
-  //                             ),
-  //                             alignment: pw.Alignment.topCenter,
-  //                             decoration: pw.BoxDecoration(
-  //                               border: pw.Border.all(color: PdfColors.black),
-  //                             ),
-  //                             child:pw.Column(
-  //                               children: [
-  //                                 pw.Container(
-  //                                   padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-  //                                   decoration: pw.BoxDecoration(
-  //                                     border: pw.Border(
-  //                                       bottom: pw.BorderSide(color: PdfColors.black),
-  //                                     ),
-  //                                   ),
-  //                                   child: pw.Text("Chrétiens baptisés"),
-  //                                 ),
-  //                                 pw.Row(
-  //                                   children: [
-  //                                     pw.Column(
-  //                                       children: [
-  //                                        pw.Padding(padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),child: pw.Text("Chrétiens\nNon\nbaptisés"),)
-  //                                       ],
-  //                                     ),
-  //                                       pw.Table(
-  //                         border: pw.TableBorder.all(color: PdfColors.grey300),
-  //                         children: [
-  //                           pw.TableRow(
-  //                             children: [
-  //                               tableCell("Chrét.Bapt"), //<< LGINE 1
-  //                               pw.Padding(
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 child: pw.Text(
-  //                                   int.parse(rapportCellule.nombreBaptiser) > 9
-  //                                       ? "${rapportCellule.nombreBaptiser}"
-  //                                       : "0${rapportCellule.nombreBaptiser}",
-  //                                   style: pw.TextStyle(
-  //                                     color: PdfColors.black,
-  //                                     fontWeight: pw.FontWeight.bold,
-  //                                     fontSize: 12.5.sp,
-  //                                   ),
-  //                                 ),
-  //                               ), //<< LGINE 1
-  //                             ],
-  //                           ),
-  //                           pw.TableRow(
-  //                             children: [
-  //                               tableCell("Chré.N.Bapt "), //<< LGINE 1
-  //                               pw.Padding(
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 child: pw.Text(
-  //                                   int.parse(
-  //                                             rapportCellule.nombreNonBaptiser,
-  //                                           ) >
-  //                                           9
-  //                                       ? "${rapportCellule.nombreNonBaptiser}"
-  //                                       : "0${rapportCellule.nombreNonBaptiser}",
-  //                                   style: pw.TextStyle(
-  //                                     color: PdfColors.black,
-  //                                     fontWeight: pw.FontWeight.bold,
-  //                                     fontSize: 12.5.sp,
-  //                                   ),
-  //                                 ),
-  //                               ),
-  //                             ],
-  //                           ),
-  //                           pw.TableRow(
-  //                             children: [
-  //                               tableCell("TOTAL"), //<< LGINE 2
-  //                               pw.Padding(
-  //                                 padding: pw.EdgeInsets.symmetric(
-  //                                   horizontal: 3.w,
-  //                                   vertical: 3.h,
-  //                                 ),
-  //                                 child: pw.Text(
-  //                                   "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
-  //                                   style: pw.TextStyle(
-  //                                     color: PdfColors.black,
-  //                                     fontWeight: pw.FontWeight.bold,
-  //                                     fontSize: 12.5.sp,
-  //                                   ),
-  //                                 ),
-  //                               ),
-  //                             ],
-  //                           ),
-  //                         ],
-  //                       ),
-                      
-
-                                    
-  //                                   ],
-  //                                 ),
-  //                               ],
-  //                             ),
-  //                           ),
-  //                           ]
-  //                          )
-  //                         ],
-  //                       ),
-  //                     ],
-  //                   ),
-  //                 ],
-  //               ),
-            

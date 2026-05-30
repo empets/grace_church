@@ -518,3 +518,42 @@ class MenuItem {
     this.page,
   });
 }
+
+class NotificationStatus {
+  static const String URGENT = 'URGENT';
+  static const String INFO = 'INFO';
+  static const String RAPPEL = 'RAPPEL';
+}
+
+
+List<Map<String, String>> rapportpdfItem = [
+  {
+    "title": "Totaux"
+  },
+  {
+    "title": "Décisionnaires"
+  },
+  {
+    "title": "Nouv. En Formation DFNC"
+  },
+  {
+    "title": "Nouv. Bapt. En Formation DFD"
+  },{
+    "title": "Visites faites aux membres"
+  },{
+    "title": "Visites faites aux disciples"
+  },{
+    "title": "Nbre de travailleurs"
+  },{
+    "title": "Nbre d’élèves et étudiants"
+  },{
+    "title": "Nbre d’ouvrier E.M"
+  },{
+    "title": "Ouv. Autre dépt dirigeant E.M"
+  },{
+    "title": "En formation niveau 2"
+  },{
+    "title": "Agenda de l’EM (Oui ou Non)"
+  },
+
+];
