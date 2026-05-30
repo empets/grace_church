@@ -534,3 +534,10 @@ String cleanValue(String value) {
       .replaceAll('.00', '')
       .trim();
 }
+
+String formatNumber(String value) {
+   if(int.parse(value)<= 9){
+    return "0$value";
+   }
+   return value;
+}
