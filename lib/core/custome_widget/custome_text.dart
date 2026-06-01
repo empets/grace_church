@@ -22,8 +22,9 @@ class CustomeText extends StatelessWidget {
 
 class ExpandableText extends StatefulWidget {
   final String text;
+  final int maxLines;
 
-  const ExpandableText({super.key, required this.text});
+  const ExpandableText({super.key, required this.text, required this.maxLines});
 
   @override
   State<ExpandableText> createState() => _ExpandableTextState();
@@ -39,7 +40,7 @@ class _ExpandableTextState extends State<ExpandableText> {
       children: [
         Text(
           widget.text,
-          maxLines: expanded ? null : 1,
+          maxLines: expanded ? null : widget.maxLines,
           overflow: expanded ? TextOverflow.visible : TextOverflow.ellipsis,
           style: context.appTypographie.body.copyWith(
             color: context.appColor.primaryGrayDark,

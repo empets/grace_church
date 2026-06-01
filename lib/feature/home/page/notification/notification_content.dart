@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -251,6 +250,7 @@ class _NotificationContentState extends State<NotificationContent> {
                                           SizedBox(height: 8.h),
                                           ExpandableText(
                                             text: itemsNotification.description,
+                                            maxLines: 1,
                                           ),
                                     
                                           Container(

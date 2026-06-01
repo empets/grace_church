@@ -8,6 +8,7 @@ import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
@@ -21,6 +22,7 @@ import 'package:grace_church/feature/home/domaine/usercase/read_notification_use
 import 'package:grace_church/feature/home/page/bloc/notification/event/notification_event.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/readnotification_bloc.dart';
+import 'package:grace_church/feature/home/page/notification/widget/message_view.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class NotificationView extends StatefulWidget {
@@ -374,6 +376,12 @@ class _NotificationViewState extends State<NotificationView> {
                                               .trim(),
                                         ),
                                       );
+                                      Navigator.push(
+                                        context,
+                                        fadeRoute(
+                                        MessageView(notification: itemsNotification)
+                                        ),
+                                      );
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(bottom: 16.h),
@@ -383,8 +391,8 @@ class _NotificationViewState extends State<NotificationView> {
                                       ),
                                       decoration: BoxDecoration(
                                         color: !isRead
-                                            ? Colors.white
-                                            : Colors.grey.shade200,
+                                            ? Colors.grey.shade200
+                                            : Colors.grey.shade50,
                                         borderRadius: BorderRadius.circular(
                                           12.r,
                                         ),
@@ -468,12 +476,13 @@ class _NotificationViewState extends State<NotificationView> {
                                                       .appColor
                                                       .primaryGrayDark,
                                                   fontSize: 14.sp,
-                                                  fontWeight: FontWeight.w800,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                           SizedBox(height: 8.h),
                                           ExpandableText(
                                             text: itemsNotification.description,
+                                            maxLines: 1,
                                           ),
 
                                           Container(
@@ -504,7 +513,7 @@ class _NotificationViewState extends State<NotificationView> {
                                                             .primaryGray500,
                                                         fontSize: 12.sp,
                                                         fontWeight:
-                                                            FontWeight.w500,
+                                                            FontWeight.w400,
                                                       ),
                                                 ),
                                               ],
