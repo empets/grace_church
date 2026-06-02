@@ -274,7 +274,10 @@ class _FormStatisticState extends State<FormStatistic> {
                       child: IconButton(
                         onPressed: () {
                           Navigator.of(context).pushAndRemoveUntil(
-                            fadeRoute(OverviewScreen()),
+                            fadeRoute(OverviewScreen(
+                               isFormImpliciteConnexion: true,
+                              menberId: widget.id,
+                            )),
                             (route) => false,
                           );
                         },

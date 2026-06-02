@@ -348,6 +348,21 @@ class _NotificationViewState extends State<NotificationView> {
 
                       if (notificationState
                           is SuccessState<List<NotificationResponse>>) {
+                            if(notificationState.data.isEmpty) {
+                              return Container(
+                                height: 0.6.sh,
+                                child: Center(
+                                  child: Text(
+                                    "Aucune notification",
+                                    style: context.appTypographie.body
+                                        .copyWith(
+                                          fontSize: 12.sp,
+                                          color: context.appColor.primaryBlue,
+                                        ),
+                                  ),
+                                ),
+                              );
+                            }
                         return Container(
                           height: 0.6.sh,
                           child: ListView.builder(
@@ -363,7 +378,7 @@ class _NotificationViewState extends State<NotificationView> {
                                 (element) =>
                                     element.menberId == widget.profileId,
                               );
-                              log('isRead: $isRead');
+
                               return Stack(
                                 children: [
                                   GestureDetector(
@@ -379,7 +394,9 @@ class _NotificationViewState extends State<NotificationView> {
                                       Navigator.push(
                                         context,
                                         fadeRoute(
-                                        MessageView(notification: itemsNotification)
+                                          MessageView(
+                                            notification: itemsNotification,
+                                          ),
                                         ),
                                       );
                                     },
@@ -399,7 +416,7 @@ class _NotificationViewState extends State<NotificationView> {
                                         boxShadow: [
                                           BoxShadow(
                                             color: Colors.black.withValues(
-                                              alpha: 0.1,
+                                              alpha: 0.07,
                                             ),
                                             blurRadius: 4.r,
                                             offset: Offset(0, 2.h),
@@ -414,59 +431,85 @@ class _NotificationViewState extends State<NotificationView> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 8.w,
-                                                  vertical: 3.h,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: getTagBackgroundColor(
-                                                    context: context,
-                                                    tag: itemsNotification.tag,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        17.r,
-                                                      ),
-                                                ),
-                                                child: CustomeText(
-                                                  text: itemsNotification.tag
-                                                      .toLowerCase(),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: getTagTextColor(
-                                                          context: context,
-                                                          tag: itemsNotification
-                                                              .tag,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          horizontal: 8.w,
+                                                          vertical: 3.h,
                                                         ),
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                      ),
-                                                ),
-                                              ),
-                                              CustomeText(
-                                                text: formatTimeDifference(
-                                                  DateTime.parse(
-                                                    itemsNotification.date,
-                                                  ),
-                                                ),
-                                                style: context
-                                                    .appTypographie
-                                                    .button
-                                                    .copyWith(
-                                                      color: context
-                                                          .appColor
-                                                          .primaryGray500,
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          getTagBackgroundColor(
+                                                            context: context,
+                                                            tag:
+                                                                itemsNotification
+                                                                    .tag,
+                                                          ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            17.r,
+                                                          ),
                                                     ),
+                                                    child: CustomeText(
+                                                      text: itemsNotification
+                                                          .tag
+                                                          .toLowerCase(),
+                                                      style: context
+                                                          .appTypographie
+                                                          .button
+                                                          .copyWith(
+                                                            color: getTagTextColor(
+                                                              context: context,
+                                                              tag:
+                                                                  itemsNotification
+                                                                      .tag,
+                                                            ),
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 8.w),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  CustomeText(
+                                                    text: formatTimeDifference(
+                                                      DateTime.parse(
+                                                        itemsNotification.date,
+                                                      ),
+                                                    ),
+                                                    style: context
+                                                        .appTypographie
+                                                        .button
+                                                        .copyWith(
+                                                          color: context
+                                                              .appColor
+                                                              .primaryGray500,
+                                                          fontSize: 12.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    size: 16.r,
+                                                    color: context
+                                                        .appColor
+                                                        .primaryGray500,
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
+
                                           SizedBox(height: 8.h),
                                           CustomeText(
                                             text: itemsNotification.title,
@@ -483,41 +526,7 @@ class _NotificationViewState extends State<NotificationView> {
                                           ExpandableText(
                                             text: itemsNotification.description,
                                             maxLines: 1,
-                                          ),
-
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                              vertical: 8.h,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.calendar_today,
-                                                  size: 16.sp,
-                                                  color: context
-                                                      .appColor
-                                                      .primaryBlue
-                                                      .withValues(alpha: 0.7),
-                                                ),
-                                                SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: formatDate(
-                                                    itemsNotification.date,
-                                                  ),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
+                                            isReadMore: false,
                                           ),
                                         ],
                                       ),

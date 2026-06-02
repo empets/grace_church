@@ -70,6 +70,8 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     }
   }
 
+
+
   @override
   Future<FirebaseResult<List<NotificationResponseModel>>>
   getListNotificationsByCriteria(RequestNotification params) async {
@@ -77,35 +79,29 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       switch (params) {
         case RequestNotification(title: final title) when title.isNotEmpty:
           final snapshot = await db.child('notfications').get();
-          log('e<<<: ${snapshot.value}');
 
           if (snapshot.exists) {
             final data = snapshot.value as Map<dynamic, dynamic>;
-            final notifications = data.values;
             if (data.values.isNotEmpty) {
-              notifications
-                  .map((e) {
-                    final notificationItem = convertMap(e as Map);
-                    return NotificationResponseModel.fromJson(notificationItem);
-                  })
-                  .where(
-                    (e) =>
-                        e.title?.trim().toLowerCase().contains(
-                          params.title.toLowerCase(),
-                        ) ??
-                        false,
-                  )
-                  .toList();
+            final parsedNotifications = data.values.map((e) {
+              final parsed = parseFirebaseMap(e);
+              // ✅ clicks est un Map de Maps => convertir en List manuellement
+              if (parsed['clicks'] is Map<String, dynamic>) {
+                parsed['clicks'] = (parsed['clicks'] as Map<String, dynamic>).values
+                    .map((click) => Map<String, dynamic>.from(click as Map))
+                    .toList();
+              } else {
+                parsed['clicks'] = <Map<String, dynamic>>[];
+              }
 
-              // .toList();
-              return FirebaseSuccess(
-                notifications
-                    .map((e) => NotificationResponseModel.fromJson(e.toJson()))
-                    .toList(),
-              );
+              log('------clicks final: ${parsed['clicks']}');
+              return NotificationResponseModel.fromJson(parsed);
+            }).toList().where((e) => e.title.toLowerCase().trim().contains(params.title.toLowerCase().trim())).toList();
+            return FirebaseSuccess(parsedNotifications);
             }
             return FirebaseSuccess([]);
           }
+
 
         case RequestNotification(tag: final tag) when tag.isNotEmpty:
           final snapshot = await db
@@ -116,29 +112,22 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           log('e<<<: ${snapshot.value}');
 
           if (snapshot.exists) {
-            final data = snapshot.value as Map<dynamic, dynamic>;
-            if (data.values.isNotEmpty) {
-              final notifications = data.values.map((e) {
-                 final parsed = parseFirebaseMap(e);
-          // ✅ clicks est un Map de Maps => convertir en List manuellement
-          if (parsed['clicks'] is Map<String, dynamic>) {
-            parsed['clicks'] = (parsed['clicks'] as Map<String, dynamic>).values
-                .map((click) => Map<String, dynamic>.from(click as Map))
-                .toList();
-          } else {
-            parsed['clicks'] = <Map<String, dynamic>>[];
-          }
+               final notifications = snapshot.value as Map<dynamic, dynamic>;
+            final parsedNotifications = notifications.values.map((e) {
+              final parsed = parseFirebaseMap(e);
+              // ✅ clicks est un Map de Maps => convertir en List manuellement
+              if (parsed['clicks'] is Map<String, dynamic>) {
+                parsed['clicks'] = (parsed['clicks'] as Map<String, dynamic>).values
+                    .map((click) => Map<String, dynamic>.from(click as Map))
+                    .toList();
+              } else {
+                parsed['clicks'] = <Map<String, dynamic>>[];
+              }
 
-          log('------clicks final: ${parsed['clicks']}');
-          return NotificationResponseModel.fromJson(parsed);
-              }).toList();
-              return FirebaseSuccess(
-                notifications.map((e) {
-                  return NotificationResponseModel.fromJson(e.toJson());
-                }).toList(),
-              );
-            }
-            return FirebaseSuccess([]);
+              log('------clicks final: ${parsed['clicks']}');
+              return NotificationResponseModel.fromJson(parsed);
+            }).toList();
+            return FirebaseSuccess(parsedNotifications);
           }
           return FirebaseError("Aucune notification trouvée");
 
@@ -150,17 +139,20 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
             final notifications = data.values
                 .map((e) {
                   final parsed = parseFirebaseMap(e);
-          // ✅ clicks est un Map de Maps => convertir en List manuellement
-          if (parsed['clicks'] is Map<String, dynamic>) {
-            parsed['clicks'] = (parsed['clicks'] as Map<String, dynamic>).values
-                .map((click) => Map<String, dynamic>.from(click as Map))
-                .toList();
-          } else {
-            parsed['clicks'] = <Map<String, dynamic>>[];
-          }
+                  // ✅ clicks est un Map de Maps => convertir en List manuellement
+                  if (parsed['clicks'] is Map<String, dynamic>) {
+                    parsed['clicks'] =
+                        (parsed['clicks'] as Map<String, dynamic>).values
+                            .map(
+                              (click) =>
+                                  Map<String, dynamic>.from(click as Map),
+                            )
+                            .toList();
+                  } else {
+                    parsed['clicks'] = <Map<String, dynamic>>[];
+                  }
 
-          log('------clicks final: ${parsed['clicks']}');
-          return NotificationResponseModel.fromJson(parsed);
+                  return NotificationResponseModel.fromJson(parsed);
                 })
                 .where((e) => e.date?.contains(params.date) ?? false)
                 .toList();
@@ -188,7 +180,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
                 ),
               );
             }).toList();
-            
 
             return FirebaseSuccess(notifications);
           }
@@ -536,15 +527,16 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
 
       if (doc.exists) {
         return FirebaseError('Notification déjà lu');
-      }
-      else {
+      } else {
         final Map<String, dynamic> updates = {
           ...params.toJson(),
           'serviceLibelle': '',
         };
         // 2) Créer une nouvelle entrée
-         await db
-            .child('notfications/${params.notificationId}/clicks/${params.menberId}')
+        await db
+            .child(
+              'notfications/${params.notificationId}/clicks/${params.menberId}',
+            )
             .update(updates);
 
         // 4) Retourner le key généré
@@ -555,25 +547,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 List<Map<String, dynamic>> parseImages(dynamic data) {
   if (data == null) return [];
@@ -648,6 +621,38 @@ Map<String, dynamic> parseFirebaseMap(dynamic raw) {
           .toList();
     }
   });
+  log("======>>  parsed map ${map}");
+
+  return map; // ✅ ne touche plus clicks ici
+}
+
+Map<String, dynamic> parseFirebaseMapForNotificationClick(dynamic raw) {
+  if (raw == null || raw is! Map) return {};
+
+  final map = Map<String, dynamic>.from(raw);
+
+  map.forEach((key, value) {
+    if (value is Map) {
+      map[key] = parseFirebaseMapForNotificationClick(value);
+    } else if (value is List) {
+      map[key] = value
+          .map(
+            (item) =>
+                item is Map ? parseFirebaseMapForNotificationClick(item) : item,
+          )
+          .toList();
+    }
+  });
+
+  if (map['clicks'] is Map<String, dynamic>) {
+    map['clicks'] = (map['clicks'] as Map<String, dynamic>).values.map((click) {
+      log("======>> list parsed click  ${click}");
+      return Map<String, dynamic>.from(click as Map);
+    }).toList();
+  } else {
+    log("======>>  parsed map ${map}");
+    map['clicks'] = <Map<String, dynamic>>[];
+  }
 
   return map; // ✅ ne touche plus clicks ici
 }

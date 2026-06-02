@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart' as gt;
-import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -43,14 +42,20 @@ import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
 import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
 import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
 
 // ignore: must_be_immutable
-class MenuView extends StatelessWidget {
+class MenuView extends StatefulWidget {
   MenuView({super.key});
 
+  @override
+  State<MenuView> createState() => _MenuViewState();
+}
+
+class _MenuViewState extends State<MenuView> {
   Widget buildForm({required ProfileResponse state}) {
     if (state.submitProfile == false) {
       return FormProfile();
@@ -66,6 +71,25 @@ class MenuView extends StatelessWidget {
   }
 
   late bool isResponsableCellule = false;
+  late String isConnected = '';
+
+  Future<String> getLocalkey()async{
+      final shared = await SharedPreferences.getInstance();
+            final menberkey = await shared.getString('menberkey');
+            return await  menberkey ?? '';
+  }
+
+  @override
+  void initState() {
+    getLocalkey().then((value) {
+      setState(() {
+        log("isConnected: $value");
+        isConnected = value.trim();
+      });
+
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -840,6 +864,7 @@ class MenuView extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      if(isConnected.trim().isNotEmpty)...[
                       GestureDetector(
                         onTap: () {
                           showDialog(
@@ -862,7 +887,7 @@ class MenuView extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
+                      )],
                     ],
                   ),
                 ),

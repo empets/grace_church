@@ -266,7 +266,10 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                       child: IconButton(
                         onPressed: () {
                           Navigator.of(context).pushAndRemoveUntil(
-                            fadeRoute(OverviewScreen()),
+                            fadeRoute(OverviewScreen(
+                              isFormImpliciteConnexion: true,
+                              menberId: widget.profile?.menberId?? '',
+                            )),
                             (route) => false,
                           );
                         },
@@ -675,7 +678,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                         >(
                           builder: (context, state) {
                             return ProductionFormCustomer(
-                              readOnly: state.status.isInProgress,
+                              readOnly: true,
                               isColorBlue: state.fullNameRespoCellule.isValid
                                   ? true
                                   : false,
@@ -706,7 +709,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                         >(
                           builder: (context, state) {
                             return ProductionFormCustomer(
-                              readOnly: state.status.isInProgress,
+                              readOnly: true,
                               isColorBlue: state.jourCellule.isValid
                                   ? true
                                   : false,

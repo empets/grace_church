@@ -478,6 +478,11 @@ Future<String> getDeviceFingerprint() async {
     String formatted = DateFormat("d MMMM y 'à' HH:mm" , 'fr').format(dateTime);
     return formatted;
   }
+    String formatDateOnly(String date) {
+    DateTime dateTime = DateTime.parse(date);
+    String formatted = DateFormat("d MMMM y" , 'fr').format(dateTime);
+    return formatted;
+  }
    // il y a 1 minute, 2 heures, 3 jours, etc.
    String formatTimeDifference(DateTime date) {
     final now = DateTime.now();
@@ -496,7 +501,7 @@ Future<String> getDeviceFingerprint() async {
       return "Il y a ${diff.inDays} jours";
     }
 
-    return "Le ${date.day}/${date.month}/${date.year}";
+    return "Le ${formatDateOnly(date.toString())} ";
   }
 
   // permet de donner la couleur a une bordure du tag selon le type 

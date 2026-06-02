@@ -203,7 +203,8 @@ class _FormActiviteState extends State<FormActivite> {
                       child: IconButton(
                         onPressed: () {
                           Navigator.of(context).pushAndRemoveUntil(
-                            fadeRoute(OverviewScreen()),
+                            fadeRoute(OverviewScreen(
+                            )),
                             (route) => false,
                           );
                         },

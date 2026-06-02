@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,15 +44,34 @@ class OverviewScreen extends StatefulWidget {
 }
 
 class _OverviewScreenState extends State<OverviewScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
+     final contrat = context.select<ConnexionImpliciteBloc, ApiState<ProfileResponse>?>(
+      (bloc) => switch (bloc.state) {
+        
+        SuccessState<ProfileResponse>() => bloc.state,
+        _ => null,
+      },
+    );
+    log("---------------------------_>> $contrat");
+     if (contrat is SuccessState<ProfileResponse>) {
+     }
     return MultiBlocProvider(
       providers: [
         if (widget.isFormImpliciteConnexion) ...[
           BlocProvider(
             create: (context) =>
                 GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
-                  ..add(ProfileEvent.fetchProfileNumberId(widget.menberId)),
+                  ..add(ProfileEvent.fetchProfileNumberId((contrat is SuccessState<ProfileResponse>) ? contrat.data.menberId : null)),
           ),
           BlocProvider.value(
             value: ConnexionImpliciteBloc(
@@ -66,11 +87,20 @@ class _OverviewScreenState extends State<OverviewScreen> {
           ),
         ],
         if (!widget.isFormImpliciteConnexion) ...[
-          BlocProvider(
-            create: (context) =>
-                GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
-                  ..add(ProfileEvent.fetchProfileNumberId(widget.menberId)),
-          ),
+              BlocProvider(
+                create: (context) =>
+                  GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
+                    ..add(ProfileEvent.fetchProfileNumberId((contrat is SuccessState<ProfileResponse>) ? contrat.data.menberId : null)),
+              ),
+
+            
+
+           
+
+
+
+
+
           BlocProvider.value(
             value: ConnexionImpliciteBloc(
               getConnexionImpliciteUsercase:
@@ -177,39 +207,6 @@ class _OverviewScreenState extends State<OverviewScreen> {
                                     NotificationEvent.fetch(),
                                   );
                                 }
-
-                                // final result = await AppBottomSheet()
-                                //     .showBottomSheetScrollable(
-                                //       context,
-                                //       MediaQuery.of(context),
-                                //       (size) => MultiBlocProvider(
-                                //         providers: [
-                                //              BlocProvider(
-                                //               create: (context) => NotificationBloc(
-                                //                 getListNotificationUsercase: getIt<GetListNotificationUsercase>(),
-                                //                 getListNotificationByCriteriaUsercase:
-                                //                     getIt<GetListNotificationByCriteriaUsercase>(),
-                                //               )..add(NotificationEvent.fetch()),
-                                //             ),
-                                //                 BlocProvider(
-                                //                     create: (context) => ReadNotificationBloc(
-                                //                       readNotificationUsercase: getIt<ReadNotificationUsercase>(),
-                                //                     ),
-                                //                 ),
-                                //         ],
-                                //         child: Container(
-                                //           child: NotificationContent(
-                                //             profileId:
-                                //                 stateProfile.data.menberId,
-                                //           ),
-                                //         ),
-                                //       ),
-                                //     );
-                                // if (result == true) {
-                                //   context.read<NotificationBloc>().add(
-                                //     NotificationEvent.fetch(),
-                                //   );
-                                // }
                               },
                               child:  Badge(
                                 child: Icon(
