@@ -161,6 +161,10 @@ class _NotificationViewState extends State<NotificationView> {
                     },
                   ),
                   SizedBox(height: 16.h),
+
+                  /// -------------------
+                  /// Section des filtres
+                  /// -------------------
                   Row(
                     children: [
                       Expanded(
@@ -345,7 +349,9 @@ class _NotificationViewState extends State<NotificationView> {
                           ],
                         );
                       }
-
+                      /// ---------------------
+                      /// Voir les notification
+                      /// ---------------------
                       if (notificationState
                           is SuccessState<List<NotificationResponse>>) {
                             if(notificationState.data.isEmpty) {
@@ -368,12 +374,18 @@ class _NotificationViewState extends State<NotificationView> {
                           child: ListView.builder(
                             itemCount: notificationState.data.length,
                             itemBuilder: (context, index) {
+                              /// ------------------------------------------------------------
+                              /// Trier les notifications par date (afficher les plus recent)
+                              /// -----------------------------------------------------------
                               notificationState.data.sort(
                                 (a, b) => b.date.compareTo(a.date),
                               );
                               final itemsNotification =
                                   notificationState.data[index];
 
+                              /// ------------------------------------------------------------
+                              /// Vérifier si la notification a été lue
+                              /// ------------------------------------------------------------
                               isRead = itemsNotification.clicks.any(
                                 (element) =>
                                     element.menberId == widget.profileId,
@@ -537,7 +549,10 @@ class _NotificationViewState extends State<NotificationView> {
                             },
                           ),
                         );
-                      } else {
+                      } 
+                      
+                      
+                      else {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

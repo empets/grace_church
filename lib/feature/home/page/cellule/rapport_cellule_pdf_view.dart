@@ -345,14 +345,23 @@ class RapportCellulePDFView extends StatelessWidget {
                             pw.TableRow(
                               children: [
                                 tableCell("Chrét.Bapt"), //<< LGINE 1
-                                if (allCaracterIsNombre(rapportCellule.nombreBaptiser))...[
+                                if (allCaracterIsNombre(
+                                  rapportCellule.nombreBaptiser,
+                                )) ...[
                                   pw.Padding(
                                     padding: pw.EdgeInsets.symmetric(
                                       horizontal: 3.w,
                                       vertical: 3.h,
                                     ),
                                     child: pw.Text(
-                                      allCaracterIsNombre(rapportCellule.nombreBaptiser) && int.parse(rapportCellule.nombreBaptiser) > 9
+                                      allCaracterIsNombre(
+                                                rapportCellule.nombreBaptiser,
+                                              ) &&
+                                              int.parse(
+                                                    rapportCellule
+                                                        .nombreBaptiser,
+                                                  ) >
+                                                  9
                                           ? "${rapportCellule.nombreBaptiser}"
                                           : "0${rapportCellule.nombreBaptiser}",
                                       style: pw.TextStyle(
@@ -369,7 +378,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                     vertical: 3.h,
                                   ),
                                   child: pw.Text(
-                                 "00",
+                                    "00",
                                     style: pw.TextStyle(
                                       color: PdfColors.black,
                                       fontWeight: pw.FontWeight.bold,
@@ -456,118 +465,146 @@ class RapportCellulePDFView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                           pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: [
-                             pw.Container(
-                              height: 100.h,
-                              padding: pw.EdgeInsets.symmetric(
-                                // horizontal: 9.w,
-                                // vertical: 2,
-                              ),
-                              alignment: pw.Alignment.topCenter,
-                              decoration: pw.BoxDecoration(
-                                border: pw.Border.all(color: PdfColors.black),
-                              ),
-                              child:pw.Column(
-                                children: [
-                                  pw.Container(
-                                    padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-                                    decoration: pw.BoxDecoration(
-                                      border: pw.Border(
-                                        bottom: pw.BorderSide(color: PdfColors.black),
-                                      ),
-                                    ),
-                                    child: pw.Text("Chrétiens baptisés"),
+                            pw.Column(
+                              crossAxisAlignment: pw.CrossAxisAlignment.start,
+                              children: [
+                                pw.Container(
+                                  height: 100.h,
+                                  padding: pw.EdgeInsets.symmetric(
+                                    // horizontal: 9.w,
+                                    // vertical: 2,
                                   ),
-                                  pw.Row(
+                                  alignment: pw.Alignment.topCenter,
+                                  decoration: pw.BoxDecoration(
+                                    border: pw.Border.all(
+                                      color: PdfColors.black,
+                                    ),
+                                  ),
+                                  child: pw.Column(
                                     children: [
-                                      pw.Column(
+                                      pw.Container(
+                                        padding: pw.EdgeInsets.symmetric(
+                                          horizontal: 3.w,
+                                          vertical: 2.h,
+                                        ),
+                                        decoration: pw.BoxDecoration(
+                                          border: pw.Border(
+                                            bottom: pw.BorderSide(
+                                              color: PdfColors.black,
+                                            ),
+                                          ),
+                                        ),
+                                        child: pw.Text("Chrétiens baptisés"),
+                                      ),
+                                      pw.Row(
                                         children: [
-                                         pw.Padding(padding: pw.EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),child: pw.Text("Chrétiens\nNon\nbaptisés"),)
+                                          pw.Column(
+                                            children: [
+                                              pw.Padding(
+                                                padding:
+                                                    pw.EdgeInsets.symmetric(
+                                                      horizontal: 3.w,
+                                                      vertical: 2.h,
+                                                    ),
+                                                child: pw.Text(
+                                                  "Chrétiens\nNon\nbaptisés",
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          pw.Table(
+                                            border: pw.TableBorder.all(
+                                              color: PdfColors.grey300,
+                                            ),
+                                            children: [
+                                              pw.TableRow(
+                                                children: [
+                                                  tableCell(
+                                                    "Chrét.Bapt",
+                                                  ), //<< LGINE 1
+                                                  pw.Padding(
+                                                    padding:
+                                                        pw.EdgeInsets.symmetric(
+                                                          horizontal: 3.w,
+                                                          vertical: 3.h,
+                                                        ),
+                                                    child: pw.Text(
+                                                      // int.parse(rapportCellule.nombreBaptiser) > 9
+                                                      //     ? "${rapportCellule.nombreBaptiser}"
+                                                      //     : "0${rapportCellule.nombreBaptiser}",
+                                                      "00",
+                                                      style: pw.TextStyle(
+                                                        color: PdfColors.black,
+                                                        fontWeight:
+                                                            pw.FontWeight.bold,
+                                                        fontSize: 12.5.sp,
+                                                      ),
+                                                    ),
+                                                  ), //<< LGINE 1
+                                                ],
+                                              ),
+                                              pw.TableRow(
+                                                children: [
+                                                  tableCell(
+                                                    "Chré.N.Bapt ",
+                                                  ), //<< LGINE 1
+                                                  pw.Padding(
+                                                    padding:
+                                                        pw.EdgeInsets.symmetric(
+                                                          horizontal: 3.w,
+                                                          vertical: 3.h,
+                                                        ),
+                                                    child: pw.Text(
+                                                      int.parse(
+                                                                rapportCellule
+                                                                    .nombreNonBaptiser,
+                                                              ) >
+                                                              9
+                                                          ? "${rapportCellule.nombreNonBaptiser}"
+                                                          : "0${rapportCellule.nombreNonBaptiser}",
+                                                      style: pw.TextStyle(
+                                                        color: PdfColors.black,
+                                                        fontWeight:
+                                                            pw.FontWeight.bold,
+                                                        fontSize: 12.5.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              pw.TableRow(
+                                                children: [
+                                                  tableCell(
+                                                    "TOTAL",
+                                                  ), //<< LGINE 2
+                                                  pw.Padding(
+                                                    padding:
+                                                        pw.EdgeInsets.symmetric(
+                                                          horizontal: 3.w,
+                                                          vertical: 3.h,
+                                                        ),
+                                                    child: pw.Text(
+                                                      //  "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+                                                      "00",
+                                                      style: pw.TextStyle(
+                                                        color: PdfColors.black,
+                                                        fontWeight:
+                                                            pw.FontWeight.bold,
+                                                        fontSize: 12.5.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                        pw.Table(
-                          border: pw.TableBorder.all(color: PdfColors.grey300),
-                          children: [
-                            pw.TableRow(
-                              children: [
-                                tableCell("Chrét.Bapt"), //<< LGINE 1
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    // int.parse(rapportCellule.nombreBaptiser) > 9
-                                    //     ? "${rapportCellule.nombreBaptiser}"
-                                    //     : "0${rapportCellule.nombreBaptiser}",
-                                    "00",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ), //<< LGINE 1
-                              ],
-                            ),
-                            pw.TableRow(
-                              children: [
-                                tableCell("Chré.N.Bapt "), //<< LGINE 1
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                    int.parse(
-                                              rapportCellule.nombreNonBaptiser,
-                                            ) >
-                                            9
-                                        ? "${rapportCellule.nombreNonBaptiser}"
-                                        : "0${rapportCellule.nombreNonBaptiser}",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            pw.TableRow(
-                              children: [
-                                tableCell("TOTAL"), //<< LGINE 2
-                                pw.Padding(
-                                  padding: pw.EdgeInsets.symmetric(
-                                    horizontal: 3.w,
-                                    vertical: 3.h,
-                                  ),
-                                  child: pw.Text(
-                                  //  "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
-                                    "00",
-                                    style: pw.TextStyle(
-                                      color: PdfColors.black,
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 12.5.sp,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      
-
-                                    
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            ]
-                           )
                           ],
                         ),
                       ],

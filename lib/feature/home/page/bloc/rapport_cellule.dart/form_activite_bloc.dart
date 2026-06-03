@@ -110,6 +110,7 @@ class FormActiviteBloc
                   .toList(),
               dateActivitySubmited: [],
               formActivityIsSubmit: "true",
+              tag: "en_cours",
               formActivitySubmitDate: DateTime.now().toIso8601String(),
             )
           ); 

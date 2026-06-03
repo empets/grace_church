@@ -256,6 +256,7 @@ class RapportCelluleRequestSectionAdministrationBloc
                       .toList(),
                   id: "",
                   formAdministrationIsSubmit: "true",
+                  tag: "en_cours",
                   formAdministrationSubmitDate: DateTime.now()
                       .toIso8601String(),
                 ),

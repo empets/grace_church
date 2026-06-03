@@ -157,6 +157,7 @@ abstract class RequestRapportCelluleAdministration
     required String id,
     @Default('false') String formAdministrationIsSubmit,
     required String formAdministrationSubmitDate,
+    required String tag,
   }) = _RequestRapportCelluleAdministration;
   factory RequestRapportCelluleAdministration.fromJson(
     Map<String, dynamic> json,
@@ -258,6 +259,7 @@ abstract class RequestRapportCelluleAssistance
     required String id,
     @Default('false') String formAssistanceIsSubmit,
     required String formAssistanceSubmitDate,
+    required String tag,
   }) = _RequestRapportCelluleAssistance;
   factory RequestRapportCelluleAssistance.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleAssistanceFromJson(json);
@@ -272,6 +274,7 @@ abstract class RequestRapportCelluleActivity
     required List<Map<String, dynamic>> dateActivitySubmited,
     @Default('false')  String formActivityIsSubmit,
     required String formActivitySubmitDate,
+    required String tag,
   }) = _RequestRapportCelluleActivity;
   factory RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleActivityFromJson(json);
@@ -287,6 +290,7 @@ abstract class RequestRapportCelluleSuggestion
     @Default('false')  String formSuggestionIsSubmit,
     required String formSuggestionSubmitDate,
     required String resumerPredication,
+    required String tag,
   }) = _RequestRapportCelluleSuggestion;
   factory RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleSuggestionFromJson(json);

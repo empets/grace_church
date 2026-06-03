@@ -528,6 +528,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     required String? ouvrierSpritualLive,
     @Default('false')  String? formSuggestionIsSubmit,
     required String? formSuggestionSubmitDate,
+    @Default('en_cours') String? tag
   }) = _RapportCelluleResponseModel;
   factory RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$RapportCelluleResponseModelFromJson(json);
@@ -571,6 +572,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
       ouvrierSpritualLive: model.ouvrierSpritualLive.getOrEmpty(),
       formSuggestionIsSubmit: model.formSuggestionIsSubmit.getOrEmpty(),
       formSuggestionSubmitDate: model.formSuggestionSubmitDate.getOrEmpty(),
+      tag: model.tag.getOrEmpty(),
     );
   }
 }

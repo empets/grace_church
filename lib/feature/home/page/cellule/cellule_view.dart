@@ -1,18 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
-import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
-
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -29,12 +21,17 @@ import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_zone.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/cellule/cellule_form/form_activite.dart';
 import 'package:grace_church/feature/home/page/cellule/cellule_form/form_assistance.dart';
@@ -58,32 +55,47 @@ class CelluleView extends StatefulWidget {
 late bool isResponsableCellule = false;
 
 class _CelluleViewState extends State<CelluleView> {
+  /// Methode: Pile des vues du formulaire de rapport
+  /// Parameters:  - state: ProfileResponse - rapportCellule: List<RapportCelluleResponse>
+  /// retour : Widget
+  /// context : elle permet de déterminer quel formulaire de rapport afficher en fonction du tag et du statut de soumission de chaque formulaire
   Widget buildFormRapport({
     required ProfileResponse state,
     required List<RapportCelluleResponse> rapportCellule,
   }) {
-    if (rapportCellule.last.formAdministrationIsSubmit.toLowerCase() ==
-        'false') {
+    if (rapportCellule.isEmpty ||
+        rapportCellule.first.tag.contains("terminer")) {
       return EditingCelluleRaport(profile: state);
-    } else if (rapportCellule.last.formAssistanceIsSubmit == "false") {
-      return FormStatistic(id: state.menberId);
-    } else if (rapportCellule.last.formActivityIsSubmit == 'false') {
-      return FormActivite();
-    } else if (rapportCellule.last.formActivityIsSubmit == 'false') {
-      return FormOuvrierSpritualLive();
     } else {
-      return EditingCelluleRaport(profile: state);
+      if (rapportCellule.first.formAdministrationIsSubmit == 'false') {
+        return EditingCelluleRaport(profile: state);
+      } else if (rapportCellule.first.formAssistanceIsSubmit == "false") {
+        return FormStatistic(id: state.menberId);
+      } else if (rapportCellule.first.formActivityIsSubmit == 'false') {
+        return FormActivite();
+      } else if (rapportCellule.first.formSuggestionIsSubmit == 'false') {
+        return FormOuvrierSpritualLive();
+      } else {
+        return SizedBox();
+      }
     }
   }
 
+  /// Methode: lancer un appel téléphonique
+  /// Parameters: -number
+  /// retour : void
+  /// context : elle permet de lancer un appel téléphonique quand l'utilisateur clique sur le bouton appel le responsable
   Future<void> callSupport({required String number}) async {
     final status = await Permission.phone.request();
-
     if (status.isGranted) {
       await FlutterPhoneDirectCaller.callNumber(number);
     }
   }
 
+  /// Methode: partage la localisation de la cellule
+  /// Parameters: -long -lat
+  /// retour : void
+  /// context : elle permet de partager la localisation de la cellule
   Future<void> shareCelluleLatLong({
     required double lat,
     required double long,
@@ -94,6 +106,23 @@ class _CelluleViewState extends State<CelluleView> {
             'https://www.google.com/maps/@$lat,${long}z?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D',
       ),
     );
+  }
+
+  /// Methode: filtre sur les rapports
+  /// Parameters: -rapports -responsableId
+  /// retour : List<RapportCelluleResponse>
+  /// context: elle permet de recuperer les rapports d'une cellule par responsable
+  List<RapportCelluleResponse> filterRapportsByResponsable({
+    required List<RapportCelluleResponse> rapports,
+    required String responsableId,
+  }) {
+    return rapports
+        .where(
+          (x) => x.responsableCelluleId.trim().toLowerCase().contains(
+            responsableId.trim().toLowerCase(),
+          ),
+        )
+        .toList();
   }
 
   @override
@@ -155,7 +184,6 @@ class _CelluleViewState extends State<CelluleView> {
                       style: context.appTypographie.body.copyWith(
                         fontSize: 12.sp,
                         color: context.appColor.primaryBlue,
-                        // color: Colors.grey.shade200
                       ),
                     ),
                   ],
@@ -169,6 +197,9 @@ class _CelluleViewState extends State<CelluleView> {
                     alignment: Alignment.center,
                     child: Column(
                       children: [
+                        /// ---------------------------
+                        /// information sur le profile
+                        /// ---------------------------
                         Stack(
                           children: [
                             if (widget.profileState
@@ -275,6 +306,10 @@ class _CelluleViewState extends State<CelluleView> {
                           ),
                         ],
 
+                        //----------------------------------------------------------------------------------------------------------
+                        /// contact responsable
+                        /// context : elle permet de contacter le responsable de la cellule et de partager sa position géolocalisée
+                        //----------------------------------------------------------------------------------------------------------
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 10.h),
                           child: Row(
@@ -319,6 +354,10 @@ class _CelluleViewState extends State<CelluleView> {
                           ),
                         ),
 
+                        ////-------------------------------------------------------------
+                        /// geolocalisation
+                        /// context : elle permet de géolocaliser la cellule sur la maps
+                        ///-------------------------------------------------------------
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 4.h),
                           padding: EdgeInsets.symmetric(
@@ -450,6 +489,9 @@ class _CelluleViewState extends State<CelluleView> {
                           ),
                         ),
 
+                        ////---------------------------
+                        /// espace horaire de cellule
+                        ///---------------------------
                         Container(
                           margin: EdgeInsets.symmetric(vertical: 6.h),
                           child: Row(
@@ -467,7 +509,6 @@ class _CelluleViewState extends State<CelluleView> {
                             ],
                           ),
                         ),
-
                         Container(
                           padding: EdgeInsets.symmetric(
                             vertical: 9.h,
@@ -558,17 +599,10 @@ class _CelluleViewState extends State<CelluleView> {
                           ),
                         ),
                         SizedBox(height: 10.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Prédication de la semaine",
-                            style: context.appTypographie.body.copyWith(
-                              fontSize: 14,
-                              color: context.appColor.primaryGrayDark,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+
+                        ////-------------------
+                        /// espace predication
+                        ///--------------------
                         SizedBox(height: 10.h),
                         BlocBuilder<
                           GetRapportCelluleBloc,
@@ -582,24 +616,18 @@ class _CelluleViewState extends State<CelluleView> {
                                   a.dateActivitySubmited,
                                 ),
                               );
-                              final filtered = stateRapport.data
-                                  .where(
-                                    (x) => x.responsableCelluleId
-                                        .trim()
-                                        .toLowerCase()
-                                        .contains(
-                                          (widget.profileState
-                                                  as SuccessState<
-                                                    ProfileResponse
-                                                  >)
-                                              .data
-                                              .menberId
-                                              .trim()
-                                              .toLowerCase(),
-                                        ),
-                                  )
-                                  .toList();
-                              log("---->> RAPPORT : ${filtered}");
+
+                              /// --------------------------------------------------------------------------
+                              /// cette methode est utilise ici pour recuper la prédication la plus resente
+                              /// --------------------------------------------------------------------------
+                              final filtered = filterRapportsByResponsable(
+                                rapports: stateRapport.data,
+                                responsableId:
+                                    (widget.profileState
+                                            as SuccessState<ProfileResponse>)
+                                        .data
+                                        .menberId,
+                              );
                               return Container(
                                 height: 0.16.sh,
                                 child: SingleChildScrollView(
@@ -607,6 +635,20 @@ class _CelluleViewState extends State<CelluleView> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Prédication de la semaine",
+                                          style: context.appTypographie.body
+                                              .copyWith(
+                                                fontSize: 14,
+                                                color: context
+                                                    .appColor
+                                                    .primaryGrayDark,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
+                                      ),
                                       CustomeText(
                                         text: filtered.isNotEmpty
                                             ? filtered.first.resumerPredication
@@ -624,7 +666,6 @@ class _CelluleViewState extends State<CelluleView> {
                                 ),
                               );
                             }
-
                             return Container();
                           },
                         ),
@@ -679,6 +720,11 @@ class _CelluleViewState extends State<CelluleView> {
               );
             },
           ),
+
+          /// -------------------------------------------------------------------------------------------------
+          /// section button action pour une cellule
+          /// context: si le button est activé alors le profile de l'utilisateur est responsable de la cellule
+          /// -------------------------------------------------------------------------------------------------
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: BlocBuilder<CelluleBloc, ApiState<List<CelluleResponse>>>(
             builder: (context, listCelluleState) {
@@ -715,31 +761,28 @@ class _CelluleViewState extends State<CelluleView> {
                       builder: (context, stateRapport) {
                         if (stateRapport
                             is SuccessState<List<RapportCelluleResponse>>) {
-                          final filtered = stateRapport.data
-                              .where(
-                                (x) => x.responsableCelluleId
-                                    .trim()
-                                    .toLowerCase()
-                                    .contains(
-                                      (widget.profileState
-                                              as SuccessState<ProfileResponse>)
-                                          .data
-                                          .menberId
-                                          .trim()
-                                          .toLowerCase(),
-                                    ),
-                              )
-                              .toList();
+                          /// -------------------------------------------------------------------------------------------------
+                          /// appelle de la methode de filtre qui permet de recuperé les rapports d'une cellule bien spéficique
+                          /// -------------------------------------------------------------------------------------------------
+                          final filtered = filterRapportsByResponsable(
+                            rapports: stateRapport.data,
+                            responsableId:
+                                (widget.profileState
+                                        as SuccessState<ProfileResponse>)
+                                    .data
+                                    .menberId,
+                          );
 
                           if (filtered.isEmpty) {
                             return Container();
                           }
 
-                          filtered.sort(
-                            (a, b) => b.formAdministrationIsSubmit.compareTo(
-                              a.formAdministrationIsSubmit,
-                            ),
-                          );
+                          /// ---------------------------------
+                          /// filtre les rapports en cours
+                          /// --------------------------------
+                          final rapportsEnCours = filtered
+                              .where((x) => x.tag == "en_cours")
+                              .toList();
 
                           return Container(
                             margin: EdgeInsets.only(bottom: 10.h),
@@ -819,7 +862,7 @@ class _CelluleViewState extends State<CelluleView> {
                                                       ProfileResponse
                                                     >)
                                                 .data,
-                                        rapportCellule: filtered,
+                                        rapportCellule: rapportsEnCours,
                                       ),
                                     ),
                                   ),

@@ -438,6 +438,7 @@ class RapportCelluleSectionAssistanceBloc
               count: 0,
             ).toJson(),
             formAssistanceIsSubmit: 'true',
+            tag: "en_cours",
             formAssistanceSubmitDate: DateTime.now().toIso8601String(),
             id: state.id.value,
           ),

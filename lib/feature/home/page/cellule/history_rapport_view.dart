@@ -26,31 +26,25 @@ class HistoryRapportView extends StatefulWidget {
 }
 
 class _HistoryRapportViewState extends State<HistoryRapportView> {
-
-
-   void sortRapports(List<RapportCelluleResponse> rapportList) {
-    if(rapportList.last.formAdministrationIsSubmit.toLowerCase() ==
-        'true'){
-   return   rapportList.sort((a, b) => b.formAdministrationSubmitDate.compareTo(a.formAdministrationSubmitDate));
-    }
-    else if(rapportList.last.formAssistanceIsSubmit.toLowerCase() ==
-        'true'){
-    return  rapportList.sort((a, b) => b.formAssistanceSubmitDate.compareTo(a.formAssistanceSubmitDate));
-    }
-    else if(rapportList.last.formActivityIsSubmit.toLowerCase() ==
-        'true'){
-   return   rapportList.sort((a, b) => b.formActivitySubmitDate.compareTo(a.formActivitySubmitDate));
+  void sortRapports(List<RapportCelluleResponse> rapportList) {
+    if (rapportList.last.formAdministrationIsSubmit.toLowerCase() == 'true') {
+      return rapportList.sort(
+        (a, b) => b.formAdministrationSubmitDate.compareTo(
+          a.formAdministrationSubmitDate,
+        ),
+      );
+    } else if (rapportList.last.formAssistanceIsSubmit.toLowerCase() ==
+        'true') {
+      return rapportList.sort(
+        (a, b) =>
+            b.formAssistanceSubmitDate.compareTo(a.formAssistanceSubmitDate),
+      );
+    } else if (rapportList.last.formActivityIsSubmit.toLowerCase() == 'true') {
+      return rapportList.sort(
+        (a, b) => b.formActivitySubmitDate.compareTo(a.formActivitySubmitDate),
+      );
     }
   }
-
-
-
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -149,13 +143,11 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                         onChanged: (value) {},
                       ),
                       SizedBox(height: 16.h),
-               
 
                       ...List.generate(rapportListState.data.length, (index) {
                         final rapport = rapportListState.data[index];
                         sortRapports(rapportListState.data);
-                        
-                         
+
                         return Stack(
                           children: [
                             GestureDetector(
@@ -217,12 +209,12 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                                             Text(
                                               rapport.formSuggestionIsSubmit
                                                       .contains("true")
-                                                  ? "• ${formatDate(rapport.formSuggestionSubmitDate)}"
+                                                  ? "• Rapport du ${formatDateOnly(rapport.formSuggestionSubmitDate)}"
                                                   : "• En cours",
                                               style: context.appTypographie.body
                                                   .copyWith(
-                                                    fontSize: 14.sp,
-                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w900,
                                                     color: context
                                                         .appColor
                                                         .primaryGray700,
@@ -236,7 +228,7 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Rapport ${rapport.formSuggestionIsSubmit.contains("true") ? "terminé voir les détails" : "en cours"}",
+                                              "Statut: ${rapport.formSuggestionIsSubmit.contains("true") ? "terminé voir les détails" : "en cours"}",
                                               style: context.appTypographie.body
                                                   .copyWith(
                                                     fontSize: 12.sp,

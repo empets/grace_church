@@ -61,24 +61,6 @@ class _MessageViewState extends State<MessageView> {
                     ),
                   ),
                 ),
-                // CustomeText(
-                //   text: formatTimeDifference(
-                //     DateTime.parse(
-                //       widget.notification.date,
-                //     ),
-                //   ),
-                //   style: context
-                //       .appTypographie
-                //       .button
-                //       .copyWith(
-                //         color: context
-                //             .appColor
-                //             .primaryGray500,
-                //         fontSize: 12.sp,
-                //         fontWeight:
-                //             FontWeight.w500,
-                //       ),
-                // ),
               ],
             ),
             SizedBox(height: 19.h),

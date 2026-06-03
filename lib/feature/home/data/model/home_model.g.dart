@@ -536,6 +536,7 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
   ouvrierSpritualLive: json['ouvrierSpritualLive'] as String?,
   formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String? ?? 'false',
   formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String?,
+  tag: json['tag'] as String? ?? 'en_cours',
 );
 
 Map<String, dynamic> _$RapportCelluleResponseModelToJson(
@@ -577,4 +578,5 @@ Map<String, dynamic> _$RapportCelluleResponseModelToJson(
   'ouvrierSpritualLive': instance.ouvrierSpritualLive,
   'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
   'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
+  'tag': instance.tag,
 };
