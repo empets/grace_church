@@ -2,8 +2,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
-import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
 part 'rapport_cellule_event.freezed.dart';
 
 @freezed
@@ -94,5 +92,6 @@ class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestio
 class FecthDataEvent with _$FecthDataEvent {
    factory FecthDataEvent.fetchData() = FetchDataFecthDataEvent;
    factory FecthDataEvent.fetchDataById({required String responsableCelluleId}) = FetchDataByIdFecthDataEvent;
+   factory FecthDataEvent.fetchRapportByResponsableCelluleId({required String responsableCelluleId}) = FetchRapportByResponsableCelluleIdFecthDataEvent;
 
 }

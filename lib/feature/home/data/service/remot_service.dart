@@ -2,11 +2,13 @@ import 'dart:developer';
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/extention.dart';
+import 'package:grace_church/core/log/custome_log.dart';
 import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/data/service/repository_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
     hide EmptyRequest;
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:firebase_database/firebase_database.dart' as databaseReference;
@@ -499,6 +501,10 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
           .orderByChild('responsableCelluleId')
           .equalTo(params.responsableCelluleId)
           .get();
+
+
+
+
       if (!response.exists) {
         return FirebaseError('Rapport cellule not found');
       }
@@ -508,8 +514,15 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         return RapportCelluleResponseModel.fromJson(notificationItem);
       }).toList();
       return FirebaseSuccess(notifications);
-    } catch (e) {
-      return FirebaseError(e.toString());
+    } catch (e, track) {
+      AppLogger.error(
+        'ProfileMapper',
+        'Erreur lors du mapping',
+        error: e,
+        stack: track,
+      );
+      // rethrow;
+       return FirebaseError(e.toString());
     }
   }
 
@@ -546,6 +559,12 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       return FirebaseError(e.toString());
     }
   }
+
+  @override
+  Future<FirebaseResult<List<RapportCelluleResponse>>> getRapportCelluleByResponsableCelluleId(RequestRapportCellule params) {
+    // TODO: implement getRapportCelluleByResponsableCelluleId
+    throw UnimplementedError();
+  }
 }
 
 List<Map<String, dynamic>> parseImages(dynamic data) {
@@ -573,7 +592,7 @@ Map<String, dynamic> convertMap(Map data) {
           if (e is Map) {
             return convertMap(e);
           }
-          log("``````` ${e}");
+          
           return e;
         }).toList(),
       );

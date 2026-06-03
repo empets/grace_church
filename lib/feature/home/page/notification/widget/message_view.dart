@@ -20,146 +20,110 @@ class _MessageViewState extends State<MessageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          backgroundColor: Colors.grey.shade50,
-        appBar: AppBar(
-          backgroundColor: Colors.grey.shade50,
-          leading: IconButton(
-            icon: SvgPicture.asset(assets.images.arrowBack.path),
-            onPressed: () {
-              Navigator.of(context).pop(true);
-            },
-          ),
-          title: CustomeHeaderTitle(title: "Message "),
+      backgroundColor: Colors.grey.shade50,
+      appBar: AppBar(
+        backgroundColor: Colors.grey.shade50,
+        leading: IconButton(
+          icon: SvgPicture.asset(assets.images.arrowBack.path),
+          onPressed: () {
+            Navigator.of(context).pop(true);
+          },
         ),
+        title: CustomeHeaderTitle(title: "Message "),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        child:  Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(height: 19.h),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 8.w,
-                                                  vertical: 3.h,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: getTagBackgroundColor(
-                                                    context: context,
-                                                    tag: widget.notification.tag,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        17.r,
-                                                      ),
-                                                ),
-                                                child: CustomeText(
-                                                  text: widget.notification.tag
-                                                      .toLowerCase(),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: getTagTextColor(
-                                                          context: context,
-                                                          tag: widget.notification
-                                                              .tag,
-                                                        ),
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                      ),
-                                                ),
-                                              ),
-                                              // CustomeText(
-                                              //   text: formatTimeDifference(
-                                              //     DateTime.parse(
-                                              //       widget.notification.date,
-                                              //     ),
-                                              //   ),
-                                              //   style: context
-                                              //       .appTypographie
-                                              //       .button
-                                              //       .copyWith(
-                                              //         color: context
-                                              //             .appColor
-                                              //             .primaryGray500,
-                                              //         fontSize: 12.sp,
-                                              //         fontWeight:
-                                              //             FontWeight.w500,
-                                              //       ),
-                                              // ),
-                                            ],
-                                          ),
-                                          SizedBox(height: 19.h),
-                                          CustomeText(
-                                            text: widget.notification.title,
-                                            style: context.appTypographie.button
-                                                .copyWith(
-                                                  color: context
-                                                      .appColor
-                                                      .primaryGrayDark,
-                                                  fontSize: 16.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                          SizedBox(height: 8.h),
-                                          CustomeText(
-                                            text: widget.notification.description,
-                                            style: context.appTypographie.button
-                                                .copyWith(
-                                                  color: context
-                                                      .appColor
-                                                      .primaryGrayDark,
-                                                  fontSize: 13.sp,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                 
-                                          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 19.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
+                  decoration: BoxDecoration(
+                    color: getTagBackgroundColor(
+                      context: context,
+                      tag: widget.notification.tag,
+                    ),
+                    borderRadius: BorderRadius.circular(17.r),
+                  ),
+                  child: CustomeText(
+                    text: widget.notification.tag.toLowerCase(),
+                    style: context.appTypographie.button.copyWith(
+                      color: getTagTextColor(
+                        context: context,
+                        tag: widget.notification.tag,
+                      ),
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                // CustomeText(
+                //   text: formatTimeDifference(
+                //     DateTime.parse(
+                //       widget.notification.date,
+                //     ),
+                //   ),
+                //   style: context
+                //       .appTypographie
+                //       .button
+                //       .copyWith(
+                //         color: context
+                //             .appColor
+                //             .primaryGray500,
+                //         fontSize: 12.sp,
+                //         fontWeight:
+                //             FontWeight.w500,
+                //       ),
+                // ),
+              ],
+            ),
+            SizedBox(height: 19.h),
+            CustomeText(
+              text: widget.notification.title,
+              style: context.appTypographie.button.copyWith(
+                color: context.appColor.primaryGrayDark,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(height: 8.h),
+            CustomeText(
+              text: widget.notification.description,
+              style: context.appTypographie.button.copyWith(
+                color: context.appColor.primaryGrayDark,
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
 
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                              vertical: 8.h,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.calendar_today,
-                                                  size: 16.sp,
-                                                  color: context
-                                                      .appColor
-                                                      .primaryBlue
-                                                      .withValues(alpha: 0.7),
-                                                ),
-                                                SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: formatDate(
-                                                    widget.notification.date,
-                                                  ),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                   
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8.h),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.calendar_today,
+                    size: 16.sp,
+                    color: context.appColor.primaryBlue.withValues(alpha: 0.7),
+                  ),
+                  SizedBox(width: 8.w),
+                  CustomeText(
+                    text: formatDate(widget.notification.date),
+                    style: context.appTypographie.button.copyWith(
+                      color: context.appColor.primaryGray500,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-
     );
   }
 }

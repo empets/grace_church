@@ -104,6 +104,10 @@ class $AssetsImagesGen {
   SvgGenImage get waitReclamation =>
       const SvgGenImage('assets/images/wait_reclamation.svg');
 
+  /// File path: assets/images/wifi_check.svg
+  SvgGenImage get wifiCheck =>
+      const SvgGenImage('assets/images/wifi_check.svg');
+
   /// List of all assets
   List<dynamic> get values => [
     a03,
@@ -127,6 +131,7 @@ class $AssetsImagesGen {
     rapportEmpty,
     scanBox,
     waitReclamation,
+    wifiCheck,
   ];
 }
 

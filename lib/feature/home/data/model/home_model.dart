@@ -297,7 +297,7 @@ abstract class ZoneResponseModel with _$ZoneResponseModel {
 
 @freezed
 abstract class RequestAuherResponseModel with _$RequestAuherResponseModel {
-  factory RequestAuherResponseModel({
+ const factory RequestAuherResponseModel({
     required String? libelle,
     required String? formationNewDFB,
     required String? formationNewBaptDFD,
@@ -341,7 +341,7 @@ abstract class RequestAuherResponseModel with _$RequestAuherResponseModel {
 @freezed
 abstract class RequestHumaneSectionAssistanceResponseModel
     with _$RequestHumaneSectionAssistanceResponseModel {
-  factory RequestHumaneSectionAssistanceResponseModel({
+  const factory RequestHumaneSectionAssistanceResponseModel({
     @Default("") String? libelle,
     @Default("") String? toutPetit,
     @Default("") String? juniors,
@@ -391,7 +391,7 @@ abstract class RequestHumaneSectionActivityModel
 @freezed
 abstract class RequestSuggestionResponseModel
     with _$RequestSuggestionResponseModel {
-  factory RequestSuggestionResponseModel({
+ const factory RequestSuggestionResponseModel({
     @Default("") String? fullname,
     @Default("") String? recommandation,
     @Default(false) bool? isDisciple,
@@ -414,7 +414,7 @@ abstract class RequestSuggestionResponseModel
 
 @freezed
 abstract class DiscipleCelluleModel with _$DiscipleCelluleModel {
-  factory DiscipleCelluleModel({
+ const factory DiscipleCelluleModel({
     @Default("") String? fullName,
     @Default("") String? isBaptierOrNot,
   }) = _DiscipleCelluleModel;
@@ -451,7 +451,7 @@ abstract class RapportSuggestionModel with _$RapportSuggestionModel {
 @freezed
 abstract class RequestHumaneSectionActivityResponseModel
     with _$RequestHumaneSectionActivityResponseModel {
-  factory RequestHumaneSectionActivityResponseModel({
+  const factory RequestHumaneSectionActivityResponseModel({
     @Default("") String nom,
     @Default("") String probleme,
     @Default("") String recommandation,
@@ -487,7 +487,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     required String? offrande,
     required String? nombreBaptiser,
     required String? nombreNonBaptiser,
-    required List<DiscipleCelluleModel> discipleCellule,
+    @Default([DiscipleCelluleModel(fullName: "", isBaptierOrNot: "")]) List<DiscipleCelluleModel> discipleCellule,
     required String? id,
     @Default('false')  String? formAdministrationIsSubmit,
     required String? formAdministrationSubmitDate,
@@ -496,19 +496,34 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
 
 
     // required String? nombreBaptiser,
-    required RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
-    required RequestHumaneSectionAssistanceResponseModel assistanceNouveau,
-    required RequestHumaneSectionAssistanceResponseModel assistanceInviter,
-    required RequestAuherResponseModel assistanceCellule,
-    // required String? id,
+    @Default(RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "",total: 0)) RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
+    @Default(RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "",total: 0)) RequestHumaneSectionAssistanceResponseModel assistanceNouveau,
+    @Default(RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "",total: 0)) RequestHumaneSectionAssistanceResponseModel assistanceInviter,
+    @Default( RequestAuherResponseModel(
+    libelle: '',
+    formationNewDFB: '',
+    formationNewBaptDFD: '',
+    visiteMenbre: '',
+    visiteDisciple: '',
+    nbTravailleurs: '',
+    nbEleveAndEtudiants: '',
+    nbOuvrierEM: '',
+    nbOuvrierAutreDepatementDirigeantEM: '',
+    nbFormationNiveau2: '',
+    ngAgendaEM: '',
+    nbDecisionnaires: '',
+    id: '',
+   count: 0,
+    )) RequestAuherResponseModel assistanceCellule,
+    // id,
     @Default('false')  String? formAssistanceIsSubmit,
     required String? formAssistanceSubmitDate,
-    required List<RequestSuggestionResponseModel> visiteMenbre,
-    required List<RequestSuggestionResponseModel> visiteOuvrier,
+    @Default([RequestSuggestionResponseModel(fullname: "", recommandation: "", isDisciple: false, probleme: "")]) List<RequestSuggestionResponseModel> visiteMenbre,
+    @Default([RequestSuggestionResponseModel(fullname: "", recommandation: "", isDisciple: false, probleme: "")]) List<RequestSuggestionResponseModel> visiteOuvrier,
     required String? dateActivitySubmited,
     @Default('false')  String? formActivityIsSubmit,
     required String? formActivitySubmitDate,
-    required List<RequestHumaneSectionActivityResponseModel> suggestions,
+    @Default([RequestHumaneSectionActivityResponseModel(nom: "", probleme: "", recommandation: "")]) List<RequestHumaneSectionActivityResponseModel> suggestions,
     required String? faisAssignaler,
     required String? ouvrierSpritualLive,
     @Default('false')  String? formSuggestionIsSubmit,

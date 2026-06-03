@@ -4078,12 +4078,13 @@ extension FecthDataEventPatterns on FecthDataEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchDataFecthDataEvent value)?  fetchData,TResult Function( FetchDataByIdFecthDataEvent value)?  fetchDataById,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( FetchDataFecthDataEvent value)?  fetchData,TResult Function( FetchDataByIdFecthDataEvent value)?  fetchDataById,TResult Function( FetchRapportByResponsableCelluleIdFecthDataEvent value)?  fetchRapportByResponsableCelluleId,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent() when fetchData != null:
 return fetchData(_that);case FetchDataByIdFecthDataEvent() when fetchDataById != null:
-return fetchDataById(_that);case _:
+return fetchDataById(_that);case FetchRapportByResponsableCelluleIdFecthDataEvent() when fetchRapportByResponsableCelluleId != null:
+return fetchRapportByResponsableCelluleId(_that);case _:
   return orElse();
 
 }
@@ -4101,12 +4102,13 @@ return fetchDataById(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchDataFecthDataEvent value)  fetchData,required TResult Function( FetchDataByIdFecthDataEvent value)  fetchDataById,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( FetchDataFecthDataEvent value)  fetchData,required TResult Function( FetchDataByIdFecthDataEvent value)  fetchDataById,required TResult Function( FetchRapportByResponsableCelluleIdFecthDataEvent value)  fetchRapportByResponsableCelluleId,}){
 final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent():
 return fetchData(_that);case FetchDataByIdFecthDataEvent():
-return fetchDataById(_that);case _:
+return fetchDataById(_that);case FetchRapportByResponsableCelluleIdFecthDataEvent():
+return fetchRapportByResponsableCelluleId(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4123,12 +4125,13 @@ return fetchDataById(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchDataFecthDataEvent value)?  fetchData,TResult? Function( FetchDataByIdFecthDataEvent value)?  fetchDataById,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( FetchDataFecthDataEvent value)?  fetchData,TResult? Function( FetchDataByIdFecthDataEvent value)?  fetchDataById,TResult? Function( FetchRapportByResponsableCelluleIdFecthDataEvent value)?  fetchRapportByResponsableCelluleId,}){
 final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent() when fetchData != null:
 return fetchData(_that);case FetchDataByIdFecthDataEvent() when fetchDataById != null:
-return fetchDataById(_that);case _:
+return fetchDataById(_that);case FetchRapportByResponsableCelluleIdFecthDataEvent() when fetchRapportByResponsableCelluleId != null:
+return fetchRapportByResponsableCelluleId(_that);case _:
   return null;
 
 }
@@ -4145,11 +4148,12 @@ return fetchDataById(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchData,TResult Function( String responsableCelluleId)?  fetchDataById,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchData,TResult Function( String responsableCelluleId)?  fetchDataById,TResult Function( String responsableCelluleId)?  fetchRapportByResponsableCelluleId,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent() when fetchData != null:
 return fetchData();case FetchDataByIdFecthDataEvent() when fetchDataById != null:
-return fetchDataById(_that.responsableCelluleId);case _:
+return fetchDataById(_that.responsableCelluleId);case FetchRapportByResponsableCelluleIdFecthDataEvent() when fetchRapportByResponsableCelluleId != null:
+return fetchRapportByResponsableCelluleId(_that.responsableCelluleId);case _:
   return orElse();
 
 }
@@ -4167,11 +4171,12 @@ return fetchDataById(_that.responsableCelluleId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchData,required TResult Function( String responsableCelluleId)  fetchDataById,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchData,required TResult Function( String responsableCelluleId)  fetchDataById,required TResult Function( String responsableCelluleId)  fetchRapportByResponsableCelluleId,}) {final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent():
 return fetchData();case FetchDataByIdFecthDataEvent():
-return fetchDataById(_that.responsableCelluleId);case _:
+return fetchDataById(_that.responsableCelluleId);case FetchRapportByResponsableCelluleIdFecthDataEvent():
+return fetchRapportByResponsableCelluleId(_that.responsableCelluleId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4188,11 +4193,12 @@ return fetchDataById(_that.responsableCelluleId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchData,TResult? Function( String responsableCelluleId)?  fetchDataById,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchData,TResult? Function( String responsableCelluleId)?  fetchDataById,TResult? Function( String responsableCelluleId)?  fetchRapportByResponsableCelluleId,}) {final _that = this;
 switch (_that) {
 case FetchDataFecthDataEvent() when fetchData != null:
 return fetchData();case FetchDataByIdFecthDataEvent() when fetchDataById != null:
-return fetchDataById(_that.responsableCelluleId);case _:
+return fetchDataById(_that.responsableCelluleId);case FetchRapportByResponsableCelluleIdFecthDataEvent() when fetchRapportByResponsableCelluleId != null:
+return fetchRapportByResponsableCelluleId(_that.responsableCelluleId);case _:
   return null;
 
 }
@@ -4290,6 +4296,72 @@ class _$FetchDataByIdFecthDataEventCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? responsableCelluleId = null,}) {
   return _then(FetchDataByIdFecthDataEvent(
+responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class FetchRapportByResponsableCelluleIdFecthDataEvent implements FecthDataEvent {
+   FetchRapportByResponsableCelluleIdFecthDataEvent({required this.responsableCelluleId});
+  
+
+ final  String responsableCelluleId;
+
+/// Create a copy of FecthDataEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FetchRapportByResponsableCelluleIdFecthDataEventCopyWith<FetchRapportByResponsableCelluleIdFecthDataEvent> get copyWith => _$FetchRapportByResponsableCelluleIdFecthDataEventCopyWithImpl<FetchRapportByResponsableCelluleIdFecthDataEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FetchRapportByResponsableCelluleIdFecthDataEvent&&(identical(other.responsableCelluleId, responsableCelluleId) || other.responsableCelluleId == responsableCelluleId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,responsableCelluleId);
+
+@override
+String toString() {
+  return 'FecthDataEvent.fetchRapportByResponsableCelluleId(responsableCelluleId: $responsableCelluleId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FetchRapportByResponsableCelluleIdFecthDataEventCopyWith<$Res> implements $FecthDataEventCopyWith<$Res> {
+  factory $FetchRapportByResponsableCelluleIdFecthDataEventCopyWith(FetchRapportByResponsableCelluleIdFecthDataEvent value, $Res Function(FetchRapportByResponsableCelluleIdFecthDataEvent) _then) = _$FetchRapportByResponsableCelluleIdFecthDataEventCopyWithImpl;
+@useResult
+$Res call({
+ String responsableCelluleId
+});
+
+
+
+
+}
+/// @nodoc
+class _$FetchRapportByResponsableCelluleIdFecthDataEventCopyWithImpl<$Res>
+    implements $FetchRapportByResponsableCelluleIdFecthDataEventCopyWith<$Res> {
+  _$FetchRapportByResponsableCelluleIdFecthDataEventCopyWithImpl(this._self, this._then);
+
+  final FetchRapportByResponsableCelluleIdFecthDataEvent _self;
+  final $Res Function(FetchRapportByResponsableCelluleIdFecthDataEvent) _then;
+
+/// Create a copy of FecthDataEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? responsableCelluleId = null,}) {
+  return _then(FetchRapportByResponsableCelluleIdFecthDataEvent(
 responsableCelluleId: null == responsableCelluleId ? _self.responsableCelluleId : responsableCelluleId // ignore: cast_nullable_to_non_nullable
 as String,
   ));

@@ -228,4 +228,17 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+  
+
+
+  // -------------------------------------------------------------
+  //  cette methode permet de recuperer le rapport de la cellule par responsablecelluleid
+  //  elle prend en parametre un objet RequestRapportCellule qui contient les criteres de recherche
+  //  elle retourne une liste de RapportCelluleResponse qui contient les rapport de la cellule
+  // -------------------------------------------------------------
+  @override
+  Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCelluleByResponsableCelluleId(RequestRapportCellule params) {
+    // TODO: implement getRapportCelluleByResponsableCelluleId
+    throw UnimplementedError();
+  }
 }

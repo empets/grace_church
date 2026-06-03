@@ -148,6 +148,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i540.GetRapportCelluleUsercase>(
       () => _i540.GetRapportCelluleUsercase(gh<_i962.HomeDomaineRepository>()),
     );
+    gh.lazySingleton<_i540.GetRapportCelluleByResponsableCelluleIdUsercase>(
+      () => _i540.GetRapportCelluleByResponsableCelluleIdUsercase(
+        gh<_i962.HomeDomaineRepository>(),
+      ),
+    );
     gh.lazySingleton<_i716.SendRapportCelluleStepAdministrationUsercase>(
       () => _i716.SendRapportCelluleStepAdministrationUsercase(
         gh<_i962.HomeDomaineRepository>(),

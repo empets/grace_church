@@ -345,15 +345,31 @@ class RapportCellulePDFView extends StatelessWidget {
                             pw.TableRow(
                               children: [
                                 tableCell("Chrét.Bapt"), //<< LGINE 1
+                                if (allCaracterIsNombre(rapportCellule.nombreBaptiser))...[
+                                  pw.Padding(
+                                    padding: pw.EdgeInsets.symmetric(
+                                      horizontal: 3.w,
+                                      vertical: 3.h,
+                                    ),
+                                    child: pw.Text(
+                                      allCaracterIsNombre(rapportCellule.nombreBaptiser) && int.parse(rapportCellule.nombreBaptiser) > 9
+                                          ? "${rapportCellule.nombreBaptiser}"
+                                          : "0${rapportCellule.nombreBaptiser}",
+                                      style: pw.TextStyle(
+                                        color: PdfColors.black,
+                                        fontWeight: pw.FontWeight.bold,
+                                        fontSize: 12.5.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                                 pw.Padding(
                                   padding: pw.EdgeInsets.symmetric(
                                     horizontal: 3.w,
                                     vertical: 3.h,
                                   ),
                                   child: pw.Text(
-                                    int.parse(rapportCellule.nombreBaptiser) > 9
-                                        ? "${rapportCellule.nombreBaptiser}"
-                                        : "0${rapportCellule.nombreBaptiser}",
+                                 "00",
                                     style: pw.TextStyle(
                                       color: PdfColors.black,
                                       fontWeight: pw.FontWeight.bold,
@@ -396,7 +412,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                     vertical: 3.h,
                                   ),
                                   child: pw.Text(
-                                    "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+                                    // "     ${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+                                    "     00",
                                     style: pw.TextStyle(
                                       color: PdfColors.black,
                                       fontWeight: pw.FontWeight.bold,
@@ -482,9 +499,10 @@ class RapportCellulePDFView extends StatelessWidget {
                                     vertical: 3.h,
                                   ),
                                   child: pw.Text(
-                                    int.parse(rapportCellule.nombreBaptiser) > 9
-                                        ? "${rapportCellule.nombreBaptiser}"
-                                        : "0${rapportCellule.nombreBaptiser}",
+                                    // int.parse(rapportCellule.nombreBaptiser) > 9
+                                    //     ? "${rapportCellule.nombreBaptiser}"
+                                    //     : "0${rapportCellule.nombreBaptiser}",
+                                    "00",
                                     style: pw.TextStyle(
                                       color: PdfColors.black,
                                       fontWeight: pw.FontWeight.bold,
@@ -527,7 +545,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                     vertical: 3.h,
                                   ),
                                   child: pw.Text(
-                                    "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+                                  //  "${int.parse(rapportCellule.nombreBaptiser) + int.parse(rapportCellule.nombreNonBaptiser)}",
+                                    "00",
                                     style: pw.TextStyle(
                                       color: PdfColors.black,
                                       fontWeight: pw.FontWeight.bold,

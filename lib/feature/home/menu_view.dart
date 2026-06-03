@@ -43,7 +43,7 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/r
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
-import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/from_administration.dart';
 import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
 

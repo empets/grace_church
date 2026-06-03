@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/form_assistance.dart';
 
 part 'rapport_cellule_state.freezed.dart';
 

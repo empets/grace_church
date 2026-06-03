@@ -108,7 +108,7 @@ class FormSuggestionBloc
               suggestions: state.suggestions.map((e) => e.toJson()).toList(),
               faisAssignaler: state.faisAssignaler.value,
               ouvrierSpritualLive: state.ouvrierSpritualLive.value,
-              formSuggestionIsSubmit: "Success",
+              formSuggestionIsSubmit: "true",
               formSuggestionSubmitDate: DateTime.now().toIso8601String(),
               resumerPredication: state.resumerPredication.value,
             ),

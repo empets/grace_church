@@ -1,20 +1,16 @@
 import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
@@ -25,8 +21,8 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/r
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/form_activite.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/form_assistance.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class EditingCelluleRaport extends StatefulWidget {
@@ -952,7 +948,7 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                               builder: (context, state) {
                                 return CustomeTextFormFieldWithoutBorder(
                                   textInputType: TextInputType.number,
-                                  readOnly: state.isValide,
+                                  readOnly: state.status.isInProgress,
                                   textLabel: "Exemple : 3",
                                   errorText: null,
                                   msgError:
@@ -985,13 +981,13 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                           : null;
 
                                       // ─── Validation Nom ───
-                                      final nomError =
-                                          (currentDisciple == null ||
-                                              currentDisciple.fullName
-                                                  .trim()
-                                                  .isEmpty)
-                                          ? "Veuillez entrer le nom complet"
-                                          : null;
+                                      // final nomError =
+                                      //     (currentDisciple == null ||
+                                      //         currentDisciple.fullName
+                                      //             .trim()
+                                      //             .isEmpty)
+                                          // ? "Veuillez entrer le nom complet"
+                                          // : null;
 
                                       // ─── Validation Baptisé (Oui/Non uniquement) ───
                                       final baptiseError =

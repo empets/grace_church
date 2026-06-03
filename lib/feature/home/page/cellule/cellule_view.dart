@@ -5,8 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_activite_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_sassistance_bloc.dart';
+import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
+
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -22,6 +28,7 @@ import 'package:grace_church/feature/home/domaine/usercase/get_list_secteur.dart
 import 'package:grace_church/feature/home/domaine/usercase/get_list_zone.dart';
 import 'package:grace_church/feature/home/domaine/usercase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_admine_usercase.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/get_responsable_secteur.dart';
@@ -29,10 +36,10 @@ import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/ge
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_activite.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_assistance.dart';
-import 'package:grace_church/feature/home/page/cellule_form/form_ouvrier_spritual_live.dart';
-import 'package:grace_church/feature/home/page/cellule_form/from_administration.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/form_activite.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/form_assistance.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/form_ouvrier_spritual_live.dart';
+import 'package:grace_church/feature/home/page/cellule/cellule_form/from_administration.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class CelluleView extends StatefulWidget {
@@ -55,18 +62,17 @@ class _CelluleViewState extends State<CelluleView> {
     required ProfileResponse state,
     required List<RapportCelluleResponse> rapportCellule,
   }) {
-    if (rapportCellule.first.formAdministrationIsSubmit.contains("Success")) {
+    if (rapportCellule.last.formAdministrationIsSubmit.toLowerCase() ==
+        'false') {
       return EditingCelluleRaport(profile: state);
-    } else if (rapportCellule.first.formAssistanceIsSubmit.contains(
-      "Success",
-    )) {
+    } else if (rapportCellule.last.formAssistanceIsSubmit == "false") {
       return FormStatistic(id: state.menberId);
-    } else if (rapportCellule.first.formActivityIsSubmit == "Success") {
+    } else if (rapportCellule.last.formActivityIsSubmit == 'false') {
       return FormActivite();
-    } else if (rapportCellule.first.formActivityIsSubmit.contains("Success")) {
+    } else if (rapportCellule.last.formActivityIsSubmit == 'false') {
       return FormOuvrierSpritualLive();
     } else {
-      return SizedBox();
+      return EditingCelluleRaport(profile: state);
     }
   }
 
@@ -729,6 +735,12 @@ class _CelluleViewState extends State<CelluleView> {
                             return Container();
                           }
 
+                          filtered.sort(
+                            (a, b) => b.formAdministrationIsSubmit.compareTo(
+                              a.formAdministrationIsSubmit,
+                            ),
+                          );
+
                           return Container(
                             margin: EdgeInsets.only(bottom: 10.h),
                             child: FloatingActionButton(
@@ -739,6 +751,9 @@ class _CelluleViewState extends State<CelluleView> {
                                   fadeRoute(
                                     MultiBlocProvider(
                                       providers: [
+                                        // --------------------------------
+                                        // EditingCelluleRaport
+                                        // --------------------------------
                                         BlocProvider(
                                           create: (context) =>
                                               RapportCelluleRequestSectionAdministrationBloc(
@@ -760,6 +775,42 @@ class _CelluleViewState extends State<CelluleView> {
                                                 getIt<GetListZoneUsercase>(),
                                           )..add(CelluleEvent.fetch()),
                                         ),
+
+                                        // --------------------------------
+                                        // FormStatistic
+                                        // --------------------------------
+                                        BlocProvider(
+                                          create: (context) =>
+                                              RapportCelluleSectionAssistanceBloc(
+                                                sendRapportCelluleStepStatUsercase:
+                                                    getIt<
+                                                      SendRapportCelluleStepStatUsercase
+                                                    >(),
+                                              ),
+                                        ),
+
+                                        // --------------------------------
+                                        // FormActivite
+                                        // --------------------------------
+                                        BlocProvider(
+                                          create: (context) => FormActiviteBloc(
+                                            sendRapportCelluleStepAssistantUsercase:
+                                                getIt<
+                                                  SendRapportCelluleStepAssistantUsercase
+                                                >(),
+                                          ),
+                                        ),
+                                        // --------------------------------
+                                        // FormOuvrierSpritualLive
+                                        // --------------------------------
+                                        BlocProvider(
+                                          create: (context) => FormSuggestionBloc(
+                                            sendRapportCelluleStepSuggestionUsercase:
+                                                getIt<
+                                                  SendRapportCelluleStepSuggestionUsercase
+                                                >(),
+                                          ),
+                                        ),
                                       ],
                                       child: buildFormRapport(
                                         state:
@@ -768,7 +819,7 @@ class _CelluleViewState extends State<CelluleView> {
                                                       ProfileResponse
                                                     >)
                                                 .data,
-                                        rapportCellule: stateRapport.data,
+                                        rapportCellule: filtered,
                                       ),
                                     ),
                                   ),
@@ -789,64 +840,7 @@ class _CelluleViewState extends State<CelluleView> {
                             ),
                           );
                         }
-                        return Container(
-                          margin: EdgeInsets.only(bottom: 10.h),
-                          child: FloatingActionButton(
-                            backgroundColor: context.appColor.primaryBlue
-                                .withValues(alpha: 0.5),
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                fadeRoute(
-                                  MultiBlocProvider(
-                                    providers: [
-                                      BlocProvider(
-                                        create: (context) =>
-                                            RapportCelluleRequestSectionAdministrationBloc(
-                                              sendRapportCelluleStepAdministrationUsercase:
-                                                  getIt<
-                                                    SendRapportCelluleStepAdministrationUsercase
-                                                  >(),
-                                            ),
-                                      ),
-                                      BlocProvider(
-                                        create: (context) => GetSecteurBloc(
-                                          getListSecteurUsercase:
-                                              getIt<GetListSecteurUsercase>(),
-                                        )..add(CelluleEvent.fetch()),
-                                      ),
-                                      BlocProvider(
-                                        create: (context) => GetZoneBloc(
-                                          getListZoneUsercase:
-                                              getIt<GetListZoneUsercase>(),
-                                        )..add(CelluleEvent.fetch()),
-                                      ),
-                                    ],
-                                    child: EditingCelluleRaport(
-                                      profile:
-                                          (widget.profileState
-                                                  as SuccessState<
-                                                    ProfileResponse
-                                                  >)
-                                              .data,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Badge(
-                              child: Icon(Icons.edit, color: Colors.white),
-                              backgroundColor: Colors.transparent,
-                              label: Text(
-                                '',
-                                style: context.appTypographie.body.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 10.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
+                        return SizedBox();
                       },
                     )
                   : const SizedBox.shrink();

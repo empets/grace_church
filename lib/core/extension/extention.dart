@@ -1,16 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:intl/intl.dart';
-
 import 'package:grace_church/core/data_process/success.dart';
-import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:crypto/crypto.dart';
 
 // Future<bool> isEmulator() async {
@@ -538,4 +535,9 @@ String cleanValue(String value) {
       .replaceAll('00:', '')
       .replaceAll('.00', '')
       .trim();
+}
+
+bool allCaracterIsNombre(String input) {
+  final RegExp allNumbers = RegExp(r'^\s*\d+(\s*,\s*\d+)*\s*$');
+  return allNumbers.hasMatch(input);
 }

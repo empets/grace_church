@@ -2318,7 +2318,7 @@ return $default(_that.libelle,_that.formationNewDFB,_that.formationNewBaptDFD,_t
 @JsonSerializable()
 
 class _RequestAuherResponseModel implements RequestAuherResponseModel {
-   _RequestAuherResponseModel({required this.libelle, required this.formationNewDFB, required this.formationNewBaptDFD, required this.visiteMenbre, required this.visiteDisciple, required this.nbTravailleurs, required this.nbEleveAndEtudiants, required this.nbOuvrierEM, required this.nbOuvrierAutreDepatementDirigeantEM, required this.nbFormationNiveau2, required this.ngAgendaEM, required this.nbDecisionnaires, required this.id, required this.count});
+  const _RequestAuherResponseModel({required this.libelle, required this.formationNewDFB, required this.formationNewBaptDFD, required this.visiteMenbre, required this.visiteDisciple, required this.nbTravailleurs, required this.nbEleveAndEtudiants, required this.nbOuvrierEM, required this.nbOuvrierAutreDepatementDirigeantEM, required this.nbFormationNiveau2, required this.ngAgendaEM, required this.nbDecisionnaires, required this.id, required this.count});
   factory _RequestAuherResponseModel.fromJson(Map<String, dynamic> json) => _$RequestAuherResponseModelFromJson(json);
 
 @override final  String? libelle;
@@ -2611,7 +2611,7 @@ return $default(_that.libelle,_that.toutPetit,_that.juniors,_that.cadets,_that.t
 @JsonSerializable()
 
 class _RequestHumaneSectionAssistanceResponseModel implements RequestHumaneSectionAssistanceResponseModel {
-   _RequestHumaneSectionAssistanceResponseModel({this.libelle = "", this.toutPetit = "", this.juniors = "", this.cadets = "", this.total = 0});
+  const _RequestHumaneSectionAssistanceResponseModel({this.libelle = "", this.toutPetit = "", this.juniors = "", this.cadets = "", this.total = 0});
   factory _RequestHumaneSectionAssistanceResponseModel.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionAssistanceResponseModelFromJson(json);
 
 @override@JsonKey() final  String? libelle;
@@ -3154,7 +3154,7 @@ return $default(_that.fullname,_that.recommandation,_that.isDisciple,_that.probl
 @JsonSerializable()
 
 class _RequestSuggestionResponseModel implements RequestSuggestionResponseModel {
-   _RequestSuggestionResponseModel({this.fullname = "", this.recommandation = "", this.isDisciple = false, this.probleme = ""});
+  const _RequestSuggestionResponseModel({this.fullname = "", this.recommandation = "", this.isDisciple = false, this.probleme = ""});
   factory _RequestSuggestionResponseModel.fromJson(Map<String, dynamic> json) => _$RequestSuggestionResponseModelFromJson(json);
 
 @override@JsonKey() final  String? fullname;
@@ -3424,7 +3424,7 @@ return $default(_that.fullName,_that.isBaptierOrNot);case _:
 @JsonSerializable()
 
 class _DiscipleCelluleModel implements DiscipleCelluleModel {
-   _DiscipleCelluleModel({this.fullName = "", this.isBaptierOrNot = ""});
+  const _DiscipleCelluleModel({this.fullName = "", this.isBaptierOrNot = ""});
   factory _DiscipleCelluleModel.fromJson(Map<String, dynamic> json) => _$DiscipleCelluleModelFromJson(json);
 
 @override@JsonKey() final  String? fullName;
@@ -3960,7 +3960,7 @@ return $default(_that.nom,_that.probleme,_that.recommandation);case _:
 @JsonSerializable()
 
 class _RequestHumaneSectionActivityResponseModel implements RequestHumaneSectionActivityResponseModel {
-   _RequestHumaneSectionActivityResponseModel({this.nom = "", this.probleme = "", this.recommandation = ""});
+  const _RequestHumaneSectionActivityResponseModel({this.nom = "", this.probleme = "", this.recommandation = ""});
   factory _RequestHumaneSectionActivityResponseModel.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionActivityResponseModelFromJson(json);
 
 @override@JsonKey() final  String nom;
@@ -4034,7 +4034,7 @@ as String,
 mixin _$RapportCelluleResponseModel {
 
  String? get codeZone; String? get fullNameRespoZone; String? get contactRespoZone; String? get codeSecteur; String? get responsableCelluleId; String? get fullNameRespoSecteur; String? get contactRespoSecteur; String? get codeCellule; String? get fullNameRespoCellule; String? get contactRespoCellule; String? get jourCellule; String? get offrande; String? get nombreBaptiser; String? get nombreNonBaptiser; List<DiscipleCelluleModel> get discipleCellule; String? get id; String? get formAdministrationIsSubmit; String? get formAdministrationSubmitDate; String? get resumerPredication; String? get lieu;// required String? nombreBaptiser,
- RequestHumaneSectionAssistanceResponseModel get assistanceNonBaptiser; RequestHumaneSectionAssistanceResponseModel get assistanceNouveau; RequestHumaneSectionAssistanceResponseModel get assistanceInviter; RequestAuherResponseModel get assistanceCellule;// required String? id,
+ RequestHumaneSectionAssistanceResponseModel get assistanceNonBaptiser; RequestHumaneSectionAssistanceResponseModel get assistanceNouveau; RequestHumaneSectionAssistanceResponseModel get assistanceInviter; RequestAuherResponseModel get assistanceCellule;// id,
  String? get formAssistanceIsSubmit; String? get formAssistanceSubmitDate; List<RequestSuggestionResponseModel> get visiteMenbre; List<RequestSuggestionResponseModel> get visiteOuvrier; String? get dateActivitySubmited; String? get formActivityIsSubmit; String? get formActivitySubmitDate; List<RequestHumaneSectionActivityResponseModel> get suggestions; String? get faisAssignaler; String? get ouvrierSpritualLive; String? get formSuggestionIsSubmit; String? get formSuggestionSubmitDate;
 /// Create a copy of RapportCelluleResponseModel
 /// with the given fields replaced by the non-null parameter values.
@@ -4300,7 +4300,7 @@ return $default(_that.codeZone,_that.fullNameRespoZone,_that.contactRespoZone,_t
 @JsonSerializable()
 
 class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
-   _RapportCelluleResponseModel({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, required final  List<DiscipleCelluleModel> discipleCellule, required this.id, this.formAdministrationIsSubmit = 'false', required this.formAdministrationSubmitDate, required this.resumerPredication, required this.lieu, required this.assistanceNonBaptiser, required this.assistanceNouveau, required this.assistanceInviter, required this.assistanceCellule, this.formAssistanceIsSubmit = 'false', required this.formAssistanceSubmitDate, required final  List<RequestSuggestionResponseModel> visiteMenbre, required final  List<RequestSuggestionResponseModel> visiteOuvrier, required this.dateActivitySubmited, this.formActivityIsSubmit = 'false', required this.formActivitySubmitDate, required final  List<RequestHumaneSectionActivityResponseModel> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, this.formSuggestionIsSubmit = 'false', required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
+   _RapportCelluleResponseModel({required this.codeZone, required this.fullNameRespoZone, required this.contactRespoZone, required this.codeSecteur, required this.responsableCelluleId, required this.fullNameRespoSecteur, required this.contactRespoSecteur, required this.codeCellule, required this.fullNameRespoCellule, required this.contactRespoCellule, required this.jourCellule, required this.offrande, required this.nombreBaptiser, required this.nombreNonBaptiser, final  List<DiscipleCelluleModel> discipleCellule = const [DiscipleCelluleModel(fullName: "", isBaptierOrNot: "")], required this.id, this.formAdministrationIsSubmit = 'false', required this.formAdministrationSubmitDate, required this.resumerPredication, required this.lieu, this.assistanceNonBaptiser = const RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "", total: 0), this.assistanceNouveau = const RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "", total: 0), this.assistanceInviter = const RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "", total: 0), this.assistanceCellule = const RequestAuherResponseModel(libelle: '', formationNewDFB: '', formationNewBaptDFD: '', visiteMenbre: '', visiteDisciple: '', nbTravailleurs: '', nbEleveAndEtudiants: '', nbOuvrierEM: '', nbOuvrierAutreDepatementDirigeantEM: '', nbFormationNiveau2: '', ngAgendaEM: '', nbDecisionnaires: '', id: '', count: 0), this.formAssistanceIsSubmit = 'false', required this.formAssistanceSubmitDate, final  List<RequestSuggestionResponseModel> visiteMenbre = const [RequestSuggestionResponseModel(fullname: "", recommandation: "", isDisciple: false, probleme: "")], final  List<RequestSuggestionResponseModel> visiteOuvrier = const [RequestSuggestionResponseModel(fullname: "", recommandation: "", isDisciple: false, probleme: "")], required this.dateActivitySubmited, this.formActivityIsSubmit = 'false', required this.formActivitySubmitDate, final  List<RequestHumaneSectionActivityResponseModel> suggestions = const [RequestHumaneSectionActivityResponseModel(nom: "", probleme: "", recommandation: "")], required this.faisAssignaler, required this.ouvrierSpritualLive, this.formSuggestionIsSubmit = 'false', required this.formSuggestionSubmitDate}): _discipleCellule = discipleCellule,_visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_suggestions = suggestions;
   factory _RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) => _$RapportCelluleResponseModelFromJson(json);
 
 @override final  String? codeZone;
@@ -4318,7 +4318,7 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 @override final  String? nombreBaptiser;
 @override final  String? nombreNonBaptiser;
  final  List<DiscipleCelluleModel> _discipleCellule;
-@override List<DiscipleCelluleModel> get discipleCellule {
+@override@JsonKey() List<DiscipleCelluleModel> get discipleCellule {
   if (_discipleCellule is EqualUnmodifiableListView) return _discipleCellule;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_discipleCellule);
@@ -4330,22 +4330,22 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 @override final  String? resumerPredication;
 @override final  String? lieu;
 // required String? nombreBaptiser,
-@override final  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser;
-@override final  RequestHumaneSectionAssistanceResponseModel assistanceNouveau;
-@override final  RequestHumaneSectionAssistanceResponseModel assistanceInviter;
-@override final  RequestAuherResponseModel assistanceCellule;
-// required String? id,
+@override@JsonKey() final  RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser;
+@override@JsonKey() final  RequestHumaneSectionAssistanceResponseModel assistanceNouveau;
+@override@JsonKey() final  RequestHumaneSectionAssistanceResponseModel assistanceInviter;
+@override@JsonKey() final  RequestAuherResponseModel assistanceCellule;
+// id,
 @override@JsonKey() final  String? formAssistanceIsSubmit;
 @override final  String? formAssistanceSubmitDate;
  final  List<RequestSuggestionResponseModel> _visiteMenbre;
-@override List<RequestSuggestionResponseModel> get visiteMenbre {
+@override@JsonKey() List<RequestSuggestionResponseModel> get visiteMenbre {
   if (_visiteMenbre is EqualUnmodifiableListView) return _visiteMenbre;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_visiteMenbre);
 }
 
  final  List<RequestSuggestionResponseModel> _visiteOuvrier;
-@override List<RequestSuggestionResponseModel> get visiteOuvrier {
+@override@JsonKey() List<RequestSuggestionResponseModel> get visiteOuvrier {
   if (_visiteOuvrier is EqualUnmodifiableListView) return _visiteOuvrier;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_visiteOuvrier);
@@ -4355,7 +4355,7 @@ class _RapportCelluleResponseModel implements RapportCelluleResponseModel {
 @override@JsonKey() final  String? formActivityIsSubmit;
 @override final  String? formActivitySubmitDate;
  final  List<RequestHumaneSectionActivityResponseModel> _suggestions;
-@override List<RequestHumaneSectionActivityResponseModel> get suggestions {
+@override@JsonKey() List<RequestHumaneSectionActivityResponseModel> get suggestions {
   if (_suggestions is EqualUnmodifiableListView) return _suggestions;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_suggestions);

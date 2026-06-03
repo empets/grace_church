@@ -149,6 +149,18 @@ class _BannerSliderState extends State<BannerSlider> {
                       image,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[300],
+                          child: const Center(
+                            child: Icon(
+                              Icons.broken_image,
+                              color: Colors.grey,
+                              size: 50,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),

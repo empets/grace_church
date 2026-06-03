@@ -437,7 +437,7 @@ class RapportCelluleSectionAssistanceBloc
               id: state.id.value,
               count: 0,
             ).toJson(),
-            formAssistanceIsSubmit: 'Success',
+            formAssistanceIsSubmit: 'true',
             formAssistanceSubmitDate: DateTime.now().toIso8601String(),
             id: state.id.value,
           ),

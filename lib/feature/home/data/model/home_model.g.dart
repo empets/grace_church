@@ -416,51 +416,122 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
   offrande: json['offrande'] as String?,
   nombreBaptiser: json['nombreBaptiser'] as String?,
   nombreNonBaptiser: json['nombreNonBaptiser'] as String?,
-  discipleCellule: (json['discipleCellule'] as List<dynamic>)
-      .map((e) => DiscipleCelluleModel.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  discipleCellule:
+      (json['discipleCellule'] as List<dynamic>?)
+          ?.map((e) => DiscipleCelluleModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [DiscipleCelluleModel(fullName: "", isBaptierOrNot: "")],
   id: json['id'] as String?,
   formAdministrationIsSubmit:
       json['formAdministrationIsSubmit'] as String? ?? 'false',
   formAdministrationSubmitDate: json['formAdministrationSubmitDate'] as String?,
   resumerPredication: json['resumerPredication'] as String?,
   lieu: json['lieu'] as String?,
-  assistanceNonBaptiser: RequestHumaneSectionAssistanceResponseModel.fromJson(
-    json['assistanceNonBaptiser'] as Map<String, dynamic>,
-  ),
-  assistanceNouveau: RequestHumaneSectionAssistanceResponseModel.fromJson(
-    json['assistanceNouveau'] as Map<String, dynamic>,
-  ),
-  assistanceInviter: RequestHumaneSectionAssistanceResponseModel.fromJson(
-    json['assistanceInviter'] as Map<String, dynamic>,
-  ),
-  assistanceCellule: RequestAuherResponseModel.fromJson(
-    json['assistanceCellule'] as Map<String, dynamic>,
-  ),
+  assistanceNonBaptiser: json['assistanceNonBaptiser'] == null
+      ? const RequestHumaneSectionAssistanceResponseModel(
+          libelle: '',
+          toutPetit: "",
+          juniors: '',
+          cadets: "",
+          total: 0,
+        )
+      : RequestHumaneSectionAssistanceResponseModel.fromJson(
+          json['assistanceNonBaptiser'] as Map<String, dynamic>,
+        ),
+  assistanceNouveau: json['assistanceNouveau'] == null
+      ? const RequestHumaneSectionAssistanceResponseModel(
+          libelle: '',
+          toutPetit: "",
+          juniors: '',
+          cadets: "",
+          total: 0,
+        )
+      : RequestHumaneSectionAssistanceResponseModel.fromJson(
+          json['assistanceNouveau'] as Map<String, dynamic>,
+        ),
+  assistanceInviter: json['assistanceInviter'] == null
+      ? const RequestHumaneSectionAssistanceResponseModel(
+          libelle: '',
+          toutPetit: "",
+          juniors: '',
+          cadets: "",
+          total: 0,
+        )
+      : RequestHumaneSectionAssistanceResponseModel.fromJson(
+          json['assistanceInviter'] as Map<String, dynamic>,
+        ),
+  assistanceCellule: json['assistanceCellule'] == null
+      ? const RequestAuherResponseModel(
+          libelle: '',
+          formationNewDFB: '',
+          formationNewBaptDFD: '',
+          visiteMenbre: '',
+          visiteDisciple: '',
+          nbTravailleurs: '',
+          nbEleveAndEtudiants: '',
+          nbOuvrierEM: '',
+          nbOuvrierAutreDepatementDirigeantEM: '',
+          nbFormationNiveau2: '',
+          ngAgendaEM: '',
+          nbDecisionnaires: '',
+          id: '',
+          count: 0,
+        )
+      : RequestAuherResponseModel.fromJson(
+          json['assistanceCellule'] as Map<String, dynamic>,
+        ),
   formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String? ?? 'false',
   formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String?,
-  visiteMenbre: (json['visiteMenbre'] as List<dynamic>)
-      .map(
-        (e) =>
-            RequestSuggestionResponseModel.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
-  visiteOuvrier: (json['visiteOuvrier'] as List<dynamic>)
-      .map(
-        (e) =>
-            RequestSuggestionResponseModel.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
+  visiteMenbre:
+      (json['visiteMenbre'] as List<dynamic>?)
+          ?.map(
+            (e) => RequestSuggestionResponseModel.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList() ??
+      const [
+        RequestSuggestionResponseModel(
+          fullname: "",
+          recommandation: "",
+          isDisciple: false,
+          probleme: "",
+        ),
+      ],
+  visiteOuvrier:
+      (json['visiteOuvrier'] as List<dynamic>?)
+          ?.map(
+            (e) => RequestSuggestionResponseModel.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList() ??
+      const [
+        RequestSuggestionResponseModel(
+          fullname: "",
+          recommandation: "",
+          isDisciple: false,
+          probleme: "",
+        ),
+      ],
   dateActivitySubmited: json['dateActivitySubmited'] as String?,
   formActivityIsSubmit: json['formActivityIsSubmit'] as String? ?? 'false',
   formActivitySubmitDate: json['formActivitySubmitDate'] as String?,
-  suggestions: (json['suggestions'] as List<dynamic>)
-      .map(
-        (e) => RequestHumaneSectionActivityResponseModel.fromJson(
-          e as Map<String, dynamic>,
+  suggestions:
+      (json['suggestions'] as List<dynamic>?)
+          ?.map(
+            (e) => RequestHumaneSectionActivityResponseModel.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList() ??
+      const [
+        RequestHumaneSectionActivityResponseModel(
+          nom: "",
+          probleme: "",
+          recommandation: "",
         ),
-      )
-      .toList(),
+      ],
   faisAssignaler: json['faisAssignaler'] as String?,
   ouvrierSpritualLive: json['ouvrierSpritualLive'] as String?,
   formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String? ?? 'false',

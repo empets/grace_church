@@ -518,3 +518,14 @@ class MenuItem {
     this.page,
   });
 }
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+
+
+
+enum FormSubmitStatus {
+  success,
+  error,
+  loading,
+  none,
+}

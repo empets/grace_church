@@ -100,6 +100,14 @@ abstract class HomeDomaineRepository {
   // -------------------------------------------------------------
   Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params);
 
+
+  // -------------------------------------------------------------
+  //  cette methode permet de recuperer le rapport de la cellule par responsable cellule id
+  //  elle prend en parametre un objet RequestRapportCellule qui contient les criteres de recherche
+  //  elle retourne une liste de RapportCelluleResponse qui contient les rapport de la cellule
+  // -------------------------------------------------------------
+  Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCelluleByResponsableCelluleId(RequestRapportCellule params);
+
   // -------------------------------------------------------------
   //  cette methode permet de valider de confimer qu'il a lue la notification
   //  elle prend en parametre un objet RequestReadNotification qui contient les criteres de recherche

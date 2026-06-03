@@ -1,8 +1,10 @@
+import 'package:grace_church/core/api/failure/fail.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/usercase/usercase.dart';
 import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart'
     hide EmptyRequest;
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 abstract class DomaineServiceRepository {
 
@@ -33,6 +35,13 @@ abstract class DomaineServiceRepository {
   Future<FirebaseResult<List<RapportCelluleResponseModel>>> getRapportCellule(RequestRapportCellule params);
 
   Future<FirebaseResult<String>> readNotification(RequestReadNotification params);
+
+    // -------------------------------------------------------------
+  //  cette methode permet de recuperer le rapport de la cellule par responsable cellule id
+  //  elle prend en parametre un objet RequestRapportCellule qui contient les criteres de recherche
+  //  elle retourne une liste de RapportCelluleResponse qui contient les rapport de la cellule
+  // -------------------------------------------------------------
+  Future<FirebaseResult<List<RapportCelluleResponse>>> getRapportCelluleByResponsableCelluleId(RequestRapportCellule params);
 
 
 }
