@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
@@ -87,7 +86,7 @@ class _NotificationContentState extends State<NotificationContent> {
                       notificationState.data.sort(
                         (a, b) => b.date.compareTo(a.date),
                       );
-                      
+
                       final itemsNotification = notificationState.data[index];
 
                       /// -----------------------------------------------------------------

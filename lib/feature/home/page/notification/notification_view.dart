@@ -136,6 +136,14 @@ class _NotificationViewState extends State<NotificationView> {
                   //   },
                   //   child: Container(child: Text("Notifications")),
                   // ),
+                  //
+                  //
+                  //
+                  
+                  
+                  /// -------------------
+                  /// Section des filtres
+                  /// -------------------
                   BlocBuilder<
                     NotificationBloc,
                     ApiState<List<NotificationResponse>>
@@ -151,7 +159,6 @@ class _NotificationViewState extends State<NotificationView> {
                         ),
                         msgError: "",
                         inputLabel: "",
-
                         onChanged: (value) {
                           context.read<NotificationBloc>().add(
                             NotificationEvent.fetchByTag(title: value),
@@ -162,9 +169,7 @@ class _NotificationViewState extends State<NotificationView> {
                   ),
                   SizedBox(height: 16.h),
 
-                  /// -------------------
-                  /// Section des filtres
-                  /// -------------------
+                  
                   Row(
                     children: [
                       Expanded(
