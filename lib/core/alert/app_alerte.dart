@@ -14,6 +14,7 @@ class AppAlert {
     String? imageIcon,
     Duration duration = const Duration(seconds: 3),
     bool showOnTop = false,
+
   }) {
     _showAppSnackBar(
       context,
@@ -34,6 +35,9 @@ class AppAlert {
     String? imageIcon,
     Duration duration = const Duration(seconds: 3),
     bool showOnTop = false,
+    void Function()? onTap,
+    bool showEditButton = false,
+    IconData? editButtonIcon = Icons.edit,
   }) {
     _showAppSnackBar(
       context,
@@ -44,6 +48,9 @@ class AppAlert {
       imageIcon: imageIcon,
       duration: duration,
       showOnTop: showOnTop,
+      onTap: onTap,
+      showEditButton: showEditButton,
+      editButtonIcon: editButtonIcon,
     );
   }
 
@@ -102,6 +109,9 @@ class AppAlert {
     String? imageIcon,
     Duration duration = const Duration(seconds: 3),
     bool showOnTop = false,
+    bool showEditButton = false,
+    void Function()? onTap,
+    IconData? editButtonIcon = Icons.edit,
   }) {
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
@@ -138,6 +148,19 @@ class AppAlert {
                   ),
                 ),
               ),
+              if(showEditButton)...[
+                 GestureDetector(
+                onTap: onTap,
+                child: Container(
+                  padding: EdgeInsets.all(5.w),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(5.r),
+                  ),
+                  child: Icon(editButtonIcon, color: Colors.white),
+                ),
+              ),
+              ],
               if (iconRight != null) ...[
                 IconButton(
                   onPressed: () {

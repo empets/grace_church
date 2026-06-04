@@ -15,7 +15,8 @@ class CustomeHeaderTitle extends StatelessWidget {
       title,
       style: context.appTypographie.body.copyWith(
         fontSize: 16.sp,
-        color: context.appColor.primaryGray900
+        color: context.appColor.primaryGray900,
+        fontWeight: FontWeight.w500,
       ),
     );
   }

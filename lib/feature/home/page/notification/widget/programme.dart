@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -150,6 +149,18 @@ class _BannerSliderState extends State<BannerSlider> {
                       image,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[300],
+                          child: const Center(
+                            child: Icon(
+                              Icons.broken_image,
+                              color: Colors.grey,
+                              size: 50,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),

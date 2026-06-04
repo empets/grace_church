@@ -255,7 +255,8 @@ class RapportCelluleRequestSectionAdministrationBloc
                       .map((e) => e.toJson())
                       .toList(),
                   id: "",
-                  formAdministrationIsSubmit: "Success",
+                  formAdministrationIsSubmit: "true",
+                  tag: "en_cours",
                   formAdministrationSubmitDate: DateTime.now()
                       .toIso8601String(),
                 ),
@@ -264,11 +265,9 @@ class RapportCelluleRequestSectionAdministrationBloc
           emit(
             result.fold(
               (l) {
-                log("------->>> ERROR: ${l.toString()}");
                 return state.copyWith(status: FormzSubmissionStatus.failure);
               },
               (r) {
-                log("------->>> SUCCES");
                 return state.copyWith(
                   status: FormzSubmissionStatus.success,
                   errorMessage: r,

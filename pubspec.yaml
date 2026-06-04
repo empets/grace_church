@@ -261,6 +261,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icon_launcher/
+    - assets/rapport_template/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

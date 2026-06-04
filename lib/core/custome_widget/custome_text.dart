@@ -8,22 +8,26 @@ class CustomeText extends StatelessWidget {
     required this.text,
     required this.style,
     this.textAlign,
+
   });
 
   final String text;
   final TextStyle style;
   final TextAlign? textAlign;
 
+
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: style, textAlign: textAlign);
+    return Text(text, style: style, textAlign: textAlign,);
   }
 }
 
 class ExpandableText extends StatefulWidget {
   final String text;
+  final int maxLines;
+  final bool isReadMore;
 
-  const ExpandableText({super.key, required this.text});
+  const ExpandableText({super.key, required this.text, required this.maxLines,  this.isReadMore = true});
 
   @override
   State<ExpandableText> createState() => _ExpandableTextState();
@@ -39,15 +43,15 @@ class _ExpandableTextState extends State<ExpandableText> {
       children: [
         Text(
           widget.text,
-          maxLines: expanded ? null : 1,
+          maxLines: expanded ? null : widget.maxLines,
           overflow: expanded ? TextOverflow.visible : TextOverflow.ellipsis,
           style: context.appTypographie.body.copyWith(
             color: context.appColor.primaryGrayDark,
             fontSize: 14.sp,
           ),
         ),
-
-        GestureDetector(
+        if (widget.isReadMore) ...[
+            GestureDetector(
           onTap: () {
             setState(() {
               expanded = !expanded;
@@ -62,6 +66,8 @@ class _ExpandableTextState extends State<ExpandableText> {
             ),
           ),
         ),
+          
+        ]
       ],
     );
   }

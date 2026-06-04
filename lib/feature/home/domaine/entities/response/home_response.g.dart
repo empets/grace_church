@@ -344,6 +344,7 @@ _RapportCelluleResponse _$RapportCelluleResponseFromJson(
   ouvrierSpritualLive: json['ouvrierSpritualLive'] as String,
   formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String,
   formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
+  tag: json['tag'] as String,
 );
 
 Map<String, dynamic> _$RapportCelluleResponseToJson(
@@ -385,6 +386,7 @@ Map<String, dynamic> _$RapportCelluleResponseToJson(
   'ouvrierSpritualLive': instance.ouvrierSpritualLive,
   'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
   'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
+  'tag': instance.tag,
 };
 
 _RequestAuherResponse _$RequestAuherResponseFromJson(

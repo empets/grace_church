@@ -207,6 +207,7 @@ _$RequestRapportCelluleAdministrationFromJson(Map<String, dynamic> json) =>
           json['formAdministrationIsSubmit'] as String? ?? 'false',
       formAdministrationSubmitDate:
           json['formAdministrationSubmitDate'] as String,
+      tag: json['tag'] as String,
     );
 
 Map<String, dynamic> _$RequestRapportCelluleAdministrationToJson(
@@ -230,6 +231,7 @@ Map<String, dynamic> _$RequestRapportCelluleAdministrationToJson(
   'id': instance.id,
   'formAdministrationIsSubmit': instance.formAdministrationIsSubmit,
   'formAdministrationSubmitDate': instance.formAdministrationSubmitDate,
+  'tag': instance.tag,
 };
 
 _RequestGeneriqueKey<T> _$RequestGeneriqueKeyFromJson<T>(
@@ -358,6 +360,7 @@ _RequestRapportCelluleAssistance _$RequestRapportCelluleAssistanceFromJson(
   id: json['id'] as String,
   formAssistanceIsSubmit: json['formAssistanceIsSubmit'] as String? ?? 'false',
   formAssistanceSubmitDate: json['formAssistanceSubmitDate'] as String,
+  tag: json['tag'] as String,
 );
 
 Map<String, dynamic> _$RequestRapportCelluleAssistanceToJson(
@@ -371,6 +374,7 @@ Map<String, dynamic> _$RequestRapportCelluleAssistanceToJson(
   'id': instance.id,
   'formAssistanceIsSubmit': instance.formAssistanceIsSubmit,
   'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,
+  'tag': instance.tag,
 };
 
 _RequestRapportCelluleActivity _$RequestRapportCelluleActivityFromJson(
@@ -387,6 +391,7 @@ _RequestRapportCelluleActivity _$RequestRapportCelluleActivityFromJson(
       .toList(),
   formActivityIsSubmit: json['formActivityIsSubmit'] as String? ?? 'false',
   formActivitySubmitDate: json['formActivitySubmitDate'] as String,
+  tag: json['tag'] as String,
 );
 
 Map<String, dynamic> _$RequestRapportCelluleActivityToJson(
@@ -397,6 +402,7 @@ Map<String, dynamic> _$RequestRapportCelluleActivityToJson(
   'dateActivitySubmited': instance.dateActivitySubmited,
   'formActivityIsSubmit': instance.formActivityIsSubmit,
   'formActivitySubmitDate': instance.formActivitySubmitDate,
+  'tag': instance.tag,
 };
 
 _RequestRapportCelluleSuggestion _$RequestRapportCelluleSuggestionFromJson(
@@ -410,6 +416,7 @@ _RequestRapportCelluleSuggestion _$RequestRapportCelluleSuggestionFromJson(
   formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String? ?? 'false',
   formSuggestionSubmitDate: json['formSuggestionSubmitDate'] as String,
   resumerPredication: json['resumerPredication'] as String,
+  tag: json['tag'] as String,
 );
 
 Map<String, dynamic> _$RequestRapportCelluleSuggestionToJson(
@@ -421,17 +428,24 @@ Map<String, dynamic> _$RequestRapportCelluleSuggestionToJson(
   'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
   'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
   'resumerPredication': instance.resumerPredication,
+  'tag': instance.tag,
 };
 
 _RequestRapportCellule _$RequestRapportCelluleFromJson(
   Map<String, dynamic> json,
 ) => _RequestRapportCellule(
   responsableCelluleId: json['responsableCelluleId'] as String,
+  date: json['date'] as String,
+  tag: json['tag'] as String,
 );
 
 Map<String, dynamic> _$RequestRapportCelluleToJson(
   _RequestRapportCellule instance,
-) => <String, dynamic>{'responsableCelluleId': instance.responsableCelluleId};
+) => <String, dynamic>{
+  'responsableCelluleId': instance.responsableCelluleId,
+  'date': instance.date,
+  'tag': instance.tag,
+};
 
 _RequestReadNotification _$RequestReadNotificationFromJson(
   Map<String, dynamic> json,

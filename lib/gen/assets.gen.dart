@@ -65,6 +65,10 @@ class $AssetsImagesGen {
   SvgGenImage get diagnosticSuccesser =>
       const SvgGenImage('assets/images/diagnostic_successer.svg');
 
+  /// File path: assets/images/empty_paper.svg
+  SvgGenImage get emptyPaper =>
+      const SvgGenImage('assets/images/empty_paper.svg');
+
   /// File path: assets/images/icon_box_loading.svg
   SvgGenImage get iconBoxLoading =>
       const SvgGenImage('assets/images/icon_box_loading.svg');
@@ -104,6 +108,10 @@ class $AssetsImagesGen {
   SvgGenImage get waitReclamation =>
       const SvgGenImage('assets/images/wait_reclamation.svg');
 
+  /// File path: assets/images/wifi_check.svg
+  SvgGenImage get wifiCheck =>
+      const SvgGenImage('assets/images/wifi_check.svg');
+
   /// List of all assets
   List<dynamic> get values => [
     a03,
@@ -116,6 +124,7 @@ class $AssetsImagesGen {
     boxUpImage,
     checkReclamation,
     diagnosticSuccesser,
+    emptyPaper,
     iconBoxLoading,
     iconChangeBox,
     image,
@@ -127,11 +136,16 @@ class $AssetsImagesGen {
     rapportEmpty,
     scanBox,
     waitReclamation,
+    wifiCheck,
   ];
 }
 
 class $AssetsRapportTemplateGen {
   const $AssetsRapportTemplateGen();
+
+  /// File path: assets/rapport_template/empty_paper.svg
+  SvgGenImage get emptyPaper =>
+      const SvgGenImage('assets/rapport_template/empty_paper.svg');
 
   /// File path: assets/rapport_template/rapport_.docx
   String get rapport =>
@@ -142,7 +156,7 @@ class $AssetsRapportTemplateGen {
       'packages/grace_church/assets/rapport_template/rapport_em.docx';
 
   /// List of all assets
-  List<String> get values => [rapport, rapportEm];
+  List<dynamic> get values => [emptyPaper, rapport, rapportEm];
 }
 
 class assets {

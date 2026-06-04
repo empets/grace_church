@@ -1,16 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:intl/intl.dart';
-
 import 'package:grace_church/core/data_process/success.dart';
-import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:crypto/crypto.dart';
 
 // Future<bool> isEmulator() async {
@@ -478,6 +475,11 @@ Future<String> getDeviceFingerprint() async {
     String formatted = DateFormat("d MMMM y 'à' HH:mm" , 'fr').format(dateTime);
     return formatted;
   }
+    String formatDateOnly(String date) {
+    DateTime dateTime = DateTime.parse(date);
+    String formatted = DateFormat("d MMMM y" , 'fr').format(dateTime);
+    return formatted;
+  }
    // il y a 1 minute, 2 heures, 3 jours, etc.
    String formatTimeDifference(DateTime date) {
     final now = DateTime.now();
@@ -496,7 +498,7 @@ Future<String> getDeviceFingerprint() async {
       return "Il y a ${diff.inDays} jours";
     }
 
-    return "Le ${date.day}/${date.month}/${date.year}";
+    return "Le ${formatDateOnly(date.toString())} ";
   }
 
   // permet de donner la couleur a une bordure du tag selon le type 
@@ -508,6 +510,11 @@ Future<String> getDeviceFingerprint() async {
           return context.appColor.primaryWarning;
         case 'info':
           return context.appColor.primaryBlue;
+
+        case 'terminer':
+        return context.appColor.primarySuccess.withValues(alpha: 0.5);
+        case 'en_cours':
+        return context.appColor.primaryWarning.withValues(alpha: 0.5);
         default:
           return Colors.grey;
       }
@@ -535,9 +542,11 @@ String cleanValue(String value) {
       .trim();
 }
 
-String formatNumber(String value) {
-   if(int.parse(value)<= 9){
-    return "0$value";
-   }
-   return value;
+bool allCaracterIsNombre(String input) {
+  final RegExp allNumbers = RegExp(r'^\s*\d+(\s*,\s*\d+)*\s*$');
+  return allNumbers.hasMatch(input);
+}
+
+String isAllDigits(String input) {
+  return RegExp(r'^\d+$').hasMatch(input) ? input : "00";
 }

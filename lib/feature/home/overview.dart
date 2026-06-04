@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,14 +45,34 @@ class OverviewScreen extends StatefulWidget {
 
 class _OverviewScreenState extends State<OverviewScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final contrat = context
+        .select<ConnexionImpliciteBloc, ApiState<ProfileResponse>?>(
+          (bloc) => switch (bloc.state) {
+            SuccessState<ProfileResponse>() => bloc.state,
+            _ => null,
+          },
+        );
+    log("---------------------------_>> $contrat");
+    if (contrat is SuccessState<ProfileResponse>) {}
     return MultiBlocProvider(
       providers: [
         if (widget.isFormImpliciteConnexion) ...[
           BlocProvider(
             create: (context) =>
                 GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
-                  ..add(ProfileEvent.fetchProfileNumberId(widget.menberId)),
+                  ..add(
+                    ProfileEvent.fetchProfileNumberId(
+                      (contrat is SuccessState<ProfileResponse>)
+                          ? contrat.data.menberId
+                          : null,
+                    ),
+                  ),
           ),
           BlocProvider.value(
             value: ConnexionImpliciteBloc(
@@ -69,8 +91,15 @@ class _OverviewScreenState extends State<OverviewScreen> {
           BlocProvider(
             create: (context) =>
                 GetProfileBloc(getProfileUsercase: getIt<GetProfileUsercase>())
-                  ..add(ProfileEvent.fetchProfileNumberId(widget.menberId)),
+                  ..add(
+                    ProfileEvent.fetchProfileNumberId(
+                      (contrat is SuccessState<ProfileResponse>)
+                          ? contrat.data.menberId
+                          : null,
+                    ),
+                  ),
           ),
+
           BlocProvider.value(
             value: ConnexionImpliciteBloc(
               getConnexionImpliciteUsercase:
@@ -91,7 +120,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                 getIt<GetListNotificationByCriteriaUsercase>(),
           )..add(NotificationEvent.fetch()),
         ),
-          BlocProvider(
+        BlocProvider(
           create: (context) => GetRapportCelluleBloc(
             getRapportCelluleUsercase: getIt<GetRapportCelluleUsercase>(),
           ),
@@ -105,7 +134,8 @@ class _OverviewScreenState extends State<OverviewScreen> {
                 AppAlert.showNotificationPopUp(
                   context: context,
                   child: NotificationPopeView(
-                    imageUrl: "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
+                    imageUrl:
+                        "https://cdn.stayhappening.com/events2/banners/f8bfa63a35c18bdd8165b9f4ec448673090b460d55b4560b3aac9f91d312a58b-rimg-w526-h369-gmir.jpg?v=1610794864",
                   ),
                 );
               }
@@ -153,86 +183,66 @@ class _OverviewScreenState extends State<OverviewScreen> {
                               })
                               .toList();
 
-                          return filteredNotifications.length >0? Container(
-                            margin: EdgeInsets.only(bottom: 10.h),
-                            child: FloatingActionButton(
-                              backgroundColor: context.appColor.primaryBlue
-                                  .withValues(alpha: 0.8),
-                              onPressed: () async {
-                                final result = await Navigator.of(context).push(
-                                  fadeRoute(
-                                    BlocProvider(
-                                      create: (context) => ReadNotificationBloc(
-                                        readNotificationUsercase: getIt<ReadNotificationUsercase>(),
+                          return filteredNotifications.length > 0
+                              ? Container(
+                                  margin: EdgeInsets.only(bottom: 10.h),
+                                  child: FloatingActionButton(
+                                    backgroundColor: context
+                                        .appColor
+                                        .primaryBlue
+                                        .withValues(alpha: 0.8),
+                                    onPressed: () async {
+                                      final result = await Navigator.of(context)
+                                          .push(
+                                            fadeRoute(
+                                              BlocProvider(
+                                                create: (context) =>
+                                                    ReadNotificationBloc(
+                                                      readNotificationUsercase:
+                                                          getIt<
+                                                            ReadNotificationUsercase
+                                                          >(),
+                                                    ),
+                                                child: NotificationView(
+                                                  profileId: stateProfile
+                                                      .data
+                                                      .menberId,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                      // Refresh notifications after returning from notification view
+                                      if (result == true) {
+                                        context.read<NotificationBloc>().add(
+                                          NotificationEvent.fetch(),
+                                        );
+                                      }
+                                    },
+                                    child: Badge(
+                                      child: Icon(
+                                        Icons.notifications_active,
+                                        color: Colors.white,
                                       ),
-                                      child: NotificationView(
-                                        profileId: stateProfile.data.menberId,
+                                      backgroundColor:
+                                          filteredNotifications.length > 0
+                                          ? Colors.red
+                                          : Colors.transparent,
+                                      label: Text(
+                                        filteredNotifications.length > 0
+                                            ? filteredNotifications.length
+                                                  .toString()
+                                            : '',
+                                        style: context.appTypographie.body
+                                            .copyWith(
+                                              color: Colors.white,
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                       ),
                                     ),
                                   ),
-                                );
-                                // Refresh notifications after returning from notification view
-                                if (result == true) {
-                                  context.read<NotificationBloc>().add(
-                                    NotificationEvent.fetch(),
-                                  );
-                                }
-
-                                // final result = await AppBottomSheet()
-                                //     .showBottomSheetScrollable(
-                                //       context,
-                                //       MediaQuery.of(context),
-                                //       (size) => MultiBlocProvider(
-                                //         providers: [
-                                //              BlocProvider(
-                                //               create: (context) => NotificationBloc(
-                                //                 getListNotificationUsercase: getIt<GetListNotificationUsercase>(),
-                                //                 getListNotificationByCriteriaUsercase:
-                                //                     getIt<GetListNotificationByCriteriaUsercase>(),
-                                //               )..add(NotificationEvent.fetch()),
-                                //             ),
-                                //                 BlocProvider(
-                                //                     create: (context) => ReadNotificationBloc(
-                                //                       readNotificationUsercase: getIt<ReadNotificationUsercase>(),
-                                //                     ),
-                                //                 ),
-                                //         ],
-                                //         child: Container(
-                                //           child: NotificationContent(
-                                //             profileId:
-                                //                 stateProfile.data.menberId,
-                                //           ),
-                                //         ),
-                                //       ),
-                                //     );
-                                // if (result == true) {
-                                //   context.read<NotificationBloc>().add(
-                                //     NotificationEvent.fetch(),
-                                //   );
-                                // }
-                              },
-                              child:  Badge(
-                                child: Icon(
-                                  Icons.notifications_active,
-                                  color: Colors.white,
-                                ),
-                                backgroundColor:
-                                    filteredNotifications.length > 0
-                                    ? Colors.red
-                                    : Colors.transparent,
-                                label: Text(
-                                  filteredNotifications.length > 0
-                                      ? filteredNotifications.length.toString()
-                                      : '',
-                                  style: context.appTypographie.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              )
-                            ),
-                          ): SizedBox.fromSize();
+                                )
+                              : SizedBox.fromSize();
                         } else {
                           return Container();
                         }

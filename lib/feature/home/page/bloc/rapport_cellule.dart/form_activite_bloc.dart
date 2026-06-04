@@ -109,7 +109,8 @@ class FormActiviteBloc
                   .map((e) => e.toJson())
                   .toList(),
               dateActivitySubmited: [],
-              formActivityIsSubmit: "Success",
+              formActivityIsSubmit: "true",
+              tag: "en_cours",
               formActivitySubmitDate: DateTime.now().toIso8601String(),
             )
           ); 

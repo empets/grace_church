@@ -1,15 +1,10 @@
 import 'dart:developer';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:grace_church/feature/home/page/notification/widget/programme.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
-
-import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
@@ -19,7 +14,6 @@ import 'package:grace_church/feature/home/domaine/entities/response/home_respons
 import 'package:grace_church/feature/home/page/bloc/departement/eglise_maison/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/home/page/cellule/cellule_view.dart';
-import 'package:grace_church/gen/assets.gen.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

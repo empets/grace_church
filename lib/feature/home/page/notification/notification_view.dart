@@ -8,6 +8,7 @@ import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
+import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
@@ -21,6 +22,7 @@ import 'package:grace_church/feature/home/domaine/usercase/read_notification_use
 import 'package:grace_church/feature/home/page/bloc/notification/event/notification_event.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/notification_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/notification/readnotification_bloc.dart';
+import 'package:grace_church/feature/home/page/notification/widget/message_view.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class NotificationView extends StatefulWidget {
@@ -134,6 +136,14 @@ class _NotificationViewState extends State<NotificationView> {
                   //   },
                   //   child: Container(child: Text("Notifications")),
                   // ),
+                  //
+                  //
+                  //
+                  
+                  
+                  /// -------------------
+                  /// Section des filtres
+                  /// -------------------
                   BlocBuilder<
                     NotificationBloc,
                     ApiState<List<NotificationResponse>>
@@ -149,7 +159,6 @@ class _NotificationViewState extends State<NotificationView> {
                         ),
                         msgError: "",
                         inputLabel: "",
-
                         onChanged: (value) {
                           context.read<NotificationBloc>().add(
                             NotificationEvent.fetchByTag(title: value),
@@ -159,6 +168,8 @@ class _NotificationViewState extends State<NotificationView> {
                     },
                   ),
                   SizedBox(height: 16.h),
+
+                  
                   Row(
                     children: [
                       Expanded(
@@ -343,25 +354,48 @@ class _NotificationViewState extends State<NotificationView> {
                           ],
                         );
                       }
-
+                      /// ---------------------
+                      /// Voir les notification
+                      /// ---------------------
                       if (notificationState
                           is SuccessState<List<NotificationResponse>>) {
+                            if(notificationState.data.isEmpty) {
+                              return Container(
+                                height: 0.6.sh,
+                                child: Center(
+                                  child: Text(
+                                    "Aucune notification",
+                                    style: context.appTypographie.body
+                                        .copyWith(
+                                          fontSize: 12.sp,
+                                          color: context.appColor.primaryBlue,
+                                        ),
+                                  ),
+                                ),
+                              );
+                            }
                         return Container(
                           height: 0.6.sh,
                           child: ListView.builder(
                             itemCount: notificationState.data.length,
                             itemBuilder: (context, index) {
+                              /// ------------------------------------------------------------
+                              /// Trier les notifications par date (afficher les plus recent)
+                              /// -----------------------------------------------------------
                               notificationState.data.sort(
                                 (a, b) => b.date.compareTo(a.date),
                               );
                               final itemsNotification =
                                   notificationState.data[index];
 
+                              /// ------------------------------------------------------------
+                              /// Vérifier si la notification a été lue
+                              /// ------------------------------------------------------------
                               isRead = itemsNotification.clicks.any(
                                 (element) =>
                                     element.menberId == widget.profileId,
                               );
-                              log('isRead: $isRead');
+
                               return Stack(
                                 children: [
                                   GestureDetector(
@@ -374,6 +408,14 @@ class _NotificationViewState extends State<NotificationView> {
                                               .trim(),
                                         ),
                                       );
+                                      Navigator.push(
+                                        context,
+                                        fadeRoute(
+                                          MessageView(
+                                            notification: itemsNotification,
+                                          ),
+                                        ),
+                                      );
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(bottom: 16.h),
@@ -383,15 +425,15 @@ class _NotificationViewState extends State<NotificationView> {
                                       ),
                                       decoration: BoxDecoration(
                                         color: !isRead
-                                            ? Colors.white
-                                            : Colors.grey.shade200,
+                                            ? Colors.grey.shade200
+                                            : Colors.grey.shade50,
                                         borderRadius: BorderRadius.circular(
                                           12.r,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
                                             color: Colors.black.withValues(
-                                              alpha: 0.1,
+                                              alpha: 0.07,
                                             ),
                                             blurRadius: 4.r,
                                             offset: Offset(0, 2.h),
@@ -406,59 +448,85 @@ class _NotificationViewState extends State<NotificationView> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 8.w,
-                                                  vertical: 3.h,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: getTagBackgroundColor(
-                                                    context: context,
-                                                    tag: itemsNotification.tag,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        17.r,
-                                                      ),
-                                                ),
-                                                child: CustomeText(
-                                                  text: itemsNotification.tag
-                                                      .toLowerCase(),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: getTagTextColor(
-                                                          context: context,
-                                                          tag: itemsNotification
-                                                              .tag,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          horizontal: 8.w,
+                                                          vertical: 3.h,
                                                         ),
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                      ),
-                                                ),
-                                              ),
-                                              CustomeText(
-                                                text: formatTimeDifference(
-                                                  DateTime.parse(
-                                                    itemsNotification.date,
-                                                  ),
-                                                ),
-                                                style: context
-                                                    .appTypographie
-                                                    .button
-                                                    .copyWith(
-                                                      color: context
-                                                          .appColor
-                                                          .primaryGray500,
-                                                      fontSize: 12.sp,
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          getTagBackgroundColor(
+                                                            context: context,
+                                                            tag:
+                                                                itemsNotification
+                                                                    .tag,
+                                                          ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            17.r,
+                                                          ),
                                                     ),
+                                                    child: CustomeText(
+                                                      text: itemsNotification
+                                                          .tag
+                                                          .toLowerCase(),
+                                                      style: context
+                                                          .appTypographie
+                                                          .button
+                                                          .copyWith(
+                                                            color: getTagTextColor(
+                                                              context: context,
+                                                              tag:
+                                                                  itemsNotification
+                                                                      .tag,
+                                                            ),
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 8.w),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  CustomeText(
+                                                    text: formatTimeDifference(
+                                                      DateTime.parse(
+                                                        itemsNotification.date,
+                                                      ),
+                                                    ),
+                                                    style: context
+                                                        .appTypographie
+                                                        .button
+                                                        .copyWith(
+                                                          color: context
+                                                              .appColor
+                                                              .primaryGray500,
+                                                          fontSize: 12.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    size: 16.r,
+                                                    color: context
+                                                        .appColor
+                                                        .primaryGray500,
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
+
                                           SizedBox(height: 8.h),
                                           CustomeText(
                                             text: itemsNotification.title,
@@ -468,47 +536,14 @@ class _NotificationViewState extends State<NotificationView> {
                                                       .appColor
                                                       .primaryGrayDark,
                                                   fontSize: 14.sp,
-                                                  fontWeight: FontWeight.w800,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                           SizedBox(height: 8.h),
                                           ExpandableText(
                                             text: itemsNotification.description,
-                                          ),
-
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                              vertical: 8.h,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.calendar_today,
-                                                  size: 16.sp,
-                                                  color: context
-                                                      .appColor
-                                                      .primaryBlue
-                                                      .withValues(alpha: 0.7),
-                                                ),
-                                                SizedBox(width: 8.w),
-                                                CustomeText(
-                                                  text: formatDate(
-                                                    itemsNotification.date,
-                                                  ),
-                                                  style: context
-                                                      .appTypographie
-                                                      .button
-                                                      .copyWith(
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray500,
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
+                                            maxLines: 1,
+                                            isReadMore: false,
                                           ),
                                         ],
                                       ),
@@ -519,7 +554,10 @@ class _NotificationViewState extends State<NotificationView> {
                             },
                           ),
                         );
-                      } else {
+                      } 
+                      
+                      
+                      else {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

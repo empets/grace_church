@@ -237,6 +237,7 @@ abstract class RapportCelluleResponse with _$RapportCelluleResponse {
     required String ouvrierSpritualLive,
     required String formSuggestionIsSubmit,
     required String formSuggestionSubmitDate,
+    required String tag,
   }) = _RapportCelluleResponse;
   factory RapportCelluleResponse.fromJson(Map<String, dynamic> json) =>
       _$RapportCelluleResponseFromJson(json);

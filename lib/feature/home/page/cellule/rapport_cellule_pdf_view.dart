@@ -2,7 +2,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grace_church/core/constante/const.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -39,37 +38,37 @@ class RapportCellulePDFView extends StatelessWidget {
     final List<Map<String, dynamic>> assistanceItem = [
       {
         'label': 'Chrétiens\nNon\nbaptisés',
-        'valueToutPetit': formatNumber(rapportCellule.assistanceNonBaptiser.toutPetit),
-        'valueCadets': formatNumber(rapportCellule.assistanceNonBaptiser.cadets),
-        'valueJuniors': formatNumber(rapportCellule.assistanceNonBaptiser.juniors),
-        'totalSemaine': '${int.parse(formatNumber(rapportCellule.assistanceNonBaptiser.toutPetit))+  int.parse(formatNumber(rapportCellule.assistanceNonBaptiser.juniors)) + int.parse(formatNumber(rapportCellule.assistanceNonBaptiser.cadets))}',
+        'valueToutPetit': isAllDigits(rapportCellule.assistanceNonBaptiser.toutPetit),
+        'valueCadets': isAllDigits(rapportCellule.assistanceNonBaptiser.cadets),
+        'valueJuniors': isAllDigits(rapportCellule.assistanceNonBaptiser.juniors),
+        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.assistanceNonBaptiser.toutPetit))+  int.parse(isAllDigits(rapportCellule.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.assistanceNonBaptiser.cadets))}',
       },
       {
         'label': 'Chrétiens\nNon\nbaptisés',
-        'valueToutPetit': formatNumber(rapportCellule.assistanceNouveau.toutPetit),
-        'valueCadets': formatNumber(rapportCellule.assistanceNouveau.cadets),
-        'valueJuniors': formatNumber(rapportCellule.assistanceNouveau.juniors),
-        'totalSemaine': '${int.parse(formatNumber(rapportCellule.assistanceNouveau.toutPetit))+  int.parse(formatNumber(rapportCellule.assistanceNouveau.toutPetit)) + int.parse(formatNumber(rapportCellule.assistanceNouveau.cadets))}',
+        'valueToutPetit': isAllDigits(rapportCellule.assistanceNouveau.toutPetit),
+        'valueCadets': isAllDigits(rapportCellule.assistanceNouveau.cadets),
+        'valueJuniors': isAllDigits(rapportCellule.assistanceNouveau.juniors),
+        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.assistanceNouveau.toutPetit))+  int.parse(isAllDigits(rapportCellule.assistanceNouveau.toutPetit)) + int.parse(isAllDigits(rapportCellule.assistanceNouveau.cadets))}',
       },
         {
         'label': 'Chrétiens\nNon\nbaptisés',
-        'valueToutPetit': formatNumber(rapportCellule.assistanceInviter.toutPetit),
-        'valueCadets': formatNumber(rapportCellule.assistanceInviter.cadets),
-        'valueJuniors': formatNumber(rapportCellule.assistanceInviter.juniors),
-        'totalSemaine': '${int.parse(formatNumber(rapportCellule.assistanceInviter.toutPetit)) + int.parse(formatNumber(rapportCellule.assistanceInviter.juniors)) + int.parse(formatNumber(rapportCellule.assistanceInviter.cadets))}',
+        'valueToutPetit': isAllDigits(rapportCellule.assistanceInviter.toutPetit),
+        'valueCadets': isAllDigits(rapportCellule.assistanceInviter.cadets),
+        'valueJuniors': isAllDigits(rapportCellule.assistanceInviter.juniors),
+        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.assistanceInviter.cadets))}',
       }
     ];
     List<Map<String, dynamic>> rapportpdfItem = [
         {
           "title": "Totaux",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.nbOuvrierEM) ,
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.nbOuvrierEM) ,
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
         },
         {
           "title": "Décisionnaires",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.nbDecisionnaires),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.nbDecisionnaires),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
@@ -77,7 +76,7 @@ class RapportCellulePDFView extends StatelessWidget {
         },
         {
           "title": "Nouv. En Formation DFNC",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.formationNewBaptDFD),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.formationNewBaptDFD),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
@@ -85,63 +84,63 @@ class RapportCellulePDFView extends StatelessWidget {
         },
         {
           "title": "Nouv. Bapt. En Formation DFD",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.formationNewDFB),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.formationNewDFB),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
        
         },{
           "title": "Visites faites aux membres",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.visiteMenbre),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.visiteMenbre),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
        
         },{
           "title": "Visites faites aux disciples",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.visiteDisciple),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.visiteDisciple),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
        
         },{
           "title": "Nbre de travailleurs",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.nbTravailleurs),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.nbTravailleurs),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00',
        
         },{
           "title": "Nbre d'élèves et étudiants",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.nbEleveAndEtudiants),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.nbEleveAndEtudiants),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
        
         },{
           "title": "Nbre d'ouvrier E.M",
-          "semaineEncour": formatNumber(rapportCellule.assistanceCellule.nbOuvrierEM),
+          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.nbOuvrierEM),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
        
         },{
           "title": "Ouv. Autre dépt dirigeant E.M",
-          "semaineEncour":  formatNumber(rapportCellule.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM),
+          "semaineEncour":  isAllDigits(rapportCellule.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
          
         },{
           "title": "En formation niveau 2",
-          "semaineEncour":  formatNumber(rapportCellule.assistanceCellule.nbFormationNiveau2),
+          "semaineEncour":  isAllDigits(rapportCellule.assistanceCellule.nbFormationNiveau2),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
        
         },{
           "title": "Agenda de l'EM (Oui ou Non)",
-          "semaineEncour":  formatNumber(rapportCellule.assistanceCellule.ngAgendaEM),
+          "semaineEncour":  isAllDigits(rapportCellule.assistanceCellule.ngAgendaEM),
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
@@ -881,7 +880,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                         color: PdfColors.grey300,
                                       ),
                                       child: pw.Text(
-                                        formatNumber(rapportCellule.nombreBaptiser),
+                                        isAllDigits(rapportCellule.nombreBaptiser),
                                         style: pw.TextStyle(fontSize: 9.sp),
                                       ),
                                     ),
@@ -897,7 +896,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                         color: PdfColors.black,
                                       ),
                                       child: pw.Text(
-                                       formatNumber(rapportCellule.nombreBaptiser),
+                                       isAllDigits(rapportCellule.nombreBaptiser),
                                         style: pw.TextStyle(fontSize: 9.sp),
                                       ),
                                     ),
@@ -1387,9 +1386,11 @@ class RapportCellulePDFView extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ...List.generate(rapportCellule.discipleCellule.length, (index){
-                          final disciple = rapportCellule.discipleCellule[index];
-                          return pw.Column(
+                        ...List.generate(3, (index){
+                          final disciple = index < rapportCellule.discipleCellule.length
+                          ? rapportCellule.discipleCellule[index]
+                          : null;
+                          return disciple != null? pw.Column(
                             children: [
                               pw.Row(
                             children: [
@@ -1414,7 +1415,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                 isDefaultBorder: true,
                                 customeBorder: null,
                                 child: pw.Text(
-                                 disciple.fullName.isNotEmpty ? disciple.fullName : "Name",
+                                 disciple.fullName.isNotEmpty ? disciple.fullName : "   ",
                                   style: pw.TextStyle(fontSize: 9.sp),
                                 ),
                               ),
@@ -1426,7 +1427,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                 ),
                                 isDefaultBorder: true,
                                 child: pw.Text(
-                                  "N°",
+                                  disciple.isBaptierOrNot.toLowerCase().contains("oui") ? "Oui" : "  ",
                                   style: pw.TextStyle(fontSize: 9.sp),
                                 ),
                               ),
@@ -1438,8 +1439,63 @@ class RapportCellulePDFView extends StatelessWidget {
                                 ),
                                 isDefaultBorder: true,
                                 child: pw.Text(
-                                  "N°",
+                                  disciple.isBaptierOrNot.toLowerCase().contains("oui") ? "Non" : " ",
                                   style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                            ],
+                          ),  
+                          ]): pw.Column(
+                            children: [
+                              pw.Row(
+                            children: [
+                              buildCard(
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 6.w,
+                                  vertical: 18.h,
+                                ),
+                                isDefaultBorder: false,
+                                customeBorder: pw.Border.all(color: PdfColors.grey),
+                                child: pw.Text(
+                                  "0$index",
+                                  style: pw.TextStyle(fontSize: 9.sp),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 52.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                  vertical: 18.h,
+                                ),
+                                isDefaultBorder: true,
+                                customeBorder: null,
+                                child: pw.Text(
+                                 "Name",
+                                  style: pw.TextStyle(fontSize: 9.sp,color: PdfColors.white),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                vertical: 18.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp,color: PdfColors.white),
+                                ),
+                              ),
+                              buildCardValue(
+                                width: 49.w,
+                                padding: pw.EdgeInsets.symmetric(
+                                  horizontal: 4.w,
+                                vertical: 18.h,
+                                ),
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(fontSize: 9.sp,color: PdfColors.white),
                                 ),
                               ),
                             ],
@@ -1710,7 +1766,7 @@ class RapportCellulePDFView extends StatelessWidget {
                         ),
                         pw.SizedBox(height: 5.sp),
                         ...List.generate(1, (index) {
-                          return pw.Row(
+                          return  pw.Row(
                             children: [
                               buildCardValue(
                                 width: 90.w,
@@ -1770,8 +1826,60 @@ class RapportCellulePDFView extends StatelessWidget {
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             mainAxisAlignment: pw.MainAxisAlignment.start,
                             children: [
-                              ...List.generate(9, (index) {
-                                return pw.Row(
+                              ...List.generate(rapportCellule.visiteOuvrier.length == 0 ? 4 : rapportCellule.visiteOuvrier.length, (index) {
+                                 final visiteOuvrier = index < rapportCellule.visiteOuvrier.length
+                          ? rapportCellule.visiteOuvrier[index]
+                          : null;
+                          return visiteOuvrier != null? 
+                                 pw.Row(
+                                  children: [
+                                    buildCardValue(
+                                      width: 90.w,
+                                      isDefaultBorder: true,
+                                      child: pw.Text(
+                                        "Date",
+                                        style: pw.TextStyle(
+                                          fontSize: 7.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    buildCardValue(
+                                      width: 190.w,
+                                      isDefaultBorder: true,
+                                      child: pw.Text(
+                                        "Nature du programme",
+                                        style: pw.TextStyle(fontSize: 7.sp),
+                                      ),
+                                    ),
+                                    // Semaine passer
+                                    buildCardValue(
+                                       width: 119.w,
+                                      padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 1.w,
+                                        vertical: 4.h,
+                                      ),
+                                      isDefaultBorder: true,
+                                      child: pw.Text(
+                                       visiteOuvrier.probleme,
+                                        style: pw.TextStyle(fontSize: 7.sp),
+                                      ),
+                                    ),
+                                    // Columne semaine passé T
+                                    buildCardValue(
+                                      width: 119.9.w,
+                                      padding: pw.EdgeInsets.symmetric(
+                                        horizontal: 1.w,
+                                        vertical: 4.h,
+                                      ),
+                                      isDefaultBorder: true,
+                                      child: pw.Text(
+                                        visiteOuvrier.recommandation,
+                                        style: pw.TextStyle(fontSize: 7.sp),
+                                      ),
+                                    ),
+                             
+                                  ],
+                                ) :  pw.Row(
                                   children: [
                                     buildCardValue(
                                       width: 90.w,

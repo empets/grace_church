@@ -17,3 +17,17 @@ class GetRapportCelluleUsercase implements UseCase<List<RapportCelluleResponse>,
     return repository.getRapportCellule(params);
   }
 }
+
+
+
+@lazySingleton
+class GetRapportCelluleByResponsableCelluleIdUsercase implements UseCase<List<RapportCelluleResponse>, RequestRapportCellule> {
+  GetRapportCelluleByResponsableCelluleIdUsercase(this.repository);
+
+  final HomeDomaineRepository repository;
+
+  @override
+  Future<Either<Failure, List<RapportCelluleResponse>>> call(RequestRapportCellule params) {
+    return repository.getRapportCelluleByResponsableCelluleId(params);
+  }
+}

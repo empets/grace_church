@@ -1,9 +1,12 @@
 import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grace_church/core/about_internet/not_internet.dart';
+import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -22,100 +25,6 @@ import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bl
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 
 
-
-// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-//     FlutterLocalNotificationsPlugin();
-
-
-
-
-//     Future<void> initNotifications() async {
-//   tz.initializeTimeZones();
-
-//   // ← ajout important
-//   final String currentTimeZone =
-//     await FlutterNativeTimezone.getLocalTimezone();
-//   tz.setLocalLocation(tz.getLocation(currentTimeZone));
-
-//   const AndroidInitializationSettings androidSettings =
-//       AndroidInitializationSettings('@mipmap/ic_launcher');
-
-//   const DarwinInitializationSettings iosSettings =
-//       DarwinInitializationSettings(
-//         requestAlertPermission: true,
-//         requestBadgePermission: true,
-//         requestSoundPermission: true,
-//       );
-
-//   await flutterLocalNotificationsPlugin.initialize(
-//     const InitializationSettings(
-//       android: androidSettings,
-//       iOS: iosSettings,
-//     ),
-//   );
-// }
-
-// Future<void> scheduleNotification() async {
-//   final androidImpl = flutterLocalNotificationsPlugin
-//       .resolvePlatformSpecificImplementation<  // ← < ajouté ici
-//           AndroidFlutterLocalNotificationsPlugin>();
-
-//   final bool? granted = await androidImpl?.requestExactAlarmsPermission();
-
-//   if (granted == false) {
-//     print('Permission refusée');
-//     return;
-//   }
-
-//   await flutterLocalNotificationsPlugin.zonedSchedule(
-//     1,
-//     'Rappel',
-//     'Il est l\'heure !',
-//     tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
-//     const NotificationDetails(
-//       android: AndroidNotificationDetails(
-//         'channel_id',
-//         'Mon Canal',
-//         importance: Importance.max,
-//         priority: Priority.high,
-//       ),
-//     ),
-//     androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr_FR', null);
@@ -130,6 +39,10 @@ void main() async {
       storageBucket: GlobalParams.storageBucket,
     ),
   );
+
+  await SystemChrome.setPreferredOrientations([
+  DeviceOrientation.portraitUp,
+]);
 
   await Supabase.initialize(
     url: GlobalParams.supabaseUrl,
@@ -158,6 +71,7 @@ void main() async {
   runApp(MyApp(deviceId: deviceId));
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.deviceId});
   final String deviceId;
@@ -175,6 +89,7 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return MaterialApp(
             title: 'Flutter Demo',
+            navigatorKey: navigatorKey, // ✅ navigatorKey ici, pas key:
             debugShowCheckedModeBanner: false,
             theme: ThemeData.light().copyWith(
               primaryColor: Colors.black,
@@ -187,7 +102,7 @@ class MyApp extends StatelessWidget {
                 AppTypographieTheme.appTheme,
               ],
             ),
-            home: child,
+            home: ConnectivityWrapper(child: child!), // ✅ ConnectivityWrapper DANS MaterialApp
           );
         },
         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
@@ -196,14 +111,80 @@ class MyApp extends StatelessWidget {
              state is LoadState<ProfileResponse>
                 ? SplachSreen()
                 : state is SuccessState<ProfileResponse>
-                ? OverviewScreen(menberId: state.data.menberId, isFormImpliciteConnexion: true)
-                : OnboardingScreen();
+                    ? OverviewScreen(
+                        menberId: state.data.menberId,
+                        isFormImpliciteConnexion: true,
+                      )
+                    : OnboardingScreen();
           },
         ),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key, required this.deviceId});
+//   final String deviceId;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (context) => ConnexionImpliciteBloc(
+//         getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
+//       )..add(ProfileEvent.getProfileByDeviceId(deviceId)),
+//       child: ScreenUtilInit(
+//         designSize: const Size(360, 690),
+//         minTextAdapt: true,
+//         splitScreenMode: true,
+//         builder: (_, child) {
+//           return MaterialApp(
+//             title: 'Flutter Demo',
+//             key: navigatorKey,
+//             debugShowCheckedModeBanner: false,
+//             theme: ThemeData.light().copyWith(
+//               primaryColor: Colors.black,
+//               textTheme: GoogleFonts.robotoTextTheme(
+//                 Theme.of(context).textTheme,
+//               ),
+//               colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+//               extensions: <ThemeExtension<dynamic>>[
+//                 AppColorsTheme.appColors,
+//                 AppTypographieTheme.appTheme,
+//               ],
+//             ),
+//             home: child,
+//           );
+//         },
+//         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
+//           builder: (context, state) {
+//             return state is LoadState<ProfileResponse>
+//                 ? SplachSreen()
+//                 : state is SuccessState<ProfileResponse>
+//                 ? OverviewScreen(menberId: state.data.menberId, isFormImpliciteConnexion: true)
+//                 : OnboardingScreen();
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 
 
 
