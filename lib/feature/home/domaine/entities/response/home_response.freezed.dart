@@ -3960,7 +3960,7 @@ as int,
 /// @nodoc
 mixin _$RequestHumaneSectionActivityResponse {
 
- String get nom; String get probleme; String get recommandation;
+ String get suggestions; String get probleme; String get temoignage;
 /// Create a copy of RequestHumaneSectionActivityResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3973,16 +3973,16 @@ $RequestHumaneSectionActivityResponseCopyWith<RequestHumaneSectionActivityRespon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionActivityResponse&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestHumaneSectionActivityResponse&&(identical(other.suggestions, suggestions) || other.suggestions == suggestions)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.temoignage, temoignage) || other.temoignage == temoignage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,nom,probleme,recommandation);
+int get hashCode => Object.hash(runtimeType,suggestions,probleme,temoignage);
 
 @override
 String toString() {
-  return 'RequestHumaneSectionActivityResponse(nom: $nom, probleme: $probleme, recommandation: $recommandation)';
+  return 'RequestHumaneSectionActivityResponse(suggestions: $suggestions, probleme: $probleme, temoignage: $temoignage)';
 }
 
 
@@ -3993,7 +3993,7 @@ abstract mixin class $RequestHumaneSectionActivityResponseCopyWith<$Res>  {
   factory $RequestHumaneSectionActivityResponseCopyWith(RequestHumaneSectionActivityResponse value, $Res Function(RequestHumaneSectionActivityResponse) _then) = _$RequestHumaneSectionActivityResponseCopyWithImpl;
 @useResult
 $Res call({
- String nom, String probleme, String recommandation
+ String suggestions, String probleme, String temoignage
 });
 
 
@@ -4010,11 +4010,11 @@ class _$RequestHumaneSectionActivityResponseCopyWithImpl<$Res>
 
 /// Create a copy of RequestHumaneSectionActivityResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? nom = null,Object? probleme = null,Object? recommandation = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? suggestions = null,Object? probleme = null,Object? temoignage = null,}) {
   return _then(_self.copyWith(
-nom: null == nom ? _self.nom : nom // ignore: cast_nullable_to_non_nullable
+suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
 as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
-as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,temoignage: null == temoignage ? _self.temoignage : temoignage // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -4100,10 +4100,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String nom,  String probleme,  String recommandation)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String suggestions,  String probleme,  String temoignage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestHumaneSectionActivityResponse() when $default != null:
-return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+return $default(_that.suggestions,_that.probleme,_that.temoignage);case _:
   return orElse();
 
 }
@@ -4121,10 +4121,10 @@ return $default(_that.nom,_that.probleme,_that.recommandation);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String nom,  String probleme,  String recommandation)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String suggestions,  String probleme,  String temoignage)  $default,) {final _that = this;
 switch (_that) {
 case _RequestHumaneSectionActivityResponse():
-return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+return $default(_that.suggestions,_that.probleme,_that.temoignage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -4141,10 +4141,10 @@ return $default(_that.nom,_that.probleme,_that.recommandation);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String nom,  String probleme,  String recommandation)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String suggestions,  String probleme,  String temoignage)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestHumaneSectionActivityResponse() when $default != null:
-return $default(_that.nom,_that.probleme,_that.recommandation);case _:
+return $default(_that.suggestions,_that.probleme,_that.temoignage);case _:
   return null;
 
 }
@@ -4156,12 +4156,12 @@ return $default(_that.nom,_that.probleme,_that.recommandation);case _:
 @JsonSerializable()
 
 class _RequestHumaneSectionActivityResponse implements RequestHumaneSectionActivityResponse {
-   _RequestHumaneSectionActivityResponse({required this.nom, required this.probleme, required this.recommandation});
+   _RequestHumaneSectionActivityResponse({required this.suggestions, required this.probleme, required this.temoignage});
   factory _RequestHumaneSectionActivityResponse.fromJson(Map<String, dynamic> json) => _$RequestHumaneSectionActivityResponseFromJson(json);
 
-@override final  String nom;
+@override final  String suggestions;
 @override final  String probleme;
-@override final  String recommandation;
+@override final  String temoignage;
 
 /// Create a copy of RequestHumaneSectionActivityResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -4176,16 +4176,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionActivityResponse&&(identical(other.nom, nom) || other.nom == nom)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.recommandation, recommandation) || other.recommandation == recommandation));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestHumaneSectionActivityResponse&&(identical(other.suggestions, suggestions) || other.suggestions == suggestions)&&(identical(other.probleme, probleme) || other.probleme == probleme)&&(identical(other.temoignage, temoignage) || other.temoignage == temoignage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,nom,probleme,recommandation);
+int get hashCode => Object.hash(runtimeType,suggestions,probleme,temoignage);
 
 @override
 String toString() {
-  return 'RequestHumaneSectionActivityResponse(nom: $nom, probleme: $probleme, recommandation: $recommandation)';
+  return 'RequestHumaneSectionActivityResponse(suggestions: $suggestions, probleme: $probleme, temoignage: $temoignage)';
 }
 
 
@@ -4196,7 +4196,7 @@ abstract mixin class _$RequestHumaneSectionActivityResponseCopyWith<$Res> implem
   factory _$RequestHumaneSectionActivityResponseCopyWith(_RequestHumaneSectionActivityResponse value, $Res Function(_RequestHumaneSectionActivityResponse) _then) = __$RequestHumaneSectionActivityResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String nom, String probleme, String recommandation
+ String suggestions, String probleme, String temoignage
 });
 
 
@@ -4213,11 +4213,11 @@ class __$RequestHumaneSectionActivityResponseCopyWithImpl<$Res>
 
 /// Create a copy of RequestHumaneSectionActivityResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? nom = null,Object? probleme = null,Object? recommandation = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? suggestions = null,Object? probleme = null,Object? temoignage = null,}) {
   return _then(_RequestHumaneSectionActivityResponse(
-nom: null == nom ? _self.nom : nom // ignore: cast_nullable_to_non_nullable
+suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
 as String,probleme: null == probleme ? _self.probleme : probleme // ignore: cast_nullable_to_non_nullable
-as String,recommandation: null == recommandation ? _self.recommandation : recommandation // ignore: cast_nullable_to_non_nullable
+as String,temoignage: null == temoignage ? _self.temoignage : temoignage // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

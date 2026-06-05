@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -73,6 +74,7 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
 
   DateTime? selectedDate;
 
+  /// ---------------------------------------------------------------------------------------------------------------------------------------------
   /// Methode: Pile des vues du formulaire de rapport
   /// Parameters:  - state: ProfileResponse - rapportCellule: List<RapportCelluleResponse>
   /// retour : Widget
@@ -88,7 +90,7 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
       if (rapportCellule.first.formAdministrationIsSubmit == 'false') {
         return EditingCelluleRaport(profile: state);
       } else if (rapportCellule.first.formAssistanceIsSubmit == "false") {
-        return FormStatistic(id: state.menberId);
+        return FormStatistic(id: rapportCellule.first.id);
       } else if (rapportCellule.first.formActivityIsSubmit == 'false') {
         return FormActivite();
       } else if (rapportCellule.first.formSuggestionIsSubmit == 'false') {
@@ -99,6 +101,11 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
     }
   }
 
+  /// --------------------------------------------------------------------------------
+  /// Methode: Grouper les rapports par paires depuis le plus récent
+  /// Parameters:  - items: List<RapportCelluleResponse>
+  /// retour : List<List<RapportCelluleResponse>>
+  /// context : elle permet de grouper les rapports par paires depuis le plus récent
   List<List<RapportCelluleResponse>> groupByPairsFromMostRecent(
     List<RapportCelluleResponse> items,
   ) {
@@ -374,389 +381,406 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                         child: Column(
                           children: [
                             SizedBox(height: 16.h),
-
-                            // ...List.generate(rapportListState.data.length, (
-                            //   index,
-                            // ) {
-                            //   sortRapports(rapportListState.data);
-                            //   final rapport = rapportListState.data[index];
-
-                            //   return Stack(
-                            //     children: [
-                            //       GestureDetector(
-                            //         onTap: () {
-                            //           // click if rapport.formSuggestionIsSubmit contains "success" then navigate to rapport detail
-                            //           if (rapport.tag.contains("terminer")) {
-                            //             Navigator.push(
-                            //               context,
-                            //               MaterialPageRoute(
-                            //                 builder: (context) =>
-                            //                     RapportCellulePDFView(
-                            //                       rapportCellule: rapport,
-                            //                     ),
-                            //               ),
-                            //             );
-                            //           }
-                            //           if (!rapport.tag.contains("terminer")) {
-                            //             AppAlert.showError(
-                            //               context,
-                            //               "Impossible de voir le détail du rapport veuillez le finaliser",
-                            //               showOnTop: true,
-                            //               editButtonIcon: Icons.edit,
-                            //               showEditButton: true,
-                            //               onTap: () {
-                            //                 Navigator.of(context).push(
-                            //                   fadeRoute(
-                            //                     MultiBlocProvider(
-                            //                       providers: [
-                            //                         // --------------------------------
-                            //                         // EditingCelluleRaport
-                            //                         // --------------------------------
-                            //                         BlocProvider(
-                            //                           create: (context) =>
-                            //                               RapportCelluleRequestSectionAdministrationBloc(
-                            //                                 sendRapportCelluleStepAdministrationUsercase:
-                            //                                     getIt<
-                            //                                       SendRapportCelluleStepAdministrationUsercase
-                            //                                     >(),
-                            //                               ),
-                            //                         ),
-                            //                         BlocProvider(
-                            //                           create: (context) =>
-                            //                               GetSecteurBloc(
-                            //                                 getListSecteurUsercase:
-                            //                                     getIt<
-                            //                                       GetListSecteurUsercase
-                            //                                     >(),
-                            //                               )..add(
-                            //                                 CelluleEvent.fetch(),
-                            //                               ),
-                            //                         ),
-                            //                         BlocProvider(
-                            //                           create: (context) =>
-                            //                               GetZoneBloc(
-                            //                                 getListZoneUsercase:
-                            //                                     getIt<
-                            //                                       GetListZoneUsercase
-                            //                                     >(),
-                            //                               )..add(
-                            //                                 CelluleEvent.fetch(),
-                            //                               ),
-                            //                         ),
-
-                            //                         // --------------------------------
-                            //                         // FormStatistic
-                            //                         // --------------------------------
-                            //                         BlocProvider(
-                            //                           create: (context) =>
-                            //                               RapportCelluleSectionAssistanceBloc(
-                            //                                 sendRapportCelluleStepStatUsercase:
-                            //                                     getIt<
-                            //                                       SendRapportCelluleStepStatUsercase
-                            //                                     >(),
-                            //                               ),
-                            //                         ),
-
-                            //                         // --------------------------------
-                            //                         // FormActivite
-                            //                         // --------------------------------
-                            //                         BlocProvider(
-                            //                           create: (context) =>
-                            //                               FormActiviteBloc(
-                            //                                 sendRapportCelluleStepAssistantUsercase:
-                            //                                     getIt<
-                            //                                       SendRapportCelluleStepAssistantUsercase
-                            //                                     >(),
-                            //                               ),
-                            //                         ),
-                            //                         // --------------------------------
-                            //                         // FormOuvrierSpritualLive
-                            //                         // --------------------------------
-                            //                         BlocProvider(
-                            //                           create: (context) =>
-                            //                               FormSuggestionBloc(
-                            //                                 sendRapportCelluleStepSuggestionUsercase:
-                            //                                     getIt<
-                            //                                       SendRapportCelluleStepSuggestionUsercase
-                            //                                     >(),
-                            //                               ),
-                            //                         ),
-                            //                       ],
-                            //                       child: buildFormRapport(
-                            //                         state: (contrat as SuccessState<ProfileResponse>).data,
-                            //                         rapportCellule: [rapport],
-                            //                       ),
-                            //                     ),
-                            //                   ),
-                            //                 );
-                            //               },
-                            //             );
-                            //           }
-                            //         },
-                            //         child: Container(
-                            //           padding: EdgeInsets.symmetric(
-                            //             vertical: 12.h,
-                            //             horizontal: 16.w,
-                            //           ),
-                            //           margin: EdgeInsets.only(bottom: 8.h),
-                            //           decoration: BoxDecoration(
-                            //             color: Colors.white,
-                            //             borderRadius: BorderRadius.circular(
-                            //               8.r,
-                            //             ),
-                            //             border: Border.all(
-                            //               color: Colors.grey.shade200,
-                            //             ),
-                            //           ),
-                            //           child: Row(
-                            //             children: [
-                            //               Column(
-                            //                 crossAxisAlignment:
-                            //                     CrossAxisAlignment.start,
-                            //                 children: [
-                            //                   Row(
-                            //                     children: [
-                            //                       Text(
-                            //                         "•",
-                            //                         style: context
-                            //                             .appTypographie
-                            //                             .body
-                            //                             .copyWith(
-                            //                               fontSize: 14.sp,
-                            //                               color:
-                            //                                   AppGeneretedColors.randomColor(),
-                            //                             ),
-                            //                       ),
-                            //                       Text(
-                            //                         rapport.tag.contains(
-                            //                               "terminer",
-                            //                             )
-                            //                             ? "• Rapport du ${formatDateOnly(rapport.jourCellule)}"
-                            //                             : "• Fiche de rapport en cours",
-                            //                         style: context
-                            //                             .appTypographie
-                            //                             .body
-                            //                             .copyWith(
-                            //                               fontSize: 12.sp,
-                            //                               fontWeight:
-                            //                                   FontWeight.w900,
-                            //                               color: context
-                            //                                   .appColor
-                            //                                   .primaryGray700,
-                            //                             ),
-                            //                       ),
-                            //                     ],
-                            //                   ),
-                            //                   SizedBox(height: 4.h),
-                            //                   Row(
-                            //                     mainAxisAlignment:
-                            //                         MainAxisAlignment
-                            //                             .spaceBetween,
-                            //                     children: [
-                            //                       Text(
-                            //                         "Statut: ${rapport.tag.contains("terminer") ? "terminé voir les détails" : "en cours"}",
-                            //                         style: context
-                            //                             .appTypographie
-                            //                             .body
-                            //                             .copyWith(
-                            //                               fontSize: 12.sp,
-                            //                               color: context
-                            //                                   .appColor
-                            //                                   .primaryGray700,
-                            //                             ),
-                            //                       ),
-                            //                       SizedBox(width: 8.w),
-                            //                       if (rapport
-                            //                           .formSuggestionIsSubmit
-                            //                           .contains("true")) ...[
-                            //                         Column(
-                            //                           children: [
-                            //                             SizedBox(height: 4.h),
-                            //                             Icon(
-                            //                               Icons.remove_red_eye,
-                            //                               size: 12.h,
-                            //                               color: context
-                            //                                   .appColor
-                            //                                   .primaryGray700,
-                            //                             ),
-                            //                           ],
-                            //                         ),
-                            //                       ],
-                            //                     ],
-                            //                   ),
-                            //                 ],
-                            //               ),
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //       Positioned(
-                            //         top: 0,
-                            //         right: 0,
-                            //         child: Container(
-                            //           padding: EdgeInsets.all(8.w),
-                            //           decoration: BoxDecoration(
-                            //             color: getTagTextColor(
-                            //               context: context,
-                            //               tag: rapport.tag,
-                            //             ),
-                            //             borderRadius: BorderRadius.circular(
-                            //               8.r,
-                            //             ),
-                            //           ),
-                            //           child: rapport.tag.contains("terminer")
-                            //               ? Icon(
-                            //                   Icons.lock_open,
-                            //                   size: 12,
-                            //                   color: Colors.white,
-                            //                 )
-                            //               : const Icon(
-                            //                   Icons.lock,
-                            //                   size: 12,
-                            //                   color: Colors.white,
-                            //                 ),
-                            //         ),
-                            //       ),
-                            //     ],
-                            //   );
-                            // }),
+                         
                             ...List.generate(pairs.length, (index) {
                               final pair =
                                   pairs[index]; // pair = [rapport1, rapport2?]
 
                               return GestureDetector(
                                 onTap: () {
-                                     Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      RapportCellulePDFView(
-                                                        rapportCellule: pair,
+                              
+                                 if(pair.isEmpty) return;
+
+                                 if(pair.length == 2) {
+                                   if(pair.every((rapport) => rapport.tag.contains("terminer"))) {
+                                   Navigator.push(
+                                    context,
+                                    fadeRoute(
+                                          RapportCellulePDFView(
+                                            rapportCellule: pair,
+                                          ),
+                                    ),
+                                  );
+                                 }
+                                 }
+
+                               
+                                   if (!pair.every((rapport) => rapport.tag.contains("terminer"))) {
+                                    AppAlert.showError(
+                                          context,
+                                          "Impossible de voir le détail du rapport veuillez le finaliser",
+                                          showOnTop: true,
+                                          editButtonIcon: Icons.edit,
+                                          showEditButton: true,
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              fadeRoute(
+                                                MultiBlocProvider(
+                                                  providers: [
+                                                    // --------------------------------
+                                                    // EditingCelluleRaport
+                                                    // --------------------------------
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          RapportCelluleRequestSectionAdministrationBloc(
+                                                            sendRapportCelluleStepAdministrationUsercase:
+                                                                getIt<
+                                                                  SendRapportCelluleStepAdministrationUsercase
+                                                                >(),
+                                                          ),
+                                                    ),
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          GetSecteurBloc(
+                                                            getListSecteurUsercase:
+                                                                getIt<
+                                                                  GetListSecteurUsercase
+                                                                >(),
+                                                          )..add(
+                                                            CelluleEvent.fetch(),
+                                                          ),
+                                                    ),
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          GetZoneBloc(
+                                                            getListZoneUsercase:
+                                                                getIt<
+                                                                  GetListZoneUsercase
+                                                                >(),
+                                                          )..add(
+                                                            CelluleEvent.fetch(),
+                                                          ),
+                                                    ),
+
+                                                    // --------------------------------
+                                                    // FormStatistic
+                                                    // --------------------------------
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          RapportCelluleSectionAssistanceBloc(
+                                                            sendRapportCelluleStepStatUsercase:
+                                                                getIt<
+                                                                  SendRapportCelluleStepStatUsercase
+                                                                >(),
+                                                          ),
+                                                    ),
+
+                                                    // --------------------------------
+                                                    // FormActivite
+                                                    // --------------------------------
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          FormActiviteBloc(
+                                                            sendRapportCelluleStepAssistantUsercase:
+                                                                getIt<
+                                                                  SendRapportCelluleStepAssistantUsercase
+                                                                >(),
+                                                          ),
+                                                    ),
+                                                    // --------------------------------
+                                                    // FormOuvrierSpritualLive
+                                                    // --------------------------------
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          FormSuggestionBloc(
+                                                            sendRapportCelluleStepSuggestionUsercase:
+                                                                getIt<
+                                                                  SendRapportCelluleStepSuggestionUsercase
+                                                                >(),
+                                                          ),
+                                                    ),
+                                                  ],
+                                                  child: buildFormRapport(
+                                                    state: (contrat as SuccessState<ProfileResponse>).data,
+                                                    rapportCellule: pair,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      }
+                              
+                                
+                                 else{
+                                  return  AppAlert.showError(
+                                          context,
+                                          "Vous serez en mesure de voir le détail du rapport une fois celui-ci une fois que vous aurez fini de remplir celui de cette semaine!",
+                                          showOnTop: true,
+                                       
+                                        );
+
+                                 }
+
+
+
+                                 
+                                    
+                              
+                                },
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                  margin: EdgeInsets.only(bottom: 8.h),
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 12.h,
+                                    horizontal: 5.w,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    border: Border.all(
+                                      color: Colors.grey.shade200,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Synthèse de rapport ${pair.every((rapport) => rapport.tag.contains("terminer")) ? "terminer" : "en cours"}",
+                                            style: context.appTypographie.body
+                                                .copyWith(
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                padding: EdgeInsets.all(8.w),
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      isTagTextColor(
+                                                        context: context,
+                                                        tag:
+                                                            pair.every(
+                                                              (
+                                                                rapport,
+                                                              ) => rapport.tag
+                                                                  .contains(
+                                                                    "terminer",
+                                                                  ),
+                                                            )
+                                                            ? "terminer"
+                                                            : "en_cours",
+                                                      )
+                                                      ? context
+                                                            .appColor
+                                                            .primarySuccess
+                                                            .withValues(
+                                                              alpha: 0.5,
+                                                            )
+                                                      : context
+                                                            .appColor
+                                                            .primaryWarning
+                                                            .withValues(
+                                                              alpha: 0.5,
+                                                            ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        8.r,
                                                       ),
                                                 ),
-                                              );
-                                },
-                                child: Row(
-                                  children: List.generate(2, (i) {
-                                    final rapport = i < pair.length
-                                        ? pair[i]
-                                        : null;
-                                
-                                    // Case vide si pas de 2ème élément
-                                    if (rapport == null) {
-                                      return Expanded(child: SizedBox.shrink());
-                                    }
-                                
-                                    return Expanded(
-                                      child: Stack(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              if (rapport.tag.contains(
-                                                "terminer",
-                                              )) {
-                                            
-                                              }
-                                              if (!rapport.tag.contains(
-                                                "terminer",
-                                              )) {
-                                                AppAlert.showError(
-                                                  context,
-                                                  "Impossible de voir le détail du rapport veuillez le finaliser",
-                                                  // ... reste de votre code
-                                                );
-                                              }
-                                            },
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: 12.h,
-                                                horizontal: 16.w,
-                                              ),
-                                              margin: EdgeInsets.only(
-                                                bottom: 8.h,
-                                                right: i == 0 ? 4.w : 0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.r),
-                                                border: Border.all(
-                                                  color: Colors.grey.shade200,
-                                                ),
-                                              ),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    rapport.tag.contains(
-                                                          "terminer",
-                                                        )
-                                                        ? "Rapport du ${formatDateOnly(rapport.jourCellule)}"
-                                                        : "Fiche en cours",
-                                                    style: context
-                                                        .appTypographie
-                                                        .body
-                                                        .copyWith(
-                                                          fontSize: 12.sp,
-                                                          fontWeight:
-                                                              FontWeight.w900,
-                                                          color: context
-                                                              .appColor
-                                                              .primaryGray700,
-                                                        ),
-                                                  ),
-                                                  SizedBox(height: 4.h),
-                                                  Text(
-                                                    "Statut: ${rapport.tag.contains("terminer") ? "terminé" : "en cours"}",
-                                                    style: context
-                                                        .appTypographie
-                                                        .body
-                                                        .copyWith(
-                                                          fontSize: 12.sp,
-                                                          color: context
-                                                              .appColor
-                                                              .primaryGray700,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            top: 0,
-                                            right: 0,
-                                            child: Container(
-                                              padding: EdgeInsets.all(8.w),
-                                              decoration: BoxDecoration(
-                                                color: getTagTextColor(
-                                                  context: context,
-                                                  tag: rapport.tag,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.r),
-                                              ),
-                                              child:
-                                                  rapport.tag.contains("terminer")
-                                                  ? Icon(
-                                                      Icons.lock_open,
-                                                      size: 12,
-                                                      color: Colors.white,
+                                                child:
+                                                    pair.every(
+                                                      (rapport) => rapport.tag
+                                                          .contains("terminer"),
                                                     )
-                                                  : Icon(
-                                                      Icons.lock,
-                                                      size: 12,
-                                                      color: Colors.white,
-                                                    ),
-                                            ),
+                                                    ? Icon(
+                                                        Icons
+                                                            .arrow_forward_ios_rounded,
+                                                        size: 12,
+                                                        color: Colors.white,
+                                                      )
+                                                    : Icon(
+                                                        Icons.lock,
+                                                        size: 12,
+                                                        color: Colors.white,
+                                                      ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    );
-                                  }),
+                                      SizedBox(height: 5.h),
+                                     Stack(
+                                      children: [
+                                         Row(
+                                        children: List.generate(2, (i) {
+                                          final rapport = i < pair.length
+                                              ? pair[i]
+                                              : null;
+
+                                          // Case vide si pas de 2ème élément
+                                          if (rapport == null) {
+                                            return Container(
+                                              margin: EdgeInsets.only( left: 3.w),
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: 17.h,
+                                                horizontal: 9.w,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey.shade100,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                              ),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                    Text(
+                                                      "Aucun rapport",
+                                                      style: GoogleFonts.roboto(
+                                                        fontSize: 11.sp,
+                                                        color: Colors.grey.shade600,
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                    "Le rapport à venir se trouvera ici",
+                                                    style: GoogleFonts.roboto(
+                                                      fontSize: 10.sp,
+                                                      color: Colors.grey.shade600,
+                                                    ),
+                                                  ),
+                                                  
+                                                    
+                                                ],
+                                              ),
+                                            );
+                                          }
+
+                                          return Expanded(
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  
+                                                  padding:
+                                                      EdgeInsets.symmetric(
+                                                        vertical: 12.h,
+                                                        horizontal: 16.w,
+                                                      ),
+                                                  margin: EdgeInsets.only(
+                                                   
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          8.r,
+                                                        ),
+                                                    border: Border.all(
+                                                      color: Colors
+                                                          .grey
+                                                          .shade200,
+                                                    ),
+                                                  ),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        rapport.tag.contains(
+                                                              "terminer",
+                                                            )
+                                                            ? "Fiche du ${formatDateOnly(rapport.jourCellule)}"
+                                                            : "Fiche ",
+                                                        style: context
+                                                            .appTypographie
+                                                            .body
+                                                            .copyWith(
+                                                              fontSize: 12.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w900,
+                                                              color: context
+                                                                  .appColor
+                                                                  .primaryGray700,
+                                                            ),
+                                                      ),
+                                                      SizedBox(height: 4.h),
+                                                   
+                                                      if(rapport.tag.contains("terminer") )...[
+                                                           Text(
+                                                        "Statut: terminé",
+                                                        style: context
+                                                            .appTypographie
+                                                            .body
+                                                            .copyWith(
+                                                              fontSize: 12.sp,
+                                                              color: context
+                                                                  .appColor
+                                                                  .primaryGray700,
+                                                            ),
+                                                      ),
+                                                        
+                                                      ]
+                                                      else...[
+                                                        Text(
+                                                        "Statut: en cours",
+                                                        style: context
+                                                            .appTypographie
+                                                            .body
+                                                            .copyWith(
+                                                              fontSize: 12.sp,
+                                                              color: context
+                                                                  .appColor
+                                                                  .primaryGray700,
+                                                            ),
+                                                      ),
+                                                
+                                                      ]
+                                                      
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                    ],
+                                                  ),
+                                                ),
+                                           
+                                              ],
+                                            ),
+                                          );
+                                        }),
+                                      ),
+
+                                      ],
+                                     )
+                                    ],
+                                  ),
                                 ),
-                              );
+
+                                  if(pair.length != 2 && pair.every((rapport) => rapport.tag.contains("terminer")))...[
+                                       Positioned(
+                                  bottom: 0,
+                                  top: 0,
+                                  right: 0,
+                                  left: 0,
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 7.h),
+                                    decoration: BoxDecoration(
+                                      color: context.appColor.primaryWhite.withValues(alpha: 0.4),
+                                      borderRadius: BorderRadius.circular(8.r),
+                                    ),
+                                    padding: EdgeInsets.all(8.w),
+                                    child: Icon(
+                                      Icons.lock,
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                )
+                                  ]
+                            
+                                  ],
+                                )  );
                             }).toList(),
+                        
+                        
                           ],
                         ),
                       ),

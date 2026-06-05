@@ -287,9 +287,9 @@ abstract class RequestHumaneSectionAssistanceResponse
 abstract class RequestHumaneSectionActivityResponse
     with _$RequestHumaneSectionActivityResponse {
   factory RequestHumaneSectionActivityResponse({
-    required String nom,
+    required String suggestions,
     required String probleme,
-    required String recommandation,
+    required String temoignage,
   }) = _RequestHumaneSectionActivityResponse;
   factory RequestHumaneSectionActivityResponse.fromJson(
     Map<String, dynamic> json,

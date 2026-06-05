@@ -228,7 +228,7 @@ class _FormStatisticState extends State<FormStatistic> {
           );
         }
         if (state.status.isFailure) {
-          AppAlert.showError(
+        return  AppAlert.showError(
             context,
             state.errorMessage ,
           );

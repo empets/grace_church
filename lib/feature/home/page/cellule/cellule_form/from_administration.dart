@@ -949,15 +949,17 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
                                 return CustomeTextFormFieldWithoutBorder(
                                   textInputType: TextInputType.number,
                                   readOnly: state.status.isInProgress,
-                                  textLabel: "Exemple : 3",
+                                  textLabel: "Le nombre maximum doit être égal à 3",
                                   errorText: null,
                                   msgError:
-                                      "Veuillez entrer le nombre de disciple",
+                                      "Veuillez entrer le nombre de disciple ",
                                   inputLabel: "Nombre de disciple",
                                   onChanged: (value) {
                                     // TODO: Handle the value change
                                     final number = int.tryParse(value) ?? 1;
-                                    updateNombre2(RequestSection2, number);
+                                    if(number <= 3 ){
+                                       updateNombre2(RequestSection2, number);
+                                    }
                                   },
                                 );
                               },
@@ -1026,7 +1028,8 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
 
                                                 // ─── Champ Nom ───
                                                 CustomeTextFormFieldWithoutBorder(
-                                                  readOnly: state.status.isInProgress,
+                                                  readOnly: false,
+                                                  letSpace: [],
                                                   textLabel:
                                                       "Veuillez entrer le nom complet",
                                                   inputLabel: "Nom",
@@ -1046,11 +1049,11 @@ class _EditingCelluleRaportState extends State<EditingCelluleRaport> {
 
                                                 // ─── Champ Baptisé ───
                                                 CustomeTextFormFieldWithoutBorder(
-                                                  readOnly:state.status.isInProgress,
+                                                  readOnly: false,
                                                   textLabel:
                                                       "Veuillez entrer le statut",
                                                   inputLabel:
-                                                      "Baptisé (Oui/Non)",
+                                                      "Present (Oui/Non)",
                                                   msgError: "",
                                                   errorText: baptiseError,
                                                   textInputType:

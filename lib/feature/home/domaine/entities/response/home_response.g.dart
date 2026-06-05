@@ -452,17 +452,17 @@ Map<String, dynamic> _$RequestHumaneSectionAssistanceResponseToJson(
 _RequestHumaneSectionActivityResponse
 _$RequestHumaneSectionActivityResponseFromJson(Map<String, dynamic> json) =>
     _RequestHumaneSectionActivityResponse(
-      nom: json['nom'] as String,
+      suggestions: json['suggestions'] as String,
       probleme: json['probleme'] as String,
-      recommandation: json['recommandation'] as String,
+      temoignage: json['temoignage'] as String,
     );
 
 Map<String, dynamic> _$RequestHumaneSectionActivityResponseToJson(
   _RequestHumaneSectionActivityResponse instance,
 ) => <String, dynamic>{
-  'nom': instance.nom,
+  'suggestions': instance.suggestions,
   'probleme': instance.probleme,
-  'recommandation': instance.recommandation,
+  'temoignage': instance.temoignage,
 };
 
 _RequestSuggestionResponse _$RequestSuggestionResponseFromJson(

@@ -369,9 +369,9 @@ abstract class RequestHumaneSectionAssistanceResponseModel
 abstract class RequestHumaneSectionActivityModel
     with _$RequestHumaneSectionActivityModel {
   factory RequestHumaneSectionActivityModel({
-    @Default("") String? nom,
+    @Default("") String? suggestions,
     @Default("") String? probleme,
-    @Default("") String? recommandation,
+    @Default("") String? temoignage,
   }) = _RequestHumaneSectionActivityModel;
   factory RequestHumaneSectionActivityModel.fromJson(
     Map<String, dynamic> json,
@@ -381,9 +381,9 @@ abstract class RequestHumaneSectionActivityModel
     RequestHumaneSectionActivityModel model,
   ) {
     return RequestHumaneSectionActivityResponse(
-      nom: model.nom.getOrEmpty(),
+      suggestions: model.suggestions.getOrEmpty(),
       probleme: model.probleme.getOrEmpty(),
-      recommandation: model.recommandation.getOrEmpty(),
+      temoignage: model.temoignage.getOrEmpty(),
     );
   }
 }
@@ -452,9 +452,9 @@ abstract class RapportSuggestionModel with _$RapportSuggestionModel {
 abstract class RequestHumaneSectionActivityResponseModel
     with _$RequestHumaneSectionActivityResponseModel {
   const factory RequestHumaneSectionActivityResponseModel({
-    @Default("") String nom,
+    @Default("") String suggestions,
     @Default("") String probleme,
-    @Default("") String recommandation,
+    @Default("") String temoignage,
   }) = _RequestHumaneSectionActivityResponseModel;
   factory RequestHumaneSectionActivityResponseModel.fromJson(
     Map<String, dynamic> json,
@@ -462,9 +462,9 @@ abstract class RequestHumaneSectionActivityResponseModel
 
   static RequestHumaneSectionActivityResponse toDomain(RequestHumaneSectionActivityResponseModel model) {
     return RequestHumaneSectionActivityResponse(
-      nom: model.nom.getOrEmpty(),
+      suggestions: model.suggestions.getOrEmpty(),
       probleme: model.probleme.getOrEmpty(),
-      recommandation: model.recommandation.getOrEmpty(),
+      temoignage: model.temoignage.getOrEmpty(),
     );
   }
 }
@@ -523,7 +523,7 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     required String? dateActivitySubmited,
     @Default('false')  String? formActivityIsSubmit,
     required String? formActivitySubmitDate,
-    @Default([RequestHumaneSectionActivityResponseModel(nom: "", probleme: "", recommandation: "")]) List<RequestHumaneSectionActivityResponseModel> suggestions,
+    @Default([RequestHumaneSectionActivityResponseModel(suggestions: "", probleme: "", temoignage: "")]) List<RequestHumaneSectionActivityResponseModel> suggestions,
     required String? faisAssignaler,
     required String? ouvrierSpritualLive,
     @Default('false')  String? formSuggestionIsSubmit,

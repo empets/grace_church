@@ -519,6 +519,25 @@ Future<String> getDeviceFingerprint() async {
           return Colors.grey;
       }
     }
+
+      bool isTagTextColor({required BuildContext context, required String tag}) {
+      switch (tag.toLowerCase()) {
+        case 'urgent':
+          return true;
+        case 'rappel':
+          return true;
+        case 'info':
+          return true;
+
+        case 'terminer':
+        return true;
+        case 'en_cours':
+        return false;
+        default:
+          return false;
+      }
+    }
+   
   
   // permet de donner la couleur de fond du tag selon le type 
       Color getTagBackgroundColor({required BuildContext context, required String tag}) {

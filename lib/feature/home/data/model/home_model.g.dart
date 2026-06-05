@@ -321,17 +321,17 @@ Map<String, dynamic> _$RequestHumaneSectionAssistanceResponseModelToJson(
 _RequestHumaneSectionActivityModel _$RequestHumaneSectionActivityModelFromJson(
   Map<String, dynamic> json,
 ) => _RequestHumaneSectionActivityModel(
-  nom: json['nom'] as String? ?? "",
+  suggestions: json['suggestions'] as String? ?? "",
   probleme: json['probleme'] as String? ?? "",
-  recommandation: json['recommandation'] as String? ?? "",
+  temoignage: json['temoignage'] as String? ?? "",
 );
 
 Map<String, dynamic> _$RequestHumaneSectionActivityModelToJson(
   _RequestHumaneSectionActivityModel instance,
 ) => <String, dynamic>{
-  'nom': instance.nom,
+  'suggestions': instance.suggestions,
   'probleme': instance.probleme,
-  'recommandation': instance.recommandation,
+  'temoignage': instance.temoignage,
 };
 
 _RequestSuggestionResponseModel _$RequestSuggestionResponseModelFromJson(
@@ -386,17 +386,17 @@ _RequestHumaneSectionActivityResponseModel
 _$RequestHumaneSectionActivityResponseModelFromJson(
   Map<String, dynamic> json,
 ) => _RequestHumaneSectionActivityResponseModel(
-  nom: json['nom'] as String? ?? "",
+  suggestions: json['suggestions'] as String? ?? "",
   probleme: json['probleme'] as String? ?? "",
-  recommandation: json['recommandation'] as String? ?? "",
+  temoignage: json['temoignage'] as String? ?? "",
 );
 
 Map<String, dynamic> _$RequestHumaneSectionActivityResponseModelToJson(
   _RequestHumaneSectionActivityResponseModel instance,
 ) => <String, dynamic>{
-  'nom': instance.nom,
+  'suggestions': instance.suggestions,
   'probleme': instance.probleme,
-  'recommandation': instance.recommandation,
+  'temoignage': instance.temoignage,
 };
 
 _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
@@ -527,9 +527,9 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
           .toList() ??
       const [
         RequestHumaneSectionActivityResponseModel(
-          nom: "",
+          suggestions: "",
           probleme: "",
-          recommandation: "",
+          temoignage: "",
         ),
       ],
   faisAssignaler: json['faisAssignaler'] as String?,

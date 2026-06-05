@@ -377,7 +377,6 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       } else {
         final request = Request<RequestRapportCelluleAdministration>(
           data: params.toJson(),
-
           user: "",
           serviceLibelle: 'rapport_cellule',
         );
@@ -414,23 +413,23 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
       final userIdExist = await db
           .child('rapport_cellule')
           .orderByChild('id')
-          .equalTo(localUserRequestSection)
+          .equalTo(params.id)
           .get();
 
       if (userIdExist.exists) {
         final Map<String, dynamic> updates = {
           ...params.toJson(), // nouveaux champs simples
-          'id': localUserRequestSection,
+          'id': params.id,
         };
         // 2) Créer une nouvelle entrée
         await db
-            .child('rapport_cellule/$localUserRequestSection')
+            .child('rapport_cellule/${params.id}')
             .update(updates);
 
         // 4) Retourner le key généré
         return FirebaseSuccess(params.id);
       }
-      return FirebaseError('User not found');
+      return FirebaseError('User not found with id: ${params.id}');
     } catch (e) {
       log("🔥 Firebase ERROR updateProfile → $e");
       return FirebaseError(e.toString());

@@ -1,7 +1,10 @@
 
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/home/domaine/entities/request/home_request.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
@@ -446,7 +449,12 @@ class RapportCelluleSectionAssistanceBloc
 
         emit(
           response.fold(
-            (failure) => state.copyWith(status: FormzSubmissionStatus.failure),
+            (failure) {
+              log('ERROR -------------------------------->> $failure');
+              return state.copyWith(
+                errorMessage: failure.message.getOrEmpty(),
+                status: FormzSubmissionStatus.failure);
+            },
             (success) => state.copyWith(status: FormzSubmissionStatus.success),
           ),
         );
