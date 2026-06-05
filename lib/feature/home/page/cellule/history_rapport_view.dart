@@ -624,132 +624,137 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                               final pair =
                                   pairs[index]; // pair = [rapport1, rapport2?]
 
-                              return Row(
-                                children: List.generate(2, (i) {
-                                  final rapport = i < pair.length
-                                      ? pair[i]
-                                      : null;
-
-                                  // Case vide si pas de 2ème élément
-                                  if (rapport == null) {
-                                    return Expanded(child: SizedBox.shrink());
-                                  }
-
-                                  return Expanded(
-                                    child: Stack(
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {
-                                            if (rapport.tag.contains(
-                                              "terminer",
-                                            )) {
-                                              Navigator.push(
+                              return GestureDetector(
+                                onTap: () {
+                                     Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       RapportCellulePDFView(
-                                                        rapportCellule: rapport,
+                                                        rapportCellule: pair,
                                                       ),
                                                 ),
                                               );
-                                            }
-                                            if (!rapport.tag.contains(
-                                              "terminer",
-                                            )) {
-                                              AppAlert.showError(
-                                                context,
-                                                "Impossible de voir le détail du rapport veuillez le finaliser",
-                                                // ... reste de votre code
-                                              );
-                                            }
-                                          },
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                              vertical: 12.h,
-                                              horizontal: 16.w,
-                                            ),
-                                            margin: EdgeInsets.only(
-                                              bottom: 8.h,
-                                              right: i == 0 ? 4.w : 0,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r),
-                                              border: Border.all(
-                                                color: Colors.grey.shade200,
+                                },
+                                child: Row(
+                                  children: List.generate(2, (i) {
+                                    final rapport = i < pair.length
+                                        ? pair[i]
+                                        : null;
+                                
+                                    // Case vide si pas de 2ème élément
+                                    if (rapport == null) {
+                                      return Expanded(child: SizedBox.shrink());
+                                    }
+                                
+                                    return Expanded(
+                                      child: Stack(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              if (rapport.tag.contains(
+                                                "terminer",
+                                              )) {
+                                            
+                                              }
+                                              if (!rapport.tag.contains(
+                                                "terminer",
+                                              )) {
+                                                AppAlert.showError(
+                                                  context,
+                                                  "Impossible de voir le détail du rapport veuillez le finaliser",
+                                                  // ... reste de votre code
+                                                );
+                                              }
+                                            },
+                                            child: Container(
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: 12.h,
+                                                horizontal: 16.w,
                                               ),
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  rapport.tag.contains(
-                                                        "terminer",
-                                                      )
-                                                      ? "Rapport du ${formatDateOnly(rapport.jourCellule)}"
-                                                      : "Fiche en cours",
-                                                  style: context
-                                                      .appTypographie
-                                                      .body
-                                                      .copyWith(
-                                                        fontSize: 12.sp,
-                                                        fontWeight:
-                                                            FontWeight.w900,
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray700,
-                                                      ),
-                                                ),
-                                                SizedBox(height: 4.h),
-                                                Text(
-                                                  "Statut: ${rapport.tag.contains("terminer") ? "terminé" : "en cours"}",
-                                                  style: context
-                                                      .appTypographie
-                                                      .body
-                                                      .copyWith(
-                                                        fontSize: 12.sp,
-                                                        color: context
-                                                            .appColor
-                                                            .primaryGray700,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          top: 0,
-                                          right: 0,
-                                          child: Container(
-                                            padding: EdgeInsets.all(8.w),
-                                            decoration: BoxDecoration(
-                                              color: getTagTextColor(
-                                                context: context,
-                                                tag: rapport.tag,
+                                              margin: EdgeInsets.only(
+                                                bottom: 8.h,
+                                                right: i == 0 ? 4.w : 0,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r),
-                                            ),
-                                            child:
-                                                rapport.tag.contains("terminer")
-                                                ? Icon(
-                                                    Icons.lock_open,
-                                                    size: 12,
-                                                    color: Colors.white,
-                                                  )
-                                                : Icon(
-                                                    Icons.lock,
-                                                    size: 12,
-                                                    color: Colors.white,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                                border: Border.all(
+                                                  color: Colors.grey.shade200,
+                                                ),
+                                              ),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    rapport.tag.contains(
+                                                          "terminer",
+                                                        )
+                                                        ? "Rapport du ${formatDateOnly(rapport.jourCellule)}"
+                                                        : "Fiche en cours",
+                                                    style: context
+                                                        .appTypographie
+                                                        .body
+                                                        .copyWith(
+                                                          fontSize: 12.sp,
+                                                          fontWeight:
+                                                              FontWeight.w900,
+                                                          color: context
+                                                              .appColor
+                                                              .primaryGray700,
+                                                        ),
                                                   ),
+                                                  SizedBox(height: 4.h),
+                                                  Text(
+                                                    "Statut: ${rapport.tag.contains("terminer") ? "terminé" : "en cours"}",
+                                                    style: context
+                                                        .appTypographie
+                                                        .body
+                                                        .copyWith(
+                                                          fontSize: 12.sp,
+                                                          color: context
+                                                              .appColor
+                                                              .primaryGray700,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
+                                          Positioned(
+                                            top: 0,
+                                            right: 0,
+                                            child: Container(
+                                              padding: EdgeInsets.all(8.w),
+                                              decoration: BoxDecoration(
+                                                color: getTagTextColor(
+                                                  context: context,
+                                                  tag: rapport.tag,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.r),
+                                              ),
+                                              child:
+                                                  rapport.tag.contains("terminer")
+                                                  ? Icon(
+                                                      Icons.lock_open,
+                                                      size: 12,
+                                                      color: Colors.white,
+                                                    )
+                                                  : Icon(
+                                                      Icons.lock,
+                                                      size: 12,
+                                                      color: Colors.white,
+                                                    ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
                               );
                             }).toList(),
                           ],
