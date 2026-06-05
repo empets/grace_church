@@ -13,7 +13,7 @@ import 'package:grace_church/gen/assets.gen.dart';
 class RapportCellulePDFView extends StatelessWidget {
   RapportCellulePDFView({super.key, required this.rapportCellule});
 
-  final RapportCelluleResponse rapportCellule;
+  final List<RapportCelluleResponse> rapportCellule;
 
   @override
   Widget build(BuildContext context) {
@@ -38,30 +38,30 @@ class RapportCellulePDFView extends StatelessWidget {
     final List<Map<String, dynamic>> assistanceItem = [
       {
         'label': 'Chrétiens\nNon\nbaptisés',
-        'valueToutPetit': isAllDigits(rapportCellule.assistanceNonBaptiser.toutPetit),
-        'valueCadets': isAllDigits(rapportCellule.assistanceNonBaptiser.cadets),
-        'valueJuniors': isAllDigits(rapportCellule.assistanceNonBaptiser.juniors),
-        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.assistanceNonBaptiser.toutPetit))+  int.parse(isAllDigits(rapportCellule.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.assistanceNonBaptiser.cadets))}',
+        'valueToutPetit': isAllDigits(rapportCellule.first.assistanceNonBaptiser.toutPetit),
+        'valueCadets': isAllDigits(rapportCellule.first.assistanceNonBaptiser.cadets),
+        'valueJuniors': isAllDigits(rapportCellule.first.assistanceNonBaptiser.juniors),
+        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.first.assistanceNonBaptiser.toutPetit))+  int.parse(isAllDigits(rapportCellule.first.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceNonBaptiser.cadets))}',
       },
       {
         'label': 'Chrétiens\nNon\nbaptisés',
-        'valueToutPetit': isAllDigits(rapportCellule.assistanceNouveau.toutPetit),
-        'valueCadets': isAllDigits(rapportCellule.assistanceNouveau.cadets),
-        'valueJuniors': isAllDigits(rapportCellule.assistanceNouveau.juniors),
-        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.assistanceNouveau.toutPetit))+  int.parse(isAllDigits(rapportCellule.assistanceNouveau.toutPetit)) + int.parse(isAllDigits(rapportCellule.assistanceNouveau.cadets))}',
+        'valueToutPetit': isAllDigits(rapportCellule.first.assistanceNouveau.toutPetit),
+        'valueCadets': isAllDigits(rapportCellule.first.assistanceNouveau.cadets),
+        'valueJuniors': isAllDigits(rapportCellule.first.assistanceNouveau.juniors),
+        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.first.assistanceNouveau.toutPetit))+  int.parse(isAllDigits(rapportCellule.first.assistanceNouveau.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceNouveau.cadets))}',
       },
         {
         'label': 'Chrétiens\nNon\nbaptisés',
-        'valueToutPetit': isAllDigits(rapportCellule.assistanceInviter.toutPetit),
-        'valueCadets': isAllDigits(rapportCellule.assistanceInviter.cadets),
-        'valueJuniors': isAllDigits(rapportCellule.assistanceInviter.juniors),
-        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.assistanceInviter.cadets))}',
+        'valueToutPetit': isAllDigits(rapportCellule.first.assistanceInviter.toutPetit),
+        'valueCadets': isAllDigits(rapportCellule.first.assistanceInviter.cadets),
+        'valueJuniors': isAllDigits(rapportCellule.first.assistanceInviter.juniors),
+        'totalSemaine': '${int.parse(isAllDigits(rapportCellule.first.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.cadets))}',
       }
     ];
     List<Map<String, dynamic>> rapportpdfItem = [
         {
           "title": "Totaux",
-          "semaineEncour": isAllDigits(rapportCellule.assistanceCellule.nbOuvrierEM) ,
+          "semaineEncour": isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierEM) ,
           "semainePasser": '00',
           'totalSemainePasser': '00',
           "totalEcart": '00'
