@@ -301,6 +301,48 @@ class RapportCellulePDFView extends StatelessWidget {
             '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.ngAgendaEM)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.ngAgendaEM))))}',
       },
     ];
+   
+   List<Map<String, dynamic>> admineStarte = [
+    {  
+
+      'entite': "ZONE",
+      'code': rapportCellule.first.codeZone,
+      'fullName':rapportCellule.first.fullNameRespoZone,
+      'contact': rapportCellule.first.contactRespoZone
+    },
+      {
+      'entite': "SECTEUR",
+      'code': rapportCellule.first.codeSecteur,
+      'fullName':rapportCellule.first.fullNameRespoSecteur,
+      'contact': rapportCellule.first.contactRespoSecteur
+    },
+    {
+    'entite': "Eglise de M",
+    'code': rapportCellule.first.codeCellule,
+    'fullName':rapportCellule.first.fullNameRespoCellule,
+    'contact': rapportCellule.first.contactRespoCellule
+  }
+
+   ];
+
+      List<Map<String, dynamic>> sousDirection = [
+    {  
+
+      'entite': "DATE",
+      'code': rapportCellule.first.jourCellule,
+    },
+      {
+      'entite': "LIEU",
+      'code': rapportCellule.first.lieu,
+    },
+    {
+    'entite': "OFFRANDE",
+    'code': rapportCellule.first.offrande,
+  }
+
+   ];
+
+
 
     pdf.addPage(
       pw.Page(
@@ -430,7 +472,7 @@ class RapportCellulePDFView extends StatelessWidget {
                 pw.Align(
                   child: pw.Container(
                     margin: pw.EdgeInsets.only(top: 5.h, bottom: 7.h),
-                    padding: const pw.EdgeInsets.all(10),
+                    padding: const pw.EdgeInsets.all(5),
                     decoration: pw.BoxDecoration(
                       border: pw.Border.all(color: PdfColors.red),
                       color: PdfColors.orange100,
@@ -453,160 +495,223 @@ class RapportCellulePDFView extends StatelessWidget {
                 ),
 
                 // TABLEAU ADIMANISTRATION
-                pw.Container(
-                  margin: pw.EdgeInsets.only(right: 10.h),
-                  child: pw.Row(
-                    children: [
-                      pw.Table(
-                        border: pw.TableBorder.all(color: PdfColors.grey300),
-                        tableWidth: pw.TableWidth.min,
-                        children: [
-                          /// HEADER TABLE
-                          pw.TableRow(
-                            decoration: const pw.BoxDecoration(
-                              color: PdfColors.white,
-                            ),
-                            children: [
-                              tableCell(
-                                "ENTITE",
-                                isHeader: true,
-                              ), //<< COLUMNE 1
-                              tableCell("N°", isHeader: true), //<< COLUMNE 3
-                              tableCell(
-                                "NOM ET PRENOM",
-                                isHeader: true,
-                              ), //<< COLUMNE 1
-                              tableCell(
-                                "CONTACT",
-                                isHeader: true,
-                              ), //<< COLUMNE 1
-                            ],
-                          ),
-
-                          /// LIGNES
-                          pw.TableRow(
-                            children: [
-                              tableCell("ZONE"), //<< LGINE 1
-                              tableCell(
-                                rapportCellule.first.codeZone,
-                              ), //<< LGINE 1
-                              tableCell(
-                                rapportCellule.first.fullNameRespoZone,
-                              ), //<< LGINE 1
-                              tableCell(
-                                rapportCellule.first.contactRespoZone,
-                              ), //<< LGINE 1
-                            ],
-                          ),
-                          pw.TableRow(
-                            children: [
-                              tableCell("SECTEUE"), //<< LGINE 2
-                              tableCell(
-                                rapportCellule.first.codeSecteur,
-                              ), //<< LGINE 2
-                              tableCell(
-                                rapportCellule.first.fullNameRespoSecteur,
-                              ), //<< LGINE 2
-                              tableCell(
-                                rapportCellule.first.contactRespoSecteur,
-                              ), //<< LGINE 1
-                            ],
-                          ),
-
-                          pw.TableRow(
-                            children: [
-                              tableCell("Eglise de M."), //<< LGINE 3
-                              tableCell(
-                                rapportCellule.first.codeCellule,
-                              ), //<< LGINE 3
-                              tableCell(
-                                rapportCellule.first.fullNameRespoCellule,
-                              ), //<< LGINE 3
-                              tableCell(
-                                rapportCellule.first.contactRespoCellule,
-                              ), //<< LGINE 1
-                            ],
-                          ),
-                        ],
-                      ),
-
-                      pw.SizedBox(width: 2.w),
-
-                      // SECTION DIRECTOION
-                      pw.Table(
-                        border: pw.TableBorder.all(color: PdfColors.grey300),
-                        children: [
-                          pw.TableRow(
-                            decoration: const pw.BoxDecoration(
-                              color: PdfColors.white,
-                            ),
-                            children: [
-                              tableCell(
-                                "SOUS-DIRECTION",
-                                isHeader: true,
-                              ), //<< COLUMNE 1
-                              tableCell("", isHeader: true), //<< COLUMNE 3
-                            ],
-                          ),
-
-                          pw.TableRow(
-                            children: [
-                              tableCell("DATE"), //<< LGINE 1
-                              tableCell(
-                                rapportCellule.first.jourCellule.substring(
-                                  0,
-                                  10,
+                pw.Row(
+                  children: [
+                    pw.Column(
+                      children: [
+                        pw.Row(
+                          children: [
+                            pw.Container(
+                              width: 50.w,
+                              child: buildCard(
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "ENTITE",
+                                  style: pw.TextStyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
                                 ),
-                              ), //<< LGINE 1
-                            ],
-                          ),
-                          pw.TableRow(
+                              ),
+                            ),
+                            pw.Container(
+                              width: 50.w,
+                              child: buildCard(
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "N°",
+                                  style: pw.TextStyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            pw.Container(
+                              width: 165.w,
+                              child: buildCard(
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "NON ET PRENOMS",
+                                  style: pw.TextStyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            pw.Container(
+                              width: 90.w,
+                              child: buildCard(
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "CONTACT",
+                                  style: pw.TextStyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        ...List.generate(admineStarte.length, (index) {
+                          final admine = admineStarte[index];
+                          return pw.Row(
                             children: [
-                              tableCell("LIEU"), //<< LGINE 1
-                              tableCell(rapportCellule.first.lieu), //<< LGINE 1
+                              pw.Container(
+                                height: 15.h,
+                                width: 50.w,
+                                child: buildCard(
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                   admine['entite'] ,
+                                    style: pw.TextStyle(fontSize: 7.sp),
+                                  ),
+                                ),
+                              ),
+                              pw.Container(
+                                height: 15.h,
+                                width: 50.w,
+                                child: buildCard(
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                  admine['code'],
+                                    style: pw.TextStyle(fontSize: 7.sp),
+                                  ),
+                                ),
+                              ),
+
+                              pw.Container(
+                                height: 15.h,
+                                width: 165.w,
+                                child: buildCard(
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                   admine['fullName'],
+                                    style: pw.TextStyle(fontSize: 7.sp),
+                                  ),
+                                ),
+                              ),
+                              pw.Container(
+                                height: 15.h,
+                                width: 90.w,
+                                child: buildCard(
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                    admine['contact'],
+                                    style: pw.TextStyle(fontSize: 7.sp),
+                                  ),
+                                ),
+                              ),
                             ],
-                          ),
-                          pw.TableRow(
+                          );
+                        }),
+                      ],
+                    ),
+                  
+                  
+                    pw.Column(
+                      children: [
+                        pw.Row(
+                          children: [
+                            pw.Container(
+                              width: 97.w,
+                              child: buildCard(
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "SOUS-DIRECTION",
+                                  style: pw.TextStyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: pw.FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            pw.Container(
+                              width: 78.w,
+                              child: buildCard(
+                                isDefaultBorder: true,
+                                child: pw.Text(
+                                  "sksk",
+                                  style: pw.TextStyle(
+                                    fontSize: 10.sp,
+                                    fontWeight: pw.FontWeight.bold,
+                                    color: PdfColors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        ...List.generate(sousDirection.length, (index) {
+                          final items = sousDirection[index];
+                          return pw.Row(
                             children: [
-                              tableCell("OFFRANDE"), //<< LGINE 2
-                              tableCell(
-                                "${double.parse(rapportCellule.first.offrande).parseAmount()} fcfa",
-                              ), //<< LGINE 2
+                              pw.Container(
+                                height: 15.h,
+                                width: 97.w,
+                                child: buildCard(
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                    items['entite'],
+                                    style: pw.TextStyle(fontSize: 8.sp),
+                                  ),
+                                ),
+                              ),
+                              pw.Container(
+                                height: 15.h,
+                                width: 78.w,
+                                child: buildCard(
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                    items['code'],
+                                    style: pw.TextStyle(fontSize: 8.sp),
+                                  ),
+                                ),
+                              ),
                             ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ],
                 ),
 
-                pw.SizedBox(height: 4.h),
+                pw.SizedBox(height: 3.h),
+
+            
 
                 // EFFECTIF SECTION
                 pw.Stack(
                   children: [
                     pw.Column(
                       children: [
-                        pw.Row(
-                          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                          children: [
-                            pw.Text(
-                              "ASSISTANCE ET DONNEES STATISTIQUES",
-                              style: pw.TextStyle(
-                                fontWeight: pw.FontWeight.bold,
-                                color: PdfColors.red,
-                                fontSize: 9.sp,
+                        pw.Container(
+                          margin: pw.EdgeInsets.symmetric(vertical: 3.h),
+                          child: pw.Row(
+                            mainAxisAlignment:
+                                pw.MainAxisAlignment.spaceBetween,
+                            children: [
+                              pw.Text(
+                                "ASSISTANCE ET DONNEES STATISTIQUES",
+                                style: pw.TextStyle(
+                                  fontWeight: pw.FontWeight.bold,
+                                  color: PdfColors.red,
+                                  fontSize: 9.sp,
+                                ),
                               ),
-                            ),
-                            pw.Text(
-                              "LISTE DES DISCIPLESDUNOYAU",
-                              style: pw.TextStyle(
-                                fontWeight: pw.FontWeight.bold,
-                                color: PdfColors.red,
-                                fontSize: 9.sp,
+                              pw.Text(
+                                "LISTE DES DISCIPLESDUNOYAU",
+                                style: pw.TextStyle(
+                                  fontWeight: pw.FontWeight.bold,
+                                  color: PdfColors.red,
+                                  fontSize: 9.sp,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         pw.Row(
                           children: [
@@ -1069,7 +1174,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                       child: buildCardValue(
                                         width: 29.1.w,
                                         padding: pw.EdgeInsets.symmetric(
-                                          // horizontal: 3.w,
+                                          horizontal: 3.w,
                                           vertical: 5.0.h,
                                         ),
                                         isDefaultBorder: true,
@@ -1097,7 +1202,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                           color: PdfColors.black,
                                         ),
                                         child: pw.Text(
-                                          "00",
+                                          "0",
                                           style: pw.TextStyle(fontSize: 9.sp),
                                         ),
                                       ),
@@ -1520,20 +1625,20 @@ class RapportCellulePDFView extends StatelessWidget {
                                 ),
                               ),
                               // Columne ECART
-                             pw.Container(
-                                 width: 51.w,
-                              child:    buildCardValue(
-                                padding: pw.EdgeInsets.symmetric(
-                                  horizontal: 1.w,
-                                  vertical: 4.h,
-                                ),
-                                isDefaultBorder: true,
-                                child: pw.Text(
-                                  rapportItem["totalEcart"],
-                                  style: pw.TextStyle(fontSize: 7.sp),
+                              pw.Container(
+                                width: 51.w,
+                                child: buildCardValue(
+                                  padding: pw.EdgeInsets.symmetric(
+                                    horizontal: 1.w,
+                                    vertical: 4.h,
+                                  ),
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                    rapportItem["totalEcart"],
+                                    style: pw.TextStyle(fontSize: 7.sp),
+                                  ),
                                 ),
                               ),
-                             )
                             ],
                           );
                         }).toList(),
@@ -1542,7 +1647,7 @@ class RapportCellulePDFView extends StatelessWidget {
 
                     pw.Positioned(
                       right: 0.w,
-                      top: 10.h,
+                      top: 15.5.h,
                       child: pw.Column(
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: [
@@ -1829,7 +1934,7 @@ class RapportCellulePDFView extends StatelessWidget {
                             ),
                           ),
                           pw.Container(
-                            height: 0.282.sh,
+                            height: 0.283.sh,
                             width: 0.475.sw,
                             child: buildCard(
                               width: 0.1.sw,
@@ -1860,7 +1965,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                       ),
                                       // ✅ Expanded + SizedBox pour contraindre la largeur
                                       pw.Text(
-                                        rapportCellule.first.faisAssignaler,
+                                        rapportCellule.first.ouvrierSpritualLive,
                                         softWrap: true,
                                         style: pw.TextStyle(
                                           fontSize: 8.sp,
@@ -2030,7 +2135,7 @@ class RapportCellulePDFView extends StatelessWidget {
                             mainAxisAlignment: pw.MainAxisAlignment.start,
                             children: [
                               ...List.generate(
-                                rapportCellule.first.suggestions.length,
+                                 4,
                                 (index) {
                                   return pw.Row(
                                     children: [
@@ -2050,6 +2155,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                           style: pw.TextStyle(
                                             fontWeight: pw.FontWeight.bold,
                                             fontSize: 7.sp,
+                                            color: PdfColors.white
                                           ),
                                         ),
                                       ),
@@ -2068,7 +2174,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
                                             fontWeight: pw.FontWeight.bold,
-                                            color: PdfColors.black,
+                                                                                        color: PdfColors.white
+
                                           ),
                                         ),
                                       ),
@@ -2092,7 +2199,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
                                             fontWeight: pw.FontWeight.bold,
-                                            color: PdfColors.black,
+                                                                                        color: PdfColors.white
+
                                           ),
                                         ),
                                       ),
@@ -2116,7 +2224,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
                                             fontWeight: pw.FontWeight.bold,
-                                            color: PdfColors.black,
+                                                                                       color: PdfColors.white
+
                                           ),
                                         ),
                                       ),
@@ -2140,7 +2249,8 @@ class RapportCellulePDFView extends StatelessWidget {
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
                                             fontWeight: pw.FontWeight.bold,
-                                            color: PdfColors.black,
+                                                                                     color: PdfColors.white
+
                                           ),
                                         ),
                                       ),

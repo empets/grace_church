@@ -502,7 +502,7 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                                       }
                               
                                 
-                                 else{
+                                 else if( pair.length == 1){
                                   return  AppAlert.showError(
                                           context,
                                           "Vous serez en mesure de voir le détail du rapport une fois celui-ci une fois que vous aurez fini de remplir celui de cette semaine!",
