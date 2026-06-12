@@ -92,9 +92,9 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
       } else if (rapportCellule.first.formAssistanceIsSubmit == "false") {
         return FormStatistic(id: rapportCellule.first.id);
       } else if (rapportCellule.first.formActivityIsSubmit == 'false') {
-        return FormActivite();
+        return FormActivite(id: rapportCellule.first.id);
       } else if (rapportCellule.first.formSuggestionIsSubmit == 'false') {
-        return FormOuvrierSpritualLive();
+        return FormOuvrierSpritualLive(id: rapportCellule.first.id);
       } else {
         return SizedBox();
       }

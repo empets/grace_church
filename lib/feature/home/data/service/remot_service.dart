@@ -726,6 +726,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         );
 
         // 4) Retourner le key généré
+        log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 Firebase sendRapportCelluleStepAdministration → ${ref.key}');
         return FirebaseSuccess(ref.key!);
       }
     } catch (e) {
@@ -795,7 +796,7 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         await db
             .child('rapport_cellule/${params.id}')
             .update(updates);
-
+        log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 Firebase sendRapportCelluleStepAssistance → ${params.id}');
         // 4) Retourner le key généré
         return FirebaseSuccess(params.id);
       }
@@ -851,14 +852,14 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   Future<FirebaseResult<String>> sendRapportCelluleStepActivity(
     RequestRapportCelluleActivity params,
   ) async {
-    final shared = await shareData.SharedPreferences.getInstance();
-    final localUserRequestSection = shared.getString('rapport_cellule_key');
+    
+    log("🔥 Firebase sendRapportCelluleStepActivity → $params");
 
     try {
       final userIdExist = await db
           .child('rapport_cellule')
           .orderByChild('id')
-          .equalTo(localUserRequestSection)
+          .equalTo(params.id)
           .get();
 
       if (userIdExist.exists) {
@@ -867,11 +868,12 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
         };
         // 2) Créer une nouvelle entrée
         await db
-            .child('rapport_cellule/${localUserRequestSection}')
+            .child('rapport_cellule/${params.id}')
             .update(updates);
 
         // 4) Retourner le key généré
-        return FirebaseSuccess(localUserRequestSection!);
+        log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 Firebase sendRapportCelluleStepActivity → ${params.id}');
+        return FirebaseSuccess(params.id);
       }
       return FirebaseError('User not found');
     } catch (e) {
@@ -927,25 +929,25 @@ class ImpDomaineServiceRepository implements DomaineServiceRepository {
   Future<FirebaseResult<String>> sendRapportCelluleStepSuggestion(
     RequestRapportCelluleSuggestion params,
   ) async {
-    final shared = await shareData.SharedPreferences.getInstance();
-    final localUserRequestSection = shared.getString('rapport_cellule_key');
+     
+       log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 Firebase sendRapportCelluleStepSuggestion → ${params.id}');
 
     try {
       final userIdExist = await db
           .child('rapport_cellule')
           .orderByChild('id')
-          .equalTo(localUserRequestSection)
+          .equalTo(params.id)
           .get();
 
       if (userIdExist.exists) {
         final Map<String, dynamic> updates = {...params.toJson()};
         // 2) Mettre à jour l'entrée existante
         await db
-            .child('rapport_cellule/${localUserRequestSection}')
+            .child('rapport_cellule/${params.id}')
             .update(updates);
         // 3) Supprimer la clé locale après envoi réussi
-        shared.remove('rapport_cellule_key');
-        return FirebaseSuccess('');
+        log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 Firebase sendRapportCelluleStepSuggestion → ${params.id}');
+        return FirebaseSuccess(params.id);
       }
       return FirebaseError('User not found');
     } catch (e) {

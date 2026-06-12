@@ -455,7 +455,7 @@ class RapportCelluleSectionAssistanceBloc
                 errorMessage: failure.message.getOrEmpty(),
                 status: FormzSubmissionStatus.failure);
             },
-            (success) => state.copyWith(status: FormzSubmissionStatus.success),
+            (success) => state.copyWith(status: FormzSubmissionStatus.success, errorMessage: state.id.value),
           ),
         );
 

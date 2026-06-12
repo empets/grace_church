@@ -1,8 +1,12 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+
 import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
@@ -15,7 +19,8 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_su
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 
 class FormOuvrierSpritualLive extends StatefulWidget {
-  const FormOuvrierSpritualLive({super.key});
+  const FormOuvrierSpritualLive({super.key, required this.id});
+  final String id;
 
   @override
   State<FormOuvrierSpritualLive> createState() =>
@@ -89,6 +94,12 @@ class _FormOuvrierSpritualLiveDataState extends State<FormOuvrierSpritualLive> {
     );
 
     bloc.add(RapportCelluleRequestSuggestionEvent.changeDisciple(list));
+  }
+
+  @override
+  void initState() {
+   
+    super.initState();
   }
 
   @override
@@ -517,7 +528,7 @@ class _FormOuvrierSpritualLiveDataState extends State<FormOuvrierSpritualLive> {
                             return Container(
                               margin: EdgeInsets.symmetric(vertical: 20.h),
                               child: PrimaryButton(
-                                label: 'Suivant',
+                                label: 'Confirmer',
                                 colorText: context.appColor.primaryWhite,
                                 isLoading: state.status.isInProgress,
                                 onPressed:
@@ -525,6 +536,12 @@ class _FormOuvrierSpritualLiveDataState extends State<FormOuvrierSpritualLive> {
                                         !state.ouvrierSpritualLive.isValid
                                     ? null
                                     : () {
+                                       context.read<FormSuggestionBloc>().add(
+                                          RapportCelluleRequestSuggestionEvent.updateSectionId(
+                                            widget.id,
+                                          ),
+                                        );
+                                          log("widget.id--------->>>>: ${widget.id}");
                                         context.read<FormSuggestionBloc>().add(
                                           RapportCelluleRequestSuggestionEvent.submit(),
                                         );

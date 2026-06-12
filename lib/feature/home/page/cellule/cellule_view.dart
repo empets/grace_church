@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
@@ -72,9 +75,9 @@ class _CelluleViewState extends State<CelluleView> {
       } else if (rapportCellule.first.formAssistanceIsSubmit == "false") {
         return FormStatistic(id: state.menberId);
       } else if (rapportCellule.first.formActivityIsSubmit == 'false') {
-        return FormActivite();
+        return FormActivite(id: state.menberId);
       } else if (rapportCellule.first.formSuggestionIsSubmit == 'false') {
-        return FormOuvrierSpritualLive();
+        return FormOuvrierSpritualLive(id: state.menberId);
       } else {
         return SizedBox();
       }
@@ -125,8 +128,17 @@ class _CelluleViewState extends State<CelluleView> {
         .toList();
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
+     final contrat = context
+        .select<ConnexionImpliciteBloc, ApiState<ProfileResponse>?>(
+          (bloc) => switch (bloc.state) {
+            SuccessState<ProfileResponse>() => bloc.state,
+            _ => null,
+          },
+        );
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -739,6 +751,10 @@ class _CelluleViewState extends State<CelluleView> {
                     ),
                   );
                   isResponsableCellule = listCelluleState.data.any((element) {
+                    log(
+                        'meberId ${(widget.profileState as SuccessState<ProfileResponse>)
+                              .data
+                              .menberId}.   cellule responsable Id ${element.responsableCelluleId}');
                     return element.responsableCelluleId
                         .trim()
                         .toLowerCase()
@@ -750,8 +766,10 @@ class _CelluleViewState extends State<CelluleView> {
                               .toLowerCase(),
                         );
                   });
-                }
-              }
+
+                  log("isResponsableCellule $isResponsableCellule");
+              
+              
 
               return isResponsableCellule
                   ? BlocBuilder<
@@ -883,13 +901,84 @@ class _CelluleViewState extends State<CelluleView> {
                             ),
                           );
                         }
-                        return SizedBox();
+                        return Container(
+                            margin: EdgeInsets.only(bottom: 10.h),
+                            child: FloatingActionButton(
+                              backgroundColor: context.appColor.primaryBlue
+                                  .withValues(alpha: 0.5),
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  fadeRoute(
+                                    MultiBlocProvider(
+                                      providers: [
+                                        // --------------------------------
+                                        // EditingCelluleRaport
+                                        // --------------------------------
+                                        BlocProvider(
+                                          create: (context) =>
+                                              RapportCelluleRequestSectionAdministrationBloc(
+                                                sendRapportCelluleStepAdministrationUsercase:
+                                                    getIt<
+                                                      SendRapportCelluleStepAdministrationUsercase
+                                                    >(),
+                                              ),
+                                        ),
+                                        BlocProvider(
+                                          create: (context) => GetSecteurBloc(
+                                            getListSecteurUsercase:
+                                                getIt<GetListSecteurUsercase>(),
+                                          )..add(CelluleEvent.fetch()),
+                                        ),
+                                        BlocProvider(
+                                          create: (context) => GetZoneBloc(
+                                            getListZoneUsercase:
+                                                getIt<GetListZoneUsercase>(),
+                                          )..add(CelluleEvent.fetch()),
+                                        ),
+
+                                  
+                                      ],
+                                      child:  EditingCelluleRaport(profile:  (contrat is ProfileResponse) ? (contrat as SuccessState<ProfileResponse>).data :   (widget.profileState
+                                        as SuccessState<ProfileResponse>).data  ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Badge(
+                                child: Icon(Icons.edit, color: Colors.white),
+                                backgroundColor: Colors.transparent,
+                                label: Text(
+                                  '',
+                                  style: context.appTypographie.body.copyWith(
+                                    color: Colors.white,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+
+                
+
+                
+
                       },
                     )
                   : const SizedBox.shrink();
+                }
+                return  SizedBox.shrink();
+
+
+
+              }
+              return SizedBox.shrink();
+
             },
           ),
-        ),
+       
+       
+       ),
       ),
     );
   }

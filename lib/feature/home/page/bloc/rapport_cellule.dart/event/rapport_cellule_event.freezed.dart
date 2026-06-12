@@ -3137,68 +3137,68 @@ String toString() {
 /// @nodoc
 
 
-class RapportCelluleRequestSectionAssistanceEventUpdateSectionId implements RapportCelluleRequestSectionAssistanceEvent {
-   RapportCelluleRequestSectionAssistanceEventUpdateSectionId(this.id);
+// class RapportCelluleRequestSectionAssistanceEventUpdateSectionId implements RapportCelluleRequestSectionAssistanceEvent {
+//    RapportCelluleRequestSectionAssistanceEventUpdateSectionId(this.id);
   
 
- final  String id;
+//  final  String id;
 
-/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<RapportCelluleRequestSectionAssistanceEventUpdateSectionId> get copyWith => _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl<RapportCelluleRequestSectionAssistanceEventUpdateSectionId>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSectionAssistanceEventUpdateSectionId&&(identical(other.id, id) || other.id == id));
-}
+// /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+// /// with the given fields replaced by the non-null parameter values.
+// @JsonKey(includeFromJson: false, includeToJson: false)
+// @pragma('vm:prefer-inline')
+// $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<RapportCelluleRequestSectionAssistanceEventUpdateSectionId> get copyWith => _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl<RapportCelluleRequestSectionAssistanceEventUpdateSectionId>(this, _$identity);
 
 
-@override
-int get hashCode => Object.hash(runtimeType,id);
 
-@override
-String toString() {
-  return 'RapportCelluleRequestSectionAssistanceEvent.id(id: $id)';
-}
+// @override
+// bool operator ==(Object other) {
+//   return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSectionAssistanceEventUpdateSectionId&&(identical(other.id, id) || other.id == id));
+// }
 
 
-}
+// @override
+// int get hashCode => Object.hash(runtimeType,id);
 
+// @override
+// String toString() {
+//   return 'RapportCelluleRequestSectionAssistanceEvent.id(id: $id)';
+// }
+
+
+// }
+
+// /// @nodoc
+// abstract mixin class $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
+//   factory $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith(RapportCelluleRequestSectionAssistanceEventUpdateSectionId value, $Res Function(RapportCelluleRequestSectionAssistanceEventUpdateSectionId) _then) = _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl;
+// @useResult
+// $Res call({
+//  String id
+// });
+
+
+
+
+// }
 /// @nodoc
-abstract mixin class $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
-  factory $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith(RapportCelluleRequestSectionAssistanceEventUpdateSectionId value, $Res Function(RapportCelluleRequestSectionAssistanceEventUpdateSectionId) _then) = _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl;
-@useResult
-$Res call({
- String id
-});
+// class _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl<$Res>
+//     implements $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<$Res> {
+//   _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl(this._self, this._then);
+
+//   final RapportCelluleRequestSectionAssistanceEventUpdateSectionId _self;
+//   final $Res Function(RapportCelluleRequestSectionAssistanceEventUpdateSectionId) _then;
+
+// /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
+// /// with the given fields replaced by the non-null parameter values.
+// @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+//   return _then(RapportCelluleRequestSectionAssistanceEventUpdateSectionId(
+// null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+// as String,
+//   ));
+// }
 
 
-
-
-}
-/// @nodoc
-class _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl<$Res>
-    implements $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<$Res> {
-  _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl(this._self, this._then);
-
-  final RapportCelluleRequestSectionAssistanceEventUpdateSectionId _self;
-  final $Res Function(RapportCelluleRequestSectionAssistanceEventUpdateSectionId) _then;
-
-/// Create a copy of RapportCelluleRequestSectionAssistanceEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-  return _then(RapportCelluleRequestSectionAssistanceEventUpdateSectionId(
-null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
+// }
 
 /// @nodoc
 mixin _$RapportCelluleRequestActivityEvent {

@@ -96,6 +96,10 @@ class FormSuggestionBloc
           ),
         );
 
+        case RapportCelluleRequestSuggestionEventUpdateSectionId(:final id):
+        emit(state.copyWith(id: TextFormz.dirty(id)));
+        break;
+        
         break;
       case SubmitRapportCelluleRequestSuggestionEvent():
         if (state.isValide) {
@@ -112,13 +116,13 @@ class FormSuggestionBloc
               formSuggestionSubmitDate: DateTime.now().toIso8601String(),
               resumerPredication: state.resumerPredication.value,
               tag:"terminer",
-              id: state.id,
+              id: state.id.value,
             ),
           );
           emit(
             response.fold(
               (l) => state.copyWith(status: FormzSubmissionStatus.failure),
-              (r) => state.copyWith(status: FormzSubmissionStatus.success),
+              (r) => state.copyWith(status: FormzSubmissionStatus.success, errorMessage: state.errorMessage),
             ),
           );
         }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -205,6 +207,17 @@ class _FormStatisticState extends State<FormStatistic> {
   }
 
   bool isHowDetail = false;
+  
+  @override
+  void initState() {
+     context.read<RapportCelluleSectionAssistanceBloc>().add(
+      RapportCelluleRequestSectionAssistanceEvent.updateSectionId(
+        widget.id,
+      ),
+    );
+    super.initState();
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -214,6 +227,7 @@ class _FormStatisticState extends State<FormStatistic> {
     >(
       listener: (context, state) {
         if (state.status.isSuccess) {
+          log("------>${widget.id} ${state.errorMessage}");
           Navigator.push(
             context,
             fadeRoute(
@@ -222,7 +236,9 @@ class _FormStatisticState extends State<FormStatistic> {
                   sendRapportCelluleStepAssistantUsercase:
                       getIt<SendRapportCelluleStepAssistantUsercase>(),
                 ),
-                child: FormActivite(),
+                child: FormActivite(
+                  id: widget.id.isNotEmpty ? widget.id : state.errorMessage,
+                ),
               ),
             ),
           );

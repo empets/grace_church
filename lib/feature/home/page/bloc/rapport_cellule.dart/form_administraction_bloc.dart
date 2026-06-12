@@ -271,6 +271,7 @@ class RapportCelluleRequestSectionAdministrationBloc
                 return state.copyWith(
                   status: FormzSubmissionStatus.success,
                   errorMessage: r,
+                  
                 );
               },
             ),

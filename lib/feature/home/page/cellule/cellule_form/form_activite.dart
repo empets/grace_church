@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +22,8 @@ import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/state/r
 import 'package:grace_church/feature/home/page/cellule/cellule_form/form_ouvrier_spritual_live.dart';
 
 class FormActivite extends StatefulWidget {
-  FormActivite({super.key});
+  FormActivite({super.key, required this.id});
+  final String id;
   @override
   State<FormActivite> createState() => _FormActiviteState();
 }
@@ -139,10 +142,17 @@ class _FormActiviteState extends State<FormActivite> {
   }
 
   @override
+  void initState() {
+   context.read<FormActiviteBloc>().add(RapportCelluleRequestActivityEvent.updateSectionId(widget.id));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<FormActiviteBloc, RapportCelluleRequestActivityState>(
       listener: (context, state) {
         if (state.status.isSuccess) {
+          log("------>${widget.id} ${state.errorMessage}");
           Navigator.push(
             context,
             fadeRoute(
@@ -151,7 +161,9 @@ class _FormActiviteState extends State<FormActivite> {
                   sendRapportCelluleStepSuggestionUsercase:
                       getIt<SendRapportCelluleStepSuggestionUsercase>(),
                 ),
-                child: const FormOuvrierSpritualLive(),
+                child:  FormOuvrierSpritualLive(
+                  id: widget.id.isNotEmpty ? widget.id : state.errorMessage,
+                ),
               ),
             ),
           );
@@ -601,7 +613,7 @@ class _FormActiviteState extends State<FormActivite> {
                                 onPressed: () {
                                   context.read<FormActiviteBloc>().add(
                                     RapportCelluleRequestActivityEvent.updateSectionId(
-                                      "-OqmHAqmgTFtsgDMyH2x",
+                                    widget.id,
                                     ),
                                   );
 

@@ -112,10 +112,11 @@ class FormActiviteBloc
               formActivityIsSubmit: "true",
               tag: "en_cours",
               formActivitySubmitDate: DateTime.now().toIso8601String(),
+              id: state.id.value,
             )
           ); 
 
-          emit(result.fold((l)=> state.copyWith(status: FormzSubmissionStatus.failure), (r)=> state.copyWith(status: FormzSubmissionStatus.success)));
+          emit(result.fold((l)=> state.copyWith(status: FormzSubmissionStatus.failure), (r)=> state.copyWith(status: FormzSubmissionStatus.success, errorMessage: r)));
           
           // emit(state.copyWith(status: FormzSubmissionStatus.success));
           return;
