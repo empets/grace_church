@@ -4958,7 +4958,7 @@ as String,
 /// @nodoc
 mixin _$RequestRapportCelluleActivity implements DiagnosticableTreeMixin {
 
- List<Map<String, dynamic>> get visiteMenbre; List<Map<String, dynamic>> get visiteOuvrier; List<Map<String, dynamic>> get dateActivitySubmited; String get formActivityIsSubmit; String get formActivitySubmitDate; String get tag;
+ List<Map<String, dynamic>> get visiteMenbre; List<Map<String, dynamic>> get visiteOuvrier; List<Map<String, dynamic>> get dateActivitySubmited; String get formActivityIsSubmit; String get formActivitySubmitDate; String get tag; String get id;
 /// Create a copy of RequestRapportCelluleActivity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4972,21 +4972,21 @@ $RequestRapportCelluleActivityCopyWith<RequestRapportCelluleActivity> get copyWi
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestRapportCelluleActivity'))
-    ..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteOuvrier', visiteOuvrier))..add(DiagnosticsProperty('dateActivitySubmited', dateActivitySubmited))..add(DiagnosticsProperty('formActivityIsSubmit', formActivityIsSubmit))..add(DiagnosticsProperty('formActivitySubmitDate', formActivitySubmitDate))..add(DiagnosticsProperty('tag', tag));
+    ..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteOuvrier', visiteOuvrier))..add(DiagnosticsProperty('dateActivitySubmited', dateActivitySubmited))..add(DiagnosticsProperty('formActivityIsSubmit', formActivityIsSubmit))..add(DiagnosticsProperty('formActivitySubmitDate', formActivitySubmitDate))..add(DiagnosticsProperty('tag', tag))..add(DiagnosticsProperty('id', id));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleActivity&&const DeepCollectionEquality().equals(other.visiteMenbre, visiteMenbre)&&const DeepCollectionEquality().equals(other.visiteOuvrier, visiteOuvrier)&&const DeepCollectionEquality().equals(other.dateActivitySubmited, dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&(identical(other.tag, tag) || other.tag == tag));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleActivity&&const DeepCollectionEquality().equals(other.visiteMenbre, visiteMenbre)&&const DeepCollectionEquality().equals(other.visiteOuvrier, visiteOuvrier)&&const DeepCollectionEquality().equals(other.dateActivitySubmited, dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(visiteMenbre),const DeepCollectionEquality().hash(visiteOuvrier),const DeepCollectionEquality().hash(dateActivitySubmited),formActivityIsSubmit,formActivitySubmitDate,tag);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(visiteMenbre),const DeepCollectionEquality().hash(visiteOuvrier),const DeepCollectionEquality().hash(dateActivitySubmited),formActivityIsSubmit,formActivitySubmitDate,tag,id);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestRapportCelluleActivity(visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, tag: $tag)';
+  return 'RequestRapportCelluleActivity(visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, tag: $tag, id: $id)';
 }
 
 
@@ -4997,7 +4997,7 @@ abstract mixin class $RequestRapportCelluleActivityCopyWith<$Res>  {
   factory $RequestRapportCelluleActivityCopyWith(RequestRapportCelluleActivity value, $Res Function(RequestRapportCelluleActivity) _then) = _$RequestRapportCelluleActivityCopyWithImpl;
 @useResult
 $Res call({
- List<Map<String, dynamic>> visiteMenbre, List<Map<String, dynamic>> visiteOuvrier, List<Map<String, dynamic>> dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, String tag
+ List<Map<String, dynamic>> visiteMenbre, List<Map<String, dynamic>> visiteOuvrier, List<Map<String, dynamic>> dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, String tag, String id
 });
 
 
@@ -5014,7 +5014,7 @@ class _$RequestRapportCelluleActivityCopyWithImpl<$Res>
 
 /// Create a copy of RequestRapportCelluleActivity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? tag = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? tag = null,Object? id = null,}) {
   return _then(_self.copyWith(
 visiteMenbre: null == visiteMenbre ? _self.visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
 as List<Map<String, dynamic>>,visiteOuvrier: null == visiteOuvrier ? _self.visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
@@ -5022,6 +5022,7 @@ as List<Map<String, dynamic>>,dateActivitySubmited: null == dateActivitySubmited
 as List<Map<String, dynamic>>,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
 as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
 as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -5107,10 +5108,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  String tag)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  String tag,  String id)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleActivity() when $default != null:
-return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.tag);case _:
+return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.tag,_that.id);case _:
   return orElse();
 
 }
@@ -5128,10 +5129,10 @@ return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmite
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  String tag)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  String tag,  String id)  $default,) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleActivity():
-return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.tag);case _:
+return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.tag,_that.id);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -5148,10 +5149,10 @@ return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmite
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  String tag)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Map<String, dynamic>> visiteMenbre,  List<Map<String, dynamic>> visiteOuvrier,  List<Map<String, dynamic>> dateActivitySubmited,  String formActivityIsSubmit,  String formActivitySubmitDate,  String tag,  String id)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleActivity() when $default != null:
-return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.tag);case _:
+return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmited,_that.formActivityIsSubmit,_that.formActivitySubmitDate,_that.tag,_that.id);case _:
   return null;
 
 }
@@ -5163,7 +5164,7 @@ return $default(_that.visiteMenbre,_that.visiteOuvrier,_that.dateActivitySubmite
 @JsonSerializable()
 
 class _RequestRapportCelluleActivity with DiagnosticableTreeMixin implements RequestRapportCelluleActivity {
-   _RequestRapportCelluleActivity({required final  List<Map<String, dynamic>> visiteMenbre, required final  List<Map<String, dynamic>> visiteOuvrier, required final  List<Map<String, dynamic>> dateActivitySubmited, this.formActivityIsSubmit = 'false', required this.formActivitySubmitDate, required this.tag}): _visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_dateActivitySubmited = dateActivitySubmited;
+   _RequestRapportCelluleActivity({required final  List<Map<String, dynamic>> visiteMenbre, required final  List<Map<String, dynamic>> visiteOuvrier, required final  List<Map<String, dynamic>> dateActivitySubmited, this.formActivityIsSubmit = 'false', required this.formActivitySubmitDate, required this.tag, required this.id}): _visiteMenbre = visiteMenbre,_visiteOuvrier = visiteOuvrier,_dateActivitySubmited = dateActivitySubmited;
   factory _RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleActivityFromJson(json);
 
  final  List<Map<String, dynamic>> _visiteMenbre;
@@ -5190,6 +5191,7 @@ class _RequestRapportCelluleActivity with DiagnosticableTreeMixin implements Req
 @override@JsonKey() final  String formActivityIsSubmit;
 @override final  String formActivitySubmitDate;
 @override final  String tag;
+@override final  String id;
 
 /// Create a copy of RequestRapportCelluleActivity
 /// with the given fields replaced by the non-null parameter values.
@@ -5205,21 +5207,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestRapportCelluleActivity'))
-    ..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteOuvrier', visiteOuvrier))..add(DiagnosticsProperty('dateActivitySubmited', dateActivitySubmited))..add(DiagnosticsProperty('formActivityIsSubmit', formActivityIsSubmit))..add(DiagnosticsProperty('formActivitySubmitDate', formActivitySubmitDate))..add(DiagnosticsProperty('tag', tag));
+    ..add(DiagnosticsProperty('visiteMenbre', visiteMenbre))..add(DiagnosticsProperty('visiteOuvrier', visiteOuvrier))..add(DiagnosticsProperty('dateActivitySubmited', dateActivitySubmited))..add(DiagnosticsProperty('formActivityIsSubmit', formActivityIsSubmit))..add(DiagnosticsProperty('formActivitySubmitDate', formActivitySubmitDate))..add(DiagnosticsProperty('tag', tag))..add(DiagnosticsProperty('id', id));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleActivity&&const DeepCollectionEquality().equals(other._visiteMenbre, _visiteMenbre)&&const DeepCollectionEquality().equals(other._visiteOuvrier, _visiteOuvrier)&&const DeepCollectionEquality().equals(other._dateActivitySubmited, _dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&(identical(other.tag, tag) || other.tag == tag));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleActivity&&const DeepCollectionEquality().equals(other._visiteMenbre, _visiteMenbre)&&const DeepCollectionEquality().equals(other._visiteOuvrier, _visiteOuvrier)&&const DeepCollectionEquality().equals(other._dateActivitySubmited, _dateActivitySubmited)&&(identical(other.formActivityIsSubmit, formActivityIsSubmit) || other.formActivityIsSubmit == formActivityIsSubmit)&&(identical(other.formActivitySubmitDate, formActivitySubmitDate) || other.formActivitySubmitDate == formActivitySubmitDate)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_visiteMenbre),const DeepCollectionEquality().hash(_visiteOuvrier),const DeepCollectionEquality().hash(_dateActivitySubmited),formActivityIsSubmit,formActivitySubmitDate,tag);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_visiteMenbre),const DeepCollectionEquality().hash(_visiteOuvrier),const DeepCollectionEquality().hash(_dateActivitySubmited),formActivityIsSubmit,formActivitySubmitDate,tag,id);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestRapportCelluleActivity(visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, tag: $tag)';
+  return 'RequestRapportCelluleActivity(visiteMenbre: $visiteMenbre, visiteOuvrier: $visiteOuvrier, dateActivitySubmited: $dateActivitySubmited, formActivityIsSubmit: $formActivityIsSubmit, formActivitySubmitDate: $formActivitySubmitDate, tag: $tag, id: $id)';
 }
 
 
@@ -5230,7 +5232,7 @@ abstract mixin class _$RequestRapportCelluleActivityCopyWith<$Res> implements $R
   factory _$RequestRapportCelluleActivityCopyWith(_RequestRapportCelluleActivity value, $Res Function(_RequestRapportCelluleActivity) _then) = __$RequestRapportCelluleActivityCopyWithImpl;
 @override @useResult
 $Res call({
- List<Map<String, dynamic>> visiteMenbre, List<Map<String, dynamic>> visiteOuvrier, List<Map<String, dynamic>> dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, String tag
+ List<Map<String, dynamic>> visiteMenbre, List<Map<String, dynamic>> visiteOuvrier, List<Map<String, dynamic>> dateActivitySubmited, String formActivityIsSubmit, String formActivitySubmitDate, String tag, String id
 });
 
 
@@ -5247,7 +5249,7 @@ class __$RequestRapportCelluleActivityCopyWithImpl<$Res>
 
 /// Create a copy of RequestRapportCelluleActivity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? tag = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? visiteMenbre = null,Object? visiteOuvrier = null,Object? dateActivitySubmited = null,Object? formActivityIsSubmit = null,Object? formActivitySubmitDate = null,Object? tag = null,Object? id = null,}) {
   return _then(_RequestRapportCelluleActivity(
 visiteMenbre: null == visiteMenbre ? _self._visiteMenbre : visiteMenbre // ignore: cast_nullable_to_non_nullable
 as List<Map<String, dynamic>>,visiteOuvrier: null == visiteOuvrier ? _self._visiteOuvrier : visiteOuvrier // ignore: cast_nullable_to_non_nullable
@@ -5255,6 +5257,7 @@ as List<Map<String, dynamic>>,dateActivitySubmited: null == dateActivitySubmited
 as List<Map<String, dynamic>>,formActivityIsSubmit: null == formActivityIsSubmit ? _self.formActivityIsSubmit : formActivityIsSubmit // ignore: cast_nullable_to_non_nullable
 as String,formActivitySubmitDate: null == formActivitySubmitDate ? _self.formActivitySubmitDate : formActivitySubmitDate // ignore: cast_nullable_to_non_nullable
 as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -5266,7 +5269,7 @@ as String,
 /// @nodoc
 mixin _$RequestRapportCelluleSuggestion implements DiagnosticableTreeMixin {
 
- List<Map<String, dynamic>> get suggestions; String get faisAssignaler; String get ouvrierSpritualLive; String get formSuggestionIsSubmit; String get formSuggestionSubmitDate; String get resumerPredication; String get tag;
+ List<Map<String, dynamic>> get suggestions; String get faisAssignaler; String get ouvrierSpritualLive; String get formSuggestionIsSubmit; String get formSuggestionSubmitDate; String get resumerPredication; String get tag; String get id;
 /// Create a copy of RequestRapportCelluleSuggestion
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -5280,21 +5283,21 @@ $RequestRapportCelluleSuggestionCopyWith<RequestRapportCelluleSuggestion> get co
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestRapportCelluleSuggestion'))
-    ..add(DiagnosticsProperty('suggestions', suggestions))..add(DiagnosticsProperty('faisAssignaler', faisAssignaler))..add(DiagnosticsProperty('ouvrierSpritualLive', ouvrierSpritualLive))..add(DiagnosticsProperty('formSuggestionIsSubmit', formSuggestionIsSubmit))..add(DiagnosticsProperty('formSuggestionSubmitDate', formSuggestionSubmitDate))..add(DiagnosticsProperty('resumerPredication', resumerPredication))..add(DiagnosticsProperty('tag', tag));
+    ..add(DiagnosticsProperty('suggestions', suggestions))..add(DiagnosticsProperty('faisAssignaler', faisAssignaler))..add(DiagnosticsProperty('ouvrierSpritualLive', ouvrierSpritualLive))..add(DiagnosticsProperty('formSuggestionIsSubmit', formSuggestionIsSubmit))..add(DiagnosticsProperty('formSuggestionSubmitDate', formSuggestionSubmitDate))..add(DiagnosticsProperty('resumerPredication', resumerPredication))..add(DiagnosticsProperty('tag', tag))..add(DiagnosticsProperty('id', id));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleSuggestion&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.tag, tag) || other.tag == tag));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RequestRapportCelluleSuggestion&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate,resumerPredication,tag);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate,resumerPredication,tag,id);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestRapportCelluleSuggestion(suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate, resumerPredication: $resumerPredication, tag: $tag)';
+  return 'RequestRapportCelluleSuggestion(suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate, resumerPredication: $resumerPredication, tag: $tag, id: $id)';
 }
 
 
@@ -5305,7 +5308,7 @@ abstract mixin class $RequestRapportCelluleSuggestionCopyWith<$Res>  {
   factory $RequestRapportCelluleSuggestionCopyWith(RequestRapportCelluleSuggestion value, $Res Function(RequestRapportCelluleSuggestion) _then) = _$RequestRapportCelluleSuggestionCopyWithImpl;
 @useResult
 $Res call({
- List<Map<String, dynamic>> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate, String resumerPredication, String tag
+ List<Map<String, dynamic>> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate, String resumerPredication, String tag, String id
 });
 
 
@@ -5322,7 +5325,7 @@ class _$RequestRapportCelluleSuggestionCopyWithImpl<$Res>
 
 /// Create a copy of RequestRapportCelluleSuggestion
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,Object? resumerPredication = null,Object? tag = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,Object? resumerPredication = null,Object? tag = null,Object? id = null,}) {
   return _then(_self.copyWith(
 suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
 as List<Map<String, dynamic>>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
@@ -5331,6 +5334,7 @@ as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSug
 as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,resumerPredication: null == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
 as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -5416,10 +5420,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate,  String resumerPredication,  String tag)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate,  String resumerPredication,  String tag,  String id)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleSuggestion() when $default != null:
-return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate,_that.resumerPredication,_that.tag);case _:
+return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate,_that.resumerPredication,_that.tag,_that.id);case _:
   return orElse();
 
 }
@@ -5437,10 +5441,10 @@ return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate,  String resumerPredication,  String tag)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate,  String resumerPredication,  String tag,  String id)  $default,) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleSuggestion():
-return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate,_that.resumerPredication,_that.tag);case _:
+return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate,_that.resumerPredication,_that.tag,_that.id);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -5457,10 +5461,10 @@ return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate,  String resumerPredication,  String tag)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Map<String, dynamic>> suggestions,  String faisAssignaler,  String ouvrierSpritualLive,  String formSuggestionIsSubmit,  String formSuggestionSubmitDate,  String resumerPredication,  String tag,  String id)?  $default,) {final _that = this;
 switch (_that) {
 case _RequestRapportCelluleSuggestion() when $default != null:
-return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate,_that.resumerPredication,_that.tag);case _:
+return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive,_that.formSuggestionIsSubmit,_that.formSuggestionSubmitDate,_that.resumerPredication,_that.tag,_that.id);case _:
   return null;
 
 }
@@ -5472,7 +5476,7 @@ return $default(_that.suggestions,_that.faisAssignaler,_that.ouvrierSpritualLive
 @JsonSerializable()
 
 class _RequestRapportCelluleSuggestion with DiagnosticableTreeMixin implements RequestRapportCelluleSuggestion {
-   _RequestRapportCelluleSuggestion({required final  List<Map<String, dynamic>> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, this.formSuggestionIsSubmit = 'false', required this.formSuggestionSubmitDate, required this.resumerPredication, required this.tag}): _suggestions = suggestions;
+   _RequestRapportCelluleSuggestion({required final  List<Map<String, dynamic>> suggestions, required this.faisAssignaler, required this.ouvrierSpritualLive, this.formSuggestionIsSubmit = 'false', required this.formSuggestionSubmitDate, required this.resumerPredication, required this.tag, required this.id}): _suggestions = suggestions;
   factory _RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) => _$RequestRapportCelluleSuggestionFromJson(json);
 
  final  List<Map<String, dynamic>> _suggestions;
@@ -5488,6 +5492,7 @@ class _RequestRapportCelluleSuggestion with DiagnosticableTreeMixin implements R
 @override final  String formSuggestionSubmitDate;
 @override final  String resumerPredication;
 @override final  String tag;
+@override final  String id;
 
 /// Create a copy of RequestRapportCelluleSuggestion
 /// with the given fields replaced by the non-null parameter values.
@@ -5503,21 +5508,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'RequestRapportCelluleSuggestion'))
-    ..add(DiagnosticsProperty('suggestions', suggestions))..add(DiagnosticsProperty('faisAssignaler', faisAssignaler))..add(DiagnosticsProperty('ouvrierSpritualLive', ouvrierSpritualLive))..add(DiagnosticsProperty('formSuggestionIsSubmit', formSuggestionIsSubmit))..add(DiagnosticsProperty('formSuggestionSubmitDate', formSuggestionSubmitDate))..add(DiagnosticsProperty('resumerPredication', resumerPredication))..add(DiagnosticsProperty('tag', tag));
+    ..add(DiagnosticsProperty('suggestions', suggestions))..add(DiagnosticsProperty('faisAssignaler', faisAssignaler))..add(DiagnosticsProperty('ouvrierSpritualLive', ouvrierSpritualLive))..add(DiagnosticsProperty('formSuggestionIsSubmit', formSuggestionIsSubmit))..add(DiagnosticsProperty('formSuggestionSubmitDate', formSuggestionSubmitDate))..add(DiagnosticsProperty('resumerPredication', resumerPredication))..add(DiagnosticsProperty('tag', tag))..add(DiagnosticsProperty('id', id));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleSuggestion&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.tag, tag) || other.tag == tag));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RequestRapportCelluleSuggestion&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.formSuggestionIsSubmit, formSuggestionIsSubmit) || other.formSuggestionIsSubmit == formSuggestionIsSubmit)&&(identical(other.formSuggestionSubmitDate, formSuggestionSubmitDate) || other.formSuggestionSubmitDate == formSuggestionSubmitDate)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.tag, tag) || other.tag == tag)&&(identical(other.id, id) || other.id == id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate,resumerPredication,tag);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_suggestions),faisAssignaler,ouvrierSpritualLive,formSuggestionIsSubmit,formSuggestionSubmitDate,resumerPredication,tag,id);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'RequestRapportCelluleSuggestion(suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate, resumerPredication: $resumerPredication, tag: $tag)';
+  return 'RequestRapportCelluleSuggestion(suggestions: $suggestions, faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, formSuggestionIsSubmit: $formSuggestionIsSubmit, formSuggestionSubmitDate: $formSuggestionSubmitDate, resumerPredication: $resumerPredication, tag: $tag, id: $id)';
 }
 
 
@@ -5528,7 +5533,7 @@ abstract mixin class _$RequestRapportCelluleSuggestionCopyWith<$Res> implements 
   factory _$RequestRapportCelluleSuggestionCopyWith(_RequestRapportCelluleSuggestion value, $Res Function(_RequestRapportCelluleSuggestion) _then) = __$RequestRapportCelluleSuggestionCopyWithImpl;
 @override @useResult
 $Res call({
- List<Map<String, dynamic>> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate, String resumerPredication, String tag
+ List<Map<String, dynamic>> suggestions, String faisAssignaler, String ouvrierSpritualLive, String formSuggestionIsSubmit, String formSuggestionSubmitDate, String resumerPredication, String tag, String id
 });
 
 
@@ -5545,7 +5550,7 @@ class __$RequestRapportCelluleSuggestionCopyWithImpl<$Res>
 
 /// Create a copy of RequestRapportCelluleSuggestion
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,Object? resumerPredication = null,Object? tag = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? suggestions = null,Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? formSuggestionIsSubmit = null,Object? formSuggestionSubmitDate = null,Object? resumerPredication = null,Object? tag = null,Object? id = null,}) {
   return _then(_RequestRapportCelluleSuggestion(
 suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
 as List<Map<String, dynamic>>,faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
@@ -5554,6 +5559,7 @@ as String,formSuggestionIsSubmit: null == formSuggestionIsSubmit ? _self.formSug
 as String,formSuggestionSubmitDate: null == formSuggestionSubmitDate ? _self.formSuggestionSubmitDate : formSuggestionSubmitDate // ignore: cast_nullable_to_non_nullable
 as String,resumerPredication: null == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
 as String,tag: null == tag ? _self.tag : tag // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

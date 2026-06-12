@@ -17,12 +17,18 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
 
   final DomaineServiceRepository domaineServiceRepository;
 
+
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getProfile                                    
+  // Paramètre: RequestGetProfile
+  // Retour: ProfileResponse
+  // Description: Cette methode permet de récupérer le profil de l'utilisateur
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, ProfileResponse>> getProfile(
     RequestGetProfile notParms,
   ) async {
     final response = await domaineServiceRepository.getProfile(notParms);
-
     if (response is FirebaseSuccess<ProfileResponseModel>) {
         final shared = await SharedPreferences.getInstance();
       await shared.setString('menberkey', response.data.menberId ?? "");
@@ -51,6 +57,14 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     throw UnimplementedError();
   }
 
+
+   // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getListNotifications                                    
+  // Paramètre: EmptyRequest
+  // Retour: List<NotificationResponse> (qui contient les informations des notifications)
+  // Description: Cette methode permet de récupérer la liste des notifications
+  // ----------------------------------------------------------------------------------------------------------------------------
+
   @override
   Future<Either<Failure, List<NotificationResponse>>> getListNotifications(
     EmptyRequest notParms,
@@ -67,7 +81,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
-
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getListNotificationsByCriteria                                    
+  // Paramètre: RequestNotification
+  // Retour: List<NotificationResponse> (qui contient les informations des notifications)
+  // Description: Cette methode permet de récupérer la liste des notifications par critères
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, List<NotificationResponse>>>
   getListNotificationsByCriteria(RequestNotification params) async {
@@ -82,6 +101,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getListResponsablesCellules                                    
+  // Paramètre: RequestReponsableCellule
+  // Retour: List<ReponsableCelluleResponse> (qui contient les informations des cellules)
+  // Description: Cette methode permet de récupérer la liste des responsables de cellules
+  // ----------------------------------------------------------------------------------------------------------------------------
 
   @override
   Future<Either<Failure, List<CelluleResponse>>> getListCellules(
@@ -95,7 +120,14 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
-
+ 
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getListResponsablesCellules                                    
+  // Paramètre: RequestReponsableCellule
+  // Retour: List<ReponsableCelluleResponse> (qui contient les informations des cellules)
+  // Description: Cette methode permet de récupérer la liste des responsables de cellules
+  // ----------------------------------------------------------------------------------------------------------------------------
+ 
   @override
   Future<Either<Failure, List<ReponsableCelluleResponse>>>
   getListResponsablesCellules(RequestReponsableCellule params) async {
@@ -112,7 +144,13 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
-
+ 
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getListResponsablesSecteurs                                    
+  // Paramètre: RequestSecteur
+  // Retour: List<SecteurResponse> (qui contient les informations des secteurs)
+  // Description: Cette methode permet de récupérer la liste des responsables de secteurs
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, List<SecteurResponse>>>
   getListResponsablesSecteurs(RequestSecteur params) async {
@@ -129,6 +167,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
 
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getListResponsablesZones                                    
+  // Paramètre: RequestZone
+  // Retour: List<ZoneResponse> (qui contient les informations des zones)
+  // Description: Cette methode permet de récupérer la liste des responsables de zones
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, List<ZoneResponse>>>
   getListResponsablesZones(RequestZone params) async {
@@ -144,7 +188,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     }
     return Left(Failure(message: "Erreur inconnue"));
   }
-
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendImpliciteConnexion                                    
+  // Paramètre: RequestImpliciteConnexion
+  // Retour: ProfileResponse (qui contient les informations du profil de l'utilisateur)
+  // Description: Cette methode permet de faire une connexion implicite lors du second lancement de l'application
+  // ----------------------------------------------------------------------------------------------------------------------------
     @override
   Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) async {
     final response = await domaineServiceRepository.sendImpliciteConnexion(params);
@@ -156,6 +205,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
   
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendRapportCelluleStepAdministration                                    
+  // Paramètre: RequestRapportCelluleAdministration
+  // Retour: String (clé du rapport de cellule)
+  // Description: Cette methode permet d'envoyer une administration pour un rapport de cellule en fonction de l'id du rapport
+  // ----------------------------------------------------------------------------------------------------------------------------
 
   @override
   Future<Either<Failure, String>> sendRapportCelluleStepAdministration(
@@ -173,7 +228,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
   
-
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendRapportCelluleStepAssistance                                    
+  // Paramètre: RequestRapportCelluleAssistance
+  // Retour: String (clé du rapport de cellule)
+  // Description: Cette methode permet d'envoyer une assistance pour un rapport de cellule en fonction de l'id du rapport
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, String>> sendRapportCelluleStepAssistance(RequestRapportCelluleAssistance params) async {
     final response = await domaineServiceRepository.sendRapportCelluleStepAssistance(params);
@@ -185,6 +245,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
   
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendRapportCelluleStepActivity                                    
+  // Paramètre: RequestRapportCelluleActivity
+  // Retour: String (clé du rapport de cellule)
+  // Description: Cette methode permet d'envoyer une activité pour un rapport de cellule en fonction de l'id du rapport
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, String>> sendRapportCelluleStepActivity(RequestRapportCelluleActivity params) async {
     final response = await domaineServiceRepository.sendRapportCelluleStepActivity(params);
@@ -196,6 +262,13 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
   
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendRapportCelluleStepSuggestion                                    
+  // Paramètre: RequestRapportCelluleSuggestion
+  // Retour: String (clé du rapport de cellule)
+  // Description: Cette methode permet d'envoyer une suggestion pour un rapport de cellule en fonction de l'id du rapport
+  // ----------------------------------------------------------------------------------------------------------------------------
+
   @override
   Future<Either<Failure, String>> sendRapportCelluleStepSuggestion(RequestRapportCelluleSuggestion params)async {
     final response = await domaineServiceRepository.sendRapportCelluleStepSuggestion(params);
@@ -207,6 +280,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
 
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: getRapportCellule                                    
+  // Paramètre: RequestRapportCellule
+  // Retour: List<RapportCelluleResponse>
+  // Description: Cette methode permet de récupérer une liste de rapports de cellule en fonction de l'id du responsable de cellule
+  // ----------------------------------------------------------------------------------------------------------------------------
   @override
   Future<Either<Failure, List<RapportCelluleResponse>>> getRapportCellule(RequestRapportCellule params) async {
     final response = await domaineServiceRepository.getRapportCellule(params);
@@ -218,6 +297,12 @@ class ImpleHomeDataRepositories implements HomeDomaineRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
   
+  // -------------------------------------------------------------
+  // Methode: readNotification
+  // Paramètre: RequestReadNotification
+  // Retour: id de la requête
+  // Description: Cette methode permet de lire une notification
+  // -------------------------------------------------------------
   @override
   Future<Either<Failure, String>> readNotification(RequestReadNotification params) async {
     final response = await domaineServiceRepository.readNotification(params);

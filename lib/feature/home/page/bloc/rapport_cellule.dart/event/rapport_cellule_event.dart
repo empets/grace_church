@@ -62,6 +62,8 @@ class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSe
    factory RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(RequestAuherInformation sectionOuvrier ) = ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.changeAutres(String autres ) = ChangeAutresRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.submit() = SubmitRapportCelluleRequestSectionAssistanceEvent;
+   factory RapportCelluleRequestSectionAssistanceEvent.id(String id) = RapportCelluleRequestSectionAssistanceEventUpdateSectionId;
+
 
 
 }
@@ -84,6 +86,7 @@ class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestio
    factory RapportCelluleRequestSuggestionEvent.changeResumerPredication(String resumerPredication ) = ChangeResumerPredicationRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.faisAssignaler(String isAssignaler) = FaisAssignalerRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.etatsSprituelOuvrier(String etatsSprituelOuvrier) = EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent;
+   factory RapportCelluleRequestSuggestionEvent.updateSectionId(String id) = RapportCelluleRequestSuggestionEventUpdateSectionId;
    factory RapportCelluleRequestSuggestionEvent.submit() = SubmitRapportCelluleRequestSuggestionEvent;
 }
 

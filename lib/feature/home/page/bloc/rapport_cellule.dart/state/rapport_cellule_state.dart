@@ -77,7 +77,6 @@ abstract class RapportCelluleRequestSectionAssistanceState
   const factory RapportCelluleRequestSectionAssistanceState({
     required TextFormz nombreBaptiser,
     required TextFormz id,
-
     required RequestHumaneSectionAssistance nonBaptiserStatic,
     required RequestHumaneSectionAssistance nouveauBaptiser,
     required RequestHumaneSectionAssistance inviter,
@@ -167,6 +166,7 @@ abstract class RapportCelluleRequestSuggestionState with _$RapportCelluleRequest
       required TextFormz faisAssignaler,
       required TextFormz ouvrierSpritualLive,
       required TextFormz resumerPredication,
+      required TextFormz id,
      required List<RapportSuggestion> suggestions,
       required FormzSubmissionStatus status,
     required String errorMessage,
@@ -177,6 +177,7 @@ abstract class RapportCelluleRequestSuggestionState with _$RapportCelluleRequest
     faisAssignaler: TextFormz.pure(),
     ouvrierSpritualLive: TextFormz.pure(),
     resumerPredication: TextFormz.pure(),
+    id: TextFormz.pure(),
     suggestions: [],
     status: FormzSubmissionStatus.initial,
     errorMessage: '',

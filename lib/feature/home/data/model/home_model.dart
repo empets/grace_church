@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
@@ -89,7 +87,7 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
     @Default('') String tag,
     @Default('') String date,
     @Default('') String notificationId,
-    @Default([]) List<NotificationClickResponseModel> clicks,  
+    @Default([]) List<NotificationClickResponseModel> clicks,
   }) = _NotificationResponseModel;
   factory NotificationResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationResponseModelFromJson(json);
@@ -101,32 +99,30 @@ abstract class NotificationResponseModel with _$NotificationResponseModel {
       tag: model.tag.getOrEmpty(),
       date: model.date.getOrEmpty(),
       notificationId: model.notificationId.getOrEmpty(),
-      clicks: model.clicks.map( NotificationClickResponseModel.toDomaine).toList(),
+      clicks: model.clicks
+          .map(NotificationClickResponseModel.toDomaine)
+          .toList(),
     );
   }
 }
 
-
 @freezed
-abstract class NotificationClickResponseModel with _$NotificationClickResponseModel {
-  factory NotificationClickResponseModel({
-    String? menberId,
-    String? vueAt,
-  }) = _NotificationClickResponseModel;
+abstract class NotificationClickResponseModel
+    with _$NotificationClickResponseModel {
+  factory NotificationClickResponseModel({String? menberId, String? vueAt}) =
+      _NotificationClickResponseModel;
   factory NotificationClickResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationClickResponseModelFromJson(json);
 
-  static NotificationClickResponse toDomaine(NotificationClickResponseModel model) {
+  static NotificationClickResponse toDomaine(
+    NotificationClickResponseModel model,
+  ) {
     return NotificationClickResponse(
       menberId: model.menberId.getOrEmpty(),
       vueAt: model.vueAt.getOrEmpty(),
     );
   }
 }
-
-
-
-
 
 //-----------------------------
 //  CELLULE RESPONSE MODEL
@@ -297,7 +293,7 @@ abstract class ZoneResponseModel with _$ZoneResponseModel {
 
 @freezed
 abstract class RequestAuherResponseModel with _$RequestAuherResponseModel {
- const factory RequestAuherResponseModel({
+  const factory RequestAuherResponseModel({
     required String? libelle,
     required String? formationNewDFB,
     required String? formationNewBaptDFD,
@@ -391,7 +387,7 @@ abstract class RequestHumaneSectionActivityModel
 @freezed
 abstract class RequestSuggestionResponseModel
     with _$RequestSuggestionResponseModel {
- const factory RequestSuggestionResponseModel({
+  const factory RequestSuggestionResponseModel({
     @Default("") String? fullname,
     @Default("") String? recommandation,
     @Default(false) bool? isDisciple,
@@ -414,7 +410,7 @@ abstract class RequestSuggestionResponseModel
 
 @freezed
 abstract class DiscipleCelluleModel with _$DiscipleCelluleModel {
- const factory DiscipleCelluleModel({
+  const factory DiscipleCelluleModel({
     @Default("") String? fullName,
     @Default("") String? isBaptierOrNot,
   }) = _DiscipleCelluleModel;
@@ -460,7 +456,9 @@ abstract class RequestHumaneSectionActivityResponseModel
     Map<String, dynamic> json,
   ) => _$RequestHumaneSectionActivityResponseModelFromJson(json);
 
-  static RequestHumaneSectionActivityResponse toDomain(RequestHumaneSectionActivityResponseModel model) {
+  static RequestHumaneSectionActivityResponse toDomain(
+    RequestHumaneSectionActivityResponseModel model,
+  ) {
     return RequestHumaneSectionActivityResponse(
       suggestions: model.suggestions.getOrEmpty(),
       probleme: model.probleme.getOrEmpty(),
@@ -468,7 +466,6 @@ abstract class RequestHumaneSectionActivityResponseModel
     );
   }
 }
-
 
 @freezed
 abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
@@ -487,52 +484,104 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
     required String? offrande,
     required String? nombreBaptiser,
     required String? nombreNonBaptiser,
-    @Default([DiscipleCelluleModel(fullName: "", isBaptierOrNot: "")]) List<DiscipleCelluleModel> discipleCellule,
+    @Default([DiscipleCelluleModel(fullName: "", isBaptierOrNot: "")])
+    List<DiscipleCelluleModel> discipleCellule,
     required String? id,
-    @Default('false')  String? formAdministrationIsSubmit,
+    @Default('false') String? formAdministrationIsSubmit,
     required String? formAdministrationSubmitDate,
     required String? resumerPredication,
     required String? lieu,
 
-
     // required String? nombreBaptiser,
-    @Default(RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "",total: 0)) RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
-    @Default(RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "",total: 0)) RequestHumaneSectionAssistanceResponseModel assistanceNouveau,
-    @Default(RequestHumaneSectionAssistanceResponseModel(libelle: '', toutPetit: "", juniors: '', cadets: "",total: 0)) RequestHumaneSectionAssistanceResponseModel assistanceInviter,
-    @Default( RequestAuherResponseModel(
-    libelle: '',
-    formationNewDFB: '',
-    formationNewBaptDFD: '',
-    visiteMenbre: '',
-    visiteDisciple: '',
-    nbTravailleurs: '',
-    nbEleveAndEtudiants: '',
-    nbOuvrierEM: '',
-    nbOuvrierAutreDepatementDirigeantEM: '',
-    nbFormationNiveau2: '',
-    ngAgendaEM: '',
-    nbDecisionnaires: '',
-    id: '',
-   count: 0,
-    )) RequestAuherResponseModel assistanceCellule,
+    @Default(
+      RequestHumaneSectionAssistanceResponseModel(
+        libelle: '',
+        toutPetit: "",
+        juniors: '',
+        cadets: "",
+        total: 0,
+      ),
+    )
+    RequestHumaneSectionAssistanceResponseModel assistanceNonBaptiser,
+    @Default(
+      RequestHumaneSectionAssistanceResponseModel(
+        libelle: '',
+        toutPetit: "",
+        juniors: '',
+        cadets: "",
+        total: 0,
+      ),
+    )
+    RequestHumaneSectionAssistanceResponseModel assistanceNouveau,
+    @Default(
+      RequestHumaneSectionAssistanceResponseModel(
+        libelle: '',
+        toutPetit: "",
+        juniors: '',
+        cadets: "",
+        total: 0,
+      ),
+    )
+    RequestHumaneSectionAssistanceResponseModel assistanceInviter,
+    @Default(
+      RequestAuherResponseModel(
+        libelle: '',
+        formationNewDFB: '',
+        formationNewBaptDFD: '',
+        visiteMenbre: '',
+        visiteDisciple: '',
+        nbTravailleurs: '',
+        nbEleveAndEtudiants: '',
+        nbOuvrierEM: '',
+        nbOuvrierAutreDepatementDirigeantEM: '',
+        nbFormationNiveau2: '',
+        ngAgendaEM: '',
+        nbDecisionnaires: '',
+        id: '',
+        count: 0,
+      ),
+    )
+    RequestAuherResponseModel assistanceCellule,
     // id,
-    @Default('false')  String? formAssistanceIsSubmit,
+    @Default('false') String? formAssistanceIsSubmit,
     required String? formAssistanceSubmitDate,
-    @Default([RequestSuggestionResponseModel(fullname: "", recommandation: "", isDisciple: false, probleme: "")]) List<RequestSuggestionResponseModel> visiteMenbre,
-    @Default([RequestSuggestionResponseModel(fullname: "", recommandation: "", isDisciple: false, probleme: "")]) List<RequestSuggestionResponseModel> visiteOuvrier,
+    @Default([
+      RequestSuggestionResponseModel(
+        fullname: "",
+        recommandation: "",
+        isDisciple: false,
+        probleme: "",
+      ),
+    ])
+    List<RequestSuggestionResponseModel> visiteMenbre,
+    @Default([
+      RequestSuggestionResponseModel(
+        fullname: "",
+        recommandation: "",
+        isDisciple: false,
+        probleme: "",
+      ),
+    ])
+    List<RequestSuggestionResponseModel> visiteOuvrier,
     required String? dateActivitySubmited,
-    @Default('false')  String? formActivityIsSubmit,
+    @Default('false') String? formActivityIsSubmit,
     required String? formActivitySubmitDate,
-    @Default([RequestHumaneSectionActivityResponseModel(suggestions: "", probleme: "", temoignage: "")]) List<RequestHumaneSectionActivityResponseModel> suggestions,
+    @Default([
+      RequestHumaneSectionActivityResponseModel(
+        suggestions: "",
+        probleme: "",
+        temoignage: "",
+      ),
+    ])
+    List<RequestHumaneSectionActivityResponseModel> suggestions,
     required String? faisAssignaler,
     required String? ouvrierSpritualLive,
-    @Default('false')  String? formSuggestionIsSubmit,
+    @Default('false') String? formSuggestionIsSubmit,
     required String? formSuggestionSubmitDate,
-    @Default('en_cours') String? tag
+    @Default('en_cours') String? tag,
   }) = _RapportCelluleResponseModel;
   factory RapportCelluleResponseModel.fromJson(Map<String, dynamic> json) =>
       _$RapportCelluleResponseModelFromJson(json);
-
 
   static RapportCelluleResponse toDomain(RapportCelluleResponseModel model) {
     return RapportCelluleResponse(
@@ -551,23 +600,41 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
       offrande: model.offrande.getOrEmpty(),
       nombreBaptiser: model.nombreBaptiser.getOrEmpty(),
       nombreNonBaptiser: model.nombreNonBaptiser.getOrEmpty(),
-      discipleCellule: model.discipleCellule.map(DiscipleCelluleModel.toDomain).toList(),
+      discipleCellule: model.discipleCellule
+          .map(DiscipleCelluleModel.toDomain)
+          .toList(),
       id: model.id.getOrEmpty(),
       formAdministrationIsSubmit: model.formAdministrationIsSubmit.getOrEmpty(),
-      formAdministrationSubmitDate: model.formAdministrationSubmitDate.getOrEmpty(),
+      formAdministrationSubmitDate: model.formAdministrationSubmitDate
+          .getOrEmpty(),
       resumerPredication: model.resumerPredication.getOrEmpty(),
-      assistanceNonBaptiser: RequestHumaneSectionAssistanceResponseModel.toDomain(model.assistanceNonBaptiser),
-      assistanceNouveau: RequestHumaneSectionAssistanceResponseModel.toDomain(model.assistanceNouveau),
-      assistanceInviter: RequestHumaneSectionAssistanceResponseModel.toDomain(model.assistanceInviter),
-      assistanceCellule: RequestAuherResponseModel.toDomain(model.assistanceCellule),
+      assistanceNonBaptiser:
+          RequestHumaneSectionAssistanceResponseModel.toDomain(
+            model.assistanceNonBaptiser,
+          ),
+      assistanceNouveau: RequestHumaneSectionAssistanceResponseModel.toDomain(
+        model.assistanceNouveau,
+      ),
+      assistanceInviter: RequestHumaneSectionAssistanceResponseModel.toDomain(
+        model.assistanceInviter,
+      ),
+      assistanceCellule: RequestAuherResponseModel.toDomain(
+        model.assistanceCellule,
+      ),
       formAssistanceIsSubmit: model.formAssistanceIsSubmit.getOrEmpty(),
       formAssistanceSubmitDate: model.formAssistanceSubmitDate.getOrEmpty(),
-      visiteMenbre: model.visiteMenbre.map((e) => RequestSuggestionResponseModel.toDomain(e)).toList(),
-      visiteOuvrier: model.visiteOuvrier.map((e) => RequestSuggestionResponseModel.toDomain(e)).toList(),
+      visiteMenbre: model.visiteMenbre
+          .map((e) => RequestSuggestionResponseModel.toDomain(e))
+          .toList(),
+      visiteOuvrier: model.visiteOuvrier
+          .map((e) => RequestSuggestionResponseModel.toDomain(e))
+          .toList(),
       dateActivitySubmited: model.dateActivitySubmited.getOrEmpty(),
       formActivityIsSubmit: model.formActivityIsSubmit.getOrEmpty(),
       formActivitySubmitDate: model.formActivitySubmitDate.getOrEmpty(),
-      suggestions: model.suggestions.map( RequestHumaneSectionActivityResponseModel.toDomain).toList(),
+      suggestions: model.suggestions
+          .map(RequestHumaneSectionActivityResponseModel.toDomain)
+          .toList(),
       faisAssignaler: model.faisAssignaler.getOrEmpty(),
       ouvrierSpritualLive: model.ouvrierSpritualLive.getOrEmpty(),
       formSuggestionIsSubmit: model.formSuggestionIsSubmit.getOrEmpty(),

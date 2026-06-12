@@ -4,11 +4,17 @@ import 'package:grace_church/feature/authen/domaine/entities/request/authen_requ
 
 abstract class AuthenRepository {
   // ---------------------------------------------------------------------------------------------
-  // cette permet de creer ou mettre a jour le profile 
+  // cette permet de creer le profile 
   // il prend en paramètre un objet RequestAuthenProfile qui contient les parametre de la requette 
-  // il retourne un objet String? qui contient l'id du profile cree ou mis a jour
+  // il retourne un objet String? qui contient l'id du profile cree
   // ---------------------------------------------------------------------------------------------
   Future<Either<Failure, String?>> createProfile(RequestAuthenProfile request);
+
+  // ---------------------------------------------------------------------------------------------
+  // cette permet de mettre a jour le profile 
+  // il prend en paramètre un objet RequestAuthenProfile qui contient les parametre de la requette 
+  // il retourne un objet String? qui contient l'id du profile mis a jour
+  // ---------------------------------------------------------------------------------------------
   Future<Either<Failure, String?>> updateProfile(RequestAuthenProfile request);
   
   // ---------------------------------------------------------------------------------------------
@@ -23,17 +29,14 @@ abstract class AuthenRepository {
   // il prend en paramètre un objet RequestAuthenSpiritualLife qui contient les parametre de la requette 
   // il retourne un objet String? qui contient l'id du spiritual life cree ou mis a jour
   // ---------------------------------------------------------------------------------------------
-  Future<Either<Failure, String?>> createSpiritualLife(
-    RequestAuthenSpiritualLife request,
-  );
+  Future<Either<Failure, String?>> createSpiritualLife(RequestAuthenSpiritualLife request);
+  
   // ---------------------------------------------------------------------------------------------
   // Cette permet de creer ou mettre a jour les informations d'engagement
   // il prend en paramètre un objet RequestAuthenEngagement qui contient les parametre de la requette 
   // il retourne un objet String? qui contient l'id de l'engagement cree ou mis a jour
   // ---------------------------------------------------------------------------------------------
-  Future<Either<Failure, String?>> createEngagement(
-    RequestAuthenEngagement request,
-  );
+  Future<Either<Failure, String?>> createEngagement(RequestAuthenEngagement request);
 
   // ---------------------------------------------------------------------------------------------
   // Cette permet de creer ou mettre a jour les informations de connexion
@@ -47,9 +50,7 @@ abstract class AuthenRepository {
   // il prend en paramètre un objet RequestAuthenUpdateProfileKey qui contient les parametre de la requette (deviceId)
   // il retourne un objet String? qui contient l'id de la connexion cree ou mis a jour
   // ---------------------------------------------------------------------------------------------
-  Future<Either<Failure, String?>> updateProfileId(
-    RequestAuthenUpdateProfileKey params,
-  );
+  Future<Either<Failure, String?>> updateProfileId(RequestAuthenUpdateProfileKey params);
 }
 
 

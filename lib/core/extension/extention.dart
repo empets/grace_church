@@ -569,3 +569,113 @@ bool allCaracterIsNombre(String input) {
 String isAllDigits(String input) {
   return RegExp(r'^\d+$').hasMatch(input) ? input : "00";
 }
+
+
+List<Map<String, dynamic>> parseImages(dynamic data) {
+  if (data == null) return [];
+
+  if (data is List) {
+    return data.map((e) => e as Map<String, dynamic>).toList();
+  }
+
+  if (data is Map) {
+    return data.values.map((e) => e as Map<String, dynamic>).toList();
+  }
+
+  return [];
+}
+
+Map<String, dynamic> convertMap(Map data) {
+  return data.map((key, value) {
+    if (value is Map) {
+      return MapEntry(key.toString(), convertMap(value));
+    } else if (value is List) {
+      return MapEntry(
+        key.toString(),
+        value.map((e) {
+          if (e is Map) {
+            return convertMap(e);
+          }
+
+          return e;
+        }).toList(),
+      );
+    }
+
+    return MapEntry(key.toString(), value);
+  });
+}
+
+Map<String, dynamic> convertMapToNotificationClick(Map data) {
+  return data.map((key, value) {
+    if (value is Map) {
+      return MapEntry(key.toString(), convertMapToNotificationClick(value));
+    } else if (value is List) {
+      return MapEntry(
+        key.toString(),
+        value.map((e) {
+          if (e is Map) {
+            return convertMapToNotificationClick(e);
+          }
+
+          return e;
+        }).toList(),
+      );
+    }
+    if (value == null) {
+      return MapEntry(key.toString(), {});
+    }
+
+    return MapEntry(key.toString(), value);
+  });
+}
+
+Map<String, dynamic> parseFirebaseMap(dynamic raw) {
+  if (raw == null || raw is! Map) return {};
+
+  final map = Map<String, dynamic>.from(raw);
+
+  map.forEach((key, value) {
+    if (value is Map) {
+      map[key] = parseFirebaseMap(value);
+    } else if (value is List) {
+      map[key] = value
+          .map((item) => item is Map ? parseFirebaseMap(item) : item)
+          .toList();
+    }
+  });
+  log("======>>  parsed map ${map}");
+
+  return map; // ✅ ne touche plus clicks ici
+}
+
+Map<String, dynamic> parseFirebaseMapForNotificationClick(dynamic raw) {
+  if (raw == null || raw is! Map) return {};
+
+  final map = Map<String, dynamic>.from(raw);
+
+  map.forEach((key, value) {
+    if (value is Map) {
+      map[key] = parseFirebaseMapForNotificationClick(value);
+    } else if (value is List) {
+      map[key] = value
+          .map(
+            (item) =>
+                item is Map ? parseFirebaseMapForNotificationClick(item) : item,
+          )
+          .toList();
+    }
+  });
+
+  if (map['clicks'] is Map<String, dynamic>) {
+    map['clicks'] = (map['clicks'] as Map<String, dynamic>).values.map((click) {
+      log("======>> list parsed click  ${click}");
+      return Map<String, dynamic>.from(click as Map);
+    }).toList();
+  } else {
+    log("======>>  parsed map ${map}");
+    map['clicks'] = <Map<String, dynamic>>[];
+  }
+
+  return map; // ✅ ne touche plus clicks ici
+}

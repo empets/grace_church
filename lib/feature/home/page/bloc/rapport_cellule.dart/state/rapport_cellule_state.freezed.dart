@@ -1008,7 +1008,7 @@ as bool,
 /// @nodoc
 mixin _$RapportCelluleRequestSuggestionState {
 
- TextFormz get faisAssignaler; TextFormz get ouvrierSpritualLive; TextFormz get resumerPredication; List<RapportSuggestion> get suggestions; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get faisAssignaler; TextFormz get ouvrierSpritualLive; TextFormz get resumerPredication; TextFormz get id; List<RapportSuggestion> get suggestions; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of RapportCelluleRequestSuggestionState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1019,16 +1019,16 @@ $RapportCelluleRequestSuggestionStateCopyWith<RapportCelluleRequestSuggestionSta
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSuggestionState&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSuggestionState&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.suggestions, suggestions)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,faisAssignaler,ouvrierSpritualLive,resumerPredication,const DeepCollectionEquality().hash(suggestions),status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,faisAssignaler,ouvrierSpritualLive,resumerPredication,id,const DeepCollectionEquality().hash(suggestions),status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestSuggestionState(faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, resumerPredication: $resumerPredication, suggestions: $suggestions, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'RapportCelluleRequestSuggestionState(faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, resumerPredication: $resumerPredication, id: $id, suggestions: $suggestions, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -1039,7 +1039,7 @@ abstract mixin class $RapportCelluleRequestSuggestionStateCopyWith<$Res>  {
   factory $RapportCelluleRequestSuggestionStateCopyWith(RapportCelluleRequestSuggestionState value, $Res Function(RapportCelluleRequestSuggestionState) _then) = _$RapportCelluleRequestSuggestionStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz faisAssignaler, TextFormz ouvrierSpritualLive, TextFormz resumerPredication, List<RapportSuggestion> suggestions, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz faisAssignaler, TextFormz ouvrierSpritualLive, TextFormz resumerPredication, TextFormz id, List<RapportSuggestion> suggestions, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -1056,11 +1056,12 @@ class _$RapportCelluleRequestSuggestionStateCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleRequestSuggestionState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? resumerPredication = null,Object? suggestions = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? resumerPredication = null,Object? id = null,Object? suggestions = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_self.copyWith(
 faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
 as TextFormz,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
 as TextFormz,resumerPredication: null == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
+as TextFormz,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as TextFormz,suggestions: null == suggestions ? _self.suggestions : suggestions // ignore: cast_nullable_to_non_nullable
 as List<RapportSuggestion>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -1150,10 +1151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  TextFormz resumerPredication,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  TextFormz resumerPredication,  TextFormz id,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSuggestionState() when $default != null:
-return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPredication,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPredication,_that.id,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
   return orElse();
 
 }
@@ -1171,10 +1172,10 @@ return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPred
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  TextFormz resumerPredication,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  TextFormz resumerPredication,  TextFormz id,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSuggestionState():
-return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPredication,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPredication,_that.id,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1191,10 +1192,10 @@ return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPred
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  TextFormz resumerPredication,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz faisAssignaler,  TextFormz ouvrierSpritualLive,  TextFormz resumerPredication,  TextFormz id,  List<RapportSuggestion> suggestions,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestSuggestionState() when $default != null:
-return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPredication,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPredication,_that.id,_that.suggestions,_that.status,_that.errorMessage,_that.isValide);case _:
   return null;
 
 }
@@ -1206,12 +1207,13 @@ return $default(_that.faisAssignaler,_that.ouvrierSpritualLive,_that.resumerPred
 
 
 class _RapportCelluleRequestSuggestionState implements RapportCelluleRequestSuggestionState {
-  const _RapportCelluleRequestSuggestionState({required this.faisAssignaler, required this.ouvrierSpritualLive, required this.resumerPredication, required final  List<RapportSuggestion> suggestions, required this.status, required this.errorMessage, required this.isValide}): _suggestions = suggestions;
+  const _RapportCelluleRequestSuggestionState({required this.faisAssignaler, required this.ouvrierSpritualLive, required this.resumerPredication, required this.id, required final  List<RapportSuggestion> suggestions, required this.status, required this.errorMessage, required this.isValide}): _suggestions = suggestions;
   
 
 @override final  TextFormz faisAssignaler;
 @override final  TextFormz ouvrierSpritualLive;
 @override final  TextFormz resumerPredication;
+@override final  TextFormz id;
  final  List<RapportSuggestion> _suggestions;
 @override List<RapportSuggestion> get suggestions {
   if (_suggestions is EqualUnmodifiableListView) return _suggestions;
@@ -1233,16 +1235,16 @@ _$RapportCelluleRequestSuggestionStateCopyWith<_RapportCelluleRequestSuggestionS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestSuggestionState&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestSuggestionState&&(identical(other.faisAssignaler, faisAssignaler) || other.faisAssignaler == faisAssignaler)&&(identical(other.ouvrierSpritualLive, ouvrierSpritualLive) || other.ouvrierSpritualLive == ouvrierSpritualLive)&&(identical(other.resumerPredication, resumerPredication) || other.resumerPredication == resumerPredication)&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._suggestions, _suggestions)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,faisAssignaler,ouvrierSpritualLive,resumerPredication,const DeepCollectionEquality().hash(_suggestions),status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,faisAssignaler,ouvrierSpritualLive,resumerPredication,id,const DeepCollectionEquality().hash(_suggestions),status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestSuggestionState(faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, resumerPredication: $resumerPredication, suggestions: $suggestions, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'RapportCelluleRequestSuggestionState(faisAssignaler: $faisAssignaler, ouvrierSpritualLive: $ouvrierSpritualLive, resumerPredication: $resumerPredication, id: $id, suggestions: $suggestions, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -1253,7 +1255,7 @@ abstract mixin class _$RapportCelluleRequestSuggestionStateCopyWith<$Res> implem
   factory _$RapportCelluleRequestSuggestionStateCopyWith(_RapportCelluleRequestSuggestionState value, $Res Function(_RapportCelluleRequestSuggestionState) _then) = __$RapportCelluleRequestSuggestionStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz faisAssignaler, TextFormz ouvrierSpritualLive, TextFormz resumerPredication, List<RapportSuggestion> suggestions, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz faisAssignaler, TextFormz ouvrierSpritualLive, TextFormz resumerPredication, TextFormz id, List<RapportSuggestion> suggestions, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -1270,11 +1272,12 @@ class __$RapportCelluleRequestSuggestionStateCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleRequestSuggestionState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? resumerPredication = null,Object? suggestions = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? faisAssignaler = null,Object? ouvrierSpritualLive = null,Object? resumerPredication = null,Object? id = null,Object? suggestions = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_RapportCelluleRequestSuggestionState(
 faisAssignaler: null == faisAssignaler ? _self.faisAssignaler : faisAssignaler // ignore: cast_nullable_to_non_nullable
 as TextFormz,ouvrierSpritualLive: null == ouvrierSpritualLive ? _self.ouvrierSpritualLive : ouvrierSpritualLive // ignore: cast_nullable_to_non_nullable
 as TextFormz,resumerPredication: null == resumerPredication ? _self.resumerPredication : resumerPredication // ignore: cast_nullable_to_non_nullable
+as TextFormz,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as TextFormz,suggestions: null == suggestions ? _self._suggestions : suggestions // ignore: cast_nullable_to_non_nullable
 as List<RapportSuggestion>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable

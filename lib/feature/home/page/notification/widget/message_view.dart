@@ -9,14 +9,25 @@ import 'package:grace_church/feature/home/domaine/entities/response/home_respons
 import 'package:grace_church/gen/assets.gen.dart';
 
 class MessageView extends StatefulWidget {
-  const MessageView({super.key, required this.notification});
+  const MessageView({super.key, required this.notification, this.onDataChanged});
   final NotificationResponse notification;
+   final VoidCallback? onDataChanged;
 
   @override
   State<MessageView> createState() => _MessageViewState();
 }
 
 class _MessageViewState extends State<MessageView> {
+
+ @override
+void initState() {
+  super.initState();
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    widget.onDataChanged?.call();
+  });
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +37,7 @@ class _MessageViewState extends State<MessageView> {
         leading: IconButton(
           icon: SvgPicture.asset(assets.images.arrowBack.path),
           onPressed: () {
-            Navigator.of(context).pop(true);
+            Navigator.of(context).pop();
           },
         ),
         title: CustomeHeaderTitle(title: "Message "),

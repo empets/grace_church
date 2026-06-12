@@ -275,6 +275,7 @@ abstract class RequestRapportCelluleActivity
     @Default('false')  String formActivityIsSubmit,
     required String formActivitySubmitDate,
     required String tag,
+    required String id,
   }) = _RequestRapportCelluleActivity;
   factory RequestRapportCelluleActivity.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleActivityFromJson(json);
@@ -291,6 +292,7 @@ abstract class RequestRapportCelluleSuggestion
     required String formSuggestionSubmitDate,
     required String resumerPredication,
     required String tag,
+    required String id,
   }) = _RequestRapportCelluleSuggestion;
   factory RequestRapportCelluleSuggestion.fromJson(Map<String, dynamic> json) =>
       _$RequestRapportCelluleSuggestionFromJson(json);

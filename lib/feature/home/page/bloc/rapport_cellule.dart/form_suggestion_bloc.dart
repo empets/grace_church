@@ -112,6 +112,7 @@ class FormSuggestionBloc
               formSuggestionSubmitDate: DateTime.now().toIso8601String(),
               resumerPredication: state.resumerPredication.value,
               tag:"terminer",
+              id: state.id,
             ),
           );
           emit(

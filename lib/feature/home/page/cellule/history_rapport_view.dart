@@ -511,11 +511,6 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                                         );
 
                                  }
-
-
-
-                                 
-                                    
                               
                                 },
                                 child: Stack(
