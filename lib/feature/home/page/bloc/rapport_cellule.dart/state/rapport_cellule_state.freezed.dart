@@ -724,7 +724,7 @@ $RequestHumaneSectionAssistanceCopyWith<$Res> get inviter {
 /// @nodoc
 mixin _$RapportCelluleRequestActivityState {
 
- TextFormz get id; List<VisiteDisciple> get discipleVisiteList; List<VisiteDisciple> get discipleMenbreList; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
+ TextFormz get id; List<VisiteDisciple> get discipleVisiteList; List<VisiteDisciple> get discipleMenbreList; List<WeekActivity> get activity; FormzSubmissionStatus get status; String get errorMessage; bool get isValide;
 /// Create a copy of RapportCelluleRequestActivityState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -735,16 +735,16 @@ $RapportCelluleRequestActivityStateCopyWith<RapportCelluleRequestActivityState> 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestActivityState&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.discipleVisiteList, discipleVisiteList)&&const DeepCollectionEquality().equals(other.discipleMenbreList, discipleMenbreList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestActivityState&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.discipleVisiteList, discipleVisiteList)&&const DeepCollectionEquality().equals(other.discipleMenbreList, discipleMenbreList)&&const DeepCollectionEquality().equals(other.activity, activity)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(discipleVisiteList),const DeepCollectionEquality().hash(discipleMenbreList),status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(discipleVisiteList),const DeepCollectionEquality().hash(discipleMenbreList),const DeepCollectionEquality().hash(activity),status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestActivityState(id: $id, discipleVisiteList: $discipleVisiteList, discipleMenbreList: $discipleMenbreList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'RapportCelluleRequestActivityState(id: $id, discipleVisiteList: $discipleVisiteList, discipleMenbreList: $discipleMenbreList, activity: $activity, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -755,7 +755,7 @@ abstract mixin class $RapportCelluleRequestActivityStateCopyWith<$Res>  {
   factory $RapportCelluleRequestActivityStateCopyWith(RapportCelluleRequestActivityState value, $Res Function(RapportCelluleRequestActivityState) _then) = _$RapportCelluleRequestActivityStateCopyWithImpl;
 @useResult
 $Res call({
- TextFormz id, List<VisiteDisciple> discipleVisiteList, List<VisiteDisciple> discipleMenbreList, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz id, List<VisiteDisciple> discipleVisiteList, List<VisiteDisciple> discipleMenbreList, List<WeekActivity> activity, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -772,12 +772,13 @@ class _$RapportCelluleRequestActivityStateCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleRequestActivityState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? discipleVisiteList = null,Object? discipleMenbreList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? discipleVisiteList = null,Object? discipleMenbreList = null,Object? activity = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as TextFormz,discipleVisiteList: null == discipleVisiteList ? _self.discipleVisiteList : discipleVisiteList // ignore: cast_nullable_to_non_nullable
 as List<VisiteDisciple>,discipleMenbreList: null == discipleMenbreList ? _self.discipleMenbreList : discipleMenbreList // ignore: cast_nullable_to_non_nullable
-as List<VisiteDisciple>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,activity: null == activity ? _self.activity : activity // ignore: cast_nullable_to_non_nullable
+as List<WeekActivity>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
 as bool,
@@ -865,10 +866,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  List<WeekActivity> activity,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestActivityState() when $default != null:
-return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.activity,_that.status,_that.errorMessage,_that.isValide);case _:
   return orElse();
 
 }
@@ -886,10 +887,10 @@ return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  List<WeekActivity> activity,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestActivityState():
-return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.activity,_that.status,_that.errorMessage,_that.isValide);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -906,10 +907,10 @@ return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextFormz id,  List<VisiteDisciple> discipleVisiteList,  List<VisiteDisciple> discipleMenbreList,  List<WeekActivity> activity,  FormzSubmissionStatus status,  String errorMessage,  bool isValide)?  $default,) {final _that = this;
 switch (_that) {
 case _RapportCelluleRequestActivityState() when $default != null:
-return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.status,_that.errorMessage,_that.isValide);case _:
+return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that.activity,_that.status,_that.errorMessage,_that.isValide);case _:
   return null;
 
 }
@@ -921,7 +922,7 @@ return $default(_that.id,_that.discipleVisiteList,_that.discipleMenbreList,_that
 
 
 class _RapportCelluleRequestActivityState implements RapportCelluleRequestActivityState {
-  const _RapportCelluleRequestActivityState({required this.id, required final  List<VisiteDisciple> discipleVisiteList, required final  List<VisiteDisciple> discipleMenbreList, required this.status, required this.errorMessage, required this.isValide}): _discipleVisiteList = discipleVisiteList,_discipleMenbreList = discipleMenbreList;
+  const _RapportCelluleRequestActivityState({required this.id, required final  List<VisiteDisciple> discipleVisiteList, required final  List<VisiteDisciple> discipleMenbreList, required final  List<WeekActivity> activity, required this.status, required this.errorMessage, required this.isValide}): _discipleVisiteList = discipleVisiteList,_discipleMenbreList = discipleMenbreList,_activity = activity;
   
 
 @override final  TextFormz id;
@@ -939,6 +940,13 @@ class _RapportCelluleRequestActivityState implements RapportCelluleRequestActivi
   return EqualUnmodifiableListView(_discipleMenbreList);
 }
 
+ final  List<WeekActivity> _activity;
+@override List<WeekActivity> get activity {
+  if (_activity is EqualUnmodifiableListView) return _activity;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_activity);
+}
+
 @override final  FormzSubmissionStatus status;
 @override final  String errorMessage;
 @override final  bool isValide;
@@ -953,16 +961,16 @@ _$RapportCelluleRequestActivityStateCopyWith<_RapportCelluleRequestActivityState
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestActivityState&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._discipleVisiteList, _discipleVisiteList)&&const DeepCollectionEquality().equals(other._discipleMenbreList, _discipleMenbreList)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RapportCelluleRequestActivityState&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._discipleVisiteList, _discipleVisiteList)&&const DeepCollectionEquality().equals(other._discipleMenbreList, _discipleMenbreList)&&const DeepCollectionEquality().equals(other._activity, _activity)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.isValide, isValide) || other.isValide == isValide));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_discipleVisiteList),const DeepCollectionEquality().hash(_discipleMenbreList),status,errorMessage,isValide);
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_discipleVisiteList),const DeepCollectionEquality().hash(_discipleMenbreList),const DeepCollectionEquality().hash(_activity),status,errorMessage,isValide);
 
 @override
 String toString() {
-  return 'RapportCelluleRequestActivityState(id: $id, discipleVisiteList: $discipleVisiteList, discipleMenbreList: $discipleMenbreList, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
+  return 'RapportCelluleRequestActivityState(id: $id, discipleVisiteList: $discipleVisiteList, discipleMenbreList: $discipleMenbreList, activity: $activity, status: $status, errorMessage: $errorMessage, isValide: $isValide)';
 }
 
 
@@ -973,7 +981,7 @@ abstract mixin class _$RapportCelluleRequestActivityStateCopyWith<$Res> implemen
   factory _$RapportCelluleRequestActivityStateCopyWith(_RapportCelluleRequestActivityState value, $Res Function(_RapportCelluleRequestActivityState) _then) = __$RapportCelluleRequestActivityStateCopyWithImpl;
 @override @useResult
 $Res call({
- TextFormz id, List<VisiteDisciple> discipleVisiteList, List<VisiteDisciple> discipleMenbreList, FormzSubmissionStatus status, String errorMessage, bool isValide
+ TextFormz id, List<VisiteDisciple> discipleVisiteList, List<VisiteDisciple> discipleMenbreList, List<WeekActivity> activity, FormzSubmissionStatus status, String errorMessage, bool isValide
 });
 
 
@@ -990,12 +998,13 @@ class __$RapportCelluleRequestActivityStateCopyWithImpl<$Res>
 
 /// Create a copy of RapportCelluleRequestActivityState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? discipleVisiteList = null,Object? discipleMenbreList = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? discipleVisiteList = null,Object? discipleMenbreList = null,Object? activity = null,Object? status = null,Object? errorMessage = null,Object? isValide = null,}) {
   return _then(_RapportCelluleRequestActivityState(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as TextFormz,discipleVisiteList: null == discipleVisiteList ? _self._discipleVisiteList : discipleVisiteList // ignore: cast_nullable_to_non_nullable
 as List<VisiteDisciple>,discipleMenbreList: null == discipleMenbreList ? _self._discipleMenbreList : discipleMenbreList // ignore: cast_nullable_to_non_nullable
-as List<VisiteDisciple>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as List<VisiteDisciple>,activity: null == activity ? _self._activity : activity // ignore: cast_nullable_to_non_nullable
+as List<WeekActivity>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,isValide: null == isValide ? _self.isValide : isValide // ignore: cast_nullable_to_non_nullable
 as bool,

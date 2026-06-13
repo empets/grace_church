@@ -389,6 +389,9 @@ _RequestRapportCelluleActivity _$RequestRapportCelluleActivityFromJson(
   dateActivitySubmited: (json['dateActivitySubmited'] as List<dynamic>)
       .map((e) => e as Map<String, dynamic>)
       .toList(),
+  weekActivity: (json['weekActivity'] as List<dynamic>)
+      .map((e) => e as Map<String, dynamic>)
+      .toList(),
   formActivityIsSubmit: json['formActivityIsSubmit'] as String? ?? 'false',
   formActivitySubmitDate: json['formActivitySubmitDate'] as String,
   tag: json['tag'] as String,
@@ -401,6 +404,7 @@ Map<String, dynamic> _$RequestRapportCelluleActivityToJson(
   'visiteMenbre': instance.visiteMenbre,
   'visiteOuvrier': instance.visiteOuvrier,
   'dateActivitySubmited': instance.dateActivitySubmited,
+  'weekActivity': instance.weekActivity,
   'formActivityIsSubmit': instance.formActivityIsSubmit,
   'formActivitySubmitDate': instance.formActivitySubmitDate,
   'tag': instance.tag,

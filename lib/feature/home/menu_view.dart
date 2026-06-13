@@ -90,11 +90,44 @@ class _MenuViewState extends State<MenuView> {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> menuItems = [
       {
-        "title": "Mon Profil",
+        "title": "S'inscrire",
         "icon": Icons.person,
         "visible": true,
         "value": "profile",
       },
+      {
+        "title": "Connexion",
+        "icon": Icons.location_history,
+        "visible": true,
+        "value": "connexion",
+      },
+      {
+        "title": "Fell back",
+        "icon": Icons.email,
+        "visible": true,
+        "value": "email",
+      },
+       {
+        "title": "Call center ",
+        "icon": Icons.phone_rounded,
+        "visible": true,
+        "value": "call",
+      },
+
+      {
+        "title": "Mise ajour ",
+        "icon": Icons.security_update_warning_rounded,
+        "visible": true,
+        "value": "call",
+      },
+      
+      {
+        "title": "Sécurité",
+        "icon": Icons.admin_panel_settings_sharp,
+        "visible": true,
+        "value": "call",
+      },
+      
     ];
     final List<Map<String, dynamic>> menuItemsForResponsable = [
       {
@@ -114,6 +147,32 @@ class _MenuViewState extends State<MenuView> {
         "icon": Icons.history_rounded,
         "visible": true,
         "value": "history_rapport",
+      },
+         {
+        "title": "Fell back",
+        "icon": Icons.email,
+        "visible": true,
+        "value": "email",
+      },
+       {
+        "title": "Call center ",
+        "icon": Icons.phone_rounded,
+        "visible": true,
+        "value": "call",
+      },
+
+      {
+        "title": "Mise ajour ",
+        "icon": Icons.security_update_warning_rounded,
+        "visible": true,
+        "value": "call",
+      },
+      
+      {
+        "title": "Sécurité",
+        "icon": Icons.admin_panel_settings_sharp,
+        "visible": true,
+        "value": "call",
       },
     ];
 
@@ -140,7 +199,6 @@ class _MenuViewState extends State<MenuView> {
         top: false,
         bottom: true,
         child: Drawer(
-          
           child: Container(
             color: Colors.grey.shade50,
             width: 0.5.sw,
@@ -693,8 +751,10 @@ class _MenuViewState extends State<MenuView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
+                                margin: EdgeInsets.only(left: 0.0.sw),
                                 padding: EdgeInsets.all(5.r),
                                 decoration: BoxDecoration(
                                   border: Border.all(
@@ -725,14 +785,19 @@ class _MenuViewState extends State<MenuView> {
                                 ),
                               ),
 
-                              SizedBox(width: 12.w),
-                              Text(
-                                "Hello",
-                                style: context.appTypographie.body.copyWith(
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: context.appColor.primaryGrayDark,
-                                ),
+                          
+                              Row(
+                                children: [
+                                      SizedBox(width: 0.29.sw),
+                                  Text(
+                                    "Hello",
+                                    style: context.appTypographie.body.copyWith(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: context.appColor.primaryGrayDark,
+                                    ),
+                                  ),
+                                ],
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -758,7 +823,7 @@ class _MenuViewState extends State<MenuView> {
                                   return ListTile(
                                     leading: Icon(
                                       item["icon"],
-                                      color: (item["value"] == "profile")
+                                      color: (item["value"] == "profile" || item["value"] == "connexion")
                                           ? context.appColor.primaryBlue
                                           : context.appColor.primaryBlue
                                                 .withValues(alpha: 0.5),
@@ -771,7 +836,7 @@ class _MenuViewState extends State<MenuView> {
                                           .copyWith(
                                             fontSize: 13.sp,
                                             fontWeight: FontWeight.w600,
-                                            color: (item["value"] != "profile")
+                                            color: (item["value"] != "profile" && item["value"] != "connexion" )
                                                 ? context
                                                       .appColor
                                                       .primaryGrayDark
@@ -781,10 +846,10 @@ class _MenuViewState extends State<MenuView> {
                                                       .primaryGrayDark,
                                           ),
                                     ),
-                                    trailing: (item["value"] != "profile")
+                                    trailing:(item["value"] == "profile" || item["value"] == "connexion" )
                                         ? Icon(
                                             Icons.chevron_right,
-                                            color: context.appColor.primaryBlue,
+                                            color:  context.appColor.primaryBlue,
                                           )
                                         : SizedBox(),
                                     onTap: () {
@@ -832,6 +897,13 @@ class _MenuViewState extends State<MenuView> {
                                             ),
                                           ),
                                         );
+                                      }
+
+                                      if(item["value"] == "connexion"){
+                                        Navigator.push(context, fadeRoute(
+                                          SigninView(showAppBar: true,)
+                                        ));
+
                                       }
                                     },
                                   );

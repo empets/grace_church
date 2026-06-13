@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/custome_widget/button.dart';
@@ -9,6 +10,7 @@ import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/core/navigator_widget/custome_app_bar.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';
@@ -26,7 +28,8 @@ import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class SigninView extends StatelessWidget {
-  const SigninView({super.key});
+  const SigninView({super.key, this.showAppBar = false});
+  final bool showAppBar;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +42,7 @@ class SigninView extends StatelessWidget {
         listener: (context, state) async {
           if (state.status.isSuccess) {
             Navigator.of(context).pushAndRemoveUntil(
-              fadeRoute( OverviewScreen(
-                menberId: state.errorMessage
-              )),
+              fadeRoute(OverviewScreen(menberId: state.errorMessage)),
               (route) => false,
             );
           } else if (state.status.isFailure) {
@@ -54,6 +55,17 @@ class SigninView extends StatelessWidget {
         },
         child: Scaffold(
           backgroundColor: Colors.grey.shade50,
+          appBar: showAppBar
+              ? AppBar(
+                  backgroundColor: Colors.grey.shade50,
+                  leading: IconButton(
+                    icon: SvgPicture.asset(assets.images.arrowBack.path),
+                    onPressed: () {
+                      ;
+                    },
+                  ),
+                )
+              : null,
           body: SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w),

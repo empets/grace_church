@@ -94,6 +94,42 @@ class FormActiviteBloc
           ),
         );
         break;
+      
+      case ChangeActivityRapportCelluleRequestActivityEvent(
+        :final activity,
+      ):
+        // ignore: dead_code
+        final menbreState = state.copyWith(activity: activity);
+
+        // Vérification des erreurs
+        if (activity.any(
+          (item) =>
+              item.theme.isEmpty ||
+              item.orateur.trim().isEmpty ||
+              item.date.trim().isEmpty||
+              item.lieu.trim().isEmpty||
+              item.programmeNature.trim().isEmpty
+
+        )) {
+          emit(
+            menbreState.copyWith(
+              errorMessage: "Ce champ est obligatoire",
+              isValide: false,
+            ),
+          );
+          return;
+        }
+
+        // Si pas d'erreur → validation normale
+        emit(
+          menbreState.copyWith(
+            errorMessage: "",
+            isValide: _validate(menbreState),
+          ),
+        );
+        break;
+
+
 
       case SubmitRapportCelluleRequestActivityEvent():
         if (state.isValide) {
@@ -108,6 +144,9 @@ class FormActiviteBloc
               visiteOuvrier: state.discipleVisiteList  
                   .map((e) => e.toJson())
                   .toList(),
+               weekActivity:  state.activity  
+                  .map((e) => e.toJson())
+                  .toList(),   
               dateActivitySubmited: [],
               formActivityIsSubmit: "true",
               tag: "en_cours",

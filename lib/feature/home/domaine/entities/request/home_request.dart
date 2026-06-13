@@ -272,6 +272,7 @@ abstract class RequestRapportCelluleActivity
     required List<Map<String, dynamic>> visiteMenbre,
     required List<Map<String, dynamic>> visiteOuvrier,
     required List<Map<String, dynamic>> dateActivitySubmited,
+    required List<Map<String, dynamic>> weekActivity,
     @Default('false')  String formActivityIsSubmit,
     required String formActivitySubmitDate,
     required String tag,

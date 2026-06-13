@@ -1405,7 +1405,7 @@ extension RapportCelluleRequestSectionAssistanceEventPatterns on RapportCelluleR
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)?  formationNewDFB,TResult Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)?  formationNewBaptDFD,TResult Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)?  visiteMenbre,TResult Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)?  visiteDisciple,TResult Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)?  nbTravailleurs,TResult Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)?  nbEleveAndEtudiants,TResult Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierEM,TResult Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierAutreDepatementDirigeantEM,TResult Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)?  nbFormationNiveau2,TResult Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)?  ngAgendaEM,TResult Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)?  nbDecisionnaires,TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  id,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)?  formationNewDFB,TResult Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)?  formationNewBaptDFD,TResult Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)?  visiteMenbre,TResult Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)?  visiteDisciple,TResult Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)?  nbTravailleurs,TResult Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)?  nbEleveAndEtudiants,TResult Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierEM,TResult Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierAutreDepatementDirigeantEM,TResult Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)?  nbFormationNiveau2,TResult Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)?  ngAgendaEM,TResult Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)?  nbDecisionnaires,TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
@@ -1430,8 +1430,7 @@ return changeSectionVisite(_that);case ChangeSectionActiviteRapportCelluleReques
 return changeSectionActivite(_that);case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent() when changeSectionOuvrier != null:
 return changeSectionOuvrier(_that);case ChangeAutresRapportCelluleRequestSectionAssistanceEvent() when changeAutres != null:
 return changeAutres(_that);case SubmitRapportCelluleRequestSectionAssistanceEvent() when submit != null:
-return submit(_that);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when id != null:
-return id(_that);case _:
+return submit(_that);case _:
   return orElse();
 
 }
@@ -1449,7 +1448,7 @@ return id(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNombreBaptiser,required TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)  updateSectionId,required TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)  changeNomBaptiserStatic,required TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNoveauBaptiser,required TResult Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)  formationNewDFB,required TResult Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)  formationNewBaptDFD,required TResult Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)  visiteMenbre,required TResult Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)  visiteDisciple,required TResult Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)  nbTravailleurs,required TResult Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)  nbEleveAndEtudiants,required TResult Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)  nbOuvrierEM,required TResult Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)  nbOuvrierAutreDepatementDirigeantEM,required TResult Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)  nbFormationNiveau2,required TResult Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)  ngAgendaEM,required TResult Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)  nbDecisionnaires,required TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)  changeInviter,required TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)  changeFormation,required TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionVisite,required TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionActivite,required TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)  changeSectionOuvrier,required TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)  changeAutres,required TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)  submit,required TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)  id,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNombreBaptiser,required TResult Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)  updateSectionId,required TResult Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)  changeNomBaptiserStatic,required TResult Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)  changeNoveauBaptiser,required TResult Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)  formationNewDFB,required TResult Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)  formationNewBaptDFD,required TResult Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)  visiteMenbre,required TResult Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)  visiteDisciple,required TResult Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)  nbTravailleurs,required TResult Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)  nbEleveAndEtudiants,required TResult Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)  nbOuvrierEM,required TResult Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)  nbOuvrierAutreDepatementDirigeantEM,required TResult Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)  nbFormationNiveau2,required TResult Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)  ngAgendaEM,required TResult Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)  nbDecisionnaires,required TResult Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)  changeInviter,required TResult Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)  changeFormation,required TResult Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionVisite,required TResult Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)  changeSectionActivite,required TResult Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)  changeSectionOuvrier,required TResult Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)  changeAutres,required TResult Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent():
@@ -1474,8 +1473,7 @@ return changeSectionVisite(_that);case ChangeSectionActiviteRapportCelluleReques
 return changeSectionActivite(_that);case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent():
 return changeSectionOuvrier(_that);case ChangeAutresRapportCelluleRequestSectionAssistanceEvent():
 return changeAutres(_that);case SubmitRapportCelluleRequestSectionAssistanceEvent():
-return submit(_that);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId():
-return id(_that);case _:
+return submit(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1492,7 +1490,7 @@ return id(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult? Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult? Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult? Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult? Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)?  formationNewDFB,TResult? Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)?  formationNewBaptDFD,TResult? Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)?  visiteMenbre,TResult? Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)?  visiteDisciple,TResult? Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)?  nbTravailleurs,TResult? Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)?  nbEleveAndEtudiants,TResult? Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierEM,TResult? Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierAutreDepatementDirigeantEM,TResult? Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)?  nbFormationNiveau2,TResult? Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)?  ngAgendaEM,TResult? Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)?  nbDecisionnaires,TResult? Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult? Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult? Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult? Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult? Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult? Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult? Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,TResult? Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  id,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNombreBaptiser,TResult? Function( RapportCelluleRequestSectionAssistanceEventUpdateSectionId value)?  updateSectionId,TResult? Function( ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent value)?  changeNomBaptiserStatic,TResult? Function( ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent value)?  changeNoveauBaptiser,TResult? Function( FormationNewDFBRapportCelluleRequestSectionAssistanceEvent value)?  formationNewDFB,TResult? Function( FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent value)?  formationNewBaptDFD,TResult? Function( VisiteMenbreRapportCelluleRequestSectionAssistanceEvent value)?  visiteMenbre,TResult? Function( VisiteDiscipleRapportCelluleRequestSectionAssistanceEvent value)?  visiteDisciple,TResult? Function( NbTravailleursRapportCelluleRequestSectionAssistanceEvent value)?  nbTravailleurs,TResult? Function( NbEleveAndEtudiantsRapportCelluleRequestSectionAssistanceEvent value)?  nbEleveAndEtudiants,TResult? Function( NbOuvrierEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierEM,TResult? Function( NbOuvrierAutreDepatementDirigeantEMRapportCelluleRequestSectionAssistanceEvent value)?  nbOuvrierAutreDepatementDirigeantEM,TResult? Function( NbFormationNiveau2RapportCelluleRequestSectionAssistanceEvent value)?  nbFormationNiveau2,TResult? Function( NgAgendaEMRapportCelluleRequestSectionAssistanceEvent value)?  ngAgendaEM,TResult? Function( NbDecisionnairesRapportCelluleRequestSectionAssistanceEvent value)?  nbDecisionnaires,TResult? Function( ChangeInviterRapportCelluleRequestSectionAssistanceEvent value)?  changeInviter,TResult? Function( ChangeFormationRapportCelluleRequestSectionAssistanceEvent value)?  changeFormation,TResult? Function( ChangeSectionVisiteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionVisite,TResult? Function( ChangeSectionActiviteRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionActivite,TResult? Function( ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent value)?  changeSectionOuvrier,TResult? Function( ChangeAutresRapportCelluleRequestSectionAssistanceEvent value)?  changeAutres,TResult? Function( SubmitRapportCelluleRequestSectionAssistanceEvent value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
@@ -1517,8 +1515,7 @@ return changeSectionVisite(_that);case ChangeSectionActiviteRapportCelluleReques
 return changeSectionActivite(_that);case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent() when changeSectionOuvrier != null:
 return changeSectionOuvrier(_that);case ChangeAutresRapportCelluleRequestSectionAssistanceEvent() when changeAutres != null:
 return changeAutres(_that);case SubmitRapportCelluleRequestSectionAssistanceEvent() when submit != null:
-return submit(_that);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when id != null:
-return id(_that);case _:
+return submit(_that);case _:
   return null;
 
 }
@@ -1535,7 +1532,7 @@ return id(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String id)?  updateSectionId,TResult Function( RequestHumaneSectionAssistance nonBaptiserStatic)?  changeNomBaptiserStatic,TResult Function( RequestHumaneSectionAssistance nouveauBaptiserStat)?  changeNoveauBaptiser,TResult Function( String formationNewDFB)?  formationNewDFB,TResult Function( String formationNewBaptDFD)?  formationNewBaptDFD,TResult Function( String visiteMenbre)?  visiteMenbre,TResult Function( String visiteDisciple)?  visiteDisciple,TResult Function( String nbTravailleurs)?  nbTravailleurs,TResult Function( String nbEleveAndEtudiants)?  nbEleveAndEtudiants,TResult Function( String nbOuvrierEM)?  nbOuvrierEM,TResult Function( String nbOuvrierAutreDepatementDirigeantEM)?  nbOuvrierAutreDepatementDirigeantEM,TResult Function( String nbFormationNiveau2)?  nbFormationNiveau2,TResult Function( String ngAgendaEM)?  ngAgendaEM,TResult Function( String nbDecisionnaires)?  nbDecisionnaires,TResult Function( RequestHumaneSectionAssistance inviterStat)?  changeInviter,TResult Function( RequestAuherInformation formationStat)?  changeFormation,TResult Function( RequestAuherInformation sectionVisite)?  changeSectionVisite,TResult Function( RequestAuherInformation sectionActivite)?  changeSectionActivite,TResult Function( RequestAuherInformation sectionOuvrier)?  changeSectionOuvrier,TResult Function( String autres)?  changeAutres,TResult Function()?  submit,TResult Function( String id)?  id,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String nombreBaptiser)?  changeNombreBaptiser,TResult Function( String id)?  updateSectionId,TResult Function( RequestHumaneSectionAssistance nonBaptiserStatic)?  changeNomBaptiserStatic,TResult Function( RequestHumaneSectionAssistance nouveauBaptiserStat)?  changeNoveauBaptiser,TResult Function( String formationNewDFB)?  formationNewDFB,TResult Function( String formationNewBaptDFD)?  formationNewBaptDFD,TResult Function( String visiteMenbre)?  visiteMenbre,TResult Function( String visiteDisciple)?  visiteDisciple,TResult Function( String nbTravailleurs)?  nbTravailleurs,TResult Function( String nbEleveAndEtudiants)?  nbEleveAndEtudiants,TResult Function( String nbOuvrierEM)?  nbOuvrierEM,TResult Function( String nbOuvrierAutreDepatementDirigeantEM)?  nbOuvrierAutreDepatementDirigeantEM,TResult Function( String nbFormationNiveau2)?  nbFormationNiveau2,TResult Function( String ngAgendaEM)?  ngAgendaEM,TResult Function( String nbDecisionnaires)?  nbDecisionnaires,TResult Function( RequestHumaneSectionAssistance inviterStat)?  changeInviter,TResult Function( RequestAuherInformation formationStat)?  changeFormation,TResult Function( RequestAuherInformation sectionVisite)?  changeSectionVisite,TResult Function( RequestAuherInformation sectionActivite)?  changeSectionActivite,TResult Function( RequestAuherInformation sectionOuvrier)?  changeSectionOuvrier,TResult Function( String autres)?  changeAutres,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
@@ -1559,8 +1556,7 @@ return changeSectionVisite(_that.sectionVisite);case ChangeSectionActiviteRappor
 return changeSectionActivite(_that.sectionActivite);case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent() when changeSectionOuvrier != null:
 return changeSectionOuvrier(_that.sectionOuvrier);case ChangeAutresRapportCelluleRequestSectionAssistanceEvent() when changeAutres != null:
 return changeAutres(_that.autres);case SubmitRapportCelluleRequestSectionAssistanceEvent() when submit != null:
-return submit();case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when id != null:
-return id(_that.id);case _:
+return submit();case _:
   return orElse();
 
 }
@@ -1578,7 +1574,7 @@ return id(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String id)  updateSectionId,required TResult Function( RequestHumaneSectionAssistance nonBaptiserStatic)  changeNomBaptiserStatic,required TResult Function( RequestHumaneSectionAssistance nouveauBaptiserStat)  changeNoveauBaptiser,required TResult Function( String formationNewDFB)  formationNewDFB,required TResult Function( String formationNewBaptDFD)  formationNewBaptDFD,required TResult Function( String visiteMenbre)  visiteMenbre,required TResult Function( String visiteDisciple)  visiteDisciple,required TResult Function( String nbTravailleurs)  nbTravailleurs,required TResult Function( String nbEleveAndEtudiants)  nbEleveAndEtudiants,required TResult Function( String nbOuvrierEM)  nbOuvrierEM,required TResult Function( String nbOuvrierAutreDepatementDirigeantEM)  nbOuvrierAutreDepatementDirigeantEM,required TResult Function( String nbFormationNiveau2)  nbFormationNiveau2,required TResult Function( String ngAgendaEM)  ngAgendaEM,required TResult Function( String nbDecisionnaires)  nbDecisionnaires,required TResult Function( RequestHumaneSectionAssistance inviterStat)  changeInviter,required TResult Function( RequestAuherInformation formationStat)  changeFormation,required TResult Function( RequestAuherInformation sectionVisite)  changeSectionVisite,required TResult Function( RequestAuherInformation sectionActivite)  changeSectionActivite,required TResult Function( RequestAuherInformation sectionOuvrier)  changeSectionOuvrier,required TResult Function( String autres)  changeAutres,required TResult Function()  submit,required TResult Function( String id)  id,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String nombreBaptiser)  changeNombreBaptiser,required TResult Function( String id)  updateSectionId,required TResult Function( RequestHumaneSectionAssistance nonBaptiserStatic)  changeNomBaptiserStatic,required TResult Function( RequestHumaneSectionAssistance nouveauBaptiserStat)  changeNoveauBaptiser,required TResult Function( String formationNewDFB)  formationNewDFB,required TResult Function( String formationNewBaptDFD)  formationNewBaptDFD,required TResult Function( String visiteMenbre)  visiteMenbre,required TResult Function( String visiteDisciple)  visiteDisciple,required TResult Function( String nbTravailleurs)  nbTravailleurs,required TResult Function( String nbEleveAndEtudiants)  nbEleveAndEtudiants,required TResult Function( String nbOuvrierEM)  nbOuvrierEM,required TResult Function( String nbOuvrierAutreDepatementDirigeantEM)  nbOuvrierAutreDepatementDirigeantEM,required TResult Function( String nbFormationNiveau2)  nbFormationNiveau2,required TResult Function( String ngAgendaEM)  ngAgendaEM,required TResult Function( String nbDecisionnaires)  nbDecisionnaires,required TResult Function( RequestHumaneSectionAssistance inviterStat)  changeInviter,required TResult Function( RequestAuherInformation formationStat)  changeFormation,required TResult Function( RequestAuherInformation sectionVisite)  changeSectionVisite,required TResult Function( RequestAuherInformation sectionActivite)  changeSectionActivite,required TResult Function( RequestAuherInformation sectionOuvrier)  changeSectionOuvrier,required TResult Function( String autres)  changeAutres,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent():
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId():
@@ -1602,8 +1598,7 @@ return changeSectionVisite(_that.sectionVisite);case ChangeSectionActiviteRappor
 return changeSectionActivite(_that.sectionActivite);case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent():
 return changeSectionOuvrier(_that.sectionOuvrier);case ChangeAutresRapportCelluleRequestSectionAssistanceEvent():
 return changeAutres(_that.autres);case SubmitRapportCelluleRequestSectionAssistanceEvent():
-return submit();case RapportCelluleRequestSectionAssistanceEventUpdateSectionId():
-return id(_that.id);case _:
+return submit();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1620,7 +1615,7 @@ return id(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String id)?  updateSectionId,TResult? Function( RequestHumaneSectionAssistance nonBaptiserStatic)?  changeNomBaptiserStatic,TResult? Function( RequestHumaneSectionAssistance nouveauBaptiserStat)?  changeNoveauBaptiser,TResult? Function( String formationNewDFB)?  formationNewDFB,TResult? Function( String formationNewBaptDFD)?  formationNewBaptDFD,TResult? Function( String visiteMenbre)?  visiteMenbre,TResult? Function( String visiteDisciple)?  visiteDisciple,TResult? Function( String nbTravailleurs)?  nbTravailleurs,TResult? Function( String nbEleveAndEtudiants)?  nbEleveAndEtudiants,TResult? Function( String nbOuvrierEM)?  nbOuvrierEM,TResult? Function( String nbOuvrierAutreDepatementDirigeantEM)?  nbOuvrierAutreDepatementDirigeantEM,TResult? Function( String nbFormationNiveau2)?  nbFormationNiveau2,TResult? Function( String ngAgendaEM)?  ngAgendaEM,TResult? Function( String nbDecisionnaires)?  nbDecisionnaires,TResult? Function( RequestHumaneSectionAssistance inviterStat)?  changeInviter,TResult? Function( RequestAuherInformation formationStat)?  changeFormation,TResult? Function( RequestAuherInformation sectionVisite)?  changeSectionVisite,TResult? Function( RequestAuherInformation sectionActivite)?  changeSectionActivite,TResult? Function( RequestAuherInformation sectionOuvrier)?  changeSectionOuvrier,TResult? Function( String autres)?  changeAutres,TResult? Function()?  submit,TResult? Function( String id)?  id,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String nombreBaptiser)?  changeNombreBaptiser,TResult? Function( String id)?  updateSectionId,TResult? Function( RequestHumaneSectionAssistance nonBaptiserStatic)?  changeNomBaptiserStatic,TResult? Function( RequestHumaneSectionAssistance nouveauBaptiserStat)?  changeNoveauBaptiser,TResult? Function( String formationNewDFB)?  formationNewDFB,TResult? Function( String formationNewBaptDFD)?  formationNewBaptDFD,TResult? Function( String visiteMenbre)?  visiteMenbre,TResult? Function( String visiteDisciple)?  visiteDisciple,TResult? Function( String nbTravailleurs)?  nbTravailleurs,TResult? Function( String nbEleveAndEtudiants)?  nbEleveAndEtudiants,TResult? Function( String nbOuvrierEM)?  nbOuvrierEM,TResult? Function( String nbOuvrierAutreDepatementDirigeantEM)?  nbOuvrierAutreDepatementDirigeantEM,TResult? Function( String nbFormationNiveau2)?  nbFormationNiveau2,TResult? Function( String ngAgendaEM)?  ngAgendaEM,TResult? Function( String nbDecisionnaires)?  nbDecisionnaires,TResult? Function( RequestHumaneSectionAssistance inviterStat)?  changeInviter,TResult? Function( RequestAuherInformation formationStat)?  changeFormation,TResult? Function( RequestAuherInformation sectionVisite)?  changeSectionVisite,TResult? Function( RequestAuherInformation sectionActivite)?  changeSectionActivite,TResult? Function( RequestAuherInformation sectionOuvrier)?  changeSectionOuvrier,TResult? Function( String autres)?  changeAutres,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent() when changeNombreBaptiser != null:
 return changeNombreBaptiser(_that.nombreBaptiser);case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when updateSectionId != null:
@@ -1644,8 +1639,7 @@ return changeSectionVisite(_that.sectionVisite);case ChangeSectionActiviteRappor
 return changeSectionActivite(_that.sectionActivite);case ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent() when changeSectionOuvrier != null:
 return changeSectionOuvrier(_that.sectionOuvrier);case ChangeAutresRapportCelluleRequestSectionAssistanceEvent() when changeAutres != null:
 return changeAutres(_that.autres);case SubmitRapportCelluleRequestSectionAssistanceEvent() when submit != null:
-return submit();case RapportCelluleRequestSectionAssistanceEventUpdateSectionId() when id != null:
-return id(_that.id);case _:
+return submit();case _:
   return null;
 
 }
@@ -3135,72 +3129,6 @@ String toString() {
 
 
 /// @nodoc
-
-
-// class RapportCelluleRequestSectionAssistanceEventUpdateSectionId implements RapportCelluleRequestSectionAssistanceEvent {
-//    RapportCelluleRequestSectionAssistanceEventUpdateSectionId(this.id);
-  
-
-//  final  String id;
-
-// /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
-// /// with the given fields replaced by the non-null parameter values.
-// @JsonKey(includeFromJson: false, includeToJson: false)
-// @pragma('vm:prefer-inline')
-// $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<RapportCelluleRequestSectionAssistanceEventUpdateSectionId> get copyWith => _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl<RapportCelluleRequestSectionAssistanceEventUpdateSectionId>(this, _$identity);
-
-
-
-// @override
-// bool operator ==(Object other) {
-//   return identical(this, other) || (other.runtimeType == runtimeType&&other is RapportCelluleRequestSectionAssistanceEventUpdateSectionId&&(identical(other.id, id) || other.id == id));
-// }
-
-
-// @override
-// int get hashCode => Object.hash(runtimeType,id);
-
-// @override
-// String toString() {
-//   return 'RapportCelluleRequestSectionAssistanceEvent.id(id: $id)';
-// }
-
-
-// }
-
-// /// @nodoc
-// abstract mixin class $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<$Res> implements $RapportCelluleRequestSectionAssistanceEventCopyWith<$Res> {
-//   factory $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith(RapportCelluleRequestSectionAssistanceEventUpdateSectionId value, $Res Function(RapportCelluleRequestSectionAssistanceEventUpdateSectionId) _then) = _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl;
-// @useResult
-// $Res call({
-//  String id
-// });
-
-
-
-
-// }
-/// @nodoc
-// class _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl<$Res>
-//     implements $RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWith<$Res> {
-//   _$RapportCelluleRequestSectionAssistanceEventUpdateSectionIdCopyWithImpl(this._self, this._then);
-
-//   final RapportCelluleRequestSectionAssistanceEventUpdateSectionId _self;
-//   final $Res Function(RapportCelluleRequestSectionAssistanceEventUpdateSectionId) _then;
-
-// /// Create a copy of RapportCelluleRequestSectionAssistanceEvent
-// /// with the given fields replaced by the non-null parameter values.
-// @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-//   return _then(RapportCelluleRequestSectionAssistanceEventUpdateSectionId(
-// null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-// as String,
-//   ));
-// }
-
-
-// }
-
-/// @nodoc
 mixin _$RapportCelluleRequestActivityEvent {
 
 
@@ -3244,12 +3172,13 @@ extension RapportCelluleRequestActivityEventPatterns on RapportCelluleRequestAct
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)?  changeDisciple,TResult Function( ChangeMenbreRapportCelluleRequestActivityEvent value)?  changeMenbre,TResult Function( RapportCelluleRequestActivityEventUpdateSectionId value)?  updateSectionId,TResult Function( SubmitRapportCelluleRequestActivityEvent value)?  submit,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)?  changeDisciple,TResult Function( ChangeMenbreRapportCelluleRequestActivityEvent value)?  changeMenbre,TResult Function( ChangeActivityRapportCelluleRequestActivityEvent value)?  changeAtivity,TResult Function( RapportCelluleRequestActivityEventUpdateSectionId value)?  updateSectionId,TResult Function( SubmitRapportCelluleRequestActivityEvent value)?  submit,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
 return changeDisciple(_that);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
-return changeMenbre(_that);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return changeMenbre(_that);case ChangeActivityRapportCelluleRequestActivityEvent() when changeAtivity != null:
+return changeAtivity(_that);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
 return submit(_that);case _:
   return orElse();
@@ -3269,17 +3198,15 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)  changeDisciple,required TResult Function( ChangeMenbreRapportCelluleRequestActivityEvent value)  changeMenbre,required TResult Function( RapportCelluleRequestActivityEventUpdateSectionId value)  updateSectionId,required TResult Function( SubmitRapportCelluleRequestActivityEvent value)  submit,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)  changeDisciple,required TResult Function( ChangeMenbreRapportCelluleRequestActivityEvent value)  changeMenbre,required TResult Function( ChangeActivityRapportCelluleRequestActivityEvent value)  changeAtivity,required TResult Function( RapportCelluleRequestActivityEventUpdateSectionId value)  updateSectionId,required TResult Function( SubmitRapportCelluleRequestActivityEvent value)  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestActivityEvent():
 return changeDisciple(_that);case ChangeMenbreRapportCelluleRequestActivityEvent():
-return changeMenbre(_that);case RapportCelluleRequestActivityEventUpdateSectionId():
+return changeMenbre(_that);case ChangeActivityRapportCelluleRequestActivityEvent():
+return changeAtivity(_that);case RapportCelluleRequestActivityEventUpdateSectionId():
 return updateSectionId(_that);case SubmitRapportCelluleRequestActivityEvent():
-return submit(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return submit(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -3293,12 +3220,13 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)?  changeDisciple,TResult? Function( ChangeMenbreRapportCelluleRequestActivityEvent value)?  changeMenbre,TResult? Function( RapportCelluleRequestActivityEventUpdateSectionId value)?  updateSectionId,TResult? Function( SubmitRapportCelluleRequestActivityEvent value)?  submit,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ChangeDiscipleRapportCelluleRequestActivityEvent value)?  changeDisciple,TResult? Function( ChangeMenbreRapportCelluleRequestActivityEvent value)?  changeMenbre,TResult? Function( ChangeActivityRapportCelluleRequestActivityEvent value)?  changeAtivity,TResult? Function( RapportCelluleRequestActivityEventUpdateSectionId value)?  updateSectionId,TResult? Function( SubmitRapportCelluleRequestActivityEvent value)?  submit,}){
 final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
 return changeDisciple(_that);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
-return changeMenbre(_that);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return changeMenbre(_that);case ChangeActivityRapportCelluleRequestActivityEvent() when changeAtivity != null:
+return changeAtivity(_that);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
 return submit(_that);case _:
   return null;
@@ -3317,11 +3245,12 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<VisiteDisciple> visiteDisciple)?  changeDisciple,TResult Function( List<VisiteDisciple> visiteMenre)?  changeMenbre,TResult Function( String id)?  updateSectionId,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<VisiteDisciple> visiteDisciple)?  changeDisciple,TResult Function( List<VisiteDisciple> visiteMenre)?  changeMenbre,TResult Function( List<WeekActivity> activity)?  changeAtivity,TResult Function( String id)?  updateSectionId,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
 return changeDisciple(_that.visiteDisciple);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
-return changeMenbre(_that.visiteMenre);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return changeMenbre(_that.visiteMenre);case ChangeActivityRapportCelluleRequestActivityEvent() when changeAtivity != null:
+return changeAtivity(_that.activity);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that.id);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
 return submit();case _:
   return orElse();
@@ -3341,16 +3270,14 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<VisiteDisciple> visiteDisciple)  changeDisciple,required TResult Function( List<VisiteDisciple> visiteMenre)  changeMenbre,required TResult Function( String id)  updateSectionId,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<VisiteDisciple> visiteDisciple)  changeDisciple,required TResult Function( List<VisiteDisciple> visiteMenre)  changeMenbre,required TResult Function( List<WeekActivity> activity)  changeAtivity,required TResult Function( String id)  updateSectionId,required TResult Function()  submit,}) {final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestActivityEvent():
 return changeDisciple(_that.visiteDisciple);case ChangeMenbreRapportCelluleRequestActivityEvent():
-return changeMenbre(_that.visiteMenre);case RapportCelluleRequestActivityEventUpdateSectionId():
+return changeMenbre(_that.visiteMenre);case ChangeActivityRapportCelluleRequestActivityEvent():
+return changeAtivity(_that.activity);case RapportCelluleRequestActivityEventUpdateSectionId():
 return updateSectionId(_that.id);case SubmitRapportCelluleRequestActivityEvent():
-return submit();case _:
-  throw StateError('Unexpected subclass');
-
-}
+return submit();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -3364,11 +3291,12 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<VisiteDisciple> visiteDisciple)?  changeDisciple,TResult? Function( List<VisiteDisciple> visiteMenre)?  changeMenbre,TResult? Function( String id)?  updateSectionId,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<VisiteDisciple> visiteDisciple)?  changeDisciple,TResult? Function( List<VisiteDisciple> visiteMenre)?  changeMenbre,TResult? Function( List<WeekActivity> activity)?  changeAtivity,TResult? Function( String id)?  updateSectionId,TResult? Function()?  submit,}) {final _that = this;
 switch (_that) {
 case ChangeDiscipleRapportCelluleRequestActivityEvent() when changeDisciple != null:
 return changeDisciple(_that.visiteDisciple);case ChangeMenbreRapportCelluleRequestActivityEvent() when changeMenbre != null:
-return changeMenbre(_that.visiteMenre);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
+return changeMenbre(_that.visiteMenre);case ChangeActivityRapportCelluleRequestActivityEvent() when changeAtivity != null:
+return changeAtivity(_that.activity);case RapportCelluleRequestActivityEventUpdateSectionId() when updateSectionId != null:
 return updateSectionId(_that.id);case SubmitRapportCelluleRequestActivityEvent() when submit != null:
 return submit();case _:
   return null;
@@ -3516,6 +3444,78 @@ class _$ChangeMenbreRapportCelluleRequestActivityEventCopyWithImpl<$Res>
   return _then(ChangeMenbreRapportCelluleRequestActivityEvent(
 null == visiteMenre ? _self._visiteMenre : visiteMenre // ignore: cast_nullable_to_non_nullable
 as List<VisiteDisciple>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ChangeActivityRapportCelluleRequestActivityEvent implements RapportCelluleRequestActivityEvent {
+   ChangeActivityRapportCelluleRequestActivityEvent(final  List<WeekActivity> activity): _activity = activity;
+  
+
+ final  List<WeekActivity> _activity;
+ List<WeekActivity> get activity {
+  if (_activity is EqualUnmodifiableListView) return _activity;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_activity);
+}
+
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChangeActivityRapportCelluleRequestActivityEventCopyWith<ChangeActivityRapportCelluleRequestActivityEvent> get copyWith => _$ChangeActivityRapportCelluleRequestActivityEventCopyWithImpl<ChangeActivityRapportCelluleRequestActivityEvent>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeActivityRapportCelluleRequestActivityEvent&&const DeepCollectionEquality().equals(other._activity, _activity));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_activity));
+
+@override
+String toString() {
+  return 'RapportCelluleRequestActivityEvent.changeAtivity(activity: $activity)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ChangeActivityRapportCelluleRequestActivityEventCopyWith<$Res> implements $RapportCelluleRequestActivityEventCopyWith<$Res> {
+  factory $ChangeActivityRapportCelluleRequestActivityEventCopyWith(ChangeActivityRapportCelluleRequestActivityEvent value, $Res Function(ChangeActivityRapportCelluleRequestActivityEvent) _then) = _$ChangeActivityRapportCelluleRequestActivityEventCopyWithImpl;
+@useResult
+$Res call({
+ List<WeekActivity> activity
+});
+
+
+
+
+}
+/// @nodoc
+class _$ChangeActivityRapportCelluleRequestActivityEventCopyWithImpl<$Res>
+    implements $ChangeActivityRapportCelluleRequestActivityEventCopyWith<$Res> {
+  _$ChangeActivityRapportCelluleRequestActivityEventCopyWithImpl(this._self, this._then);
+
+  final ChangeActivityRapportCelluleRequestActivityEvent _self;
+  final $Res Function(ChangeActivityRapportCelluleRequestActivityEvent) _then;
+
+/// Create a copy of RapportCelluleRequestActivityEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? activity = null,}) {
+  return _then(ChangeActivityRapportCelluleRequestActivityEvent(
+null == activity ? _self._activity : activity // ignore: cast_nullable_to_non_nullable
+as List<WeekActivity>,
   ));
 }
 
@@ -3700,10 +3700,7 @@ return changeResumerPredication(_that);case FaisAssignalerRapportCelluleRequestS
 return faisAssignaler(_that);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent():
 return etatsSprituelOuvrier(_that);case RapportCelluleRequestSuggestionEventUpdateSectionId():
 return updateSectionId(_that);case SubmitRapportCelluleRequestSuggestionEvent():
-return submit(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return submit(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -3777,10 +3774,7 @@ return changeResumerPredication(_that.resumerPredication);case FaisAssignalerRap
 return faisAssignaler(_that.isAssignaler);case EtatsSprituelOuvrierRapportCelluleRequestSuggestionEvent():
 return etatsSprituelOuvrier(_that.etatsSprituelOuvrier);case RapportCelluleRequestSuggestionEventUpdateSectionId():
 return updateSectionId(_that.id);case SubmitRapportCelluleRequestSuggestionEvent():
-return submit();case _:
-  throw StateError('Unexpected subclass');
-
-}
+return submit();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///

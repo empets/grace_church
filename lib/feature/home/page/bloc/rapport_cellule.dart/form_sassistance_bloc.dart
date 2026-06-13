@@ -458,8 +458,7 @@ class RapportCelluleSectionAssistanceBloc
             (success) => state.copyWith(status: FormzSubmissionStatus.success, errorMessage: state.id.value),
           ),
         );
-
-        break;
+  
     }
   }
 

@@ -574,6 +574,8 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
       ),
     ])
     List<RequestHumaneSectionActivityResponseModel> suggestions,
+    @Default([WeekActivityResponseModel(date: '', orateur: '', lieu: '',programmeNature: '', theme: '')])
+      List<WeekActivityResponseModel> weekActivity,
     required String? faisAssignaler,
     required String? ouvrierSpritualLive,
     @Default('false') String? formSuggestionIsSubmit,
@@ -639,7 +641,34 @@ abstract class RapportCelluleResponseModel with _$RapportCelluleResponseModel {
       ouvrierSpritualLive: model.ouvrierSpritualLive.getOrEmpty(),
       formSuggestionIsSubmit: model.formSuggestionIsSubmit.getOrEmpty(),
       formSuggestionSubmitDate: model.formSuggestionSubmitDate.getOrEmpty(),
-      tag: model.tag.getOrEmpty(),
+      tag: model.tag.getOrEmpty(), weekActivity: model.weekActivity
+          .map(WeekActivityResponseModel.toDomain)
+          .toList(),
     );
   }
+}
+
+
+@freezed
+abstract class WeekActivityResponseModel with _$WeekActivityResponseModel {
+ const factory WeekActivityResponseModel({
+    @Default('') String theme,
+     @Default('') String orateur,
+     @Default('') String lieu,
+     @Default('') String date,
+     @Default('') String programmeNature,
+  }) = _WeekActivityResponseModel;
+  factory WeekActivityResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$WeekActivityResponseModelFromJson(json);
+
+
+    static   WeekActivityResponse toDomain(WeekActivityResponseModel model){
+      return WeekActivityResponse(
+        date: model.date.getOrEmpty(),
+        theme: model.theme.getOrEmpty(),
+        lieu: model.lieu.getOrEmpty(),
+        programmeNature: model.programmeNature.getOrEmpty(),
+        orateur: model.orateur.getOrEmpty()
+         );
+    }
 }

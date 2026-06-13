@@ -181,6 +181,20 @@ abstract class VisiteDisciple with _$VisiteDisciple {
       _$VisiteDiscipleFromJson(json);
 }
 
+
+@freezed
+abstract class WeekActivity with _$WeekActivity {
+  factory WeekActivity({
+    required String theme,
+    required String orateur,
+    required String lieu,
+    required String date,
+    required String programmeNature,
+  }) = _WeekActivity;
+  factory WeekActivity.fromJson(Map<String, dynamic> json) =>
+      _$WeekActivityFromJson(json);
+}
+
 @freezed
 abstract class RapportSuggestion with _$RapportSuggestion {
   factory RapportSuggestion({
@@ -228,6 +242,7 @@ abstract class RapportCelluleResponse with _$RapportCelluleResponse {
     required String formAssistanceSubmitDate,
     required List<RequestSuggestionResponse> visiteMenbre,
     required List<RequestSuggestionResponse> visiteOuvrier,
+    required List<WeekActivityResponse> weekActivity,
     required String dateActivitySubmited,
     required String formActivityIsSubmit,
     required String formActivitySubmitDate,
@@ -307,4 +322,18 @@ abstract class RequestSuggestionResponse
   }) = _RequestSuggestionResponse;
   factory RequestSuggestionResponse.fromJson(Map<String, dynamic> json) =>
       _$RequestSuggestionResponseFromJson(json);
+}
+
+
+@freezed
+abstract class WeekActivityResponse with _$WeekActivityResponse {
+  factory WeekActivityResponse({
+    required String theme,
+    required String orateur,
+    required String lieu,
+    required String date,
+    required String programmeNature,
+  }) = _WeekActivityResponse;
+  factory WeekActivityResponse.fromJson(Map<String, dynamic> json) =>
+      _$WeekActivityResponseFromJson(json);
 }

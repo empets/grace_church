@@ -271,6 +271,24 @@ Map<String, dynamic> _$VisiteDiscipleToJson(_VisiteDisciple instance) =>
       'recommandation': instance.recommandation,
     };
 
+_WeekActivity _$WeekActivityFromJson(Map<String, dynamic> json) =>
+    _WeekActivity(
+      theme: json['theme'] as String,
+      orateur: json['orateur'] as String,
+      lieu: json['lieu'] as String,
+      date: json['date'] as String,
+      programmeNature: json['programmeNature'] as String,
+    );
+
+Map<String, dynamic> _$WeekActivityToJson(_WeekActivity instance) =>
+    <String, dynamic>{
+      'theme': instance.theme,
+      'orateur': instance.orateur,
+      'lieu': instance.lieu,
+      'date': instance.date,
+      'programmeNature': instance.programmeNature,
+    };
+
 _RapportSuggestion _$RapportSuggestionFromJson(Map<String, dynamic> json) =>
     _RapportSuggestion(
       temoignage: json['temoignage'] as String,
@@ -329,6 +347,9 @@ _RapportCelluleResponse _$RapportCelluleResponseFromJson(
   visiteOuvrier: (json['visiteOuvrier'] as List<dynamic>)
       .map((e) => RequestSuggestionResponse.fromJson(e as Map<String, dynamic>))
       .toList(),
+  weekActivity: (json['weekActivity'] as List<dynamic>)
+      .map((e) => WeekActivityResponse.fromJson(e as Map<String, dynamic>))
+      .toList(),
   dateActivitySubmited: json['dateActivitySubmited'] as String,
   formActivityIsSubmit: json['formActivityIsSubmit'] as String,
   formActivitySubmitDate: json['formActivitySubmitDate'] as String,
@@ -377,6 +398,7 @@ Map<String, dynamic> _$RapportCelluleResponseToJson(
   'formAssistanceSubmitDate': instance.formAssistanceSubmitDate,
   'visiteMenbre': instance.visiteMenbre,
   'visiteOuvrier': instance.visiteOuvrier,
+  'weekActivity': instance.weekActivity,
   'dateActivitySubmited': instance.dateActivitySubmited,
   'formActivityIsSubmit': instance.formActivityIsSubmit,
   'formActivitySubmitDate': instance.formActivitySubmitDate,
@@ -481,4 +503,24 @@ Map<String, dynamic> _$RequestSuggestionResponseToJson(
   'recommandation': instance.recommandation,
   'isDisciple': instance.isDisciple,
   'probleme': instance.probleme,
+};
+
+_WeekActivityResponse _$WeekActivityResponseFromJson(
+  Map<String, dynamic> json,
+) => _WeekActivityResponse(
+  theme: json['theme'] as String,
+  orateur: json['orateur'] as String,
+  lieu: json['lieu'] as String,
+  date: json['date'] as String,
+  programmeNature: json['programmeNature'] as String,
+);
+
+Map<String, dynamic> _$WeekActivityResponseToJson(
+  _WeekActivityResponse instance,
+) => <String, dynamic>{
+  'theme': instance.theme,
+  'orateur': instance.orateur,
+  'lieu': instance.lieu,
+  'date': instance.date,
+  'programmeNature': instance.programmeNature,
 };

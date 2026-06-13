@@ -532,6 +532,22 @@ _RapportCelluleResponseModel _$RapportCelluleResponseModelFromJson(
           temoignage: "",
         ),
       ],
+  weekActivity:
+      (json['weekActivity'] as List<dynamic>?)
+          ?.map(
+            (e) =>
+                WeekActivityResponseModel.fromJson(e as Map<String, dynamic>),
+          )
+          .toList() ??
+      const [
+        WeekActivityResponseModel(
+          date: '',
+          orateur: '',
+          lieu: '',
+          programmeNature: '',
+          theme: '',
+        ),
+      ],
   faisAssignaler: json['faisAssignaler'] as String?,
   ouvrierSpritualLive: json['ouvrierSpritualLive'] as String?,
   formSuggestionIsSubmit: json['formSuggestionIsSubmit'] as String? ?? 'false',
@@ -574,9 +590,30 @@ Map<String, dynamic> _$RapportCelluleResponseModelToJson(
   'formActivityIsSubmit': instance.formActivityIsSubmit,
   'formActivitySubmitDate': instance.formActivitySubmitDate,
   'suggestions': instance.suggestions,
+  'weekActivity': instance.weekActivity,
   'faisAssignaler': instance.faisAssignaler,
   'ouvrierSpritualLive': instance.ouvrierSpritualLive,
   'formSuggestionIsSubmit': instance.formSuggestionIsSubmit,
   'formSuggestionSubmitDate': instance.formSuggestionSubmitDate,
   'tag': instance.tag,
+};
+
+_WeekActivityResponseModel _$WeekActivityResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _WeekActivityResponseModel(
+  theme: json['theme'] as String? ?? '',
+  orateur: json['orateur'] as String? ?? '',
+  lieu: json['lieu'] as String? ?? '',
+  date: json['date'] as String? ?? '',
+  programmeNature: json['programmeNature'] as String? ?? '',
+);
+
+Map<String, dynamic> _$WeekActivityResponseModelToJson(
+  _WeekActivityResponseModel instance,
+) => <String, dynamic>{
+  'theme': instance.theme,
+  'orateur': instance.orateur,
+  'lieu': instance.lieu,
+  'date': instance.date,
+  'programmeNature': instance.programmeNature,
 };

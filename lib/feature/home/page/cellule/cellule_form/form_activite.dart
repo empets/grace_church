@@ -55,6 +55,19 @@ class _FormActiviteState extends State<FormActivite> {
     });
   }
 
+    void updateNombre3(RequestSectionForm RequestSection, int value) {
+    setState(() {
+      RequestSection.nombre = value;
+
+      RequestSection.rows = List.generate(
+        value,
+        (index) => RequestSection.rows.length > index
+            ? RequestSection.rows[index]
+            : FormRow(),
+      );
+    });
+  }
+
   RequestSectionForm RequestSection = RequestSectionForm(
     nombre: 1,
     rows: [FormRow()],
@@ -64,6 +77,12 @@ class _FormActiviteState extends State<FormActivite> {
     nombre: 1,
     rows: [FormRow()],
   );
+
+   RequestSectionForm RequestSection3 = RequestSectionForm(
+    nombre: 1,
+    rows: [FormRow()],
+  );
+
 
   void _updateDisciple({
     required BuildContext context,
@@ -140,6 +159,104 @@ class _FormActiviteState extends State<FormActivite> {
 
     bloc.add(RapportCelluleRequestActivityEvent.changeMenbre(list));
   }
+  
+ 
+  void _updateDisciple3({
+    required BuildContext context,
+    required int index,
+    required RapportCelluleRequestActivityState state,
+    String? theme,
+    String? orateur,
+    String? lieu,
+    String? date,
+    String? programmeNature,
+    required bool isBaptierOrNot,
+  }) {
+    final bloc = context.read<FormActiviteBloc>();
+
+    final list = List<WeekActivity>.from(state.discipleMenbreList);
+
+    // Étend la liste si nécessaire
+    if (list.length <= index) {
+      list.addAll(
+        List.generate(
+          index - list.length + 1,
+          (_) => WeekActivity(
+            theme: '',
+            orateur: '',
+            lieu: '', 
+            date: '', 
+            programmeNature: ''
+     
+          ),
+        ),
+      );
+    }
+
+    list[index] = list[index].copyWith(
+      theme: theme ?? list[index].theme,
+      orateur: orateur??list[index].orateur,
+      lieu: lieu ?? list[index].lieu,
+      date: date ?? list[index].date,
+      programmeNature: programmeNature ?? list[index].programmeNature,
+    );
+
+    bloc.add(RapportCelluleRequestActivityEvent.changeAtivity(list));
+  }
+
+  late String myDate = '';
+  
+  Future<void> _openCalendar() async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      //  initialDate: DateTime(2012),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(), // pas de futur
+      selectableDayPredicate: (day) {
+        final now = DateTime.now();
+
+        // 🔥 âge minimum 14 ans
+        final maxDate = DateTime(now.year - 14, now.month, now.day);
+
+        if (day.isBefore(maxDate)) {
+          return false;
+        }
+
+        return true;
+      },
+
+      /// 🎨 Custom Theme
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.blue, // 🔵 header + selected date
+              onPrimary: Colors.white, // texte sur header
+              onSurface: Colors.black, // texte normal
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.blue, // boutons OK / CANCEL
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null) {
+      setState(() {
+        myDate = picked.toString();
+     
+      });
+    
+    }
+  }
+
+
+
+
 
   @override
   void initState() {
@@ -581,6 +698,170 @@ class _FormActiviteState extends State<FormActivite> {
                             );
                           },
                         ),
+                       
+                       //---------------/ Activity
+                        BlocBuilder<
+                          FormActiviteBloc,
+                          RapportCelluleRequestActivityState
+                        >(
+                          builder: (context, state) {
+                            return Column(
+                              children: [
+                                SizedBox(height: 16.h),
+                                TextField(
+                                  readOnly: state.status.isInProgress,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    labelText:
+                                        "Nombre d'activity au cours de la semaine",
+                                    labelStyle: context.appTypographie.body
+                                        .copyWith(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  onChanged: (value) {
+                                    final number = int.tryParse(value) ?? 1;
+                                    updateNombre3(RequestSection3, number);
+                                  },
+                                ),
+                                Column(
+                                  children: List.generate(
+                                    RequestSection3.rows.length,
+                                    (index) {
+
+                                      return Card(
+                                        color: Colors.white,
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16.w,
+                                            vertical: 12.h,
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              //  Icon(Icons.file_open_rounded),:
+                                              Text(
+                                                " Monbre activé ${index + 1}",
+                                                style: context
+                                                    .appTypographie
+                                                    .body
+                                                    .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                              ),
+
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Nature du programme",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.nom = val;
+                                                  _updateDisciple3(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    programmeNature: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              TextField(
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Thème",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.probleme = val;
+                                                  _updateDisciple3(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    theme: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              TextField(
+                                                minLines: 2,
+                                                maxLines: 4,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Orateur",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.recommandation = val;
+                                                  _updateDisciple3(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    orateur: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              
+                                              TextField(
+                                                minLines: 2,
+                                                maxLines: 4,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Lieu",
+                                                ),
+                                                onChanged: (val) {
+                                                  // row.recommandation = val;
+                                                  _updateDisciple3(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    lieu: val,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                                TextField(
+                                                minLines: 2,
+                                                maxLines: 4,
+                                                readOnly:
+                                                    state.status.isInProgress,
+                                                decoration: InputDecoration(
+                                                  labelText: "Date",
+                                                ),
+                                                onTap: (){
+                                                 _openCalendar();
+                                                  _updateDisciple3(
+                                                    context: context,
+                                                    index: index,
+                                                    state: state,
+                                                    date: myDate,
+                                                    isBaptierOrNot: false,
+                                                  );
+                                                },
+                                              ),
+
+                                              SizedBox(height: 16),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+
+
 
                         BlocBuilder<
                           FormActiviteBloc,

@@ -32,12 +32,11 @@ class RapportCelluleRequestSectionAdministrationEvent with _$RapportCelluleReque
 
 
 @freezed
-class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSectionAssistanceEvent {
+ class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSectionAssistanceEvent {
    factory RapportCelluleRequestSectionAssistanceEvent.changeNombreBaptiser(String nombreBaptiser ) = ChangeNombreBaptiserRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.updateSectionId(String id) = RapportCelluleRequestSectionAssistanceEventUpdateSectionId;
    factory RapportCelluleRequestSectionAssistanceEvent.changeNomBaptiserStatic(RequestHumaneSectionAssistance nonBaptiserStatic ) = ChangeNomBaptiserStaticRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.changeNoveauBaptiser(RequestHumaneSectionAssistance nouveauBaptiserStat ) = ChangeNoveauBaptiserRapportCelluleRequestSectionAssistanceEvent;
-
    factory RapportCelluleRequestSectionAssistanceEvent.formationNewDFB(String formationNewDFB ) = FormationNewDFBRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.formationNewBaptDFD(String formationNewBaptDFD ) = FormationNewBaptDFDRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.visiteMenbre(String visiteMenbre ) = VisiteMenbreRapportCelluleRequestSectionAssistanceEvent;
@@ -62,7 +61,7 @@ class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSe
    factory RapportCelluleRequestSectionAssistanceEvent.changeSectionOuvrier(RequestAuherInformation sectionOuvrier ) = ChangeSectionOuvrierRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.changeAutres(String autres ) = ChangeAutresRapportCelluleRequestSectionAssistanceEvent;
    factory RapportCelluleRequestSectionAssistanceEvent.submit() = SubmitRapportCelluleRequestSectionAssistanceEvent;
-   factory RapportCelluleRequestSectionAssistanceEvent.id(String id) = RapportCelluleRequestSectionAssistanceEventUpdateSectionId;
+  //  factory RapportCelluleRequestSectionAssistanceEvent.id(String id) = RapportCelluleRequestSectionAssistanceEventUpdateSectionId;
 
 
 
@@ -72,16 +71,17 @@ class RapportCelluleRequestSectionAssistanceEvent with _$RapportCelluleRequestSe
 
 
 @freezed
-class RapportCelluleRequestActivityEvent with _$RapportCelluleRequestActivityEvent {
+sealed class RapportCelluleRequestActivityEvent with _$RapportCelluleRequestActivityEvent {
    factory RapportCelluleRequestActivityEvent.changeDisciple(List<VisiteDisciple> visiteDisciple ) = ChangeDiscipleRapportCelluleRequestActivityEvent;
    factory RapportCelluleRequestActivityEvent.changeMenbre(List<VisiteDisciple> visiteMenre ) = ChangeMenbreRapportCelluleRequestActivityEvent;
+   factory RapportCelluleRequestActivityEvent.changeAtivity(List<WeekActivity> activity) = ChangeActivityRapportCelluleRequestActivityEvent;
    factory RapportCelluleRequestActivityEvent.updateSectionId(String id) = RapportCelluleRequestActivityEventUpdateSectionId;
    factory RapportCelluleRequestActivityEvent.submit() = SubmitRapportCelluleRequestActivityEvent;
 }
 
 
 @freezed
-class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestionEvent {
+sealed class RapportCelluleRequestSuggestionEvent with _$RapportCelluleRequestSuggestionEvent {
    factory RapportCelluleRequestSuggestionEvent.changeDisciple(List<RapportSuggestion> suggestion ) = ChangeDiscipleRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.changeResumerPredication(String resumerPredication ) = ChangeResumerPredicationRapportCelluleRequestSuggestionEvent;
    factory RapportCelluleRequestSuggestionEvent.faisAssignaler(String isAssignaler) = FaisAssignalerRapportCelluleRequestSuggestionEvent;
