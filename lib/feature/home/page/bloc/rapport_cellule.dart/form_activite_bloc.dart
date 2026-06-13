@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
@@ -133,6 +135,7 @@ class FormActiviteBloc
 
       case SubmitRapportCelluleRequestActivityEvent():
         if (state.isValide) {
+          log("sss------>>${state.activity}");
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           await Future.delayed(const Duration(seconds: 3));
 

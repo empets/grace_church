@@ -73,11 +73,11 @@ class _CelluleViewState extends State<CelluleView> {
       if (rapportCellule.first.formAdministrationIsSubmit == 'false') {
         return EditingCelluleRaport(profile: state);
       } else if (rapportCellule.first.formAssistanceIsSubmit == "false") {
-        return FormStatistic(id: state.menberId);
+        return FormStatistic(id: rapportCellule.first.id);
       } else if (rapportCellule.first.formActivityIsSubmit == 'false') {
-        return FormActivite(id: state.menberId);
+        return FormActivite(id: rapportCellule.first.id);
       } else if (rapportCellule.first.formSuggestionIsSubmit == 'false') {
-        return FormOuvrierSpritualLive(id: state.menberId);
+        return FormOuvrierSpritualLive(id: rapportCellule.first.id);
       } else {
         return SizedBox();
       }
@@ -128,11 +128,9 @@ class _CelluleViewState extends State<CelluleView> {
         .toList();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
-     final contrat = context
+    final contrat = context
         .select<ConnexionImpliciteBloc, ApiState<ProfileResponse>?>(
           (bloc) => switch (bloc.state) {
             SuccessState<ProfileResponse>() => bloc.state,
@@ -752,9 +750,8 @@ class _CelluleViewState extends State<CelluleView> {
                   );
                   isResponsableCellule = listCelluleState.data.any((element) {
                     log(
-                        'meberId ${(widget.profileState as SuccessState<ProfileResponse>)
-                              .data
-                              .menberId}.   cellule responsable Id ${element.responsableCelluleId}');
+                      'meberId ${(widget.profileState as SuccessState<ProfileResponse>).data.menberId}.   cellule responsable Id ${element.responsableCelluleId}',
+                    );
                     return element.responsableCelluleId
                         .trim()
                         .toLowerCase()
@@ -768,217 +765,224 @@ class _CelluleViewState extends State<CelluleView> {
                   });
 
                   log("isResponsableCellule $isResponsableCellule");
-              
-              
 
-              return isResponsableCellule
-                  ? BlocBuilder<
-                      GetRapportCelluleBloc,
-                      ApiState<List<RapportCelluleResponse>>
-                    >(
-                      builder: (context, stateRapport) {
-                        if (stateRapport
-                            is SuccessState<List<RapportCelluleResponse>>) {
-                          /// -------------------------------------------------------------------------------------------------
-                          /// appelle de la methode de filtre qui permet de recuperé les rapports d'une cellule bien spéficique
-                          /// -------------------------------------------------------------------------------------------------
-                          final filtered = filterRapportsByResponsable(
-                            rapports: stateRapport.data,
-                            responsableId:
-                                (widget.profileState
-                                        as SuccessState<ProfileResponse>)
-                                    .data
-                                    .menberId,
-                          );
+                  return isResponsableCellule
+                      ? BlocBuilder<
+                          GetRapportCelluleBloc,
+                          ApiState<List<RapportCelluleResponse>>
+                        >(
+                          builder: (context, stateRapport) {
+                            if (stateRapport
+                                is SuccessState<List<RapportCelluleResponse>>) {
+                              /// -------------------------------------------------------------------------------------------------
+                              /// appelle de la methode de filtre qui permet de recuperé les rapports d'une cellule bien spéficique
+                              /// -------------------------------------------------------------------------------------------------
+                              final filtered = filterRapportsByResponsable(
+                                rapports: stateRapport.data,
+                                responsableId:
+                                    (widget.profileState
+                                            as SuccessState<ProfileResponse>)
+                                        .data
+                                        .menberId,
+                              );
 
-                          if (filtered.isEmpty) {
-                            return Container();
-                          }
+                              if (filtered.isEmpty) {
+                                return Container();
+                              }
 
-                          /// ---------------------------------
-                          /// filtre les rapports en cours
-                          /// --------------------------------
-                          final rapportsEnCours = filtered
-                              .where((x) => x.tag == "en_cours")
-                              .toList();
+                              /// ---------------------------------
+                              /// filtre les rapports en cours
+                              /// --------------------------------
+                              final rapportsEnCours = filtered
+                                  .where((x) => x.tag == "en_cours")
+                                  .toList();
 
-                          return Container(
-                            margin: EdgeInsets.only(bottom: 10.h),
-                            child: FloatingActionButton(
-                              backgroundColor: context.appColor.primaryBlue
-                                  .withValues(alpha: 0.5),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  fadeRoute(
-                                    MultiBlocProvider(
-                                      providers: [
-                                        // --------------------------------
-                                        // EditingCelluleRaport
-                                        // --------------------------------
-                                        BlocProvider(
-                                          create: (context) =>
-                                              RapportCelluleRequestSectionAdministrationBloc(
-                                                sendRapportCelluleStepAdministrationUsercase:
+                              return Container(
+                                margin: EdgeInsets.only(bottom: 10.h),
+                                child: FloatingActionButton(
+                                  backgroundColor: context.appColor.primaryBlue
+                                      .withValues(alpha: 0.5),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      fadeRoute(
+                                        MultiBlocProvider(
+                                          providers: [
+                                            // --------------------------------
+                                            // EditingCelluleRaport
+                                            // --------------------------------
+                                            BlocProvider(
+                                              create: (context) =>
+                                                  RapportCelluleRequestSectionAdministrationBloc(
+                                                    sendRapportCelluleStepAdministrationUsercase:
+                                                        getIt<
+                                                          SendRapportCelluleStepAdministrationUsercase
+                                                        >(),
+                                                  ),
+                                            ),
+                                            BlocProvider(
+                                              create: (context) =>
+                                                  GetSecteurBloc(
+                                                    getListSecteurUsercase:
+                                                        getIt<
+                                                          GetListSecteurUsercase
+                                                        >(),
+                                                  )..add(CelluleEvent.fetch()),
+                                            ),
+                                            BlocProvider(
+                                              create: (context) => GetZoneBloc(
+                                                getListZoneUsercase:
                                                     getIt<
-                                                      SendRapportCelluleStepAdministrationUsercase
+                                                      GetListZoneUsercase
+                                                    >(),
+                                              )..add(CelluleEvent.fetch()),
+                                            ),
+
+                                            // --------------------------------
+                                            // FormStatistic
+                                            // --------------------------------
+                                            BlocProvider(
+                                              create: (context) =>
+                                                  RapportCelluleSectionAssistanceBloc(
+                                                    sendRapportCelluleStepStatUsercase:
+                                                        getIt<
+                                                          SendRapportCelluleStepStatUsercase
+                                                        >(),
+                                                  ),
+                                            ),
+
+                                            // --------------------------------
+                                            // FormActivite
+                                            // --------------------------------
+                                            BlocProvider(
+                                              create: (context) => FormActiviteBloc(
+                                                sendRapportCelluleStepAssistantUsercase:
+                                                    getIt<
+                                                      SendRapportCelluleStepAssistantUsercase
                                                     >(),
                                               ),
-                                        ),
-                                        BlocProvider(
-                                          create: (context) => GetSecteurBloc(
-                                            getListSecteurUsercase:
-                                                getIt<GetListSecteurUsercase>(),
-                                          )..add(CelluleEvent.fetch()),
-                                        ),
-                                        BlocProvider(
-                                          create: (context) => GetZoneBloc(
-                                            getListZoneUsercase:
-                                                getIt<GetListZoneUsercase>(),
-                                          )..add(CelluleEvent.fetch()),
-                                        ),
-
-                                        // --------------------------------
-                                        // FormStatistic
-                                        // --------------------------------
-                                        BlocProvider(
-                                          create: (context) =>
-                                              RapportCelluleSectionAssistanceBloc(
-                                                sendRapportCelluleStepStatUsercase:
+                                            ),
+                                            // --------------------------------
+                                            // FormOuvrierSpritualLive
+                                            // --------------------------------
+                                            BlocProvider(
+                                              create: (context) => FormSuggestionBloc(
+                                                sendRapportCelluleStepSuggestionUsercase:
                                                     getIt<
-                                                      SendRapportCelluleStepStatUsercase
+                                                      SendRapportCelluleStepSuggestionUsercase
                                                     >(),
                                               ),
-                                        ),
-
-                                        // --------------------------------
-                                        // FormActivite
-                                        // --------------------------------
-                                        BlocProvider(
-                                          create: (context) => FormActiviteBloc(
-                                            sendRapportCelluleStepAssistantUsercase:
-                                                getIt<
-                                                  SendRapportCelluleStepAssistantUsercase
-                                                >(),
+                                            ),
+                                          ],
+                                          child: buildFormRapport(
+                                            state:
+                                                (widget.profileState
+                                                        as SuccessState<
+                                                          ProfileResponse
+                                                        >)
+                                                    .data,
+                                            rapportCellule: rapportsEnCours,
                                           ),
                                         ),
-                                        // --------------------------------
-                                        // FormOuvrierSpritualLive
-                                        // --------------------------------
-                                        BlocProvider(
-                                          create: (context) => FormSuggestionBloc(
-                                            sendRapportCelluleStepSuggestionUsercase:
-                                                getIt<
-                                                  SendRapportCelluleStepSuggestionUsercase
-                                                >(),
+                                      ),
+                                    );
+                                  },
+                                  child: Badge(
+                                    child: Icon(
+                                      Icons.edit,
+                                      color: Colors.white,
+                                    ),
+                                    backgroundColor: Colors.transparent,
+                                    label: Text(
+                                      '',
+                                      style: context.appTypographie.body
+                                          .copyWith(
+                                            color: Colors.white,
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.bold,
                                           ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            return Container(
+                              margin: EdgeInsets.only(bottom: 10.h),
+                              child: FloatingActionButton(
+                                backgroundColor: context.appColor.primaryBlue
+                                    .withValues(alpha: 0.5),
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    fadeRoute(
+                                      MultiBlocProvider(
+                                        providers: [
+                                          // --------------------------------
+                                          // EditingCelluleRaport
+                                          // --------------------------------
+                                          BlocProvider(
+                                            create: (context) =>
+                                                RapportCelluleRequestSectionAdministrationBloc(
+                                                  sendRapportCelluleStepAdministrationUsercase:
+                                                      getIt<
+                                                        SendRapportCelluleStepAdministrationUsercase
+                                                      >(),
+                                                ),
+                                          ),
+                                          BlocProvider(
+                                            create: (context) => GetSecteurBloc(
+                                              getListSecteurUsercase:
+                                                  getIt<
+                                                    GetListSecteurUsercase
+                                                  >(),
+                                            )..add(CelluleEvent.fetch()),
+                                          ),
+                                          BlocProvider(
+                                            create: (context) => GetZoneBloc(
+                                              getListZoneUsercase:
+                                                  getIt<GetListZoneUsercase>(),
+                                            )..add(CelluleEvent.fetch()),
+                                          ),
+                                        ],
+                                        child: EditingCelluleRaport(
+                                          profile: (contrat is ProfileResponse)
+                                              ? (contrat
+                                                        as SuccessState<
+                                                          ProfileResponse
+                                                        >)
+                                                    .data
+                                              : (widget.profileState
+                                                        as SuccessState<
+                                                          ProfileResponse
+                                                        >)
+                                                    .data,
                                         ),
-                                      ],
-                                      child: buildFormRapport(
-                                        state:
-                                            (widget.profileState
-                                                    as SuccessState<
-                                                      ProfileResponse
-                                                    >)
-                                                .data,
-                                        rapportCellule: rapportsEnCours,
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Badge(
-                                child: Icon(Icons.edit, color: Colors.white),
-                                backgroundColor: Colors.transparent,
-                                label: Text(
-                                  '',
-                                  style: context.appTypographie.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                        return Container(
-                            margin: EdgeInsets.only(bottom: 10.h),
-                            child: FloatingActionButton(
-                              backgroundColor: context.appColor.primaryBlue
-                                  .withValues(alpha: 0.5),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  fadeRoute(
-                                    MultiBlocProvider(
-                                      providers: [
-                                        // --------------------------------
-                                        // EditingCelluleRaport
-                                        // --------------------------------
-                                        BlocProvider(
-                                          create: (context) =>
-                                              RapportCelluleRequestSectionAdministrationBloc(
-                                                sendRapportCelluleStepAdministrationUsercase:
-                                                    getIt<
-                                                      SendRapportCelluleStepAdministrationUsercase
-                                                    >(),
-                                              ),
-                                        ),
-                                        BlocProvider(
-                                          create: (context) => GetSecteurBloc(
-                                            getListSecteurUsercase:
-                                                getIt<GetListSecteurUsercase>(),
-                                          )..add(CelluleEvent.fetch()),
-                                        ),
-                                        BlocProvider(
-                                          create: (context) => GetZoneBloc(
-                                            getListZoneUsercase:
-                                                getIt<GetListZoneUsercase>(),
-                                          )..add(CelluleEvent.fetch()),
-                                        ),
-
-                                  
-                                      ],
-                                      child:  EditingCelluleRaport(profile:  (contrat is ProfileResponse) ? (contrat as SuccessState<ProfileResponse>).data :   (widget.profileState
-                                        as SuccessState<ProfileResponse>).data  ),
+                                  );
+                                },
+                                child: Badge(
+                                  child: Icon(Icons.edit, color: Colors.white),
+                                  backgroundColor: Colors.transparent,
+                                  label: Text(
+                                    '',
+                                    style: context.appTypographie.body.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                );
-                              },
-                              child: Badge(
-                                child: Icon(Icons.edit, color: Colors.white),
-                                backgroundColor: Colors.transparent,
-                                label: Text(
-                                  '',
-                                  style: context.appTypographie.body.copyWith(
-                                    color: Colors.white,
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
                                 ),
                               ),
-                            ),
-                          );
-
-                
-
-                
-
-                      },
-                    )
-                  : const SizedBox.shrink();
+                            );
+                          },
+                        )
+                      : const SizedBox.shrink();
                 }
-                return  SizedBox.shrink();
-
-
-
+                return SizedBox.shrink();
               }
               return SizedBox.shrink();
-
             },
           ),
-       
-       
-       ),
+        ),
       ),
     );
   }

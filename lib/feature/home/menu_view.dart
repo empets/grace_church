@@ -313,7 +313,7 @@ class _MenuViewState extends State<MenuView> {
                                         }
 
                                         return Container(
-                                          height: 0.4.sh,
+                                          height: 0.56.sh,
                                           child: ListView(
                                             children: [
                                               if (isResponsableCellule) ...[

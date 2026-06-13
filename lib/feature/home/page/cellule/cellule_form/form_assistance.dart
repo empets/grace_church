@@ -14,6 +14,7 @@ import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
+import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_stat_usercase.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_state_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
@@ -207,6 +208,8 @@ class _FormStatisticState extends State<FormStatistic> {
   }
 
   bool isHowDetail = false;
+
+
   
   @override
   void initState() {
@@ -218,6 +221,11 @@ class _FormStatisticState extends State<FormStatistic> {
     super.initState();
   }
   
+    @override
+  void dispose() {
+  
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

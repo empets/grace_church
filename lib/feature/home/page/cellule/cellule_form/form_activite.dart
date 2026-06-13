@@ -11,6 +11,7 @@ import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/domaine/usercase/rapport_cellule_suggestion_usercase.dart';
@@ -29,6 +30,8 @@ class FormActivite extends StatefulWidget {
 }
 
 class _FormActiviteState extends State<FormActivite> {
+
+  TextEditingController textEditingController = TextEditingController();
   void updateNombre(RequestSectionForm RequestSection, int value) {
     setState(() {
       RequestSection.nombre = value;
@@ -170,11 +173,10 @@ class _FormActiviteState extends State<FormActivite> {
     String? lieu,
     String? date,
     String? programmeNature,
-    required bool isBaptierOrNot,
   }) {
     final bloc = context.read<FormActiviteBloc>();
 
-    final list = List<WeekActivity>.from(state.discipleMenbreList);
+    final List<WeekActivity> list = List<WeekActivity>.from(state.activity);
 
     // Étend la liste si nécessaire
     if (list.length <= index) {
@@ -200,60 +202,11 @@ class _FormActiviteState extends State<FormActivite> {
       date: date ?? list[index].date,
       programmeNature: programmeNature ?? list[index].programmeNature,
     );
-
+    // bloc.add(RapportCelluleRequestActivityEvent.changeAtivity(list));
     bloc.add(RapportCelluleRequestActivityEvent.changeAtivity(list));
   }
 
   late String myDate = '';
-  
-  Future<void> _openCalendar() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      //  initialDate: DateTime(2012),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(), // pas de futur
-      selectableDayPredicate: (day) {
-        final now = DateTime.now();
-
-        // 🔥 âge minimum 14 ans
-        final maxDate = DateTime(now.year - 14, now.month, now.day);
-
-        if (day.isBefore(maxDate)) {
-          return false;
-        }
-
-        return true;
-      },
-
-      /// 🎨 Custom Theme
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: Colors.blue, // 🔵 header + selected date
-              onPrimary: Colors.white, // texte sur header
-              onSurface: Colors.black, // texte normal
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.blue, // boutons OK / CANCEL
-              ),
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-
-    if (picked != null) {
-      setState(() {
-        myDate = picked.toString();
-     
-      });
-    
-    }
-  }
-
 
 
 
@@ -528,6 +481,8 @@ class _FormActiviteState extends State<FormActivite> {
                                               ),
 
                                               TextField(
+                                                   minLines: 2,
+                                                maxLines: 4,
                                                 readOnly:
                                                     state.status.isInProgress,
                                                 decoration: InputDecoration(
@@ -649,6 +604,8 @@ class _FormActiviteState extends State<FormActivite> {
                                               ),
 
                                               TextField(
+                                                 minLines: 2,
+                                                maxLines: 4,
                                                 readOnly:
                                                     state.status.isInProgress,
                                                 decoration: InputDecoration(
@@ -752,37 +709,39 @@ class _FormActiviteState extends State<FormActivite> {
                                               ),
 
                                               TextField(
+                                                 minLines: 2,
+                                                maxLines: 4,
                                                 readOnly:
                                                     state.status.isInProgress,
                                                 decoration: InputDecoration(
                                                   labelText: "Nature du programme",
                                                 ),
-                                                onChanged: (val) {
+                                                onChanged: (value) {
                                                   // row.nom = val;
                                                   _updateDisciple3(
                                                     context: context,
                                                     index: index,
                                                     state: state,
-                                                    programmeNature: val,
-                                                    isBaptierOrNot: false,
+                                                    programmeNature: value,
                                                   );
                                                 },
                                               ),
 
                                               TextField(
+                                                 minLines: 2,
+                                                maxLines: 4,
                                                 readOnly:
                                                     state.status.isInProgress,
                                                 decoration: InputDecoration(
                                                   labelText: "Thème",
                                                 ),
-                                                onChanged: (val) {
+                                                onChanged: (value) {
                                                   // row.probleme = val;
                                                   _updateDisciple3(
                                                     context: context,
                                                     index: index,
                                                     state: state,
-                                                    theme: val,
-                                                    isBaptierOrNot: false,
+                                                    theme: value,
                                                   );
                                                 },
                                               ),
@@ -795,14 +754,13 @@ class _FormActiviteState extends State<FormActivite> {
                                                 decoration: InputDecoration(
                                                   labelText: "Orateur",
                                                 ),
-                                                onChanged: (val) {
+                                                onChanged: (value) {
                                                   // row.recommandation = val;
                                                   _updateDisciple3(
                                                     context: context,
                                                     index: index,
                                                     state: state,
-                                                    orateur: val,
-                                                    isBaptierOrNot: false,
+                                                    orateur: value,
                                                   );
                                                 },
                                               ),
@@ -816,35 +774,33 @@ class _FormActiviteState extends State<FormActivite> {
                                                 decoration: InputDecoration(
                                                   labelText: "Lieu",
                                                 ),
-                                                onChanged: (val) {
+                                                onChanged: (value) {
                                                   // row.recommandation = val;
                                                   _updateDisciple3(
                                                     context: context,
                                                     index: index,
                                                     state: state,
-                                                    lieu: val,
-                                                    isBaptierOrNot: false,
+                                                    lieu: value,
                                                   );
                                                 },
                                               ),
 
-                                                TextField(
-                                                minLines: 2,
-                                                maxLines: 4,
-                                                readOnly:
-                                                    state.status.isInProgress,
+                                             TextField(                                                minLines: 1,
+                                                maxLines: 1,
+                                                readOnly: state.status.isInProgress,
                                                 decoration: InputDecoration(
-                                                  labelText: "Date",
+                                                  labelText: "Date (YYYY-MM)",
+                                                  errorText:  "La date doit être au format 2026-05-07",
                                                 ),
-                                                onTap: (){
-                                                 _openCalendar();
-                                                  _updateDisciple3(
-                                                    context: context,
-                                                    index: index,
-                                                    state: state,
-                                                    date: myDate,
-                                                    isBaptierOrNot: false,
-                                                  );
+                                                onChanged: (value) {
+                                                  if (isValidYearMonth(value)) {
+                                                    _updateDisciple3(
+                                                      context: context,
+                                                      index: index,
+                                                      state: state,
+                                                      date: value,
+                                                    );
+                                                  }
                                                 },
                                               ),
 

@@ -435,8 +435,6 @@ bool isValidDiscipleStatusBaptiserOrNon(String value) {
   return RegExp(r'^(Oui|Non)$', caseSensitive: false).hasMatch(value.trim());
 }
 
-
-
 Future<String> getDeviceFingerprint() async {
   final deviceInfo = DeviceInfoPlugin();
   String raw = '';
@@ -444,18 +442,17 @@ Future<String> getDeviceFingerprint() async {
   if (Platform.isAndroid) {
     final info = await deviceInfo.androidInfo;
     raw = [
-      info.id,           // ANDROID_ID
-      info.model,        // ex: "Samsung Galaxy S23"
-      info.brand,        // ex: "samsung"
-      info.hardware,     // ex: "qcom"
-      info.fingerprint,  // build fingerprint unique
+      info.id, // ANDROID_ID
+      info.model, // ex: "Samsung Galaxy S23"
+      info.brand, // ex: "samsung"
+      info.hardware, // ex: "qcom"
+      info.fingerprint, // build fingerprint unique
     ].join('|');
-
   } else if (Platform.isIOS) {
     final info = await deviceInfo.iosInfo;
     raw = [
       info.identifierForVendor ?? '',
-      info.model,        // ex: "iPhone14,3"
+      info.model, // ex: "iPhone14,3"
       info.systemVersion,
       info.name,
     ].join('|');
@@ -467,98 +464,102 @@ Future<String> getDeviceFingerprint() async {
   return hash.toString(); // ex: "a3f1c8d2..."
 }
 
+// 20 mars 2025 à 14:30
+String formatDate(String date) {
+  DateTime dateTime = DateTime.parse(date);
+  String formatted = DateFormat("d MMMM y 'à' HH:mm", 'fr').format(dateTime);
+  return formatted;
+}
 
+String formatDateOnly(String date) {
+  DateTime dateTime = DateTime.parse(date);
+  String formatted = DateFormat("d MMMM y", 'fr').format(dateTime);
+  return formatted;
+}
 
-   // 20 mars 2025 à 14:30
-  String formatDate(String date) {
-    DateTime dateTime = DateTime.parse(date);
-    String formatted = DateFormat("d MMMM y 'à' HH:mm" , 'fr').format(dateTime);
-    return formatted;
+// il y a 1 minute, 2 heures, 3 jours, etc.
+String formatTimeDifference(DateTime date) {
+  final now = DateTime.now();
+  final diff = now.difference(date);
+
+  if (diff.inSeconds < 60) {
+    return "À l'instant";
   }
-    String formatDateOnly(String date) {
-    DateTime dateTime = DateTime.parse(date);
-    String formatted = DateFormat("d MMMM y" , 'fr').format(dateTime);
-    return formatted;
+  if (diff.inMinutes < 60) {
+    return "Il y a ${diff.inMinutes} min";
   }
-   // il y a 1 minute, 2 heures, 3 jours, etc.
-   String formatTimeDifference(DateTime date) {
-    final now = DateTime.now();
-    final diff = now.difference(date);
-
-    if (diff.inSeconds < 60) {
-      return "À l'instant";
-    }
-    if (diff.inMinutes < 60) {
-      return "Il y a ${diff.inMinutes} min";
-    }
-    if (diff.inHours < 24) {
-      return "Il y a ${diff.inHours} h";
-    }
-    if (diff.inDays < 7) {
-      return "Il y a ${diff.inDays} jours";
-    }
-
-    return "Le ${formatDateOnly(date.toString())} ";
+  if (diff.inHours < 24) {
+    return "Il y a ${diff.inHours} h";
+  }
+  if (diff.inDays < 7) {
+    return "Il y a ${diff.inDays} jours";
   }
 
-  // permet de donner la couleur a une bordure du tag selon le type 
-  Color getTagTextColor({required BuildContext context, required String tag}) {
-      switch (tag.toLowerCase()) {
-        case 'urgent':
-          return Colors.red;
-        case 'rappel':
-          return context.appColor.primaryWarning;
-        case 'info':
-          return context.appColor.primaryBlue;
+  return "Le ${formatDateOnly(date.toString())} ";
+}
 
-        case 'terminer':
-        return context.appColor.primarySuccess.withValues(alpha: 0.5);
-        case 'en_cours':
-        return context.appColor.primaryWarning.withValues(alpha: 0.5);
-        default:
-          return Colors.grey;
-      }
-    }
+// permet de donner la couleur a une bordure du tag selon le type
+Color getTagTextColor({required BuildContext context, required String tag}) {
+  switch (tag.toLowerCase()) {
+    case 'urgent':
+      return Colors.red;
+    case 'rappel':
+      return context.appColor.primaryWarning;
+    case 'info':
+      return context.appColor.primaryBlue;
 
-      bool isTagTextColor({required BuildContext context, required String tag}) {
-      switch (tag.toLowerCase()) {
-        case 'urgent':
-          return true;
-        case 'rappel':
-          return true;
-        case 'info':
-          return true;
+    case 'terminer':
+      return context.appColor.primarySuccess.withValues(alpha: 0.5);
+    case 'en_cours':
+      return context.appColor.primaryWarning.withValues(alpha: 0.5);
+    default:
+      return Colors.grey;
+  }
+}
 
-        case 'terminer':
-        return true;
-        case 'en_cours':
-        return false;
-        default:
-          return false;
-      }
-    }
-   
-  
-  // permet de donner la couleur de fond du tag selon le type 
-      Color getTagBackgroundColor({required BuildContext context, required String tag}) {
-      switch (tag.toLowerCase()) {
-        case 'urgent':
-          return Colors.red.shade50;
-        case 'rappel':
-          return context.appColor.primaryWarning.withValues(alpha: 0.1);
-        case 'info':
-          return context.appColor.primaryBlue.withValues(alpha: 0.1);
-        default:
-          return Colors.grey;
-      }
-    }
+bool isTagTextColor({required BuildContext context, required String tag}) {
+  switch (tag.toLowerCase()) {
+    case 'urgent':
+      return true;
+    case 'rappel':
+      return true;
+    case 'info':
+      return true;
+
+    case 'terminer':
+      return true;
+    case 'en_cours':
+      return false;
+    default:
+      return false;
+  }
+}
+
+// permet de donner la couleur de fond du tag selon le type
+Color getTagBackgroundColor({
+  required BuildContext context,
+  required String tag,
+}) {
+  switch (tag.toLowerCase()) {
+    case 'urgent':
+      return Colors.red.shade50;
+    case 'rappel':
+      return context.appColor.primaryWarning.withValues(alpha: 0.1);
+    case 'info':
+      return context.appColor.primaryBlue.withValues(alpha: 0.1);
+    default:
+      return Colors.grey;
+  }
+}
 
 // remplce tout les 00: et .00 par rien
 String cleanValue(String value) {
-  return value
-      .replaceAll('00:', '')
-      .replaceAll('.00', '')
-      .trim();
+  return value.replaceAll('00:', '').replaceAll('.00', '').trim();
+}
+
+bool isValidYearMonth(String value) {
+  final regex = RegExp(r'^\d{4}-(0[1-9]|1[0-2])$');
+  return regex.hasMatch(value);
 }
 
 bool allCaracterIsNombre(String input) {
@@ -569,7 +570,6 @@ bool allCaracterIsNombre(String input) {
 String isAllDigits(String input) {
   return RegExp(r'^\d+$').hasMatch(input) ? input : "00";
 }
-
 
 List<Map<String, dynamic>> parseImages(dynamic data) {
   if (data == null) return [];
