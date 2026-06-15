@@ -563,7 +563,7 @@ class RapportCellulePDFView extends StatelessWidget {
                           pw.TableRow(
                             children: [
                               tableCell("LIEU"), //<< LGINE 1
-                              tableCell(rapportCellule.first.lieu), //<< LGINE 1
+                              tableCell("rapportCellule.firstssdfsdfdsdsdfsdfdsfsfdsfdsfsfsfsdfsdf"), //<< LGINE 1
                             ],
                           ),
                           pw.TableRow(
@@ -3005,12 +3005,15 @@ class RapportCellulePDFView extends StatelessWidget {
     return pdf.save();
   }
 
-  pw.Widget tableCell(String text, {bool isHeader = false}) {
-    return pw.Row(
+  pw.Widget tableCell(String text, {bool isHeader = false, double? width}) {
+    return pw.Container(
+      width: width?.w ?? 86.5.w,
+      height: 15.h,
+      child: pw.Row(
       children: [
         pw.Padding(
           padding: pw.EdgeInsets.symmetric(
-            horizontal: isHeader ? 3.w : 3.w,
+            horizontal: isHeader ? 1.w : 1.5.w,
             vertical: 3.h,
           ),
           child: pw.Text(
@@ -3018,11 +3021,12 @@ class RapportCellulePDFView extends StatelessWidget {
             style: pw.TextStyle(
               color: isHeader ? PdfColors.black : PdfColors.black,
               fontWeight: isHeader ? pw.FontWeight.bold : pw.FontWeight.normal,
-              fontSize: isHeader ? 12.5.sp : 8.sp,
+              fontSize: isHeader ? 9.sp : 8.sp,
             ),
           ),
         ),
       ],
+    )
     );
   }
 }
