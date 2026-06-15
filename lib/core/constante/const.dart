@@ -529,3 +529,136 @@ enum FormSubmitStatus {
   loading,
   none,
 }
+
+
+
+const String securityPolicy = '''
+POLITIQUE DE SÉCURITÉ ET DE CONFIDENTIALITÉ
+
+Dernière mise à jour : Juin 2026
+
+ 1. Préambule
+
+La présente politique décrit les mesures de sécurité, de confidentialité et de protection des données mises en œuvre dans le cadre de l'utilisation de l'application mobile. L'objectif est de garantir la protection des utilisateurs et de leurs données personnelles.
+
+ 2. Collecte des Données
+
+L'application peut collecter des informations d'identification, des coordonnées, des données techniques, des informations de connexion, des données de localisation autorisées par l'utilisateur ainsi que les informations nécessaires au fonctionnement des services proposés.
+
+ 3. Utilisation des Données
+
+Les données collectées sont utilisées pour :
+
+- Fournir les services proposés.
+- Améliorer l'expérience utilisateur.
+- Assurer la sécurité des comptes.
+- Répondre aux demandes d'assistance.
+- Respecter les obligations légales applicables.
+
+ 4. Sécurité des Comptes
+
+Chaque utilisateur est responsable de la confidentialité de ses identifiants.
+
+L'application met en œuvre des mécanismes de protection incluant :
+
+- Mots de passe sécurisés.
+- Authentification OTP.
+- Contrôle des accès.
+- Limitation des tentatives de connexion.
+
+ 5. Chiffrement et Transmission
+
+Toutes les communications entre l'application et les serveurs utilisent des protocoles sécurisés HTTPS/TLS.
+
+Les informations sensibles peuvent être chiffrées pendant leur stockage et leur transmission.
+
+ 6. Stockage des Données
+
+Les données sont stockées sur des infrastructures sécurisées disposant de mécanismes de sauvegarde, de surveillance et de contrôle des accès conformément aux bonnes pratiques de sécurité.
+
+ 7. Gestion des Incidents
+
+Tout incident de sécurité fait l'objet d'une analyse immédiate.
+
+Des mesures correctives sont appliquées afin de limiter les impacts et protéger les utilisateurs.
+
+ 8. Protection de la Vie Privée
+
+Nous nous engageons à traiter les données personnelles avec confidentialité.
+
+Les informations ne sont ni vendues ni cédées à des tiers sans base légale ou consentement approprié.
+
+ 9. Droits des Utilisateurs
+
+Les utilisateurs peuvent demander :
+
+- L'accès à leurs données.
+- La rectification de leurs données.
+- La suppression de leurs données.
+- La limitation de certains traitements.
+
+ 10. Cookies et Technologies Similaires
+
+Selon les fonctionnalités disponibles, l'application peut utiliser des technologies permettant :
+
+- Le maintien de la session utilisateur.
+- L'amélioration des performances.
+- La réalisation de statistiques anonymisées.
+
+ 11. Conservation des Données
+
+Les données sont conservées uniquement pendant la durée nécessaire à la fourniture des services ou au respect des obligations légales.
+
+ 12. Services Tiers
+
+L'application peut utiliser des services tiers tels que :
+
+- Firebase.
+- Services de paiement.
+- Services de notification.
+- Outils d'analyse statistique.
+
+Ces prestataires disposent de leurs propres politiques de confidentialité.
+
+ 13. Responsabilités de l'Utilisateur
+
+L'utilisateur s'engage à :
+
+- Utiliser l'application conformément aux lois en vigueur.
+- Ne pas compromettre la sécurité des systèmes.
+- Protéger ses identifiants de connexion.
+
+ 14. Propriété Intellectuelle
+
+Les contenus, logos, marques, interfaces, codes et éléments graphiques associés à l'application sont protégés par les lois relatives à la propriété intellectuelle.
+
+ 15. Disponibilité du Service
+
+Nous nous efforçons d'assurer une disponibilité continue du service sans toutefois garantir une absence totale d'interruption ou d'erreur technique.
+
+ 16. Limitation de Responsabilité
+
+Dans les limites prévues par la loi, l'éditeur de l'application ne pourra être tenu responsable des dommages indirects résultant de l'utilisation du service.
+
+ 17. Conformité Réglementaire
+
+L'application applique les principes reconnus de protection des données et les exigences réglementaires applicables.
+
+ 18. Signalement d'une Vulnérabilité
+
+Toute vulnérabilité ou faille de sécurité peut être signalée à :
+
+support@votre-application.com
+
+ 19. Modifications
+
+Cette politique peut être modifiée à tout moment.
+
+Les utilisateurs seront informés des mises à jour importantes via l'application ou les canaux de communication appropriés.
+
+ 20. Contact
+
+Pour toute question relative à la sécurité ou à la protection des données, veuillez contacter l'équipe support de l'application.
+
+En utilisant l'application, vous reconnaissez avoir pris connaissance de cette politique et acceptez ses dispositions.
+''';

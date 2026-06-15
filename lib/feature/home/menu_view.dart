@@ -1,13 +1,19 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grace_church/feature/home/page/app_version.dart';
+import 'package:grace_church/feature/home/page/politique_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
@@ -37,8 +43,8 @@ import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
-import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
 import 'package:grace_church/feature/home/page/cellule/cellule_form/from_administration.dart';
+import 'package:grace_church/feature/home/page/cellule/history_rapport_view.dart';
 import 'package:grace_church/feature/home/page/notification/notification_view.dart';
 import 'package:grace_church/feature/home/profile_view.dart';
 
@@ -68,10 +74,10 @@ class _MenuViewState extends State<MenuView> {
   late bool isResponsableCellule = false;
   late String isConnected = '';
 
-  Future<String> getLocalkey()async{
-      final shared = await SharedPreferences.getInstance();
-            final menberkey = await shared.getString('menberkey');
-            return await  menberkey ?? '';
+  Future<String> getLocalkey() async {
+    final shared = await SharedPreferences.getInstance();
+    final menberkey = await shared.getString('menberkey');
+    return await menberkey ?? '';
   }
 
   @override
@@ -81,7 +87,6 @@ class _MenuViewState extends State<MenuView> {
         log("isConnected: $value");
         isConnected = value.trim();
       });
-
     });
     super.initState();
   }
@@ -107,7 +112,7 @@ class _MenuViewState extends State<MenuView> {
         "visible": true,
         "value": "email",
       },
-       {
+      {
         "title": "Call center ",
         "icon": Icons.phone_rounded,
         "visible": true,
@@ -120,14 +125,13 @@ class _MenuViewState extends State<MenuView> {
         "visible": true,
         "value": "call",
       },
-      
+
       {
         "title": "Sécurité",
         "icon": Icons.admin_panel_settings_sharp,
         "visible": true,
         "value": "call",
       },
-      
     ];
     final List<Map<String, dynamic>> menuItemsForResponsable = [
       {
@@ -142,7 +146,7 @@ class _MenuViewState extends State<MenuView> {
         "visible": true,
         "value": "notification",
       },
-       {
+      {
         "title": "History rapport",
         "icon": Icons.history_rounded,
         "visible": true,
@@ -154,7 +158,7 @@ class _MenuViewState extends State<MenuView> {
         "visible": true,
         "value": "email",
       },
-       {
+      {
         "title": "Call center ",
         "icon": Icons.phone_rounded,
         "visible": true,
@@ -165,17 +169,17 @@ class _MenuViewState extends State<MenuView> {
         "title": "Mise ajour ",
         "icon": Icons.security_update_warning_rounded,
         "visible": true,
-        "value": "call",
+        "value": "mise_ajour",
       },
-      
+
       {
         "title": "Sécurité",
         "icon": Icons.admin_panel_settings_sharp,
         "visible": true,
-        "value": "call",
+        "value": "security",
       },
+    
     ];
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -231,7 +235,8 @@ class _MenuViewState extends State<MenuView> {
                                     padding: EdgeInsets.all(5.r),
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: context.appColor.primaryLightBlue,
+                                        color:
+                                            context.appColor.primaryLightBlue,
                                       ),
                                       shape: BoxShape.circle,
                                     ),
@@ -312,47 +317,49 @@ class _MenuViewState extends State<MenuView> {
                                               });
                                         }
 
-                                        return Container(
-                                          height: 0.56.sh,
-                                          child: ListView(
-                                            children: [
-                                              if (isResponsableCellule) ...[
-                                                ...menuItemsForResponsable.map((
-                                                  item,
-                                                ) {
-                                                  return ListTile(
-                                                    leading: Icon(
-                                                      item["icon"],
-                                                      color:
-                                                          (item["value"] ==
-                                                              "department")
-                                                          ? context
-                                                                .appColor
-                                                                .primaryBlue
-                                                                .withValues(
-                                                                  alpha: 0.5,
-                                                                )
-                                                          : context
-                                                                .appColor
-                                                                .primaryBlue,
-                                                    ),
-                                                    title: Text(
-                                                      item["value"] ==
-                                                                  "profile" &&
-                                                              profileState
-                                                                      .data
-                                                                      .submitEngagement ==
-                                                                  true
-                                                          ? 'Mon profile'
-                                                          : item["title"],
+                                        return Column(
+                                          children: [
+                                            Container(
+                                              height: 0.5.sh,
+                                              child: ListView(
+                                                children: [
+                                                  /// Menu items for responsables
+                                                  if (isResponsableCellule) ...[
+                                                    ...menuItemsForResponsable.map((
+                                                      item,
+                                                    ) {
+                                                      return ListTile(
+                                                        leading: Icon(
+                                                          item["icon"],
+                                                          color:
+                                                              (item["value"] ==
+                                                                  "department")
+                                                              ? context
+                                                                    .appColor
+                                                                    .primaryBlue
+                                                                    .withValues(
+                                                                      alpha: 0.3,
+                                                                    )
+                                                              : context
+                                                                    .appColor
+                                                                    .primaryBlue .withValues(
+                                                                      alpha: 0.6,
+                                                                    )
+                                                        ),
+                                                        title: Text(
+                                                          item["value"] ==
+                                                                      "profile" &&
+                                                                  profileState
+                                                                          .data
+                                                                          .submitEngagement ==
+                                                                      true
+                                                              ? 'Mon profile'
+                                                              : item["title"],
 
-                                                      style: context
-                                                          .appTypographie
-                                                          .body
-                                                          .copyWith(
+                                                          style: context.appTypographie.body.copyWith(
                                                             fontSize: 13.sp,
                                                             fontWeight:
-                                                                FontWeight.w600,
+                                                                FontWeight.w500,
                                                             color:
                                                                 (item["value"] ==
                                                                     "department")
@@ -367,265 +374,298 @@ class _MenuViewState extends State<MenuView> {
                                                                       .appColor
                                                                       .primaryGrayDark,
                                                           ),
-                                                    ),
-                                                    trailing:
-                                                        ((item["value"] !=
-                                                            "department"))
-                                                        ? Icon(
-                                                            Icons.chevron_right,
-                                                            color: context
-                                                                .appColor
-                                                                .primaryBlue,
-                                                          )
-                                                        : SizedBox(),
-                                                    onTap: () {
-                                                      log('item: ');
-                                                      if (item["value"] ==
-                                                          "profile") {
-                                                        Navigator.of(
-                                                          context,
-                                                        ).push(
-                                                          fadeRoute(
-                                                            MultiBlocProvider(
-                                                              providers: [
-                                                                BlocProvider(
-                                                                  create: (context) => FormProfileBloc(
-                                                                    createProfileUsercase:
-                                                                        getIt<
-                                                                          CreateProfileUsercase
-                                                                        >(),
-                                                                    updateProfileUsercase:
-                                                                        getIt<
-                                                                          UpdateProfileUsercase
-                                                                        >(),
-                                                                  ),
-                                                                ),
-                                                                BlocProvider(
-                                                                  create:
-                                                                      (
-                                                                        context,
-                                                                      ) => CreateCompteProfileSocialBloc(
+                                                        ),
+                                                       
+                                                        onTap: () async {
+                                                          log('item: ');
+                                                          if (item["value"] ==
+                                                              "profile") {
+                                                            Navigator.of(
+                                                              context,
+                                                            ).push(
+                                                              fadeRoute(
+                                                                MultiBlocProvider(
+                                                                  providers: [
+                                                                    BlocProvider(
+                                                                      create: (context) => FormProfileBloc(
+                                                                        createProfileUsercase:
+                                                                            getIt<
+                                                                              CreateProfileUsercase
+                                                                            >(),
+                                                                        updateProfileUsercase:
+                                                                            getIt<
+                                                                              UpdateProfileUsercase
+                                                                            >(),
+                                                                      ),
+                                                                    ),
+                                                                    BlocProvider(
+                                                                      create: (context) => CreateCompteProfileSocialBloc(
                                                                         createSocialProfileUsercase:
                                                                             getIt<
                                                                               CreateSocialProfileUsercase
                                                                             >(),
                                                                       ),
-                                                                ),
-                                                                BlocProvider(
-                                                                  create:
-                                                                      (
-                                                                        context,
-                                                                      ) => CreateComteProfileSpiritualLifeBloc(
+                                                                    ),
+                                                                    BlocProvider(
+                                                                      create: (context) => CreateComteProfileSpiritualLifeBloc(
                                                                         createSpiritualProfileUsercase:
                                                                             getIt<
                                                                               CreateSpiritualProfileUsercase
                                                                             >(),
                                                                       ),
-                                                                ),
+                                                                    ),
 
-                                                                BlocProvider.value(
-                                                                  value: context
-                                                                      .read<
-                                                                        GetProfileBloc
-                                                                      >(),
-                                                                ),
-                                                              ],
-                                                              child: buildForm(
-                                                                state:
-                                                                    profileState
-                                                                        .data,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }
-                                                      if (item["value"] ==
-                                                          "cellule_space") {
-                                                        if (profileState
-                                                            .data
-                                                            .submitSpiritual) {
-                                                                 Navigator.of(
-                                                            context,
-                                                          ).push(
-                                                            fadeRoute(
-                                                              MultiBlocProvider(
-                                                                providers: [
-                                                                  BlocProvider(
-                                                                    create: (context) => RapportCelluleRequestSectionAdministrationBloc(
-                                                                      sendRapportCelluleStepAdministrationUsercase:
-                                                                          getIt<
-                                                                            SendRapportCelluleStepAdministrationUsercase
+                                                                    BlocProvider.value(
+                                                                      value: context
+                                                                          .read<
+                                                                            GetProfileBloc
                                                                           >(),
                                                                     ),
+                                                                  ],
+                                                                  child: buildForm(
+                                                                    state:
+                                                                        profileState
+                                                                            .data,
                                                                   ),
-                                                                  BlocProvider(
-                                                                    create: (context) =>
-                                                                        GetSecteurBloc(
-                                                                          getListSecteurUsercase:
-                                                                              getIt<
-                                                                                GetListSecteurUsercase
-                                                                              >(),
-                                                                        )..add(
-                                                                          CelluleEvent.fetch(),
-                                                                        ),
-                                                                  ),
-                                                                  BlocProvider(
-                                                                    create: (context) =>
-                                                                        GetZoneBloc(
-                                                                          getListZoneUsercase:
-                                                                              getIt<
-                                                                                GetListZoneUsercase
-                                                                              >(),
-                                                                        )..add(
-                                                                          CelluleEvent.fetch(),
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                                child: EditingCelluleRaport(
-                                                                  profile:
-                                                                      profileState
-                                                                          .data,
                                                                 ),
                                                               ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        
-                                                         else {
-                                                          Navigator.of(
-                                                            context,
-                                                          ).push(
-                                                            fadeRoute(
-                                                              MultiBlocProvider(
-                                                                providers: [
-                                                                  BlocProvider(
-                                                                    create: (context) => RapportCelluleRequestSectionAdministrationBloc(
-                                                                      sendRapportCelluleStepAdministrationUsercase:
-                                                                          getIt<
-                                                                            SendRapportCelluleStepAdministrationUsercase
-                                                                          >(),
+                                                            );
+                                                          }
+                                                          if (item["value"] ==
+                                                              "cellule_space") {
+                                                            if (profileState
+                                                                .data
+                                                                .submitSpiritual) {
+                                                              Navigator.of(
+                                                                context,
+                                                              ).push(
+                                                                fadeRoute(
+                                                                  MultiBlocProvider(
+                                                                    providers: [
+                                                                      BlocProvider(
+                                                                        create:
+                                                                            (
+                                                                              context,
+                                                                            ) => RapportCelluleRequestSectionAdministrationBloc(
+                                                                              sendRapportCelluleStepAdministrationUsercase:
+                                                                                  getIt<
+                                                                                    SendRapportCelluleStepAdministrationUsercase
+                                                                                  >(),
+                                                                            ),
+                                                                      ),
+                                                                      BlocProvider(
+                                                                        create:
+                                                                            (
+                                                                              context,
+                                                                            ) =>
+                                                                                GetSecteurBloc(
+                                                                                  getListSecteurUsercase:
+                                                                                      getIt<
+                                                                                        GetListSecteurUsercase
+                                                                                      >(),
+                                                                                )..add(
+                                                                                  CelluleEvent.fetch(),
+                                                                                ),
+                                                                      ),
+                                                                      BlocProvider(
+                                                                        create:
+                                                                            (
+                                                                              context,
+                                                                            ) =>
+                                                                                GetZoneBloc(
+                                                                                  getListZoneUsercase:
+                                                                                      getIt<
+                                                                                        GetListZoneUsercase
+                                                                                      >(),
+                                                                                )..add(
+                                                                                  CelluleEvent.fetch(),
+                                                                                ),
+                                                                      ),
+                                                                    ],
+                                                                    child: EditingCelluleRaport(
+                                                                      profile:
+                                                                          profileState
+                                                                              .data,
                                                                     ),
                                                                   ),
-                                                                  BlocProvider(
-                                                                    create: (context) =>
-                                                                        GetSecteurBloc(
-                                                                          getListSecteurUsercase:
-                                                                              getIt<
-                                                                                GetListSecteurUsercase
-                                                                              >(),
-                                                                        )..add(
-                                                                          CelluleEvent.fetch(),
-                                                                        ),
+                                                                ),
+                                                              );
+                                                            } else {
+                                                              Navigator.of(
+                                                                context,
+                                                              ).push(
+                                                                fadeRoute(
+                                                                  MultiBlocProvider(
+                                                                    providers: [
+                                                                      BlocProvider(
+                                                                        create:
+                                                                            (
+                                                                              context,
+                                                                            ) => RapportCelluleRequestSectionAdministrationBloc(
+                                                                              sendRapportCelluleStepAdministrationUsercase:
+                                                                                  getIt<
+                                                                                    SendRapportCelluleStepAdministrationUsercase
+                                                                                  >(),
+                                                                            ),
+                                                                      ),
+                                                                      BlocProvider(
+                                                                        create:
+                                                                            (
+                                                                              context,
+                                                                            ) =>
+                                                                                GetSecteurBloc(
+                                                                                  getListSecteurUsercase:
+                                                                                      getIt<
+                                                                                        GetListSecteurUsercase
+                                                                                      >(),
+                                                                                )..add(
+                                                                                  CelluleEvent.fetch(),
+                                                                                ),
+                                                                      ),
+                                                                      BlocProvider(
+                                                                        create:
+                                                                            (
+                                                                              context,
+                                                                            ) =>
+                                                                                GetZoneBloc(
+                                                                                  getListZoneUsercase:
+                                                                                      getIt<
+                                                                                        GetListZoneUsercase
+                                                                                      >(),
+                                                                                )..add(
+                                                                                  CelluleEvent.fetch(),
+                                                                                ),
+                                                                      ),
+                                                                    ],
+                                                                    child: EditingCelluleRaport(
+                                                                      profile:
+                                                                          profileState
+                                                                              .data,
+                                                                    ),
                                                                   ),
-                                                                  BlocProvider(
-                                                                    create: (context) =>
-                                                                        GetZoneBloc(
-                                                                          getListZoneUsercase:
-                                                                              getIt<
-                                                                                GetListZoneUsercase
-                                                                              >(),
-                                                                        )..add(
-                                                                          CelluleEvent.fetch(),
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                                child: EditingCelluleRaport(
-                                                                  profile:
+                                                                ),
+                                                              );
+
+                                                              AppAlert.showInfo(
+                                                                context,
+                                                                "Veuillez finaliser votre création de compte",
+                                                              );
+                                                            }
+                                                          }
+                                                          if (item["value"] ==
+                                                              "cellule") {
+                                                            if (profileState
+                                                                .data
+                                                                .submitSpiritual) {
+                                                              // Navigator.of(
+                                                              //   context,
+                                                              // ).push(
+                                                              //   fadeRoute(
+                                                              //     CelluleView(
+                                                              //       cellueId:
+                                                              //           profileState
+                                                              //               .data
+                                                              //               .celluleId,
+                                                              //     ),
+                                                              //   ),
+                                                              // );
+                                                            } else {
+                                                              AppAlert.showInfo(
+                                                                context,
+                                                                "Veuillez finaliser votre création de compte",
+                                                              );
+                                                            }
+                                                          }
+                                                          if (item["value"] ==
+                                                              "notification") {
+                                                            Navigator.of(
+                                                              context,
+                                                            ).push(
+                                                              fadeRoute(
+                                                                NotificationView(
+                                                                  profileId:
                                                                       profileState
-                                                                          .data,
+                                                                          .data
+                                                                          .menberId,
                                                                 ),
                                                               ),
-                                                            ),
-                                                          );
+                                                            );
+                                                          }
+                                                          if (item['value'] ==
+                                                              'history_rapport') {
+                                                            Navigator.of(
+                                                              context,
+                                                            ).push(
+                                                              fadeRoute(
+                                                                HistoryRapportView(
+                                                                  profileId:
+                                                                      profileState
+                                                                          .data
+                                                                          .menberId,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
 
-                                                          AppAlert.showInfo(
-                                                            context,
-                                                            "Veuillez finaliser votre création de compte",
-                                                          );
-                                                        }
-                                                      }
-                                                      if (item["value"] ==
-                                                          "cellule") {
-                                                        if (profileState
-                                                            .data
-                                                            .submitSpiritual) {
-                                                          // Navigator.of(
-                                                          //   context,
-                                                          // ).push(
-                                                          //   fadeRoute(
-                                                          //     CelluleView(
-                                                          //       cellueId:
-                                                          //           profileState
-                                                          //               .data
-                                                          //               .celluleId,
-                                                          //     ),
-                                                          //   ),
-                                                          // );
-                                                        } 
-                                                        else {
-                                                          AppAlert.showInfo(
-                                                            context,
-                                                            "Veuillez finaliser votre création de compte",
-                                                          );
-                                                        }
-                                                      }
-                                                      if (item["value"] ==
-                                                          "notification") {
-                                                        Navigator.of(
-                                                          context,
-                                                        ).push(
-                                                          fadeRoute(
-                                                            NotificationView(profileId: profileState.data.menberId),
-                                                          ),
-                                                        );
-                                                      }
-                                                      if (item['value'] == 'history_rapport') {
-                                                         Navigator.of(
-                                                          context,
-                                                        ).push(
-                                                          fadeRoute(
-                                                            HistoryRapportView(profileId: profileState.data.menberId),
-                                                          ),
-                                                        );
+                                                          if (item["value"] ==
+                                                              "call") {
+                                                            canCallSupport(
+                                                              number:
+                                                                  '+2250788884118',
+                                                            );
+                                                          }
+
+                                                          if (item["value"] ==
+                                                              "email") {
+                                                            await canSendEmail(
+                                                              email:
+                                                                  'emmanuelpeters@gmail.com',
+                                                            );
+                                                          }
+                                                           if (item["value"] ==
+                                                              "mise_ajour") {
+                                                            Navigator.push(context, fadeRoute(MiseAjourScreen()));
+                                                          }
+                                                           if (item["value"] ==
+                                                              "security") {
+                                                            Navigator.push(context, fadeRoute(PolitiqueScreen()));
+                                                          }
+                                                        },
                                                         
-                                                      }
-                                                    },
-                                                  );
-                                                }),
-                                              ] else ...[
-                                                ...menuItems.map((item) {
-                                                  return ListTile(
-                                                    leading: Icon(
-                                                      item["icon"],
-                                                      color:
-                                                          (item["value"] ==
-                                                              "department")
-                                                          ? context
-                                                                .appColor
-                                                                .primaryBlue
-                                                                .withValues(
-                                                                  alpha: 0.5,
-                                                                )
-                                                          : context
-                                                                .appColor
-                                                                .primaryBlue,
-                                                    ),
-                                                    title: Text(
-                                                      item["value"] ==
-                                                                  "profile" &&
-                                                              profileState
-                                                                      .data
-                                                                      .submitEngagement !=
-                                                                  true
-                                                          ? 'Mon profile'
-                                                          : item["title"],
-                                                      style: context
-                                                          .appTypographie
-                                                          .body
-                                                          .copyWith(
+                                                      );
+                                                    }),
+                                                  ] else ...[
+                                                    ...menuItems.map((item) {
+                                                      return ListTile(
+                                                        leading: Icon(
+                                                          item["icon"],
+                                                          color:
+                                                              (item["value"] ==
+                                                                  "department")
+                                                              ? context
+                                                                    .appColor
+                                                                    .primaryBlue
+                                                                    .withValues(
+                                                                      alpha:
+                                                                          0.5,
+                                                                    )
+                                                              : context
+                                                                    .appColor
+                                                                    .primaryBlue,
+                                                        ),
+                                                        title: Text(
+                                                          item["value"] ==
+                                                                      "profile" &&
+                                                                  profileState
+                                                                          .data
+                                                                          .submitEngagement !=
+                                                                      true
+                                                              ? 'Mon profile'
+                                                              : item["title"],
+                                                          style: context.appTypographie.body.copyWith(
                                                             fontSize: 13.sp,
                                                             fontWeight:
-                                                                FontWeight.w600,
+                                                                FontWeight.w500,
                                                             color:
                                                                 (item["value"] ==
                                                                     "department")
@@ -640,98 +680,95 @@ class _MenuViewState extends State<MenuView> {
                                                                       .appColor
                                                                       .primaryGrayDark,
                                                           ),
-                                                    ),
-                                                    trailing:
-                                                        (item["value"] !=
-                                                            "department")
-                                                        ? Icon(
-                                                            Icons.chevron_right,
-                                                            color: context
-                                                                .appColor
-                                                                .primaryBlue,
-                                                          )
-                                                        : SizedBox(),
-                                                    onTap: () {
-                                                      log('item: ');
-                                                      if (item["value"] ==
-                                                          "profile") {
-                                                        Navigator.of(
-                                                          context,
-                                                        ).push(
-                                                          fadeRoute(
-                                                            MultiBlocProvider(
-                                                              providers: [
-                                                                BlocProvider(
-                                                                  create: (context) => FormProfileBloc(
-                                                                    createProfileUsercase:
-                                                                        getIt<
-                                                                          CreateProfileUsercase
-                                                                        >(),
-                                                                    updateProfileUsercase:
-                                                                        getIt<
-                                                                          UpdateProfileUsercase
-                                                                        >(),
-                                                                  ),
-                                                                ),
-                                                                BlocProvider(
-                                                                  create:
-                                                                      (
-                                                                        context,
-                                                                      ) => CreateCompteProfileSocialBloc(
+                                                        ),
+                                                        trailing:
+                                                            (item["value"] !=
+                                                                "department")
+                                                            ? Icon(
+                                                                Icons
+                                                                    .chevron_right,
+                                                                color: context
+                                                                    .appColor
+                                                                    .primaryBlue,
+                                                              )
+                                                            : SizedBox(),
+                                                        onTap: () {
+                                                          log('item: ');
+                                                          if (item["value"] ==
+                                                              "profile") {
+                                                            Navigator.of(
+                                                              context,
+                                                            ).push(
+                                                              fadeRoute(
+                                                                MultiBlocProvider(
+                                                                  providers: [
+                                                                    BlocProvider(
+                                                                      create: (context) => FormProfileBloc(
+                                                                        createProfileUsercase:
+                                                                            getIt<
+                                                                              CreateProfileUsercase
+                                                                            >(),
+                                                                        updateProfileUsercase:
+                                                                            getIt<
+                                                                              UpdateProfileUsercase
+                                                                            >(),
+                                                                      ),
+                                                                    ),
+                                                                    BlocProvider(
+                                                                      create: (context) => CreateCompteProfileSocialBloc(
                                                                         createSocialProfileUsercase:
                                                                             getIt<
                                                                               CreateSocialProfileUsercase
                                                                             >(),
                                                                       ),
-                                                                ),
-                                                                BlocProvider(
-                                                                  create:
-                                                                      (
-                                                                        context,
-                                                                      ) => CreateComteProfileSpiritualLifeBloc(
+                                                                    ),
+                                                                    BlocProvider(
+                                                                      create: (context) => CreateComteProfileSpiritualLifeBloc(
                                                                         createSpiritualProfileUsercase:
                                                                             getIt<
                                                                               CreateSpiritualProfileUsercase
                                                                             >(),
                                                                       ),
-                                                                ),
+                                                                    ),
 
-                                                                // BlocProvider(
-                                                                //   create: (context) =>
-                                                                //       RapportCelluleRequestSectionAdministrationBloc(),
-                                                                // ),
-                                                                BlocProvider.value(
-                                                                  value: context
-                                                                      .read<
-                                                                        GetProfileBloc
-                                                                      >(),
+                                                                    BlocProvider.value(
+                                                                      value: context
+                                                                          .read<
+                                                                            GetProfileBloc
+                                                                          >(),
+                                                                    ),
+                                                                  ],
+                                                                  child: buildForm(
+                                                                    state:
+                                                                        profileState
+                                                                            .data,
+                                                                  ),
                                                                 ),
-                                                              ],
-                                                              child: buildForm(
-                                                                state:
-                                                                    profileState
-                                                                        .data,
                                                               ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }
-                                                      if (item["value"] ==
-                                                          "announcements") {
-                                                        Navigator.of(
-                                                          context,
-                                                        ).push(
-                                                          fadeRoute(
-                                                            NotificationView(profileId: "",),
-                                                          ),
-                                                        );
-                                                      }
-                                                    },
-                                                  );
-                                                }),
-                                              ],
-                                            ],
-                                          ),
+                                                            );
+                                                          }
+                                                          if (item["value"] ==
+                                                              "announcements") {
+                                                            Navigator.of(
+                                                              context,
+                                                            ).push(
+                                                              fadeRoute(
+                                                                NotificationView(
+                                                                  profileId: "",
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                        },
+                                                      );
+                                                    }),
+                                                  ],
+                                                ],
+                                              ),
+                                            ),
+
+                                           
+                                          ],
                                         );
                                       },
                                     ),
@@ -744,6 +781,7 @@ class _MenuViewState extends State<MenuView> {
                       );
                     }
 
+                    /// Menu items for responsables
                     return Container(
                       margin: EdgeInsets.only(top: 40.h),
                       padding: EdgeInsets.symmetric(horizontal: 2.w),
@@ -785,10 +823,9 @@ class _MenuViewState extends State<MenuView> {
                                 ),
                               ),
 
-                          
                               Row(
                                 children: [
-                                      SizedBox(width: 0.29.sw),
+                                  SizedBox(width: 0.29.sw),
                                   Text(
                                     "Hello",
                                     style: context.appTypographie.body.copyWith(
@@ -823,7 +860,9 @@ class _MenuViewState extends State<MenuView> {
                                   return ListTile(
                                     leading: Icon(
                                       item["icon"],
-                                      color: (item["value"] == "profile" || item["value"] == "connexion")
+                                      color:
+                                          (item["value"] == "profile" ||
+                                              item["value"] == "connexion")
                                           ? context.appColor.primaryBlue
                                           : context.appColor.primaryBlue
                                                 .withValues(alpha: 0.5),
@@ -836,7 +875,10 @@ class _MenuViewState extends State<MenuView> {
                                           .copyWith(
                                             fontSize: 13.sp,
                                             fontWeight: FontWeight.w600,
-                                            color: (item["value"] != "profile" && item["value"] != "connexion" )
+                                            color:
+                                                (item["value"] != "profile" &&
+                                                    item["value"] !=
+                                                        "connexion")
                                                 ? context
                                                       .appColor
                                                       .primaryGrayDark
@@ -846,10 +888,12 @@ class _MenuViewState extends State<MenuView> {
                                                       .primaryGrayDark,
                                           ),
                                     ),
-                                    trailing:(item["value"] == "profile" || item["value"] == "connexion" )
+                                    trailing:
+                                        (item["value"] == "profile" ||
+                                            item["value"] == "connexion")
                                         ? Icon(
                                             Icons.chevron_right,
-                                            color:  context.appColor.primaryBlue,
+                                            color: context.appColor.primaryBlue,
                                           )
                                         : SizedBox(),
                                     onTap: () {
@@ -899,11 +943,13 @@ class _MenuViewState extends State<MenuView> {
                                         );
                                       }
 
-                                      if(item["value"] == "connexion"){
-                                        Navigator.push(context, fadeRoute(
-                                          SigninView(showAppBar: true,)
-                                        ));
-
+                                      if (item["value"] == "connexion") {
+                                        Navigator.push(
+                                          context,
+                                          fadeRoute(
+                                            SigninView(showAppBar: true),
+                                          ),
+                                        );
                                       }
                                     },
                                   );
@@ -931,30 +977,36 @@ class _MenuViewState extends State<MenuView> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if(isConnected.trim().isNotEmpty)...[
-                      GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => LogOutPope(),
-                          );
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.logout),
-                            SizedBox(width: 8.w),
-                            CustomeText(
-                              text: "Déconnexion",
-                              style: context.appTypographie.body.copyWith(
-                                color: context.appColor.primaryGray700,
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.5.sp,
+                      if (isConnected.trim().isNotEmpty) ...[
+                        GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => LogOutPope(),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.logout,
+                                color: context.appColor.primaryError.withValues(
+                                  alpha: 0.6,
+                                ),
                               ),
-                            ),
-                          ],
+                              SizedBox(width: 8.w),
+                              CustomeText(
+                                text: "Déconnexion",
+                                style: context.appTypographie.body.copyWith(
+                                  color: context.appColor.primaryGray700,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.5.sp,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      )],
+                      ],
                     ],
                   ),
                 ),
@@ -1016,7 +1068,6 @@ class LogOutPope extends StatelessWidget {
                 fadeRoute(const SigninView()),
                 (route) => false,
               );
-           
             }
           },
           child: Text(

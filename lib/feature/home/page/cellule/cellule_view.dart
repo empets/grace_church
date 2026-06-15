@@ -84,17 +84,7 @@ class _CelluleViewState extends State<CelluleView> {
     }
   }
 
-  /// Methode: lancer un appel téléphonique
-  /// Parameters: -number
-  /// retour : void
-  /// context : elle permet de lancer un appel téléphonique quand l'utilisateur clique sur le bouton appel le responsable
-  Future<void> callSupport({required String number}) async {
-    final status = await Permission.phone.request();
-    if (status.isGranted) {
-      await FlutterPhoneDirectCaller.callNumber(number);
-    }
-  }
-
+ 
   /// Methode: partage la localisation de la cellule
   /// Parameters: -long -lat
   /// retour : void
@@ -332,7 +322,7 @@ class _CelluleViewState extends State<CelluleView> {
                                   iconLeading: true,
                                   colorText: context.appColor.primaryWhite,
                                   backgroundColor: context.appColor.primaryBlue,
-                                  onPressed: () => callSupport(
+                                  onPressed: () => canCallSupport(
                                     number: state
                                         .data
                                         .first

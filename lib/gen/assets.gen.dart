@@ -140,6 +140,17 @@ class $AssetsImagesGen {
   ];
 }
 
+class $AssetsPdfFilesGen {
+  const $AssetsPdfFilesGen();
+
+  /// File path: assets/pdf_files/politique_securite_complete_application_mobile.pdf
+  String get politiqueSecuriteCompleteApplicationMobile =>
+      'packages/grace_church/assets/pdf_files/politique_securite_complete_application_mobile.pdf';
+
+  /// List of all assets
+  List<String> get values => [politiqueSecuriteCompleteApplicationMobile];
+}
+
 class $AssetsRapportTemplateGen {
   const $AssetsRapportTemplateGen();
 
@@ -166,6 +177,7 @@ class assets {
 
   static const $AssetsIconLauncherGen iconLauncher = $AssetsIconLauncherGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsPdfFilesGen pdfFiles = $AssetsPdfFilesGen();
   static const $AssetsRapportTemplateGen rapportTemplate =
       $AssetsRapportTemplateGen();
 }

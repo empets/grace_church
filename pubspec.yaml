@@ -184,6 +184,7 @@ dependencies:
   qr_flutter: ^4.1.0
   carousel_slider: ^5.1.2
   cached_network_image: ^3.4.1
+  syncfusion_flutter_pdfviewer: ^28.1.37
 
 
   
@@ -262,6 +263,7 @@ flutter:
     - assets/images/
     - assets/icon_launcher/
     - assets/rapport_template/
+    - assets/pdf_files/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
