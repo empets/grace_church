@@ -1,5 +1,7 @@
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/cellule/domaine/entities/request/cellule_request.dart';
+import 'package:grace_church/feature/home/data/model/home_model.dart';
 
 abstract class AuthenRemoteService {
   // ---------------------------------------------------------------------------------------------
@@ -47,4 +49,14 @@ abstract class AuthenRemoteService {
   // il retourne un objet String? qui contient l'id de la connexion cree ou mis a jour
   // ---------------------------------------------------------------------------------------------
   Future<FirebaseResult<String?>> updateProfileId(RequestAuthenUpdateProfileKey params);
+
+
+    // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendImpliciteConnexion                                    
+  // Paramètre: RequestImpliciteConnexion
+  // Retour: ProfileResponseModel
+  // Description: Cette methode permet d'envoyer une connexion implicite
+  // ----------------------------------------------------------------------------------------------------------------------------
+  Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(RequestImpliciteConnexion params);
+
 }

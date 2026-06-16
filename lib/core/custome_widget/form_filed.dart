@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -78,17 +80,19 @@ class ProductionFormCustomer extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: prefixIcon,
             suffixIcon: sufixIcon,
-            label: lable != null ? Text(
-              lable!,
-              style:
-                  hintStyle ??
-                  GoogleFonts.roboto(
-                    color: Colors.black,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 0.5.sp
-                  ),
-            ) : null,
+            label: lable != null
+                ? Text(
+                    lable!,
+                    style:
+                        hintStyle ??
+                        GoogleFonts.roboto(
+                          color: Colors.black,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 0.5.sp,
+                        ),
+                  )
+                : null,
             hint: Text(
               textLabel,
               style:
@@ -484,15 +488,18 @@ class CustomeTextFormFieldWithoutBorder extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(vertical: 12.sp),
 
             filled: false, // ❗ important pour enlever le fond
-
             // errorText: errorText,
-            error: errorText != null ? Text(errorText! ,style: GoogleFonts.roboto(
-              color: (isCancel != null)
-                  ? context.appColor.primaryError
-                  : Colors.red,
-              fontWeight: FontWeight.bold,
-            ),) : null,
-           
+            error: errorText != null
+                ? Text(
+                    errorText!,
+                    style: GoogleFonts.roboto(
+                      color: (isCancel != null)
+                          ? context.appColor.primaryError
+                          : Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : null,
 
             // ✅ Bordure normale
             enabledBorder: UnderlineInputBorder(
@@ -515,13 +522,14 @@ class CustomeTextFormFieldWithoutBorder extends StatelessWidget {
             ),
 
             focusedErrorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.red.withValues(alpha: 0.5), width: 2),
+              borderSide: BorderSide(
+                color: Colors.red.withValues(alpha: 0.5),
+                width: 2,
+              ),
             ),
 
             // ❌ supprimer les autres borders
             border: UnderlineInputBorder(),
-
-      
           ),
           onChanged: onChanged,
         ),

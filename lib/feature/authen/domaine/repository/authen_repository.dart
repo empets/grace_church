@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:grace_church/core/api/failure/fail.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/cellule/domaine/entities/request/cellule_request.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 abstract class AuthenRepository {
   // ---------------------------------------------------------------------------------------------
@@ -51,6 +53,15 @@ abstract class AuthenRepository {
   // il retourne un objet String? qui contient l'id de la connexion cree ou mis a jour
   // ---------------------------------------------------------------------------------------------
   Future<Either<Failure, String?>> updateProfileId(RequestAuthenUpdateProfileKey params);
+
+   
+  // -------------------------------------------------------------
+  //  cette methode permet d'envoyer l'implicite connexion
+  //  elle prend en parametre un objet RequestImpliciteConnexion qui contient les criteres de recherche
+  //  elle retourne un objet ProfileResponse qui contient le profil de l'utilisateur
+  // -------------------------------------------------------------
+  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params);
+ 
 }
 
 

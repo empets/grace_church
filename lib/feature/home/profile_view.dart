@@ -22,8 +22,6 @@ import 'package:grace_church/feature/authen/page/form_engagement.dart';
 import 'package:grace_church/feature/authen/page/form_holly_living.dart';
 import 'package:grace_church/feature/authen/page/form_profile.dart';
 import 'package:grace_church/feature/authen/page/form_social_professionnal.dart';
-import 'package:grace_church/feature/home/data/model/home_model.dart';
-import 'package:grace_church/feature/home/data/service/steam_remote_service.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
@@ -73,17 +71,17 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.email_outlined,
           'title': 'Email',
-          'value': profile?.email ?? "",
+          'value': profile.email,
         },
         {
           'title': 'Téléphone',
           'icon': Icons.phone_outlined,
-          'value': profile?.contact ?? "",
+          'value': profile.contact,
         },
         {
           'title': 'Adresse & Quartier',
           'icon': Icons.location_on_outlined,
-          'value': profile?.zoneResidence ?? "",
+          'value': profile.zoneResidence,
         },
       ];
       return deviceInfos;
@@ -96,12 +94,12 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.school_outlined,
           'title': 'Métier / Études',
-          'value': profile?.nivauEtude ?? "",
+          'value': profile.nivauEtude,
         },
         {
           'title': 'Organisation',
           'icon': Icons.business_outlined,
-          'value': profile?.activity ?? "",
+          'value': profile.activity,
         },
       ];
       return deviceInfos;
@@ -114,14 +112,14 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.format_color_fill_sharp,
           'title': 'Date de baptême',
-          'value': profile?.dateBaptme?.contains('NA') == true
+          'value': profile.dateBaptme.contains('NA') == true
               ? ""
-              : profile?.dateBaptme,
+              : profile.dateBaptme,
         },
         {
           'title': 'Cellule de maison',
           'icon': Icons.home_work,
-          'value': profile?.cellulePriere ?? "",
+          'value': profile.cellulePriere,
         },
       ];
       return deviceInfos;
@@ -134,7 +132,7 @@ class _ProfileViewState extends State<ProfileView> {
         {
           'icon': Icons.volunteer_activism_outlined,
           'title': 'Département',
-          'value': profile?.departement ?? "",
+          'value': profile.departement,
         },
       ];
       return deviceInfos;
@@ -218,8 +216,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                 width: 0.08.sh,
                                               ),
                                             ),
-                                            profileStream.data?.profileImage ??
-                                                "",
+                                            profileStream.data.profileImage,
 
                                             fit: BoxFit.cover,
                                             height: 0.1.sh,
@@ -228,7 +225,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         ),
                                       ),
                                       CustomeText(
-                                        text: profileStream.data?.name ?? "",
+                                        text: profileStream.data.name,
                                         style: context.appTypographie.button
                                             .copyWith(
                                               color: context
@@ -239,7 +236,7 @@ class _ProfileViewState extends State<ProfileView> {
                                             ),
                                       ),
                                       CustomeText(
-                                        text: profileStream.data?.email ?? "",
+                                        text: profileStream.data.email,
                                         style: context.appTypographie.button
                                             .copyWith(
                                               color: context

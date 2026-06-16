@@ -17,8 +17,7 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_social_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
-import 'package:grace_church/feature/authen/page/form_holly_living.dart'
-    hide FormNextTeps;
+import 'package:grace_church/feature/authen/page/form_holly_living.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
