@@ -10,8 +10,8 @@ import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/connexion_implicite_usercase.dart';
-import 'package:grace_church/feature/cellule/domaine/usecase/get_cellule_usercase.dart';
-import 'package:grace_church/feature/cellule/domaine/usecase/get_rapport_cellule_usercase.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_cellule_usercase.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/notification/domaine/entities/response/notification_response.dart';
 import 'package:grace_church/feature/notification/domaine/usecase/get_list_notification_usercase.dart';
@@ -19,8 +19,8 @@ import 'package:grace_church/feature/home/domaine/usercase/get_profile_usercase.
 import 'package:grace_church/feature/home/home_view.dart';
 import 'package:grace_church/feature/home/menu_view.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
-import 'package:grace_church/feature/cellule/presentation/bloc/cellule_bloc.dart';
-import 'package:grace_church/feature/cellule/presentation/bloc/event/cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/cellule_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/event/cellule_event.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/notification/domaine/usecase/get_noftification_list_by_criterya.dart';
@@ -28,7 +28,7 @@ import 'package:grace_church/feature/notification/domaine/usecase/read_notificat
 import 'package:grace_church/feature/notification/presentation/bloc/notification/event/notification_event.dart';
 import 'package:grace_church/feature/notification/presentation/bloc/notification/notification_bloc.dart';
 import 'package:grace_church/feature/notification/presentation/bloc/notification/readnotification_bloc.dart';
-import 'package:grace_church/feature/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/notification/presentation/page/notification_view.dart';
 import 'package:grace_church/feature/notification/presentation/page/widget/programme.dart';
 

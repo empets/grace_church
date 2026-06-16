@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/feature/cellule/domaine/entities/response/cellule_response.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
 import 'package:grace_church/feature/notification/presentation/page/widget/programme.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
@@ -12,9 +12,9 @@ import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/home/depatelement_view.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
-import 'package:grace_church/feature/cellule/presentation/bloc/cellule_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/cellule_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
-import 'package:grace_church/feature/cellule/presentation/page/cellule/cellule_view.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/page/cellule/cellule_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

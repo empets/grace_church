@@ -37,38 +37,38 @@ import '../../feature/authen/domaine/usercase/update_profile_deviceid_usercase.d
     as _i240;
 import '../../feature/authen/domaine/usercase/update_profile_usercase.dart'
     as _i256;
-import '../../feature/cellule/data/repositories/cellule_imple_repositories.dart'
+import '../../feature/depatement/cellule/data/repositories/cellule_imple_repositories.dart'
     as _i87;
-import '../../feature/cellule/data/services/celllule_repositories_remote_services.dart'
+import '../../feature/depatement/cellule/data/services/celllule_repositories_remote_services.dart'
     as _i850;
-import '../../feature/cellule/data/services/cellule_imple_repositories_remot_services.dart'
+import '../../feature/depatement/cellule/data/services/cellule_imple_repositories_remot_services.dart'
     as _i249;
-import '../../feature/cellule/domaine/repositories/cellule_repositories_domaine.dart'
+import '../../feature/depatement/cellule/domaine/repositories/cellule_repositories_domaine.dart'
     as _i288;
-import '../../feature/cellule/domaine/usecase/get_cellule_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/get_cellule_usercase.dart'
     as _i810;
-import '../../feature/cellule/domaine/usecase/get_list_responsable_cellule_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/get_list_responsable_cellule_usercase.dart'
     as _i987;
-import '../../feature/cellule/domaine/usecase/get_list_secteur.dart' as _i751;
-import '../../feature/cellule/domaine/usecase/get_list_zone.dart' as _i497;
-import '../../feature/cellule/domaine/usecase/get_rapport_cellule_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/get_list_secteur.dart' as _i751;
+import '../../feature/depatement/cellule/domaine/usecase/get_list_zone.dart' as _i497;
+import '../../feature/depatement/cellule/domaine/usecase/get_rapport_cellule_usercase.dart'
     as _i1007;
-import '../../feature/cellule/domaine/usecase/rapport_cellule_admine_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/rapport_cellule_admine_usercase.dart'
     as _i907;
-import '../../feature/cellule/domaine/usecase/rapport_cellule_stat_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/rapport_cellule_stat_usercase.dart'
     as _i270;
-import '../../feature/cellule/domaine/usecase/rapport_cellule_state_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/rapport_cellule_state_usercase.dart'
     as _i191;
-import '../../feature/cellule/domaine/usecase/rapport_cellule_suggestion_usercase.dart'
+import '../../feature/depatement/cellule/domaine/usecase/rapport_cellule_suggestion_usercase.dart'
     as _i25;
-import '../../feature/cellule/presentation/bloc/cellule_bloc.dart' as _i945;
-import '../../feature/cellule/presentation/bloc/get_responsable_cellue_bloc.dart'
+import '../../feature/depatement/cellule/presentation/bloc/cellule_bloc.dart' as _i945;
+import '../../feature/depatement/cellule/presentation/bloc/get_responsable_cellue_bloc.dart'
     as _i332;
-import '../../feature/cellule/presentation/bloc/get_responsable_secteur.dart'
+import '../../feature/depatement/cellule/presentation/bloc/get_responsable_secteur.dart'
     as _i736;
-import '../../feature/cellule/presentation/bloc/get_responsable_zone.dart'
+import '../../feature/depatement/cellule/presentation/bloc/get_responsable_zone.dart'
     as _i734;
-import '../../feature/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart'
+import '../../feature/depatement/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart'
     as _i695;
 import '../../feature/home/data/repositories/home_data_repositories.dart'
     as _i486;

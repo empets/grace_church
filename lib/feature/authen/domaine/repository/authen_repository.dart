@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:grace_church/core/api/failure/fail.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
-import 'package:grace_church/feature/cellule/domaine/entities/request/cellule_request.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/entities/request/cellule_request.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 
 abstract class AuthenRepository {

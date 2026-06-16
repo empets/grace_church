@@ -21,11 +21,11 @@ import 'package:grace_church/feature/authen/page/bloc/create_compte/event/event_
 import 'package:grace_church/feature/authen/page/bloc/create_compte/form_profile_spirituallife_bloc.dart';
 import 'package:grace_church/feature/authen/page/bloc/create_compte/state/state_create_compte.dart';
 import 'package:grace_church/feature/authen/page/form_engagement.dart';
-import 'package:grace_church/feature/cellule/domaine/entities/response/cellule_response.dart';
-import 'package:grace_church/feature/cellule/domaine/usecase/get_cellule_usercase.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
-import 'package:grace_church/feature/cellule/presentation/bloc/cellule_bloc.dart';
-import 'package:grace_church/feature/cellule/presentation/bloc/event/cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/cellule_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/event/cellule_event.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class FormHollyLiving extends StatefulWidget {

@@ -5,10 +5,13 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:intl/intl.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:crypto/crypto.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Future<bool> isEmulator() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -678,4 +681,33 @@ Map<String, dynamic> parseFirebaseMapForNotificationClick(dynamic raw) {
   }
 
   return map; // ✅ ne touche plus clicks ici
+}
+
+
+
+ /// Methode: lancer un appel téléphonique
+  /// Parameters: -number
+  /// retour : void
+  /// context : elle permet de lancer un appel téléphonique quand l'utilisateur clique sur le bouton appel le responsable
+  Future<void>  canCallSupport({required String number}) async {
+    final status = await Permission.phone.request();
+    if (status.isGranted) {
+      await FlutterPhoneDirectCaller.callNumber(number);
+    }
+  }
+
+
+/// Methode: ouvrir le client mail pour envoyer un email
+/// Parameters: -email
+/// retour : void
+/// context : elle permet d'ouvrir le client mail quand l'utilisateur clique sur le bouton contacter par email
+Future<void> canSendEmail({required String email}) async {
+  final Uri emailUri = Uri(
+    scheme: 'mailto',
+    path: email,
+  );
+
+  if (await canLaunchUrl(emailUri)) {
+    await launchUrl(emailUri);
+  }
 }
