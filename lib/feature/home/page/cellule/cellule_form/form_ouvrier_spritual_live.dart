@@ -12,6 +12,7 @@ import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/push_notification/push_notification.dart';
 import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
@@ -108,8 +109,14 @@ class _FormOuvrierSpritualLiveDataState extends State<FormOuvrierSpritualLive> {
       FormSuggestionBloc,
       RapportCelluleRequestSuggestionState
     >(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state.status.isSuccess) {
+          await PushNotification().showNotification(
+                  id: 1,
+                  title: 'Info',
+                  body:
+                      'Merci d\'avoir soumis votre rapport de cellule de la semaine.Dieu vous bénisse',
+                );
           Navigator.push(context, fadeRoute(const OverviewScreen()));
         }
       },

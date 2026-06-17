@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart' show SvgPicture;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/navigator_widget/custome_app_bar.dart';
+import 'package:grace_church/core/push_notification/push_notification.dart';
 import 'package:grace_church/gen/assets.gen.dart';
 
 class MiseAjourScreen extends StatefulWidget {
@@ -37,21 +38,26 @@ class _MiseAjourScreenState extends State<MiseAjourScreen> {
               ),
             ),
 
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'version actuelle : ',
-                  style: GoogleFonts.roboto(fontWeight: FontWeight.w400),
-                ),
-                Text(
-                  '2.4.01',
-                  style: GoogleFonts.roboto(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: () async {
+                
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'version actuelle : ',
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.w400),
                   ),
-                ),
-              ],
+                  Text(
+                    '2.4.01',
+                    style: GoogleFonts.roboto(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grace_church/core/about_internet/not_internet.dart';
 import 'package:grace_church/core/constante/const.dart';
 import 'package:grace_church/core/extension/extention.dart';
+import 'package:grace_church/core/push_notification/push_notification.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
@@ -29,6 +30,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr_FR', null);
   InitialState();
+
+  await PushNotification().initNotification();
 
   await Firebase.initializeApp(
     options: FirebaseOptions(
