@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grace_church/core/push_notification/push_notification.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_list_secteur.dart';
-import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_list_zone.dart' show GetListZoneUsercase;
+import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_list_zone.dart'
+    show GetListZoneUsercase;
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_rapport_cellule_usercase.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/rapport_cellule_admine_usercase.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/rapport_cellule_stat_usercase.dart';
@@ -83,7 +85,6 @@ class _CelluleViewState extends State<CelluleView> {
     }
   }
 
- 
   /// Methode: partage la localisation de la cellule
   /// Parameters: -long -lat
   /// retour : void
@@ -556,43 +557,73 @@ class _CelluleViewState extends State<CelluleView> {
                                 ),
                               ),
                               SizedBox(width: 10.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomeText(
-                                    text:
-                                        "Chaque ${state.data.first.jourCellule} de la semaine",
-                                    style: context.appTypographie.button
-                                        .copyWith(
-                                          color:
-                                              context.appColor.primaryGrayDark,
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w400,
+                              GestureDetector(
+                                onTap: () async{
+                                    await PushNotification.schedulerNotification(
+                                id: 1,
+                                titre: 'Rappel',
+                                corps: 'Vous avez une cellule à ${state.data.first.heureCellule}h',
+                                heure: 17,
+                                minute: 37,
+                              );
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        CustomeText(
+                                          text:
+                                              "Chaque ${state.data.first.jourCellule}",
+                                          style: context.appTypographie.button
+                                              .copyWith(
+                                                color: context
+                                                    .appColor
+                                                    .primaryGrayDark,
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w400,
+                                              ),
                                         ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.access_time_filled_outlined,
-                                        color: context.appColor.primaryGray500,
-                                        size: 16.sp,
-                                      ),
-                                      SizedBox(width: 5.w),
-                                      CustomeText(
-                                        text:
-                                            "A partir de ${state.data.first.heureCellule}h",
-                                        style: context.appTypographie.button
-                                            .copyWith(
-                                              color: context
-                                                  .appColor
-                                                  .primaryGray500,
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w600,
+                                        SizedBox(width: 5.w),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.access_time_filled_outlined,
+                                              color:
+                                                  context.appColor.primaryGray500,
+                                              size: 16.sp,
                                             ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                            SizedBox(width: 5.w),
+                                            CustomeText(
+                                              text:
+                                                  "A partir de ${state.data.first.heureCellule}h",
+                                              style: context.appTypographie.button
+                                                  .copyWith(
+                                                    color: context
+                                                        .appColor
+                                                        .primaryGray500,
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                
+                                    CustomeText(
+                                      text:
+                                          "Une Notification vous sera envoyé 15 minutes\navant le début de la cellule",
+                                      style: context.appTypographie.button
+                                          .copyWith(
+                                            color:
+                                                context.appColor.primaryGray500,
+                                            fontSize: 11.sp,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

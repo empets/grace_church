@@ -3,6 +3,7 @@ import 'package:grace_church/core/api/failure/fail.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/notification/data/model/notification_model.dart';
 import 'package:grace_church/feature/notification/data/services/notification_imple_repositories_remote_service.dart';
+import 'package:grace_church/feature/notification/data/services/notification_repositorie_remot_service.dart';
 import 'package:grace_church/feature/notification/domaine/entities/request/notification_request.dart';
 import 'package:grace_church/feature/notification/domaine/entities/response/notification_response.dart';
 import 'package:grace_church/feature/notification/domaine/repositories/i_notification_repositories.dart';
@@ -13,9 +14,9 @@ import 'package:grace_church/core/usercase/usercase.dart';
 
 @LazySingleton(as: NotificationDomaineRepositories)
 class ImplNotificationRepositories implements NotificationDomaineRepositories {
-      ImplNotificationRepositories({required this.notificationImpleRepositoriesRemoteService});
+      ImplNotificationRepositories({required this.notificationRepositorieRemotService});
 
-      final NotificationImpleRepositoriesRemoteService notificationImpleRepositoriesRemoteService;
+      final NotificationRepositorieRemotService notificationRepositorieRemotService;
 
 
       
@@ -30,7 +31,7 @@ class ImplNotificationRepositories implements NotificationDomaineRepositories {
   Future<Either<Failure, List<NotificationResponse>>> getListNotifications(
     EmptyRequest notParms,
   ) async {
-    final response = await notificationImpleRepositoriesRemoteService.getListNotifications(
+    final response = await notificationRepositorieRemotService.getListNotifications(
       notParms,
     );
     if (response is FirebaseSuccess<List<NotificationResponseModel>>) {
@@ -54,7 +55,7 @@ class ImplNotificationRepositories implements NotificationDomaineRepositories {
   @override
   Future<Either<Failure, List<NotificationResponse>>>
   getListNotificationsByCriteria(RequestNotification params) async {
-    final response = await notificationImpleRepositoriesRemoteService
+    final response = await notificationRepositorieRemotService
         .getListNotificationsByCriteria(params);
     if (response is FirebaseSuccess<List<NotificationResponseModel>>) {
       return Right(
@@ -76,7 +77,7 @@ class ImplNotificationRepositories implements NotificationDomaineRepositories {
   // -------------------------------------------------------------
   @override
   Future<Either<Failure, String>> readNotification(RequestReadNotification params) async {
-    final response = await notificationImpleRepositoriesRemoteService.readNotification(params);
+    final response = await notificationRepositorieRemotService.readNotification(params);
     if (response is FirebaseSuccess<String>) {
       return Right(response.data);
     } else if (response is FirebaseError<String>) {

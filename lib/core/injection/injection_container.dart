@@ -43,57 +43,10 @@ abstract class InjectableModule {
     // retryPolicy: ExpiredTokenRetryPolicy(getIt(), getIt()),
   );
 
-  // @lazySingleton
-  // Future<shareData.SharedPreferences> get sharedPreferences =>
-  //     shareData.SharedPreferences.getInstance();
-
-  // @injectable
-  // Future<AppRoute> appRoute() async => AppRoute(
-  //   sharedPreferences: getIt<shareData.SharedPreferences>(),
-  //   appRouteBloc: getIt<AppRouteBloc>(),
-  // );
-
-  // @lazySingleton
-  // FirebaseService get firebaseService => FirebaseService();
 
   @lazySingleton
   FlutterSecureStorage get prefs => const FlutterSecureStorage();
 
-  // @lazySingleton
-  // InternetConnectionChecker get network => InternetConnectionChecker.instance;
-
-  // @lazySingleton
-  // NetworkInfo get networkInfo => NetworkInfo();
-
-  // //MapController
-
-  // @lazySingleton
-  // MapController get mapController => MapController();
-
-  // @lazySingleton
-  // Connectivity get connectivity => Connectivity();
-
-  // @lazySingleton
-  // Location get location => Location();
-
-  // @lazySingleton
-  // GoogleSignIn get googleSignIn => GoogleSignIn();
-
-  // @lazySingleton
-  // FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
-
-  // @lazySingleton
-  // FirebaseMessagingService get firebaseMessagingService =>
-  //     FirebaseMessagingService.instance;
-
-  // @lazySingleton
-  // DeviceInfoPlugin get deviceInfoPlugin => DeviceInfoPlugin();
-
-  // @lazySingleton
-  // FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
-
-  // @lazySingleton
-  // ImagePicker get picker => ImagePicker();
 }
 
 // abstract class Env {

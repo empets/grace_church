@@ -403,11 +403,9 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                                           ),
                                     ),
                                   );
-                                 }
-                                 }
+                                 } 
 
-                               
-                                   if (!pair.every((rapport) => rapport.tag.contains("terminer"))) {
+                                  if (!pair.every((rapport) => rapport.tag.contains("terminer"))) {
                                     AppAlert.showError(
                                           context,
                                           "Impossible de voir le détail du rapport veuillez le finaliser",
@@ -503,6 +501,7 @@ class _HistoryRapportViewState extends State<HistoryRapportView> {
                                         );
                                       }
                               
+                                 }
                                 
                                  else{
                                   return  AppAlert.showError(

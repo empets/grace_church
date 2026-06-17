@@ -14,7 +14,9 @@ class  CelluleImpleRepositories implements CelluleRepositoriesDomaine {
    CelluleImpleRepositories({required this.cellluleRepositoriesRemoteServices});
    
    final CellluleRepositoriesRemoteServices cellluleRepositoriesRemoteServices;
-
+   
+ 
+ 
 
 
  // ----------------------------------------------------------------------------------------------------------------------------

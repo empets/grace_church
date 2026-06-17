@@ -33,6 +33,8 @@ void main() async {
 
   await PushNotification().initNotification();
 
+
+
   await Firebase.initializeApp(
     options: FirebaseOptions(
       apiKey: GlobalParams.apiKey,
@@ -52,19 +54,6 @@ void main() async {
     anonKey: GlobalParams.supabaseAnonKey,
   );
 
-  // await initNotifications();      // ← timezone initialisé ici
-  // await scheduleNotification(); 
-
-  // await Firebase.initializeApp(
-  //   name: "authenfication",
-  //   options: FirebaseOptions(
-  //     apiKey: GlobalParams.apisKey,
-  //     appId: GlobalParams.appsId,
-  //     messagingSenderId: GlobalParams.messagingsSenderId,
-  //     projectId: GlobalParams.projectsId,
-  //     storageBucket: GlobalParams.storageBuckets,
-  //   ),
-  // );
 
   Bloc.observer = SimpleBlocObserver();
   await configureDependencies();
@@ -140,53 +129,6 @@ class MyApp extends StatelessWidget {
 
 
 
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key, required this.deviceId});
-//   final String deviceId;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) => ConnexionImpliciteBloc(
-//         getConnexionImpliciteUsercase: getIt<GetConnexionImpliciteUsercase>(),
-//       )..add(ProfileEvent.getProfileByDeviceId(deviceId)),
-//       child: ScreenUtilInit(
-//         designSize: const Size(360, 690),
-//         minTextAdapt: true,
-//         splitScreenMode: true,
-//         builder: (_, child) {
-//           return MaterialApp(
-//             title: 'Flutter Demo',
-//             key: navigatorKey,
-//             debugShowCheckedModeBanner: false,
-//             theme: ThemeData.light().copyWith(
-//               primaryColor: Colors.black,
-//               textTheme: GoogleFonts.robotoTextTheme(
-//                 Theme.of(context).textTheme,
-//               ),
-//               colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-//               extensions: <ThemeExtension<dynamic>>[
-//                 AppColorsTheme.appColors,
-//                 AppTypographieTheme.appTheme,
-//               ],
-//             ),
-//             home: child,
-//           );
-//         },
-//         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
-//           builder: (context, state) {
-//             return state is LoadState<ProfileResponse>
-//                 ? SplachSreen()
-//                 : state is SuccessState<ProfileResponse>
-//                 ? OverviewScreen(menberId: state.data.menberId, isFormImpliciteConnexion: true)
-//                 : OnboardingScreen();
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 
 

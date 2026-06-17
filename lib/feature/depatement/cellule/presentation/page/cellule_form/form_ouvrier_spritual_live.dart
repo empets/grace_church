@@ -8,6 +8,7 @@ import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
+import 'package:grace_church/core/push_notification/push_notification.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/event/rapport_cellule_event.dart';
@@ -104,6 +105,11 @@ class _FormOuvrierSpritualLiveDataState extends State<FormOuvrierSpritualLive> {
     >(
       listener: (context, state) {
         if (state.status.isSuccess) {
+          PushNotification().showNotification(
+            id: 1,
+            title: 'Rapport Cellule',
+            body: 'Rapport Cellule envoyé avec succès',
+          );
           Navigator.push(context, fadeRoute(const OverviewScreen()));
         }
       },

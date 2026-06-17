@@ -119,6 +119,60 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i366.ImpleSteamRemoteService(),
     );
     gh.lazySingleton<_i303.AppLauncherBloc>(() => _i303.AppLauncherBloc());
+ 
+    gh.lazySingleton<_i249.GetListNotificationUsercase>(
+      () => _i249.GetListNotificationUsercase(
+        gh<_i482.NotificationDomaineRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i554.GetListNotificationByCriteriaUsercase>(
+      () => _i554.GetListNotificationByCriteriaUsercase(
+        gh<_i482.NotificationDomaineRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i260.ReadNotificationUsercase>(
+      () => _i260.ReadNotificationUsercase(
+        gh<_i482.NotificationDomaineRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i56.GetCelluleUsercase>(
+      () => _i56.GetCelluleUsercase(gh<_i389.CelluleImpleRepositories>()),
+    );
+    gh.lazySingleton<_i702.GetListResponsableCelluleUsercase>(
+      () => _i702.GetListResponsableCelluleUsercase(
+        gh<_i389.CelluleImpleRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i643.GetListSecteurUsercase>(
+      () => _i643.GetListSecteurUsercase(gh<_i389.CelluleImpleRepositories>()),
+    );
+    gh.lazySingleton<_i448.GetListZoneUsercase>(
+      () => _i448.GetListZoneUsercase(gh<_i389.CelluleImpleRepositories>()),
+    );
+    gh.lazySingleton<_i577.GetRapportCelluleUsercase>(
+      () =>
+          _i577.GetRapportCelluleUsercase(gh<_i389.CelluleImpleRepositories>()),
+    );
+    gh.lazySingleton<_i444.SendRapportCelluleStepAdministrationUsercase>(
+      () => _i444.SendRapportCelluleStepAdministrationUsercase(
+        gh<_i389.CelluleImpleRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i238.SendRapportCelluleStepStatUsercase>(
+      () => _i238.SendRapportCelluleStepStatUsercase(
+        gh<_i389.CelluleImpleRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i578.SendRapportCelluleStepAssistantUsercase>(
+      () => _i578.SendRapportCelluleStepAssistantUsercase(
+        gh<_i389.CelluleImpleRepositories>(),
+      ),
+    );
+    gh.lazySingleton<_i8.SendRapportCelluleStepSuggestionUsercase>(
+      () => _i8.SendRapportCelluleStepSuggestionUsercase(
+        gh<_i389.CelluleImpleRepositories>(),
+      ),
+    );
     gh.lazySingleton<_i259.AuthenRemoteService>(
       () => _i166.ImplRemoteService(db: gh<_i345.DatabaseReference>()),
     );
@@ -136,6 +190,11 @@ extension GetItInjectableX on _i174.GetIt {
         db: gh<_i345.DatabaseReference>(),
       ),
     );
+    gh.lazySingleton<_i352.GetZoneBloc>(
+      () => _i352.GetZoneBloc(
+        getListZoneUsercase: gh<_i448.GetListZoneUsercase>(),
+      ),
+    );
     gh.lazySingleton<_i962.HomeDomaineRepository>(
       () => _i486.ImpleHomeDataRepositories(
         domaineServiceRepository: gh<_i61.DomaineServiceRepository>(),
@@ -146,61 +205,20 @@ extension GetItInjectableX on _i174.GetIt {
         authenRemoteService: gh<_i259.AuthenRemoteService>(),
       ),
     );
+    gh.lazySingleton<_i475.GetRapportCelluleBloc>(
+      () => _i475.GetRapportCelluleBloc(
+        getRapportCelluleUsercase: gh<_i577.GetRapportCelluleUsercase>(),
+      ),
+    );
     gh.lazySingleton<_i521.CelluleRepositoriesDomaine>(
       () => _i389.CelluleImpleRepositories(
         cellluleRepositoriesRemoteServices:
             gh<_i87.CellluleRepositoriesRemoteServices>(),
       ),
     );
-    gh.lazySingleton<_i56.GetCelluleUsercase>(
-      () => _i56.GetCelluleUsercase(gh<_i521.CelluleRepositoriesDomaine>()),
-    );
-    gh.lazySingleton<_i702.GetListResponsableCelluleUsercase>(
-      () => _i702.GetListResponsableCelluleUsercase(
-        gh<_i521.CelluleRepositoriesDomaine>(),
-      ),
-    );
-    gh.lazySingleton<_i643.GetListSecteurUsercase>(
-      () =>
-          _i643.GetListSecteurUsercase(gh<_i521.CelluleRepositoriesDomaine>()),
-    );
-    gh.lazySingleton<_i448.GetListZoneUsercase>(
-      () => _i448.GetListZoneUsercase(gh<_i521.CelluleRepositoriesDomaine>()),
-    );
-    gh.lazySingleton<_i577.GetRapportCelluleUsercase>(
-      () => _i577.GetRapportCelluleUsercase(
-        gh<_i521.CelluleRepositoriesDomaine>(),
-      ),
-    );
-    gh.lazySingleton<_i444.SendRapportCelluleStepAdministrationUsercase>(
-      () => _i444.SendRapportCelluleStepAdministrationUsercase(
-        gh<_i521.CelluleRepositoriesDomaine>(),
-      ),
-    );
-    gh.lazySingleton<_i238.SendRapportCelluleStepStatUsercase>(
-      () => _i238.SendRapportCelluleStepStatUsercase(
-        gh<_i521.CelluleRepositoriesDomaine>(),
-      ),
-    );
-    gh.lazySingleton<_i578.SendRapportCelluleStepAssistantUsercase>(
-      () => _i578.SendRapportCelluleStepAssistantUsercase(
-        gh<_i521.CelluleRepositoriesDomaine>(),
-      ),
-    );
-    gh.lazySingleton<_i8.SendRapportCelluleStepSuggestionUsercase>(
-      () => _i8.SendRapportCelluleStepSuggestionUsercase(
-        gh<_i521.CelluleRepositoriesDomaine>(),
-      ),
-    );
     gh.lazySingleton<_i868.GetSecteurBloc>(
       () => _i868.GetSecteurBloc(
         getListSecteurUsercase: gh<_i643.GetListSecteurUsercase>(),
-      ),
-    );
-    gh.lazySingleton<_i482.NotificationDomaineRepositories>(
-      () => _i236.ImplNotificationRepositories(
-        notificationRepositorieRemotService:
-            gh<_i374.NotificationRepositorieRemotService>(),
       ),
     );
     gh.lazySingleton<_i323.CelluleBloc>(
@@ -215,21 +233,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i562.GetProfileUsercase>(
       () => _i562.GetProfileUsercase(gh<_i962.HomeDomaineRepository>()),
-    );
-    gh.lazySingleton<_i249.GetListNotificationUsercase>(
-      () => _i249.GetListNotificationUsercase(
-        gh<_i482.NotificationDomaineRepositories>(),
-      ),
-    );
-    gh.lazySingleton<_i554.GetListNotificationByCriteriaUsercase>(
-      () => _i554.GetListNotificationByCriteriaUsercase(
-        gh<_i482.NotificationDomaineRepositories>(),
-      ),
-    );
-    gh.lazySingleton<_i260.ReadNotificationUsercase>(
-      () => _i260.ReadNotificationUsercase(
-        gh<_i482.NotificationDomaineRepositories>(),
-      ),
     );
     gh.lazySingleton<_i16.GetConnexionImpliciteUsercase>(
       () => _i16.GetConnexionImpliciteUsercase(gh<_i653.AuthenRepository>()),
@@ -259,16 +262,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i303.ConnexionImpliciteBloc>(
       () => _i303.ConnexionImpliciteBloc(
         getConnexionImpliciteUsercase: gh<_i16.GetConnexionImpliciteUsercase>(),
-      ),
-    );
-    gh.lazySingleton<_i352.GetZoneBloc>(
-      () => _i352.GetZoneBloc(
-        getListZoneUsercase: gh<_i448.GetListZoneUsercase>(),
-      ),
-    );
-    gh.lazySingleton<_i475.GetRapportCelluleBloc>(
-      () => _i475.GetRapportCelluleBloc(
-        getRapportCelluleUsercase: gh<_i577.GetRapportCelluleUsercase>(),
       ),
     );
     gh.lazySingleton<_i37.GetProfileBloc>(
