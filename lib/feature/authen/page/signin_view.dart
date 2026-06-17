@@ -10,7 +10,6 @@ import 'package:grace_church/core/custome_widget/form_filed.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/injection/injection_container.dart';
-import 'package:grace_church/core/navigator_widget/custome_app_bar.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_social_profile_usercase.dart';
 import 'package:grace_church/feature/authen/domaine/usercase/create_spiritual_profile.dart';

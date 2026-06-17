@@ -7,6 +7,8 @@ import 'package:grace_church/core/data_process/request/request.dart';
 import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/data/service/impl_remote_service.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/entities/request/cellule_request.dart';
+import 'package:grace_church/feature/home/data/model/home_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' as shareData;
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -704,4 +706,70 @@ class ImplRemoteService implements AuthenRemoteService {
       return FirebaseError(e.toString());
     }
   }
+
+
+  /// -------------------------- Method:[sendImpliciteConnexion] --------------------------------------------
+/// Description:
+/// Effectue une connexion implicite en recherchant un utilisateur
+/// à partir de l'identifiant unique de son appareil (`deviceId`)
+/// enregistré dans Firebase Realtime Database.
+///
+/// Cette méthode permet d'identifier automatiquement un utilisateur
+/// précédemment connecté sans nécessiter une nouvelle authentification.
+///
+/// Lorsque le `deviceId` correspond à un utilisateur existant,
+/// les informations de son profil sont récupérées et converties en
+/// objet [ProfileResponseModel].
+///
+/// Parameters:
+/// • [params] : Informations nécessaires à la connexion implicite.
+///   - [deviceId] : Identifiant unique de l'appareil utilisé pour
+///     retrouver le profil associé.
+///
+/// Returns:
+/// • [FirebaseSuccess<ProfileResponseModel>] si un utilisateur
+///   correspondant au `deviceId` est trouvé.
+/// • [FirebaseError] si aucun utilisateur n'est associé au
+///   `deviceId` fourni ou en cas d'échec de l'opération.
+///
+/// Throws (capturées et encapsulées):
+/// • Erreurs Firebase Realtime Database.
+/// • Erreurs de lecture des données.
+/// • Erreurs de conversion vers [ProfileResponseModel].
+/// • Erreurs liées à une structure de données invalide ou inattendue.
+/// • Exceptions inattendues durant l'exécution.
+///
+/// Process:
+/// • Recherche d'un utilisateur dans le nœud `menber`.
+/// • Filtrage des données à partir du champ `deviceId`.
+/// • Vérification de l'existence d'un utilisateur correspondant.
+/// • Conversion des données Firebase en [ProfileResponseModel].
+/// • Retour du profil utilisateur via un [FirebaseSuccess].
+/// • Encapsulation des erreurs dans un [FirebaseError].
+  @override
+  Future<FirebaseResult<ProfileResponseModel>> sendImpliciteConnexion(
+    RequestImpliciteConnexion params,
+  ) async {
+    try {
+      final userIdExist = await db
+          .child('menber')
+          .orderByChild('deviceId')
+          .equalTo(params.deviceId)
+          .get();
+
+      if (userIdExist.exists) {
+        final data = userIdExist.value as Map<dynamic, dynamic>;
+        final notifications = data.values.map((e) {
+          final notificationItem = Map<String, dynamic>.from(e);
+          return ProfileResponseModel.fromJson(notificationItem);
+        }).toList();
+        return FirebaseSuccess(notifications.first);
+      }
+
+      return FirebaseError("L'utilisateur n'existe pas");
+    } catch (e) {
+      return FirebaseError(e.toString());
+    }
+  }
+
 }

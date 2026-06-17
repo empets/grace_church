@@ -7,6 +7,9 @@ import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/feature/authen/data/service/impl_remote_service.dart';
 import 'package:grace_church/feature/authen/domaine/entities/request/authen_request.dart';
 import 'package:grace_church/feature/authen/domaine/repository/authen_repository.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/entities/request/cellule_request.dart';
+import 'package:grace_church/feature/home/data/model/home_model.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -119,4 +122,21 @@ class ImpleAuthenRepository implements AuthenRepository {
     return Left(Failure(message: "Erreur inconnue"));
   }
 
+   // ----------------------------------------------------------------------------------------------------------------------------
+  // Methode: sendImpliciteConnexion                                    
+  // Paramètre: RequestImpliciteConnexion
+  // Retour: ProfileResponse (qui contient les informations du profil de l'utilisateur)
+  // Description: Cette methode permet de faire une connexion implicite lors du second lancement de l'application
+  // ----------------------------------------------------------------------------------------------------------------------------
+    @override
+  Future<Either<Failure, ProfileResponse>> sendImpliciteConnexion(RequestImpliciteConnexion params) async {
+    final response = await authenRemoteService.sendImpliciteConnexion(params);
+    if (response is FirebaseSuccess<ProfileResponseModel>) {
+      return Right(ProfileResponseModel.domaine(response.data));
+    } else if (response is FirebaseError<ProfileResponseModel>) {
+      return Left(Failure(message: response.message));
+    }
+    return Left(Failure(message: "Erreur inconnue"));
+  }
+  
 }
