@@ -69,7 +69,10 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.first.assistanceNonBaptiser.juniors,
         ),
         'totalSemaine':
-            '${int.parse(isAllDigits(rapportCellule.first.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceNonBaptiser.cadets))}',
+            '${isSumme(
+              numbreOne: rapportCellule.first.assistanceNonBaptiser.toutPetit,
+              numbreThwo: isSumme(numbreOne: rapportCellule.first.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.first.assistanceNonBaptiser.cadets),
+            )}',
 
         'valueToutPetitLast': isAllDigits(
           rapportCellule.last.assistanceNonBaptiser.toutPetit,
@@ -81,9 +84,19 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceNonBaptiser.juniors,
         ),
         'totalSemaineLast':
-            '${int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.cadets))}',
+            '${isSumme(
+              numbreOne: rapportCellule.last.assistanceNonBaptiser.toutPetit,
+              numbreThwo: isSumme(numbreOne: rapportCellule.last.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.last.assistanceNonBaptiser.cadets),
+            )}',
+
         'ecart':
-            '${(((int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.cadets))) - (int.parse(isAllDigits(rapportCellule.first.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.cadets)))).abs())}',
+            '${isSoustration(
+              numbreOne: isSumme(numbreOne: rapportCellule.first.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.first.assistanceNonBaptiser.cadets),
+              numbreThwo: isSumme(
+                numbreOne: rapportCellule.last.assistanceNonBaptiser.toutPetit,
+                numbreThwo: isSumme(numbreOne: rapportCellule.last.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.last.assistanceNonBaptiser.cadets),
+              ),
+            )}',
       },
 
       {
@@ -98,20 +111,32 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.first.assistanceNouveau.juniors,
         ),
         'totalSemaine':
-            '${int.parse(isAllDigits(rapportCellule.first.assistanceNouveau.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceNouveau.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceNouveau.cadets))}',
+            '${isSumme(
+              numbreOne: rapportCellule.first.assistanceNouveau.toutPetit,
+              numbreThwo: isSumme(numbreOne: rapportCellule.first.assistanceNouveau.juniors, numbreThwo: rapportCellule.first.assistanceNouveau.cadets),
+            )}',
         'valueToutPetitLast': isAllDigits(
-          rapportCellule.last.assistanceNonBaptiser.toutPetit,
+          rapportCellule.last.assistanceNouveau.toutPetit,
         ),
         'valueCadetsLast': isAllDigits(
-          rapportCellule.last.assistanceNonBaptiser.cadets,
+          rapportCellule.last.assistanceNouveau.cadets,
         ),
         'valueJuniorsLast': isAllDigits(
-          rapportCellule.last.assistanceNonBaptiser.juniors,
+          rapportCellule.last.assistanceNouveau.juniors,
         ),
         'totalSemaineLast':
-            '${int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.cadets))}',
+            '${isSumme(
+              numbreOne: rapportCellule.last.assistanceNouveau.toutPetit,
+              numbreThwo: isSumme(numbreOne: rapportCellule.last.assistanceNouveau.juniors, numbreThwo: rapportCellule.last.assistanceNouveau.cadets),
+            )}',
         'ecart':
-            '${((int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.cadets))) - (int.parse(isAllDigits(rapportCellule.first.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.cadets)))).abs()}',
+            '${isSoustration(
+              numbreOne: isSumme(numbreOne: rapportCellule.first.assistanceNouveau.juniors, numbreThwo: rapportCellule.first.assistanceNouveau.cadets),
+              numbreThwo: isSumme(
+                numbreOne: rapportCellule.last.assistanceNouveau.toutPetit,
+                numbreThwo: isSumme(numbreOne: rapportCellule.last.assistanceNouveau.juniors, numbreThwo: rapportCellule.last.assistanceNouveau.cadets),
+              ),
+            )}',
       },
       {
         'label': 'Invité\n   \n        ',
@@ -125,7 +150,10 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.first.assistanceInviter.juniors,
         ),
         'totalSemaine':
-            '${int.parse(isAllDigits(rapportCellule.first.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.cadets))}',
+            '${isSumme(
+              numbreOne: rapportCellule.first.assistanceInviter.toutPetit,
+              numbreThwo: isSumme(numbreOne: rapportCellule.first.assistanceInviter.juniors, numbreThwo: rapportCellule.first.assistanceInviter.cadets),
+            )}',
         'valueToutPetitLast': isAllDigits(
           rapportCellule.last.assistanceNonBaptiser.toutPetit,
         ),
@@ -136,9 +164,18 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceNonBaptiser.juniors,
         ),
         'totalSemaineLast':
-            '${(int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.cadets)))}',
+            '${isSumme(
+              numbreOne: rapportCellule.last.assistanceNonBaptiser.toutPetit,
+              numbreThwo: isSumme(numbreOne: rapportCellule.last.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.last.assistanceNonBaptiser.cadets),
+            )}',
         'ecart':
-            '${((int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.toutPetit)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.juniors)) + int.parse(isAllDigits(rapportCellule.last.assistanceNonBaptiser.cadets))) - (int.parse(isAllDigits(rapportCellule.first.assistanceInviter.toutPetit)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.juniors)) + int.parse(isAllDigits(rapportCellule.first.assistanceInviter.cadets)))).abs()}',
+            '${isSoustration(
+              numbreOne: isSumme(numbreOne: rapportCellule.first.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.first.assistanceNonBaptiser.cadets),
+              numbreThwo: isSumme(
+                numbreOne: rapportCellule.last.assistanceNonBaptiser.toutPetit,
+                numbreThwo: isSumme(numbreOne: rapportCellule.last.assistanceNonBaptiser.juniors, numbreThwo: rapportCellule.last.assistanceNonBaptiser.cadets),
+              ),
+            )}',
       },
     ];
 
@@ -160,9 +197,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.nbDecisionnaires,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbDecisionnaires)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbDecisionnaires)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbDecisionnaires), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbDecisionnaires))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbDecisionnaires)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbDecisionnaires)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbDecisionnaires), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbDecisionnaires))}',
       },
       {
         "title": "Nouv. En Formation DFNC",
@@ -173,10 +210,11 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.formationNewBaptDFD,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.formationNewBaptDFD)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.formationNewBaptDFD)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.formationNewBaptDFD), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.formationNewBaptDFD))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.formationNewBaptDFD)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.formationNewBaptDFD)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.formationNewBaptDFD), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.formationNewBaptDFD))}',
       },
+
       {
         "title": "Nouv. Bapt. En Formation DFD",
         "semaineEncour": isAllDigits(
@@ -186,10 +224,11 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.formationNewDFB,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.formationNewDFB)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.formationNewDFB)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.formationNewDFB), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.formationNewDFB))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.formationNewDFB)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.formationNewDFB)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.formationNewDFB), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.formationNewDFB))}',
       },
+
       {
         "title": "Visites faites aux membres",
         "semaineEncour": isAllDigits(
@@ -199,9 +238,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.visiteMenbre,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.visiteMenbre)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.visiteMenbre)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.visiteMenbre), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.visiteMenbre))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.visiteMenbre)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.visiteMenbre)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.visiteMenbre), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.visiteMenbre))}',
       },
       {
         "title": "Visites faites aux disciples",
@@ -212,9 +251,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.visiteDisciple,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.visiteDisciple)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.visiteDisciple)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.visiteDisciple), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.visiteDisciple))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.visiteDisciple)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.visiteDisciple)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.visiteDisciple), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.visiteDisciple))}',
       },
       {
         "title": "Nbre de travailleurs",
@@ -225,9 +264,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.nbTravailleurs,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbTravailleurs)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbTravailleurs)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbTravailleurs), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbTravailleurs))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbTravailleurs)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbTravailleurs)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbTravailleurs), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbTravailleurs))}',
       },
       {
         "title": "Nbre d'élèves et étudiants",
@@ -238,9 +277,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.nbEleveAndEtudiants,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbEleveAndEtudiants)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbEleveAndEtudiants)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbEleveAndEtudiants), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbEleveAndEtudiants))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbEleveAndEtudiants)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbEleveAndEtudiants)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbEleveAndEtudiants), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbEleveAndEtudiants))}',
       },
       {
         "title": "Nbre d'ouvrier E.M",
@@ -251,9 +290,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.nbOuvrierEM,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierEM)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierEM)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierEM), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierEM))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierEM)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierEM)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierEM), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierEM))}',
       },
       {
         "title": "Ouv. Autre dépt dirigeant E.M",
@@ -270,9 +309,9 @@ class RapportCellulePDFView extends StatelessWidget {
               .nbOuvrierAutreDepatementDirigeantEM,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbOuvrierAutreDepatementDirigeantEM))}',
       },
       {
         "title": "En formation niveau 2",
@@ -283,9 +322,9 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.nbFormationNiveau2,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbFormationNiveau2)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbFormationNiveau2)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbFormationNiveau2), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbFormationNiveau2))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.nbFormationNiveau2)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.nbFormationNiveau2)))).abs()}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.nbFormationNiveau2), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.nbFormationNiveau2))}',
       },
       {
         "title": "Agenda de l'EM (Oui ou Non)",
@@ -296,19 +335,20 @@ class RapportCellulePDFView extends StatelessWidget {
           rapportCellule.last.assistanceCellule.ngAgendaEM,
         ),
         'totalSemainePasser':
-            '${(int.parse(isAllDigits(rapportCellule.first.assistanceCellule.ngAgendaEM)) + int.parse(isAllDigits(rapportCellule.last.assistanceCellule.ngAgendaEM)))}',
+            '${int.parse(isSumme(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.ngAgendaEM), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.ngAgendaEM))).abs()}',
         "totalEcart":
-            '${((int.parse(isAllDigits(rapportCellule.first.assistanceCellule.ngAgendaEM)) - int.parse(isAllDigits(rapportCellule.last.assistanceCellule.ngAgendaEM))))}',
+            '${isSoustration(numbreOne: isAllDigits(rapportCellule.first.assistanceCellule.ngAgendaEM), numbreThwo: isAllDigits(rapportCellule.last.assistanceCellule.ngAgendaEM))}',
       },
     ];
-    
-    final firstweekActivity = rapportCellule.first.weekActivity.map((e) => e).toList();
-    final lastweekActivity = rapportCellule.last.weekActivity.map((e) => e).toList();
+
+    final firstweekActivity = rapportCellule.first.weekActivity
+        .map((e) => e)
+        .toList();
+    final lastweekActivity = rapportCellule.last.weekActivity
+        .map((e) => e)
+        .toList();
 
     final weekActivity = [...firstweekActivity, ...lastweekActivity];
-
-
-
 
     pdf.addPage(
       pw.Page(
@@ -571,7 +611,22 @@ class RapportCellulePDFView extends StatelessWidget {
                           pw.TableRow(
                             children: [
                               tableCell("LIEU"), //<< LGINE 1
-                              tableCell("rapportCellule.firstssdfsdfdsdsdfsdfdsfsfdsfdsfsfsfsdfsdf"), //<< LGINE 1
+                              // tableCell(
+                              //   "rapportCellule.firstssdfsdfdsdsdfsdfdsfsfdsfdsfsfsfsdfsdf",
+                              // ), //<< LGINE 1
+                              pw.Expanded(
+                                child: pw.Text(
+                                  rapportCellule.first.lieu.isNotEmpty
+                                      ? rapportCellule.first.lieu
+                                      : "Aucun lieu",
+                                  softWrap: true,
+                                  style: pw.TextStyle(
+                                    fontSize: 8.sp,
+                                    fontWeight: pw.FontWeight.normal,
+                                    color: PdfColors.black,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                           pw.TableRow(
@@ -681,7 +736,14 @@ class RapportCellulePDFView extends StatelessWidget {
                                       child: pw.Row(
                                         children: [
                                           pw.Text(
-                                            rapportCellule.first.nombreBaptiser,
+                                            isSumme(
+                                              numbreOne: rapportCellule
+                                                  .first
+                                                  .nombreBaptiser,
+                                              numbreThwo: rapportCellule
+                                                  .last
+                                                  .nombreBaptiser,
+                                            ),
                                             style: pw.TextStyle(fontSize: 9.sp),
                                           ),
                                         ],
@@ -725,9 +787,14 @@ class RapportCellulePDFView extends StatelessWidget {
                                       child: pw.Row(
                                         children: [
                                           pw.Text(
-                                            rapportCellule
-                                                .first
-                                                .nombreNonBaptiser,
+                                            isSumme(
+                                              numbreOne: rapportCellule
+                                                  .first
+                                                  .nombreNonBaptiser,
+                                              numbreThwo: rapportCellule
+                                                  .last
+                                                  .nombreNonBaptiser,
+                                            ),
                                             style: pw.TextStyle(fontSize: 9.sp),
                                           ),
                                         ],
@@ -776,7 +843,10 @@ class RapportCellulePDFView extends StatelessWidget {
                                       child: pw.Row(
                                         children: [
                                           pw.Text(
-                                            "${int.parse(rapportCellule.first.nombreBaptiser) + int.parse(rapportCellule.first.nombreNonBaptiser)}",
+                                            ' ${isSumme(
+                                              numbreOne: isSumme(numbreOne: rapportCellule.first.nombreNonBaptiser, numbreThwo: rapportCellule.last.nombreNonBaptiser),
+                                              numbreThwo: isSumme(numbreOne: rapportCellule.first.nombreBaptiser, numbreThwo: rapportCellule.last.nombreBaptiser),
+                                            )}',
                                             style: pw.TextStyle(fontSize: 9.sp),
                                           ),
                                         ],
@@ -1065,7 +1135,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                         child: pw.Text(
                                           isAllDigits(
-                                            rapportCellule.first.nombreBaptiser,
+                                            isSumme(
+                                              numbreOne: rapportCellule
+                                                  .first
+                                                  .nombreBaptiser,
+                                              numbreThwo: '0',
+                                            ),
                                           ),
                                           style: pw.TextStyle(fontSize: 9.sp),
                                         ),
@@ -1086,7 +1161,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                         ),
                                         child: pw.Text(
                                           isAllDigits(
-                                            rapportCellule.first.nombreBaptiser,
+                                            isSumme(
+                                              numbreOne: rapportCellule
+                                                  .first
+                                                  .nombreBaptiser,
+                                              numbreThwo: '0',
+                                            ),
                                           ),
                                           style: pw.TextStyle(fontSize: 9.sp),
                                         ),
@@ -1105,7 +1185,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                           color: PdfColors.black,
                                         ),
                                         child: pw.Text(
-                                          "00",
+                                          isSumme(
+                                            numbreOne: rapportCellule
+                                                .last
+                                                .nombreBaptiser,
+                                            numbreThwo: '0',
+                                          ),
                                           style: pw.TextStyle(fontSize: 9.sp),
                                         ),
                                       ),
@@ -1123,7 +1208,12 @@ class RapportCellulePDFView extends StatelessWidget {
                                           color: PdfColors.black,
                                         ),
                                         child: pw.Text(
-                                          "00",
+                                          isSumme(
+                                            numbreOne: rapportCellule
+                                                .last
+                                                .nombreBaptiser,
+                                            numbreThwo: '0',
+                                          ),
                                           style: pw.TextStyle(fontSize: 9.sp),
                                         ),
                                       ),
@@ -1140,7 +1230,14 @@ class RapportCellulePDFView extends StatelessWidget {
                                         color: PdfColors.black,
                                       ),
                                       child: pw.Text(
-                                        "EC",
+                                        isSoustration(
+                                          numbreOne: rapportCellule
+                                              .first
+                                              .nombreBaptiser,
+                                          numbreThwo: rapportCellule
+                                              .last
+                                              .nombreBaptiser,
+                                        ),
                                         style: pw.TextStyle(fontSize: 9.sp),
                                       ),
                                     ),
@@ -1211,7 +1308,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 child: buildCardValue(
                                                   padding:
                                                       pw.EdgeInsets.symmetric(
-                                                        horizontal: 3.w,
+                                                        horizontal: 1.w,
                                                         // vertical: 4.h,
                                                       ),
                                                   isDefaultBorder: true,
@@ -1260,7 +1357,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 width: 54.2.w,
                                                 padding:
                                                     pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
+                                                      horizontal: 1.w,
                                                       vertical: 4.h,
                                                     ),
                                                 isDefaultBorder: true,
@@ -1308,7 +1405,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                                 width: 54.2.w,
                                                 padding:
                                                     pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
+                                                      horizontal: 1.w,
                                                       vertical: 4.h,
                                                     ),
                                                 isDefaultBorder: true,
@@ -1425,7 +1522,7 @@ class RapportCellulePDFView extends StatelessWidget {
                                             child: buildCardValue(
                                               width: 32.8.w,
                                               padding: pw.EdgeInsets.symmetric(
-                                                horizontal: 19.w,
+                                                horizontal: 1.w,
                                                 vertical: 20.2.h,
                                               ),
                                               isDefaultBorder: true,
@@ -1528,26 +1625,28 @@ class RapportCellulePDFView extends StatelessWidget {
                                 ),
                               ),
                               // Columne ECART
-                             pw.Container(
-                                 width: 51.w,
-                              child:    buildCardValue(
-                                padding: pw.EdgeInsets.symmetric(
-                                  horizontal: 1.w,
-                                  vertical: 4.h,
-                                ),
-                                isDefaultBorder: true,
-                                child: pw.Text(
-                                  rapportItem["totalEcart"],
-                                  style: pw.TextStyle(fontSize: 7.sp),
+                              pw.Container(
+                                width: 51.w,
+                                child: buildCardValue(
+                                  padding: pw.EdgeInsets.symmetric(
+                                    horizontal: 1.w,
+                                    vertical: 4.h,
+                                  ),
+                                  isDefaultBorder: true,
+                                  child: pw.Text(
+                                    rapportItem["totalEcart"],
+                                    style: pw.TextStyle(fontSize: 7.sp),
+                                  ),
                                 ),
                               ),
-                             )
                             ],
                           );
                         }).toList(),
                       ],
                     ),
-
+                    // ----------------------------
+                    // SECTION DES DISCIPLE
+                    // ----------------------------
                     pw.Positioned(
                       right: 0.w,
                       top: 10.h,
@@ -1836,71 +1935,58 @@ class RapportCellulePDFView extends StatelessWidget {
                               ],
                             ),
                           ),
+
                           pw.Container(
                             height: 0.282.sh,
                             width: 0.475.sw,
                             child: buildCard(
                               width: 0.1.sw,
-                              padding: pw.EdgeInsets.symmetric(
-                                horizontal: 3.w,
-                                vertical: 7.h,
-                              ),
+                              // padding: pw.EdgeInsets.symmetric(
+                              //   horizontal: 3.w,
+                              //   vertical: 7.h,
+                              // ),
                               isDefaultBorder: true,
                               customeBorder: pw.Border.all(
                                 color: PdfColors.red,
                               ),
                               child: pw.Column(
                                 children: [
+                                  // ❌ pw.Expanded dans Column → remplace par pw.Row avec Expanded dedans
                                   pw.Row(
+                                    crossAxisAlignment:
+                                        pw.CrossAxisAlignment.start,
                                     children: [
-                                      pw.Padding(
-                                        padding: pw.EdgeInsets.symmetric(
-                                          horizontal: 5.w,
-                                        ),
+                             
+                                      // ✅ Expanded ici pour contraindre le texte dans le Row
+                                      pw.Expanded(
                                         child: pw.Text(
-                                          "-",
+                                          rapportCellule.first.faisAssignaler,
+                                          softWrap: true,
                                           style: pw.TextStyle(
                                             fontSize: 8.sp,
-                                            fontWeight: pw.FontWeight.bold,
+                                            fontWeight: pw.FontWeight.normal,
                                             color: PdfColors.black,
                                           ),
-                                        ),
-                                      ),
-                                      // ✅ Expanded + SizedBox pour contraindre la largeur
-                                      pw.Text(
-                                        rapportCellule.first.faisAssignaler,
-                                        softWrap: true,
-                                        style: pw.TextStyle(
-                                          fontSize: 8.sp,
-                                          fontWeight: pw.FontWeight.normal,
-                                          color: PdfColors.black,
                                         ),
                                       ),
                                     ],
                                   ),
+                                  pw.SizedBox(height: 3.h,),
                                   pw.Row(
+                                    crossAxisAlignment:
+                                        pw.CrossAxisAlignment.start,
                                     children: [
-                                      pw.Padding(
-                                        padding: pw.EdgeInsets.symmetric(
-                                          horizontal: 5.w,
-                                        ),
+                                      // ✅ Expanded pour contraindre le texte
+                                      pw.Expanded(
                                         child: pw.Text(
-                                          "---",
+                                          rapportCellule
+                                              .last
+                                              .ouvrierSpritualLive,
+                                          softWrap: true,
                                           style: pw.TextStyle(
-                                            fontSize: 8.sp,
-                                            fontWeight: pw.FontWeight.bold,
+                                            fontSize: 7.sp,
                                             color: PdfColors.black,
                                           ),
-                                        ),
-                                      ),
-                                      // ✅ Même chose ici
-                                      pw.Text(
-                                        rapportCellule.last.ouvrierSpritualLive,
-                                        softWrap: true,
-                                        style: pw.TextStyle(
-                                          fontSize: 8.sp,
-                                          fontWeight: pw.FontWeight.normal,
-                                          color: PdfColors.black,
                                         ),
                                       ),
                                     ],
@@ -2037,180 +2123,103 @@ class RapportCellulePDFView extends StatelessWidget {
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             mainAxisAlignment: pw.MainAxisAlignment.start,
                             children: [
-                              ...List.generate(
-                               weekActivity.length,
-                                (index) {
-
-                                  final item = weekActivity[index];
-                                  return pw.Row(
-                                    children: [
+                              ...List.generate(weekActivity.length, (index) {
+                                final item = weekActivity[index];
+                                return pw.Row(
+                                  children: [
                                     pw.Container(
-                                       height: 20.h,
+                                      height: 20.h,
                                       child: buildCardValue(
                                         width: 90.w,
-                                        isDefaultBorder: false,
+                                        isDefaultBorder: true,
                                         padding: pw.EdgeInsets.symmetric(
                                           horizontal: 3.w,
                                           vertical: 4.h,
                                         ),
-                                         customeBorder: pw.Border(
-                                          left: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          right: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          bottom: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          top: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                        ),
                                         child: pw.Text(
-                                        item.date ,
-                                          style: pw.TextStyle(
-                                            fontWeight: pw.FontWeight.bold,
-                                            fontSize: 7.sp,
-                                          ),
+                                          item.date,
+                                          style: pw.TextStyle(fontSize: 7.sp),
                                         ),
                                       ),
-                                      ),
-                                      pw.Container(
-                                        height: 20.h,
-                                        child:   buildCardValue(
+                                    ),
+                                    pw.Container(
+                                      height: 20.h,
+                                      child: buildCardValue(
                                         width: 190.w,
-                                         padding: pw.EdgeInsets.symmetric(
+                                        isDefaultBorder: true,
+                                        padding: pw.EdgeInsets.symmetric(
                                           horizontal: 3.w,
                                           vertical: 4.h,
                                         ),
-                                          customeBorder: pw.Border(
-                                          left: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          right: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          bottom: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          top: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                        ),
                                         child: pw.Text(
-                                       item.programmeNature,
+                                          item.programmeNature,
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
-                                            fontWeight: pw.FontWeight.bold,
                                             color: PdfColors.black,
                                           ),
                                         ),
                                       ),
-                                      ),
-                                      // Semaine passer
-                                      pw.Container(
-                                        height: 20.h,
-                                        child:   buildCardValue(
+                                    ),
+                                    // Semaine passer
+                                    pw.Container(
+                                      height: 20.h,
+                                      child: buildCardValue(
+                                        isDefaultBorder: true,
                                         width: 90.w,
                                         padding: pw.EdgeInsets.symmetric(
                                           horizontal: 3.w,
                                           vertical: 4.h,
                                         ),
-                                         customeBorder: pw.Border(
-                                          left: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          right: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          bottom: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          top: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                        ),
                                         child: pw.Text(
-                                        item.theme,
+                                          item.theme,
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
-                                            fontWeight: pw.FontWeight.bold,
                                             color: PdfColors.black,
                                           ),
                                         ),
                                       ),
-                                      ),
-                                      // Columne semaine passé T
-                                     pw.Container(
+                                    ),
+                                    // Columne semaine passé T
+                                    pw.Container(
                                       height: 20.h,
-                                      child:     buildCardValue(
+                                      child: buildCardValue(
+                                        isDefaultBorder: true,
                                         width: 70.2.w,
                                         padding: pw.EdgeInsets.symmetric(
                                           horizontal: 1.w,
                                           vertical: 4.h,
                                         ),
-                                      customeBorder: pw.Border(
-                                          left: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          right: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          bottom: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          top: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                        ),
                                         child: pw.Text(
                                           item.orateur,
                                           style: pw.TextStyle(
                                             fontSize: 7.sp,
-                                            fontWeight: pw.FontWeight.bold,
                                             color: PdfColors.black,
                                           ),
                                         ),
                                       ),
-                                     ),
-                                      // Columne ECART
-                                     pw.Container(
+                                    ),
+                                    // Columne ECART
+                                    pw.Container(
                                       height: 20.h,
-                                      child:   buildCardValue(
+                                      child: buildCardValue(
                                         width: 80.w,
+                                        isDefaultBorder: true,
                                         padding: pw.EdgeInsets.symmetric(
                                           horizontal: 1.w,
                                           vertical: 4.h,
                                         ),
-                                        customeBorder: pw.Border(
-                                          left: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          right: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          bottom: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                          top: pw.BorderSide(
-                                            color: PdfColors.grey500,
-                                          ),
-                                        ),
                                         child: pw.Text(
-                                        item.lieu,
+                                          item.lieu,
                                           style: pw.TextStyle(
                                             fontSize: 6.sp,
-                                            fontWeight: pw.FontWeight.bold,
                                             color: PdfColors.black,
                                           ),
                                         ),
                                       ),
-                                     )
-                                    ],
-                                  );
-                                },
-                              ).toList(),
+                                    ),
+                                  ],
+                                );
+                              }).toList(),
                               pw.Container(color: PdfColors.grey300),
                             ],
                           ),
@@ -2316,100 +2325,86 @@ class RapportCellulePDFView extends StatelessWidget {
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             mainAxisAlignment: pw.MainAxisAlignment.start,
                             children: [
-                              ...List.generate(
-                            listVisiteOuvrier.length,
-                                (index) {
-                                  final visiteOuvrier =
-                                      index < listVisiteOuvrier.length
-                                      ? listVisiteOuvrier[index]
-                                      : null;
+                              ...List.generate(listVisiteOuvrier.length, (
+                                index,
+                              ) {
+                                final visiteOuvrier =
+                                    index < listVisiteOuvrier.length
+                                    ? listVisiteOuvrier[index]
+                                    : null;
 
-                                      if(visiteOuvrier != null &&
-                                          visiteOuvrier.fullname.isNotEmpty){
-                                        return pw.Row(
-                                          children: [
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 90.w,
-                                                isDefaultBorder: true,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                child: pw.Text(
-                                                  "${index }",
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 190.w,
-                                                isDefaultBorder: true,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                child: pw.Text(
-                                                  visiteOuvrier.fullname,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            // Semaine passer
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 119.w,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                isDefaultBorder: true,
-                                                child: pw.Text(
-                                                  visiteOuvrier.probleme,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne semaine passé T
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 119.9.w,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                isDefaultBorder: true,
-                                                child: pw.Text(
-                                                  visiteOuvrier.recommandation,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        );
-                                    
-                                      }
+                                if (visiteOuvrier != null &&
+                                    visiteOuvrier.fullname.isNotEmpty) {
+                                  return pw.Row(
+                                    children: [
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 90.w,
+                                          isDefaultBorder: true,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 5.w,
+                                            vertical: 4.h,
+                                          ),
+                                          child: pw.Text(
+                                            "${index}",
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 190.w,
+                                          isDefaultBorder: true,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 5.w,
+                                            vertical: 4.h,
+                                          ),
+                                          child: pw.Text(
+                                            visiteOuvrier.fullname,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      // Semaine passer
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 119.w,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 5.w,
+                                            vertical: 4.h,
+                                          ),
+                                          isDefaultBorder: true,
+                                          child: pw.Text(
+                                            visiteOuvrier.probleme,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      // Columne semaine passé T
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 119.9.w,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 5.w,
+                                            vertical: 4.h,
+                                          ),
+                                          isDefaultBorder: true,
+                                          child: pw.Text(
+                                            visiteOuvrier.recommandation,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
 
-                                  return pw.SizedBox();
-                               },
-                              ).toList(),
+                                return pw.SizedBox();
+                              }).toList(),
                               // pw.Container(color: PdfColors.grey300),
                             ],
                           ),
@@ -2513,100 +2508,86 @@ class RapportCellulePDFView extends StatelessWidget {
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             mainAxisAlignment: pw.MainAxisAlignment.start,
                             children: [
-                              ...List.generate(
-                              listVisiteMembre.length,
-                                (index) {
-                                  final viseteMenbre =
-                                      index < listVisiteMembre.length
-                                      ? listVisiteMembre[index]
-                                      : null;
+                              ...List.generate(listVisiteMembre.length, (
+                                index,
+                              ) {
+                                final viseteMenbre =
+                                    index < listVisiteMembre.length
+                                    ? listVisiteMembre[index]
+                                    : null;
 
-                                      if(viseteMenbre != null &&
-                                          viseteMenbre.fullname.isNotEmpty
-                                      ){
-                                        return pw.Row(
-                                          children: [
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 90.w,
-                                                isDefaultBorder: true,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 3.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                child: pw.Text(
-                                                  "${index + 0}",
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 190.w,
-                                                isDefaultBorder: true,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 3.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                child: pw.Text(
-                                                  viseteMenbre.fullname,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            // Semaine passer
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 119.w,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 3.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                isDefaultBorder: true,
-                                                child: pw.Text(
-                                                  viseteMenbre.probleme,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            // Columne semaine passé T
-                                            pw.Container(
-                                              height: 40.h,
-                                              child: buildCardValue(
-                                                width: 119.9.w,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 3.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                isDefaultBorder: true,
-                                                child: pw.Text(
-                                                  viseteMenbre.recommandation,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        );
-                                      }
+                                if (viseteMenbre != null &&
+                                    viseteMenbre.fullname.isNotEmpty) {
+                                  return pw.Row(
+                                    children: [
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 90.w,
+                                          isDefaultBorder: true,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 3.w,
+                                            vertical: 4.h,
+                                          ),
+                                          child: pw.Text(
+                                            "${index + 0}",
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 190.w,
+                                          isDefaultBorder: true,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 3.w,
+                                            vertical: 4.h,
+                                          ),
+                                          child: pw.Text(
+                                            viseteMenbre.fullname,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      // Semaine passer
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 119.w,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 3.w,
+                                            vertical: 4.h,
+                                          ),
+                                          isDefaultBorder: true,
+                                          child: pw.Text(
+                                            viseteMenbre.probleme,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      // Columne semaine passé T
+                                      pw.Container(
+                                        height: 40.h,
+                                        child: buildCardValue(
+                                          width: 119.9.w,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 3.w,
+                                            vertical: 4.h,
+                                          ),
+                                          isDefaultBorder: true,
+                                          child: pw.Text(
+                                            viseteMenbre.recommandation,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
 
-                                  return pw.SizedBox.shrink();
-                                    },
-                              ).toList(),
+                                return pw.SizedBox.shrink();
+                              }).toList(),
                               // pw.Container(color: PdfColors.grey300),
                             ],
                           ),
@@ -2685,76 +2666,65 @@ class RapportCellulePDFView extends StatelessWidget {
                             crossAxisAlignment: pw.CrossAxisAlignment.start,
                             mainAxisAlignment: pw.MainAxisAlignment.start,
                             children: [
-                              ...List.generate(
-                                listSugestion.length,
-                                (index) {
-                                  final sugestion = index < listSugestion.length
-                                      ? listSugestion[index]
-                                      : null;
+                              ...List.generate(listSugestion.length, (index) {
+                                final sugestion = index < listSugestion.length
+                                    ? listSugestion[index]
+                                    : null;
 
-                                      if(sugestion != null &&
-                                          sugestion.probleme.isNotEmpty){
-                                            return     pw.Row(
-                                          children: [
-                                            pw.Container(
-                                              height: 20.h,
-                                              child: buildCardValue(
-                                                width: 180.w,
-                                                isDefaultBorder: true,
-                                                child: pw.Text(
-                                                  sugestion.temoignage,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            pw.Container(
-                                              height: 20.h,
-                                              child: buildCardValue(
-                                                width: 139.w,
-                                                isDefaultBorder: true,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                child: pw.Text(
-                                                  sugestion.suggestions,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            // Semaine passer
-                                            pw.Container(
-                                              height: 20.h,
-                                              child: buildCardValue(
-                                                width: 200.w,
-                                                padding:
-                                                    pw.EdgeInsets.symmetric(
-                                                      horizontal: 5.w,
-                                                      vertical: 4.h,
-                                                    ),
-                                                isDefaultBorder: true,
-                                                child: pw.Text(
-                                                  sugestion.probleme,
-                                                  style: pw.TextStyle(
-                                                    fontSize: 7.sp,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                                if (sugestion != null &&
+                                    sugestion.probleme.isNotEmpty) {
+                                  return pw.Row(
+                                    children: [
+                                      pw.Container(
+                                        height: 20.h,
+                                        child: buildCardValue(
+                                          width: 180.w,
+                                          isDefaultBorder: true,
+                                          child: pw.Text(
+                                            sugestion.temoignage,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      pw.Container(
+                                        height: 20.h,
+                                        child: buildCardValue(
+                                          width: 139.w,
+                                          isDefaultBorder: true,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 5.w,
+                                            vertical: 4.h,
+                                          ),
+                                          child: pw.Text(
+                                            sugestion.suggestions,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
+                                      // Semaine passer
+                                      pw.Container(
+                                        height: 20.h,
+                                        child: buildCardValue(
+                                          width: 200.w,
+                                          padding: pw.EdgeInsets.symmetric(
+                                            horizontal: 5.w,
+                                            vertical: 4.h,
+                                          ),
+                                          isDefaultBorder: true,
+                                          child: pw.Text(
+                                            sugestion.probleme,
+                                            style: pw.TextStyle(fontSize: 7.sp),
+                                          ),
+                                        ),
+                                      ),
 
-                                            // Columne semaine passé T
-                                          ],
-                                        );
-                                      }
+                                      // Columne semaine passé T
+                                    ],
+                                  );
+                                }
 
-                                  return pw.SizedBox();
-                                },
-                              ).toList(),
+                                return pw.SizedBox();
+                              }).toList(),
                               // pw.Container(color: PdfColors.grey300),
                             ],
                           ),
@@ -2918,23 +2888,25 @@ class RapportCellulePDFView extends StatelessWidget {
       width: width?.w ?? 86.5.w,
       height: 15.h,
       child: pw.Row(
-      children: [
-        pw.Padding(
-          padding: pw.EdgeInsets.symmetric(
-            horizontal: isHeader ? 1.w : 1.5.w,
-            vertical: 3.h,
-          ),
-          child: pw.Text(
-            text,
-            style: pw.TextStyle(
-              color: isHeader ? PdfColors.black : PdfColors.black,
-              fontWeight: isHeader ? pw.FontWeight.bold : pw.FontWeight.normal,
-              fontSize: isHeader ? 9.sp : 8.sp,
+        children: [
+          pw.Padding(
+            padding: pw.EdgeInsets.symmetric(
+              horizontal: isHeader ? 1.w : 1.5.w,
+              vertical: 3.h,
+            ),
+            child: pw.Text(
+              text,
+              style: pw.TextStyle(
+                color: isHeader ? PdfColors.black : PdfColors.black,
+                fontWeight: isHeader
+                    ? pw.FontWeight.bold
+                    : pw.FontWeight.normal,
+                fontSize: isHeader ? 9.sp : 8.sp,
+              ),
             ),
           ),
-        ),
-      ],
-    )
+        ],
+      ),
     );
   }
 }

@@ -38,9 +38,9 @@ import 'package:grace_church/feature/depatement/cellule/presentation/bloc/get_re
 import 'package:grace_church/feature/depatement/cellule/presentation/bloc/get_responsable_secteur.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/bloc/get_responsable_zone.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/event/rapport_cellule_event.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/form_administraction_bloc.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/form_administraction_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/page/cellule/history_rapport_view.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/page/cellule_form/from_administration.dart';
 import 'package:grace_church/feature/notification/presentation/page/notification_view.dart';

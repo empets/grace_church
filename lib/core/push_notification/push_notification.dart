@@ -23,7 +23,7 @@ class PushNotification {
   
     // Android
     const AndroidInitializationSettings androidSettings =
-        AndroidInitializationSettings('@mipmap/icon_launcher.png');
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
     // iOS
     const DarwinInitializationSettings iosSettings =

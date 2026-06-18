@@ -11,9 +11,9 @@ import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/push_notification/push_notification.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/event/rapport_cellule_event.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/form_suggestion_bloc.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/state/rapport_cellule_state.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 import 'package:grace_church/feature/home/overview.dart';
 
 

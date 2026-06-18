@@ -3,8 +3,8 @@ import 'package:formz/formz.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/entities/request/cellule_request.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/rapport_cellule_suggestion_usercase.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/event/rapport_cellule_event.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/state/rapport_cellule_state.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 
 class FormSuggestionBloc
     extends

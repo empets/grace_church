@@ -16,10 +16,10 @@ import 'package:grace_church/core/injection/injection_container.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/rapport_cellule_suggestion_usercase.dart';
 import 'package:grace_church/feature/home/overview.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/event/rapport_cellule_event.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/form_activite_bloc.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/form_suggestion_bloc.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/state/rapport_cellule_state.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/form_activite_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/form_suggestion_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/state/rapport_cellule_state.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/page/cellule_form/form_ouvrier_spritual_live.dart';
 
 class FormActivite extends StatefulWidget {

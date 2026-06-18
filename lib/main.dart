@@ -31,6 +31,18 @@ void main() async {
   await initializeDateFormatting('fr_FR', null);
   InitialState();
 
+  if(isMidWeek()) {
+    print("C'est le week-end");
+         await PushNotification.schedulerNotification(
+                                id: 1,
+                                titre: 'Rappel',
+                                corps: 'N\'oubliez pas de participer à la cellule aujourd\'hui',
+                                heure: 17,
+                                minute: 35,
+                              );
+  }
+
+
   await PushNotification().initNotification();
 
 
@@ -80,7 +92,6 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
-            title: 'Flutter Demo',
             navigatorKey: navigatorKey, // ✅ navigatorKey ici, pas key:
             debugShowCheckedModeBanner: false,
             theme: ThemeData.light().copyWith(

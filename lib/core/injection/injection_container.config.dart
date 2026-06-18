@@ -71,7 +71,7 @@ import '../../feature/depatement/cellule/presentation/bloc/get_responsable_secte
     as _i868;
 import '../../feature/depatement/cellule/presentation/bloc/get_responsable_zone.dart'
     as _i352;
-import '../../feature/depatement/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart'
+import '../../feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart'
     as _i475;
 import '../../feature/home/data/repositories/home_data_repositories.dart'
     as _i486;

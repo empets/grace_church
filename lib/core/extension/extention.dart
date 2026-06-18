@@ -711,3 +711,19 @@ Future<void> canSendEmail({required String email}) async {
     await launchUrl(emailUri);
   }
 }
+
+
+String isSumme({required String numbreOne , required String numbreThwo }) {
+  
+  return (int.parse(numbreOne) + int.parse(numbreThwo)).toString();
+}
+
+String isSoustration({required String numbreOne , required String numbreThwo }) {
+  return (int.parse(numbreOne) - int.parse(numbreThwo)).toString();
+}
+
+
+bool isMidWeek() {
+  final day = DateTime.now().weekday;
+  return day == DateTime.thursday || day == DateTime.friday;
+}

@@ -4,7 +4,7 @@ import 'package:grace_church/feature/depatement/cellule/domaine/entities/respons
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_rapport_cellule_usercase.dart';
 import 'package:injectable/injectable.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/event/rapport_cellule_event.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/event/rapport_cellule_event.dart';
 
 @lazySingleton
 class GetRapportCelluleBloc

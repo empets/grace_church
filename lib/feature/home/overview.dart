@@ -28,7 +28,7 @@ import 'package:grace_church/feature/notification/domaine/usecase/read_notificat
 import 'package:grace_church/feature/notification/presentation/bloc/notification/event/notification_event.dart';
 import 'package:grace_church/feature/notification/presentation/bloc/notification/notification_bloc.dart';
 import 'package:grace_church/feature/notification/presentation/bloc/notification/readnotification_bloc.dart';
-import 'package:grace_church/feature/depatement/cellule/presentation/page/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
+import 'package:grace_church/feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart';
 import 'package:grace_church/feature/notification/presentation/page/notification_view.dart';
 import 'package:grace_church/feature/notification/presentation/page/widget/programme.dart';
 
@@ -164,7 +164,61 @@ class _OverviewScreenState extends State<OverviewScreen> {
               backgroundColor: Colors.grey.shade50,
               appBar: AppBar(backgroundColor: Colors.grey.shade50),
               drawer: MenuView(),
-              body: HomeView(),
+              body: RefreshIndicator(
+                backgroundColor: context.appColor.primaryWhite,
+                color: context.appColor.primaryBlue,
+                onRefresh: () async {
+                  context.read<GetProfileBloc>().add(
+                    ProfileEvent.fetchProfileNumberId(
+                      (context.read<GetProfileBloc>().state
+                              is SuccessState<ProfileResponse>)
+                          ? (context.read<GetProfileBloc>().state
+                                    as SuccessState<ProfileResponse>)
+                                .data
+                                .menberId
+                          : null,
+                    ),
+                  );
+                },
+                child: Stack(
+                  children: [
+                    HomeView(),
+                    Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: BlocBuilder<GetProfileBloc,  ApiState<ProfileResponse>>(
+                          builder: (context, state) {
+                            if(state is SuccessState<ProfileResponse>) {
+                              return Container();
+                            }
+                            return Container(
+                              height: 1.sh,
+                              color: Colors.black.withValues(alpha: 0.5),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Center(
+                                    child: CircularProgressIndicator.adaptive(
+                                      valueColor: AlwaysStoppedAnimation(
+                                        context.appColor.primaryBlue,
+                                      ),
+                                      backgroundColor:
+                                          context.appColor.primaryLightBlue,
+                                    ),
+                                  ),
+                                  SizedBox(height: 0.2.sh),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+
+                  ],
+                ),
+              ),
               floatingActionButton: BlocBuilder<GetProfileBloc, ApiState<ProfileResponse>>(
                 builder: (context, stateProfile) {
                   if (stateProfile is SuccessState<ProfileResponse>) {
