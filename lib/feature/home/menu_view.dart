@@ -121,14 +121,14 @@ class _MenuViewState extends State<MenuView> {
         "title": "Mise ajour ",
         "icon": Icons.security_update_warning_rounded,
         "visible": true,
-        "value": "call",
+        "value": "mise_ajour",
       },
 
       {
         "title": "Sécurité",
         "icon": Icons.admin_panel_settings_sharp,
         "visible": true,
-        "value": "call",
+        "value": "security",
       },
     ];
     final List<Map<String, dynamic>> menuItemsForResponsable = [
@@ -314,7 +314,6 @@ class _MenuViewState extends State<MenuView> {
                                                     );
                                               });
                                         }
-
                                         return Column(
                                           children: [
                                             Container(
@@ -615,10 +614,7 @@ class _MenuViewState extends State<MenuView> {
 
                                                           if (item["value"] ==
                                                               "email") {
-                                                            await canSendEmail(
-                                                              email:
-                                                                  'emmanuelpeters@gmail.com',
-                                                            );
+                                                               await openGmail();
                                                           }
                                                            if (item["value"] ==
                                                               "mise_ajour") {
@@ -645,11 +641,13 @@ class _MenuViewState extends State<MenuView> {
                                                                     .primaryBlue
                                                                     .withValues(
                                                                       alpha:
-                                                                          0.5,
+                                                                          0.3,
                                                                     )
-                                                              : context
+                                                              :context
                                                                     .appColor
-                                                                    .primaryBlue,
+                                                                    .primaryBlue .withValues(
+                                                                      alpha: 0.6,
+                                                                    )
                                                         ),
                                                         title: Text(
                                                           item["value"] ==
@@ -679,18 +677,8 @@ class _MenuViewState extends State<MenuView> {
                                                                       .primaryGrayDark,
                                                           ),
                                                         ),
-                                                        trailing:
-                                                            (item["value"] !=
-                                                                "department")
-                                                            ? Icon(
-                                                                Icons
-                                                                    .chevron_right,
-                                                                color: context
-                                                                    .appColor
-                                                                    .primaryBlue,
-                                                              )
-                                                            : SizedBox(),
-                                                        onTap: () {
+                                                       
+                                                        onTap: () async{
                                                           log('item: ');
                                                           if (item["value"] ==
                                                               "profile") {
@@ -756,6 +744,35 @@ class _MenuViewState extends State<MenuView> {
                                                                 ),
                                                               ),
                                                             );
+                                                          }
+                                                          if (item["value"] ==
+                                                              "connexion") {
+                                                            Navigator.of(context).pushAndRemoveUntil(
+                                                              fadeRoute(const SigninView()),
+                                                              (route) => false,
+                                                            );
+                                                          }
+
+
+                                                          if (item["value"] ==
+                                                              "call") {
+                                                            canCallSupport(
+                                                              number:
+                                                                  '+2250788884118',
+                                                            );
+                                                          }
+
+                                                          if (item["value"] ==
+                                                              "email") {
+                                                            await openGmail();
+                                                          }
+                                                           if (item["value"] ==
+                                                              "mise_ajour") {
+                                                            Navigator.push(context, fadeRoute(MiseAjourScreen()));
+                                                          }
+                                                           if (item["value"] ==
+                                                              "security") {
+                                                            Navigator.push(context, fadeRoute(PolitiqueScreen()));
                                                           }
                                                         },
                                                       );

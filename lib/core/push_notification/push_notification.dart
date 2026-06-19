@@ -3,6 +3,7 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 
+
 class PushNotification {
    static final FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -15,7 +16,9 @@ class PushNotification {
     if (_initialized) return;
 
      // ✅ 1. D'abord initialiser les données timezone
+   
   tz.initializeTimeZones();
+ 
   // ✅ 2. ENSUITE définir la location locale
   tz.setLocalLocation(tz.getLocation('Africa/Abidjan'));
 

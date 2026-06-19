@@ -727,3 +727,13 @@ bool isMidWeek() {
   final day = DateTime.now().weekday;
   return day == DateTime.thursday || day == DateTime.friday;
 }
+
+
+Future<void> openGmail() async { // Android — deep link Gmail 
+final gmailUri = Uri.parse('googlegmail://'); 
+if (await canLaunchUrl(gmailUri)) { 
+  await launchUrl(gmailUri); 
+} else { 
+  // Fallback → app mail par défaut 
+  await launchUrl(Uri(scheme: 'mailto', path: 'emmanuelpeters@gmail.com')); 
+} }

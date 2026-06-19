@@ -24,28 +24,29 @@ import 'package:grace_church/feature/home/onboarding_view.dart';
 import 'package:grace_church/feature/home/overview.dart';
 import 'package:grace_church/feature/home/page/bloc/app_launcher/app_launcher_bloc.dart';
 import 'package:grace_church/feature/home/page/bloc/get_profile/event/profile_event.dart';
-
+import 'package:timezone/data/latest.dart' as tz_data;
+import 'package:timezone/timezone.dart' as tz;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr_FR', null);
   InitialState();
 
-  if(isMidWeek()) {
+  tz_data.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation('Africa/Abidjan'));
+
+  if (isMidWeek()) {
     print("C'est le week-end");
-         await PushNotification.schedulerNotification(
-                                id: 1,
-                                titre: 'Rappel',
-                                corps: 'N\'oubliez pas de participer à la cellule aujourd\'hui',
-                                heure: 17,
-                                minute: 35,
-                              );
+    await PushNotification.schedulerNotification(
+      id: 1,
+      titre: 'Rappel',
+      corps: 'N\'oubliez pas de participer à la cellule aujourd\'hui',
+      heure: 4,
+      minute: 15,
+    );
   }
 
-
   await PushNotification().initNotification();
-
-
 
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -57,24 +58,20 @@ void main() async {
     ),
   );
 
-  await SystemChrome.setPreferredOrientations([
-  DeviceOrientation.portraitUp,
-]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   await Supabase.initialize(
     url: GlobalParams.supabaseUrl,
     anonKey: GlobalParams.supabaseAnonKey,
   );
 
-
   Bloc.observer = SimpleBlocObserver();
   await configureDependencies();
-   final deviceId = await getDeviceFingerprint();
-   log("message======>> $deviceId");
+  final deviceId = await getDeviceFingerprint();
+  log("message======>> $deviceId");
 
   runApp(MyApp(deviceId: deviceId));
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.deviceId});
@@ -105,144 +102,27 @@ class MyApp extends StatelessWidget {
                 AppTypographieTheme.appTheme,
               ],
             ),
-            home: ConnectivityWrapper(child: child!), // ✅ ConnectivityWrapper DANS MaterialApp
+            home: ConnectivityWrapper(
+              child: child!,
+            ), // ✅ ConnectivityWrapper DANS MaterialApp
           );
         },
         child: BlocBuilder<ConnexionImpliciteBloc, ApiState<ProfileResponse>>(
           builder: (context, state) {
-            return 
-             state is LoadState<ProfileResponse>
+            return state is LoadState<ProfileResponse>
                 ? SplachSreen()
                 : state is SuccessState<ProfileResponse>
-                    ? OverviewScreen(
-                        menberId: state.data.menberId,
-                        isFormImpliciteConnexion: true,
-                      )
-                    : OnboardingScreen();
+                ? OverviewScreen(
+                    menberId: state.data.menberId,
+                    isFormImpliciteConnexion: true,
+                  )
+                : OnboardingScreen();
           },
         ),
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class DiagnosticRebootBox extends StatefulWidget {
   const DiagnosticRebootBox({super.key});
