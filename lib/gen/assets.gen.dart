@@ -14,6 +14,39 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsAlerteGen {
+  const $AssetsAlerteGen();
+
+  /// File path: assets/alerte/alerte_point.svg
+  SvgGenImage get alertePoint =>
+      const SvgGenImage('assets/alerte/alerte_point.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [alertePoint];
+}
+
+class $AssetsBuildingScreenGen {
+  const $AssetsBuildingScreenGen();
+
+  /// File path: assets/building_screen/construction.svg
+  SvgGenImage get construction =>
+      const SvgGenImage('assets/building_screen/construction.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [construction];
+}
+
+class $AssetsEmptyScreenGen {
+  const $AssetsEmptyScreenGen();
+
+  /// File path: assets/empty_screen/empty_data.svg
+  SvgGenImage get emptyData =>
+      const SvgGenImage('assets/empty_screen/empty_data.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [emptyData];
+}
+
 class $AssetsIconLauncherGen {
   const $AssetsIconLauncherGen();
 
@@ -175,6 +208,10 @@ class assets {
 
   static const String package = 'grace_church';
 
+  static const $AssetsAlerteGen alerte = $AssetsAlerteGen();
+  static const $AssetsBuildingScreenGen buildingScreen =
+      $AssetsBuildingScreenGen();
+  static const $AssetsEmptyScreenGen emptyScreen = $AssetsEmptyScreenGen();
   static const $AssetsIconLauncherGen iconLauncher = $AssetsIconLauncherGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsPdfFilesGen pdfFiles = $AssetsPdfFilesGen();

@@ -72,7 +72,7 @@ import '../../feature/depatement/cellule/presentation/bloc/get_responsable_secte
 import '../../feature/depatement/cellule/presentation/bloc/get_responsable_zone.dart'
     as _i352;
 import '../../feature/depatement/cellule/presentation/bloc/rapport_cellule.dart/get_rapport_cellule_bloc.dart'
-    as _i475;
+    as _i702;
 import '../../feature/home/data/repositories/home_data_repositories.dart'
     as _i486;
 import '../../feature/home/data/service/remot_service.dart' as _i127;
@@ -266,8 +266,8 @@ extension GetItInjectableX on _i174.GetIt {
         getListZoneUsercase: gh<_i448.GetListZoneUsercase>(),
       ),
     );
-    gh.lazySingleton<_i475.GetRapportCelluleBloc>(
-      () => _i475.GetRapportCelluleBloc(
+    gh.lazySingleton<_i702.GetRapportCelluleBloc>(
+      () => _i702.GetRapportCelluleBloc(
         getRapportCelluleUsercase: gh<_i577.GetRapportCelluleUsercase>(),
       ),
     );

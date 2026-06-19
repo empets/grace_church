@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grace_church/core/custome_widget/button.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_cellule_usercase.dart';
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_list_responsable_cellule_usercase.dart';
@@ -11,6 +13,7 @@ import 'package:grace_church/feature/depatement/cellule/domaine/usecase/get_rapp
 import 'package:grace_church/feature/depatement/cellule/domaine/usecase/rapport_cellule_admine_usercase.dart';
 import 'package:grace_church/feature/home/page/app_version.dart';
 import 'package:grace_church/feature/home/page/politique_screen.dart';
+import 'package:grace_church/gen/assets.gen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
@@ -150,7 +153,7 @@ class _MenuViewState extends State<MenuView> {
         "visible": true,
         "value": "history_rapport",
       },
-         {
+      {
         "title": "Fell back",
         "icon": Icons.email,
         "visible": true,
@@ -176,7 +179,6 @@ class _MenuViewState extends State<MenuView> {
         "visible": true,
         "value": "security",
       },
-    
     ];
     return MultiBlocProvider(
       providers: [
@@ -335,13 +337,16 @@ class _MenuViewState extends State<MenuView> {
                                                                     .appColor
                                                                     .primaryBlue
                                                                     .withValues(
-                                                                      alpha: 0.3,
+                                                                      alpha:
+                                                                          0.3,
                                                                     )
                                                               : context
                                                                     .appColor
-                                                                    .primaryBlue .withValues(
-                                                                      alpha: 0.6,
-                                                                    )
+                                                                    .primaryBlue
+                                                                    .withValues(
+                                                                      alpha:
+                                                                          0.6,
+                                                                    ),
                                                         ),
                                                         title: Text(
                                                           item["value"] ==
@@ -372,7 +377,7 @@ class _MenuViewState extends State<MenuView> {
                                                                       .primaryGrayDark,
                                                           ),
                                                         ),
-                                                       
+
                                                         onTap: () async {
                                                           log('item: ');
                                                           if (item["value"] ==
@@ -614,18 +619,27 @@ class _MenuViewState extends State<MenuView> {
 
                                                           if (item["value"] ==
                                                               "email") {
-                                                               await openGmail();
+                                                            await openGmail();
                                                           }
-                                                           if (item["value"] ==
+                                                          if (item["value"] ==
                                                               "mise_ajour") {
-                                                            Navigator.push(context, fadeRoute(MiseAjourScreen()));
+                                                            Navigator.push(
+                                                              context,
+                                                              fadeRoute(
+                                                                MiseAjourScreen(),
+                                                              ),
+                                                            );
                                                           }
-                                                           if (item["value"] ==
+                                                          if (item["value"] ==
                                                               "security") {
-                                                            Navigator.push(context, fadeRoute(PolitiqueScreen()));
+                                                            Navigator.push(
+                                                              context,
+                                                              fadeRoute(
+                                                                PolitiqueScreen(),
+                                                              ),
+                                                            );
                                                           }
                                                         },
-                                                        
                                                       );
                                                     }),
                                                   ] else ...[
@@ -643,11 +657,13 @@ class _MenuViewState extends State<MenuView> {
                                                                       alpha:
                                                                           0.3,
                                                                     )
-                                                              :context
+                                                              : context
                                                                     .appColor
-                                                                    .primaryBlue .withValues(
-                                                                      alpha: 0.6,
-                                                                    )
+                                                                    .primaryBlue
+                                                                    .withValues(
+                                                                      alpha:
+                                                                          0.6,
+                                                                    ),
                                                         ),
                                                         title: Text(
                                                           item["value"] ==
@@ -677,8 +693,8 @@ class _MenuViewState extends State<MenuView> {
                                                                       .primaryGrayDark,
                                                           ),
                                                         ),
-                                                       
-                                                        onTap: () async{
+
+                                                        onTap: () async {
                                                           log('item: ');
                                                           if (item["value"] ==
                                                               "profile") {
@@ -747,12 +763,15 @@ class _MenuViewState extends State<MenuView> {
                                                           }
                                                           if (item["value"] ==
                                                               "connexion") {
-                                                            Navigator.of(context).pushAndRemoveUntil(
-                                                              fadeRoute(const SigninView()),
+                                                            Navigator.of(
+                                                              context,
+                                                            ).pushAndRemoveUntil(
+                                                              fadeRoute(
+                                                                const SigninView(),
+                                                              ),
                                                               (route) => false,
                                                             );
                                                           }
-
 
                                                           if (item["value"] ==
                                                               "call") {
@@ -766,13 +785,23 @@ class _MenuViewState extends State<MenuView> {
                                                               "email") {
                                                             await openGmail();
                                                           }
-                                                           if (item["value"] ==
+                                                          if (item["value"] ==
                                                               "mise_ajour") {
-                                                            Navigator.push(context, fadeRoute(MiseAjourScreen()));
+                                                            Navigator.push(
+                                                              context,
+                                                              fadeRoute(
+                                                                MiseAjourScreen(),
+                                                              ),
+                                                            );
                                                           }
-                                                           if (item["value"] ==
+                                                          if (item["value"] ==
                                                               "security") {
-                                                            Navigator.push(context, fadeRoute(PolitiqueScreen()));
+                                                            Navigator.push(
+                                                              context,
+                                                              fadeRoute(
+                                                                PolitiqueScreen(),
+                                                              ),
+                                                            );
                                                           }
                                                         },
                                                       );
@@ -781,8 +810,6 @@ class _MenuViewState extends State<MenuView> {
                                                 ],
                                               ),
                                             ),
-
-                                           
                                           ],
                                         );
                                       },
@@ -995,9 +1022,17 @@ class _MenuViewState extends State<MenuView> {
                       if (isConnected.trim().isNotEmpty) ...[
                         GestureDetector(
                           onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => LogOutPope(),
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (context) => LogOutPope(),
+                            // );
+                            AppBottomSheet().showBottomSheetScrollable(
+                              context,
+                              MediaQuery.of(context),
+                              initialChildSize: 0.5,
+                              (context) {
+                                return LogOutScreen();
+                              },
                             );
                           },
                           child: Row(
@@ -1034,68 +1069,78 @@ class _MenuViewState extends State<MenuView> {
   }
 }
 
-class LogOutPope extends StatelessWidget {
-  const LogOutPope({super.key});
+class LogOutScreen extends StatelessWidget {
+  const LogOutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: Colors.grey.shade50,
-      title: Text(
-        'Déconnexion',
-        style: context.appTypographie.body.copyWith(
-          color: context.appColor.primaryBlue,
-          fontSize: 20.sp,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.5.sp,
-        ),
-      ),
-      content: Text(
-        'Êtes-vous sûr de vouloir vous déconnecter?',
-        style: context.appTypographie.body.copyWith(
-          color: context.appColor.primaryGray700,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5.sp,
-        ),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(
-            'Non',
-            style: context.appTypographie.body.copyWith(
-              color: context.appColor.primaryBlue,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.5.sp,
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              padding: EdgeInsets.all(5.r),
+              decoration: BoxDecoration(
+                border: Border.all(color: context.appColor.primaryWarning),
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+              child: SvgPicture.asset(
+                assets.alerte.alertePoint.path,
+                fit: BoxFit.contain,
+                height: 0.08.sh,
+                width: 0.08.sh,
+                color: context.appColor.primaryWarning,
+              ),
             ),
           ),
-        ),
-        TextButton(
-          onPressed: () async {
-            final shared = await SharedPreferences.getInstance();
-            final menberkey = await shared.getString('menberkey');
-            log("disconnect now $menberkey");
-            if (menberkey != null && menberkey.isNotEmpty) {
-              await shared.remove('menberkey');
-              Navigator.of(context).pushAndRemoveUntil(
-                fadeRoute(const SigninView()),
-                (route) => false,
-              );
-            }
-          },
-          child: Text(
-            'Oui',
+          SizedBox(height: 30.h),
+
+          Text(
+            "Êtes-vous certain de vouloir vous déconnecter maintenant ? Toutes les sessions actives sur cet appareil seront fermées jusqu'à votre prochaine connexion.",
             style: context.appTypographie.body.copyWith(
               color: context.appColor.primaryGray700,
               fontSize: 14.sp,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w500,
               letterSpacing: 0.5.sp,
             ),
+            textAlign: TextAlign.center,
           ),
-        ),
-      ],
+          SizedBox(height: 17.h),
+
+          PrimaryButton(
+            label: 'Non',
+            backgroundColor: context.appColor.primaryBlue.withValues(alpha: .5),
+            colorText: context.appColor.primaryWhite,
+            onPressed: () => Navigator.pop(context),
+          ),
+          SizedBox(height: 10.h),
+
+          PrimaryButton(
+            label: 'Oui',
+            backgroundColor: context.appColor.primaryWhite,
+            borderSideColor: context.appColor.primaryGray500,
+            colorText: context.appColor.primaryGray700,
+            onPressed: () async {
+              final shared = await SharedPreferences.getInstance();
+              final menberkey = await shared.getString('menberkey');
+              log("disconnect now $menberkey");
+              if (menberkey != null && menberkey.isNotEmpty) {
+                await shared.remove('menberkey');
+                Navigator.of(context).pushAndRemoveUntil(
+                  fadeRoute(const SigninView()),
+                  (route) => false,
+                );
+              }
+            },
+          ),
+
+    
+        ],
+      ),
     );
   }
 }
+

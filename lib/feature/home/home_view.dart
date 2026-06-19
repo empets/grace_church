@@ -1,20 +1,22 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
-import 'package:grace_church/feature/notification/presentation/page/widget/programme.dart';
+import 'package:grace_church/core/soom_screen/soom_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart' as tube;
+import 'package:grace_church/core/alert/app_alerte.dart';
 import 'package:grace_church/core/bloc_state/bloc_state.dart';
 import 'package:grace_church/core/custome_widget/custome_text.dart';
 import 'package:grace_church/core/custome_widget/navigate.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
-import 'package:grace_church/feature/home/depatelement_view.dart';
-import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/depatement/cellule/domaine/entities/response/cellule_response.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/bloc/cellule_bloc.dart';
-import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
 import 'package:grace_church/feature/depatement/cellule/presentation/page/cellule/cellule_view.dart';
+import 'package:grace_church/feature/home/domaine/entities/response/home_response.dart';
+import 'package:grace_church/feature/home/page/bloc/get_profile/get_profile_bloc.dart';
+import 'package:grace_church/feature/notification/presentation/page/widget/programme.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -45,12 +47,9 @@ class _HomeViewState extends State<HomeView> {
     _controller;
     super.dispose();
   }
-  
-  final String qrCodeData = 'https://docs.google.com/forms/d/e/1FAIpQLSefCnQAipz_PngsajC0IXdsWNKf9_nkQQ8aNjI_BrcDkKCahg/viewform?pli=1&pli=1';
 
-
-
-
+  final String qrCodeData =
+      'https://docs.google.com/forms/d/e/1FAIpQLSefCnQAipz_PngsajC0IXdsWNKf9_nkQQ8aNjI_BrcDkKCahg/viewform?pli=1&pli=1';
 
   @override
   Widget build(BuildContext context) {
@@ -129,226 +128,232 @@ class _HomeViewState extends State<HomeView> {
                     builder: (context, listCelluleState) {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: List.generate(
-                          quickActionRequestSectionItem.length,
-                          (index) {
-                            final items = quickActionRequestSectionItem[index];
-                            return (items["value"] == "cellule" &&
-                                        (profileState
+                        children: List.generate(quickActionRequestSectionItem.length, (
+                          index,
+                        ) {
+                          final items = quickActionRequestSectionItem[index];
+                          return (items["value"] == "cellule" &&
+                                      (profileState
+                                          is SuccessState<ProfileResponse>)) ||
+                                  (items["value"] == "departement" &&
+                                      (profileState
+                                          is SuccessState<ProfileResponse>))
+                              ? Expanded(
+                                  child: GestureDetector(
+                                    onTap:
+                                        listCelluleState
                                             is SuccessState<
-                                              ProfileResponse
-                                            >)) ||
-                                    (items["value"] == "departement" &&
-                                        (profileState
-                                            is SuccessState<ProfileResponse>))
-                                ? Expanded(
-                                    child: GestureDetector(
-                                      onTap:
-                                          listCelluleState
-                                              is SuccessState<
-                                                List<CelluleResponse>
-                                              >
-                                          ? () {
-                                              final iscellule = listCelluleState
-                                                  .data
-                                                  .any((element) {
-                                                    log(
-                                                      "celluleId: ${element.celluleId}",
-                                                    );
-                                                    return element.celluleId
-                                                        .trim()
-                                                        .toLowerCase()
-                                                        .contains(
-                                                          profileState
-                                                              .data
-                                                              .celluleId
-                                                              .trim()
-                                                              .toLowerCase(),
-                                                        );
-                                                  });
-
-                                              if (iscellule) {
-                                                if (items["value"] ==
-                                                    "cellule") {
-                                                  Navigator.of(context).push(
-                                                    fadeRoute(
-                                                      CelluleView(
-                                                        cellueId: (profileState)
+                                              List<CelluleResponse>
+                                            >
+                                        ? () {
+                                            final iscellule = listCelluleState
+                                                .data
+                                                .any((element) {
+                                                  log(
+                                                    "celluleId: ${element.celluleId}",
+                                                  );
+                                                  return element.celluleId
+                                                      .trim()
+                                                      .toLowerCase()
+                                                      .contains(
+                                                        profileState
                                                             .data
-                                                            .celluleId,
-                                                        profileState:
-                                                            profileState,
-                                                      ),
+                                                            .celluleId
+                                                            .trim()
+                                                            .toLowerCase(),
+                                                      );
+                                                });
+
+                                            if (iscellule) {
+                                              if (items["value"] == "cellule") {
+                                                Navigator.of(context).push(
+                                                  fadeRoute(
+                                                    CelluleView(
+                                                      cellueId: (profileState)
+                                                          .data
+                                                          .celluleId,
+                                                      profileState:
+                                                          profileState,
                                                     ),
-                                                  );
-                                                }
-                                                if (items["value"] ==
-                                                    "departement") {
-                                                  Navigator.of(context).push(
-                                                    fadeRoute(
-                                                      DepatelementView(),
-                                                    ),
-                                                  );
-                                                }
+                                                  ),
+                                                );
+                                              }
+                                              if (items["value"] ==
+                                                  "departement") {
+                                                //   Navigator.of(context).push(
+                                                //     fadeRoute(
+                                                //       DepatelementView(),
+                                                //     ),
+                                                //   );
+
+                                                AppBottomSheet()
+                                                    .showBottomSheetScrollable(
+                                                      context,
+                                                      MediaQuery.of(context),
+                                                      (context) {
+                                                        return SoomScreen();
+                                                      },
+                                                    );
                                               }
                                             }
-                                          : null,
-                                      child: Container(
-                                        margin: EdgeInsets.only(right: 6.w),
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 11.h,
-                                          horizontal: 12.w,
+                                          }
+                                        : null,
+                                    child: Container(
+                                      margin: EdgeInsets.only(right: 6.w),
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 11.h,
+                                        horizontal: 12.w,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: context.appColor.primaryWhite,
+                                        border: Border.all(
+                                          color:
+                                              context.appColor.primaryGray100,
                                         ),
-                                        decoration: BoxDecoration(
-                                          color: context.appColor.primaryWhite,
-                                          border: Border.all(
-                                            color:
-                                                context.appColor.primaryGray100,
+                                        borderRadius: BorderRadius.circular(
+                                          9.r,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black.withValues(
+                                              alpha: 0.1,
+                                            ),
+                                            offset: Offset(0, 1),
+                                            blurRadius: 0.2,
                                           ),
-                                          borderRadius: BorderRadius.circular(
-                                            9.r,
+                                        ],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.all(12.r),
+                                            decoration: BoxDecoration(
+                                              color: context
+                                                  .appColor
+                                                  .primaryLightBlue
+                                                  .withValues(alpha: 0.5),
+                                              borderRadius:
+                                                  BorderRadius.circular(6.r),
+                                            ),
+                                            child: Icon(
+                                              items['icon'],
+                                              color: context
+                                                  .appColor
+                                                  .primaryBlue
+                                                  .withValues(alpha: 0.7),
+                                            ),
                                           ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.black.withValues(
-                                                alpha: 0.1,
-                                              ),
-                                              offset: Offset(0, 1),
-                                              blurRadius: 0.2,
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.all(12.r),
-                                              decoration: BoxDecoration(
-                                                color: context
-                                                    .appColor
-                                                    .primaryLightBlue,
-                                                borderRadius:
-                                                    BorderRadius.circular(6.r),
-                                              ),
-                                              child: Icon(
-                                                items['icon'],
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue,
-                                              ),
-                                            ),
-                                            SizedBox(height: 9.h),
-                                            CustomeText(
-                                              text: items['title'],
-                                              style: context.appTypographie.body
-                                                  .copyWith(
-                                                    fontSize: 13.5.sp,
-                                                    color: Colors.black,
-                                                    letterSpacing: 0.sp,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                            ),
-                                            CustomeText(
-                                              text: items['decription'],
-                                              style: context
-                                                  .appTypographie
-                                                  .small
-                                                  .copyWith(
-                                                    fontSize: 10.5.sp,
-                                                    letterSpacing: 0.sp,
-                                                    color: context
-                                                        .appColor
-                                                        .primaryGray700,
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
+                                          SizedBox(height: 9.h),
+                                          CustomeText(
+                                            text: items['title'],
+                                            style: context.appTypographie.body
+                                                .copyWith(
+                                                  fontSize: 13.5.sp,
+                                                  color: context
+                                                      .appColor
+                                                      .primaryGray900,
+                                                  letterSpacing: 0.sp,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                          ),
+                                          CustomeText(
+                                            text: items['decription'],
+                                            style: context.appTypographie.small
+                                                .copyWith(
+                                                  fontSize: 10.5.sp,
+                                                  letterSpacing: 0.sp,
+                                                  color: context
+                                                      .appColor
+                                                      .primaryGray700,
+                                                ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  )
-                                : Expanded(
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        margin: EdgeInsets.only(right: 6.w),
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 11.h,
-                                          horizontal: 12.w,
+                                  ),
+                                )
+                              : Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      margin: EdgeInsets.only(right: 6.w),
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 11.h,
+                                        horizontal: 12.w,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: context.appColor.primaryWhite,
+                                        border: Border.all(
+                                          color:
+                                              context.appColor.primaryGray100,
                                         ),
-                                        decoration: BoxDecoration(
-                                          color: context.appColor.primaryWhite,
-                                          border: Border.all(
-                                            color:
-                                                context.appColor.primaryGray100,
+                                        borderRadius: BorderRadius.circular(
+                                          9.r,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black.withValues(
+                                              alpha: 0.1,
+                                            ),
+                                            offset: Offset(0, 1),
+                                            blurRadius: 0.2,
                                           ),
-                                          borderRadius: BorderRadius.circular(
-                                            9.r,
+                                        ],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.all(12.r),
+                                            decoration: BoxDecoration(
+                                              color: context
+                                                  .appColor
+                                                  .primaryLightBlue,
+                                              borderRadius:
+                                                  BorderRadius.circular(6.r),
+                                            ),
+                                            child: Icon(
+                                              items['icon'],
+                                              color: context
+                                                  .appColor
+                                                  .primaryBlue
+                                                  .withValues(alpha: 0.2),
+                                            ),
                                           ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.black.withValues(
-                                                alpha: 0.1,
-                                              ),
-                                              offset: Offset(0, 1),
-                                              blurRadius: 0.2,
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.all(12.r),
-                                              decoration: BoxDecoration(
-                                                color: context
-                                                    .appColor
-                                                    .primaryLightBlue,
-                                                borderRadius:
-                                                    BorderRadius.circular(6.r),
-                                              ),
-                                              child: Icon(
-                                                items['icon'],
-                                                color: context
-                                                    .appColor
-                                                    .primaryBlue
-                                                    .withValues(alpha: 0.2),
-                                              ),
-                                            ),
-                                            SizedBox(height: 9.h),
-                                            CustomeText(
-                                              text: items['title'],
-                                              style: context.appTypographie.body
-                                                  .copyWith(
-                                                    fontSize: 13.5.sp,
-                                                    color: Colors.black
-                                                        .withValues(alpha: 0.2),
-                                                    letterSpacing: 0.sp,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                            ),
-                                            CustomeText(
-                                              text: items['decription'],
-                                              style: context
-                                                  .appTypographie
-                                                  .small
-                                                  .copyWith(
-                                                    fontSize: 10.5.sp,
-                                                    letterSpacing: 0.sp,
-                                                    color: context
-                                                        .appColor
-                                                        .primaryGray700
-                                                        .withValues(alpha: 0.2),
-                                                  ),
-                                            ),
-                                          ],
-                                        ),
+                                          SizedBox(height: 9.h),
+                                          CustomeText(
+                                            text: items['title'],
+                                            style: context.appTypographie.body
+                                                .copyWith(
+                                                  fontSize: 13.5.sp,
+                                                  color: context
+                                                      .appColor
+                                                      .primaryGray900,
+                                                  letterSpacing: 0.sp,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                          ),
+                                          CustomeText(
+                                            text: items['decription'],
+                                            style: context.appTypographie.small
+                                                .copyWith(
+                                                  fontSize: 10.5.sp,
+                                                  letterSpacing: 0.sp,
+                                                  color: context
+                                                      .appColor
+                                                      .primaryGray700
+                                                      .withValues(alpha: 0.2),
+                                                ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  );
-                          },
-                        ),
+                                  ),
+                                );
+                        }),
                       );
                     },
                   );
@@ -367,7 +372,7 @@ class _HomeViewState extends State<HomeView> {
                           text: 'Programmes à venir',
                           style: context.appTypographie.body.copyWith(
                             letterSpacing: 0.sp,
-                            color: context.appColor.primaryGrayDark,
+                            color: context.appColor.primaryGray900,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -377,16 +382,15 @@ class _HomeViewState extends State<HomeView> {
                   SizedBox(height: 7.h),
                 ],
               ),
-              
+
               // ------------------------------------
               // Programmes à venir: Carousel Slider
               // -----------------------------------
               Container(
-               padding: EdgeInsets.symmetric(vertical: 9.w),
+                padding: EdgeInsets.symmetric(vertical: 9.w),
                 child: BannerSlider(),
               ),
 
-                
               // ---------------------------
               // Meditation quotidienne
               // ---------------------------
@@ -402,30 +406,11 @@ class _HomeViewState extends State<HomeView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.water_drop_rounded,
-                          color: context.appColor.primaryBlue,
-                          size: 16.sp,
-                        ),
-                        SizedBox(width: 5.w),
-                        CustomeText(
-                          text: 'MANNE QUOTIDIENNE',
-                          style: context.appTypographie.body.copyWith(
-                            fontSize: 12.sp,
-                            color: context.appColor.primaryBlue,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                      ],
-                    ),
-
                     SizedBox(height: 15.h),
                     CustomeText(
                       text: 'La force de la grâce divine',
                       style: context.appTypographie.subtitle.copyWith(
-                        color: context.appColor.primaryGrayDark,
+                        color: context.appColor.primaryGray900,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -488,9 +473,9 @@ class _HomeViewState extends State<HomeView> {
                     margin: EdgeInsets.only(top: 4.h),
                     padding: EdgeInsets.all(9.r),
                     decoration: BoxDecoration(
-                      color:  context.appColor.primaryLightBlue.withValues(
-                    alpha: 0.4,
-                  ),
+                      color: context.appColor.primaryLightBlue.withValues(
+                        alpha: 0.4,
+                      ),
                       borderRadius: BorderRadius.circular(9.r),
                     ),
                     child: QrImageView(
@@ -512,6 +497,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-
-
-
