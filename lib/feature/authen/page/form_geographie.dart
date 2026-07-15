@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:grace_church/core/extension/extention.dart';
 import 'package:grace_church/core/geocoding/data/datasources/nominatim_datasource.dart';
@@ -23,7 +25,6 @@ import 'package:grace_church/core/request_management/presentation/widgets/eligib
 import 'package:grace_church/core/request_management/presentation/widgets/location_denied_message.dart';
 import 'package:grace_church/core/request_management/presentation/widgets/location_permission_dialog.dart';
 import 'package:grace_church/core/request_management/presentation/widgets/location_search_content.dart';
-import 'package:http/http.dart' as http;
 
 enum PermissionState { notAsked, granted, denied }
 

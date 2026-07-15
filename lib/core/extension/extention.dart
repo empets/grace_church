@@ -6,57 +6,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:grace_church/core/data_process/success.dart';
 import 'package:grace_church/core/extension/custome_extension.dart';
 import 'package:intl/intl.dart';
-import 'package:grace_church/core/data_process/success.dart';
 import 'package:crypto/crypto.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-// Future<bool> isEmulator() async {
-//   WidgetsFlutterBinding.ensureInitialized();
 
-//   // final deviceInfoPlugin = DeviceInfoPlugin();
-
-//   if (Platform.isAndroid) {
-//     // final androidInfo = await deviceInfoPlugin.androidInfo;
-
-//     // Liste des critères couramment utilisés pour détecter un émulateur Android
-//     const androidEmulators = [
-//       'generic',
-//       'google_sdk',
-//       'sdk',
-//       'sdk_x86',
-//       'vbox86p',
-//       'emulator',
-//     ];
-
-//     for (final item in androidEmulators) {
-//       if (androidInfo.fingerprint.contains(item) ||
-//           androidInfo.model.contains(item) ||
-//           androidInfo.hardware.contains(item) ||
-//           androidInfo.product.contains(item) ||
-//           androidInfo.brand.contains(item) ||
-//           androidInfo.device.contains(item)) {
-//         return true;
-//       }
-//     }
-//   } else if (Platform.isIOS) {
-//     final iosInfo = await deviceInfoPlugin.iosInfo;
-
-//     // Liste des critères couramment utilisés pour détecter un émulateur iOS
-//     const iosEmulators = [
-//       'x86_64', // simulateur iOS sur architectures Intel
-//       'arm64', // simulateur iOS sur architectures Apple Silicon (M1, M1 Pro, etc.)
-//     ];
-
-//     if (iosEmulators.contains(iosInfo.utsname.machine)) {
-//       return true;
-//     }
-//   }
-
-//   return false;
-// }
 
 void closeKeyboard(BuildContext context) {
   FocusScope.of(context).unfocus();
@@ -510,11 +467,16 @@ Color getTagTextColor({required BuildContext context, required String tag}) {
       return context.appColor.primaryWarning;
     case 'info':
       return context.appColor.primaryBlue;
-
     case 'terminer':
       return context.appColor.primarySuccess.withValues(alpha: 0.5);
     case 'en_cours':
       return context.appColor.primaryWarning.withValues(alpha: 0.5);
+    case 'choral':
+      return context.appColor.primaryBlue;
+    case 'baptiser':
+      return context.appColor.primaryBlue;
+    case 'non_baptiser':
+      return context.appColor.primaryBlue;
     default:
       return Colors.grey;
   }

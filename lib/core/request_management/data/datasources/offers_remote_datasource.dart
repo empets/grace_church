@@ -17,7 +17,7 @@ class OffersRemoteDataSourceImpl implements OffersRemoteDataSource {
   OffersRemoteDataSourceImpl({required this.client});
   final http.Client client;
   static const String baseUrl =
-      'https://mabox.orange.ci/api-fibre/uberisation-diagnostic-api';
+        'https://mabox.orange.ci/api-fibre/uberisation-diagnostic-api';
 
   @override
   Future<List<OfferModel>> getOffers(OfferType type) async {

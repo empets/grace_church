@@ -286,22 +286,22 @@ class SigninView extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 12.h),
-                  PrimaryButton(
-                    label: "Continuer sans compte",
-                    colorText: context.appColor.primaryGrayDark,
-                    borderSideColor: context.appColor.primaryGrayDark,
-                    backgroundColor: Colors.transparent,
-                    isLoading: false,
-                    borderRadius: 10.r,
-                    onPressed: () async {
-                      FocusScope.of(context).unfocus();
+                  // PrimaryButton(
+                  //   label: "Continuer sans compte",
+                  //   colorText: context.appColor.primaryGrayDark,
+                  //   borderSideColor: context.appColor.primaryGrayDark,
+                  //   backgroundColor: Colors.transparent,
+                  //   isLoading: false,
+                  //   borderRadius: 10.r,
+                  //   onPressed: () async {
+                  //     FocusScope.of(context).unfocus();
 
-                      Navigator.of(context).pushAndRemoveUntil(
-                        fadeRoute(const OverviewScreen()),
-                        (route) => false,
-                      );
-                    },
-                  ),
+                  //     Navigator.of(context).pushAndRemoveUntil(
+                  //       fadeRoute(const OverviewScreen()),
+                  //       (route) => false,
+                  //     );
+                  //   },
+                  // ),
                 ],
               ),
             ),

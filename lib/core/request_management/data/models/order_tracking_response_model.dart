@@ -1,4 +1,3 @@
-
 import 'package:grace_church/core/request_management/domain/entities/order_tracking_response.dart';
 
 class OrderTrackingResponseModel extends OrderTrackingResponse {
